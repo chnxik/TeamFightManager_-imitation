@@ -1,8 +1,19 @@
-﻿// Client.cpp : 애플리케이션에 대한 진입점을 정의합니다.
-//
-
-#include "framework.h"
+﻿#include "framework.h"
 #include "Client.h"
+
+// 비주얼스튜디오 옵션으로 추가 방식 (프로젝트 참조 사용)
+#include "Commoninclude.h"
+
+// 소스코드 추가 방식
+// #include "..\Engine_SOURCE\Commoninclude.h"
+
+
+// 정적 라이브러리 추가 코드
+#ifdef _DEBUG
+#pragma comment(lib, "..\\x64\\Debug\\Engine_SOURCE.lib")
+#else
+#pragma comment(lib, "..\\x64\\Release\\Engine_SOURCE.lib")
+#endif
 
 #define MAX_LOADSTRING 100
 

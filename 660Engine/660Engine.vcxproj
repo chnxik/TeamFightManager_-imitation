@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{a1d17965-8b51-4d5b-afb2-b02e9133f815}</ProjectGuid>
-    <RootNamespace>EngineSOURCE</RootNamespace>
+    <ProjectGuid>{9de7995a-c775-45e0-8c1b-c2c25c0728ea}</ProjectGuid>
+    <RootNamespace>My660Engine</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -79,7 +79,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
-      <PrecompiledHeaderOutputFile />
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -98,7 +98,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
-      <PrecompiledHeaderOutputFile />
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -117,7 +117,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
-      <PrecompiledHeaderOutputFile />
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -136,7 +136,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
-      <PrecompiledHeaderOutputFile />
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -148,10 +148,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
-    <ClInclude Include="Commoninclude.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Engine_SOURCE.cpp" />
+    <ClCompile Include="660Engine.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

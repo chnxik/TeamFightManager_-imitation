@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Label="Globals">
+    <MSBuildAllProjects Condition="'$(MSBuildVersion)' == '' Or '$(MSBuildVersion)' &lt; '16.0'">$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <ItemsProjectGuid>{ef382c18-c456-428f-9c15-458a51343df7}</ItemsProjectGuid>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ProjectCapability Include="SourceItemsFromImports" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)yaApplication.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)yaEntity.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)yaEnums.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)yaGraphicDevice_Dx11.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)yaGraphics.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)yaInput.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)yaMath.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)660Engine.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)yaResource.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)yaResources.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)yaTime.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)yaApplication.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)yaEntity.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)yaGraphicDevice_Dx11.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)yaInput.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)yaMath.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)yaResource.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)yaResources.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)yaTime.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)yaMath.inl" />
+  </ItemGroup>
+</Project>

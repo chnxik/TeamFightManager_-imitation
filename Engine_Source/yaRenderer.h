@@ -12,9 +12,11 @@ namespace ya::renderer
 		Vector4 color;
 	};
 
-	Vertex vertexes[];
+	Vertex	vertexes[];
+	UINT	Index[];
 	extern ID3D11InputLayout* triangleLayout;
-	extern ID3D11Buffer* triangleBuffer;
+	extern ID3D11Buffer* FigureBuffer;
+	extern ID3D11Buffer* IndexBuffer;
 	extern ID3DBlob* errorBlob;
 	extern ID3DBlob* triangleVSBlob;
 	extern ID3D11VertexShader* triangleVSShader;

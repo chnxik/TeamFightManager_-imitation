@@ -251,18 +251,21 @@ namespace ya::graphics
 		UINT vertexsize = sizeof(renderer::Vertex); //  정점구조체의 크기를 전달해준다.
 		UINT offset = 0;
 
-		mContext->IASetVertexBuffers(0, 1, &renderer::triangleBuffer, &vertexsize, &offset);
+		mContext->IASetVertexBuffers(0, 1, &renderer::FigureBuffer, &vertexsize, &offset);
+		mContext->IASetIndexBuffer(renderer::IndexBuffer, DXGI_FORMAT_R32_UINT, 0);
 		mContext->IASetInputLayout(renderer::triangleLayout);
 		mContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY::D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 
-
 		//Bind VS, PS
-
 		mContext->VSSetShader(renderer::triangleVSShader, 0, 0);
 		mContext->PSSetShader(renderer::trianglePSShader, 0, 0);
 
 		// Draw Render Target
-		mContext->Draw(3, 0);
+		// mContext->Draw(3, 0);
+		mContext->DrawIndexed(6, 0, 0);		// 사각형
+		mContext->DrawIndexed(75, 6, 0);	// 원
+		mContext->DrawIndexed(6, 81, 0);	// 별
+		mContext->DrawIndexed(15, 87, 0);	// 5각형
 
 		// 렌더타겟에 있는 이미지를 화면에 그려준다.
 		mSwapChain->Present(0, 0);

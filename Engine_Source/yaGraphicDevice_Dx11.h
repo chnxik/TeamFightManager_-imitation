@@ -1,5 +1,6 @@
 #pragma once
 #include "660Engine.h"
+#include "yaGraphics.h"
 
 #include <d3d11.h>
 #include <d3dcompiler.h>
@@ -22,6 +23,9 @@ namespace ya::graphics
 		bool CreateTexture(const D3D11_TEXTURE2D_DESC* desc, void* data); // 텍스쳐 생성 함수
 
 		void BindViewPort(D3D11_VIEWPORT* viewPort); // 뷰포트 바인드 함수
+		void SetConstantBuffer(ID3D11Buffer* buffer, void* data, UINT size); // 상수버퍼에 데이터 설정
+		void BindConstantBuffer(eShaderStage stage, eCBT type, ID3D11Buffer* buffer);
+		void BindConstantBuffers(eShaderStage stage, eCBT type, ID3D11Buffer* buffer);
 
 		void Draw(); // 그리기 함수
 

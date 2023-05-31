@@ -38,6 +38,7 @@ namespace ya
 	{
 		Time::Update();
 		Input::Update();
+		ya::renderer::update();
 	}
 
 	void Application::LateUpdate()

@@ -13,10 +13,10 @@ namespace ya::renderer
 	};
 
 	Vertex	vertexes[];
-	UINT	Index[];
 	extern ID3D11InputLayout* triangleLayout;
-	extern ID3D11Buffer* FigureBuffer;
+	extern ID3D11Buffer* VertexBuffer;
 	extern ID3D11Buffer* IndexBuffer;
+	extern ID3D11Buffer* ConstantBuffer;
 	extern ID3DBlob* errorBlob;
 	extern ID3DBlob* triangleVSBlob;
 	extern ID3D11VertexShader* triangleVSShader;
@@ -24,4 +24,6 @@ namespace ya::renderer
 	extern ID3D11PixelShader* trianglePSShader;
 
 	void Initialize();
+
+	void update();
 }

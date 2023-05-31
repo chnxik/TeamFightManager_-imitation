@@ -222,6 +222,53 @@ namespace ya::graphics
 		mContext->RSSetViewports(1, viewPort);
 	}
 
+	void GraphicDevice_Dx11::SetConstantBuffer(ID3D11Buffer* buffer, void* data, UINT size)
+	{
+		D3D11_MAPPED_SUBRESOURCE subRes = {};
+		mContext->Map(buffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &subRes); // buffer 와 subRes 가 매핑이 된다.
+		memcpy(subRes.pData, data, size); // subRes에 원하는 데이터 복사.
+		mContext->Unmap(buffer, 0); // SubRes는 지역변수기때문에 함수가 끝날 때 사라져서, 문제가 생길 수 있기 때문에 데이터를 전달해준 다음 함수가 종료되기 전 연결을 해제해준다.
+	}
+
+	void GraphicDevice_Dx11::BindConstantBuffer(eShaderStage stage, eCBT type, ID3D11Buffer* buffer)
+	{
+		switch (stage)
+		{
+		case eShaderStage::VS:
+			mContext->VSSetConstantBuffers((UINT)type, 1, &buffer);
+			break;
+		case eShaderStage::HS:
+			mContext->HSSetConstantBuffers((UINT)type, 1, &buffer);
+			break;
+		case eShaderStage::DS:
+			mContext->DSSetConstantBuffers((UINT)type, 1, &buffer);
+			break;
+		case eShaderStage::GS:
+			mContext->GSSetConstantBuffers((UINT)type, 1, &buffer);
+			break;
+		case eShaderStage::PS:
+			mContext->PSSetConstantBuffers((UINT)type, 1, &buffer);
+			break;
+		case eShaderStage::CS:
+			mContext->CSSetConstantBuffers((UINT)type, 1, &buffer);
+			break;
+		case eShaderStage::END:
+			break;
+		default:
+			break;
+		}
+	}
+
+	void GraphicDevice_Dx11::BindConstantBuffers(eShaderStage stage, eCBT type, ID3D11Buffer* buffer)
+	{
+		mContext->VSSetConstantBuffers((UINT)type, 1, &buffer);
+		mContext->HSSetConstantBuffers((UINT)type, 1, &buffer);
+		mContext->DSSetConstantBuffers((UINT)type, 1, &buffer);
+		mContext->GSSetConstantBuffers((UINT)type, 1, &buffer);
+		mContext->PSSetConstantBuffers((UINT)type, 1, &buffer);
+		mContext->CSSetConstantBuffers((UINT)type, 1, &buffer);
+	}
+
 	void GraphicDevice_Dx11::Draw()
 	{
 		// render target Clear
@@ -251,7 +298,7 @@ namespace ya::graphics
 		UINT vertexsize = sizeof(renderer::Vertex); //  정점구조체의 크기를 전달해준다.
 		UINT offset = 0;
 
-		mContext->IASetVertexBuffers(0, 1, &renderer::FigureBuffer, &vertexsize, &offset);
+		mContext->IASetVertexBuffers(0, 1, &renderer::VertexBuffer, &vertexsize, &offset);
 		mContext->IASetIndexBuffer(renderer::IndexBuffer, DXGI_FORMAT_R32_UINT, 0);
 		mContext->IASetInputLayout(renderer::triangleLayout);
 		mContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY::D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
@@ -262,10 +309,7 @@ namespace ya::graphics
 
 		// Draw Render Target
 		// mContext->Draw(3, 0);
-		mContext->DrawIndexed(6, 0, 0);		// 사각형
-		mContext->DrawIndexed(75, 6, 0);	// 원
-		mContext->DrawIndexed(6, 81, 0);	// 별
-		mContext->DrawIndexed(15, 87, 0);	// 5각형
+		mContext->DrawIndexed(3, 0, 0);		// 사각형
 
 		// 렌더타겟에 있는 이미지를 화면에 그려준다.
 		mSwapChain->Present(0, 0);

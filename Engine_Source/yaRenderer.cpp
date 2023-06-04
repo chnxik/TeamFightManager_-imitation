@@ -2,7 +2,9 @@
 #include "yaTime.h"
 #include "yaInput.h"
 
-namespace ya::renderer
+using namespace ya;
+
+namespace renderer
 {
 	Vertex vertexes[3] = {};
 	Vector4 Pos = { 0.f,0.f,0.f,0.f };
@@ -100,14 +102,44 @@ namespace ya::renderer
 		LoadShader();
 	}
 
+	void Release()
+	{
+		if (triangleLayout != nullptr)
+			triangleLayout->Release();
+
+		if (VertexBuffer != nullptr)
+			VertexBuffer->Release();
+
+		if (IndexBuffer != nullptr)
+			IndexBuffer->Release();
+
+		if (ConstantBuffer != nullptr)
+			ConstantBuffer->Release();
+
+		if (errorBlob != nullptr)
+			errorBlob->Release();
+
+		if (triangleVSBlob != nullptr)
+			triangleVSBlob->Release();
+
+		if (triangleVSShader != nullptr)
+			triangleVSShader->Release();
+
+		if (trianglePSBlob != nullptr)
+			trianglePSBlob->Release();
+
+		if (trianglePSShader != nullptr)
+			trianglePSShader->Release();
+	}
+
 	void update()
 	{
-		if (ya::Input::GetKey(eKeyCode::UP))	{ Pos.y += 2.f *(float)ya::Time::DeltaTime(); }
-		if (ya::Input::GetKey(eKeyCode::DOWN))	{ Pos.y -= 2.f *(float)ya::Time::DeltaTime(); }
-		if (ya::Input::GetKey(eKeyCode::RIGHT)) { Pos.x += 2.f *(float)ya::Time::DeltaTime(); }
-		if (ya::Input::GetKey(eKeyCode::LEFT))	{ Pos.x -= 2.f *(float)ya::Time::DeltaTime(); }
+		if (Input::GetKey(eKeyCode::UP))	{ Pos.y += 2.f *(float)Time::DeltaTime(); }
+		if (Input::GetKey(eKeyCode::DOWN))	{ Pos.y -= 2.f *(float)Time::DeltaTime(); }
+		if (Input::GetKey(eKeyCode::RIGHT)) { Pos.x += 2.f *(float)Time::DeltaTime(); }
+		if (Input::GetKey(eKeyCode::LEFT))	{ Pos.x -= 2.f *(float)Time::DeltaTime(); }
 		
-		ya::graphics::GetDevice()->SetConstantBuffer(ya::renderer::ConstantBuffer, &Pos, sizeof(Vector4));
-		ya::graphics::GetDevice()->BindConstantBuffer(eShaderStage::VS, eCBT::Transform, ya::renderer::ConstantBuffer);
+		ya::graphics::GetDevice()->SetConstantBuffer(renderer::ConstantBuffer, &Pos, sizeof(Vector4));
+		ya::graphics::GetDevice()->BindConstantBuffer(eShaderStage::VS, eCBT::Transform, renderer::ConstantBuffer);
 	}
 }

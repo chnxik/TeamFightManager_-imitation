@@ -141,29 +141,29 @@ namespace ya::graphics
 		std::filesystem::path vsPath(shaderPath.c_str());
 		vsPath += L"TriangleVS.hlsl";
 
-		D3DCompileFromFile(vsPath.c_str(), nullptr, D3D_COMPILE_STANDARD_FILE_INCLUDE, "main", "vs_5_0", 0, 0, &ya::renderer::triangleVSBlob, &ya::renderer::errorBlob);
+		D3DCompileFromFile(vsPath.c_str(), nullptr, D3D_COMPILE_STANDARD_FILE_INCLUDE, "main", "vs_5_0", 0, 0, &renderer::triangleVSBlob, &renderer::errorBlob);
 
-		if (ya::renderer::errorBlob)
+		if (renderer::errorBlob)
 		{
-			OutputDebugStringA((char*)ya::renderer::errorBlob->GetBufferPointer());
-			ya::renderer::errorBlob->Release();
+			OutputDebugStringA((char*)renderer::errorBlob->GetBufferPointer());
+			renderer::errorBlob->Release();
 		}
 
-		mDevice->CreateVertexShader(ya::renderer::triangleVSBlob->GetBufferPointer(), ya::renderer::triangleVSBlob->GetBufferSize(), nullptr, &ya::renderer::triangleVSShader);
+		mDevice->CreateVertexShader(renderer::triangleVSBlob->GetBufferPointer(), renderer::triangleVSBlob->GetBufferSize(), nullptr, &renderer::triangleVSShader);
 
 		// PS 코드 컴파일 및 에러블럽연결, 쉐이더 생성
 		std::filesystem::path psPath(shaderPath.c_str());
 		psPath += L"TrianglePS.hlsl";
 
-		D3DCompileFromFile(psPath.c_str(), nullptr, D3D_COMPILE_STANDARD_FILE_INCLUDE, "main", "ps_5_0", 0, 0, &ya::renderer::trianglePSBlob, &ya::renderer::errorBlob);
+		D3DCompileFromFile(psPath.c_str(), nullptr, D3D_COMPILE_STANDARD_FILE_INCLUDE, "main", "ps_5_0", 0, 0, &renderer::trianglePSBlob, &renderer::errorBlob);
 
-		if (ya::renderer::errorBlob)
+		if (renderer::errorBlob)
 		{
-			OutputDebugStringA((char*)ya::renderer::errorBlob->GetBufferPointer());
-			ya::renderer::errorBlob->Release();
+			OutputDebugStringA((char*)renderer::errorBlob->GetBufferPointer());
+			renderer::errorBlob->Release();
 		}
 
-		mDevice->CreatePixelShader(ya::renderer::trianglePSBlob->GetBufferPointer(), ya::renderer::trianglePSBlob->GetBufferSize(), nullptr, &ya::renderer::trianglePSShader);
+		mDevice->CreatePixelShader(renderer::trianglePSBlob->GetBufferPointer(), renderer::trianglePSBlob->GetBufferSize(), nullptr, &renderer::trianglePSShader);
 
 		// Input layout 정점 구조 정보를 넘겨주어야한다.
 		D3D11_INPUT_ELEMENT_DESC arrLayout[2] = {};

@@ -4,7 +4,7 @@
 
 using namespace ya::math;
 
-namespace ya::renderer
+namespace renderer
 {
 	struct Vertex
 	{
@@ -24,6 +24,8 @@ namespace ya::renderer
 	extern ID3D11PixelShader* trianglePSShader;
 
 	void Initialize();
+	void Release();
 
 	void update();
+	void Release();
 }

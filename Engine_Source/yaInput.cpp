@@ -64,8 +64,8 @@ namespace ya
 			GetCursorPos(&mousePos);
 
 			ScreenToClient(application.GetHwnd(), &mousePos);
-			mMousePos.x = mousePos.x;
-			mMousePos.y = mousePos.y;
+			mMousePos.x = (float)mousePos.x;
+			mMousePos.y = (float)mousePos.y;
 		}
 		else
 		{

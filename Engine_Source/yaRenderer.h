@@ -1,6 +1,9 @@
 #pragma once
 #include "660Engine.h"
 #include "yaGraphicDevice_Dx11.h"
+#include "yaMesh.h"
+#include "yaShader.h"
+#include "yaConstantBuffer.h"
 
 using namespace ya::math;
 
@@ -11,21 +14,14 @@ namespace renderer
 		Vector3 pos;
 		Vector4 color;
 	};
-
-	Vertex	vertexes[];
-	extern ID3D11InputLayout* triangleLayout;
-	extern ID3D11Buffer* VertexBuffer;
-	extern ID3D11Buffer* IndexBuffer;
-	extern ID3D11Buffer* ConstantBuffer;
-	extern ID3DBlob* errorBlob;
-	extern ID3DBlob* triangleVSBlob;
-	extern ID3D11VertexShader* triangleVSShader;
-	extern ID3DBlob* trianglePSBlob;
-	extern ID3D11PixelShader* trianglePSShader;
+	
+	extern Vertex vertexes[];
+	extern ya::Mesh* mesh;
+	extern ya::Shader* shader;
+	extern ya::graphics::ConstantBuffer* ConstantBuffer;
 
 	void Initialize();
 	void Release();
 
 	void update();
-	void Release();
 }

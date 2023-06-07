@@ -2,144 +2,101 @@
 #include "yaTime.h"
 #include "yaInput.h"
 
-using namespace ya;
-
 namespace renderer
 {
-	Vertex vertexes[3] = {};
+	Vertex vertexes[4] = {};
+	ya::Mesh* mesh = nullptr;
+	ya::Shader* shader = nullptr;
+	ya::graphics::ConstantBuffer* ConstantBuffer = nullptr;
 	Vector4 Pos = { 0.f,0.f,0.f,0.f };
-
-	// Inpt Layout (정점 정보)
-	ID3D11InputLayout* triangleLayout = nullptr;
-
-	// Vertex Buffer
-	ID3D11Buffer* VertexBuffer = nullptr;
-
-	// Index Buffer
-	ID3D11Buffer* IndexBuffer = nullptr;
-
-	// Constant Buffer
-	ID3D11Buffer* ConstantBuffer = nullptr;
-
-	// error Blob
-	ID3DBlob* errorBlob = nullptr;
-
-	// Vertex Shader code -> Binary Code
-	ID3DBlob* triangleVSBlob = nullptr;
-
-	// Vertex Shader
-	ID3D11VertexShader* triangleVSShader = nullptr;
-	
-	// Pixel Shader code -> Binary Code
-	ID3DBlob* trianglePSBlob = nullptr;
-
-	// Pixel Shader
-	ID3D11PixelShader* trianglePSShader = nullptr;
 
 	void SetupState()
 	{
+		// InputLayout 정점 구조 정보를 넘겨준다.
+		D3D11_INPUT_ELEMENT_DESC arrLayout[2] = {};
 
+		arrLayout[0].AlignedByteOffset = 0;
+		arrLayout[0].Format = DXGI_FORMAT_R32G32B32_FLOAT;
+		arrLayout[0].InputSlot = 0;
+		arrLayout[0].InputSlotClass = D3D11_INPUT_PER_VERTEX_DATA;
+		arrLayout[0].SemanticName = "POSITION";
+		arrLayout[0].SemanticIndex = 0;
+
+		arrLayout[1].AlignedByteOffset = 12;
+		arrLayout[1].Format = DXGI_FORMAT_R32G32B32A32_FLOAT;
+		arrLayout[1].InputSlot = 0;
+		arrLayout[1].InputSlotClass = D3D11_INPUT_PER_VERTEX_DATA;
+		arrLayout[1].SemanticName = "COLOR";
+		arrLayout[1].SemanticIndex = 0;
+
+		ya::graphics::GetDevice()->CreateInputLayout(arrLayout, 2
+			, shader->GetVSCode()
+			, shader->GetInputLayoutAddressOf());
 	}
 
 	void LoadBuffer()
 	{
-		// Vertex Buffer
-		D3D11_BUFFER_DESC VSDesc = { };
-		VSDesc.Usage = D3D11_USAGE::D3D11_USAGE_DYNAMIC;
-		VSDesc.ByteWidth = sizeof(Vertex) * 3;
-		VSDesc.BindFlags = D3D11_BIND_FLAG::D3D11_BIND_VERTEX_BUFFER;
-		VSDesc.CPUAccessFlags = D3D11_CPU_ACCESS_FLAG::D3D11_CPU_ACCESS_WRITE;
+		// Mesh
+		mesh = new ya::Mesh();
+		mesh->CreateVertexBuffer(vertexes, 4);
 
-		D3D11_SUBRESOURCE_DATA VSData = {};
-		VSData.pSysMem = vertexes;
-		ya::graphics::GetDevice()->CreateBuffer(&VertexBuffer, &VSDesc, &VSData);
-
-		// Index Buffer
 		std::vector<UINT> indexes = {};
 		indexes.push_back(0);
 		indexes.push_back(1);
 		indexes.push_back(2);
-
-		D3D11_BUFFER_DESC IBDesc = { };
-		IBDesc.Usage = D3D11_USAGE::D3D11_USAGE_DEFAULT;
-		IBDesc.ByteWidth = sizeof(UINT) * (UINT)indexes.size();
-		IBDesc.BindFlags = D3D11_BIND_FLAG::D3D11_BIND_INDEX_BUFFER;
-		IBDesc.CPUAccessFlags = 0;
 		
-		D3D11_SUBRESOURCE_DATA IBData = {};
-		IBData.pSysMem = indexes.data();
-		ya::graphics::GetDevice()->CreateBuffer(&IndexBuffer, &IBDesc, &IBData);
+		indexes.push_back(2);
+		indexes.push_back(1);
+		indexes.push_back(3);
+		mesh->CreateIndexBuffer(indexes.data(), indexes.size());
 
 		// Constant Buffer
-		D3D11_BUFFER_DESC CBDesc = { };
-		CBDesc.Usage = D3D11_USAGE::D3D11_USAGE_DYNAMIC;
-		CBDesc.ByteWidth = sizeof(Vector4);
-		CBDesc.BindFlags = D3D11_BIND_FLAG::D3D11_BIND_CONSTANT_BUFFER;
-		CBDesc.CPUAccessFlags = D3D11_CPU_ACCESS_FLAG::D3D11_CPU_ACCESS_WRITE;
-
-		ya::graphics::GetDevice()->CreateBuffer(&ConstantBuffer, &CBDesc, nullptr);
+		ConstantBuffer = new ya::graphics::ConstantBuffer(eCBType::Transform);
+		ConstantBuffer->Create(sizeof(Vector4));
 	}
 
 	void LoadShader()
 	{
-		ya::graphics::GetDevice()->CreateShader();
+		shader = new ya::Shader();
+		shader->Create(eShaderStage::VS, L"TriangleVS.hlsl", "main");
+		shader->Create(eShaderStage::PS, L"TrianglePS.hlsl", "main");
 	}
 
 	void Initialize()
 	{
 		// vertex 설정
-		vertexes[0].pos = Vector3(-0.5f, -0.5f, 0.0f);
+		vertexes[0].pos = Vector3(-0.5f, 0.5f, 0.0f);
 		vertexes[0].color = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
 
-		vertexes[1].pos = Vector3(0.0f, 0.5f, 0.0f);
+		vertexes[1].pos = Vector3(0.5f, 0.5f, 0.0f);
 		vertexes[1].color = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
 
-		vertexes[2].pos = Vector3(0.5f, -0.5f, 0.0f);
+		vertexes[2].pos = Vector3(-0.5f, -0.5f, 0.0f);
 		vertexes[2].color = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
 
-		SetupState();
+		vertexes[3].pos = Vector3(0.5f, -0.5f, 0.0f);
+		vertexes[3].color = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
+
 		LoadBuffer();
 		LoadShader();
+		SetupState();
 	}
 
 	void Release()
 	{
-		if (triangleLayout != nullptr)
-			triangleLayout->Release();
-
-		if (VertexBuffer != nullptr)
-			VertexBuffer->Release();
-
-		if (IndexBuffer != nullptr)
-			IndexBuffer->Release();
-
-		if (ConstantBuffer != nullptr)
-			ConstantBuffer->Release();
-
-		if (errorBlob != nullptr)
-			errorBlob->Release();
-
-		if (triangleVSBlob != nullptr)
-			triangleVSBlob->Release();
-
-		if (triangleVSShader != nullptr)
-			triangleVSShader->Release();
-
-		if (trianglePSBlob != nullptr)
-			trianglePSBlob->Release();
-
-		if (trianglePSShader != nullptr)
-			trianglePSShader->Release();
+		delete mesh;
+		delete shader;
+		delete ConstantBuffer;
 	}
 
 	void update()
 	{
-		if (Input::GetKey(eKeyCode::UP))	{ Pos.y += 2.f *(float)Time::DeltaTime(); }
-		if (Input::GetKey(eKeyCode::DOWN))	{ Pos.y -= 2.f *(float)Time::DeltaTime(); }
-		if (Input::GetKey(eKeyCode::RIGHT)) { Pos.x += 2.f *(float)Time::DeltaTime(); }
-		if (Input::GetKey(eKeyCode::LEFT))	{ Pos.x -= 2.f *(float)Time::DeltaTime(); }
+		if (ya::Input::GetKey(ya::eKeyCode::UP))	{ Pos.y += 2.f *(float)ya::Time::DeltaTime(); }
+		if (ya::Input::GetKey(ya::eKeyCode::DOWN))	{ Pos.y -= 2.f *(float)ya::Time::DeltaTime(); }
+		if (ya::Input::GetKey(ya::eKeyCode::RIGHT)) { Pos.x += 2.f *(float)ya::Time::DeltaTime(); }
+		if (ya::Input::GetKey(ya::eKeyCode::LEFT))	{ Pos.x -= 2.f *(float)ya::Time::DeltaTime(); }
 		
-		ya::graphics::GetDevice()->SetConstantBuffer(renderer::ConstantBuffer, &Pos, sizeof(Vector4));
-		ya::graphics::GetDevice()->BindConstantBuffer(eShaderStage::VS, eCBT::Transform, renderer::ConstantBuffer);
+		ConstantBuffer->SetData(&Pos);
+		ConstantBuffer->Bind(eShaderStage::VS);
 	}
 }

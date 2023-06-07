@@ -24,7 +24,7 @@ namespace ya
 	{
 		QueryPerformanceCounter(&mCurFrequency);
 
-		double differnceFrequency = mCurFrequency.QuadPart - mPrevFrequency.QuadPart;
+		double differnceFrequency = (double)(mCurFrequency.QuadPart - mPrevFrequency.QuadPart);
 
 		mDeltaTime = differnceFrequency / mCpuFrequency.QuadPart;
 		

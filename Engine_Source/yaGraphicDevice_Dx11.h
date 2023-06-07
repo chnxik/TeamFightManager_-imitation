@@ -2,12 +2,6 @@
 #include "660Engine.h"
 #include "yaGraphics.h"
 
-#include <d3d11.h>
-#include <d3dcompiler.h>
-
-#pragma comment(lib, "d3d11.lib")
-#pragma comment(lib, "d3dcompiler.lib")
-
 namespace ya::graphics
 {
 	class GraphicDevice_Dx11
@@ -17,15 +11,28 @@ namespace ya::graphics
 		~GraphicDevice_Dx11();
 
 		bool CreateSwapChain(const DXGI_SWAP_CHAIN_DESC* desc, HWND hWnd); // 스왑체인 생성
-		bool CreateBuffer(ID3D11Buffer** buffer, D3D11_BUFFER_DESC* desc, D3D11_SUBRESOURCE_DATA* data); // 정점버퍼 생성
-		bool CreateShader(); // 쉐이더 생성
-
 		bool CreateTexture(const D3D11_TEXTURE2D_DESC* desc, void* data); // 텍스쳐 생성 함수
+		
+		bool CreateInputLayout(const D3D11_INPUT_ELEMENT_DESC* pInputElementDesc, UINT NumElements, ID3DBlob* byteCode, ID3D11InputLayout** ppInputLayout);
+		bool CreateBuffer(ID3D11Buffer** buffer, D3D11_BUFFER_DESC* desc, D3D11_SUBRESOURCE_DATA* data); // 정점버퍼 생성
+
+		bool CompileFromfile(const std::wstring& fileName, const std::string& funcName, const std::string& version, ID3DBlob** ppCode);	  // 쉐이더코드 컴파일 함수
+		bool CreateVertexShader(const void* pShaderBytecode, SIZE_T BytecodeLength, ID3D11VertexShader** ppVertexShader);	// 버텍스 쉐이더 생성 함수
+		bool CreatePixelShader(const void* pShaderBytecode, SIZE_T BytecodeLength, ID3D11PixelShader** ppPixelShader); // 픽셀쉐이더 생성 함수
+
+
+		void BindPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY Topology);
+		void BindVertexBuffer(UINT StartSlot, ID3D11Buffer* const* ppVertexBuffers, const UINT* pStrides, const UINT* pOffsets);
+		
+		void BindIndexBuffer(ID3D11Buffer* pIndexBuffer, DXGI_FORMAT Format, UINT Offset);
+		void BindVertexShader(ID3D11VertexShader* pVertexShader);
+		void BindPixelShader(ID3D11PixelShader* pPixelShader);
+
+		void SetConstantBuffer(ID3D11Buffer* buffer, void* data, UINT size); // 상수버퍼에 데이터 설정
+		void BindConstantBuffer(eShaderStage stage, eCBType type, ID3D11Buffer* buffer);
+		void BindConstantBuffers(eShaderStage stage, eCBType type, ID3D11Buffer* buffer);
 
 		void BindViewPort(D3D11_VIEWPORT* viewPort); // 뷰포트 바인드 함수
-		void SetConstantBuffer(ID3D11Buffer* buffer, void* data, UINT size); // 상수버퍼에 데이터 설정
-		void BindConstantBuffer(eShaderStage stage, eCBT type, ID3D11Buffer* buffer);
-		void BindConstantBuffers(eShaderStage stage, eCBT type, ID3D11Buffer* buffer);
 
 		void Draw(); // 그리기 함수
 

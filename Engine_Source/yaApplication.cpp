@@ -10,6 +10,7 @@ namespace ya
 		, mHwnd(NULL)
 		, mWidth(-1)
 		, mHeight(-1)
+		, mScene(nullptr)
 	{
 
 	}
@@ -32,12 +33,18 @@ namespace ya
 		Input::Initialize();
 
 		renderer::Initialize();
+
+		mScene = new Scene();
+		mScene->Initialize();
 	}
 
 	void Application::Update()
 	{
 		Time::Update();
 		Input::Update();
+
+		mScene->Update();
+
 		renderer::update();
 	}
 
@@ -50,6 +57,8 @@ namespace ya
 		Time::Render();
 
 		graphicDevice->Draw();
+		mScene->Render();
+		graphicDevice->Present();
 	}
 
 	void Application::SetWindow(HWND hwnd, UINT width, UINT height)

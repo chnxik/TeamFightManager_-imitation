@@ -13,6 +13,7 @@ struct VSOut
 cbuffer Transform : register(b0)
 {
     float4 pos;
+    float4 size;
 }
 
 VSOut main(VSIn In)

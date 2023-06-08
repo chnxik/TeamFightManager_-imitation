@@ -21,6 +21,7 @@ namespace ya::graphics
 		bool CreatePixelShader(const void* pShaderBytecode, SIZE_T BytecodeLength, ID3D11PixelShader** ppPixelShader); // 픽셀쉐이더 생성 함수
 
 
+		void BindInputLayout(ID3D11InputLayout* pInputLayout);
 		void BindPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY Topology);
 		void BindVertexBuffer(UINT StartSlot, ID3D11Buffer* const* ppVertexBuffers, const UINT* pStrides, const UINT* pOffsets);
 		
@@ -34,7 +35,9 @@ namespace ya::graphics
 
 		void BindViewPort(D3D11_VIEWPORT* viewPort); // 뷰포트 바인드 함수
 
+		void DrawIndexed(UINT IndexCount, UINT StartIndexdLocation, INT BaseVertexLocation);
 		void Draw(); // 그리기 함수
+		void Present();
 
 	private:
 		// 실제 그래픽카드 하드웨어 객체

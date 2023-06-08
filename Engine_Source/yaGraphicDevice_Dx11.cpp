@@ -207,6 +207,11 @@ namespace ya::graphics
 		mContext->RSSetViewports(1, viewPort);
 	}
 
+	void GraphicDevice_Dx11::BindInputLayout(ID3D11InputLayout* pInputLayout)
+	{
+		mContext->IASetInputLayout(pInputLayout);
+	}
+
 	void GraphicDevice_Dx11::BindPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY Topology)
 	{
 		mContext->IASetPrimitiveTopology(Topology);
@@ -284,6 +289,10 @@ namespace ya::graphics
 		mContext->CSSetConstantBuffers((UINT)type, 1, &buffer);
 	}
 
+	void GraphicDevice_Dx11::DrawIndexed(UINT IndexCount, UINT StartIndexdLocation, INT BaseVertexLocation)
+	{
+	}
+
 	void GraphicDevice_Dx11::Draw()
 	{
 		// render target Clear
@@ -310,15 +319,15 @@ namespace ya::graphics
 		mContext->OMSetRenderTargets(1, mRenderTargetView.GetAddressOf(), mDepthStencilView.Get());
 
 		renderer::mesh->BindBuffer();
-
-		mContext->IASetInputLayout(renderer::shader->GetInputLayout());
-		
 		renderer::shader->Binds();
 
 		// Draw Render Target
 		mContext->DrawIndexed(renderer::mesh->GetIndexCount(), 0, 0);
 
-		// 렌더타겟에 있는 이미지를 화면에 그려준다.
+		Present();
+	}
+	void GraphicDevice_Dx11::Present()
+	{
 		mSwapChain->Present(0, 0);
 	}
 }

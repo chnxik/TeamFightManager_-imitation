@@ -2,12 +2,14 @@
 #include "yaTime.h"
 #include "yaInput.h"
 
+#define CIRCLEVERTEX 20
+
 namespace renderer
 {
-	Vertex vertexes[4] = {};
+	Vertex vertexes[CIRCLEVERTEX+1] = {};
 	ya::Mesh* mesh = nullptr;
 	ya::Shader* shader = nullptr;
-	ya::graphics::ConstantBuffer* ConstantBuffer = nullptr;
+	ya::graphics::ConstantBuffer* TransformConstantBuffer = nullptr;
 	Vector4 Pos = { 0.f,0.f,0.f,0.f };
 
 	void SetupState()
@@ -38,21 +40,34 @@ namespace renderer
 	{
 		// Mesh
 		mesh = new ya::Mesh();
-		mesh->CreateVertexBuffer(vertexes, 4);
+		mesh->CreateVertexBuffer(vertexes, CIRCLEVERTEX+1);
 
 		std::vector<UINT> indexes = {};
-		indexes.push_back(0);
-		indexes.push_back(1);
-		indexes.push_back(2);
-		
-		indexes.push_back(2);
-		indexes.push_back(1);
-		indexes.push_back(3);
+
+		for (int i = 0; i < CIRCLEVERTEX; ++i)
+		{
+			indexes.push_back(0); // 중점
+
+			if (CIRCLEVERTEX - 1 == i) // 마지막
+			{
+				indexes.push_back(1);
+				indexes.push_back(i + 1);
+			}
+			else
+			{
+				indexes.push_back(i + 2);
+				indexes.push_back(i + 1);
+			}
+		}
+
 		mesh->CreateIndexBuffer(indexes.data(), indexes.size());
 
 		// Constant Buffer
-		ConstantBuffer = new ya::graphics::ConstantBuffer(eCBType::Transform);
-		ConstantBuffer->Create(sizeof(Vector4));
+		TransformConstantBuffer = new ya::graphics::ConstantBuffer(eCBType::Transform);
+		TransformConstantBuffer->Create(sizeof(Vector4)*2);
+
+		ColorConstantBuffer = new ya::graphics::ConstantBuffer(eCBType::Color);
+		ColorConstantBuffer->Create(sizeof(Vector4));
 	}
 
 	void LoadShader()
@@ -65,17 +80,23 @@ namespace renderer
 	void Initialize()
 	{
 		// vertex 설정
-		vertexes[0].pos = Vector3(-0.5f, 0.5f, 0.0f);
+		vertexes[0].pos = Vector3(0.0f, 0.0f, 0.0f);
 		vertexes[0].color = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
 
-		vertexes[1].pos = Vector3(0.5f, 0.5f, 0.0f);
-		vertexes[1].color = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
+		for (int i = 0; i < CIRCLEVERTEX; ++i)
+		{
+			float x = 0.0f;
+			float y = 0.0f;
+			float r = 0.1f;
+			float degree = (360.f / (float)CIRCLEVERTEX) * i;
+			float radian = (3.141592f / 180.f) * degree;
 
-		vertexes[2].pos = Vector3(-0.5f, -0.5f, 0.0f);
-		vertexes[2].color = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
+			x = r * cosf(radian);
+			y = r * sinf(radian);
 
-		vertexes[3].pos = Vector3(0.5f, -0.5f, 0.0f);
-		vertexes[3].color = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
+			vertexes[i + 1].pos = Vector3(x, y, 0.0f);
+			vertexes[i + 1].color = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
+		}
 
 		LoadBuffer();
 		LoadShader();
@@ -86,17 +107,18 @@ namespace renderer
 	{
 		delete mesh;
 		delete shader;
-		delete ConstantBuffer;
+		delete TransformConstantBuffer;
+		delete ColorConstantBuffer;
 	}
 
 	void update()
 	{
-		if (ya::Input::GetKey(ya::eKeyCode::UP))	{ Pos.y += 2.f *(float)ya::Time::DeltaTime(); }
-		if (ya::Input::GetKey(ya::eKeyCode::DOWN))	{ Pos.y -= 2.f *(float)ya::Time::DeltaTime(); }
-		if (ya::Input::GetKey(ya::eKeyCode::RIGHT)) { Pos.x += 2.f *(float)ya::Time::DeltaTime(); }
-		if (ya::Input::GetKey(ya::eKeyCode::LEFT))	{ Pos.x -= 2.f *(float)ya::Time::DeltaTime(); }
+		if (ya::Input::GetKey(ya::eKeyCode::UP))	{ Pos.y += 1.f *(float)ya::Time::DeltaTime(); }
+		if (ya::Input::GetKey(ya::eKeyCode::DOWN))	{ Pos.y -= 1.f *(float)ya::Time::DeltaTime(); }
+		if (ya::Input::GetKey(ya::eKeyCode::RIGHT)) { Pos.x += 1.f *(float)ya::Time::DeltaTime(); }
+		if (ya::Input::GetKey(ya::eKeyCode::LEFT))	{ Pos.x -= 1.f *(float)ya::Time::DeltaTime(); }
 		
-		ConstantBuffer->SetData(&Pos);
-		ConstantBuffer->Bind(eShaderStage::VS);
+		TransformConstantBuffer->SetData(&Pos);
+		TransformConstantBuffer->Bind(eShaderStage::VS);
 	}
 }

@@ -18,6 +18,7 @@ namespace ssz
 		virtual void Render();
 
 	private:
+		GameObject* mPlayer;
 		std::vector<GameObject*> mGameObjects;
 		float acc;
 	};

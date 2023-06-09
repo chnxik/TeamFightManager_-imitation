@@ -2,7 +2,7 @@
 #include "sszTime.h"
 #include "sszInput.h"
 
-#define CIRCLEVERTEX 20
+#define CIRCLEVERTEX 40
 
 namespace renderer
 {

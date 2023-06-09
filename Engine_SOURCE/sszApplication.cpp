@@ -48,6 +48,7 @@ namespace ssz
 
 	void Application::LateUpdate()
 	{
+		mScene->LateUpdate();
 	}
 
 	void Application::Render()

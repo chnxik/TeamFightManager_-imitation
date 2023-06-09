@@ -4,12 +4,13 @@
 #include "sszPlayer.h"
 #include "sszEnemy.h"
 
-#define SPAWNTIME 1.f
+#define SPAWNTIME 0.1f
 
 namespace ssz
 {
 	Scene::Scene()
-		: acc(0.0f)
+		: mPlayer(nullptr)
+		, acc(0.0f)
 	{
 	}
 
@@ -23,11 +24,9 @@ namespace ssz
 		srand((unsigned int)time(NULL));
 
 		// Player 생성
-		Circle* PlayerCicle = new Player();
-		PlayerCicle->SetPos(Vector4(0.f, 0.f, 0.02f, 1.0f));
-		PlayerCicle->SetColor(1.0f, 0.f, 1.0f);
-
-		mGameObjects.push_back(PlayerCicle);
+		mPlayer = new Player();
+		((Circle*)mPlayer)->SetPos(Vector4(0.f, 0.f, 0.02f, 1.0f));
+		((Circle*)mPlayer)->SetColor(1.0f, 0.f, 1.0f);
 
 		// 초기 Enemy 생성 20개
 
@@ -72,6 +71,7 @@ namespace ssz
 			mGameObjects.push_back(EnemyCircle);
 		}
 
+		mPlayer->Update();
 		for (GameObject* gameObj : mGameObjects)
 		{
 			gameObj->Update();
@@ -80,9 +80,40 @@ namespace ssz
 
 	void Scene::LateUpdate()
 	{
+		Vector4 PlayerPos = ((Circle*)mPlayer)->GetPos();
+		Vector4 EnemyPos = {};
+		float dist = 0.f;
+		std::vector<GameObject*>::iterator iter = mGameObjects.begin();
+
+		// 충돌 검사
+		for (GameObject* gameObj : mGameObjects)
+		{
+			// 적 포지션
+			EnemyPos = ((Circle*)gameObj)->GetPos();
+
+			// 거리판단
+			dist = sqrt((PlayerPos.x - EnemyPos.x) * (PlayerPos.x - EnemyPos.x) + (PlayerPos.y - EnemyPos.y) * (PlayerPos.y - EnemyPos.y));
+
+			// 충돌했을 때
+			if (dist < (PlayerPos.z + EnemyPos.z))
+			{
+				iter = mGameObjects.erase(iter);	// 충돌한 적 객체 제거
+				PlayerPos.z += 0.001f;				// 플레이어 크기 증가
+				
+				((Circle*)mPlayer)->SetPos(PlayerPos);	// 증가한 크기 반영
+			}
+
+			// 충돌하지 않았을 때
+			else
+			{
+				iter++;
+			}
+		}
+		
 	}
 	void Scene::Render()
 	{
+		mPlayer->Render();
 		for (GameObject* gameObj : mGameObjects)
 		{
 			gameObj->Render();

@@ -1,8 +1,8 @@
 #pragma once
-#include "yaResource.h"
-#include "yaGraphicDevice_Dx11.h"
+#include "sszResource.h"
+#include "sszGraphicDevice_Dx11.h"
 
-namespace ya
+namespace ssz
 {
 	using namespace graphics;
 

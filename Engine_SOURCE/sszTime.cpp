@@ -1,9 +1,9 @@
-#include "yaTime.h"
-#include "yaApplication.h"
+#include "sszTime.h"
+#include "sszApplication.h"
 
-extern ya::Application application;
+extern ssz::Application application;
 
-namespace ya
+namespace ssz
 {
 	double Time::mDeltaTime = 0.0l;
 	double Time::mSecond = 0.0f;

@@ -1,9 +1,9 @@
-#include "yaInput.h"
-#include "yaApplication.h"
+#include "sszInput.h"
+#include "sszApplication.h"
 
-extern ya::Application application;
+extern ssz::Application application;
 
-namespace ya
+namespace ssz
 {
 	int ASCII[(UINT)eKeyCode::END] =
 	{

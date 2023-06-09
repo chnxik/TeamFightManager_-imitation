@@ -1,6 +1,6 @@
-#include "yaShader.h"
+#include "sszShader.h"
 
-namespace ya
+namespace ssz
 {
     Shader::Shader()
         : mInputLayout(nullptr)
@@ -13,12 +13,12 @@ namespace ya
         mInputLayout->Release();
     }
 
-    HRESULT ya::Shader::Load(const std::wstring& path)
+    HRESULT ssz::Shader::Load(const std::wstring& path)
     {
         return E_NOTIMPL;
     }
 
-    bool ya::Shader::Create(const eShaderStage stage
+    bool ssz::Shader::Create(const eShaderStage stage
         , const std::wstring& fileName
         , const std::string& funcName)
     {
@@ -55,7 +55,7 @@ namespace ya
         return true;
     }
 
-    void ya::Shader::Binds()
+    void ssz::Shader::Binds()
     {
         GetDevice()->BindVertexShader(mVS.Get());
         GetDevice()->BindPixelShader(mPS.Get());

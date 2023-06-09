@@ -1,7 +1,7 @@
 #pragma once
-#include "660Engine.h"
+#include "sszEngine.h"
 
-namespace ya
+namespace ssz
 {
 	class Entity
 	{

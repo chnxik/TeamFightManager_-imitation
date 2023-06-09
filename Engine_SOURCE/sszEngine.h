@@ -18,6 +18,6 @@
 #include <wrl.h>
 
 #include "CommonInclude.h"
-#include "yaEnums.h"
-#include "yaMath.h"
+#include "sszEnums.h"
+#include "sszMath.h"
 

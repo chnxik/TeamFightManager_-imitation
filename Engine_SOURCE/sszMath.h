@@ -1,5 +1,5 @@
 #pragma once
-#include "660Engine.h"
+#include "sszEngine.h"
 #include <math.h>
 
 
@@ -18,7 +18,7 @@
 using namespace DirectX;
 using namespace DirectX::PackedVector;
 
-namespace ya::math
+namespace ssz::math
 {
     struct Vector2;
     struct Vector4;
@@ -582,8 +582,8 @@ namespace ya::math
 
         static Matrix CreateFromQuaternion(const Quaternion& quat) noexcept;
 
-        // Rotates about y-axis (yaw), then x-axis (pitch), then z-axis (roll)
-        static Matrix CreateFromYawPitchRoll(float yaw, float pitch, float roll) noexcept;
+        // Rotates about y-axis (Yaw), then x-axis (pitch), then z-axis (roll)
+        static Matrix CreateFromYawPitchRoll(float Yaw, float pitch, float roll) noexcept;
 
         // Rotates about y-axis (angles.y), then x-axis (angles.x), then z-axis (angles.z)
         static Matrix CreateFromYawPitchRoll(const Vector3& angles) noexcept;
@@ -727,8 +727,8 @@ namespace ya::math
         // Static functions
         static Quaternion CreateFromAxisAngle(const Vector3& axis, float angle) noexcept;
 
-        // Rotates about y-axis (yaw), then x-axis (pitch), then z-axis (roll)
-        static Quaternion CreateFromYawPitchRoll(float yaw, float pitch, float roll) noexcept;
+        // Rotates about y-axis (Yaw), then x-axis (pitch), then z-axis (roll)
+        static Quaternion CreateFromYawPitchRoll(float Yaw, float pitch, float roll) noexcept;
 
         // Rotates about y-axis (angles.y), then x-axis (angles.x), then z-axis (angles.z)
         static Quaternion CreateFromYawPitchRoll(const Vector3& angles) noexcept;
@@ -975,10 +975,10 @@ namespace ya::math
 
         // Static methods
 #if defined(__dxgi1_2_h__) || defined(__d3d11_x_h__) || defined(__d3d12_x_h__) || defined(__XBOX_D3D12_X__)
-        static RECT __cdecl ComputeDisplayArea(DXGI_SCALING scaling, UINT backBufferWidth, UINT backBufferHeight, int outputWidth, int outputHeight) noexcept;
+        static RECT __cdecl ComputeDisplaYarea(DXGI_SCALING scaling, UINT backBufferWidth, UINT backBufferHeight, int outputWidth, int outputHeight) noexcept;
 #endif
         static RECT __cdecl ComputeTitleSafeArea(UINT backBufferWidth, UINT backBufferHeight) noexcept;
     };
 
-#include "yaMath.inl"
+#include "sszMath.inl"
 }

@@ -1,7 +1,7 @@
-#include "yaResources.h"
+#include "sszResources.h"
 
 
-namespace ya
+namespace ssz
 {
 	std::map<std::wstring, Resource*> Resources::mResources;
 

@@ -1,10 +1,10 @@
-#include "yaGraphicDevice_Dx11.h"
-#include "yaApplication.h"
-#include "yaRenderer.h"
+#include "sszGraphicDevice_Dx11.h"
+#include "sszApplication.h"
+#include "sszRenderer.h"
 
-extern ya::Application application;
+extern ssz::Application application;
 
-namespace ya::graphics
+namespace ssz::graphics
 {
 	GraphicDevice_Dx11::GraphicDevice_Dx11()
 	{

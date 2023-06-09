@@ -1,7 +1,7 @@
 #pragma once
-#include "yaResource.h"
+#include "sszResource.h"
 
-namespace ya
+namespace ssz
 {
 	class Resources
 	{

@@ -1,7 +1,7 @@
 #pragma once
-#include "yaGraphics.h"
+#include "sszGraphics.h"
 
-namespace ya::graphics
+namespace ssz::graphics
 {
 	class ConstantBuffer : public GpuBuffer
 	{

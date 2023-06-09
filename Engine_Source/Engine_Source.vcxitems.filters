@@ -42,92 +42,92 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h">
       <Filter>Common</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)660Engine.h">
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszEngine.h">
       <Filter>Common</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)yaEnums.h">
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszEnums.h">
       <Filter>Common</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)yaMath.h">
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszMath.h">
       <Filter>Common\Math</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)yaApplication.h">
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszApplication.h">
       <Filter>High Level Interface</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)yaEntity.h">
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszEntity.h">
       <Filter>Common\Entity</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)yaInput.h">
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszInput.h">
       <Filter>Input</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)yaTime.h">
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszTime.h">
       <Filter>Common\Time</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)yaResource.h">
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszResource.h">
       <Filter>Resource</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)yaResources.h">
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszResources.h">
       <Filter>Resource\Resources</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)yaGraphics.h">
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszGraphics.h">
       <Filter>Graphics</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)yaGraphicDevice_Dx11.h">
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszGraphicDevice_Dx11.h">
       <Filter>Graphics</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)yaRenderer.h">
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszRenderer.h">
       <Filter>Graphics</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)yaMesh.h">
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszMesh.h">
       <Filter>Graphics\Mesh</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)yaShader.h">
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszShader.h">
       <Filter>Graphics\Shader</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)yaConstantBuffer.h">
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszConstantBuffer.h">
       <Filter>Graphics\ConstantBuffer</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="$(MSBuildThisFileDirectory)yaMath.cpp">
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszMath.cpp">
       <Filter>Common\Math</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)yaApplication.cpp">
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszApplication.cpp">
       <Filter>High Level Interface</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)yaEntity.cpp">
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszEntity.cpp">
       <Filter>Common\Entity</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)yaInput.cpp">
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszInput.cpp">
       <Filter>Input</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)yaTime.cpp">
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszTime.cpp">
       <Filter>Common\Time</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)yaResource.cpp">
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszResource.cpp">
       <Filter>Resource</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)yaResources.cpp">
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszResources.cpp">
       <Filter>Resource\Resources</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)yaGraphicDevice_Dx11.cpp">
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszGraphicDevice_Dx11.cpp">
       <Filter>Graphics</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)yaRenderer.cpp">
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszRenderer.cpp">
       <Filter>Graphics</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)yaMesh.cpp">
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszMesh.cpp">
       <Filter>Graphics\Mesh</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)yaShader.cpp">
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszShader.cpp">
       <Filter>Graphics\Shader</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)yaConstantBuffer.cpp">
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszConstantBuffer.cpp">
       <Filter>Graphics\ConstantBuffer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="$(MSBuildThisFileDirectory)yaMath.inl">
+    <None Include="$(MSBuildThisFileDirectory)sszMath.inl">
       <Filter>Common\Math</Filter>
     </None>
   </ItemGroup>

@@ -1,9 +1,9 @@
-#include "yaApplication.h"
-#include "yaInput.h"
-#include "yaTime.h"
-#include "yaRenderer.h"
+#include "sszApplication.h"
+#include "sszInput.h"
+#include "sszTime.h"
+#include "sszRenderer.h"
 
-namespace ya
+namespace ssz
 {
 	Application::Application()
 		: graphicDevice(nullptr)
@@ -60,8 +60,8 @@ namespace ya
 			mWidth = width;
 			mHeight = height;
 
-			graphicDevice = std::make_unique<ya::graphics::GraphicDevice_Dx11>();
-			ya::graphics::GetDevice() = graphicDevice.get();
+			graphicDevice = std::make_unique<ssz::graphics::GraphicDevice_Dx11>();
+			ssz::graphics::GetDevice() = graphicDevice.get();
 		}
 
 		RECT rt = { 0, 0, (LONG)width , (LONG)height };

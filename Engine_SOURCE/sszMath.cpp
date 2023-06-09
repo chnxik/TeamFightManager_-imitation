@@ -1,4 +1,4 @@
-#include "yaMath.h"
+#include "sszMath.h"
 
 	//-------------------------------------------------------------------------------------
 	// SimpleMath.cpp -- Simplified C++ Math wrapper for DirectXMath
@@ -15,7 +15,7 @@
  * Constants
  *
  ****************************************************************************/
-namespace ya::math
+namespace ssz::math
 {
 	const Vector2 Vector2::Zero = { 0.f, 0.f };
 	const Vector2 Vector2::One = { 1.f, 1.f };
@@ -34,7 +34,7 @@ namespace ya::math
 	const Vector3 Vector3::Forward = { 0.f, 0.f, 1.f };
 	const Vector3 Vector3::Backward = { 0.f, 0.f, -1.f };
 
-	const Vector4 ya::math::Vector4::Zero = { 0.f, 0.f, 0.f, 0.f };
+	const Vector4 ssz::math::Vector4::Zero = { 0.f, 0.f, 0.f, 0.f };
 	const Vector4 Vector4::One = { 1.f, 1.f, 1.f, 1.f };
 	const Vector4 Vector4::UnitX = { 1.f, 0.f, 0.f, 0.f };
 	const Vector4 Vector4::UnitY = { 0.f, 1.f, 0.f, 0.f };
@@ -51,7 +51,7 @@ namespace ya::math
 
 
 	using namespace DirectX;
-	//using namespace ya::math;
+	//using namespace ssz::math;
 
 	/****************************************************************************
 	 *
@@ -167,7 +167,7 @@ namespace ya::math
 //#endif
 //
 //#if defined(__dxgi1_2_h__) || defined(__d3d11_x_h__) || defined(__d3d12_x_h__) || defined(__XBOX_D3D12_X__)
-//	RECT Viewport::ComputeDisplayArea(DXGI_SCALING scaling, UINT backBufferWidth, UINT backBufferHeight, int outputWidth, int outputHeight) noexcept
+//	RECT Viewport::ComputeDisplaYarea(DXGI_SCALING scaling, UINT backBufferWidth, UINT backBufferHeight, int outputWidth, int outputHeight) noexcept
 //	{
 //		RECT rct = {};
 //

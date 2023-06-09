@@ -1,8 +1,8 @@
 #pragma once
-#include "660Engine.h"
-#include "yaGraphics.h"
+#include "sszEngine.h"
+#include "sszGraphics.h"
 
-namespace ya::graphics
+namespace ssz::graphics
 {
 	class GraphicDevice_Dx11
 	{

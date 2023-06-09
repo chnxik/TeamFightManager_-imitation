@@ -1,7 +1,7 @@
-#include "yaResource.h"
+#include "sszResource.h"
 
 
-namespace ya
+namespace ssz
 {
 	Resource::Resource()
 	{

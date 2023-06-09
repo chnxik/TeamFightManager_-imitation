@@ -1,7 +1,7 @@
-#include "yaEntity.h"
+#include "sszEntity.h"
 
 
-namespace ya
+namespace ssz
 {
 	Entity::Entity()
 		: mName(L"")

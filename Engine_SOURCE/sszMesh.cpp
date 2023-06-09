@@ -1,7 +1,7 @@
-#include "yaMesh.h"
-#include "yaRenderer.h"
+#include "sszMesh.h"
+#include "sszRenderer.h"
 
-namespace ya
+namespace ssz
 {
 	Mesh::Mesh()
 		: mVertexBuffer(nullptr)

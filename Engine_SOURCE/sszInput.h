@@ -1,9 +1,9 @@
 #pragma once
-#include "660Engine.h"
+#include "sszEngine.h"
 
-namespace ya
+namespace ssz
 {
-	using namespace ya::math;
+	using namespace ssz::math;
 	enum class eKeyCode
 	{
 		Q, W, E, R, T, Y, U, I, O, P,

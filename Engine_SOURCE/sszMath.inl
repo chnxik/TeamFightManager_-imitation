@@ -9,7 +9,7 @@
 //-------------------------------------------------------------------------------------
 
 #pragma once
-using namespace ya::math;
+using namespace ssz::math;
 
 /****************************************************************************
 *
@@ -20,7 +20,7 @@ using namespace ya::math;
 //------------------------------------------------------------------------------
 // Rectangle operations
 //------------------------------------------------------------------------------
-//namespace ya::math
+//namespace ssz::math
 
 
 inline Vector2 Rectangle::Location() const noexcept
@@ -51,7 +51,7 @@ inline void Rectangle::Inflate(long horizAmount, long vertAmount) noexcept
 //------------------------------------------------------------------------------
 
 
-inline ya::math::Rectangle Rectangle::Intersect(const Rectangle& ra, const Rectangle& rb) noexcept
+inline ssz::math::Rectangle Rectangle::Intersect(const Rectangle& ra, const Rectangle& rb) noexcept
 {
     const long righta = ra.x + ra.width;
     const long rightb = rb.x + rb.width;
@@ -113,7 +113,7 @@ inline RECT Rectangle::Intersect(const RECT& rcta, const RECT& rctb) noexcept
     return result;
 }
 
-inline ya::math::Rectangle Rectangle::Union(const Rectangle& ra, const Rectangle& rb) noexcept
+inline ssz::math::Rectangle Rectangle::Union(const Rectangle& ra, const Rectangle& rb) noexcept
 {
     const long righta = ra.x + ra.width;
     const long rightb = rb.x + rb.width;
@@ -2676,13 +2676,13 @@ inline Matrix Matrix::CreateWorld(const Vector3& position, const Vector3& forwar
 {
     using namespace DirectX;
     const XMVECTOR zaxis = XMVector3Normalize(XMVectorNegate(XMLoadFloat3(&forward)));
-    XMVECTOR yaxis = XMLoadFloat3(&up);
-    const XMVECTOR xaxis = XMVector3Normalize(XMVector3Cross(yaxis, zaxis));
-    yaxis = XMVector3Cross(zaxis, xaxis);
+    XMVECTOR Yaxis = XMLoadFloat3(&up);
+    const XMVECTOR xaxis = XMVector3Normalize(XMVector3Cross(Yaxis, zaxis));
+    Yaxis = XMVector3Cross(zaxis, xaxis);
 
     Matrix R;
     XMStoreFloat3(reinterpret_cast<XMFLOAT3*>(&R._11), xaxis);
-    XMStoreFloat3(reinterpret_cast<XMFLOAT3*>(&R._21), yaxis);
+    XMStoreFloat3(reinterpret_cast<XMFLOAT3*>(&R._21), Yaxis);
     XMStoreFloat3(reinterpret_cast<XMFLOAT3*>(&R._31), zaxis);
     R._14 = R._24 = R._34 = 0.f;
     R._41 = position.x; R._42 = position.y; R._43 = position.z;
@@ -2699,11 +2699,11 @@ inline Matrix Matrix::CreateFromQuaternion(const Quaternion& rotation) noexcept
     return R;
 }
 
-inline Matrix Matrix::CreateFromYawPitchRoll(float yaw, float pitch, float roll) noexcept
+inline Matrix Matrix::CreateFromYawPitchRoll(float Yaw, float pitch, float roll) noexcept
 {
     using namespace DirectX;
     Matrix R;
-    XMStoreFloat4x4(&R, XMMatrixRotationRollPitchYaw(pitch, yaw, roll));
+    XMStoreFloat4x4(&R, XMMatrixRotationRollPitchYaw(pitch, Yaw, roll));
     return R;
 }
 
@@ -3207,11 +3207,11 @@ inline Quaternion Quaternion::CreateFromAxisAngle(const Vector3& axis, float ang
     return R;
 }
 
-inline Quaternion Quaternion::CreateFromYawPitchRoll(float yaw, float pitch, float roll) noexcept
+inline Quaternion Quaternion::CreateFromYawPitchRoll(float Yaw, float pitch, float roll) noexcept
 {
     using namespace DirectX;
     Quaternion R;
-    XMStoreFloat4(&R, XMQuaternionRotationRollPitchYaw(pitch, yaw, roll));
+    XMStoreFloat4(&R, XMQuaternionRotationRollPitchYaw(pitch, Yaw, roll));
     return R;
 }
 

@@ -1,13 +1,13 @@
-#include "yaRenderer.h"
-#include "yaTime.h"
-#include "yaInput.h"
+#include "sszRenderer.h"
+#include "sszTime.h"
+#include "sszInput.h"
 
 namespace renderer
 {
 	Vertex vertexes[4] = {};
-	ya::Mesh* mesh = nullptr;
-	ya::Shader* shader = nullptr;
-	ya::graphics::ConstantBuffer* ConstantBuffer = nullptr;
+	ssz::Mesh* mesh = nullptr;
+	ssz::Shader* shader = nullptr;
+	ssz::graphics::ConstantBuffer* ConstantBuffer = nullptr;
 	Vector4 Pos = { 0.f,0.f,0.f,0.f };
 
 	void SetupState()
@@ -29,7 +29,7 @@ namespace renderer
 		arrLayout[1].SemanticName = "COLOR";
 		arrLayout[1].SemanticIndex = 0;
 
-		ya::graphics::GetDevice()->CreateInputLayout(arrLayout, 2
+		ssz::graphics::GetDevice()->CreateInputLayout(arrLayout, 2
 			, shader->GetVSCode()
 			, shader->GetInputLayoutAddressOf());
 	}
@@ -37,7 +37,7 @@ namespace renderer
 	void LoadBuffer()
 	{
 		// Mesh
-		mesh = new ya::Mesh();
+		mesh = new ssz::Mesh();
 		mesh->CreateVertexBuffer(vertexes, 4);
 
 		std::vector<UINT> indexes = {};
@@ -51,13 +51,13 @@ namespace renderer
 		mesh->CreateIndexBuffer(indexes.data(), indexes.size());
 
 		// Constant Buffer
-		ConstantBuffer = new ya::graphics::ConstantBuffer(eCBType::Transform);
+		ConstantBuffer = new ssz::graphics::ConstantBuffer(eCBType::Transform);
 		ConstantBuffer->Create(sizeof(Vector4));
 	}
 
 	void LoadShader()
 	{
-		shader = new ya::Shader();
+		shader = new ssz::Shader();
 		shader->Create(eShaderStage::VS, L"TriangleVS.hlsl", "main");
 		shader->Create(eShaderStage::PS, L"TrianglePS.hlsl", "main");
 	}
@@ -91,10 +91,10 @@ namespace renderer
 
 	void update()
 	{
-		if (ya::Input::GetKey(ya::eKeyCode::UP))	{ Pos.y += 2.f *(float)ya::Time::DeltaTime(); }
-		if (ya::Input::GetKey(ya::eKeyCode::DOWN))	{ Pos.y -= 2.f *(float)ya::Time::DeltaTime(); }
-		if (ya::Input::GetKey(ya::eKeyCode::RIGHT)) { Pos.x += 2.f *(float)ya::Time::DeltaTime(); }
-		if (ya::Input::GetKey(ya::eKeyCode::LEFT))	{ Pos.x -= 2.f *(float)ya::Time::DeltaTime(); }
+		if (ssz::Input::GetKey(ssz::eKeyCode::UP))	{ Pos.y += 2.f *(float)ssz::Time::DeltaTime(); }
+		if (ssz::Input::GetKey(ssz::eKeyCode::DOWN))	{ Pos.y -= 2.f *(float)ssz::Time::DeltaTime(); }
+		if (ssz::Input::GetKey(ssz::eKeyCode::RIGHT)) { Pos.x += 2.f *(float)ssz::Time::DeltaTime(); }
+		if (ssz::Input::GetKey(ssz::eKeyCode::LEFT))	{ Pos.x -= 2.f *(float)ssz::Time::DeltaTime(); }
 		
 		ConstantBuffer->SetData(&Pos);
 		ConstantBuffer->Bind(eShaderStage::VS);

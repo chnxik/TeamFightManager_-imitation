@@ -16,6 +16,7 @@
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)yaApplication.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)yaCircle.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)yaComponent.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)yaConstantBuffer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)yaEntity.h" />
@@ -28,6 +29,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)yaMath.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)660Engine.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)yaMesh.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)yaPlayer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)yaRenderer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)yaResource.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)yaResources.h" />
@@ -39,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)yaApplication.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)yaCircle.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)yaComponent.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)yaConstantBuffer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)yaEntity.cpp" />
@@ -48,6 +51,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)yaLayer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)yaMath.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)yaMesh.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)yaPlayer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)yaRenderer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)yaResource.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)yaResources.cpp" />

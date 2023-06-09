@@ -1,6 +1,8 @@
 #pragma once
 #include "yaEntity.h"
 #include "yaComponent.h"
+#include "yaConstantBuffer.h"
+
 
 namespace ya
 {

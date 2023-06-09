@@ -291,6 +291,7 @@ namespace ya::graphics
 
 	void GraphicDevice_Dx11::DrawIndexed(UINT IndexCount, UINT StartIndexdLocation, INT BaseVertexLocation)
 	{
+		mContext->DrawIndexed(IndexCount, StartIndexdLocation, BaseVertexLocation);
 	}
 
 	void GraphicDevice_Dx11::Draw()
@@ -317,14 +318,6 @@ namespace ya::graphics
 		// 뷰포트 바인딩
 		BindViewPort(&mViewPort);
 		mContext->OMSetRenderTargets(1, mRenderTargetView.GetAddressOf(), mDepthStencilView.Get());
-
-		renderer::mesh->BindBuffer();
-		renderer::shader->Binds();
-
-		// Draw Render Target
-		mContext->DrawIndexed(renderer::mesh->GetIndexCount(), 0, 0);
-
-		Present();
 	}
 	void GraphicDevice_Dx11::Present()
 	{

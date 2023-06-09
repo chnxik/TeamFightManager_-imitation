@@ -13,13 +13,14 @@ struct VSOut
 cbuffer Transform : register(b0)
 {
     float4 pos;
-    float4 size;
 }
 
 VSOut main(VSIn In)
 {
 	VSOut Out = (VSOut)0.0f;
 
+    In.Pos *= pos.z;
+	
 	Out.Pos = float4(In.Pos, 1.0f);
 	Out.Color = In.Color;
 	

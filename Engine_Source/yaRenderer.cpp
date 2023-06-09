@@ -10,6 +10,7 @@ namespace renderer
 	ya::Mesh* mesh = nullptr;
 	ya::Shader* shader = nullptr;
 	ya::graphics::ConstantBuffer* TransformConstantBuffer = nullptr;
+	ya::graphics::ConstantBuffer* ColorConstantBuffer = nullptr;
 	Vector4 Pos = { 0.f,0.f,0.f,0.f };
 
 	void SetupState()
@@ -62,10 +63,10 @@ namespace renderer
 
 		mesh->CreateIndexBuffer(indexes.data(), indexes.size());
 
-		// Constant Buffer
+		//Constant Buffer
 		TransformConstantBuffer = new ya::graphics::ConstantBuffer(eCBType::Transform);
-		TransformConstantBuffer->Create(sizeof(Vector4)*2);
-
+		TransformConstantBuffer->Create(sizeof(Vector4));
+		
 		ColorConstantBuffer = new ya::graphics::ConstantBuffer(eCBType::Color);
 		ColorConstantBuffer->Create(sizeof(Vector4));
 	}
@@ -75,6 +76,25 @@ namespace renderer
 		shader = new ya::Shader();
 		shader->Create(eShaderStage::VS, L"TriangleVS.hlsl", "main");
 		shader->Create(eShaderStage::PS, L"TrianglePS.hlsl", "main");
+	}
+
+	ya::graphics::ConstantBuffer* GetConstantBuffer(eCBType CBType)
+	{
+		switch (CBType)
+		{
+		case eCBType::Transform:
+			return TransformConstantBuffer;
+			break;
+		case eCBType::Color:
+			return ColorConstantBuffer;
+			break;
+		case eCBType::END:
+			break;
+		default:
+			break;
+		}
+
+		return nullptr;
 	}
 
 	void Initialize()
@@ -87,7 +107,7 @@ namespace renderer
 		{
 			float x = 0.0f;
 			float y = 0.0f;
-			float r = 0.1f;
+			float r = 1.0f;
 			float degree = (360.f / (float)CIRCLEVERTEX) * i;
 			float radian = (3.141592f / 180.f) * degree;
 
@@ -109,16 +129,5 @@ namespace renderer
 		delete shader;
 		delete TransformConstantBuffer;
 		delete ColorConstantBuffer;
-	}
-
-	void update()
-	{
-		if (ya::Input::GetKey(ya::eKeyCode::UP))	{ Pos.y += 1.f *(float)ya::Time::DeltaTime(); }
-		if (ya::Input::GetKey(ya::eKeyCode::DOWN))	{ Pos.y -= 1.f *(float)ya::Time::DeltaTime(); }
-		if (ya::Input::GetKey(ya::eKeyCode::RIGHT)) { Pos.x += 1.f *(float)ya::Time::DeltaTime(); }
-		if (ya::Input::GetKey(ya::eKeyCode::LEFT))	{ Pos.x -= 1.f *(float)ya::Time::DeltaTime(); }
-		
-		TransformConstantBuffer->SetData(&Pos);
-		TransformConstantBuffer->Bind(eShaderStage::VS);
 	}
 }

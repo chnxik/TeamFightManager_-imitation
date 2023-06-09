@@ -10,7 +10,14 @@ struct VSOut
     float4 Color : COLOR;
 };
 
+cbuffer Color : register(b1)
+{
+    float4 Color;
+}
+
 float4 main(VSOut In) : SV_TARGET
 {
+    In.Color = Color;
+    
      return In.Color;
 }

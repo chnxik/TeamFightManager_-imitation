@@ -52,6 +52,12 @@
     <Filter Include="Scene\Layer">
       <UniqueIdentifier>{655b6500-4c76-4870-ac79-bfc4606ef86c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GameObject\Circle">
+      <UniqueIdentifier>{4e5445d4-30e2-4f6e-a18d-d96dd31cc7ae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject\Circle\Player">
+      <UniqueIdentifier>{90ac7c01-68a6-4d6a-9499-ef750e94c3d1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h">
@@ -120,6 +126,12 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)yaLayer.h">
       <Filter>Scene\Layer</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)yaCircle.h">
+      <Filter>GameObject\Circle</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)yaPlayer.h">
+      <Filter>GameObject\Circle\Player</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)yaMath.cpp">
@@ -175,6 +187,12 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)yaLayer.cpp">
       <Filter>Scene\Layer</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)yaCircle.cpp">
+      <Filter>GameObject\Circle</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)yaPlayer.cpp">
+      <Filter>GameObject\Circle\Player</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

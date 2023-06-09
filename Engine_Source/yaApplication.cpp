@@ -44,8 +44,6 @@ namespace ya
 		Input::Update();
 
 		mScene->Update();
-
-		renderer::update();
 	}
 
 	void Application::LateUpdate()

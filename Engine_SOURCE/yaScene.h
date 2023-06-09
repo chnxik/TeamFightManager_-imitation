@@ -17,6 +17,8 @@ namespace ya
 
 	public:
 		std::vector<GameObject*> mGameObjects;
+		float acc;
+		float position;
 	};
 
 }

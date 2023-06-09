@@ -21,8 +21,8 @@ namespace renderer
 	extern ya::graphics::ConstantBuffer* TransformConstantBuffer;
 	extern ya::graphics::ConstantBuffer* ColorConstantBuffer;
 
+	ya::graphics::ConstantBuffer* GetConstantBuffer(eCBType CBType);
+
 	void Initialize();
 	void Release();
-
-	void update();
 }

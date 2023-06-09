@@ -1,8 +1,6 @@
 #pragma once
 #include "sszEntity.h"
 #include "sszComponent.h"
-#include "sszConstantBuffer.h"
-
 
 namespace ssz
 {

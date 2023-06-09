@@ -3,6 +3,9 @@
 #include <Windows.h>
 #include <assert.h>
 
+#include <cstdlib>
+#include <ctime>
+
 #include <vector> // 배열
 #include <list> //링크드리스트 
 #include <map> // 2진트리

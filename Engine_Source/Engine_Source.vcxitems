@@ -19,6 +19,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)sszCircle.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sszComponent.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sszConstantBuffer.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszEnemy.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sszEntity.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sszEnums.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sszGameObject.h" />
@@ -44,6 +45,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)sszCircle.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sszComponent.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sszConstantBuffer.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszEnemy.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sszEntity.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sszGameObject.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sszGraphicDevice_Dx11.cpp" />

@@ -1,6 +1,8 @@
 #pragma once
+#include "sszEngine.h"
 #include "sszEntity.h"
 #include "sszGameObject.h"
+
 
 namespace ssz
 {
@@ -15,10 +17,8 @@ namespace ssz
 		virtual void LateUpdate();
 		virtual void Render();
 
-	public:
+	private:
 		std::vector<GameObject*> mGameObjects;
 		float acc;
-		float position;
 	};
-
 }

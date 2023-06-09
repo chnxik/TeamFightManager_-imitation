@@ -1,7 +1,6 @@
 #include "sszPlayer.h"
 #include "sszTime.h"
 #include "sszInput.h"
-#include "sszRenderer.h"
 
 namespace ssz
 {
@@ -15,7 +14,6 @@ namespace ssz
 
 	void Player::Initialize()
 	{
-		GameObject::Initialize();
 	}
 
 	void Player::Update()

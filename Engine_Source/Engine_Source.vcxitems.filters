@@ -58,6 +58,9 @@
     <Filter Include="GameObject\Circle\Player">
       <UniqueIdentifier>{90ac7c01-68a6-4d6a-9499-ef750e94c3d1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GameObject\Circle\Enemy">
+      <UniqueIdentifier>{8c2dcb68-2409-400c-af93-05445ff4078b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h">
@@ -132,6 +135,9 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)sszPlayer.h">
       <Filter>GameObject\Circle\Player</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszEnemy.h">
+      <Filter>GameObject\Circle\Enemy</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)sszMath.cpp">
@@ -193,6 +199,9 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)sszPlayer.cpp">
       <Filter>GameObject\Circle\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszEnemy.cpp">
+      <Filter>GameObject\Circle\Enemy</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

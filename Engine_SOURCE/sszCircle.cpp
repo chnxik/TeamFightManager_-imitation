@@ -16,7 +16,6 @@ namespace ssz
 
 	void Circle::Initialize()
 	{
-		GameObject::Initialize();
 	}
 	
 	void Circle::Update()
@@ -45,5 +44,4 @@ namespace ssz
 		SetPos(Pos);
 		SetColor(Color.x, Color.y, Color.z);
 	}
-	
 }

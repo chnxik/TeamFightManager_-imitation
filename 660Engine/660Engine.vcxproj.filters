@@ -4,6 +4,6 @@
     <ClInclude Include="framework.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="660Engine.cpp" />
+    <ClCompile Include="sszEngine.cpp" />
   </ItemGroup>
 </Project>

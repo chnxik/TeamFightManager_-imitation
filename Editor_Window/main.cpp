@@ -1,9 +1,9 @@
 ﻿#include "framework.h"
 #include "Editor_Window.h"
-#include "yaApplication.h"
-#include "yaRenderer.h"
+#include "sszApplication.h"
+#include "sszRenderer.h"
 
-ya::Application application;
+ssz::Application application;
 
 #define MAX_LOADSTRING 100
 

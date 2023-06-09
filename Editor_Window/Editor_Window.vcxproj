@@ -152,6 +152,11 @@
     <Image Include="Editor_Window.ico" />
     <Image Include="small.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <None Update="C:\Dev\660\Cell\660_DirectX11\Engine_Source\sszMath.inl">
+      <FileType>Document</FileType>
+    </None>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

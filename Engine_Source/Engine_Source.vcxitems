@@ -15,53 +15,53 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)yaApplication.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)yaCircle.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)yaComponent.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)yaConstantBuffer.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)yaEntity.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)yaEnums.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)yaGameObject.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)yaGraphicDevice_Dx11.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)yaGraphics.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)yaInput.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)yaLayer.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)yaMath.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)660Engine.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)yaMesh.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)yaPlayer.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)yaRenderer.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)yaResource.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)yaResources.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)yaScene.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)yaSceneManager.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)yaScript.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)yaShader.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)yaTime.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszApplication.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszCircle.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszComponent.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszConstantBuffer.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszEntity.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszEnums.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszGameObject.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszGraphicDevice_Dx11.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszGraphics.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszInput.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszLayer.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszMath.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszEngine.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszMesh.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszPlayer.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszRenderer.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszResource.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszResources.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszScene.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszSceneManager.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszScript.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszShader.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszTime.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="$(MSBuildThisFileDirectory)yaApplication.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)yaCircle.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)yaComponent.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)yaConstantBuffer.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)yaEntity.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)yaGameObject.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)yaGraphicDevice_Dx11.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)yaInput.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)yaLayer.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)yaMath.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)yaMesh.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)yaPlayer.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)yaRenderer.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)yaResource.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)yaResources.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)yaScene.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)yaSceneManager.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)yaScript.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)yaShader.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)yaTime.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszApplication.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszCircle.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszComponent.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszConstantBuffer.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszEntity.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszGameObject.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszGraphicDevice_Dx11.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszInput.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszLayer.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszMath.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszMesh.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszPlayer.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszRenderer.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszResource.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszResources.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszScene.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszSceneManager.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszScript.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszShader.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszTime.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="$(MSBuildThisFileDirectory)yaMath.inl" />
+    <None Include="$(MSBuildThisFileDirectory)sszMath.inl" />
   </ItemGroup>
 </Project>

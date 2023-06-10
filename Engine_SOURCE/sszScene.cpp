@@ -83,24 +83,36 @@ namespace ssz
 		Vector4 PlayerPos = ((Circle*)mPlayer)->GetPos();
 		Vector4 EnemyPos = {};
 		float dist = 0.f;
+		float contactdist = 0.f;
 		std::vector<GameObject*>::iterator iter = mGameObjects.begin();
 
 		// 충돌 검사
 		for (GameObject* gameObj : mGameObjects)
 		{
-			// 적 포지션
-			EnemyPos = ((Circle*)gameObj)->GetPos();
+			
+			EnemyPos = ((Circle*)gameObj)->GetPos();	// Enemy Pos
+			contactdist = PlayerPos.z + EnemyPos.z;		// 접촉 거리 ( 두 개체 반지름 합계 )
 
 			// 거리판단
 			dist = sqrt((PlayerPos.x - EnemyPos.x) * (PlayerPos.x - EnemyPos.x) + (PlayerPos.y - EnemyPos.y) * (PlayerPos.y - EnemyPos.y));
 
+
 			// 충돌했을 때
-			if (dist < (PlayerPos.z + EnemyPos.z))
+			if (dist < contactdist)
 			{
 				iter = mGameObjects.erase(iter);	// 충돌한 적 객체 제거
 				PlayerPos.z += 0.001f;				// 플레이어 크기 증가
 				
 				((Circle*)mPlayer)->SetPos(PlayerPos);	// 증가한 크기 반영
+			}
+
+			// 충돌하지 않았으나 근처에 있을 때
+			else if (dist < contactdist + 0.05f)
+			{
+				if (!((Enemy*)gameObj)->IsMagnet())
+				{
+					((Enemy*)gameObj)->SetMagnet((Circle*)mPlayer);
+				}
 			}
 
 			// 충돌하지 않았을 때

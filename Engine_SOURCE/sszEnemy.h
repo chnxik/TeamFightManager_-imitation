@@ -6,6 +6,12 @@ namespace ssz
 	class Enemy : public Circle
 	{
 	public:
+		enum eMagnet
+		{
+			ON,
+			OFF
+		};
+
 		Enemy();
 		virtual ~Enemy();
 
@@ -13,5 +19,12 @@ namespace ssz
 		virtual void Update();
 		virtual void LateUpdate();
 		virtual void Render();
+
+		bool IsMagnet();
+		void SetMagnet(Circle* Target);
+
+	private:
+		eMagnet mMagnet;
+		Circle* mTarget;
 	};
 }

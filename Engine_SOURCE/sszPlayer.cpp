@@ -18,14 +18,14 @@ namespace ssz
 
 	void Player::Update()
 	{
-		Vector4 Pos = GetPos();
+		/*Vector4 Pos = GetPos();
 
 		if (ssz::Input::GetKey(ssz::eKeyCode::UP)) { Pos.y += 1.f * (float)ssz::Time::DeltaTime(); }
 		if (ssz::Input::GetKey(ssz::eKeyCode::DOWN)) { Pos.y -= 1.f * (float)ssz::Time::DeltaTime(); }
 		if (ssz::Input::GetKey(ssz::eKeyCode::RIGHT)) { Pos.x += 1.f * (float)ssz::Time::DeltaTime(); }
 		if (ssz::Input::GetKey(ssz::eKeyCode::LEFT)) { Pos.x -= 1.f * (float)ssz::Time::DeltaTime(); }
 
-		SetPos(Pos);
+		SetPos(Pos);*/
 	}
 
 	void Player::LateUpdate()

@@ -24,8 +24,10 @@ namespace ssz
 		void SetPos(Vector4 Pos) { mPos = Pos; }
 		void SetRadius(float fRadius) { mRadius = fRadius; mPos.z = mRadius; }
 		void SetColor(float R, float G, float B) { mColor = Vector4(R,G,B,1.f); }
+		void SetColor(Vector4 Color) { mColor = Color; }
 
 		Vector4 GetPos() { return mPos; }
+		Vector4 GetColor() { return mColor; }
 
 	private:
 		float	mRadius;

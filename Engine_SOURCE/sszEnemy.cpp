@@ -24,10 +24,10 @@ namespace ssz
 		
 		if (mMagnet == eMagnet::OFF)
 		{
-			if (ssz::Input::GetKey(ssz::eKeyCode::UP)) { Pos.y += 0.5f * (float)ssz::Time::DeltaTime(); }
-			if (ssz::Input::GetKey(ssz::eKeyCode::DOWN)) { Pos.y -= 0.5f * (float)ssz::Time::DeltaTime(); }
-			if (ssz::Input::GetKey(ssz::eKeyCode::RIGHT)) { Pos.x += 0.5f * (float)ssz::Time::DeltaTime(); }
-			if (ssz::Input::GetKey(ssz::eKeyCode::LEFT)) { Pos.x -= 0.5f * (float)ssz::Time::DeltaTime(); }
+			if (ssz::Input::GetKey(ssz::eKeyCode::UP)) { Pos.y -= 0.5f * (float)ssz::Time::DeltaTime(); }
+			if (ssz::Input::GetKey(ssz::eKeyCode::DOWN)) { Pos.y += 0.5f * (float)ssz::Time::DeltaTime(); }
+			if (ssz::Input::GetKey(ssz::eKeyCode::RIGHT)) { Pos.x -= 0.5f * (float)ssz::Time::DeltaTime(); }
+			if (ssz::Input::GetKey(ssz::eKeyCode::LEFT)) { Pos.x += 0.5f * (float)ssz::Time::DeltaTime(); }
 		}
 		else if ( mMagnet == eMagnet::ON)
 		{

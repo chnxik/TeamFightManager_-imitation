@@ -80,6 +80,10 @@ namespace ssz
 
 	void Scene::LateUpdate()
 	{
+		int deleteCnt;
+
+		deleteCnt = 0;
+
 		Vector4 PlayerPos = ((Circle*)mPlayer)->GetPos();
 		Vector4 EnemyPos = {};
 		float dist = 0.f;
@@ -113,6 +117,7 @@ namespace ssz
 				{
 					((Enemy*)gameObj)->SetMagnet((Circle*)mPlayer);
 				}
+				iter++;
 			}
 
 			// 충돌하지 않았을 때

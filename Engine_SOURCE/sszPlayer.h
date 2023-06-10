@@ -15,5 +15,8 @@ namespace ssz
 		virtual void Update();
 		virtual void LateUpdate();
 		virtual void Render();
+
+	private:
+		Vector4 mColorChange;
 	};
 }

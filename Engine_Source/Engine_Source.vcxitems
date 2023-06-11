@@ -16,32 +16,44 @@
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sszApplication.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszComponent.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sszConstantBuffer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sszEntity.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sszEnums.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszGameObject.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sszGraphicDevice_Dx11.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sszGraphics.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sszInput.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszLayer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sszMath.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sszEngine.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sszMesh.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sszRenderer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sszResource.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sszResources.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszScene.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszSceneManager.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszScript.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sszShader.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sszTime.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)sszApplication.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszComponent.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sszConstantBuffer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sszEntity.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszGameObject.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sszGraphicDevice_Dx11.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sszInput.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszLayer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sszMath.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sszMesh.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sszRenderer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sszResource.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sszResources.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszScene.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszSceneManager.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszScript.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sszShader.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sszTime.cpp" />
   </ItemGroup>

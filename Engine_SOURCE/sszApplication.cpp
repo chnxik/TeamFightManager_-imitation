@@ -38,7 +38,6 @@ namespace ssz
 	{
 		Time::Update();
 		Input::Update();
-		renderer::update();
 	}
 
 	void Application::LateUpdate()
@@ -50,6 +49,7 @@ namespace ssz
 		Time::Render();
 
 		graphicDevice->Draw();
+		graphicDevice->Present();
 	}
 
 	void Application::SetWindow(HWND hwnd, UINT width, UINT height)

@@ -88,15 +88,4 @@ namespace renderer
 		delete shader;
 		delete ConstantBuffer;
 	}
-
-	void update()
-	{
-		if (ssz::Input::GetKey(ssz::eKeyCode::UP))	{ Pos.y += 2.f *(float)ssz::Time::DeltaTime(); }
-		if (ssz::Input::GetKey(ssz::eKeyCode::DOWN))	{ Pos.y -= 2.f *(float)ssz::Time::DeltaTime(); }
-		if (ssz::Input::GetKey(ssz::eKeyCode::RIGHT)) { Pos.x += 2.f *(float)ssz::Time::DeltaTime(); }
-		if (ssz::Input::GetKey(ssz::eKeyCode::LEFT))	{ Pos.x -= 2.f *(float)ssz::Time::DeltaTime(); }
-		
-		ConstantBuffer->SetData(&Pos);
-		ConstantBuffer->Bind(eShaderStage::VS);
-	}
 }

@@ -4,7 +4,7 @@
 #include "sszPlayer.h"
 #include "sszEnemy.h"
 
-#define SPAWNTIME 0.1f
+#define SPAWNTIME 0.3f
 
 namespace ssz
 {
@@ -26,11 +26,13 @@ namespace ssz
 		// Player 생성
 		mPlayer = new Player();
 		((Circle*)mPlayer)->SetPos(Vector4(0.f, 0.f, 0.02f, 1.0f));
-		((Circle*)mPlayer)->SetColor(1.0f, 0.f, 1.0f);
+		((Circle*)mPlayer)->SetColor(0.6f, 0.3f, 0.7f);
+		((Player*)mPlayer)->SetRadius(0.02f);
+		((Player*)mPlayer)->SetFinalColor(((Circle*)mPlayer)->GetColor());
 
 		// 초기 Enemy 생성 20개
 
-		for (int i = 0; i < 10; ++i)
+		for (int i = 0; i < 20; ++i)
 		{
 			Circle* EnemyCircle = new Enemy();
 
@@ -105,13 +107,12 @@ namespace ssz
 			if (dist < contactdist)
 			{
 				iter = mGameObjects.erase(iter);	// 충돌한 적 객체 제거
-				PlayerPos.z += 0.001f;				// 플레이어 크기 증가
-				
-				((Circle*)mPlayer)->SetPos(PlayerPos);	// 증가한 크기 반영
+				((Player*)mPlayer)->AddRadius(0.005f);	// 증가한 크기 반영
+				((Player*)mPlayer)->GetEffect();
 			}
 
 			// 충돌하지 않았으나 근처에 있을 때
-			else if (dist < contactdist + 0.05f)
+			else if (dist < contactdist + 0.08f)
 			{
 				if (!((Enemy*)gameObj)->IsMagnet())
 				{

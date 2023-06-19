@@ -1,6 +1,7 @@
 #pragma once
 #include "sszEngine.h"
 #include "sszGraphicDevice_Dx11.h"
+#include "sszScene.h"
 
 namespace ssz
 {

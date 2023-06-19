@@ -2,8 +2,9 @@
 
 namespace ssz
 {
-	Component::Component()
-		: mType(eComponentType::End)
+	Component::Component(eComponentType type)
+		: mType(type)
+		, mOwner(nullptr)
 	{
 	}
 

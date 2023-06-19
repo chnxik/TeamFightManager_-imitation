@@ -2,6 +2,7 @@
 #include "sszInput.h"
 #include "sszTime.h"
 #include "sszRenderer.h"
+#include "sszSceneManager.h"
 
 namespace ssz
 {
@@ -32,23 +33,30 @@ namespace ssz
 		Input::Initialize();
 
 		renderer::Initialize();
+		SceneManager::Initialize();
 	}
 
 	void Application::Update()
 	{
 		Time::Update();
 		Input::Update();
+		SceneManager::Update();
 	}
 
 	void Application::LateUpdate()
 	{
+		SceneManager::LateUpdate();
 	}
 
 	void Application::Render()
 	{
 		Time::Render();
 
-		graphicDevice->Draw();
+		graphicDevice->ClearTarget();
+		graphicDevice->UpdateViewPort();
+
+		SceneManager::Render();
+
 		graphicDevice->Present();
 	}
 

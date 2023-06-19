@@ -1,11 +1,10 @@
 #include "sszScene.h"
-#include "sszTime.h"
 
 namespace ssz
 {
 	Scene::Scene()
-		: mPlayer(nullptr)
 	{
+		mLayers.resize((int)ssz::enums::eLayerType::End);
 	}
 
 	Scene::~Scene()
@@ -18,21 +17,35 @@ namespace ssz
 
 	void Scene::Update()
 	{
-		for (GameObject* gameObj : mGameObjects)
+		for (Layer& layer : mLayers)
 		{
-			gameObj->Update();
+			layer.Update();
 		}
 	}
 
 	void Scene::LateUpdate()
 	{
+		for (Layer& layer : mLayers)
+		{
+			layer.LateUpdate();
+		}
 	}
 
 	void Scene::Render()
 	{
-		for (GameObject* gameObj : mGameObjects)
+		for (Layer& layer : mLayers)
 		{
-			gameObj->Render();
+			layer.Render();
 		}
+	}
+	void Scene::OnEnter()
+	{
+	}
+	void Scene::OnExit()
+	{
+	}
+	void Scene::AddGameObject(eLayerType type, GameObject* gameObj)
+	{
+		mLayers[(int)type].AddGameObject(gameObj);
 	}
 }

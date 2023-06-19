@@ -1,5 +1,7 @@
 #include "sszGameObject.h"
-
+#include "sszRenderer.h"
+#include "sszGraphicDevice_Dx11.h"
+#include "sszTransform.h"
 
 namespace ssz
 {
@@ -7,6 +9,7 @@ namespace ssz
 	GameObject::GameObject()
 		: mState(eState::Active)
 	{
+		AddComponent<Transform>();
 	}
 
 	GameObject::~GameObject()
@@ -19,14 +22,26 @@ namespace ssz
 
 	void GameObject::Update()
 	{
+		for (Component* comp : mComponents)
+		{
+			comp->Update();
+		}
 	}
 
 	void GameObject::LateUpdate()
 	{
+		for (Component* comp : mComponents)
+		{
+			comp->LateUpdate();
+		}
 	}
 
 	void GameObject::Render()
 	{
+		for (Component* comp : mComponents)
+		{
+			comp->Render();
+		}
 	}
 
 }

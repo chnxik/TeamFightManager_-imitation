@@ -289,19 +289,52 @@ namespace ssz::graphics
 		mContext->CSSetConstantBuffers((UINT)type, 1, &buffer);
 	}
 
+	void GraphicDevice_Dx11::BindShaderResource(eShaderStage stage, UINT startSlot, ID3D11ShaderResourceView** ppSRV)
+	{
+		switch (stage)
+		{
+		case eShaderStage::VS:
+			mContext->VSSetShaderResources(startSlot, 1, ppSRV);
+			break;
+		case eShaderStage::HS:
+			mContext->HSSetShaderResources(startSlot, 1, ppSRV);
+			break;
+		case eShaderStage::DS:
+			mContext->DSSetShaderResources(startSlot, 1, ppSRV);
+			break;
+		case eShaderStage::GS:
+			mContext->GSSetShaderResources(startSlot, 1, ppSRV);
+			break;
+		case eShaderStage::PS:
+			mContext->PSSetShaderResources(startSlot, 1, ppSRV);
+			break;
+		case eShaderStage::CS:
+			mContext->CSSetShaderResources(startSlot, 1, ppSRV);
+			break;
+		case eShaderStage::END:
+			break;
+		default:
+			break;
+		}
+	}
+
 	void GraphicDevice_Dx11::DrawIndexed(UINT IndexCount, UINT StartIndexdLocation, INT BaseVertexLocation)
 	{
 		mContext->DrawIndexed(IndexCount, StartIndexdLocation, BaseVertexLocation);
 	}
 
-	void GraphicDevice_Dx11::Draw()
+	void GraphicDevice_Dx11::ClearTarget()
 	{
 		// render target Clear
-
 		FLOAT bgColor[4] = { 0.2f, 0.2f, 0.2f, 1.0f };
 		mContext->ClearRenderTargetView(mRenderTargetView.Get(), bgColor);
 		mContext->ClearDepthStencilView(mDepthStencilView.Get(), D3D11_CLEAR_DEPTH | D3D11_CLEAR_STENCIL, 1.0f, 0);
+		mContext->OMSetRenderTargets(1, mRenderTargetView.GetAddressOf(), mDepthStencilView.Get());
 
+	}
+
+	void GraphicDevice_Dx11::UpdateViewPort()
+	{
 		// viewport update
 		HWND hWnd = application.GetHwnd();
 		RECT winRect = {};
@@ -317,19 +350,11 @@ namespace ssz::graphics
 
 		// 뷰포트 바인딩
 		BindViewPort(&mViewPort);
-		mContext->OMSetRenderTargets(1, mRenderTargetView.GetAddressOf(), mDepthStencilView.Get());
+	}
 
-
-		renderer::mesh->BindBuffer();
-		mContext->IASetInputLayout(renderer::shader->GetInputLayout());
-		mContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY::D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
-		renderer::shader->Binds();
-
-		// Draw Render Target
-		DrawIndexed(renderer::mesh->GetIndexCount(), 0, 0);
-
-		// 렌더타겟에 있는 이미지를 화면에 그려준다.
-		Present();
+	void GraphicDevice_Dx11::Draw()
+	{
+		BindPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY::D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 	}
 	void GraphicDevice_Dx11::Present()
 	{

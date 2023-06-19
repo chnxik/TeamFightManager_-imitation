@@ -1,19 +1,21 @@
 #include "sszRenderer.h"
-#include "sszTime.h"
-#include "sszInput.h"
+#include "sszResources.h"
+#include "sszTexture.h"
 
 namespace renderer
 {
+	using namespace ssz;
+	using namespace ssz::graphics;
+
 	Vertex vertexes[4] = {};
 	ssz::Mesh* mesh = nullptr;
 	ssz::Shader* shader = nullptr;
 	ssz::graphics::ConstantBuffer* ConstantBuffer = nullptr;
-	Vector4 Pos = { 0.f,0.f,0.f,0.f };
 
 	void SetupState()
 	{
 		// InputLayout 정점 구조 정보를 넘겨준다.
-		D3D11_INPUT_ELEMENT_DESC arrLayout[2] = {};
+		D3D11_INPUT_ELEMENT_DESC arrLayout[3] = {};
 
 		arrLayout[0].AlignedByteOffset = 0;
 		arrLayout[0].Format = DXGI_FORMAT_R32G32B32_FLOAT;
@@ -29,7 +31,14 @@ namespace renderer
 		arrLayout[1].SemanticName = "COLOR";
 		arrLayout[1].SemanticIndex = 0;
 
-		ssz::graphics::GetDevice()->CreateInputLayout(arrLayout, 2
+		arrLayout[2].AlignedByteOffset = 28;
+		arrLayout[2].Format = DXGI_FORMAT_R32G32_FLOAT;
+		arrLayout[2].InputSlot = 0;
+		arrLayout[2].InputSlotClass = D3D11_INPUT_PER_VERTEX_DATA;
+		arrLayout[2].SemanticName = "TEXCOORD";
+		arrLayout[2].SemanticIndex = 0;
+
+		ssz::graphics::GetDevice()->CreateInputLayout(arrLayout, 3
 			, shader->GetVSCode()
 			, shader->GetInputLayoutAddressOf());
 	}
@@ -45,10 +54,10 @@ namespace renderer
 		indexes.push_back(1);
 		indexes.push_back(2);
 		
+		indexes.push_back(0);
 		indexes.push_back(2);
-		indexes.push_back(1);
 		indexes.push_back(3);
-		mesh->CreateIndexBuffer(indexes.data(), indexes.size());
+		mesh->CreateIndexBuffer(indexes.data(), (UINT)indexes.size());
 
 		// Constant Buffer
 		ConstantBuffer = new ssz::graphics::ConstantBuffer(eCBType::Transform);
@@ -66,20 +75,29 @@ namespace renderer
 	{
 		// vertex 설정
 		vertexes[0].pos = Vector3(-0.5f, 0.5f, 0.0f);
-		vertexes[0].color = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
+		vertexes[0].color = Vector4(1.0f, 0.0f, 0.0f, 1.0f);
+		vertexes[0].uv = Vector2(0.0f, 0.0f);
 
 		vertexes[1].pos = Vector3(0.5f, 0.5f, 0.0f);
-		vertexes[1].color = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
+		vertexes[1].color = Vector4(0.0f, 1.0f, 0.0f, 1.0f);
+		vertexes[1].uv = Vector2(1.0f, 0.0f);
 
-		vertexes[2].pos = Vector3(-0.5f, -0.5f, 0.0f);
-		vertexes[2].color = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
+		vertexes[2].pos = Vector3(0.5f, -0.5f, 0.0f);
+		vertexes[2].color = Vector4(0.0f, 0.0f, 1.0f, 1.0f);
+		vertexes[2].uv = Vector2(1.0f, 1.0f);
 
-		vertexes[3].pos = Vector3(0.5f, -0.5f, 0.0f);
+		vertexes[3].pos = Vector3(-0.5f, -0.5f, 0.0f);
 		vertexes[3].color = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
+		vertexes[3].uv = Vector2(0.0f, 1.0f);
 
 		LoadBuffer();
 		LoadShader();
 		SetupState();
+
+		// 예제 텍스쳐 로드
+		Texture* texture = Resources::Load<Texture>(L"Smile", L"..\\Resources\\Texture\\Smile.png");
+
+		texture->BindShader(eShaderStage::PS, 0);
 	}
 
 	void Release()

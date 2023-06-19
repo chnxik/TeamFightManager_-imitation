@@ -1,7 +1,6 @@
 #pragma once
 #include "sszEngine.h"
-#include "sszEntity.h"
-#include "sszGameObject.h"
+#include "sszLayer.h"
 
 namespace ssz
 {
@@ -16,8 +15,12 @@ namespace ssz
 		virtual void LateUpdate();
 		virtual void Render();
 
+		virtual void OnEnter();
+		virtual void OnExit();
+
+		void AddGameObject(eLayerType type, GameObject* gameObj);
+
 	private:
-		GameObject* mPlayer;
-		std::vector<GameObject*> mGameObjects;
+		std::vector<Layer> mLayers;
 	};
 }

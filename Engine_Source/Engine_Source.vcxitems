@@ -28,6 +28,8 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)sszMath.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sszEngine.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sszMesh.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszMeshRenderer.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszPlayScene.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sszRenderer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sszResource.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sszResources.h" />
@@ -35,7 +37,9 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)sszSceneManager.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sszScript.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sszShader.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszTexture.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sszTime.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszTransform.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)sszApplication.cpp" />
@@ -48,6 +52,8 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)sszLayer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sszMath.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sszMesh.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszMeshRenderer.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszPlayScene.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sszRenderer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sszResource.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sszResources.cpp" />
@@ -55,7 +61,9 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)sszSceneManager.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sszScript.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sszShader.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszTexture.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sszTime.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszTransform.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)sszMath.inl" />

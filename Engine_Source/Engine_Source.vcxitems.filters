@@ -52,6 +52,15 @@
     <Filter Include="GameObject\Component\Script">
       <UniqueIdentifier>{89d35540-5e41-4908-8d1c-0ba95cf5a122}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Scene\Manager">
+      <UniqueIdentifier>{1a651756-608c-49f3-8d64-dd7a7951bc5a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\Base">
+      <UniqueIdentifier>{c0ae48bd-0316-4616-a1fe-3c256129112a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\Scenes">
+      <UniqueIdentifier>{c2200a9e-4daa-45e4-8052-c7ac7a51d625}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h">
@@ -102,12 +111,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)sszConstantBuffer.h">
       <Filter>Graphics\ConstantBuffer</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)sszScene.h">
-      <Filter>Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)sszSceneManager.h">
-      <Filter>Scene</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)sszLayer.h">
       <Filter>Scene\Layer</Filter>
     </ClInclude>
@@ -119,6 +122,24 @@
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)sszScript.h">
       <Filter>GameObject\Component\Script</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszTransform.h">
+      <Filter>GameObject\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszMeshRenderer.h">
+      <Filter>GameObject\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszSceneManager.h">
+      <Filter>Scene\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszTexture.h">
+      <Filter>Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszScene.h">
+      <Filter>Scene\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszPlayScene.h">
+      <Filter>Scene\Scenes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -158,12 +179,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)sszConstantBuffer.cpp">
       <Filter>Graphics\ConstantBuffer</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)sszScene.cpp">
-      <Filter>Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)sszSceneManager.cpp">
-      <Filter>Scene</Filter>
-    </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)sszLayer.cpp">
       <Filter>Scene\Layer</Filter>
     </ClCompile>
@@ -175,6 +190,24 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)sszScript.cpp">
       <Filter>GameObject\Component\Script</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszTransform.cpp">
+      <Filter>GameObject\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszMeshRenderer.cpp">
+      <Filter>GameObject\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszSceneManager.cpp">
+      <Filter>Scene\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszTexture.cpp">
+      <Filter>Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszScene.cpp">
+      <Filter>Scene\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszPlayScene.cpp">
+      <Filter>Scene\Scenes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

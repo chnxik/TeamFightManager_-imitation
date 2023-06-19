@@ -9,6 +9,7 @@ namespace ssz
     void SceneManager::Initialize()
     {
         mActiveScene = new PlayScene();
+        mScenes.insert(std::make_pair(L"PlayScene", mActiveScene));
 
         mActiveScene->Initialize();
     }
@@ -26,6 +27,15 @@ namespace ssz
     void SceneManager::Render()
     {
         mActiveScene->Render();
+    }
+
+    void SceneManager::Release()
+    {
+        for (auto iter : mScenes)
+        {
+            delete iter.second;
+            iter.second = nullptr;
+        }
     }
 
     Scene* SceneManager::LoadScene(std::wstring name)

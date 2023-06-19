@@ -6,6 +6,7 @@
 #include "sszConstantBuffer.h"
 
 using namespace ssz::math;
+using namespace ssz::graphics;
 
 namespace renderer
 {
@@ -17,9 +18,7 @@ namespace renderer
 	};
 	
 	extern Vertex vertexes[];
-	extern ssz::Mesh* mesh;
-	extern ssz::Shader* shader;
-	extern ssz::graphics::ConstantBuffer* ConstantBuffer;
+	extern ssz::graphics::ConstantBuffer* constantBuffer[(UINT)eCBType::END];
 
 	void Initialize();
 	void Release();

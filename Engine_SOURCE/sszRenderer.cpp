@@ -1,6 +1,7 @@
 #include "sszRenderer.h"
 #include "sszResources.h"
 #include "sszTexture.h"
+#include "sszMaterial.h"
 
 namespace renderer
 {
@@ -8,9 +9,8 @@ namespace renderer
 	using namespace ssz::graphics;
 
 	Vertex vertexes[4] = {};
-	ssz::Mesh* mesh = nullptr;
-	ssz::Shader* shader = nullptr;
-	ssz::graphics::ConstantBuffer* ConstantBuffer = nullptr;
+	ssz::graphics::ConstantBuffer* constantBuffer[(UINT)eCBType::END] = {};
+	Microsoft::WRL::ComPtr<ID3D11SamplerState> samplerState[(UINT)eSamplerType::END] = {};
 
 	void SetupState()
 	{
@@ -38,15 +38,36 @@ namespace renderer
 		arrLayout[2].SemanticName = "TEXCOORD";
 		arrLayout[2].SemanticIndex = 0;
 
+		Shader* shader = ssz::Resources::Find<Shader>(L"TriangleShader");
 		ssz::graphics::GetDevice()->CreateInputLayout(arrLayout, 3
 			, shader->GetVSCode()
 			, shader->GetInputLayoutAddressOf());
+
+		shader = ssz::Resources::Find<Shader>(L"SpriteShader");
+		ssz::graphics::GetDevice()->CreateInputLayout(arrLayout, 3
+			, shader->GetVSCode()
+			, shader->GetInputLayoutAddressOf());
+
+		// Sampler State
+		D3D11_SAMPLER_DESC desc = {};
+		desc.AddressU = D3D11_TEXTURE_ADDRESS_MODE::D3D11_TEXTURE_ADDRESS_WRAP;
+		desc.AddressV = D3D11_TEXTURE_ADDRESS_MODE::D3D11_TEXTURE_ADDRESS_WRAP;
+		desc.AddressW = D3D11_TEXTURE_ADDRESS_MODE::D3D11_TEXTURE_ADDRESS_WRAP;
+		desc.Filter = D3D11_FILTER_MIN_MAG_MIP_POINT;
+		GetDevice()->CreateSampler(&desc, samplerState[(UINT)eSamplerType::Point].GetAddressOf());
+		GetDevice()->BindSampler(eShaderStage::PS, 0, samplerState[(UINT)eSamplerType::Point].GetAddressOf());
+
+		desc.Filter = D3D11_FILTER_ANISOTROPIC;
+		GetDevice()->CreateSampler(&desc, samplerState[(UINT)eSamplerType::Anisotropic].GetAddressOf());
+		GetDevice()->BindSampler(eShaderStage::PS, 1, samplerState[(UINT)eSamplerType::Anisotropic].GetAddressOf());
 	}
 
 	void LoadBuffer()
 	{
 		// Mesh
-		mesh = new ssz::Mesh();
+		Mesh* mesh = new ssz::Mesh();
+		Resources::Insert(L"RectMesh", mesh);
+		
 		mesh->CreateVertexBuffer(vertexes, 4);
 
 		std::vector<UINT> indexes = {};
@@ -60,15 +81,30 @@ namespace renderer
 		mesh->CreateIndexBuffer(indexes.data(), (UINT)indexes.size());
 
 		// Constant Buffer
-		ConstantBuffer = new ssz::graphics::ConstantBuffer(eCBType::Transform);
-		ConstantBuffer->Create(sizeof(Vector4));
+		constantBuffer[(UINT)eCBType::Transform] = new ConstantBuffer(eCBType::Transform);
+		constantBuffer[(UINT)eCBType::Transform]->Create(sizeof(Vector4));
 	}
 
 	void LoadShader()
 	{
-		shader = new ssz::Shader();
+
+		Shader* shader = new ssz::Shader();
 		shader->Create(eShaderStage::VS, L"TriangleVS.hlsl", "main");
 		shader->Create(eShaderStage::PS, L"TrianglePS.hlsl", "main");
+		ssz::Resources::Insert(L"TriangleShader", shader);
+
+		Shader* spriteshader = new ssz::Shader();
+		spriteshader->Create(eShaderStage::VS, L"SpriteVS.hlsl", "main");
+		spriteshader->Create(eShaderStage::PS, L"SpritePS.hlsl", "main");
+		ssz::Resources::Insert(L"SpriteShader", spriteshader);
+
+		Texture* texture = Resources::Load<Texture>(L"Smile", L"..\\Resources\\Texture\\Smile.png");
+
+		Material* spriteMaterial = new ssz::graphics::Material();
+		spriteMaterial->SetShader(spriteshader);
+		spriteMaterial->SetTexture(texture);
+		Resources::Insert(L"SpriteMaterial", spriteMaterial);
+
 	}
 
 	void Initialize()
@@ -93,17 +129,17 @@ namespace renderer
 		LoadBuffer();
 		LoadShader();
 		SetupState();
-
-		// 예제 텍스쳐 로드
-		Texture* texture = Resources::Load<Texture>(L"Smile", L"..\\Resources\\Texture\\Smile.png");
-
-		texture->BindShader(eShaderStage::PS, 0);
 	}
 
 	void Release()
 	{
-		delete mesh;
-		delete shader;
-		delete ConstantBuffer;
+		for (ConstantBuffer* buff : constantBuffer)
+		{
+			if (buff == nullptr)
+				continue;
+
+			delete buff;
+			buff = nullptr;
+		}
 	}
 }

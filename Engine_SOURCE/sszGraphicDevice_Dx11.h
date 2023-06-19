@@ -19,7 +19,7 @@ namespace ssz::graphics
 		bool CompileFromfile(const std::wstring& fileName, const std::string& funcName, const std::string& version, ID3DBlob** ppCode);	  // 쉐이더코드 컴파일 함수
 		bool CreateVertexShader(const void* pShaderBytecode, SIZE_T BytecodeLength, ID3D11VertexShader** ppVertexShader);	// 버텍스 쉐이더 생성 함수
 		bool CreatePixelShader(const void* pShaderBytecode, SIZE_T BytecodeLength, ID3D11PixelShader** ppPixelShader); // 픽셀쉐이더 생성 함수
-
+		bool CreateSampler(const D3D11_SAMPLER_DESC* pSamplerDesc, ID3D11SamplerState** ppSamplerState);
 
 		void BindInputLayout(ID3D11InputLayout* pInputLayout);
 		void BindPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY Topology);
@@ -33,8 +33,7 @@ namespace ssz::graphics
 		void BindConstantBuffer(eShaderStage stage, eCBType type, ID3D11Buffer* buffer);
 		void BindConstantBuffers(eShaderStage stage, eCBType type, ID3D11Buffer* buffer);
 		void BindShaderResource(eShaderStage stage, UINT startSlot, ID3D11ShaderResourceView** ppSRV);
-
-
+		void BindSampler(eShaderStage stage, UINT startSlot, ID3D11SamplerState** ppSamplers);
 		void BindViewPort(D3D11_VIEWPORT* viewPort); // 뷰포트 바인드 함수
 
 		void DrawIndexed(UINT IndexCount, UINT StartIndexdLocation, INT BaseVertexLocation);

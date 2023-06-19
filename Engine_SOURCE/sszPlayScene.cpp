@@ -1,6 +1,8 @@
 #include "sszPlayScene.h"
 #include "sszTransform.h"
 #include "sszMeshRenderer.h"
+#include "sszResources.h"
+#include "sszMesh.h"
 
 
 namespace ssz
@@ -17,7 +19,9 @@ namespace ssz
 	{
 		GameObject* player = new GameObject();
 		AddGameObject(eLayerType::Player, player);
-		player->AddComponent<MeshRenderer>();
+		MeshRenderer* mr = player->AddComponent<MeshRenderer>();
+		mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
+		mr->SetMaterial(Resources::Find<Material>(L"SpriteMaterial"));
 	}
 
 	void PlayScene::Update()

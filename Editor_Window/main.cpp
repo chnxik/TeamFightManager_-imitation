@@ -2,6 +2,8 @@
 #include "Editor_Window.h"
 #include "sszApplication.h"
 #include "sszRenderer.h"
+#include "sszResources.h"
+#include "sszSceneManager.h"
 
 ssz::Application application;
 
@@ -64,6 +66,9 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     }
 
     renderer::Release();
+    ssz::Resources::Release();
+    ssz::SceneManager::Release();
+
     return (int) msg.wParam;
 }
 

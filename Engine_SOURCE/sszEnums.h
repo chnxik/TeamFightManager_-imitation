@@ -21,4 +21,13 @@ namespace ssz::enums
 		End,
 	};
 
+	enum class eResourceType
+	{
+		Texture,
+		Shader,
+		Material,
+		Mesh,
+		End,
+	};
+
 }

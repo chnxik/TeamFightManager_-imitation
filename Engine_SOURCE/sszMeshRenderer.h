@@ -1,7 +1,7 @@
 #pragma once
 #include "sszComponent.h"
 #include "sszMesh.h"
-#include "sszShader.h"
+#include "sszMaterial.h"
 
 namespace ssz
 {
@@ -16,9 +16,12 @@ namespace ssz
 		virtual void LateUpdate() override;
 		virtual void Render() override;
 
+		void SetMesh(Mesh* mesh) { mMesh = mesh; }
+		void SetMaterial(Material* material) { mMaterial = material; }
+
 	private:
 		Mesh* mMesh;
-		Shader* mShader;
+		Material* mMaterial;
 	};
 
 }

@@ -61,6 +61,12 @@
     <Filter Include="Scene\Scenes">
       <UniqueIdentifier>{c2200a9e-4daa-45e4-8052-c7ac7a51d625}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource\Texture">
+      <UniqueIdentifier>{438adc0b-25e4-4974-964c-70b67658f270}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource\Material">
+      <UniqueIdentifier>{50a80671-e2ea-4793-ba16-0e43159f5e11}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h">
@@ -132,14 +138,17 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)sszSceneManager.h">
       <Filter>Scene\Manager</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)sszTexture.h">
-      <Filter>Resource</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)sszScene.h">
       <Filter>Scene\Base</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)sszPlayScene.h">
       <Filter>Scene\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszTexture.h">
+      <Filter>Resource\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszMaterial.h">
+      <Filter>Resource\Material</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -200,14 +209,17 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)sszSceneManager.cpp">
       <Filter>Scene\Manager</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)sszTexture.cpp">
-      <Filter>Resource</Filter>
-    </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)sszScene.cpp">
       <Filter>Scene\Base</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)sszPlayScene.cpp">
       <Filter>Scene\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszTexture.cpp">
+      <Filter>Resource\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszMaterial.cpp">
+      <Filter>Resource\Material</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

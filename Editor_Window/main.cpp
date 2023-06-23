@@ -66,7 +66,6 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     }
 
     renderer::Release();
-    ssz::Resources::Release();
     ssz::SceneManager::Release();
 
     return (int) msg.wParam;

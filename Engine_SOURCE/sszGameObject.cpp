@@ -22,6 +22,15 @@ namespace ssz
 			delete comp;
 			comp = nullptr;
 		}
+
+		for (Script* script : mScripts)
+		{
+			if (script == nullptr)
+				continue;
+
+			delete script;
+			script = nullptr;
+		}
 	}
 
 	void GameObject::Initialize()
@@ -34,6 +43,12 @@ namespace ssz
 		{
 			comp->Update();
 		}
+
+		for (Script* script : mScripts)
+		{
+			script->Update();
+		}
+
 	}
 
 	void GameObject::LateUpdate()
@@ -41,6 +56,11 @@ namespace ssz
 		for (Component* comp : mComponents)
 		{
 			comp->LateUpdate();
+		}
+
+		for (Script* script : mScripts)
+		{
+			script->LateUpdate();
 		}
 	}
 
@@ -50,6 +70,10 @@ namespace ssz
 		{
 			comp->Render();
 		}
-	}
 
+		for (Script* script : mScripts)
+		{
+			script->Render();
+		}
+	}
 }

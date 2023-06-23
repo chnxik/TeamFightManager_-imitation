@@ -7,8 +7,6 @@ namespace ssz
 {
 	MeshRenderer::MeshRenderer()
 		: Component(eComponentType::MeshRenderer)
-		, mMesh(nullptr)
-		, mMaterial(nullptr)
 	{
 	}
 

@@ -389,10 +389,6 @@ namespace ssz::graphics
 		BindViewPort(&mViewPort);
 	}
 
-	void GraphicDevice_Dx11::Draw()
-	{
-		BindPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY::D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
-	}
 	void GraphicDevice_Dx11::Present()
 	{
 		mSwapChain->Present(0, 0);

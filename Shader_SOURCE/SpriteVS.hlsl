@@ -14,18 +14,22 @@ struct VSOut
 
 cbuffer Transform : register(b0)
 {
-    float4 possition;
-	//float4 Rotation;
-	//float4 Scale;
+    row_major matrix mWorld;
+    row_major matrix mView;
+    row_major matrix mProjection;
 }
 
 VSOut main(VSIn In)
 {
     VSOut Out = (VSOut) 0.0f;
 
-    Out.Pos = float4(In.Pos, 1.0f);
-    Out.UV = In.UV;
+    float4 world = mul(float4(In.Pos, 1.0f), mWorld);
+    float4 view = mul(world, mView);
+    float4 proj = mul(view, mProjection);
+    
+    Out.Pos = proj;
     Out.Color = In.Color;
+    Out.UV = In.UV;
 
     return Out;
 }

@@ -39,7 +39,6 @@ namespace ssz::graphics
 		void DrawIndexed(UINT IndexCount, UINT StartIndexdLocation, INT BaseVertexLocation);
 		void ClearTarget();
 		void UpdateViewPort();
-		void Draw(); // 그리기 함수
 		void Present();
 
 		ID3D11Device* GetID3D11Device() { return mDevice.Get(); }

@@ -16,6 +16,8 @@
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sszApplication.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszCamera.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszCameraScript.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sszComponent.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sszConstantBuffer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sszEntity.h" />
@@ -44,6 +46,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)sszApplication.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszCamera.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszCameraScript.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sszComponent.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sszConstantBuffer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sszEntity.cpp" />

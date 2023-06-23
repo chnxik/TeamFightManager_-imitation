@@ -10,6 +10,7 @@ namespace ssz::enums
 		Particle,
 		MeshRenderer,
 		Script,
+		Camera,
 		End,
 	};
 

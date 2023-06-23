@@ -28,12 +28,6 @@
     <Filter Include="Resource\Resources">
       <UniqueIdentifier>{62ccc597-e793-4dc8-bb94-8bebe3a31dcf}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Graphics\Mesh">
-      <UniqueIdentifier>{49c0cff5-79a0-4bfa-9c54-587c864874a9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Graphics\Shader">
-      <UniqueIdentifier>{a7e297a9-001e-409c-967c-63350737360b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Graphics\ConstantBuffer">
       <UniqueIdentifier>{87a3e707-55ef-470b-a2ed-e959a93e433e}</UniqueIdentifier>
     </Filter>
@@ -66,6 +60,27 @@
     </Filter>
     <Filter Include="Resource\Material">
       <UniqueIdentifier>{50a80671-e2ea-4793-ba16-0e43159f5e11}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject\Component\MeshRenderer">
+      <UniqueIdentifier>{aefab6e7-325e-4c58-a9aa-567a4dc31da3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject\Component\Transform">
+      <UniqueIdentifier>{71e1843f-36a0-4e2e-98bd-dbef5a862708}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject\Component\Camera">
+      <UniqueIdentifier>{6872842a-e792-4423-b2f4-64434c3714a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject\Component\Script\Scripts">
+      <UniqueIdentifier>{1a9c9940-85f8-4234-a647-a53a00f713aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject\Component\Script\Scripts\Camera">
+      <UniqueIdentifier>{b617bb62-ff54-49c0-8b83-2f297885129a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource\Mesh">
+      <UniqueIdentifier>{49c0cff5-79a0-4bfa-9c54-587c864874a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource\Shader">
+      <UniqueIdentifier>{a7e297a9-001e-409c-967c-63350737360b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -109,10 +124,10 @@
       <Filter>Graphics</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)sszMesh.h">
-      <Filter>Graphics\Mesh</Filter>
+      <Filter>Resource\Mesh</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)sszShader.h">
-      <Filter>Graphics\Shader</Filter>
+      <Filter>Resource\Shader</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)sszConstantBuffer.h">
       <Filter>Graphics\ConstantBuffer</Filter>
@@ -129,12 +144,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)sszScript.h">
       <Filter>GameObject\Component\Script</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)sszTransform.h">
-      <Filter>GameObject\Component</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)sszMeshRenderer.h">
-      <Filter>GameObject\Component</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)sszSceneManager.h">
       <Filter>Scene\Manager</Filter>
     </ClInclude>
@@ -149,6 +158,18 @@
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)sszMaterial.h">
       <Filter>Resource\Material</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszTransform.h">
+      <Filter>GameObject\Component\Transform</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszMeshRenderer.h">
+      <Filter>GameObject\Component\MeshRenderer</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszCamera.h">
+      <Filter>GameObject\Component\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszCameraScript.h">
+      <Filter>GameObject\Component\Script\Scripts\Camera</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -180,10 +201,10 @@
       <Filter>Graphics</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)sszMesh.cpp">
-      <Filter>Graphics\Mesh</Filter>
+      <Filter>Resource\Mesh</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)sszShader.cpp">
-      <Filter>Graphics\Shader</Filter>
+      <Filter>Resource\Shader</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)sszConstantBuffer.cpp">
       <Filter>Graphics\ConstantBuffer</Filter>
@@ -200,12 +221,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)sszScript.cpp">
       <Filter>GameObject\Component\Script</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)sszTransform.cpp">
-      <Filter>GameObject\Component</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)sszMeshRenderer.cpp">
-      <Filter>GameObject\Component</Filter>
-    </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)sszSceneManager.cpp">
       <Filter>Scene\Manager</Filter>
     </ClCompile>
@@ -220,6 +235,18 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)sszMaterial.cpp">
       <Filter>Resource\Material</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszTransform.cpp">
+      <Filter>GameObject\Component\Transform</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszMeshRenderer.cpp">
+      <Filter>GameObject\Component\MeshRenderer</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszCamera.cpp">
+      <Filter>GameObject\Component\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszCameraScript.cpp">
+      <Filter>GameObject\Component\Script\Scripts\Camera</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

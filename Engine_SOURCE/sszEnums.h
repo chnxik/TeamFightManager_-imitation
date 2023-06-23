@@ -30,5 +30,4 @@ namespace ssz::enums
 		Mesh,
 		End,
 	};
-
 }

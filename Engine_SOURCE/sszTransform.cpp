@@ -16,6 +16,19 @@ namespace ssz
 
 	Transform::~Transform()
 	{
+	
+	}
+
+	void Transform::Initialize()
+	{
+	}
+
+	void Transform::Update()
+	{
+	}
+
+	void Transform::LateUpdate()
+	{
 		mWorld = Matrix::Identity;
 
 		Matrix scale = Matrix::CreateScale(mScale);
@@ -33,18 +46,6 @@ namespace ssz
 		mUp = Vector3::TransformNormal(Vector3::Up, rotation);
 		mForward = Vector3::TransformNormal(Vector3::Forward, rotation);
 		mRight = Vector3::TransformNormal(Vector3::Right, rotation);
-	}
-
-	void Transform::Initialize()
-	{
-	}
-
-	void Transform::Update()
-	{
-	}
-
-	void Transform::LateUpdate()
-	{
 	}
 
 	void Transform::Render()

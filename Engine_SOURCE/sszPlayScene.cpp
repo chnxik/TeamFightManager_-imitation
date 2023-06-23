@@ -34,8 +34,8 @@ namespace ssz
 		GameObject* camera = new GameObject();
 		AddGameObject(eLayerType::Player, camera);
 		camera->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, -10.f));
-		Camera* cameraComp = camera->AddComponent<Camera>();
-		// camera->AddComponent<CameraScript>();
+		camera->AddComponent<Camera>();
+		camera->AddComponent<CameraScript>();
 	}
 
 	void PlayScene::Update()

@@ -32,7 +32,7 @@ namespace ssz
 
 		// Main Camera
 		GameObject* camera = new GameObject();
-		AddGameObject(eLayerType::Player, camera);
+		AddGameObject(eLayerType::Camera, camera);
 		camera->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, -10.f));
 		camera->AddComponent<Camera>();
 		camera->AddComponent<CameraScript>();

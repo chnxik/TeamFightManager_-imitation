@@ -16,9 +16,13 @@ namespace ssz::enums
 
 	enum class eLayerType
 	{
+		BackGround,
+		MapSource,
+		Tile,
 		Player,
 		Monster,
 		UI,
+		Camera,
 		End,
 	};
 

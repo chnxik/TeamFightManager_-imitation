@@ -82,6 +82,24 @@
     <Filter Include="Resource\Shader">
       <UniqueIdentifier>{a7e297a9-001e-409c-967c-63350737360b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Scene\Scenes\Title">
+      <UniqueIdentifier>{7fc416db-78ec-4465-996e-c660cb27747c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\Scenes\Prlg">
+      <UniqueIdentifier>{e88d335a-5bfa-45dd-9fda-c05d15e3d9ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\Scenes\Chapter">
+      <UniqueIdentifier>{86d6fe22-b794-42cb-ba03-e62c7f1f2645}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\Scenes\Prlg\1">
+      <UniqueIdentifier>{8ee81911-10ed-4df2-ac7d-4df0e104ce04}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\Scenes\Prlg\2">
+      <UniqueIdentifier>{fd9899ee-2d7f-4981-bf77-759a34edd6db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\Scenes\Prlg\3">
+      <UniqueIdentifier>{8fea27d9-ac05-481d-a4ec-44516fe96e28}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h">
@@ -171,6 +189,18 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)sszCameraScript.h">
       <Filter>GameObject\Component\Script\Scripts\Camera</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszTitleScene.h">
+      <Filter>Scene\Scenes\Title</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszPrlgScene1.h">
+      <Filter>Scene\Scenes\Prlg\1</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszPrlgScene2.h">
+      <Filter>Scene\Scenes\Prlg\2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszPrlgScene3.h">
+      <Filter>Scene\Scenes\Prlg\3</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)sszMath.cpp">
@@ -247,6 +277,18 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)sszCameraScript.cpp">
       <Filter>GameObject\Component\Script\Scripts\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszTitleScene.cpp">
+      <Filter>Scene\Scenes\Title</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszPrlgScene1.cpp">
+      <Filter>Scene\Scenes\Prlg\1</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszPrlgScene2.cpp">
+      <Filter>Scene\Scenes\Prlg\2</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszPrlgScene3.cpp">
+      <Filter>Scene\Scenes\Prlg\3</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

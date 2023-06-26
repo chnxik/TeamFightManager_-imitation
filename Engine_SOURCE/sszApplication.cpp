@@ -76,7 +76,7 @@ namespace ssz
 		AdjustWindowRect(&rt, WS_OVERLAPPEDWINDOW, false);
 		SetWindowPos(mHwnd, nullptr, 0, 0, rt.right - rt.left, rt.bottom - rt.top, 0);
 		ShowWindow(mHwnd, true);
-		UpdateWindow(mHwnd);
+ 		UpdateWindow(mHwnd);
 	}
 
 }

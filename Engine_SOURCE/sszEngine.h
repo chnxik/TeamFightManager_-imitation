@@ -2,8 +2,6 @@
 #include <string>
 #include <Windows.h>
 #include <assert.h>
-#include <WinUser.h>
-#include <shellscalingapi.h>
 
 #include <vector> // 배열
 #include <list> //링크드리스트 

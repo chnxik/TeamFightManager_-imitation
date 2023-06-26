@@ -54,7 +54,6 @@ namespace ssz
 	void TitleScene::LateUpdate()
 	{
 		Scene::LateUpdate();
-
 	}
 	
 	void TitleScene::Render()

@@ -27,6 +27,11 @@ namespace renderer
 	extern Vertex vertexes[];
 	extern ssz::graphics::ConstantBuffer* constantBuffer[(UINT)eCBType::END];
 
+	extern Microsoft::WRL::ComPtr<ID3D11SamplerState> samplerState[];
+	extern Microsoft::WRL::ComPtr<ID3D11RasterizerState> rasterizerStates[];
+	extern Microsoft::WRL::ComPtr<ID3D11DepthStencilState> depthStencilStates[];
+	extern Microsoft::WRL::ComPtr<ID3D11BlendState> blendStates[];
+
 	void Initialize();
 	void Release();
 }

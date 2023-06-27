@@ -40,7 +40,33 @@ namespace ssz::graphics
 		END,
 	};
 
-		struct GpuBuffer
+	enum class eRSType
+	{
+		SolidBack,
+		SolidFront,
+		SolidNone,
+		WireframeNone,
+		END,
+	};
+
+	enum class eDSType
+	{
+		Less,
+		Greater,
+		NoWrite,
+		None,
+		END,
+	};
+
+	enum class eBSType
+	{
+		Default,
+		AlphaBlend,
+		OneOne,
+		END,
+	};
+
+	struct GpuBuffer
 	{
 		Microsoft::WRL::ComPtr<ID3D11Buffer> buffer;
 		D3D11_BUFFER_DESC desc;

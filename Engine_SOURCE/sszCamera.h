@@ -14,8 +14,8 @@ namespace ssz
 			None,
 		};
 
-		static Matrix GetViewMatrix() {	return mView; }
-		static Matrix GetProjectionMatrix() { return mProjection; }
+		static Matrix GetViewMatrix() {	return View; }
+		static Matrix GetProjectionMatrix() { return Projection; }
 
 		Camera();
 		~Camera();
@@ -27,16 +27,38 @@ namespace ssz
 
 		bool CreateViewMatrix();
 		bool CreateProjectionMatrix(eProjectionType type);
+		void RegisterCameraInRenderer();
 
+		void TurnLayerMask(eLayerType type, bool enable = true);
+		void EnableLayerMasks() { mLayerMask.set(); }
+		void DisableLayerMasks() { mLayerMask.reset(); }
+
+		void AlphaSortGameObjects();
+		void ZSortTransparencyGameObjects();
+		void DivideAlphaBlendGameObjects(const std::vector<GameObject*> gameObjs);
+		void RenderOpaque();
+		void RenderCutOut();
+		void RenderTransparent();
+
+		void EnableDepthStencilState();
+		void DisableDepthStencilState();
 
 	private:
-		static Matrix mView;
-		static Matrix mProjection;
+		static Matrix View;
+		static Matrix Projection;
+
+		Matrix mView;
+		Matrix mProjection;
 
 		eProjectionType mType;
 		float mAspectRatio;
 		float mNear;
 		float mFar;
 		float mSize;
+
+		std::bitset<(UINT)eLayerType::End> mLayerMask;
+		std::vector<GameObject*> mOpaqueGameObjects;
+		std::vector<GameObject*> mCutOutGameObjects;
+		std::vector<GameObject*> mTransparentGameObjects;
 	};
 }

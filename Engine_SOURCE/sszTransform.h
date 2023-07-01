@@ -32,6 +32,8 @@ namespace ssz
 		Vector3 Right() { return mRight; }
 		Vector3 Up() { return mUp; }
 
+		void SetParent(Transform* transform) { mParent = transform; }
+		Transform* GetParent() { return mParent; }
 
 	private:
 		Vector3 mPosition;
@@ -43,5 +45,7 @@ namespace ssz
 		Vector3 mRight;
 
 		Matrix mWorld;
+
+		Transform* mParent;
 	};
 }

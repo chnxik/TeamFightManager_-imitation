@@ -11,6 +11,7 @@ namespace ssz
 		, mPosition(Vector3::Zero)
 		, mRotation(Vector3::Zero)
 		, mScale(Vector3::One)
+		, mParent(nullptr)
 	{
 	}
 
@@ -46,6 +47,11 @@ namespace ssz
 		mUp = Vector3::TransformNormal(Vector3::Up, rotation);
 		mForward = Vector3::TransformNormal(Vector3::Forward, rotation);
 		mRight = Vector3::TransformNormal(Vector3::Right, rotation);
+
+		if (mParent)
+		{
+			mWorld *= mParent->mWorld;
+		}
 	}
 
 	void Transform::Render()

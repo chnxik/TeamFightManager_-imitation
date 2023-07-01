@@ -5,7 +5,7 @@
 
 namespace ssz
 {
-	class GameObject : Entity
+	class GameObject : public Entity
 	{
 	public:
 		enum eState

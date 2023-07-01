@@ -15,6 +15,8 @@ namespace renderer
 	Microsoft::WRL::ComPtr<ID3D11DepthStencilState> depthStencilStates[(UINT)eDSType::END] = {};
 	Microsoft::WRL::ComPtr<ID3D11BlendState> blendStates[(UINT)eBSType::END] = {};
 
+	std::vector<ssz::Camera*> cameras = {};
+
 	void SetupState()
 	{
 #pragma region InputLayout
@@ -196,47 +198,15 @@ namespace renderer
 		spriteshader->Create(eShaderStage::VS, L"SpriteVS.hlsl", "main");
 		spriteshader->Create(eShaderStage::PS, L"SpritePS.hlsl", "main");
 		ssz::Resources::Insert(L"SpriteShader", spriteshader);
-	}
 
-	void LoadMaterial()
-	{
-		// Matrial에 사용할 Shader 호출
-		std::shared_ptr<Shader> spriteshader = ssz::Resources::Find<Shader>(L"SpriteShader");
+		std::shared_ptr<Texture> texture
+			= Resources::Load<Texture>(L"archer", L"..\\Resources\\Texture\\archer.png");
 
-		// [Load Material]
-		// Load Texture
-
-		std::shared_ptr<Texture> TitleBg
-			= Resources::Load<Texture>(L"TitleBg", L"..\\Resources\\Texture\\Title\\Bg\\Spr_Thumnnail.png");
-
-		std::shared_ptr<Texture> Prlg01Bg
-		 	= Resources::Load<Texture>(L"Prlg01Bg", L"..\\Resources\\Texture\\Prlg\\01\\Bg\\Spr_PRLG_Forest_BG_Sky.png");
-
-		std::shared_ptr<Texture> Prlg02Bg
-			= Resources::Load<Texture>(L"Prlg02Bg", L"..\\Resources\\Texture\\Prlg\\02\\Bg\\Spr_PRLG_Forest_BG_InsideShack.png");
-
-		std::shared_ptr<Texture> Prlg03Bg
-		 	= Resources::Load<Texture>(L"Prlg03Bg", L"..\\Resources\\Texture\\Prlg\\03\\Bg\\Spr_PRLG_BG_Sky.png");
-
-		std::shared_ptr<Material> TitleBgMaterial = std::make_shared<Material>();
-		TitleBgMaterial->SetShader(spriteshader);
-		TitleBgMaterial->SetTexture(TitleBg);
-		Resources::Insert(L"TitleBgMaterial", TitleBgMaterial);
-
-		std::shared_ptr<Material> Prlg01BgMaterial = std::make_shared<Material>();
-		Prlg01BgMaterial->SetShader(spriteshader);
-		Prlg01BgMaterial->SetTexture(Prlg01Bg);
-		Resources::Insert(L"Prlg01BgMaterial", Prlg01BgMaterial);
-
-		std::shared_ptr<Material> Prlg02BgMaterial = std::make_shared<Material>();
-		Prlg02BgMaterial->SetShader(spriteshader);
-		Prlg02BgMaterial->SetTexture(Prlg02Bg);
-		Resources::Insert(L"Prlg02BgMaterial", Prlg02BgMaterial);
-
-		std::shared_ptr<Material> Prlg03BgMaterial = std::make_shared<Material>();
-		Prlg03BgMaterial->SetShader(spriteshader);
-		Prlg03BgMaterial->SetTexture(Prlg03Bg);
-		Resources::Insert(L"Prlg03BgMaterial", Prlg03BgMaterial);
+		std::shared_ptr<Material> spriteMaterial = std::make_shared<Material>();
+		spriteMaterial->SetShader(spriteshader);
+		spriteMaterial->SetTexture(texture);
+		spriteMaterial->SetRenderingMode(eRenderingMode::Transparent);
+		Resources::Insert(L"SpriteMaterial", spriteMaterial);
 	}
 
 	void Initialize()
@@ -260,8 +230,20 @@ namespace renderer
 
 		LoadBuffer();
 		LoadShader();
-		LoadMaterial();
 		SetupState();
+	}
+
+	void Render()
+	{
+		for (Camera* cam : cameras)
+		{
+			if (cam == nullptr)
+				continue;
+			
+			cam->Render();
+		}
+
+		cameras.clear();
 	}
 
 	void Release()

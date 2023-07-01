@@ -1,9 +1,16 @@
 ﻿#include "framework.h"
 #include "Editor_Window.h"
-#include "sszApplication.h"
-#include "sszRenderer.h"
-#include "sszResources.h"
-#include "sszSceneManager.h"
+
+#include "..\Engine_SOURCE\sszApplication.h"
+#include "..\Engine_SOURCE\sszRenderer.h"
+#include "..\Engine_SOURCE\sszResources.h"
+#include "LoadScenes.h"
+
+#ifdef _DEBUG
+#pragma comment(lib, "..\\x64\\Debug\\660Engine.lib")
+#else
+#pragma comment(lib, "..\\x64\\Release\\660Engine.lib")
+#endif
 
 ssz::Application application;
 
@@ -121,18 +128,19 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    hInst = hInstance; // 인스턴스 핸들을 전역 변수에 저장합니다.
 
    HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
-      CW_USEDEFAULT, 0, 2560, 1600, nullptr, nullptr, hInstance, nullptr);
+      CW_USEDEFAULT, 0, 1920, 1080, nullptr, nullptr, hInstance, nullptr);
 
    if (!hWnd)
    {
       return FALSE;
    }
 
-   application.SetWindow(hWnd, 2560, 1600);
+   application.SetWindow(hWnd, 1920, 1080);
    ShowWindow(hWnd, nCmdShow);
    UpdateWindow(hWnd);
 
    application.Initialize();
+   ssz::InitializeScenes();
 
    return TRUE;
 }

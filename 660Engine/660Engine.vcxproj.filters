@@ -2,8 +2,37 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClInclude Include="framework.h" />
+    <ClInclude Include="LoadScenes.h">
+      <Filter>Contents\Load</Filter>
+    </ClInclude>
+    <ClInclude Include="sszCameraScript.h">
+      <Filter>Contents\Script</Filter>
+    </ClInclude>
+    <ClInclude Include="sszPlayScene.h">
+      <Filter>Contents\Scene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="660Engine.cpp" />
+    <ClCompile Include="sszCameraScript.cpp">
+      <Filter>Contents\Script</Filter>
+    </ClCompile>
+    <ClCompile Include="sszPlayScene.cpp">
+      <Filter>Contents\Scene</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Contents">
+      <UniqueIdentifier>{b8655c56-a3c2-406d-871d-d73f4d0ea2b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Load">
+      <UniqueIdentifier>{57d2f4aa-3152-4ae1-8282-a3ba908a4ae2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Scene">
+      <UniqueIdentifier>{b7ad5cba-665c-4e9a-b881-4a85724f2793}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Script">
+      <UniqueIdentifier>{c8ed79e1-3e5e-4b74-b9b3-887ec0621126}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>

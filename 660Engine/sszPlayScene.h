@@ -1,23 +1,19 @@
 #pragma once
-#include "sszScene.h"
+#include "..\Engine_SOURCE\sszScene.h"
 
 namespace ssz
 {
-	class TitleScene : public Scene
+	class PlayScene : public Scene
 	{
 	public:
-		TitleScene();
-		virtual ~TitleScene();
+		PlayScene();
+		virtual ~PlayScene();
 
 		virtual void Initialize() override;
 		virtual void Update() override;
 		virtual void LateUpdate() override;
 		virtual void Render() override;
 
-		virtual void OnEnter();
-		virtual void OnExit();
-
 	private:
-
 	};
 }

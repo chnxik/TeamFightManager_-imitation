@@ -52,9 +52,6 @@
     <Filter Include="Scene\Base">
       <UniqueIdentifier>{c0ae48bd-0316-4616-a1fe-3c256129112a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Scene\Scenes">
-      <UniqueIdentifier>{c2200a9e-4daa-45e4-8052-c7ac7a51d625}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Resource\Texture">
       <UniqueIdentifier>{438adc0b-25e4-4974-964c-70b67658f270}</UniqueIdentifier>
     </Filter>
@@ -70,35 +67,20 @@
     <Filter Include="GameObject\Component\Camera">
       <UniqueIdentifier>{6872842a-e792-4423-b2f4-64434c3714a0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="GameObject\Component\Script\Scripts">
-      <UniqueIdentifier>{1a9c9940-85f8-4234-a647-a53a00f713aa}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="GameObject\Component\Script\Scripts\Camera">
-      <UniqueIdentifier>{b617bb62-ff54-49c0-8b83-2f297885129a}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Resource\Mesh">
       <UniqueIdentifier>{49c0cff5-79a0-4bfa-9c54-587c864874a9}</UniqueIdentifier>
     </Filter>
     <Filter Include="Resource\Shader">
       <UniqueIdentifier>{a7e297a9-001e-409c-967c-63350737360b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Scene\Scenes\Title">
-      <UniqueIdentifier>{7fc416db-78ec-4465-996e-c660cb27747c}</UniqueIdentifier>
+    <Filter Include="GameObject\Component\Base">
+      <UniqueIdentifier>{2a58b344-3259-46d2-9932-72a3f7ea07db}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Scene\Scenes\Prlg">
-      <UniqueIdentifier>{e88d335a-5bfa-45dd-9fda-c05d15e3d9ac}</UniqueIdentifier>
+    <Filter Include="Graphics\GraphicDevice">
+      <UniqueIdentifier>{39bdd5a9-2d7c-4cee-93a2-2411c8917b3c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Scene\Scenes\Chapter">
-      <UniqueIdentifier>{86d6fe22-b794-42cb-ba03-e62c7f1f2645}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Scene\Scenes\Prlg\1">
-      <UniqueIdentifier>{8ee81911-10ed-4df2-ac7d-4df0e104ce04}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Scene\Scenes\Prlg\2">
-      <UniqueIdentifier>{fd9899ee-2d7f-4981-bf77-759a34edd6db}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Scene\Scenes\Prlg\3">
-      <UniqueIdentifier>{8fea27d9-ac05-481d-a4ec-44516fe96e28}</UniqueIdentifier>
+    <Filter Include="Graphics\Renderer">
+      <UniqueIdentifier>{45fad881-649e-4b99-a570-702fd2505a91}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -135,12 +117,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)sszGraphics.h">
       <Filter>Graphics</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)sszGraphicDevice_Dx11.h">
-      <Filter>Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)sszRenderer.h">
-      <Filter>Graphics</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)sszMesh.h">
       <Filter>Resource\Mesh</Filter>
     </ClInclude>
@@ -156,9 +132,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)sszGameObject.h">
       <Filter>GameObject</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)sszComponent.h">
-      <Filter>GameObject\Component</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)sszScript.h">
       <Filter>GameObject\Component\Script</Filter>
     </ClInclude>
@@ -167,9 +140,6 @@
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)sszScene.h">
       <Filter>Scene\Base</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)sszPlayScene.h">
-      <Filter>Scene\Scenes</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)sszTexture.h">
       <Filter>Resource\Texture</Filter>
@@ -186,20 +156,14 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)sszCamera.h">
       <Filter>GameObject\Component\Camera</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)sszCameraScript.h">
-      <Filter>GameObject\Component\Script\Scripts\Camera</Filter>
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszComponent.h">
+      <Filter>GameObject\Component\Base</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)sszTitleScene.h">
-      <Filter>Scene\Scenes\Title</Filter>
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszGraphicDevice_Dx11.h">
+      <Filter>Graphics\GraphicDevice</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)sszPrlgScene1.h">
-      <Filter>Scene\Scenes\Prlg\1</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)sszPrlgScene2.h">
-      <Filter>Scene\Scenes\Prlg\2</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)sszPrlgScene3.h">
-      <Filter>Scene\Scenes\Prlg\3</Filter>
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszRenderer.h">
+      <Filter>Graphics\Renderer</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -224,12 +188,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)sszResources.cpp">
       <Filter>Resource\Resources</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)sszGraphicDevice_Dx11.cpp">
-      <Filter>Graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)sszRenderer.cpp">
-      <Filter>Graphics</Filter>
-    </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)sszMesh.cpp">
       <Filter>Resource\Mesh</Filter>
     </ClCompile>
@@ -245,9 +203,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)sszGameObject.cpp">
       <Filter>GameObject</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)sszComponent.cpp">
-      <Filter>GameObject\Component</Filter>
-    </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)sszScript.cpp">
       <Filter>GameObject\Component\Script</Filter>
     </ClCompile>
@@ -256,9 +211,6 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)sszScene.cpp">
       <Filter>Scene\Base</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)sszPlayScene.cpp">
-      <Filter>Scene\Scenes</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)sszTexture.cpp">
       <Filter>Resource\Texture</Filter>
@@ -275,20 +227,14 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)sszCamera.cpp">
       <Filter>GameObject\Component\Camera</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)sszCameraScript.cpp">
-      <Filter>GameObject\Component\Script\Scripts\Camera</Filter>
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszComponent.cpp">
+      <Filter>GameObject\Component\Base</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)sszTitleScene.cpp">
-      <Filter>Scene\Scenes\Title</Filter>
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszGraphicDevice_Dx11.cpp">
+      <Filter>Graphics\GraphicDevice</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)sszPrlgScene1.cpp">
-      <Filter>Scene\Scenes\Prlg\1</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)sszPrlgScene2.cpp">
-      <Filter>Scene\Scenes\Prlg\2</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)sszPrlgScene3.cpp">
-      <Filter>Scene\Scenes\Prlg\3</Filter>
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszRenderer.cpp">
+      <Filter>Graphics\Renderer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

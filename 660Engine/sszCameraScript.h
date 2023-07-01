@@ -1,6 +1,5 @@
 #pragma once
-#include "sszScript.h"
-
+#include <sszScript.h>
 
 namespace ssz
 {

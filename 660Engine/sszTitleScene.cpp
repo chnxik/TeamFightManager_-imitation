@@ -15,6 +15,7 @@
 
 // Script
 #include "sszArrangementScript.h"
+#include "sszCursorScript.h"
 
 
 namespace ssz
@@ -37,6 +38,7 @@ namespace ssz
 			std::shared_ptr<Texture> stadiumtSkyTex = Resources::Load<Texture>(L"StadiumSkyTex", L"..\\Resources\\useResource\\stadium\\stadium_sky_bg.png");
 			std::shared_ptr<Texture> stadiumTex = Resources::Load<Texture>(L"StadiumTex", L"..\\Resources\\useResource\\stadium\\stadium.png");
 			std::shared_ptr<Texture> TitleLogoTex = Resources::Load<Texture>(L"TitleLogoTex", L"..\\Resources\\useResource\\Title\\logo_tp.png");
+			std::shared_ptr<Texture> CursorTex = Resources::Load<Texture>(L"CursorTex", L"..\\Resources\\useResource\\Cursor\\mouse_cursor.png");
 
 			// Make Material
 			std::shared_ptr<Material> TitleBg_1_Mt = std::make_shared<Material>();
@@ -62,6 +64,12 @@ namespace ssz
 			TitleLogo_Mt->SetTexture(TitleLogoTex);
 			TitleLogo_Mt->SetRenderingMode(eRenderingMode::Transparent);
 			Resources::Insert(L"TitleLogoMt", TitleLogo_Mt);
+
+			std::shared_ptr<Material> Cursor_Mt = std::make_shared<Material>();
+			Cursor_Mt->SetShader(SpriteShader);
+			Cursor_Mt->SetTexture(CursorTex);
+			Cursor_Mt->SetRenderingMode(eRenderingMode::Transparent);
+			Resources::Insert(L"CursorMt", Cursor_Mt);
 		}
 #pragma endregion
 #pragma region Create Object for this Scene
@@ -69,7 +77,7 @@ namespace ssz
 		{
 			GameObject* TitleBg = new GameObject();
 			TitleBg->SetName(L"TitleBg");
-			AddGameObject(eLayerType::Player, TitleBg);
+			AddGameObject(eLayerType::BackGround, TitleBg);
 
 			MeshRenderer* TitleBg_mr = TitleBg->AddComponent<MeshRenderer>();
 			TitleBg_mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
@@ -80,7 +88,7 @@ namespace ssz
 
 			GameObject* Stadium = new GameObject();
 			Stadium->SetName(L"Stadium");
-			AddGameObject(eLayerType::Player, Stadium);
+			AddGameObject(eLayerType::BackGround, Stadium);
 
 			MeshRenderer* Stadium_Mr = Stadium->AddComponent<MeshRenderer>();
 			Stadium_Mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
@@ -90,7 +98,7 @@ namespace ssz
 
 			GameObject* StadiumSky = new GameObject();
 			StadiumSky->SetName(L"StadiumSky");
-			AddGameObject(eLayerType::Player, StadiumSky);
+			AddGameObject(eLayerType::BackGround, StadiumSky);
 
 			MeshRenderer* StadimSky_mr = StadiumSky->AddComponent<MeshRenderer>();
 			StadimSky_mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
@@ -101,7 +109,7 @@ namespace ssz
 
 			GameObject* TitleLogo = new GameObject();
 			TitleLogo->SetName(L"TitleLogo");
-			AddGameObject(eLayerType::Player, TitleLogo);
+			AddGameObject(eLayerType::BackGround, TitleLogo);
 
 			MeshRenderer* TitleLogo_mr = TitleLogo->AddComponent<MeshRenderer>();
 			TitleLogo_mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
@@ -109,9 +117,25 @@ namespace ssz
 			TitleLogo->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.242f, 1.011f));
 			TitleLogo->GetComponent<Transform>()->SetScale(Vector3(0.738f, 0.271f, 1.f));
 
+		}
+
+		{
+			GameObject* Cursor = new GameObject();
+			Cursor->SetName(L"Cursor");
+			AddGameObject(eLayerType::Cursor, Cursor);
+
+			MeshRenderer* Cursor_mr = Cursor->AddComponent<MeshRenderer>();
+			Cursor_mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
+			Cursor_mr->SetMaterial(Resources::Find<Material>(L"CursorMt"));
+			Cursor->GetComponent<Transform>()->SetPosition(Vector3(-0.9f, 0.0f, 0.01f));
+			Cursor->GetComponent<Transform>()->SetScale(Vector3(0.032f, 0.032f, 1.0f));
+			
 			// 오브젝트 배치용 스크립트
-			// ArrangementScript* ArScript = TitleLogo->AddComponent<ArrangementScript>();
+			// ArrangementScript* ArScript = Cursor->AddComponent<ArrangementScript>();
 			// ArScript->SetDefault();
+			
+
+			Cursor->AddComponent<CursorScript>();
 		}
 
 		// Main Camera
@@ -122,6 +146,19 @@ namespace ssz
 			camera->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, -10.f));
 			Camera* cameraComp = camera->AddComponent<Camera>();
 			cameraComp->TurnLayerMask(eLayerType::UI, false);
+		}
+
+
+		// UI Camera
+		{
+			GameObject* UIcamera = new GameObject();
+			UIcamera->SetName(L"UICamera");
+			AddGameObject(eLayerType::UI, UIcamera);
+			UIcamera->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, -10.f));
+			Camera* cameraComp = UIcamera->AddComponent<Camera>();
+			cameraComp->DisableLayerMasks();
+			cameraComp->TurnLayerMask(eLayerType::UI, true);
+			cameraComp->TurnLayerMask(eLayerType::Cursor, true);
 		}
 #pragma endregion
 	}

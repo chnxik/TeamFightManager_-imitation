@@ -83,7 +83,7 @@ namespace ssz
 		{
 			GameObject* CutScene01 = new GameObject();
 			CutScene01->SetName(L"CutScene01");
-			AddGameObject(eLayerType::Player, CutScene01);
+			AddGameObject(eLayerType::BackGround, CutScene01);
 
 			MeshRenderer* CutScene01_mr = CutScene01->AddComponent<MeshRenderer>();
 			CutScene01_mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
@@ -94,7 +94,7 @@ namespace ssz
 
 			GameObject* CutScene02 = new GameObject();
 			CutScene02->SetName(L"CutScene02");
-			AddGameObject(eLayerType::Player, CutScene02);
+			AddGameObject(eLayerType::BackGround, CutScene02);
 
 			MeshRenderer* CutScene02_mr = CutScene02->AddComponent<MeshRenderer>();
 			CutScene02_mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
@@ -104,7 +104,7 @@ namespace ssz
 
 			GameObject* CutScene03 = new GameObject();
 			CutScene03->SetName(L"CutScene03");
-			AddGameObject(eLayerType::Player, CutScene03);
+			AddGameObject(eLayerType::BackGround, CutScene03);
 
 			MeshRenderer* CutScene03_mr = CutScene03->AddComponent<MeshRenderer>();
 			CutScene03_mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
@@ -114,7 +114,7 @@ namespace ssz
 
 			GameObject* CutScene04 = new GameObject();
 			CutScene04->SetName(L"CutScene04");
-			AddGameObject(eLayerType::Player, CutScene04);
+			AddGameObject(eLayerType::BackGround, CutScene04);
 
 			MeshRenderer* CutScene04_mr = CutScene04->AddComponent<MeshRenderer>();
 			CutScene04_mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
@@ -124,7 +124,7 @@ namespace ssz
 
 			GameObject* CutScene05 = new GameObject();
 			CutScene05->SetName(L"CutScene05");
-			AddGameObject(eLayerType::Player, CutScene05);
+			AddGameObject(eLayerType::BackGround, CutScene05);
 
 			MeshRenderer* CutScene05_mr = CutScene05->AddComponent<MeshRenderer>();
 			CutScene05_mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
@@ -134,7 +134,7 @@ namespace ssz
 
 			GameObject* CutScene06 = new GameObject();
 			CutScene06->SetName(L"CutScene06");
-			AddGameObject(eLayerType::Player, CutScene06);
+			AddGameObject(eLayerType::BackGround, CutScene06);
 
 			MeshRenderer* CutScene06_mr = CutScene06->AddComponent<MeshRenderer>();
 			CutScene06_mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
@@ -158,6 +158,17 @@ namespace ssz
 			camera->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, -10.f));
 			Camera* cameraComp = camera->AddComponent<Camera>();
 			cameraComp->TurnLayerMask(eLayerType::UI, false);
+		}
+
+		// UI Camera
+		{
+			GameObject* UIcamera = new GameObject();
+			UIcamera->SetName(L"UICamera");
+			AddGameObject(eLayerType::UI, UIcamera);
+			UIcamera->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, -10.f));
+			Camera* cameraComp = UIcamera->AddComponent<Camera>();
+			cameraComp->DisableLayerMasks();
+			cameraComp->TurnLayerMask(eLayerType::UI, true);
 		}
 #pragma endregion
 

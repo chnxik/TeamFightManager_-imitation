@@ -38,32 +38,33 @@ namespace ssz
 	void ArrangementScript::Update()
 	{
 		// Position
-		if (ssz::Input::GetKey(eKeyCode::A))
+		if (Input::GetKey(eKeyCode::A))
 		{
-			if (ssz::Input::GetKey(eKeyCode::UP))		{ ArrangePos.y += 1.f * (float)ssz::Time::DeltaTime(); }
-			if (ssz::Input::GetKey(eKeyCode::DOWN))		{ ArrangePos.y -= 1.f * (float)ssz::Time::DeltaTime(); }
-			if (ssz::Input::GetKey(eKeyCode::LEFT))		{ ArrangePos.x -= 1.f * (float)ssz::Time::DeltaTime(); }
-			if (ssz::Input::GetKey(eKeyCode::RIGHT))	{ ArrangePos.x += 1.f * (float)ssz::Time::DeltaTime(); }
+			if (Input::GetKey(eKeyCode::UP))	{ ArrangePos.y += 1.f * (float)Time::DeltaTime(); }
+			if (Input::GetKey(eKeyCode::DOWN))	{ ArrangePos.y -= 1.f * (float)Time::DeltaTime(); }
+			if (Input::GetKey(eKeyCode::LEFT))	{ ArrangePos.x -= 1.f * (float)Time::DeltaTime(); }
+			if (Input::GetKey(eKeyCode::RIGHT))	{ ArrangePos.x += 1.f * (float)Time::DeltaTime(); }
 		}
 
 		
 		// Scale
-		else if (ssz::Input::GetKey(eKeyCode::S))
+		else if (Input::GetKey(eKeyCode::S))
 		{
-			if (ssz::Input::GetKey(eKeyCode::UP))		{ fradius += 1.f *		(float)ssz::Time::DeltaTime();}
-			if (ssz::Input::GetKey(eKeyCode::DOWN))		{ fradius -= 1.f *		(float)ssz::Time::DeltaTime();}
-			if (ssz::Input::GetKey(eKeyCode::LEFT))		{ fradius -= 0.01f *	(float)ssz::Time::DeltaTime();}
-			if (ssz::Input::GetKey(eKeyCode::RIGHT))	{ fradius += 0.01f *	(float)ssz::Time::DeltaTime(); }
+			if (Input::GetKey(eKeyCode::UP))	{ fradius += 1.f *		(float)Time::DeltaTime();}
+			if (Input::GetKey(eKeyCode::DOWN))	{ fradius -= 1.f *		(float)Time::DeltaTime();}
+			if (Input::GetKey(eKeyCode::LEFT))	{ fradius -= 0.01f *	(float)Time::DeltaTime();}
+			if (Input::GetKey(eKeyCode::RIGHT))	{ fradius += 0.01f *	(float)Time::DeltaTime(); }
 		}
 
 		else if (ssz::Input::GetKey(eKeyCode::D))
 		{
-			if (ssz::Input::GetKey(eKeyCode::UP)) { fradiusy += 1.f * (float)ssz::Time::DeltaTime(); }
-			if (ssz::Input::GetKey(eKeyCode::DOWN)) { fradiusy -= 1.f * (float)ssz::Time::DeltaTime(); }
-			if (ssz::Input::GetKey(eKeyCode::LEFT)) { fradiusx -= 1.f * (float)ssz::Time::DeltaTime(); }
-			if (ssz::Input::GetKey(eKeyCode::RIGHT)) { fradiusx += 1.f * (float)ssz::Time::DeltaTime(); }
+			if (Input::GetKey(eKeyCode::UP))	{ fradiusy += 1.f * (float)Time::DeltaTime(); }
+			if (Input::GetKey(eKeyCode::DOWN))	{ fradiusy -= 1.f * (float)Time::DeltaTime(); }
+			if (Input::GetKey(eKeyCode::LEFT))	{ fradiusx -= 1.f * (float)Time::DeltaTime(); }
+			if (Input::GetKey(eKeyCode::RIGHT)) { fradiusx += 1.f * (float)Time::DeltaTime(); }
 		}
 
+		
 
 		Vector3 FinalPos = ArrangePos;
 		Vector3 FinalScale = {};
@@ -74,6 +75,11 @@ namespace ssz
 		Transform* OwnerTf = GetOwner()->GetComponent<Transform>();
 		OwnerTf->SetPosition(ArrangePos);
 		OwnerTf->SetScale(FinalScale);
+
+		if (Input::GetKey(eKeyCode::LBUTTON))
+		{
+			int a = 0;
+		}
 	}
 	
 }

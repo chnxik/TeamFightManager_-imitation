@@ -168,6 +168,7 @@
     <ClInclude Include="LoadScenes.h" />
     <ClInclude Include="sszArrangementScript.h" />
     <ClInclude Include="sszCameraScript.h" />
+    <ClInclude Include="sszCursorScript.h" />
     <ClInclude Include="sszPrlgScene.h" />
     <ClInclude Include="sszTitleScene.h" />
   </ItemGroup>
@@ -175,6 +176,7 @@
     <ClCompile Include="660Engine.cpp" />
     <ClCompile Include="sszArrangementScript.cpp" />
     <ClCompile Include="sszCameraScript.cpp" />
+    <ClCompile Include="sszCursorScript.cpp" />
     <ClCompile Include="sszPrlgScene.cpp" />
     <ClCompile Include="sszTitleScene.cpp" />
   </ItemGroup>

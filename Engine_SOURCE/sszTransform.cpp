@@ -48,7 +48,7 @@ namespace ssz
 		mForward = Vector3::TransformNormal(Vector3::Forward, rotation);
 		mRight = Vector3::TransformNormal(Vector3::Right, rotation);
 
-		if (mParent)
+		if (mParent != nullptr)
 		{
 			mWorld *= mParent->mWorld;
 		}

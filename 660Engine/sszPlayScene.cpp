@@ -32,21 +32,40 @@ namespace ssz
 			mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
 			mr->SetMaterial(Resources::Find<Material>(L"SpriteMaterial"));
 			player->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, 1.0001f));
+		
+			GameObject* player2 = new GameObject();
+			player2->SetName(L"Child");
+			AddGameObject(eLayerType::Player, player2);
+			
+			MeshRenderer* mr2 = player2->AddComponent<MeshRenderer>();
+			mr2->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
+			mr2->SetMaterial(Resources::Find<Material>(L"SpriteMaterial"));
+			player2->GetComponent<Transform>()->SetPosition(Vector3(1.0f, 0.0f, 1.0001f));
+			 
+			player2->GetComponent<Transform>()->SetParent(player->GetComponent<Transform>()); // player2가 가진 Transform Component의 부모를 player의 Component로 지정한다.
+			
+			player->GetComponent<Transform>()->SetRotation(Vector3(0.0f, 0.0f, DtoR(180.f)));
 		}
 
 		// Main Camera
 		{
 			GameObject* camera = new GameObject();
-			AddGameObject(eLayerType::Player, camera);
+			camera->SetName(L"MainCamera");
+			AddGameObject(eLayerType::UI, camera);
 			camera->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, -10.0f));
 			Camera* cameraComp = camera->AddComponent<Camera>();
-			cameraComp->TurnLayerMask(eLayerType::UI, false);
+			cameraComp->TurnLayerMask(eLayerType::UI, false);	// UI Layer 는 그리지 않는다.
 			camera->AddComponent<CameraScript>();
 		}
 
 		// UI Camera
 		{
-
+			GameObject* camera = new GameObject();
+			camera->SetName(L"UICamera");
+			AddGameObject(eLayerType::Player, camera);
+			camera->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, -10.0f));
+			Camera* cameraComp = camera->AddComponent<Camera>();
+			cameraComp->TurnLayerMask(eLayerType::Player, false); // Player Layer 는 그리지 않는다.
 		}
 	}
 

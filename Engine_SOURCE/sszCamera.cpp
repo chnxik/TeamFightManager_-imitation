@@ -14,7 +14,7 @@ namespace ssz
 	bool CompareZSort(GameObject* a, GameObject* b)
 	{
 		if (a->GetComponent<Transform>()->GetPosition().z
-			< b->GetComponent<Transform>()->GetPosition().z)
+			<= b->GetComponent<Transform>()->GetPosition().z)
 			return false;
 
 		return true;
@@ -174,7 +174,6 @@ namespace ssz
 				continue;
 
 			std::shared_ptr<Material> mt = mr->GetMaterial();
-
 			eRenderingMode mode = mt->GetRenderingMode();
 			switch (mode)
 			{
@@ -199,6 +198,7 @@ namespace ssz
 		{
 			if (gameObj == nullptr)
 				continue;
+
 			gameObj->Render();
 		}
 	}

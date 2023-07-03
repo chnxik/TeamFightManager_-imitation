@@ -2,6 +2,7 @@
 #include "sszEngine.h"
 #include <math.h>
 
+#define __PI 3.141592f
 
 //https://github.com/microsoft/DirectXMath
 #if __has_include("DirectXMath.h")
@@ -25,6 +26,11 @@ namespace ssz::math
     struct Matrix;
     struct Quaternion;
     struct Plane;
+
+    //------------------------------------------------------------------------------
+    // ssz custom
+    inline float DtoR(float degree) { return degree * (__PI / 180.f); }
+    inline float RtoD(float radian) { return radian * (180.f / __PI); }
 
     //------------------------------------------------------------------------------
     // 2D rectangle

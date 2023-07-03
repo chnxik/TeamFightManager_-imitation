@@ -166,13 +166,17 @@
   <ItemGroup>
     <ClInclude Include="framework.h" />
     <ClInclude Include="LoadScenes.h" />
+    <ClInclude Include="sszArrangementScript.h" />
     <ClInclude Include="sszCameraScript.h" />
-    <ClInclude Include="sszPlayScene.h" />
+    <ClInclude Include="sszPrlgScene.h" />
+    <ClInclude Include="sszTitleScene.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="660Engine.cpp" />
+    <ClCompile Include="sszArrangementScript.cpp" />
     <ClCompile Include="sszCameraScript.cpp" />
-    <ClCompile Include="sszPlayScene.cpp" />
+    <ClCompile Include="sszPrlgScene.cpp" />
+    <ClCompile Include="sszTitleScene.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

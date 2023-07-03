@@ -199,14 +199,14 @@ namespace renderer
 		spriteshader->Create(eShaderStage::PS, L"SpritePS.hlsl", "main");
 		ssz::Resources::Insert(L"SpriteShader", spriteshader);
 
-		std::shared_ptr<Texture> texture
-			= Resources::Load<Texture>(L"TitleBg", L"..\\Resources\\useResource\\Title\\teamfight_manager_title_bg.png");
-
-		std::shared_ptr<Material> spriteMaterial = std::make_shared<Material>();
-		spriteMaterial->SetShader(spriteshader);
-		spriteMaterial->SetTexture(texture);
-		spriteMaterial->SetRenderingMode(eRenderingMode::Transparent);
-		Resources::Insert(L"SpriteMaterial", spriteMaterial);
+		// std::shared_ptr<Texture> texture
+		// 	= Resources::Load<Texture>(L"TitleBg", L"..\\Resources\\useResource\\Title\\teamfight_manager_title_bg.png");
+		// 
+		// std::shared_ptr<Material> spriteMaterial = std::make_shared<Material>();
+		// spriteMaterial->SetShader(spriteshader);
+		// spriteMaterial->SetTexture(texture);
+		// spriteMaterial->SetRenderingMode(eRenderingMode::Transparent);
+		// Resources::Insert(L"SpriteMaterial", spriteMaterial);
 	}
 
 	void Initialize()

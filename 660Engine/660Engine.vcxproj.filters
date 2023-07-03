@@ -6,19 +6,31 @@
       <Filter>Contents\Load</Filter>
     </ClInclude>
     <ClInclude Include="sszCameraScript.h">
-      <Filter>Contents\Script</Filter>
+      <Filter>Contents\Script\Camera</Filter>
     </ClInclude>
-    <ClInclude Include="sszPlayScene.h">
-      <Filter>Contents\Scene</Filter>
+    <ClInclude Include="sszArrangementScript.h">
+      <Filter>Contents\Script\Arrangement</Filter>
+    </ClInclude>
+    <ClInclude Include="sszTitleScene.h">
+      <Filter>Contents\Scene\Title</Filter>
+    </ClInclude>
+    <ClInclude Include="sszPrlgScene.h">
+      <Filter>Contents\Scene\Prlg</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="660Engine.cpp" />
     <ClCompile Include="sszCameraScript.cpp">
-      <Filter>Contents\Script</Filter>
+      <Filter>Contents\Script\Camera</Filter>
     </ClCompile>
-    <ClCompile Include="sszPlayScene.cpp">
-      <Filter>Contents\Scene</Filter>
+    <ClCompile Include="sszArrangementScript.cpp">
+      <Filter>Contents\Script\Arrangement</Filter>
+    </ClCompile>
+    <ClCompile Include="sszTitleScene.cpp">
+      <Filter>Contents\Scene\Title</Filter>
+    </ClCompile>
+    <ClCompile Include="sszPrlgScene.cpp">
+      <Filter>Contents\Scene\Prlg</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -33,6 +45,21 @@
     </Filter>
     <Filter Include="Contents\Script">
       <UniqueIdentifier>{c8ed79e1-3e5e-4b74-b9b3-887ec0621126}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Scene\Title">
+      <UniqueIdentifier>{9a216870-610a-4d23-a309-e1ab936e847b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Script\Camera">
+      <UniqueIdentifier>{b8d5be9b-621b-4cbc-8a47-e3e782c95e0c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Script\Arrangement">
+      <UniqueIdentifier>{5ae5190e-3062-45e8-9c9e-fdcbcd1e86f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Scene\Prlg">
+      <UniqueIdentifier>{46c32d6a-9e33-4f3b-9d31-1d46a507cc7c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Scene\Loby">
+      <UniqueIdentifier>{68106073-b93c-49ad-ba42-3fcba360800f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

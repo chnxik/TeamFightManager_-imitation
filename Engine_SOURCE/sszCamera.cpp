@@ -29,7 +29,7 @@ namespace ssz
 		, mAspectRatio(1.0f)
 		, mNear(1.0f)
 		, mFar(1000.0f)
-		, mSize(5.0f)
+		, mSize(1.0f)
 		, mLayerMask{}
 		, mOpaqueGameObjects{}
 		, mCutOutGameObjects{}
@@ -103,7 +103,7 @@ namespace ssz
 		GetClientRect(application.GetHwnd(), &rect);
 		float width =	(float)(rect.right - rect.left);
 		float height =	(float)(rect.bottom - rect.top);
-		mAspectRatio = width / height;
+		mAspectRatio = width / height; // Á¾È¾ºñ
 
 		if (type == eProjectionType::OrthoGraphic)
 		{

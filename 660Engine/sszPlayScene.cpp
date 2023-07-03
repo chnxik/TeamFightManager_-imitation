@@ -57,7 +57,7 @@ namespace ssz
 			GameObject* camera = new GameObject();
 			camera->SetName(L"MainCamera");
 			AddGameObject(eLayerType::UI, camera);
-			camera->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.15f, -10.0f));
+			camera->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, -10.0f));
 			Camera* cameraComp = camera->AddComponent<Camera>();
 			cameraComp->TurnLayerMask(eLayerType::UI, false);	// UI Layer 는 그리지 않는다.
 			camera->AddComponent<CameraScript>();

@@ -1,5 +1,6 @@
 #pragma once
 #include "..\Engine_SOURCE\sszScene.h"
+#include "..\Engine_SOURCE\sszGameObject.h"
 
 namespace ssz
 {
@@ -15,5 +16,6 @@ namespace ssz
 		virtual void Render() override;
 
 	private:
+		GameObject* Title;
 	};
 }

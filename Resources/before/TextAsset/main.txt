@@ -1,8 +1,0 @@
-#Empty:Main {
-    @Pos: {
-        @Value: 8, 12;
-        @Size: 352, 23;
-        @Pivot: 0, 0;
-        @Anchor: 0, 0;
-    }
-}

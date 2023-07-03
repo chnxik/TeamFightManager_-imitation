@@ -1,8 +1,0 @@
-#I18nLabel:NewsResponseNone {
-    @Pos: {
-        @Size: 282, 60;
-    }
-
-    @XAlign: "Center";
-    @YAlign: "Center";
-}

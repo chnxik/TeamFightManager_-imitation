@@ -1,8 +1,0 @@
-#Label:LobbyChat {
-    @Pos: {
-        @Size: 363, 10;
-    }
-
-    @Text: "test";
-    @Size: 4;
-}

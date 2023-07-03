@@ -1,9 +1,0 @@
-#Label:LeagueChat {
-    @Pos: {
-        @Size: 151, 10;
-    }
-
-    @Text: "test";
-    @Size: 3;
-    @YAlign: "Center";
-}

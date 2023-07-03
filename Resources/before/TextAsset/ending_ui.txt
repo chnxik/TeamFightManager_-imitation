@@ -1,0 +1,133 @@
+#Empty:EndingUI {
+    @Pos: {
+        @Size: 640, 360;
+    }
+
+    #Empty:CenterPanel {
+        @Pos: {
+            @Anchor: 0.5, 1;
+            @Pivot: 0.5, 1;
+            @Value: 0, -71;
+            @Size: 250, 102;
+        }
+
+        #I18nLabel:Win {
+            @Pos: {
+                @Pivot: 0.5, 1;
+                @Anchor: 0.5, 1;
+                @Value: 0, -8;
+                @Size: 160, 20;
+            }
+
+            @Text: "stadium.win";
+            @Size: 6;
+            @Color: "RankWin";
+            @XAlign: "Center";
+            @YAlign: "Center";
+        }
+
+        #Image:Logo {
+            @Pos: {
+                @Pivot: 0.5, 1;
+                @Anchor: 0.5, 1;
+                @Value: 0, -34.5;
+                @Size: 40, 40;
+            }
+        }
+
+        #Label:Name {
+            @Pos: {
+                @Pivot: 0.5, 1;
+                @Anchor: 0.5, 1;
+                @Value: 0, -81;
+                @Size: 138, 13;
+            }
+
+            @Text: "우는 코끼리";
+            @XAlign: "Center";
+            @YAlign: "Center";
+            @Size: 4;
+        }
+    }
+
+    #Empty:BlueTeam {
+        @Pos: {
+            @Anchor: 0, 1;
+            @Pivot: 0, 1;
+            @Value: 51, -84;
+            @Size: 136, 23;
+        }
+
+        #Image:Logo {
+            @Pos: {
+                @Anchor: 1, 0.5;
+                @Pivot: 1, 0.5;
+                @Value: -1.5, 0;
+                @Size: 20, 20;
+            }
+        }
+
+        #Label:Name {
+            @Pos: {
+                @Anchor: 1, 0.5;
+                @Pivot: 1, 0.5;
+                @Value: -28, 0;
+                @Size: 100, 20;
+            }
+
+            @Text: "test";
+            @Size: 4;
+            @XAlign: "Right";
+            @YAlign: "Center";
+        }
+    }
+
+    #Empty:RedTeam {
+        @Pos: {
+            @Anchor: 1, 1;
+            @Pivot: 1, 1;
+            @Value: -51, -84;
+            @Size: 136, 23;
+        }
+
+        #Image:Logo {
+            @Pos: {
+                @Anchor: 0, 0.5;
+                @Pivot: 0, 0.5;
+                @Value: 1.5, 0;
+                @Size: 20, 20;
+            }
+        }
+        #Label:Name {
+            @Pos: {
+                @Anchor: 0, 0.5;
+                @Pivot: 0, 0.5;
+                @Value: 28, 0;
+                @Size: 100, 20;
+            }
+
+            @Text: "test";
+            @Size: 4;
+            @XAlign: "Left";
+            @YAlign: "Center";
+        }
+    }
+
+    #Empty:BlueCards {
+        @Pos: {
+            @Anchor: 0.5, 1;
+            @Pivot: 1, 1;
+            @Value: -131.666666, -113.3333333;
+            @Size: 150, 57.3333333;
+        }
+    }
+
+    #Empty:RedCards {
+        @Pos: {
+            @Anchor: 0.5, 1;
+            @Pivot: 0, 1;
+            @Value: 131.666666, -113.3333333;
+            @Size: 150, 57.3333333;
+        }
+    }
+}

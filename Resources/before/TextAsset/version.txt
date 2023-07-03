@@ -1,0 +1,14 @@
+#Label:Version {
+    @Pos: {
+        @Value: -10, 10;
+        @Size: 0, 20;
+        @Pivot: 1, 0;
+        @Anchor: 1, 0;
+    }
+
+    @XAlign: "Right";
+    @YAlign: "Center";
+    @XFitter: true;
+    @Color: "White";
+    @Size: 7;
+}

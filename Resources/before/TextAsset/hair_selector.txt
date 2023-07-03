@@ -1,0 +1,36 @@
+#Button:_ {
+    @Pos: {
+        @Size: 32, 32;
+    }
+
+    #Image:Normal {
+        @Pos: {
+            @Size: 32, 32;
+        }
+
+        @Normal: {
+            @Sprite: "NewGameSlotBG";
+        }
+
+        @Hover: {
+            @Sprite: "NewGameSlotHoverBG";
+        }
+    }
+
+    #Image:Selected {
+        @Pos: {
+            @Size: 32, 32;
+        }
+
+        @Normal: {
+            @Sprite: "NewGameSlotSelectedBG";
+        }
+
+        @Hover: {
+            @Sprite: "NewGameSlotSelectedHoverBG";
+        }
+    }
+
+    #Image:Data {
+    }
+}

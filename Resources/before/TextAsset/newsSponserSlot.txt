@@ -1,0 +1,77 @@
+#Button:NewsSponserSlot {
+    @Pos: {
+        @Size: 135, 38;
+    }
+
+    @FirstFocus: true;
+
+    #Image:Slot {
+        @Fill: {
+            @XAnchor: 0, 1;
+            @YAnchor: 0, 1;
+            @XOffset: 0, 0;
+            @YOffset: 0, 0;
+        }
+
+        @Masked: true;
+
+        @Normal: {
+            @Sprite: "InboxSponserSlot";
+        }
+
+        @Hover: {
+            @Sprite: "InboxSponserSlotHover";
+        }
+    }
+
+    #Image:Selected {
+        @Fill: {
+            @XAnchor: 0, 1;
+            @YAnchor: 0, 1;
+            @XOffset: 0, 0;
+            @YOffset: 0, 0;
+        }
+
+        @Sprite: "InboxSponserSlotSelected";
+    }
+
+    #Empty:Data {
+        @Fill: {
+            @XAnchor: 0, 1;
+            @YAnchor: 0, 1;
+            @XOffset: 0, 0;
+            @YOffset: 0, 0;
+        }
+
+        #Empty:NamePanel {
+            @Fill: {
+                @XAnchor: 0.0, 1;
+                @YAnchor: 0, 1;
+                @XOffset: 0, 0;
+                @YOffset: 0, 0;
+            }
+
+            #Image:Logo {
+                @Pos: {
+                    @Pivot: 0, 0.5;
+                    @Anchor: 0, 0.5;
+                    @Value: 3, 0;
+                    @Size: 30, 30;
+                }
+            }
+
+            #I18nLabel:Name {
+                @Fill: {
+                    @XAnchor: 0, 1;
+                    @YAnchor: 0, 1;
+                    @XOffset: 36, 0;
+                    @YOffset: 4, 4;
+                }
+                @XAlign: "Left";
+                @YAlign: "Center";
+                @Text: "남현욱";
+                @Size: 5;
+            }
+        }
+    }
+}

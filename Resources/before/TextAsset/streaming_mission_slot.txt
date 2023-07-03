@@ -1,0 +1,54 @@
+#Button:StreamingMissionSlot {
+    @Pos: {
+        @Size: 276, 23;
+    }
+
+    @Sliced: true;
+    @FirstFocus: true;
+
+    @Normal: {
+        @Sprite: "Button";
+    }
+
+    @Hover: {
+        @Sprite: "ButtonHover";
+    }
+
+    @Focused: {
+        @Sprite: "GreenButton";
+    }
+
+    @FocusedHover: {
+        @Sprite: "GreenButtonHover";
+    }
+
+    #Label:Text {
+        @Fill: {
+            @XAnchor: 0, 1;
+            @YAnchor: 0, 1;
+            @XOffset: 2, 2;
+            @YOffset: 2, 2;
+        }
+
+        @Size: 3;
+        @Text: "mission~";
+        @XAlign: "Center";
+        @YAlign: "Center";
+
+        @Normal: {
+            @Color: "White";
+        }
+
+        @Hover: {
+            @Color: "White";
+        }
+
+        @Focused: {
+            @Color: "DarkGrey";
+        }
+
+        @FocusedHover: {
+            @Color: "DarkGrey";
+        }
+    }
+}

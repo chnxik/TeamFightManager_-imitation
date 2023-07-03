@@ -1,0 +1,1264 @@
+#Image:LeagueLobby {
+    @Pos: {
+        @Size: 640, 360;
+    }
+
+    @Sprite: "MultiplayerRoomBG";
+
+    @CanvasGroup: {}
+
+    #Empty:TeamContainer {
+        @Pos: {
+            @Anchor: 0, 1;
+            @Pivot: 0, 1;
+            @Value: 7, -7;
+            @Size: 376, 225;
+        }
+    }
+
+    #Empty:Chat {
+        @Pos: {
+            @Anchor: 0, 0;
+            @Pivot: 0, 0;
+            @Value: 7, 34;
+            @Size: 376, 86;
+        }
+
+        #List:ChatContainer {
+            @Pos: {
+                @Anchor: 0.5, 1;
+                @Pivot: 0.5, 1;
+                @Value: 0, 0;
+                @Size: 376, 86;
+            }
+
+            @Scroll: {
+                @BackgroundColor: "ScrollBG";
+                @BarColor: "ScrollBar";
+            }
+        }
+    }
+
+    #Empty:RuleContainer {
+        @Pos: {
+            @Anchor: 1, 1;
+            @Pivot: 1, 1;
+            @Value: -15, -68;
+            @Size: 222, 164;
+        }
+
+        #I18nLabel:Playoff {
+            @Pos: {
+                @Anchor: 0, 1;
+                @Pivot: 0, 1;
+                @Value: 5, -1;
+                @Size: 80, 27;
+            }
+
+            @Text: "multiplayer.league.playoff.title";
+            @Size: 4;
+            @YAlign: "Center";
+        }
+        
+        #I18nLabel:PlayerCount {
+            @Pos: {
+                @Anchor: 0, 1;
+                @Pivot: 0, 1;
+                @Value: 5, -28;
+                @Size: 80, 27;
+            }
+
+            @Text: "multiplayer.1v1.member.title";
+            @Size: 4;
+            @YAlign: "Center";
+        }
+
+        #I18nLabel:ChampionUse {
+            @Pos: {
+                @Anchor: 0, 1;
+                @Pivot: 0, 1;
+                @Value: 5, -55;
+                @Size: 80, 27;
+            }
+
+            @Text: "multiplayer.1v1.champion_use.title";
+            @Size: 4;
+            @YAlign: "Center";
+        }
+
+        #I18nLabel:ChampionBalance {
+            @Pos: {
+                @Anchor: 0, 1;
+                @Pivot: 0, 1;
+                @Value: 5, -82;
+                @Size: 80, 27;
+            }
+
+            @Text: "multiplayer.1v1.champion_balance.title";
+            @Size: 4;
+            @YAlign: "Center";
+        }
+
+        #I18nLabel:Round {
+            @Pos: {
+                @Anchor: 0, 1;
+                @Pivot: 0, 1;
+                @Value: 5, -109;
+                @Size: 80, 27;
+            }
+
+            @Text: "multiplayer.league.round.title";
+            @Size: 4;
+            @YAlign: "Center";
+        }
+
+        #I18nLabel:DetailLabel {
+            @Pos: {
+                @Anchor: 0, 1;
+                @Pivot: 0, 1;
+                @Value: 5, -136;
+                @Size: 80, 27;
+            }
+
+            @Text: "multiplayer.league.detail.title";
+            @Size: 4;
+            @YAlign: "Center";
+        }
+
+        #Empty:Host {
+            @Fill: {
+                @XAnchor: 0, 1;
+                @YAnchor: 0, 1;
+                @XOffset: 90, 0;
+                @YOffset: 0, 0;
+            }
+
+            #Empty:Playoff {
+                @XFill: {
+                    @Anchor: 0, 1;
+                    @OffMin: 0;
+                    @OffMax: 0;
+                }
+
+                @YPos: {
+                    @Value: -1;
+                    @Anchor: 1;
+                    @Pivot: 1;
+                    @Size: 27;
+                }
+
+                #Button:On {
+                    @Pos: {
+                        @Anchor: 0, 0.5;
+                        @Pivot: 0, 0.5;
+                        @Value: 0, 0;
+                        @Size: 64, 27;
+                    }
+
+                    @Sliced: true;
+
+                    @Normal: {
+                        @Sprite: "Button";
+                    }
+
+                    @Hover: {
+                        @Sprite: "ButtonHover";
+                    }
+
+                    @Focused: {
+                        @Sprite: "GreenButton";
+                    }
+
+                    @FocusedHover: {
+                        @Sprite: "GreenButtonHover";
+                    }
+
+                    #I18nLabel:Text {
+                        @Fill: {
+                            @XAnchor: 0, 1;
+                            @YAnchor: 0, 1;
+                            @XOffset: 2, 2;
+                            @YOffset: 2, 2;
+                        }
+
+                        @Size: 3;
+                        @Text: "multiplayer.league.playoff.on";
+                        @XAlign: "Center";
+                        @YAlign: "Center";
+
+                        @Normal: {
+                            @Color: "White";
+                        }
+
+                        @Hover: {
+                            @Color: "White";
+                        }
+
+                        @Focused: {
+                            @Color: "DarkGrey";
+                        }
+
+                        @FocusedHover: {
+                            @Color: "DarkGrey";
+                        }
+                    }
+                }
+
+                #Button:Off {
+                    @Pos: {
+                        @Anchor: 0, 0.5;
+                        @Pivot: 0, 0.5;
+                        @Value: 66, 0;
+                        @Size: 64, 27;
+                    }
+
+                    @Sliced: true;
+
+                    @Normal: {
+                        @Sprite: "Button";
+                    }
+
+                    @Hover: {
+                        @Sprite: "ButtonHover";
+                    }
+
+                    @Focused: {
+                        @Sprite: "GreenButton";
+                    }
+
+                    @FocusedHover: {
+                        @Sprite: "GreenButtonHover";
+                    }
+
+                    #I18nLabel:Text {
+                        @Fill: {
+                            @XAnchor: 0, 1;
+                            @YAnchor: 0, 1;
+                            @XOffset: 2, 2;
+                            @YOffset: 2, 2;
+                        }
+
+                        @Size: 3;
+                        @Text: "multiplayer.league.playoff.off";
+                        @XAlign: "Center";
+                        @YAlign: "Center";
+
+                        @Normal: {
+                            @Color: "White";
+                        }
+
+                        @Hover: {
+                            @Color: "White";
+                        }
+
+                        @Focused: {
+                            @Color: "DarkGrey";
+                        }
+
+                        @FocusedHover: {
+                            @Color: "DarkGrey";
+                        }
+                    }
+                }
+            }
+
+            #Empty:PlayerCount {
+                @XFill: {
+                    @Anchor: 0, 1;
+                    @OffMin: 0;
+                    @OffMax: 0;
+                }
+
+                @YPos: {
+                    @Value: -28;
+                    @Anchor: 1;
+                    @Pivot: 1;
+                    @Size: 27;
+                }
+
+                #Button:Left {
+                    @Pos: {
+                        @Anchor: 0, 0.5;
+                        @Pivot: 0, 0.5;
+                        @Value: 0, 0;
+                        @Size: 8, 13;
+                    }
+
+                    @Normal: {
+                        @Sprite: "SmallGreenArrowLeft";
+                    }
+
+                    @Hover: {
+                        @Sprite: "SmallGreenArrowLeftHover";
+                    }
+                }
+
+                #Label:Option {
+                    @Pos: {
+                        @Anchor: 0.5, 0.5;
+                        @Pivot: 0.5, 0.5;
+                        @Value: -1, 0;
+                        @Size: 110, 18;
+                    }
+
+                    @Text: "ast";
+                    @Size: 4;
+                    @XAlign: "Center";
+                    @YAlign: "Center";
+                }
+
+                #Button:Right {
+                    @Pos: {
+                        @Anchor: 1, 0.5;
+                        @Pivot: 1, 0.5;
+                        @Value: -3, 0;
+                        @Size: 8, 13;
+                    }
+
+                    @Normal: {
+                        @Sprite: "SmallGreenArrowRight";
+                    }
+
+                    @Hover: {
+                        @Sprite: "SmallGreenArrowRightHover";
+                    }
+                }
+            }
+
+            #Empty:ChampionUse {
+                @XFill: {
+                    @Anchor: 0, 1;
+                    @OffMin: 0;
+                    @OffMax: 0;
+                }
+
+                @YPos: {
+                    @Value: -55;
+                    @Anchor: 1;
+                    @Pivot: 1;
+                    @Size: 27;
+                }
+
+                #Button:Total {
+                    @Pos: {
+                        @Anchor: 0, 0.5;
+                        @Pivot: 0, 0.5;
+                        @Value: 0, 0;
+                        @Size: 64, 27;
+                    }
+
+                    @Sliced: true;
+
+                    @Normal: {
+                        @Sprite: "Button";
+                    }
+
+                    @Hover: {
+                        @Sprite: "ButtonHover";
+                    }
+
+                    @Focused: {
+                        @Sprite: "GreenButton";
+                    }
+
+                    @FocusedHover: {
+                        @Sprite: "GreenButtonHover";
+                    }
+
+                    #I18nLabel:Text {
+                        @Fill: {
+                            @XAnchor: 0, 1;
+                            @YAnchor: 0, 1;
+                            @XOffset: 2, 2;
+                            @YOffset: 2, 2;
+                        }
+
+                        @Size: 3;
+                        @Text: "multiplayer.1v1.champion_use.total";
+                        @XAlign: "Center";
+                        @YAlign: "Center";
+
+                        @Normal: {
+                            @Color: "White";
+                        }
+
+                        @Hover: {
+                            @Color: "White";
+                        }
+
+                        @Focused: {
+                            @Color: "DarkGrey";
+                        }
+
+                        @FocusedHover: {
+                            @Color: "DarkGrey";
+                        }
+                    }
+                }
+
+                #Button:Custom {
+                    @Pos: {
+                        @Anchor: 0, 0.5;
+                        @Pivot: 0, 0.5;
+                        @Value: 66, 0;
+                        @Size: 64, 27;
+                    }
+
+                    @Sliced: true;
+
+                    @Normal: {
+                        @Sprite: "Button";
+                    }
+
+                    @Hover: {
+                        @Sprite: "ButtonHover";
+                    }
+
+                    @Focused: {
+                        @Sprite: "GreenButton";
+                    }
+
+                    @FocusedHover: {
+                        @Sprite: "GreenButtonHover";
+                    }
+
+                    #I18nLabel:Text {
+                        @Fill: {
+                            @XAnchor: 0, 1;
+                            @YAnchor: 0, 1;
+                            @XOffset: 2, 2;
+                            @YOffset: 2, 2;
+                        }
+
+                        @Size: 3;
+                        @Text: "multiplayer.1v1.champion_use.custom_host";
+                        @XAlign: "Center";
+                        @YAlign: "Center";
+
+                        @Normal: {
+                            @Color: "White";
+                        }
+
+                        @Hover: {
+                            @Color: "White";
+                        }
+
+                        @Focused: {
+                            @Color: "DarkGrey";
+                        }
+
+                        @FocusedHover: {
+                            @Color: "DarkGrey";
+                        }
+                    }
+                }
+            }
+
+            #Empty:ChampionBalance {
+                @XFill: {
+                    @Anchor: 0, 1;
+                    @OffMin: 0;
+                    @OffMax: 0;
+                }
+
+                @YPos: {
+                    @Value: -82;
+                    @Anchor: 1;
+                    @Pivot: 1;
+                    @Size: 27;
+                }
+
+                #Button:Base {
+                    @Pos: {
+                        @Anchor: 0, 0.5;
+                        @Pivot: 0, 0.5;
+                        @Value: 0, 0;
+                        @Size: 64, 27;
+                    }
+
+                    @Sliced: true;
+
+                    @Normal: {
+                        @Sprite: "Button";
+                    }
+
+                    @Hover: {
+                        @Sprite: "ButtonHover";
+                    }
+
+                    @Focused: {
+                        @Sprite: "GreenButton";
+                    }
+
+                    @FocusedHover: {
+                        @Sprite: "GreenButtonHover";
+                    }
+
+                    #I18nLabel:Text {
+                        @Fill: {
+                            @XAnchor: 0, 1;
+                            @YAnchor: 0, 1;
+                            @XOffset: 2, 2;
+                            @YOffset: 2, 2;
+                        }
+
+                        @Size: 3;
+                        @Text: "multiplayer.1v1.champion_balance.base";
+                        @XAlign: "Center";
+                        @YAlign: "Center";
+
+                        @Normal: {
+                            @Color: "White";
+                        }
+
+                        @Hover: {
+                            @Color: "White";
+                        }
+
+                        @Focused: {
+                            @Color: "DarkGrey";
+                        }
+
+                        @FocusedHover: {
+                            @Color: "DarkGrey";
+                        }
+                    }
+                }
+
+                #Button:Custom {
+                    @Pos: {
+                        @Anchor: 0, 0.5;
+                        @Pivot: 0, 0.5;
+                        @Value: 66, 0;
+                        @Size: 64, 27;
+                    }
+
+                    @Sliced: true;
+
+                    @Normal: {
+                        @Sprite: "Button";
+                    }
+
+                    @Hover: {
+                        @Sprite: "ButtonHover";
+                    }
+
+                    @Focused: {
+                        @Sprite: "GreenButton";
+                    }
+
+                    @FocusedHover: {
+                        @Sprite: "GreenButtonHover";
+                    }
+
+                    #I18nLabel:Text {
+                        @Fill: {
+                            @XAnchor: 0, 1;
+                            @YAnchor: 0, 1;
+                            @XOffset: 2, 2;
+                            @YOffset: 2, 2;
+                        }
+
+                        @Size: 3;
+                        @Text: "multiplayer.1v1.champion_use.custom_host";
+                        @XAlign: "Center";
+                        @YAlign: "Center";
+
+                        @Normal: {
+                            @Color: "White";
+                        }
+
+                        @Hover: {
+                            @Color: "White";
+                        }
+
+                        @Focused: {
+                            @Color: "DarkGrey";
+                        }
+
+                        @FocusedHover: {
+                            @Color: "DarkGrey";
+                        }
+                    }
+                }
+            }
+
+            #Empty:Round {
+                @XFill: {
+                    @Anchor: 0, 1;
+                    @OffMin: 0;
+                    @OffMax: 0;
+                }
+
+                @YPos: {
+                    @Value: -109;
+                    @Anchor: 1;
+                    @Pivot: 1;
+                    @Size: 27;
+                }
+
+                #Button:Left {
+                    @Pos: {
+                        @Anchor: 0, 0.5;
+                        @Pivot: 0, 0.5;
+                        @Value: 0, 0;
+                        @Size: 8, 13;
+                    }
+
+                    @Normal: {
+                        @Sprite: "SmallGreenArrowLeft";
+                    }
+
+                    @Hover: {
+                        @Sprite: "SmallGreenArrowLeftHover";
+                    }
+                }
+
+                #I18nLabel:Option {
+                    @Pos: {
+                        @Anchor: 0.5, 0.5;
+                        @Pivot: 0.5, 0.5;
+                        @Value: -1, 0;
+                        @Size: 110, 18;
+                    }
+
+                    @Text: "multiplayer.league.round.value";
+                    @Size: 4;
+                    @XAlign: "Center";
+                    @YAlign: "Center";
+                }
+
+                #Button:Right {
+                    @Pos: {
+                        @Anchor: 1, 0.5;
+                        @Pivot: 1, 0.5;
+                        @Value: -3, 0;
+                        @Size: 8, 13;
+                    }
+
+                    @Normal: {
+                        @Sprite: "SmallGreenArrowRight";
+                    }
+
+                    @Hover: {
+                        @Sprite: "SmallGreenArrowRightHover";
+                    }
+                }
+            }
+
+            #Button:Detail {
+                @XFill: {
+                    @Anchor: 0, 1;
+                    @OffMin: 0;
+                    @OffMax: 3;
+                }
+
+                @YPos: {
+                    @Value: -136;
+                    @Anchor: 1;
+                    @Pivot: 1;
+                    @Size: 25;
+                }
+
+                @Sliced: true;
+
+                @Normal: {
+                    @Sprite: "Button";
+                }
+
+                @Hover: {
+                    @Sprite: "ButtonHover";
+                }
+
+                #I18nLabel:Label {
+                    @Fill: {
+                        @XAnchor: 0, 1;
+                        @YAnchor: 0, 1;
+                        @XOffset: 4, 4;
+                        @YOffset: 4, 4;
+                    }
+
+                    @Text: "multiplayer.league.detail.button";
+                    @Size: 4;
+                    @XAlign: "Center";
+                    @YAlign: "Center";
+                }
+            }
+        }
+
+        #Empty:Guest {
+            @Fill: {
+                @XAnchor: 0, 1;
+                @YAnchor: 0, 1;
+                @XOffset: 90, 0;
+                @YOffset: 0, 0;
+            }
+
+            #Empty:Playoff {
+                @XFill: {
+                    @Anchor: 0, 1;
+                    @OffMin: 0;
+                    @OffMax: 0;
+                }
+
+                @YPos: {
+                    @Value: -1;
+                    @Anchor: 1;
+                    @Pivot: 1;
+                    @Size: 27;
+                }
+
+                #Button:Data {
+                    @Pos: {
+                        @Anchor: 1, 0.5;
+                        @Pivot: 1, 0.5;
+                        @Value: -4, 0;
+                        @Size: 128, 21;
+                    }
+
+                    @Sprite: "Rect";
+                    @Sliced: true;
+
+                    @Normal: {
+                        @Color: "DarkGrey";
+                    }
+
+                    @Hover: {
+                        @Color: "White";
+                    }
+
+                    #I18nLabel:Label {
+                        @Fill: {
+                            @XAnchor: 0, 1;
+                            @YAnchor: 0, 1;
+                            @XOffset: 4, 4;
+                            @YOffset: 4, 4;
+                        }
+
+                        @Text: "test";
+                        @Size: 4;
+                        @XAlign: "Center";
+                        @YAlign: "Center";
+                    }
+                }
+            }
+
+            #Empty:PlayerCount {
+                @XFill: {
+                    @Anchor: 0, 1;
+                    @OffMin: 0;
+                    @OffMax: 0;
+                }
+
+                @YPos: {
+                    @Value: -28;
+                    @Anchor: 1;
+                    @Pivot: 1;
+                    @Size: 27;
+                }
+
+                #Button:Data {
+                    @Pos: {
+                        @Anchor: 1, 0.5;
+                        @Pivot: 1, 0.5;
+                        @Value: -4, 0;
+                        @Size: 128, 21;
+                    }
+
+                    @Sprite: "Rect";
+                    @Sliced: true;
+
+                    @Normal: {
+                        @Color: "DarkGrey";
+                    }
+
+                    @Hover: {
+                        @Color: "White";
+                    }
+
+                    #Label:Label {
+                        @Fill: {
+                            @XAnchor: 0, 1;
+                            @YAnchor: 0, 1;
+                            @XOffset: 4, 4;
+                            @YOffset: 4, 4;
+                        }
+
+                        @Text: "test";
+                        @Size: 4;
+                        @XAlign: "Center";
+                        @YAlign: "Center";
+                    }
+                }
+            }
+
+            #Empty:ChampionUse {
+                @XFill: {
+                    @Anchor: 0, 1;
+                    @OffMin: 0;
+                    @OffMax: 0;
+                }
+
+                @YPos: {
+                    @Value: -55;
+                    @Anchor: 1;
+                    @Pivot: 1;
+                    @Size: 27;
+                }
+
+                #Button:Data {
+                    @Pos: {
+                        @Anchor: 1, 0.5;
+                        @Pivot: 1, 0.5;
+                        @Value: -4, 0;
+                        @Size: 128, 21;
+                    }
+
+                    @Sprite: "Rect";
+                    @Sliced: true;
+
+                    @Normal: {
+                        @Color: "DarkGrey";
+                    }
+
+                    @Hover: {
+                        @Color: "White";
+                    }
+
+                    #I18nLabel:Label {
+                        @Fill: {
+                            @XAnchor: 0, 1;
+                            @YAnchor: 0, 1;
+                            @XOffset: 4, 44;
+                            @YOffset: 4, 4;
+                        }
+
+                        @Text: "test";
+                        @Size: 4;
+                        @XAlign: "Center";
+                        @YAlign: "Center";
+                    }
+
+                    #Button:ViewDetail {
+                        @Pos: {
+                            @Anchor: 1, 0.5;
+                            @Pivot: 1, 0.5;
+                            @Value: -3, 0;
+                            @Size: 40, 16;
+                        }
+                        
+                        @Normal: {
+                            @Sprite: "Button";
+                        }
+
+                        @Hover: {
+                            @Sprite: "ButtonHover";
+                        }
+
+                        #I18nLabel:Label {
+                            @Fill: {
+                                @XAnchor: 0, 1;
+                                @YAnchor: 0, 1;
+                                @XOffset: 4, 4;
+                                @YOffset: 2, 2;
+                            }
+
+                            @Text: "multiplayer.league.detail.view";
+                            @Size: 3;
+                            @XAlign: "Center";
+                            @YAlign: "Center";
+                        }
+                    }
+                }
+            }
+
+            #Empty:ChampionBalance {
+                @XFill: {
+                    @Anchor: 0, 1;
+                    @OffMin: 0;
+                    @OffMax: 0;
+                }
+
+                @YPos: {
+                    @Value: -82;
+                    @Anchor: 1;
+                    @Pivot: 1;
+                    @Size: 27;
+                }
+
+                #Button:Data {
+                    @Pos: {
+                        @Anchor: 1, 0.5;
+                        @Pivot: 1, 0.5;
+                        @Value: -4, 0;
+                        @Size: 128, 21;
+                    }
+
+                    @Sprite: "Rect";
+                    @Sliced: true;
+
+                    @Normal: {
+                        @Color: "DarkGrey";
+                    }
+
+                    @Hover: {
+                        @Color: "White";
+                    }
+
+                    #I18nLabel:Label {
+                        @Fill: {
+                            @XAnchor: 0, 1;
+                            @YAnchor: 0, 1;
+                            @XOffset: 4, 44;
+                            @YOffset: 4, 4;
+                        }
+
+                        @Text: "test";
+                        @Size: 4;
+                        @XAlign: "Center";
+                        @YAlign: "Center";
+                    }
+
+                    #Button:ViewDetail {
+                        @Pos: {
+                            @Anchor: 1, 0.5;
+                            @Pivot: 1, 0.5;
+                            @Value: -3, 0;
+                            @Size: 40, 16;
+                        }
+                        
+                        @Normal: {
+                            @Sprite: "Button";
+                        }
+
+                        @Hover: {
+                            @Sprite: "ButtonHover";
+                        }
+
+                        #I18nLabel:Label {
+                            @Fill: {
+                                @XAnchor: 0, 1;
+                                @YAnchor: 0, 1;
+                                @XOffset: 4, 4;
+                                @YOffset: 2, 2;
+                            }
+
+                            @Text: "multiplayer.league.detail.view";
+                            @Size: 3;
+                            @XAlign: "Center";
+                            @YAlign: "Center";
+                        }
+                    }
+                }
+            }
+
+            #Empty:Round {
+                @XFill: {
+                    @Anchor: 0, 1;
+                    @OffMin: 0;
+                    @OffMax: 0;
+                }
+
+                @YPos: {
+                    @Value: -109;
+                    @Anchor: 1;
+                    @Pivot: 1;
+                    @Size: 27;
+                }
+
+                #Button:Data {
+                    @Pos: {
+                        @Anchor: 1, 0.5;
+                        @Pivot: 1, 0.5;
+                        @Value: -4, 0;
+                        @Size: 128, 21;
+                    }
+
+                    @Sprite: "Rect";
+                    @Sliced: true;
+
+                    @Normal: {
+                        @Color: "DarkGrey";
+                    }
+
+                    @Hover: {
+                        @Color: "White";
+                    }
+
+                    #I18nLabel:Label {
+                        @Fill: {
+                            @XAnchor: 0, 1;
+                            @YAnchor: 0, 1;
+                            @XOffset: 4, 4;
+                            @YOffset: 4, 4;
+                        }
+
+                        @Text:  "multiplayer.league.round.value";
+                        @Size: 4;
+                        @XAlign: "Center";
+                        @YAlign: "Center";
+                    }
+                }
+            }
+
+            #Button:DetailGuest {
+                @XFill: {
+                    @Anchor: 0, 1;
+                    @OffMin: 0;
+                    @OffMax: 3;
+                }
+
+                @YPos: {
+                    @Value: -136;
+                    @Anchor: 1;
+                    @Pivot: 1;
+                    @Size: 25;
+                }
+
+                @Sliced: true;
+                @Normal: {
+                    @Sprite: "Button";
+                }
+
+                @Hover: {
+                    @Sprite: "ButtonHover";
+                }
+
+                #I18nLabel:Label {
+                    @Fill: {
+                        @XAnchor: 0, 1;
+                        @YAnchor: 0, 1;
+                        @XOffset: 4, 4;
+                        @YOffset: 4, 4;
+                    }
+
+                    @Text: "multiplayer.league.detail.view";
+                    @Size: 4;
+                    @XAlign: "Center";
+                    @YAlign: "Center";
+                }
+            }
+        }
+    }
+
+    #Empty:Desc {
+        @Pos: {
+            @Anchor: 1, 0;
+            @Pivot: 1, 0;
+            @Value: -15, 47;
+            @Size: 222, 73;
+        }
+
+        #I18nLabel:Label {
+            @Fill: {
+                @XAnchor: 0, 1;
+                @YAnchor: 0, 1;
+                @XOffset: 2, 2;
+                @YOffset: 2, 2;
+            }
+
+            @Size: 3;
+        }
+    }
+
+    #Label:Title {
+        @Pos: {
+            @Anchor: 1, 1;
+            @Pivot: 1, 1;
+            @Value: -15, -14;
+            @Size: 222, 24;
+        }
+
+        @Text: "Room Name";
+        @Size: 5;
+        @XAlign: "Center";
+        @YAlign: "Center";
+    }
+
+    
+    #I18nLabel:Rule {
+        @Pos: {
+            @Anchor: 1, 1;
+            @Pivot: 1, 1;
+            @Value: -15, -46;
+            @Size: 222, 20;
+        }
+
+        @Text: "multiplayer.league.rule";
+
+        @Size: 4;
+        @XAlign: "Center";
+        @YAlign: "Center";
+    }
+
+
+    #Button:Start {
+        @Pos: {
+            @Anchor: 1, 0;
+            @Pivot: 1, 0;
+            @Value: -127, 12;
+            @Size: 112, 27;
+        }
+        
+        @Normal: {
+            @Sprite: "Important";
+        }
+
+        @Hover: {
+            @Sprite: "ImportantHover";
+        }
+
+        @Disabled: {
+            @Sprite: "ButtonDisabled";
+        }
+
+        #I18nLabel:Label {
+            @Fill: {
+                @XAnchor: 0, 1;
+                @YAnchor: 0, 1;
+                @XOffset: 22, 4;
+                @YOffset: 2, 2;
+            }
+
+            @Text: "multiplayer.start";
+            @Size: 4;
+            @XAlign: "Center";
+            @YAlign: "Center";
+
+            @Normal: {
+                @Color: "White";
+            }
+
+            @Disabled: {
+                @Color: "Disabled";
+            }
+        }
+
+        #Image:ButtonIcon {
+            @Pos: {
+                @Anchor: 0, 0.5;
+                @Pivot: 0, 0.5;
+                @Value: -3, 0;
+                @Size: 33, 33;
+            }
+        }
+    }
+
+    #Button:Ready {
+        @Pos: {
+            @Anchor: 1, 0;
+            @Pivot: 1, 0;
+            @Value: -127, 12;
+            @Size: 112, 27;
+        }
+        
+        @Normal: {
+            @Sprite: "Important";
+        }
+
+        @Hover: {
+            @Sprite: "ImportantHover";
+        }
+
+        @Focused: {
+            @Sprite: "RedButton";
+        }
+
+        @FocusedHover: {
+            @Sprite: "RedButtonHover";
+        }
+        
+        @Disabled: {
+            @Sprite: "ButtonDisabled";
+        }
+
+        #I18nLabel:Label {
+            @Fill: {
+                @XAnchor: 0, 1;
+                @YAnchor: 0, 1;
+                @XOffset: 22, 4;
+                @YOffset: 2, 2;
+            }
+
+            @Normal: {
+                @Text: "multiplayer.ready";
+                @Color: "White";
+            }
+            
+            @Hover: {
+                @Text: "multiplayer.ready";
+                @Color: "White";
+            }
+            
+            @Focused: {
+                @Text: "multiplayer.cancel";
+                @Color: "White";
+            }
+            
+            @FocusedHover: {
+                @Text: "multiplayer.cancel";
+                @Color: "White";
+            }
+
+            @Disabled: {
+                @Color: "Disabled";
+            }
+
+            @Size: 4;
+            @XAlign: "Center";
+            @YAlign: "Center";
+        }
+
+        #Image:ButtonIcon {
+            @Pos: {
+                @Anchor: 0, 0.5;
+                @Pivot: 0, 0.5;
+                @Value: -3, 0;
+                @Size: 33, 33;
+            }
+        }
+    }
+
+    #Button:Cancel {
+        @Pos: {
+            @Anchor: 1, 0;
+            @Pivot: 1, 0;
+            @Value: -12, 12;
+            @Size: 112, 27;
+        }
+        
+        @Normal: {
+            @Sprite: "Button";
+        }
+
+        @Hover: {
+            @Sprite: "ButtonHover";
+        }
+
+        @Disabled: {
+            @Sprite: "ButtonDisabled";
+        }
+
+        #I18nLabel:Label {
+            @Fill: {
+                @XAnchor: 0, 1;
+                @YAnchor: 0, 1;
+                @XOffset: 4, 4;
+                @YOffset: 2, 2;
+            }
+
+            @Text: "common.close";
+            @Size: 4;
+            @XAlign: "Center";
+            @YAlign: "Center";
+
+            @Normal: {
+                @Color: "White";
+            }
+
+            @Disabled: {
+                @Color: "Disabled";
+            }
+        }
+    }
+}

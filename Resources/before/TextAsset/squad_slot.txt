@@ -1,0 +1,205 @@
+#Button:SquadSlot {
+    @Pos: {
+        @Anchor: 0.5, 1;
+        @Pivot: 0.5, 1;
+        @Size: 588, 36;
+    }
+
+    @FirstFocus: true;
+
+    #Image:BG {
+        @Pos: {
+            @Anchor: 0, 1;
+            @Pivot: 0, 1;
+            @Size: 588, 32;
+            @Value: 0, 0;
+        }
+
+        @Normal: {
+            @Sprite: "SquadSlot";
+        }
+
+        @Hover: {
+            @Sprite: "SquadSlotHover";
+        }
+
+        #Image:FaceSlot {
+            @Pos: {
+                @Anchor: 0, 0.5;
+                @Pivot: 0, 0.5;
+                @Size: 26, 26;
+                @Value: 4, 0;
+            }
+
+            @Sprite: "SmallSlotBG";
+            
+            #Empty:Mask {
+                @Fill: {
+                    @XAnchor: 0, 1;
+                    @YAnchor: 0, 1;
+                    @XOffset: 1, 1;
+                    @YOffset: 1, 1;
+                }
+
+                @Masked: true;
+
+                #Image:Athlete {
+                    @Pos: {
+                        @Pivot: 0.5, 0.5;
+                        @Anchor: 0.5, 0.5;
+                        @Value: 0, -1;
+                        @Size: 64, 64;
+                    }
+
+                    @Sprite: "Athlete";
+                }
+            }
+
+            #Image:FaceFront {
+                @Fill: {
+                    @XAnchor: 0, 1;
+                    @YAnchor: 0, 1;
+                    @XOffset: 0, 0;
+                    @YOffset: 0, 0;
+                }
+
+                @Sprite: "SmallSlotFront";
+            }
+        }
+
+        #I18nLabel:Name {
+            @Pos: {
+                @Pivot: 0, 0.5;
+                @Anchor: 0, 0.5;
+                @Value: 36, 0;
+                @Size: 80, 20;
+            }
+
+            @Text: "Test";
+            @Size: 4;
+            @YAlign: "Center";
+            @XFitter: true;
+
+            #Empty:Star {
+                @Pos: {
+                    @Pivot: 0, 0;
+                    @Anchor: 1, 0;
+                    @Value: 4, 5;
+                    @Size: 0, 4;
+                }
+
+                @XFitter: true;
+            }
+        }
+
+        #Label:Age {
+            @Pos: {
+                @Pivot: 0, 0.5;
+                @Anchor: 0, 0.5;
+                @Value: 146, 0;
+                @Size: 30, 20;
+            }
+
+            @Text: "999";
+            @YAlign: "Center";
+            @Size: 4;
+        }
+
+        #Image:Condition {
+            @Pos: {
+                @Pivot: 0, 0.5;
+                @Anchor: 0, 0.5;
+                @Value: 190, 0;
+                @Size: 12, 12;
+            }
+        }
+
+        #Image:Attack {
+            @Pos: {
+                @Pivot: 0, 0.5;
+                @Anchor: 0, 0.5;
+                @Value: 245, 0;
+                @Size: 10, 10;
+            }
+
+            @Sprite: "Attack";
+        }
+
+        #Label:AttackValue {
+            @Pos: {
+                @Pivot: 0, 0.5;
+                @Anchor: 0, 0.5;
+                @Value: 258, 0;
+                @Size: 30, 20;
+            }
+
+            @Text: "999";
+            @YAlign: "Center";
+            @Size: 4;
+        }
+
+        #Image:Defence {
+            @Pos: {
+                @Pivot: 0, 0.5;
+                @Anchor: 0, 0.5;
+                @Value: 312, 0;
+                @Size: 8, 10;
+            }
+
+            @Sprite: "Defence";
+        }
+
+        #Label:DefenceValue {
+            @Pos: {
+                @Pivot: 0, 0.5;
+                @Anchor: 0, 0.5;
+                @Value: 323, 0;
+                @Size: 30, 20;
+            }
+
+            @Text: "999";
+            @YAlign: "Center";
+            @Size: 4;
+        }
+
+        #Empty:Exps {
+            @Pos: {
+                @Pivot: 0.5, 0.5;
+                @Anchor: 0, 0.5;
+                @Value: 426, 0;
+                @Size: 0, 26;
+            }
+        }
+
+        #Label:Gold {
+            @XPos: {
+                @Anchor: 1;
+                @Pivot: 1;
+                @Size: 60;
+                @Value: -38;
+            }
+
+            @YFill: {
+                @Anchor: 0, 1;
+                @OffMin: 0;
+                @OffMax: 0;
+            }
+
+            @Text: "9999";
+            @Size: 4;
+            @XAlign: "Right";
+            @YAlign: "Center";
+        }
+
+        #Image:GoldIcon {
+            @Pos: {
+                @Anchor: 1, 0.5;
+                @Pivot: 1, 0.5;
+                @Value: -20, 0;
+                @Size: 12, 12;
+            }
+
+            @Sprite: "Gold";
+        }
+    }
+}

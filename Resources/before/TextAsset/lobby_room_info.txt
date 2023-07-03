@@ -1,0 +1,29 @@
+#Empty:LobbyRoomInfo {
+    @Pos: {
+        @Size: 228, 24;
+    }
+
+    #Label:Key {
+        @Pos: {
+            @Anchor: 0, 0.5;
+            @Pivot: 0, 0.5;
+            @Value: 0, 0;
+            @Size: 80, 24;
+        }
+
+        @Size: 4;
+        @YAlign: "Center";
+    }
+
+    #Label:Value {
+        @Pos: {
+            @Anchor: 0, 0.5;
+            @Pivot: 0, 0.5;
+            @Value: 88, 0;
+            @Size: 140, 24;
+        }
+
+        @Size: 4;
+        @YAlign: "Center";
+    }
+}

@@ -1,0 +1,314 @@
+#Empty:RecruitInfo {
+    @Fill: {
+        @XAnchor: 0, 1;
+        @YAnchor: 0, 1;
+        @XOffset: 0, 0;
+        @YOffset: 0, 0;
+    }
+
+    #Image:Dimmed {
+        @Fill: {
+            @XAnchor: 0, 1;
+            @YAnchor: 0, 1;
+            @XOffset: 0, 0;
+            @YOffset: 0, 0;
+        }
+        
+        @Sprite: "White";
+        @Color: "Dimmed";
+    }
+
+    #Image:Background {
+        @Pos: {
+            @Value: 0, 16;
+            @Size: 211,241;
+        }
+
+        @Sprite: "PanelBG";
+
+        #Image:Header {
+            @Pos: {
+                @Anchor: 0.5, 1;
+                @Pivot: 0.5, 1;
+                @Value: 0, -8;
+                @Size: 190, 28;
+            }
+            
+            @Color: "PanelHeader";
+
+            #I18nLabel:Title {
+                @Fill: {
+                    @XAnchor: 0, 1;
+                    @YAnchor: 0, 1;
+                    @XOffset: 5, 5;
+                    @YOffset: 0, 0;
+                }
+
+                @Text: "recruit.info";
+                @Size: 6;
+                @XAlign: "Center";
+                @YAlign: "Center";
+            }
+        }
+
+        #Image:Select {
+            @Pos: {
+                @Anchor: 0.5, 0.5;
+                @Pivot: 0.5, 0.5;
+                @Value: 0, -4;
+                @Size: 151, 162;
+            }
+
+            @Sliced: true;
+            @Sprite: "RecruitSlot";
+
+            #Empty:Title {
+                @Pos: {
+                    @Anchor: 0.5, 1;
+                    @Pivot: 0.5, 1;
+                    @Value: 0, -4;
+                    @Size: 142, 28;
+                }
+
+                #I18nLabel:Name {
+                    @Fill: {
+                        @XAnchor: 0, 1;
+                        @YAnchor: 0, 1;
+                        @XOffset: 38, 38;
+                        @YOffset: 12, 2;
+                    }
+
+                    @Text: "test";
+                    @XAlign: "Center";
+                    @YAlign: "Center";
+                    @Size: 4;
+                }
+                
+                #Label:Page {
+                    @Fill: {
+                        @XAnchor: 0, 1;
+                        @YAnchor: 0, 1;
+                        @XOffset: 26, 26;
+                        @YOffset: 4, 16;
+                    }
+
+                    @Text: "(1/5)";
+                    @XAlign: "Center";
+                    @YAlign: "Up";
+                    @Size: 3;
+                }
+            }
+
+            #Empty:Contents {
+                @Fill: {
+                    @XAnchor: 0, 1;
+                    @YAnchor: 0, 1;
+                    @XOffset: 5, 5;
+                    @YOffset: 6, 34;
+                }
+
+                #I18nLabel:Desc {
+                    @Fill: {
+                        @XAnchor: 0, 1;
+                        @YAnchor: 0, 1;
+                        @XOffset: 6, 6;
+                        @YOffset: 40, 2;
+                    }
+
+                    @Text: "테스트";
+                    @Size: 4;
+                }
+
+                #Empty:Term {
+                    @XFill: {
+                        @Anchor: 0, 1;
+                        @OffMin: 6;
+                        @OffMax: 6;
+                    }
+
+                    @YPos: {
+                        @Anchor: 0;
+                        @Pivot: 0;
+                        @Value: 22;
+                        @Size: 14;
+                    }
+
+                    #I18nLabel:Desc {
+                        @Pos: {
+                            @Anchor: 0, 0.5;
+                            @Pivot: 0, 0.5;
+                            @Size: 60, 14;
+                            @Value: 0, 0;
+                        }
+
+                        @Text: "recruit.term";
+                        @Size: 4;
+                        @YAlign: "Center";
+                    }
+
+                    #I18nLabel:Value {
+                        @Pos: {
+                            @Anchor: 1, 0.5;
+                            @Pivot: 1, 0.5;
+                            @Size: 40, 14;
+                            @Value: -16, 0;
+                        }
+
+                        @Text: "recruit.time";
+                        @Size: 4;
+                        @YAlign: "Center";
+                        @XAlign: "Right";
+                    }
+
+                    #Image:Icon {
+                        @Pos: {
+                            @Anchor: 1, 0.5;
+                            @Pivot: 1, 0.5;
+                            @Size: 12, 12;
+                            @Value: 0, 0;
+                        }
+
+                        @Sprite: "Calendar";
+                    }
+                }
+
+                #Empty:Cost {
+                    @XFill: {
+                        @Anchor: 0, 1;
+                        @OffMin: 6;
+                        @OffMax: 6;
+                    }
+
+                    @YPos: {
+                        @Anchor: 0;
+                        @Pivot: 0;
+                        @Value: 3;
+                        @Size: 14;
+                    }
+
+                    #I18nLabel:Desc {
+                        @Pos: {
+                            @Anchor: 0, 0.5;
+                            @Pivot: 0, 0.5;
+                            @Size: 60, 14;
+                            @Value: 0, 0;
+                        }
+
+                        @Text: "recruit.cost";
+                        @Size: 4;
+                        @YAlign: "Center";
+                    }
+
+                    #Label:Value {
+                        @Pos: {
+                            @Anchor: 1, 0.5;
+                            @Pivot: 1, 0.5;
+                            @Size: 40, 14;
+                            @Value: -16, 0;
+                        }
+
+                        @Text: "999";
+                        @Size: 4;
+                        @YAlign: "Center";
+                        @XAlign: "Right";
+                    }
+
+                    #Image:Icon {
+                        @Pos: {
+                            @Anchor: 1, 0.5;
+                            @Pivot: 1, 0.5;
+                            @Size: 12, 12;
+                            @Value: 0, 0;
+                        }
+
+                        @Sprite: "Gold";
+                    }
+                }
+            }
+        }
+
+        #Button:LeftArrow {
+            @Pos: {
+                @Anchor: 0, 0.5;
+                @Pivot: 0, 0.5;
+                @Value: 10, 0;
+                @Size: 12, 21;
+            }
+
+            @Normal: {
+                @Sprite: "GreenLeftArrow";
+            }
+
+            @Hover: {
+                @Sprite: "GreenLeftArrowHover";
+            }
+        }
+
+        #Image:LB {
+            @Pos: {
+                @Anchor: 0, 0.5;
+                @Pivot: 0, 0.5;
+                @Value: 0, -22;
+                @Size: 33, 33;
+            }
+        }
+
+        #Button:RightArrow {
+            @Pos: {
+                @Anchor: 1, 0.5;
+                @Pivot: 1, 0.5;
+                @Value: -10, 0;
+                @Size: 12, 21;
+            }
+
+            @Normal: {
+                @Sprite: "GreenRightArrow";
+            }
+
+            @Hover: {
+                @Sprite: "GreenRightArrowHover";
+            }
+        }
+
+        #Image:RB {
+            @Pos: {
+                @Anchor: 1, 0.5;
+                @Pivot: 1, 0.5;
+                @Value: 0, -22;
+                @Size: 33, 33;
+            }
+        }
+
+        #Button:Close {
+            @Pos: {
+                @Anchor: 0.5, 0;
+                @Pivot: 0.5, 0;
+                @Value: 0, 8;
+                @Size: 66, 23;
+            }
+            @Sliced: true;
+            @FirstFocus: true;
+
+            @Normal: {
+                @Sprite: "Button";
+            }
+
+            @Hover: {
+                @Sprite: "ButtonHover";
+            }
+
+            #I18nLabel:CloseLabel {
+                @Fill: {
+                    @XAnchor: 0, 1;
+                    @YAnchor: 0, 1;
+                    @XOffset: 3, 3;
+                    @YOffset: 3, 3;
+                }
+                @Text: "common.close";
+                @Size: 4;
+                @XAlign: "Center";
+                @YAlign: "Center";
+            }
+        }
+    }
+}

@@ -1,0 +1,10 @@
+#Empty:_ {
+    @Pos: {
+        @Anchor: 0.5, 1;
+        @Pivot: 0.5, 1;
+        @Value: 0, -140;
+        @Size: 200, 100;
+    }
+
+    @CanvasGroup: {}
+}

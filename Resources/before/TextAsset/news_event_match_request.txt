@@ -1,0 +1,208 @@
+#Empty:NewsEventMatchRequest {
+    @XFill: {
+        @Anchor: 0, 1;
+        @OffMin: 0;
+        @OffMax: 0;
+    }
+
+    @YPos: {
+        @Anchor: 1;
+        @Pivot: 1;
+        @Value: 0;
+        @Size: 150;
+    }
+
+    #I18nLabel:Desc {
+        @XFill: {
+            @Anchor: 0, 1;
+            @OffMin: 10;
+            @OffMax: 10;
+        }
+
+        @YPos: {
+            @Anchor: 1;
+            @Pivot: 1;
+            @Value: 0;
+            @Size: 45;
+        }
+
+        @Text: "news.event_match_request.contents";
+        @Size: 4;
+        @XAlign: "Left";
+        @YAlign: "Up";
+    }
+
+    #I18nLabel:After {
+        @XFill: {
+            @Anchor: 0, 1;
+            @OffMin: 5;
+            @OffMax: 5;
+        }
+
+        @YPos: {
+            @Anchor: 1;
+            @Pivot: 1;
+            @Value: -50;
+            @Size: 44;
+        }
+
+        @Text: "after";
+        @Size: 4;
+        @XAlign: "Left";
+        @YAlign: "Up";
+    }
+
+    #Empty:Container {
+        @XFill: {
+            @Anchor: 0, 1;
+            @OffMin: 5;
+            @OffMax: 5;
+        }
+
+        @YPos: {
+            @Anchor: 1;
+            @Pivot: 1;
+            @Value: -50;
+            @Size: 44;
+        }
+
+        #Button:Answer1 {
+            @Pos: {
+                @Size: 288, 20;
+            }
+
+            @Sliced: true;
+            @FirstFocus: true;
+
+            @Normal: {
+                @Sprite: "Button";
+            }
+
+            @Hover: {
+                @Sprite: "ButtonHover";
+            }
+
+            #Label:Label {
+                @Fill: {
+                    @XAnchor: 0, 1;
+                    @YAnchor: 0, 1;
+                    @XOffset: 3, 3;
+                    @YOffset: 3, 3;
+                }
+                @Text: "common.close";
+                @Size: 4;
+                @XAlign: "Center";
+                @YAlign: "Center";
+            }
+        }
+        #Button:Answer2 {
+            @Pos: {
+                @Size: 288, 20;
+            }
+
+            @Sliced: true;
+            @FirstFocus: true;
+
+            @Normal: {
+                @Sprite: "Button";
+            }
+
+            @Hover: {
+                @Sprite: "ButtonHover";
+            }
+
+            #Label:Label {
+                @Fill: {
+                    @XAnchor: 0, 1;
+                    @YAnchor: 0, 1;
+                    @XOffset: 3, 3;
+                    @YOffset: 3, 3;
+                }
+                @Text: "common.close";
+                @Size: 4;
+                @XAlign: "Center";
+                @YAlign: "Center";
+            }
+        }
+
+        #Button:Answer3 {
+            @Pos: {
+                @Size: 288, 20;
+            }
+
+            @Sliced: true;
+            @FirstFocus: true;
+
+            @Normal: {
+                @Sprite: "Button";
+            }
+
+            @Hover: {
+                @Sprite: "ButtonHover";
+            }
+
+            #Label:Label {
+                @Fill: {
+                    @XAnchor: 0, 1;
+                    @YAnchor: 0, 1;
+                    @XOffset: 3, 3;
+                    @YOffset: 3, 3;
+                }
+                @Text: "common.close";
+                @Size: 4;
+                @XAlign: "Center";
+                @YAlign: "Center";
+            }
+        }
+
+        #Button:Answer4 {
+            @Pos: {
+                @Size: 288, 20;
+            }
+
+            @Sliced: true;
+            @FirstFocus: true;
+
+            @Normal: {
+                @Sprite: "Button";
+            }
+
+            @Hover: {
+                @Sprite: "ButtonHover";
+            }
+
+            #Label:Label {
+                @Fill: {
+                    @XAnchor: 0, 1;
+                    @YAnchor: 0, 1;
+                    @XOffset: 3, 3;
+                    @YOffset: 3, 3;
+                }
+                @Text: "common.close";
+                @Size: 4;
+                @XAlign: "Center";
+                @YAlign: "Center";
+            }
+        }
+    }
+
+    #Label:AfterDesc {
+        @XFill: {
+            @Anchor: 0, 1;
+            @OffMin: 10;
+            @OffMax: 10;
+        }
+
+        @YPos: {
+            @Anchor: 1;
+            @Pivot: 1;
+            @Value: -100;
+            @Size: 30;
+        }
+
+        @Text: "news.event_match_request.contents";
+        @Size: 3;
+        @XAlign: "Left";
+        @YAlign: "Up";
+    }
+}

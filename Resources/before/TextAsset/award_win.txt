@@ -1,0 +1,58 @@
+#Empty:Win {
+    @Fill: {
+        @XAnchor: 0, 1;
+        @YAnchor: 0, 1;
+        @XOffset: 0, 0;
+        @YOffset: 0, 0;
+    }
+
+    #I18nLabel:Header {
+        @Pos: {
+            @Anchor: 0.5, 1;
+            @Pivot: 0.5, 1;
+            @Value: 11, -15;
+            @Size: 0, 30;
+        }
+
+        @Text: "awards.winner_header";
+        @Size: 6;
+        @XFitter: true;
+        @XAlign: "Center";
+        @YAlign: "Center";
+        @Color: "MainSelectedYellow";
+
+        #Image:Logo {
+            @Pos: {
+                @Anchor: 0, 0.5;
+                @Pivot: 1, 0.5;
+                @Size: 16, 16;
+                @Value: -6, 0;
+            }
+        }
+    }
+
+    #Image:TeamLogo {
+        @Pos: {
+            @Anchor: 0.5, 1;
+            @Pivot: 0.5, 1;
+            @Value: 0, -45;
+            @Size: 30, 30;
+        }
+    }
+
+    #Label:Team {
+        @Pos: {
+            @Anchor: 0.5, 1;
+            @Pivot: 0.5, 1;
+            @Value: 0, -75;
+            @Size: 0, 30;
+        }
+
+        @Text: "팀명";
+        @Size: 6;
+        @XFitter: true;
+        @XAlign: "Center";
+        @YAlign: "Center";
+        @Color: "White";
+    }
+}

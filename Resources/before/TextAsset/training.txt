@@ -1,0 +1,508 @@
+#Empty:Training {
+    @Fill: {
+        @XAnchor: 0, 1;
+        @YAnchor: 0, 1;
+        @XOffset: 0, 0;
+        @YOffset: 0, 0;
+    }
+
+    @CanvasGroup: {}
+
+    #Image:Dimmed {
+        @Fill: {
+            @XAnchor: 0, 1;
+            @YAnchor: 0, 1;
+            @XOffset: 0, 0;
+            @YOffset: 0, 0;
+        }
+        
+        @Sprite: "White";
+        @Color: "Dimmed";
+    }
+
+    #Image:UI {
+        @Pos: {
+            @Anchor: 0.5, 0.5;
+            @Pivot: 0.5, 0.5;
+            @Value: 0, 16;
+            @Size: 626, 278;
+        }
+
+        @Sprite: "TrainingBG";
+
+        #I18nLabel:Title {
+            @Pos: {
+                @Anchor: 0.5, 1;
+                @Pivot: 0.5, 1;
+                @Value: 0, -8;
+                @Size: 610, 28;
+            }
+
+            @Text: "menu.manage_team.training";
+            @Size: 6;
+            @XAlign: "Center";
+            @YAlign: "Center";
+        }
+
+        #Empty:Info {
+            @Pos: {
+                @Anchor: 0, 1;
+                @Pivot: 0, 1;
+                @Value: 10, -46;
+                @Size: 219, 61;
+            }
+
+            #Image:FaceSlot {
+                @Pos: {
+                    @Anchor: 0, 1;
+                    @Pivot: 0, 1;
+                    @Size: 26, 26;
+                    @Value: 4, -4;
+                }
+
+                @Sprite: "SmallSlotBG";
+                
+                #Empty:Mask {
+                    @Fill: {
+                        @XAnchor: 0, 1;
+                        @YAnchor: 0, 1;
+                        @XOffset: 1, 1;
+                        @YOffset: 1, 1;
+                    }
+
+                    @Masked: true;
+
+                    #Image:Athlete {
+                        @Pos: {
+                            @Pivot: 0.5, 0.5;
+                            @Anchor: 0.5, 0.5;
+                            @Value: 0, -1;
+                            @Size: 64, 64;
+                        }
+
+                        @Sprite: "Athlete";
+                    }
+                }
+
+                #Image:FaceFront {
+                    @Fill: {
+                        @XAnchor: 0, 1;
+                        @YAnchor: 0, 1;
+                        @XOffset: 0, 0;
+                        @YOffset: 0, 0;
+                    }
+
+                    @Sprite: "SmallSlotFront";
+                }
+            }
+
+            #I18nLabel:Name {
+                @Pos: {
+                    @Pivot: 0, 1;
+                    @Anchor: 0, 1;
+                    @Value: 36, -2;
+                    @Size: 80, 16;
+                }
+
+                @Text: "Test";
+                @Size: 4;
+                @YAlign: "Center";
+                @XFitter: true;
+
+                #Empty:Star {
+                    @Pos: {
+                        @Pivot: 0, 0;
+                        @Anchor: 1, 0;
+                        @Value: 4, 3;
+                        @Size: 0, 4;
+                    }
+
+                    @XFitter: true;
+                }
+            }
+
+            #I18nLabel:Age {
+                @Pos: {
+                    @Pivot: 1, 1;
+                    @Anchor: 1, 1;
+                    @Value: -6, -3;
+                    @Size: 50, 16;
+                }
+
+                @Text: "athlete.stat.age";
+                @Size: 4;
+                @YAlign: "Center";
+                @XAlign: "Right";
+            }
+
+            #Empty:Properties {
+                @Pos: {
+                    @Pivot: 0, 1;
+                    @Anchor: 0, 1;
+                    @Value: 36, -19;
+                    @Size: 178, 10;
+                }
+            }
+
+            #Image:Attack {
+                @Pos: {
+                    @Pivot: 0, 1;
+                    @Anchor: 0, 1;
+                    @Value: 5, -40;
+                    @Size: 10, 10;
+                }
+
+                @Sprite: "Attack";
+            }
+
+            #Label:AttackValue {
+                @Pos: {
+                    @Pivot: 0, 1;
+                    @Anchor: 0, 1;
+                    @Value: 20, -35;
+                    @Size: 30, 18;
+                }
+
+                @Text: "999";
+                @YAlign: "Center";
+                @Size: 4;
+            }
+
+            #Image:Defence {
+                @Pos: {
+                    @Pivot: 0, 1;
+                    @Anchor: 0, 1;
+                    @Value: 50, -40;
+                    @Size: 8, 10;
+                }
+
+                @Sprite: "Defence";
+            }
+
+            #Label:DefenceValue {
+                @Pos: {
+                    @Pivot: 0, 1;
+                    @Anchor: 0, 1;
+                    @Value: 65, -35;
+                    @Size: 30, 18;
+                }
+
+                @Text: "999";
+                @YAlign: "Center";
+                @Size: 4;
+            }
+
+            #Empty:Exps {
+                @Pos: {
+                    @Pivot: 1, 1;
+                    @Anchor: 1, 1;
+                    @Value: -3, -30;
+                    @Size: 110, 26;
+                }
+            }
+        }
+
+        #Empty:List {
+            @Pos: {
+                @Anchor: 0, 1;
+                @Pivot: 0, 1;
+                @Value: 10, -107;
+                @Size: 219, 131;
+            }
+
+            #Empty:Header {
+                @XFill: {
+                    @Anchor: 0, 1;
+                    @OffMin: 4;
+                    @OffMax: 4;
+                }
+
+                @YPos: {
+                    @Anchor: 1;
+                    @Pivot: 1;
+                    @Value: 0;
+                    @Size: 20;
+                }
+
+                #I18nLabel:Name {
+                    @Fill: {
+                        @XAnchor: 0, 1;
+                        @YAnchor: 0, 1;
+                        @XOffset: 6, 63;
+                        @YOffset: 3, 3;
+                    }
+
+                    @Text: "athlete.stat.name";
+                    @Size: 3;
+                    @XAlign: "Center";
+                    @YAlign: "Center";
+                }
+
+                #I18nLabel:Point {
+                    @Fill: {
+                        @XAnchor: 0, 1;
+                        @YAnchor: 0, 1;
+                        @XOffset: 142, 14;
+                        @YOffset: 3, 3;
+                    }
+
+                    @Text: "athlete.training.not_set";
+                    @Size: 3;
+                    @XAlign: "Center";
+                    @YAlign: "Center";
+                }
+            }
+
+            #List:Data {
+                @Fill: {
+                    @XAnchor: 0, 1;
+                    @YAnchor: 0, 1;
+                    @XOffset: 4, 4;
+                    @YOffset: 4, 28;
+                }
+                @Scroll: {
+                    @Size: 4;
+                    @BackgroundColor: "ScrollBG";
+                    @BarColor: "ScrollBar";
+                }
+            }
+        }
+
+        #Empty:Contents {
+            @Fill: {
+                @XAnchor: 0, 1;
+                @YAnchor: 0, 1;
+                @XOffset: 231, 10;
+                @YOffset: 40, 46;
+            }
+
+            #Image:NoSelect {
+                @Fill: {
+                    @XAnchor: 0, 1;
+                    @YAnchor: 0, 1;
+                    @XOffset: 0, 0;
+                    @YOffset: 0, 0;
+                }
+
+                @Color: "Header";
+
+                #I18nLabel:Desc {
+                    @Fill: {
+                        @XAnchor: 0, 1;
+                        @YAnchor: 0, 1;
+                        @XOffset: 0, 0;
+                        @YOffset: 0, 0;
+                    }
+
+                    @Text: "athlete.training.select";
+                    @Size: 5;
+
+                    @XAlign: "Center";
+                    @YAlign: "Center";
+                }
+            }
+
+            #Empty:Select {
+                @Fill: {
+                    @XAnchor: 0, 1;
+                    @YAnchor: 0, 1;
+                    @XOffset: 0, 0;
+                    @YOffset: 0, 0;
+                }
+
+                #Empty:Header {
+                    @XFill: {
+                        @Anchor: 0, 1;
+                        @OffMin: 0;
+                        @OffMax: 0;
+                    }
+
+                    @YPos: {
+                        @Anchor: 1;
+                        @Pivot: 1;
+                        @Value: 0;
+                        @Size: 46;
+                    }
+
+                    #I18nLabel:Desc {
+                        @Fill: {
+                            @XAnchor: 0, 1;
+                            @YAnchor: 0, 1;
+                            @XOffset: 0, 0;
+                            @YOffset: 20, 0;
+                        }
+
+                        @Text: "athlete.training.desc";
+                        @YAlign: "Down";
+                        @XAlign: "Center";
+                        @Size: 5;
+                    }
+
+                    #I18nLabel:Warn {
+                        @XFill: {
+                            @Anchor: 0, 1;
+                            @OffMin: 0;
+                            @OffMax: 0;
+                        }
+
+                        @YPos: {
+                            @Anchor: 0;
+                            @Pivot: 0;
+                            @Size: 16;
+                            @Value: 0;
+                        }
+
+                        @Text: "athlete.training.warn";
+                        @Size: 3;
+                        @XAlign: "Center";
+                        @Color: "WarnRed";
+                    }
+                }
+
+                #Empty:Points {
+                    @XFill: {
+                        @Anchor: 0, 1;
+                        @OffMin: 4;
+                        @OffMax: 4;
+                    }
+
+                    @YPos: {
+                        @Anchor: 1;
+                        @Pivot: 1;
+                        @Value: -46;
+                        @Size: 23;
+                    }
+
+                    #Button:Reset {
+                        @Pos: {
+                            @Anchor: 0, 0.5;
+                            @Pivot: 0, 0.5;
+                            @Value: 4, 0;
+                            @Size: 62, 17;
+                        }
+                        @Sliced: true;
+                        @FirstFocus: true;
+
+                        @Normal: {
+                            @Sprite: "Button";
+                        }
+
+                        @Hover: {
+                            @Sprite: "ButtonHover";
+                        }
+
+                        #Image:Icon {
+                            @Pos: {
+                                @Anchor: 0, 0.5;
+                                @Pivot: 0, 0.5;
+                                @Value: -8, 0;
+                                @Size: 33, 33;
+                            }
+                        }
+
+                        #I18nLabel:Label {
+                            @Fill: {
+                                @XAnchor: 0, 1;
+                                @YAnchor: 0, 1;
+                                @XOffset: 16, 4;
+                                @YOffset: 3, 3;
+                            }
+                            @Text: "athlete.training.reset";
+                            @Size: 3;
+                            @XAlign: "Center";
+                            @YAlign: "Center";
+                        }
+                    }
+
+                    #Label:State {
+                        @XPos: {
+                            @Anchor: 1;
+                            @Pivot: 1;
+                            @Value: -8;
+                            @Size: 20;
+                        }
+
+                        @YFill: {
+                            @Anchor: 0, 1;
+                            @OffMin: 2;
+                            @OffMax: 2;
+                        }
+
+                        @Text: "4/4";
+                        @Size: 4;
+                        @XAlign: "Right";
+                        @YAlign: "Center";
+                    }
+
+                    #Empty:Points {
+                        @Pos: {
+                            @Anchor: 1, 0.5;
+                            @Pivot: 1, 0.5;
+                            @Value: -34, 0;
+                            @Size: 0, 20;
+                        }
+
+                        #I18nLabel:Desc {
+                            @Pos: {
+                                @Size: 100, 20;
+                            }
+
+                            @Text: "athlete.training.point";
+                            @XAlign: "Right";
+                            @Size: 4;
+                            @XFitter: true;
+                            @YAlign: "Center";
+                        }
+
+                        #Empty:Spacing {
+                            @Pos: {
+                                @Size: 10, 20;
+                            }
+                        }
+                    }
+                }
+
+                #Empty:Setting {
+                    @Fill: {
+                        @XAnchor: 0, 1;
+                        @XOffset: 4, 4;
+                        @YAnchor: 0, 1;
+                        @YOffset: 4, 69;
+                    }
+                }
+            }
+        }
+
+        #Button:Close {
+            @Pos: {
+                @Anchor: 1, 0;
+                @Pivot: 1, 0;
+                @Value: -8, 8;
+                @Size: 69, 25;
+            }
+            @Sliced: true;
+            @FirstFocus: true;
+
+            @Normal: {
+                @Sprite: "Button";
+            }
+
+            @Hover: {
+                @Sprite: "ButtonHover";
+            }
+
+            #I18nLabel:CloseLabel {
+                @Fill: {
+                    @XAnchor: 0, 1;
+                    @YAnchor: 0, 1;
+                    @XOffset: 3, 3;
+                    @YOffset: 3, 3;
+                }
+                @Text: "common.close";
+                @Size: 4;
+                @XAlign: "Center";
+                @YAlign: "Center";
+            }
+        }
+    }
+}

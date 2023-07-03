@@ -1,0 +1,330 @@
+#Empty:Worlds {
+    @Fill: {
+        @XAnchor: 0, 1;
+        @YAnchor: 0, 1;
+        @XOffset: 0, 0;
+        @YOffset: 0, 0;
+    }
+
+    @CanvasGroup: {}
+
+    #Image:Dimmed {
+        @Fill: {
+            @XAnchor: 0, 1;
+            @YAnchor: 0, 1;
+            @XOffset: 0, 0;
+            @YOffset: 0, 0;
+        }
+        
+        @Sprite: "White";
+        @Color: "Dimmed";
+    }
+
+    #Image:UI {
+        @Pos: {
+            @Anchor: 0.5, 0.5;
+            @Pivot: 0.5, 0.5;
+            @Value: 0, 16;
+            @Size: 626, 278;
+        }
+
+        @Sprite: "MailBoxBG";
+
+        #I18nLabel:Title {
+            @Pos: {
+                @Anchor: 0.5, 1;
+                @Pivot: 0.5, 1;
+                @Value: 0, -8;
+                @Size: 610, 28;
+            }
+
+            @XFitter: true;
+
+            @Text: "ranking.worlds";
+            @Size: 5;
+            @XAlign: "Center";
+            @YAlign: "Center";
+        }
+
+        #Empty:Contents {
+            @Fill: {
+                @XAnchor: 0, 1;
+                @YAnchor: 0, 1;
+                @XOffset: 10, 10;
+                @YOffset: 40, 46;
+            }
+
+            #Empty:Rank {
+                @Fill: {
+                    @XAnchor: 0, 1;
+                    @YAnchor: 0, 1;
+                    @XOffset: 0, 0;
+                    @YOffset: 0, 0;
+                }
+
+                #I18nLabel:Label16_1 {
+                    @Pos: {
+                        @Anchor: 0, 1;
+                        @Pivot: 0, 1;
+                        @Size: 75, 10;
+                    }
+
+                    @Text: "main_header.worlds0";
+                    @Size: 3;
+                    @YAlign: "Center";
+                }
+                
+                #I18nLabel:Label16_2 {
+                    @Pos: {
+                        @Anchor: 0, 1;
+                        @Pivot: 0, 1;
+                        @Size: 75, 10;
+                    }
+
+                    @Text: "main_header.worlds0";
+                    @Size: 3;
+                    @YAlign: "Center";
+                }
+                
+                #I18nLabel:Label16_3 {
+                    @Pos: {
+                        @Anchor: 0, 1;
+                        @Pivot: 0, 1;
+                        @Size: 75, 10;
+                    }
+
+                    @Text: "main_header.worlds0";
+                    @Size: 3;
+                    @YAlign: "Center";
+                }
+                
+                #I18nLabel:Label16_4 {
+                    @Pos: {
+                        @Anchor: 0, 1;
+                        @Pivot: 0, 1;
+                        @Size: 75, 10;
+                    }
+
+                    @Text: "main_header.worlds0";
+                    @Size: 3;
+                    @YAlign: "Center";
+                }
+
+                #I18nLabel:Label8_1 {
+                    @Pos: {
+                        @Anchor: 0, 1;
+                        @Pivot: 0, 1;
+                        @Size: 75, 10;
+                    }
+
+                    @Text: "main_header.worlds1";
+                    @Size: 3;
+                    @YAlign: "Center";
+                }
+
+                #I18nLabel:Label8_2 {
+                    @Pos: {
+                        @Anchor: 0, 1;
+                        @Pivot: 0, 1;
+                        @Size: 75, 10;
+                    }
+
+                    @Text: "main_header.worlds1";
+                    @Size: 3;
+                    @YAlign: "Center";
+                }
+
+                #I18nLabel:Label8_3 {
+                    @Pos: {
+                        @Anchor: 0, 1;
+                        @Pivot: 0, 1;
+                        @Size: 75, 10;
+                    }
+
+                    @Text: "main_header.worlds1";
+                    @Size: 3;
+                    @YAlign: "Center";
+                }
+
+                #I18nLabel:Label8_4 {
+                    @Pos: {
+                        @Anchor: 0, 1;
+                        @Pivot: 0, 1;
+                        @Size: 75, 10;
+                    }
+
+                    @Text: "main_header.worlds1";
+                    @Size: 3;
+                    @YAlign: "Center";
+                }
+
+                #I18nLabel:Label4_1 {
+                    @Pos: {
+                        @Anchor: 0, 1;
+                        @Pivot: 0, 1;
+                        @Size: 75, 10;
+                    }
+
+                    @Text: "main_header.worlds2";
+                    @Size: 3;
+                    @YAlign: "Center";
+                }
+
+                #I18nLabel:Label4_2 {
+                    @Pos: {
+                        @Anchor: 0, 1;
+                        @Pivot: 0, 1;
+                        @Size: 75, 10;
+                    }
+
+                    @Text: "main_header.worlds2";
+                    @Size: 3;
+                    @YAlign: "Center";
+                }
+                
+                #I18nLabel:Label2_1 {
+                    @Pos: {
+                        @Anchor: 0, 1;
+                        @Pivot: 0, 1;
+                        @Size: 75, 14;
+                    }
+
+                    @Text: "main_header.worlds3";
+                    @Size: 4;
+                    @XAlign: "Center";
+                    @YAlign: "Center";
+                }
+            }
+
+            #Empty:Personal {
+                @Fill: {
+                    @XAnchor: 0, 1;
+                    @YAnchor: 0, 1;
+                    @XOffset: 0, 0;
+                    @YOffset: 0, 0;
+                }
+
+                #Image:Header {
+                    @XFill: {
+                        @Anchor: 0, 1;
+                        @OffMin: 0;
+                        @OffMax: 0;
+                    }
+
+                    @YPos: {
+                        @Anchor: 1;
+                        @Pivot: 1;
+                        @Value: 0;
+                        @Size: 16;
+                    }
+
+                    @Color: "ScrollBG";
+                }
+
+                #Image:Sep {
+                    @XPos: {
+                        @Anchor: 0.5;
+                        @Pivot: 0.5;
+                        @Value: 0;
+                        @Size: 2;
+                    }
+
+                    @YFill: {
+                        @Anchor: 0, 1;
+                        @OffMin: 0;
+                        @OffMax: 0;
+                    }
+
+                    @Color: "ScrollBG";
+                }
+
+                #I18nLabel:HeaderL {
+                    @Pos: {
+                        @Anchor: 0, 1;
+                        @Pivot: 0, 1;
+                        @Value: 0, 1;
+                        @Size: 302, 16;
+                    }
+                    
+                    @Text: "in_game.rank.kill_rank";
+                    @Size: 4;
+                    @XAlign: "Center";
+                    @YAlign: "Center";
+                }
+                
+                #Empty:ContainerL {
+                    @Pos: {
+                        @Anchor: 0, 1;
+                        @Pivot: 0, 1;
+                        @Value: 4, -20;
+                        @Size: 294, 168;
+                    }
+                }
+
+                #I18nLabel:HeaderR {
+                    @Pos: {
+                        @Anchor: 1, 1;
+                        @Pivot: 1, 1;
+                        @Value: 0, 1;
+                        @Size: 302, 16;
+                    }
+                    
+                    @Text: "in_game.rank.assist_rank";
+                    @Size: 4;
+                    @XAlign: "Center";
+                    @YAlign: "Center";
+                }
+
+                #Empty:ContainerR {
+                    @Pos: {
+                        @Anchor: 1, 1;
+                        @Pivot: 1, 1;
+                        @Value: -4, -20;
+                        @Size: 294, 168;
+                    }
+                }
+            }
+
+            #Empty:Tabs {
+                @Pos: {
+                    @Anchor: 0, 0;
+                    @Pivot: 0, 1;
+                    @Value: -2, 0;
+                    @Size: 0, 0;
+                }
+            }
+        }
+
+        #Button:Close {
+            @Pos: {
+                @Anchor: 1, 0;
+                @Pivot: 1, 0;
+                @Value: -8, 8;
+                @Size: 69, 25;
+            }
+            @Sliced: true;
+            @FirstFocus: true;
+
+            @Normal: {
+                @Sprite: "Button";
+            }
+
+            @Hover: {
+                @Sprite: "ButtonHover";
+            }
+
+            #I18nLabel:CloseLabel {
+                @Fill: {
+                    @XAnchor: 0, 1;
+                    @YAnchor: 0, 1;
+                    @XOffset: 3, 3;
+                    @YOffset: 3, 3;
+                }
+                @Text: "common.close";
+                @Size: 4;
+                @XAlign: "Center";
+                @YAlign: "Center";
+            }
+        }
+    }
+}

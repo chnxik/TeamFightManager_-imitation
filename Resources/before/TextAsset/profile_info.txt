@@ -1,0 +1,105 @@
+#Image:ProfileInfo {
+    @Pos: {
+        @Size: 106, 59;
+    }
+
+    @Sprite: "ProfileInfoBG";
+
+    #Label:SteamID {
+        @Pos: {
+            @Anchor: 0.5, 1;
+            @Pivot: 0.5, 1;
+            @Size: 104, 15;
+            @Value: 0, -1;
+        }
+
+        @Text: "SteamID";
+        @Size: 4;
+        @XAlign: "Center";
+        @YAlign: "Center";
+    }
+
+    #Empty:Team {
+        @Pos: {
+            @Anchor: 0.5, 1;
+            @Pivot: 0.5, 1;
+            @Size: 102, 19;
+            @Value: 0, -17;
+        }
+
+        #Image:Symbol {
+            @Pos: {
+                @Anchor: 0, 0.5;
+                @Pivot: 0, 0.5;
+                @Size: 15, 15;
+                @Value: 2, 0;
+            }
+        }
+
+        #Label:Name {
+            @Pos: {
+                @Anchor: 0, 0.5;
+                @Pivot: 0, 0.5;
+                @Size: 79, 13;
+                @Value: 20, 0;
+            }
+
+            @XAlign: "Center";
+            @YAlign: "Center";
+            @Size: 3;
+            @Text: "Team Name";
+        }
+    }
+
+    #Empty:Coach {
+        @Pos: {
+            @Anchor: 0.5, 1;
+            @Pivot: 0.5, 1;
+            @Size: 102, 19;
+            @Value: 0, -38;
+        }
+
+        #Empty:Body {
+            @Pos: {
+                @Anchor: 0, 0.5;
+                @Pivot: 0, 0.5;
+                @Size: 15, 15;
+                @Value: 2, 0;
+            }
+
+            @Masked: true;
+
+            #Image:Coach {
+                @Pos: {
+                    @Anchor: 0.5, 0.5;
+                    @Pivot: 0.5, 0.5;
+                    @Value: 0, -1;
+                    @Size: 32, 32;
+                }
+
+                #Image:Hair {
+                    @Pos: {
+                        @Anchor: 0.5, 0.5;
+                        @Pivot: 0.5, 0.5;
+                        @Value: 0, 0.5;
+                        @Size: 32, 32;
+                    }
+                }
+            }
+        }
+
+        #Label:Name {
+            @Pos: {
+                @Anchor: 0, 0.5;
+                @Pivot: 0, 0.5;
+                @Size: 79, 13;
+                @Value: 20, 0;
+            }
+
+            @XAlign: "Center";
+            @YAlign: "Center";
+            @Size: 3;
+            @Text: "Coach Name";
+        }
+    }
+}

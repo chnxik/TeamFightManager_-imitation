@@ -1,0 +1,38 @@
+#Empty:MaterialSlot {
+    @Pos: {
+        @Size: 35, 15;
+    }
+    
+    #Image:IconBG {
+        @Pos: {
+            @Anchor: 0, 0.5;
+            @Pivot: 0, 0.5;
+            @Size: 16, 16;
+            @Value: 0, 0;
+        }
+
+        @Sprite: "MaterialBG";
+
+        #Image:Icon {
+            @Pos: {
+                @Anchor: 0.5, 0.5;
+                @Pivot: 0.5, 0.5;
+                @Value: 0, 0;
+                @Size: 19, 19;
+            }
+        }
+    }
+
+    #Label:Desc {
+        @Fill: {
+            @XAnchor: 0, 1;
+            @YAnchor: 0, 1;
+            @XOffset: 17, 1;
+            @YOffset: 2, 2;
+        }
+
+        @Text: "x99";
+        @YAlign: "Down";
+        @Size: 3;
+    }
+}

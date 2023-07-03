@@ -1,0 +1,145 @@
+#Image:MatchPlayerInfo {
+    @Pos: {
+        @Size: 41, 78;
+    }
+
+    #I18nLabel:Header {
+        @Pos: {
+            @Anchor: 0.5, 1;
+            @Pivot: 0.5, 1;
+            @Size: 39, 13;
+            @Value: 0, -1;
+        }
+
+        @Text: "match.info";
+        @Size: 2;
+        @XAlign: "Center";
+        @YAlign: "Center";
+    }
+
+    #Label:Kill {
+        @Pos: {
+            @Anchor: 0, 1;
+            @Pivot: 0, 1;
+            @Size: 9, 6;
+            @Value: 4, -18;
+        }
+
+        @Text: "K";
+        @Size: 2;
+        @XAlign: "Center";
+        @YAlign: "Center";
+    }
+
+    #Label:KillValue {
+        @Pos: {
+            @Anchor: 0, 1;
+            @Pivot: 0, 1;
+            @Size: 9, 12;
+            @Value: 4, -25;
+        }
+
+        @Text: "99";
+        @Size: 2;
+        @XAlign: "Center";
+        @YAlign: "Center";
+    }
+    
+    #Label:Death {
+        @Pos: {
+            @Anchor: 0, 1;
+            @Pivot: 0, 1;
+            @Size: 9, 6;
+            @Value: 16, -18;
+        }
+
+        @Text: "D";
+        @Size: 2;
+        @XAlign: "Center";
+        @YAlign: "Center";
+    }
+
+    #Label:DeathValue {
+        @Pos: {
+            @Anchor: 0, 1;
+            @Pivot: 0, 1;
+            @Size: 9, 12;
+            @Value: 16, -25;
+        }
+
+        @Text: "99";
+        @Size: 2;
+        @XAlign: "Center";
+        @YAlign: "Center";
+    }
+
+    #Label:Assist {
+        @Pos: {
+            @Anchor: 0, 1;
+            @Pivot: 0, 1;
+            @Size: 9, 6;
+            @Value: 28, -18;
+        }
+
+        @Text: "A";
+        @Size: 2;
+        @XAlign: "Center";
+        @YAlign: "Center";
+    }
+    
+    #Label:AssistValue {
+        @Pos: {
+            @Anchor: 0, 1;
+            @Pivot: 0, 1;
+            @Size: 9, 12;
+            @Value: 28, -25;
+        }
+
+        @Text: "99";
+        @Size: 2;
+        @XAlign: "Center";
+        @YAlign: "Center";
+    }
+
+    #Label:Deal {
+        @Pos: {
+            @Anchor: 0, 1;
+            @Pivot: 0, 1;
+            @Value: 16, -41;
+            @Size: 21, 9;
+        }
+
+        @Text: "9999";
+        @Size: 2;
+        @XAlign: "Center";
+        @YAlign: "Center";
+    }
+
+    #Label:Tank {
+        @Pos: {
+            @Anchor: 0, 1;
+            @Pivot: 0, 1;
+            @Value: 16, -53;
+            @Size: 21, 9;
+        }
+
+        @Text: "9999";
+        @Size: 2;
+        @XAlign: "Center";
+        @YAlign: "Center";
+    }
+
+    #Label:Heal {
+        @Pos: {
+            @Anchor: 0, 1;
+            @Pivot: 0, 1;
+            @Value: 16, -65;
+            @Size: 21, 9;
+        }
+
+        @Text: "9999";
+        @Size: 2;
+        @XAlign: "Center";
+        @YAlign: "Center";
+    }
+}

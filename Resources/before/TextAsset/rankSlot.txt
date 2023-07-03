@@ -1,0 +1,102 @@
+#Image:RankSlot {
+    @Pos: {
+        @Anchor: 0, 1;
+        @Pivot: 0, 1;
+        @Size: 297, 32;
+    }
+
+    @Sprite: "StandingSlot";
+
+    #Label:Ranking {
+        @Pos: {
+            @Anchor: 0, 1;
+            @Pivot: 0, 1;
+            @Value: 0, 0;
+            @Size: 32, 32;
+        }
+
+        @XAlign: "Center";
+        @YAlign: "Center";
+        @Size: 6;
+        @Text: "10";
+    }
+
+    #Image:Icon {
+        @Pos: {
+            @Anchor: 0, 1;
+            @Pivot: 0, 1;
+            @Value: 33, -1;
+            @Size: 30, 30;
+        }
+    }
+
+    #Label:Name {
+        @Pos: {
+            @Anchor: 0, 1;
+            @Pivot: 0, 1;
+            @Value: 68, -4;
+            @Size: 130, 14;
+        }
+
+        @XAlign: "Left";
+        @YAlign: "Up";
+        @Text: "test_team_name";
+        @Size: 5;
+    }
+
+    #I18nLabel:Record {
+        @Pos: {
+            @Anchor: 0, 1;
+            @Pivot: 0, 1;
+            @Value: 68, -20;
+            @Size: 110, 10;
+        }
+
+        @XAlign: "Left";
+        @YAlign: "Up";
+        @Text: "ranking.record";
+        @Size: 3;
+    }
+
+    #Label:Kill {
+        @Pos: {
+            @Anchor: 0, 1;
+            @Pivot: 0, 1;
+            @Value: 190, 0;
+            @Size: 28, 32;
+        }
+
+        @XAlign: "Center";
+        @YAlign: "Center";
+        @Text: "999";
+        @Size: 3;
+    }
+
+    #Label:Death {
+        @Pos: {
+            @Anchor: 0, 1;
+            @Pivot: 0, 1;
+            @Value: 218, 0;
+            @Size: 28, 32;
+        }
+
+        @XAlign: "Center";
+        @YAlign: "Center";
+        @Text: "999";
+        @Size: 3;
+    }
+    
+    #I18nLabel:State {
+        @Pos: {
+            @Anchor: 0, 1;
+            @Pivot: 0, 1;
+            @Value: 246, 0;
+            @Size: 51, 32;
+        }
+
+        @XAlign: "Center";
+        @YAlign: "Center";
+        @Text: "플레이오프 2라운드";
+        @Size: 3;
+    }
+}

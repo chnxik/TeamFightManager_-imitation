@@ -1,0 +1,166 @@
+#Empty:Recruit {
+    @Fill: {
+        @XAnchor: 0, 1;
+        @YAnchor: 0, 1;
+        @XOffset: 0, 0;
+        @YOffset: 0, 0;
+    }
+
+    @CanvasGroup: {}
+
+    #Image:Dimmed {
+        @Fill: {
+            @XAnchor: 0, 1;
+            @YAnchor: 0, 1;
+            @XOffset: 0, 0;
+            @YOffset: 0, 0;
+        }
+        
+        @Sprite: "White";
+        @Color: "Dimmed";
+    }
+
+    #Image:UI {
+        @Pos: {
+            @Anchor: 0.5, 0.5;
+            @Pivot: 0.5, 0.5;
+            @Value: 0, 16;
+            @Size: 626, 278;
+        }
+
+        @Sprite: "RecruitBG";
+
+        #I18nLabel:Title {
+            @Pos: {
+                @Anchor: 0.5, 1;
+                @Pivot: 0.5, 1;
+                @Value: 0, -8;
+                @Size: 610, 28;
+            }
+
+            @Text: "menu.manage_team.recruit";
+            @Size: 6;
+            @XAlign: "Center";
+            @YAlign: "Center";
+
+            @XFitter: true;
+
+            #Button:Info {
+                @Pos: {
+                    @Anchor: 1, 0.5;
+                    @Pivot: 0, 0.5;
+                    @Value: 8, 0;
+                    @Size: 18, 18;
+                }
+                
+                @Normal: {
+                    @Sprite: "InfoNormal";
+                }
+
+                @Hover: {
+                    @Sprite: "InfoHover";
+                }
+            }
+        }
+
+        #Empty:Contents {
+            @Fill: {
+                @XAnchor: 0, 1;
+                @YAnchor: 0, 1;
+                @XOffset: 8, 8;
+                @YOffset: 40, 42;
+            }
+        }
+
+        #Image:GoldIcon {
+            @Pos: {
+                @Anchor: 0, 0;
+                @Pivot: 0, 0;
+                @Size: 14, 14;
+                @Value: 13, 13;
+            }
+
+            @Sprite: "HeaderGold";
+        }
+        
+        #Label:Gold {
+            @Pos: {
+                @Anchor: 0, 0;
+                @Pivot: 0, 0;
+                @Size: 85, 14;
+                @Value: 30, 13;
+            }
+
+            @Text: "3,050";
+            @Size: 4;
+            @XAlign: "Right";
+            @YAlign: "Center";
+        }
+
+        #Empty:WarnPeriod {
+            @Pos: {
+                @Anchor: 0, 0;
+                @Pivot: 0, 0;
+                @Size: 300, 24;
+                @Value: 130, 8;
+            }
+
+            #Image:Alert {
+                @Pos: {
+                    @Anchor: 0, 0.5;
+                    @Pivot: 0, 0.5;
+                    @Size: 16, 16;
+                    @Value: 0, 0;
+                }
+
+                @Sprite: "Alert";
+            }
+
+            #I18nLabel:Warn {
+                @Pos: {
+                    @Anchor: 0, 0.5;
+                    @Pivot: 0, 0.5;
+                    @Size: 280, 24;
+                    @Value: 24, 0;
+                }
+
+                @Color: "WarnRed";
+                @Text: "recruit.warn_period";
+                @Size: 4;
+                @YAlign: "Center";
+            }
+        }
+
+        #Button:Close {
+            @Pos: {
+                @Anchor: 1, 0;
+                @Pivot: 1, 0;
+                @Value: -8, 8;
+                @Size: 69, 25;
+            }
+            @Sliced: true;
+            @FirstFocus: true;
+
+            @Normal: {
+                @Sprite: "Button";
+            }
+
+            @Hover: {
+                @Sprite: "ButtonHover";
+            }
+
+            #I18nLabel:CloseLabel {
+                @Fill: {
+                    @XAnchor: 0, 1;
+                    @YAnchor: 0, 1;
+                    @XOffset: 3, 3;
+                    @YOffset: 3, 3;
+                }
+                @Text: "common.close";
+                @Size: 4;
+                @XAlign: "Center";
+                @YAlign: "Center";
+            }
+        }
+    }
+}

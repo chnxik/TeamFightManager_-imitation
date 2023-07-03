@@ -1,0 +1,65 @@
+#Empty:_ {
+    @Pos: {
+        @Size: 222, 18;
+    }
+
+    #I18nLabel:Name {
+        @Pos: {
+            @Anchor: 0, 1;
+            @Pivot: 0, 1;
+            @Value: 5, 0;
+            @Size: 105, 18;
+        }
+
+        @Size: 4;
+        @XAlign: "Left";
+        @YAlign: "Center";
+    }
+
+    #Button:Left {
+        @Pos: {
+            @Anchor: 0, 0.5;
+            @Pivot: 0, 0.5;
+            @Value: 115, 0;
+            @Size: 8, 13;
+        }
+
+        @Normal: {
+            @Sprite: "SmallGreenArrowLeft";
+        }
+
+        @Hover: {
+            @Sprite: "SmallGreenArrowLeftHover";
+        }
+    }
+
+    #I18nLabel:Option {
+        @Pos: {
+            @Anchor: 0, 0.5;
+            @Pivot: 0, 0.5;
+            @Value: 126, 0;
+            @Size: 77, 18;
+        }
+
+        @Size: 4;
+        @XAlign: "Center";
+        @YAlign: "Center";
+    }
+
+    #Button:Right {
+        @Pos: {
+            @Anchor: 1, 0.5;
+            @Pivot: 1, 0.5;
+            @Value: -8, 0;
+            @Size: 8, 13;
+        }
+
+        @Normal: {
+            @Sprite: "SmallGreenArrowRight";
+        }
+
+        @Hover: {
+            @Sprite: "SmallGreenArrowRightHover";
+        }
+    }
+}

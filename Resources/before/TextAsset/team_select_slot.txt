@@ -1,0 +1,212 @@
+#Image:TeamSelectSlot {
+    @Pos: {
+        @Size: 293, 34;
+    }
+
+    #Image:Logo {
+        @Pos: {
+            @Anchor: 0, 0.5;
+            @Pivot: 0, 0.5;
+            @Size: 30, 30;
+            @Value: 2, 0;
+        }
+    }
+
+    #Label:TeamName {
+        @Pos: {
+            @Anchor: 0, 1;
+            @Pivot: 0, 1;
+            @Value: 36, -2;
+            @Size: 105, 16;
+        }
+
+        @Text: "testabc";
+        @Size: 5;
+        @XAlign: "Left";
+        @YAlign: "Center";
+    }
+
+    #Empty:StatPanel {
+        @Pos: {
+            @Anchor: 0, 1;
+            @Pivot: 0, 1;
+            @Value: 36, -20;
+            @Size: 100, 12;
+        }
+
+        #Image:AttackIcon {
+            @Pos: {
+                @Anchor: 0, 0.5;
+                @Pivot: 0, 0.5;
+                @Value: 0, 0;
+                @Size: 10, 10;
+            }
+
+            @Sprite: "Attack";
+        }
+
+        #Label:Attack {
+            @Pos: {
+                @Anchor: 0, 0.5;
+                @Pivot: 0, 0.5;
+                @Value: 14, 0;
+                @Size: 20, 14;
+            }
+
+            @Text: "99";
+            @Size: 4;
+            @YAlign: "Center";
+        }
+
+        #Image:DefenceIcon {
+            @Pos: {
+                @Anchor: 0, 0.5;
+                @Pivot: 0, 0.5;
+                @Value: 36, 0;
+                @Size: 8, 10;
+            }
+
+            @Sprite: "Defence";
+        }
+
+        #Label:Defence {
+            @Pos: {
+                @Anchor: 0, 0.5;
+                @Pivot: 0, 0.5;
+                @Value: 48, 0;
+                @Size: 20, 14;
+            }
+
+            @Text: "99";
+            @Size: 4;
+            @YAlign: "Center";
+        }
+    }
+
+    #Image:Player {
+        @Pos: {
+            @Anchor: 1, 0.5;
+            @Pivot: 1, 0.5;
+            @Value: -72, 0;
+            @Size: 75, 30;
+        }
+
+        #I18nLabel:Header {
+            @Pos: {
+                @Anchor: 0.5, 1;
+                @Pivot: 0.5, 1;
+                @Value: 0, -1;
+                @Size: 73, 9;
+            }
+
+            @Text: "multiplayer.load.player";
+            @XAlign: "Center";
+            @YAlign: "Center";
+            @Size: 3;
+        }
+
+        #Label:Contents {
+            @Pos: {
+                @Anchor: 0.5, 0;
+                @Pivot: 0.5, 0;
+                @Value: 0, 1;
+                @Size: 73, 18;
+            }
+
+            @Text: "Test";
+            @XAlign: "Center";
+            @YAlign: "Center";
+            @Size: 3;
+        }
+    }
+
+    #Button:BigView {
+        @Pos: {
+            @Anchor: 1, 0.5;
+            @Pivot: 1, 0.5;
+            @Value: -2, 0;
+            @Size: 67, 28;
+        }
+
+        @Normal: {
+            @Sprite: "Button";
+        }
+
+        @Hover: {
+            @Sprite: "ButtonHover";
+        }
+
+        #I18nLabel:Label {
+            @Fill: {
+                @XAnchor: 0, 1;
+                @YAnchor: 0, 1;
+                @XOffset: 3, 3;
+                @YOffset: 3, 3;
+            }
+            @Text: "multiplayer.load.view_member";
+            @Size: 4;
+            @XAlign: "Center";
+            @YAlign: "Center";
+        }
+    }
+
+    #Button:SmallView {
+        @Pos: {
+            @Anchor: 1, 0.5;
+            @Pivot: 1, 0;
+            @Value: -2, 1;
+            @Size: 67, 14;
+        }
+
+        @Normal: {
+            @Sprite: "Button";
+        }
+
+        @Hover: {
+            @Sprite: "ButtonHover";
+        }
+
+        #I18nLabel:Label {
+            @Fill: {
+                @XAnchor: 0, 1;
+                @YAnchor: 0, 1;
+                @XOffset: 3, 3;
+                @YOffset: 3, 3;
+            }
+            @Text: "multiplayer.load.view_member";
+            @Size: 4;
+            @XAlign: "Center";
+            @YAlign: "Center";
+        }
+    }
+
+    #Button:SmallSelect {
+        @Pos: {
+            @Anchor: 1, 0.5;
+            @Pivot: 1, 1;
+            @Value: -2, -1;
+            @Size: 67, 14;
+        }
+
+        @Normal: {
+            @Sprite: "Button";
+        }
+
+        @Hover: {
+            @Sprite: "ButtonHover";
+        }
+
+        #I18nLabel:Label {
+            @Fill: {
+                @XAnchor: 0, 1;
+                @YAnchor: 0, 1;
+                @XOffset: 3, 3;
+                @YOffset: 3, 3;
+            }
+            @Text: "multiplayer.load.select";
+            @Size: 4;
+            @XAlign: "Center";
+            @YAlign: "Center";
+        }
+    }
+}

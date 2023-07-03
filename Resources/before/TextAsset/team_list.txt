@@ -1,0 +1,454 @@
+#Image:TeamList {
+    @Pos: {
+        @Size: 640, 360;
+    }
+
+    #I18nLabel:Title {
+        @Pos: {
+            @Anchor: 0.5, 1;
+            @Pivot: 0.5, 1;
+            @Value: 0, -6;
+            @Size: 628, 28;
+        }
+
+        @Text: "setting.change_info.title";
+        @Size: 6;
+        @XAlign: "Center";
+        @YAlign: "Center";
+    }
+
+    #Empty:Amateur {
+        @Pos: {
+            @Anchor: 0, 1;
+            @Pivot: 0, 1;
+            @Value: 6, -40;
+            @Size: 120, 282;
+        }
+
+        #Empty:Header {
+            @Pos: {
+                @Anchor: 0.5, 1;
+                @Pivot: 0.5, 1;
+                @Value: 0, -2;
+                @Size: 116, 16;
+            }
+
+            #Image:LogoBG {
+                @Pos: {
+                    @Anchor: 0, 0.5;
+                    @Pivot: 0, 0.5;
+                    @Value: 8, 0;
+                    @Size: 16, 16;
+                }
+
+                @Color: "PanelHeader";
+
+                #Image:Logo {
+                    @Pos: {
+                        @Size: 16, 16;
+                    }
+                }
+            }
+
+            #I18nLabel:Name {
+                @Pos: {
+                    @Anchor: 0.5, 0.5;
+                    @Pivot: 0.5, 0.5;
+                    @Value: 0, 0;
+                    @Size: 60, 16;
+                }
+
+                @Text: "league.amateur";
+                @XAlign: "Center";
+                @YAlign: "Center";
+                @Size: 4;
+            }
+        }
+
+        #Empty:Container {
+            @Pos: {
+                @Anchor: 0.5, 1;
+                @Pivot: 0.5, 1;
+                @Value: 0, -20;
+                @Size: 116, 260;
+            }
+        }
+    }
+
+    #Empty:SemiPro {
+        @Pos: {
+            @Anchor: 0, 1;
+            @Pivot: 0, 1;
+            @Value: 133, -40;
+            @Size: 120, 282;
+        }
+
+        #Empty:Header {
+            @Pos: {
+                @Anchor: 0.5, 1;
+                @Pivot: 0.5, 1;
+                @Value: 0, -2;
+                @Size: 116, 16;
+            }
+
+            #Image:LogoBG {
+                @Pos: {
+                    @Anchor: 0, 0.5;
+                    @Pivot: 0, 0.5;
+                    @Value: 8, 0;
+                    @Size: 16, 16;
+                }
+
+                @Color: "PanelHeader";
+
+                #Image:Logo {
+                    @Pos: {
+                        @Size: 16, 16;
+                    }
+                }
+            }
+
+            #I18nLabel:Name {
+                @Pos: {
+                    @Anchor: 0.5, 0.5;
+                    @Pivot: 0.5, 0.5;
+                    @Value: 0, 0;
+                    @Size: 60, 16;
+                }
+
+                @Text: "league.semi_pro";
+                @XAlign: "Center";
+                @YAlign: "Center";
+                @Size: 4;
+            }
+        }
+
+        #Empty:Container {
+            @Pos: {
+                @Anchor: 0.5, 1;
+                @Pivot: 0.5, 1;
+                @Value: 0, -20;
+                @Size: 116, 260;
+            }
+        }
+    }
+
+    #Empty:Pro2 {
+        @Pos: {
+            @Anchor: 0, 1;
+            @Pivot: 0, 1;
+            @Value: 260, -40;
+            @Size: 120, 282;
+        }
+
+        #Empty:Header {
+            @Pos: {
+                @Anchor: 0.5, 1;
+                @Pivot: 0.5, 1;
+                @Value: 0, -2;
+                @Size: 116, 16;
+            }
+
+            #Image:LogoBG {
+                @Pos: {
+                    @Anchor: 0, 0.5;
+                    @Pivot: 0, 0.5;
+                    @Value: 8, 0;
+                    @Size: 16, 16;
+                }
+
+                @Color: "PanelHeader";
+
+                #Image:Logo {
+                    @Pos: {
+                        @Size: 16, 16;
+                    }
+                }
+            }
+
+            #I18nLabel:Name {
+                @Pos: {
+                    @Anchor: 0.5, 0.5;
+                    @Pivot: 0.5, 0.5;
+                    @Value: 0, 0;
+                    @Size: 60, 16;
+                }
+
+                @Text: "league.pro2";
+                @XAlign: "Center";
+                @YAlign: "Center";
+                @Size: 4;
+            }
+        }
+
+        #Empty:Container {
+            @Pos: {
+                @Anchor: 0.5, 1;
+                @Pivot: 0.5, 1;
+                @Value: 0, -20;
+                @Size: 116, 260;
+            }
+        }
+    }
+
+    #Empty:Pro1 {
+        @Pos: {
+            @Anchor: 0, 1;
+            @Pivot: 0, 1;
+            @Value: 387, -40;
+            @Size: 120, 282;
+        }
+
+        #Empty:Header {
+            @Pos: {
+                @Anchor: 0.5, 1;
+                @Pivot: 0.5, 1;
+                @Value: 0, -2;
+                @Size: 116, 16;
+            }
+
+            #Image:LogoBG {
+                @Pos: {
+                    @Anchor: 0, 0.5;
+                    @Pivot: 0, 0.5;
+                    @Value: 8, 0;
+                    @Size: 16, 16;
+                }
+
+                @Color: "PanelHeader";
+
+                #Image:Logo {
+                    @Pos: {
+                        @Size: 16, 16;
+                    }
+                }
+            }
+
+            #I18nLabel:Name {
+                @Pos: {
+                    @Anchor: 0.5, 0.5;
+                    @Pivot: 0.5, 0.5;
+                    @Value: 0, 0;
+                    @Size: 60, 16;
+                }
+
+                @Text: "league.pro";
+                @XAlign: "Center";
+                @YAlign: "Center";
+                @Size: 4;
+            }
+        }
+
+        #Empty:Container {
+            @Pos: {
+                @Anchor: 0.5, 1;
+                @Pivot: 0.5, 1;
+                @Value: 0, -20;
+                @Size: 116, 260;
+            }
+        }
+    }
+
+    #Empty:Worlds {
+        @Pos: {
+            @Anchor: 0, 1;
+            @Pivot: 0, 1;
+            @Value: 514, -40;
+            @Size: 120, 282;
+        }
+
+        #Empty:Header {
+            @Pos: {
+                @Anchor: 0.5, 1;
+                @Pivot: 0.5, 1;
+                @Value: 0, -2;
+                @Size: 116, 16;
+            }
+
+            #Image:LogoBG {
+                @Pos: {
+                    @Anchor: 0, 0.5;
+                    @Pivot: 0, 0.5;
+                    @Value: 8, 0;
+                    @Size: 16, 16;
+                }
+
+                @Color: "PanelHeader";
+
+                #Image:Logo {
+                    @Pos: {
+                        @Size: 16, 16;
+                    }
+                }
+            }
+
+            #I18nLabel:Name {
+                @Pos: {
+                    @Anchor: 0.5, 0.5;
+                    @Pivot: 0.5, 0.5;
+                    @Value: 0, 0;
+                    @Size: 60, 16;
+                }
+
+                @Text: "league.worlds";
+                @XAlign: "Center";
+                @YAlign: "Center";
+                @Size: 4;
+            }
+        }
+
+        #List:Container {
+            @Pos: {
+                @Anchor: 0.5, 1;
+                @Pivot: 0.5, 1;
+                @Value: 0, -22;
+                @Size: 114, 257;
+            }
+
+            @Scroll: {
+                @Size: 5;
+                @BackgroundColor: "ScrollBG";
+                @BarColor: "ScrollBar";
+            }
+        }
+    }
+
+    #Label:Name {
+        @Pos: {
+            @Anchor: 0, 0;
+            @Pivot: 0, 0;
+            @Size: 120, 15;
+            @Value: 6, 11;
+        }
+
+        @Text: "[Default]";
+        @XAlign: "Center";
+        @YAlign: "Center";
+        @Size: 4;
+    }
+
+    #Button:Load {
+        @Pos: {
+            @Anchor: 0, 0;
+            @Pivot: 0, 0;
+            @Value: 133, 11;
+            @Size: 49, 15;
+        }
+        
+        @Normal: {
+            @Sprite: "Button";
+        }
+
+        @Hover: {
+            @Sprite: "ButtonHover";
+        }
+
+        #I18nLabel:Label {
+            @Fill: {
+                @XAnchor: 0, 1;
+                @YAnchor: 0, 1;
+                @XOffset: 4, 4;
+                @YOffset: 2, 2;
+            }
+
+            @Text: "multiplayer.setting.load";
+            @Size: 3;
+            @XAlign: "Center";
+            @YAlign: "Center";
+        }
+    }
+
+    #Button:Save {
+        @Pos: {
+            @Anchor: 0, 0;
+            @Pivot: 0, 0;
+            @Value: 186, 11;
+            @Size: 49, 15;
+        }
+        
+        @Normal: {
+            @Sprite: "Button";
+        }
+
+        @Hover: {
+            @Sprite: "ButtonHover";
+        }
+
+        #I18nLabel:Label {
+            @Fill: {
+                @XAnchor: 0, 1;
+                @YAnchor: 0, 1;
+                @XOffset: 4, 4;
+                @YOffset: 2, 2;
+            }
+
+            @Text: "multiplayer.setting.save";
+            @Size: 3;
+            @XAlign: "Center";
+            @YAlign: "Center";
+        }
+    }
+
+    #Button:Init {
+        @Pos: {
+            @Anchor: 0, 0;
+            @Pivot: 0, 0;
+            @Value: 239, 11;
+            @Size: 49, 15;
+        }
+        
+        @Normal: {
+            @Sprite: "Button";
+        }
+
+        @Hover: {
+            @Sprite: "ButtonHover";
+        }
+
+        #I18nLabel:Label {
+            @Fill: {
+                @XAnchor: 0, 1;
+                @YAnchor: 0, 1;
+                @XOffset: 4, 4;
+                @YOffset: 2, 2;
+            }
+
+            @Text: "multiplayer.setting.init";
+            @Size: 3;
+            @XAlign: "Center";
+            @YAlign: "Center";
+        }
+    }
+
+    #Button:Close {
+        @Pos: {
+            @Anchor: 1 0;
+            @Pivot: 1, 0;
+            @Value: -8, 8;
+            @Size: 120, 26;
+        }
+        @Sliced: true;
+        @FirstFocus: true;
+
+        @Normal: {
+            @Sprite: "Button";
+        }
+
+        @Hover: {
+            @Sprite: "ButtonHover";
+        }
+
+        #I18nLabel:CloseLabel {
+            @Fill: {
+                @XAnchor: 0, 1;
+                @YAnchor: 0, 1;
+                @XOffset: 3, 3;
+                @YOffset: 3, 3;
+            }
+            @Text: "multiplayer.back";
+            @Size: 4;
+            @XAlign: "Center";
+            @YAlign: "Center";
+        }
+    }
+}

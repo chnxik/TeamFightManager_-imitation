@@ -1,0 +1,138 @@
+#Empty:WorldsReport {
+    @XFill: {
+        @Anchor: 0, 1;
+        @OffMin: 0;
+        @OffMax: 0;
+    }
+
+    @YPos: {
+        @Anchor: 1;
+        @Pivot: 1;
+        @Size: 460;
+    }
+
+    #I18nLabel:Desc {
+        @XFill: {
+            @Anchor: 0, 1;
+            @OffMin: 0;
+            @OffMax: 0;
+        }
+
+        @YPos: {
+            @Anchor: 1;
+            @Pivot: 1;
+            @Value: 0;
+            @Size: 26;
+        }
+
+        @Text: "news.worlds_report.contents";
+        @Size: 4;
+        @XAlign: "Left";
+        @YAlign: "Up";
+    }
+
+    #Image:Background {
+        @Pos: {
+            @Anchor: 0.5, 1;
+            @Pivot: 0.5, 1;
+            @Value: 0, -30;
+            @Size: 479, 219;
+        }
+
+        #I18nLabel:Best {
+            @Pos: {
+                @Anchor: 0.5, 1;
+                @Pivot: 0.5, 1;
+                @Value: 0, -1;
+                @Size: 460, 21;
+            }
+
+            @Text: "news.worlds_report.best_win";
+            @Size: 5;
+            @XAlign: "Center";
+            @YAlign: "Center";
+        }
+
+        #Empty:WorldsContainer {
+            @Pos: {
+                @Anchor: 0.5, 1;
+                @Pivot: 0.5, 1;
+                @Value: 0, -27;
+                @Size: 467, 110;
+            }
+        }
+
+        #I18nLabel:Win {
+            @Pos: {
+                @Anchor: 0, 0;
+                @Pivot: 0, 0;
+                @Value: 2, 45;
+                @Size: 233, 21;
+            }
+
+            @Text: "news.worlds_report.last_win";
+            @Size: 5;
+            @XAlign: "Center";
+            @YAlign: "Center";
+        }
+
+        #I18nLabel:Second {
+            @Pos: {
+                @Anchor: 1, 0;
+                @Pivot: 1, 0;
+                @Value: 2, 45;
+                @Size: 233, 21;
+            }
+
+            @Text: "news.worlds_report.last_sec";
+            @Size: 5;
+            @XAlign: "Center";
+            @YAlign: "Center";
+        }
+
+        #Image:WinnerIcon {
+            @Pos: {
+                @Anchor: 0, 0;
+                @Pivot: 0, 0;
+                @Value: 8, 8;
+                @Size: 30, 30;
+            }
+        }
+
+        #Label:WinnerName {
+            @Pos: {
+                @Anchor: 0, 0;
+                @Pivot: 0, 0;
+                @Value: 44, 11;
+                @Size: 181, 24;
+            }
+
+            @Text: "TeamName";
+            @Size: 5;
+            @YAlign: "Center";
+        }
+
+        
+        #Image:SecondIcon {
+            @Pos: {
+                @Anchor: 01 0;
+                @Pivot: 1, 0;
+                @Value: -199, 8;
+                @Size: 30, 30;
+            }
+        }
+
+        #Label:SecondName {
+            @Pos: {
+                @Anchor: 1, 0;
+                @Pivot: 1, 0;
+                @Value: -12, 11;
+                @Size: 181, 24;
+            }
+
+            @Text: "TeamName";
+            @Size: 5;
+            @YAlign: "Center";
+        }
+    }
+}

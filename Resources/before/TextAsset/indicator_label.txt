@@ -1,0 +1,5 @@
+#I18nLabel:_ {
+
+    @Size: 3;
+    @YAlign: "Center";
+}

@@ -1,0 +1,8 @@
+#Label:StreamingChat {
+    @Pos: {
+        @Size: 271, 10;
+    }
+
+    @Text: "test";
+    @Size: 4;
+}

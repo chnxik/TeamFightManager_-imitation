@@ -1,0 +1,1221 @@
+#Empty:ChampInfoDetail {
+    @Fill: {
+        @XAnchor: 0, 1;
+        @YAnchor: 0, 1;
+        @XOffset: 0, 0;
+        @YOffset: 0, 0;
+    }
+
+    @CanvasGroup: {}
+
+    #Image:Dimmed {
+        @Fill: {
+            @XAnchor: 0, 1;
+            @YAnchor: 0, 1;
+            @XOffset: 0, 0;
+            @YOffset: 0, 0;
+        }
+        
+        @Sprite: "White";
+        @Color: "Transparent";
+    }
+
+    #Image:UI {
+        @Pos: {
+            @Anchor: 0.5, 0.5;
+            @Pivot: 0.5, 0.5;
+            @Value: 0, 16;
+            @Size: 626, 278;
+        }
+
+        @Sprite: "ChampDetailInfoBG";
+
+        #I18nLabel:Title {
+            @Pos: {
+                @Anchor: 0.5, 1;
+                @Pivot: 0.5, 1;
+                @Value: 0, -9;
+                @Size: 200, 26;
+            }
+
+            @Text: "champion_info.detail.header";
+            @Size: 6;
+            @XAlign: "Center";
+            @YAlign: "Center";
+
+            #Button:Left {
+                @Pos: {
+                    @Anchor: 0, 0.5;
+                    @Pivot: 1, 0.5;
+                    @Value: -4, 0;
+                    @Size: 12, 21;
+                }
+
+                @Normal: {
+                    @Sprite: "GreenLeftArrow";
+                }
+
+                @Hover: {
+                    @Sprite: "GreenLeftArrowHover";
+                }
+            }
+
+            #Image:LB {
+                @Pos: {
+                    @Anchor: 0, 0.5;
+                    @Pivot: 1, 0.5;
+                    @Value: -14, 0;
+                    @Size: 33, 33;
+                }
+            }
+
+            #Button:Right {
+                @Pos: {
+                    @Anchor: 1, 0.5;
+                    @Pivot: 0, 0.5;
+                    @Value: 4, 0;
+                    @Size: 12, 21;
+                }
+
+                @Normal: {
+                    @Sprite: "GreenRightArrow";
+                }
+
+                @Hover: {
+                    @Sprite: "GreenRightArrowHover";
+                }
+            }
+
+            #Image:RB {
+                @Pos: {
+                    @Anchor: 1, 0.5;
+                    @Pivot: 0, 0.5;
+                    @Value: 14, 0;
+                    @Size: 33, 33;
+                }
+            }
+        }
+
+        #Empty:Contents {
+            @Fill: {
+                @XAnchor: 0, 1;
+                @YAnchor: 0, 1;
+                @XOffset: 10, 212;
+                @YOffset: 40, 46;
+            }
+
+            #Empty:FaceMask {
+                @Pos: {
+                    @Anchor: 0, 1;
+                    @Pivot: 0, 1;
+                    @Value: 6, -51;
+                    @Size: 96, 100;
+                }
+
+                @Masked: true;
+
+                #Image:Face {
+                    @Pos: {
+                        @Anchor: 0.5, 0.5;
+                        @Pivot: 0.5, 0.5;
+                        @Value: 0, -16;
+                        @Size: 192, 192;
+                    }
+
+                    @Sprite: "Champion";
+                }
+            }
+
+            #I18nLabel:ChampionHeader {
+                @Pos: {
+                    @Anchor: 0, 1;
+                    @Pivot: 0, 1;
+                    @Value: 5, -5;
+                    @Size: 98, 22;
+                }
+
+                @XAlign: "Center";
+                @YAlign: "Center";
+                @Text: "stat.champion.header.name";
+                @Size: 5;
+            }
+
+            #I18nLabel:Category {
+                @Pos: {
+                    @Anchor: 0, 1;
+                    @Pivot: 0, 1;
+                    @Value: 25, -31;
+                    @Size: 58, 15;
+                }
+
+                @XAlign: "Center";
+                @YAlign: "Center";
+                @Text: "test";
+                @Size: 4;
+            }
+
+            #I18nLabel:Name {
+                @Pos: {
+                    @Anchor: 0, 0;
+                    @Pivot: 0, 0;
+                    @Value: 5, 5;
+                    @Size: 98, 29;
+                }
+
+                @XAlign: "Center";
+                @YAlign: "Center";
+                @Text: "test";
+                @Size: 4;
+            }
+
+            #Empty:Center {
+                @Fill: {
+                    @XAnchor: 0, 1;
+                    @YAnchor: 0, 1;
+                    @XOffset: 116, 0;
+                    @YOffset: 0, 0;
+                }
+
+                #Button:ToggleData {
+                    @Pos: {
+                        @Anchor: 0, 1;
+                        @Pivot: 0, 1;
+                        @Value: 8, -8;
+                        @Size: 74, 16;
+                    }
+
+                    @Normal: {
+                        @Sprite: "Button";
+                    }
+
+                    @Hover: {
+                        @Sprite: "ButtonHover";
+                    }
+
+                    @Focused: {
+                        @Sprite: "Important";
+                    }
+
+                    @FocusedHover: {
+                        @Sprite: "ImportantHover";
+                    }
+
+                    #Image:Icon {
+                        @Pos: {
+                            @Anchor: 0, 0.5;
+                            @Pivot: 0, 0.5;
+                            @Value: -8, 0;
+                            @Size: 33, 33;
+                        }
+                    }
+
+                    #I18nLabel:Label {
+                        @Fill: {
+                            @XAnchor: 0, 1;
+                            @YAnchor: 0, 1;
+                            @XOffset: 16, 4;
+                            @YOffset: 3, 3;
+                        }
+                        @Text: "champion_info.detail.view_default";
+                        @Size: 3;
+                        @XAlign: "Center";
+                        @YAlign: "Center";
+                    }
+                }
+
+                #I18nLabel:Header {
+                    @Pos: {
+                        @Anchor: 0, 1;
+                        @Pivot: 0, 1;
+                        @Value: 85, -5;
+                        @Size: 118, 22;
+                    }
+
+                    @XAlign: "Center";
+                    @YAlign: "Center";
+                    @Text: "stat.team.member.header.stat";
+                    @Size: 5;
+                }
+
+                #I18nLabel:Desc {
+                    @Pos: {
+                        @Anchor: 0, 1;
+                        @Pivot: 0, 1;
+                        @Value: 95, -37;
+                        @Size: 185, 76;
+                    }
+
+                    @Text: "arsyiutnaryusnt";
+                    @Size: 3;
+                }
+
+                #Empty:Stat {
+                    @Pos: {
+                        @Anchor: 0, 1;
+                        @Pivot: 0, 1;
+                        @Value: 5, -33;
+                        @Size: 80, 83;
+                    }
+
+                    #Empty:Attack {
+                        @Pos: {
+                            @Anchor: 0, 1;
+                            @Pivot: 0, 1;
+                            @Value: 0, -3;
+                            @Size: 80, 11;
+                        }
+
+                        #Image:Icon {
+                            @Pos: {
+                                @Anchor: 0, 0.5;
+                                @Pivot: 0, 0.5;
+                                @Value: 3, 0;
+                                @Size: 9, 9;
+                            }
+                        }
+
+                        #I18nLabel:Name {
+                            @Fill: {
+                                @XAnchor: 0, 1;
+                                @YAnchor: 0, 1;
+                                @XOffset: 14, 28;
+                                @YOffset: 1, 1;
+                            }
+
+                            @Size: 3;
+                            @Text: "champion_info.detail.attack";
+                            @YAlign: "Center";
+                        }
+
+                        #Label:Value {
+                            @XPos: {
+                                @Anchor: 1;
+                                @Pivot: 1;
+                                @Value: -1;
+                                @Size: 20;
+                            }
+
+                            @YFill: {
+                                @Anchor: 0, 1;
+                                @OffMin: 1;
+                                @OffMax: 1;
+                            }
+
+                            @Size: 3;
+                            @Text: "99";
+                            @YAlign: "Center";
+                        }
+                    }
+
+                    #Empty:AttackSpeed {
+                        @Pos: {
+                            @Anchor: 0, 1;
+                            @Pivot: 0, 1;
+                            @Value: 0, -16;
+                            @Size: 80, 11;
+                        }
+
+                        #Image:Icon {
+                            @Pos: {
+                                @Anchor: 0, 0.5;
+                                @Pivot: 0, 0.5;
+                                @Value: 3, 0;
+                                @Size: 9, 9;
+                            }
+                        }
+
+                        #I18nLabel:Name {
+                            @Fill: {
+                                @XAnchor: 0, 1;
+                                @YAnchor: 0, 1;
+                                @XOffset: 14, 28;
+                                @YOffset: 1, 1;
+                            }
+
+                            @Size: 3;
+                            @Text: "champion_info.detail.attack_speed";
+                            @YAlign: "Center";
+                        }
+
+                        #Label:Value {
+                            @XPos: {
+                                @Anchor: 1;
+                                @Pivot: 1;
+                                @Value: -1;
+                                @Size: 20;
+                            }
+
+                            @YFill: {
+                                @Anchor: 0, 1;
+                                @OffMin: 1;
+                                @OffMax: 1;
+                            }
+
+                            @Size: 3;
+                            @Text: "99";
+                            @YAlign: "Center";
+                        }
+                    }
+
+                    #Empty:Range {
+                        @Pos: {
+                            @Anchor: 0, 1;
+                            @Pivot: 0, 1;
+                            @Value: 0, -29;
+                            @Size: 80, 11;
+                        }
+
+                        #Image:Icon {
+                            @Pos: {
+                                @Anchor: 0, 0.5;
+                                @Pivot: 0, 0.5;
+                                @Value: 3, 0;
+                                @Size: 9, 9;
+                            }
+                        }
+
+                        #I18nLabel:Name {
+                            @Fill: {
+                                @XAnchor: 0, 1;
+                                @YAnchor: 0, 1;
+                                @XOffset: 14, 28;
+                                @YOffset: 1, 1;
+                            }
+
+                            @Size: 3;
+                            @Text: "champion_info.detail.range";
+                            @YAlign: "Center";
+                        }
+
+                        #Label:Value {
+                            @XPos: {
+                                @Anchor: 1;
+                                @Pivot: 1;
+                                @Value: -1;
+                                @Size: 20;
+                            }
+
+                            @YFill: {
+                                @Anchor: 0, 1;
+                                @OffMin: 1;
+                                @OffMax: 1;
+                            }
+
+                            @Size: 3;
+                            @Text: "99";
+                            @YAlign: "Center";
+                        }
+                    }
+
+                    #Empty:Defence {
+                        @Pos: {
+                            @Anchor: 0, 1;
+                            @Pivot: 0, 1;
+                            @Value: 0, -42;
+                            @Size: 80, 11;
+                        }
+
+                        #Image:Icon {
+                            @Pos: {
+                                @Anchor: 0, 0.5;
+                                @Pivot: 0, 0.5;
+                                @Value: 3, 0;
+                                @Size: 9, 9;
+                            }
+                        }
+
+                        #I18nLabel:Name {
+                            @Fill: {
+                                @XAnchor: 0, 1;
+                                @YAnchor: 0, 1;
+                                @XOffset: 14, 28;
+                                @YOffset: 1, 1;
+                            }
+
+                            @Size: 3;
+                            @Text: "champion_info.detail.defence";
+                            @YAlign: "Center";
+                        }
+
+                        #Label:Value {
+                            @XPos: {
+                                @Anchor: 1;
+                                @Pivot: 1;
+                                @Value: -1;
+                                @Size: 20;
+                            }
+
+                            @YFill: {
+                                @Anchor: 0, 1;
+                                @OffMin: 1;
+                                @OffMax: 1;
+                            }
+
+                            @Size: 3;
+                            @Text: "99";
+                            @YAlign: "Center";
+                        }
+                    }
+                    
+                    #Empty:Hp {
+                        @Pos: {
+                            @Anchor: 0, 1;
+                            @Pivot: 0, 1;
+                            @Value: 0, -55;
+                            @Size: 80, 11;
+                        }
+
+                        #Image:Icon {
+                            @Pos: {
+                                @Anchor: 0, 0.5;
+                                @Pivot: 0, 0.5;
+                                @Value: 3, 0;
+                                @Size: 9, 9;
+                            }
+                        }
+
+                        #I18nLabel:Name {
+                            @Fill: {
+                                @XAnchor: 0, 1;
+                                @YAnchor: 0, 1;
+                                @XOffset: 14, 28;
+                                @YOffset: 1, 1;
+                            }
+
+                            @Size: 3;
+                            @Text: "champion_info.detail.hp";
+                            @YAlign: "Center";
+                        }
+
+                        #Label:Value {
+                            @XPos: {
+                                @Anchor: 1;
+                                @Pivot: 1;
+                                @Value: -1;
+                                @Size: 20;
+                            }
+
+                            @YFill: {
+                                @Anchor: 0, 1;
+                                @OffMin: 1;
+                                @OffMax: 1;
+                            }
+
+                            @Size: 3;
+                            @Text: "99";
+                            @YAlign: "Center";
+                        }
+                    }
+
+                    #Empty:MoveSpeed {
+                        @Pos: {
+                            @Anchor: 0, 1;
+                            @Pivot: 0, 1;
+                            @Value: 0, -68;
+                            @Size: 80, 11;
+                        }
+
+                        #Image:Icon {
+                            @Pos: {
+                                @Anchor: 0, 0.5;
+                                @Pivot: 0, 0.5;
+                                @Value: 3, 0;
+                                @Size: 9, 9;
+                            }
+                        }
+
+                        #I18nLabel:Name {
+                            @Fill: {
+                                @XAnchor: 0, 1;
+                                @YAnchor: 0, 1;
+                                @XOffset: 14, 28;
+                                @YOffset: 1, 1;
+                            }
+
+                            @Size: 3;
+                            @Text: "champion_info.detail.move_speed";
+                            @YAlign: "Center";
+                        }
+
+                        #Label:Value {
+                            @XPos: {
+                                @Anchor: 1;
+                                @Pivot: 1;
+                                @Value: -1;
+                                @Size: 20;
+                            }
+
+                            @YFill: {
+                                @Anchor: 0, 1;
+                                @OffMin: 1;
+                                @OffMax: 1;
+                            }
+
+                            @Size: 3;
+                            @Text: "99";
+                            @YAlign: "Center";
+                        }
+                    }
+                }
+
+                #Empty:Skill {
+                    @Pos: {
+                        @Anchor: 0.5, 0;
+                        @Pivot: 0.5, 0;
+                        @Value: 0, 40;
+                        @Size: 278, 30;
+                    }
+
+                    #Image:Icon {
+                        @Pos: {
+                            @Anchor: 0, 0.5;
+                            @Pivot: 0, 0.5;
+                            @Value: 3, 0;
+                            @Size: 24, 24;
+                        }
+                    }
+
+                    #I18nLabel:Name {
+                        @Pos: {
+                            @Anchor: 0, 1;
+                            @Pivot: 0, 1;
+                            @Value: 30, -2;
+                            @Size: 48, 12;
+                        }
+
+                        @Text: "champion.skill";
+                        @Size: 3;
+                        @XAlign: "Center";
+                        @YAlign: "Center";
+                    }
+
+                    #Image:CooltimeIcon {
+                        @Pos: {
+                            @Anchor: 0, 0;
+                            @Pivot: 0, 0;
+                            @Value: 30, 4;
+                            @Size: 9, 9;
+                        }
+                    }
+
+                    #I18nLabel:Cooltime {
+                        @Pos: {
+                            @Anchor: 0, 0;
+                            @Pivot: 0, 0;
+                            @Value: 42, 2;
+                            @Size: 36, 13;
+                        }
+
+                        @Text: "champion_info.detail.skill_cool";
+                        @Size: 3;
+                        @YAlign: "Center";
+                        @XAlign: "Left";
+                    }
+
+                    #I18nLabel:Desc {
+                        @Fill: {
+                            @XAnchor: 0, 1;
+                            @YAnchor: 0, 1;
+                            @XOffset: 84, 5;
+                            @YOffset: 3, 3;
+                        }
+
+                        @Size: 3;
+                        @Text: "testestiernst";
+                    }
+                }
+
+                #Empty:Ult {
+                    @Pos: {
+                        @Anchor: 0.5, 0;
+                        @Pivot: 0.5, 0;
+                        @Value: 0, 5;
+                        @Size: 278, 30;
+                    }
+
+                    #Image:Icon {
+                        @Pos: {
+                            @Anchor: 0, 0.5;
+                            @Pivot: 0, 0.5;
+                            @Value: 3, 0;
+                            @Size: 24, 24;
+                        }
+                    }
+
+                    #I18nLabel:Name {
+                        @Pos: {
+                            @Anchor: 0, 1;
+                            @Pivot: 0, 1;
+                            @Value: 30, -2;
+                            @Size: 48, 12;
+                        }
+
+                        @Text: "champion.ult";
+                        @Size: 3;
+                        @XAlign: "Center";
+                        @YAlign: "Center";
+                    }
+
+                    #Image:CooltimeIcon {
+                        @Pos: {
+                            @Anchor: 0, 0;
+                            @Pivot: 0, 0;
+                            @Value: 30, 4;
+                            @Size: 9, 9;
+                        }
+                    }
+
+                    #I18nLabel:Cooltime {
+                        @Pos: {
+                            @Anchor: 0, 0;
+                            @Pivot: 0, 0;
+                            @Value: 42, 2;
+                            @Size: 36, 13;
+                        }
+
+                        @Text: "match.ult_cool";
+                        @Size: 3;
+                        @YAlign: "Center";
+                        @XAlign: "Left";
+                    }
+
+                    #I18nLabel:Desc {
+                        @Fill: {
+                            @XAnchor: 0, 1;
+                            @YAnchor: 0, 1;
+                            @XOffset: 84, 5;
+                            @YOffset: 3, 3;
+                        }
+
+                        @Size: 3;
+                        @Text: "testestiernst";
+                    }
+                }
+            }
+        }
+
+        #Empty:Data {
+            @Fill: {
+                @XAnchor: 0, 1;
+                @YAnchor: 0, 1;
+                @XOffset: 422, 10;
+                @YOffset: 40, 46;
+            }
+
+            #I18nLabel:Desc {
+                @XFill: {
+                    @Anchor: 0, 1;
+                    @OffMin: 5;
+                    @OffMax: 6;
+                }
+
+                @YPos: {
+                    @Anchor: 1;
+                    @Pivot: 1;
+                    @Value: -5;
+                    @Size: 22;
+                }
+
+                @Text: "champion_info.detail.stat_header";
+                @Size: 5;
+                @XAlign: "Center";
+                @YAlign: "Center";
+            }
+
+            #Empty:Season {
+                @XFill: {
+                    @Anchor: 0, 1;
+                    @OffMin: 5;
+                    @OffMax: 5;
+                }
+
+                @YPos: {
+                    @Anchor: 1;
+                    @Pivot: 1;
+                    @Value: -32;
+                    @Size: 16;
+                }
+                
+                #I18nLabel:Now {
+                    @Pos: {
+                        @Anchor: 0.5, 0.5;
+                        @Pivot: 0.5, 0.5;
+                        @Value: 0, 0;
+                        @Size: 100, 14;
+                    }
+
+                    @Text: "champion_info.detail.stat";
+                    @Size: 3;
+                    @XAlign: "Center";
+                    @YAlign: "Center";
+                }
+
+                #Button:Left {
+                    @Pos: {
+                        @Anchor: 0.5, 0.5;
+                        @Pivot: 0.5, 0.5;
+                        @Value: -55, 0;
+                        @Size: 8, 13;
+                    }
+
+                    @Normal: {
+                        @Sprite: "SmallGreenArrowLeft";
+                    }
+
+                    @Hover: {
+                        @Sprite: "SmallGreenArrowLeftHover";
+                    }
+                }
+
+                #Image:LT {
+                    @Pos: {
+                        @Anchor: 0.5, 0.5;
+                        @Pivot: 0.5, 0.5;
+                        @Value: -72, 0;
+                        @Size: 33, 33;
+                    }
+                }
+
+                #Button:Right {
+                    @Pos: {
+                        @Anchor: 0.5, 0.5;
+                        @Pivot: 0.5, 0.5;
+                        @Value: 55, 0;
+                        @Size: 8, 13;
+                    }
+
+                    @Normal: {
+                        @Sprite: "SmallGreenArrowRight";
+                    }
+
+                    @Hover: {
+                        @Sprite: "SmallGreenArrowRightHover";
+                    }
+                }
+
+                #Image:RT {
+                    @Pos: {
+                        @Anchor: 0.5, 0.5;
+                        @Pivot: 0.5, 0.5;
+                        @Value: 72, 0;
+                        @Size: 33, 33;
+                    }
+                }
+            }
+            
+            #Empty:Matches {
+                @XFill: {
+                    @Anchor: 0, 1;
+                    @OffMin: 5;
+                    @OffMax: 5;
+                }
+
+                @YPos: {
+                    @Anchor: 1;
+                    @Pivot: 1;
+                    @Value: -50;
+                    @Size: 16;
+                }
+
+                #I18nLabel:Type {
+                    @XPos: {
+                        @Anchor: 0;
+                        @Pivot: 0;
+                        @Value: 0;
+                        @Size: 65;
+                    }
+
+                    @YFill: {
+                        @Anchor: 0, 1;
+                        @OffMin: 0;
+                        @OffMax: 0;
+                    }
+
+                    @Size: 4;
+                    @YAlign: "Center";
+                    @Text: "stat.champion.header.match";
+                }
+
+                #Label:Value {
+                    @XPos: {
+                        @Anchor: 0;
+                        @Pivot: 0;
+                        @Value: 75;
+                        @Size: 105;
+                    }
+
+                    @YFill: {
+                        @Anchor: 0, 1;
+                        @OffMin: 0;
+                        @OffMax: 0;
+                    }
+
+                    @Size: 4;
+                    @YAlign: "Center";
+                    @Text: "99.2%";
+                }
+            }
+
+            #Empty:Banpick {
+                @XFill: {
+                    @Anchor: 0, 1;
+                    @OffMin: 5;
+                    @OffMax: 5;
+                }
+
+                @YPos: {
+                    @Anchor: 1;
+                    @Pivot: 1;
+                    @Value: -68;
+                    @Size: 16;
+                }
+
+                #I18nLabel:Type {
+                    @XPos: {
+                        @Anchor: 0;
+                        @Pivot: 0;
+                        @Value: 0;
+                        @Size: 65;
+                    }
+
+                    @YFill: {
+                        @Anchor: 0, 1;
+                        @OffMin: 0;
+                        @OffMax: 0;
+                    }
+
+                    @Size: 4;
+                    @YAlign: "Center";
+                    @Text: "champion_info.detail.banpick_rate";
+                }
+
+                #I18nLabel:Value {
+                    @XPos: {
+                        @Anchor: 0;
+                        @Pivot: 0;
+                        @Value: 75;
+                        @Size: 105;
+                    }
+
+                    @YFill: {
+                        @Anchor: 0, 1;
+                        @OffMin: 0;
+                        @OffMax: 0;
+                    }
+
+                    @Size: 4;
+                    @YAlign: "Center";
+                    @Text: "champion_info.detail.banpick_value";
+                }
+            }
+
+            #Empty:WinRate {
+                @XFill: {
+                    @Anchor: 0, 1;
+                    @OffMin: 5;
+                    @OffMax: 5;
+                }
+
+                @YPos: {
+                    @Anchor: 1;
+                    @Pivot: 1;
+                    @Value: -86;
+                    @Size: 16;
+                }
+
+                #I18nLabel:Type {
+                    @XPos: {
+                        @Anchor: 0;
+                        @Pivot: 0;
+                        @Value: 0;
+                        @Size: 65;
+                    }
+
+                    @YFill: {
+                        @Anchor: 0, 1;
+                        @OffMin: 0;
+                        @OffMax: 0;
+                    }
+
+                    @Size: 4;
+                    @YAlign: "Center";
+                    @Text: "stat.champion.header.win_rate";
+                }
+
+                #I18nLabel:Value {
+                    @XPos: {
+                        @Anchor: 0;
+                        @Pivot: 0;
+                        @Value: 75;
+                        @Size: 105;
+                    }
+
+                    @YFill: {
+                        @Anchor: 0, 1;
+                        @OffMin: 0;
+                        @OffMax: 0;
+                    }
+
+                    @Size: 4;
+                    @YAlign: "Center";
+                    @Text: "champion_info.detail.win_rate_value";
+                }
+            }
+
+            #Empty:Rate {
+                @XFill: {
+                    @Anchor: 0, 1;
+                    @OffMin: 5;
+                    @OffMax: 5;
+                }
+
+                @YPos: {
+                    @Anchor: 1;
+                    @Pivot: 1;
+                    @Value: -104;
+                    @Size: 16;
+                }
+
+                #I18nLabel:Type {
+                    @XPos: {
+                        @Anchor: 0;
+                        @Pivot: 0;
+                        @Value: 0;
+                        @Size: 65;
+                    }
+
+                    @YFill: {
+                        @Anchor: 0, 1;
+                        @OffMin: 0;
+                        @OffMax: 0;
+                    }
+
+                    @Size: 4;
+                    @YAlign: "Center";
+                    @Text: "stat.champion.header.rate";
+                }
+
+                #Label:Value {
+                    @XPos: {
+                        @Anchor: 0;
+                        @Pivot: 0;
+                        @Value: 75;
+                        @Size: 105;
+                    }
+
+                    @YFill: {
+                        @Anchor: 0, 1;
+                        @OffMin: 0;
+                        @OffMax: 0;
+                    }
+
+                    @Size: 4;
+                    @YAlign: "Center";
+                    @Text: "99.2%";
+                }
+            }
+
+            #Empty:Deal {
+                @XFill: {
+                    @Anchor: 0, 1;
+                    @OffMin: 5;
+                    @OffMax: 5;
+                }
+
+                @YPos: {
+                    @Anchor: 1;
+                    @Pivot: 1;
+                    @Value: -122;
+                    @Size: 16;
+                }
+
+                #I18nLabel:Type {
+                    @XPos: {
+                        @Anchor: 0;
+                        @Pivot: 0;
+                        @Value: 0;
+                        @Size: 65;
+                    }
+
+                    @YFill: {
+                        @Anchor: 0, 1;
+                        @OffMin: 0;
+                        @OffMax: 0;
+                    }
+
+                    @Size: 4;
+                    @YAlign: "Center";
+                    @Text: "stat.champion.header.deal";
+                }
+
+                #Label:Value {
+                    @XPos: {
+                        @Anchor: 0;
+                        @Pivot: 0;
+                        @Value: 75;
+                        @Size: 105;
+                    }
+
+                    @YFill: {
+                        @Anchor: 0, 1;
+                        @OffMin: 0;
+                        @OffMax: 0;
+                    }
+
+                    @Size: 4;
+                    @YAlign: "Center";
+                    @Text: "99.2%";
+                }
+            }
+
+            #Empty:Tank {
+                @XFill: {
+                    @Anchor: 0, 1;
+                    @OffMin: 5;
+                    @OffMax: 5;
+                }
+
+                @YPos: {
+                    @Anchor: 1;
+                    @Pivot: 1;
+                    @Value: -140;
+                    @Size: 16;
+                }
+
+                #I18nLabel:Type {
+                    @XPos: {
+                        @Anchor: 0;
+                        @Pivot: 0;
+                        @Value: 0;
+                        @Size: 65;
+                    }
+
+                    @YFill: {
+                        @Anchor: 0, 1;
+                        @OffMin: 0;
+                        @OffMax: 0;
+                    }
+
+                    @Size: 4;
+                    @YAlign: "Center";
+                    @Text: "stat.champion.header.tank";
+                }
+
+                #Label:Value {
+                    @XPos: {
+                        @Anchor: 0;
+                        @Pivot: 0;
+                        @Value: 75;
+                        @Size: 105;
+                    }
+
+                    @YFill: {
+                        @Anchor: 0, 1;
+                        @OffMin: 0;
+                        @OffMax: 0;
+                    }
+
+                    @Size: 4;
+                    @YAlign: "Center";
+                    @Text: "99.2%";
+                }
+            }
+
+            #Empty:Heal {
+                @XFill: {
+                    @Anchor: 0, 1;
+                    @OffMin: 5;
+                    @OffMax: 5;
+                }
+
+                @YPos: {
+                    @Anchor: 1;
+                    @Pivot: 1;
+                    @Value: -158;
+                    @Size: 16;
+                }
+
+                #I18nLabel:Type {
+                    @XPos: {
+                        @Anchor: 0;
+                        @Pivot: 0;
+                        @Value: 0;
+                        @Size: 65;
+                    }
+
+                    @YFill: {
+                        @Anchor: 0, 1;
+                        @OffMin: 0;
+                        @OffMax: 0;
+                    }
+
+                    @Size: 4;
+                    @YAlign: "Center";
+                    @Text: "stat.champion.header.heal";
+                }
+
+                #Label:Value {
+                    @XPos: {
+                        @Anchor: 0;
+                        @Pivot: 0;
+                        @Value: 75;
+                        @Size: 105;
+                    }
+
+                    @YFill: {
+                        @Anchor: 0, 1;
+                        @OffMin: 0;
+                        @OffMax: 0;
+                    }
+
+                    @Size: 4;
+                    @YAlign: "Center";
+                    @Text: "99.2%";
+                }
+            }
+
+            #Image:Sep {
+                @Pos: {
+                    @Anchor: 0, 1;
+                    @Pivot: 0, 1;
+                    @Value: 73, -50;
+                    @Size: 1, 128;
+                }
+
+                @Color: "DarkGrey";
+            }
+        }
+
+        #Button:Close {
+            @Pos: {
+                @Anchor: 1, 0;
+                @Pivot: 1, 0;
+                @Value: -8, 8;
+                @Size: 69, 25;
+            }
+            @Sliced: true;
+            @FirstFocus: true;
+
+            @Normal: {
+                @Sprite: "Button";
+            }
+
+            @Hover: {
+                @Sprite: "ButtonHover";
+            }
+
+            #I18nLabel:CloseLabel {
+                @Fill: {
+                    @XAnchor: 0, 1;
+                    @YAnchor: 0, 1;
+                    @XOffset: 3, 3;
+                    @YOffset: 3, 3;
+                }
+                @Text: "common.close";
+                @Size: 4;
+                @XAlign: "Center";
+                @YAlign: "Center";
+            }
+        }
+    }
+}

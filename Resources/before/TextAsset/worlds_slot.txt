@@ -1,0 +1,71 @@
+#Empty:WorldsSlot {
+    @Pos: {
+        @Size: 467, 34;
+    }
+
+    #Image:Icon {
+        @Pos: {
+            @Anchor: 0, 1;
+            @Pivot: 0, 1;
+            @Value: 2, -2;
+            @Size: 30, 30;
+        }
+    }
+
+    #Label:Name {
+        @Pos: {
+            @Anchor: 0, 0.5;
+            @Pivot: 0, 0.5;
+            @Value: 38, 0;
+            @Size: 240, 24;
+        }
+
+        @Text: "TeamName";
+        @Size: 5;
+        @YAlign: "Center";
+    }
+
+    #Image:LeagueWinIcon {
+            @Pos: {
+                @Anchor: 0, 0.5;
+                @Pivot: 0, 0.5;
+                @Value: 295, 0;
+                @Size: 19, 19;
+            }
+        }
+
+        #I18nLabel:LeagueWin {
+            @Pos: {
+                @Anchor: 0, 0.5;
+                @Pivot: 0, 0.5;
+                @Value: 320, 0;
+                @Size: 55, 16;
+            }
+
+            @Text: "news.worlds_report.win_count";
+            @Size: 4;
+            @YAlign: "Center";
+        }
+
+        #Image:LeagueSecondIcon {
+            @Pos: {
+                @Anchor: 0, 0.5;
+                @Pivot: 0, 0.5;
+                @Value: 380, 0;
+                @Size: 19, 19;
+            }
+        }
+
+        #I18nLabel:LeagueSecond {
+            @Pos: {
+                @Anchor: 0, 0.5;
+                @Pivot: 0, 0.5;
+                @Value: 405, 0;
+                @Size: 55, 16;
+            }
+
+            @Text: "news.worlds_report.sec_count";
+            @Size: 4;
+            @YAlign: "Center";
+        }
+}

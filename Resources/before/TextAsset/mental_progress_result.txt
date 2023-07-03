@@ -1,0 +1,45 @@
+#Empty:MentalProgressResult {
+    @Pos: {
+        @Size: 95, 59;
+    }
+
+    #Image:NormalBG {
+        @Pos: {
+            @Size: 95, 59;
+        }
+
+        @Sprite: "MentalPropertyBG";
+    }
+
+    #Image:ChangedBG {
+        @Pos: {
+            @Size: 95, 59;
+        }
+
+        @Sprite: "MentalPropertyFocused";
+    }
+
+    #I18nLabel:Name {
+        @Pos: {
+            @Anchor: 0.5, 1;
+            @Pivot: 0.5, 1;
+            @Value: 0, -3;
+            @Size: 88, 12;
+        }
+
+        @Size: 3;
+        @XAlign: "Center";
+        @YAlign: "Center";
+    }
+
+    #I18nLabel:Desc {
+        @Pos: {
+            @Anchor: 0.5, 1;
+            @Pivot: 0.5, 1;
+            @Value: 0, -18;
+            @Size: 88, 38;
+        }
+
+        @Size: 2;
+    }
+}

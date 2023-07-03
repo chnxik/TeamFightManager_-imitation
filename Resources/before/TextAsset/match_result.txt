@@ -1,0 +1,173 @@
+#Image:Result {
+    @Pos: {
+        @Size: 640, 360;
+    }
+
+    @Sprite: "MatchSetResultUI";
+    @CanvasGroup: {}
+
+    #I18nLabel:Header {
+        @Pos: {
+            @Anchor: 0.5, 1;
+            @Pivot: 0.5, 1;
+            @Size: 300, 25;
+            @Value: 0, -78;
+        }
+
+        @Text: "match.result.title";
+        @Size: 6;
+        @XAlign: "Center";
+        @YAlign: "Center";
+    }
+    
+    #Empty:Window {
+        @Pos: {
+            @Anchor: 0.5, 0.5;
+            @Pivot: 0.5, 0.5;
+            @Value: 0, -12;
+            @Size: 252, 136;
+        }
+
+        #Empty:Header {
+            @Pos: {
+                @Anchor: 0.5, 1;
+                @Pivot: 0.5, 1;
+                @Value: 0, -4;
+                @Size: 244, 49;
+            }
+            #I18nLabel:WinLose {
+                @Pos: {
+                    @Anchor: 0.5, 0.5;
+                    @Pivot: 0.5, 0.5;
+                    @Value: 0, 6;
+                    @Size: 100, 20;
+                }
+
+                @Text: "match.result.win";
+                @Size: 6;
+                @XAlign: "Center";
+                @YAlign: "Center";
+            }
+
+            #Label:Set {
+                @Pos: {
+                    @Anchor: 0.5, 0.5;
+                    @Pivot: 0.5, 0.5;
+                    @Value: 0, -13;
+                    @Size: 100, 10;
+                }
+
+                @Text: "SET 2";
+                @Size: 4;
+                @XAlign: "Center";
+                @YAlign: "Center";
+            }
+        }
+
+        #Label:Score {
+            @Pos: {
+                @Anchor: 0.5, 0;
+                @Pivot: 0.5, 0;
+                @Value: 0, 43;
+                @Size: 60, 24;
+            }
+
+            @Text: "2 : 1";
+            @Size: 6;
+            @XAlign: "Center";
+            @YAlign: "Center";
+        }
+
+        #Image:BlueLogo {
+            @Pos: {
+                @Anchor: 0, 0;
+                @Pivot: 0, 0;
+                @Value: 48, 40;
+                @Size: 30, 30;
+            }
+
+            #Label:BlueTeamName {
+                @Pos: {
+                    @Anchor: 0.5, 0;
+                    @Pivot: 0.5, 1;
+                    @Value: 0, -8;
+                    @Size: 100, 10;
+                }
+
+                @Text: "Testtt";
+                @Size: 4;
+                @XAlign: "Center";
+                @YAlign: "Center";
+            }
+        }
+
+        #Image:RedLogo {
+            @Pos: {
+                @Anchor: 1, 0;
+                @Pivot: 1, 0;
+                @Value: -48, 40;
+                @Size: 30, 30;
+            }
+
+            #Label:RedTeamName {
+                @Pos: {
+                    @Anchor: 0.5, 0;
+                    @Pivot: 0.5, 1;
+                    @Value: 0, -8;
+                    @Size: 100, 10;
+                }
+
+                @Text: "Testtt";
+                @Size: 4;
+                @XAlign: "Center";
+                @YAlign: "Center";
+            }
+        }
+    }
+
+    #Button:Next {
+        @Pos: {
+            @Anchor: 0.5, 0;
+            @Pivot: 0.5, 0;
+            @Value: 0, 55;
+            @Size: 83, 27;
+        }
+
+        @Sliced: true;
+        @FirstFocus: true;
+
+        @Normal: {
+            @Sprite: "Button";
+        }
+
+        @Hover: {
+            @Sprite: "ButtonHover";
+        }
+
+        @Focused: {
+            @Sprite: "ButtonDisabled";
+        }
+
+        #Image:Icon {
+            @Pos: {
+                @Anchor: 0, 0.5;
+                @Pivot: 0, 0.5;
+                @Size: 33, 33;
+                @Value: -4, 0;
+            }
+        }
+
+        #I18nLabel:Label {
+            @Fill: {
+                @XAnchor: 0, 1;
+                @YAnchor: 0, 1;
+                @XOffset: 21, 3;
+                @YOffset: 5, 3;
+            }
+            @Text: "common.progress";
+            @Size: 4;
+            @XAlign: "Center";
+            @YAlign: "Center";
+        }
+    }
+}

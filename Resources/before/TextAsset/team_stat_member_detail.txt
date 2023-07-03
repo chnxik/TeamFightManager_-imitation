@@ -1,0 +1,201 @@
+#Image:TeamStatMemberDetail {
+    @Pos: {
+        @Size: 518, 18;
+    }
+
+    @Sprite: "TeamStatMemberDetailBG";
+
+    #Empty:FaceMask {
+        @Pos: {
+            @Anchor: 0, 0.5;
+            @Pivot: 0, 0.5;
+            @Value: 1, 0;
+            @Size: 16, 16;
+        }
+
+        @Masked: true;
+
+        #Image:Face {
+            @Pos: {
+                @Pivot: 0.5, 0.5;
+                @Anchor: 0.5, 0.5;
+                @Value: -1, -8;
+                @Size: 64, 64;
+            }
+
+            @Sprite: "Champion";
+        }
+    }
+
+    #I18nLabel:Name {
+        @Text: "champion";
+        @Size: 3;
+        @XAlign: "Left";
+        @YAlign: "Center";
+
+        @YFill: {
+            @Anchor: 0, 1;
+            @OffMin: 0;
+            @OffMax: 0;
+        }
+
+        @XPos: {
+            @Anchor: 0;
+            @Pivot: 0;
+            @Value: 20;
+            @Size: 79;
+        }
+    }
+
+    #Label:Match {
+        @Text: "65";
+        @Size: 3;
+        @XAlign: "Center";
+        @YAlign: "Center";
+        @YFill: {
+            @Anchor: 0, 1;
+            @OffMin: 0;
+            @OffMax: 0;
+        }
+
+        @XPos: {
+            @Anchor: 0;
+            @Pivot: 0;
+            @Value: 109;
+            @Size: 40;
+        }
+    }
+
+    #Label:Win {
+        @Text: "19";
+        @Size: 3;
+        @XAlign: "Center";
+        @YAlign: "Center";
+        @YFill: {
+            @Anchor: 0, 1;
+            @OffMin: 0;
+            @OffMax: 0;
+        }
+
+        @XPos: {
+            @Anchor: 0;
+            @Pivot: 0;
+            @Value: 149;
+            @Size: 30;
+        }
+    }
+    
+    #Label:Lose {
+        @Text: "11";
+        @Size: 3;
+        @XAlign: "Center";
+        @YAlign: "Center";
+        @YFill: {
+            @Anchor: 0, 1;
+            @OffMin: 0;
+            @OffMax: 0;
+        }
+
+        @XPos: {
+            @Anchor: 0;
+            @Pivot: 0;
+            @Value: 179;
+            @Size: 30;
+        }
+    }
+
+    #Label:WinRate {
+        @Text: "100%";
+        @Size: 3;
+        @XAlign: "Center";
+        @YAlign: "Center";
+        @YFill: {
+            @Anchor: 0, 1;
+            @OffMin: 0;
+            @OffMax: 0;
+        }
+
+        @XPos: {
+            @Anchor: 0;
+            @Pivot: 0;
+            @Value: 209;
+            @Size: 40;
+        }
+    }
+
+    #Label:Rate {
+        @Text: "99.99:1";
+        @Size: 3;
+        @XAlign: "Center";
+        @YAlign: "Center";
+        @YFill: {
+            @Anchor: 0, 1;
+            @OffMin: 0;
+            @OffMax: 0;
+        }
+
+        @XPos: {
+            @Anchor: 0;
+            @Pivot: 0;
+            @Value: 269;
+            @Size: 40;
+        }
+    }
+
+    #Label:Deal {
+        @Text: "2638";
+        @Size: 3;
+        @XAlign: "Center";
+        @YAlign: "Center";
+        @YFill: {
+            @Anchor: 0, 1;
+            @OffMin: 0;
+            @OffMax: 0;
+        }
+
+        @XPos: {
+            @Anchor: 0;
+            @Pivot: 0;
+            @Value: 329;
+            @Size: 40;
+        }
+    }
+
+    #Label:Tank {
+        @Text: "2638";
+        @Size: 3;
+        @XAlign: "Center";
+        @YAlign: "Center";
+        @YFill: {
+            @Anchor: 0, 1;
+            @OffMin: 0;
+            @OffMax: 0;
+        }
+
+        @XPos: {
+            @Anchor: 0;
+            @Pivot: 0;
+            @Value: 379;
+            @Size: 40;
+        }
+    }
+
+    #Label:Heal {
+        @Text: "2638";
+        @Size: 3;
+        @XAlign: "Center";
+        @YAlign: "Center";
+        @YFill: {
+            @Anchor: 0, 1;
+            @OffMin: 0;
+            @OffMax: 0;
+        }
+
+        @XPos: {
+            @Anchor: 0;
+            @Pivot: 0;
+            @Value: 429;
+            @Size: 40;
+        }
+    }
+}

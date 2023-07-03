@@ -1,0 +1,68 @@
+#Image:MatchResultLeagueSchedule {
+    @Pos: {
+        @Size: 261, 22;
+    }
+
+    @Sprite: "MatchResultLeagueSchedule";
+
+    #Image:BlueLogo {
+        @Pos: {
+            @Anchor: 0, 0.5;
+            @Pivot: 0, 0.5;
+            @Size: 15, 15;
+            @Value: 4, 0;
+        }
+    }
+
+    #Label:BlueTeam {
+        @Pos: {
+            @Anchor: 0, 0.5;
+            @Pivot: 0, 0.5;
+            @Size: 80, 15;
+            @Value: 23, 0;
+        }
+
+        @Text: "test team 1";
+        @Size: 3;
+        @XAlign: "Center";
+        @YAlign: "Center";
+    }
+
+    
+    #Image:RedLogo {
+        @Pos: {
+            @Anchor: 1, 0.5;
+            @Pivot: 1, 0.5;
+            @Size: 15, 15;
+            @Value: -4, 0;
+        }
+    }
+
+    #Label:RedTeam {
+        @Pos: {
+            @Anchor: 1, 0.5;
+            @Pivot: 1, 0.5;
+            @Size: 80, 15;
+            @Value: -23, 0;
+        }
+
+        @Text: "test team 2";
+        @Size: 3;
+        @XAlign: "Center";
+        @YAlign: "Center";
+    }
+
+    #Label:Score {
+        @Pos: {
+            @Anchor: 0.5, 0.5;
+            @Pivot: 0.5, 0.5;
+            @Size: 47, 18;
+            @Value: 0, 0;
+        }
+
+        @Text: "2 : 1";
+        @Size: 3;
+        @XAlign: "Center";
+        @YAlign: "Center";
+    }
+}

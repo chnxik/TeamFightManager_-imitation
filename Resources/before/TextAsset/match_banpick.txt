@@ -1,0 +1,534 @@
+#Empty:Banpick {
+    @Pos: {
+        @Anchor: 0, 0;
+        @Pivot: 0, 0;
+        @Size: 640, 360;
+        @Value: 0, -360;
+    }
+
+    @CanvasGroup: {}
+
+    #Image:Contents {
+        @Pos: {
+            @Anchor: 0, 0;
+            @Pivot: 0, 0;
+            @Size: 640, 360;
+            @Value: 0, 0;
+        }
+
+        @Sprite: "MatchBanpickBG";
+
+        #Image:Header {
+            @Pos: {
+                @Anchor: 0.5, 1;
+                @Pivot: 0.5, 1;
+                @Size: 640, 29;
+                @Value: 0, -49;
+            }
+
+            @Sprite: "BanpickBlueTurnBG";
+
+            #Empty:Data {
+                @Pos: {
+                    @Anchor: 0.5, 1;
+                    @Pivot: 0.5, 1;
+                    @Size: 414, 29;
+                    @Value: 0, 0;
+                }
+
+                #I18nLabel:Stage {
+                    @Pos: {
+                        @Anchor: 0, 0.5;
+                        @Pivot: 0, 0.5;
+                        @Size: 60, 21;
+                        @Value: 24, 0;
+                    }
+
+                    @Text: "test";
+                    @Size: 4;
+                    @YAlign: "Center";
+                }
+
+                #I18nLabel:Desc {
+                    @Pos: {
+                        @Anchor: 0.5, 0.5;
+                        @Pivot: 0.5, 0.5;
+                        @Size: 230, 21;
+                        @Value: 0, 0;
+                    }
+
+                    @Text: "test";
+                    @Size: 5;
+                    @XAlign: "Center";
+                    @YAlign: "Center";
+                }
+
+                #Image:BlueArrow {
+                    @Pos: {
+                        @Anchor: 0, 0.5;
+                        @Pivot: 0, 0.5;
+                        @Size: 22, 21;
+                        @Value: 0, 0;
+                    }
+                    
+                    @Sprite: "BanpickBlueTurnArrow";
+                }
+
+                #Image:RedArrow {
+                    @Pos: {
+                        @Anchor: 1, 0.5;
+                        @Pivot: 1, 0.5;
+                        @Size: 22, 21;
+                        @Value: 0, 0;
+                    }
+                    
+                    @Sprite: "BanpickRedTurnArrow";
+                }
+            }
+        }
+
+        #Empty:Champions {
+            @Pos: {
+                @Anchor: 0, 1;
+                @Pivot: 0, 1;
+                @Size: 414, 114;
+                @Value: 113, -88;
+            }
+
+            #List:Data {
+                @Fill: {
+                    @XAnchor: 0, 1;
+                    @YAnchor: 0, 1;
+                    @XOffset: 2, 2;
+                    @YOffset: 1, 1;
+                }
+                @Scroll: {
+                    @BackgroundColor: "ScrollBG";
+                    @BarColor: "ScrollBar";
+                }
+            }
+        }
+
+        #Empty:Info {
+            @Pos: {
+                @Anchor: 0, 1;
+                @Pivot: 0, 1;
+                @Size: 414, 75;
+                @Value: 113, -204;
+            }
+
+            #Empty:Champion {
+                @Pos: {
+                    @Anchor: 0, 1;
+                    @Pivot: 0, 1;
+                    @Value: 4, -15;
+                    @Size: 48, 41;
+                }
+
+                @Masked: true;
+
+                #Image:Face {
+                    @Pos: {
+                        @Anchor: 0.5, 0.5;
+                        @Pivot: 0.5, 0.5;
+                        @Value: 0, -6;
+                        @Size: 96, 96;
+                    }
+
+                    @Sprite: "Champion";
+                }
+            }
+
+            #I18nLabel:Category {
+                @Pos: {
+                    @Anchor: 0, 1;
+                    @Pivot: 0, 1;
+                    @Value: 5, -5;
+                    @Size: 48, 9;
+                }
+
+                @Size: 3;
+                @Text: "test";
+                @XAlign: "Center";
+                @YAlign: "Center";
+            }
+
+            #I18nLabel:Name {
+                @Pos: {
+                    @Anchor: 0, 1;
+                    @Pivot: 0, 1;
+                    @Value: 5, -57;
+                    @Size: 48, 13;
+                }
+
+                @Size: 3;
+                @XAlign: "Center";
+                @YAlign: "Center";
+                @Text: "test";
+            }
+
+            #Empty:Stats {
+                @Pos: {
+                    @Anchor: 0, 1;
+                    @Pivot: 0, 1;
+                    @Value: 55, -4;
+                    @Size: 106, 67;
+                }
+            }
+            
+            #Empty:Skill {
+                @Pos: {
+                    @Anchor: 0, 1;
+                    @Pivot: 0, 1;
+                    @Value: 163, -5;
+                    @Size: 246, 30;
+                }
+                
+                #Image:Icon {
+                    @Pos: {
+                        @Anchor: 0, 0.5;
+                        @Pivot: 0, 0.5;
+                        @Value: 3, 0;
+                        @Size: 24, 24;
+                    }
+                }
+
+                #I18nLabel:Name {
+                    @Pos: {
+                        @Anchor: 0, 1;
+                        @Pivot: 0, 1;
+                        @Value: 30, -2;
+                        @Size: 48, 12;
+                    }
+
+                    @Text: "champion.skill";
+                    @Size: 3;
+                    @XAlign: "Center";
+                    @YAlign: "Center";
+                }
+
+                #Image:CooltimeIcon {
+                    @Pos: {
+                        @Anchor: 0, 0;
+                        @Pivot: 0, 0;
+                        @Value: 30, 4;
+                        @Size: 9, 9;
+                    }
+                }
+
+                #I18nLabel:Cooltime {
+                    @Pos: {
+                        @Anchor: 0, 0;
+                        @Pivot: 0, 0;
+                        @Value: 42, 2;
+                        @Size: 36, 13;
+                    }
+
+                    @Text: "match.skill_cool";
+                    @Size: 3;
+                    @YAlign: "Center";
+                    @XAlign: "Left";
+                }
+
+                #I18nLabel:Desc {
+                    @Fill: {
+                        @XAnchor: 0, 1;
+                        @YAnchor: 0, 1;
+                        @XOffset: 83, 2;
+                        @YOffset: 2, 2;
+                    }
+
+                    @Size: 2;
+                }
+            }
+
+            #Empty:Ult {
+                @Pos: {
+                    @Anchor: 0, 1;
+                    @Pivot: 0, 1;
+                    @Value: 163, -40;
+                    @Size: 246, 30;
+                }
+                
+                #Image:Icon {
+                    @Pos: {
+                        @Anchor: 0, 0.5;
+                        @Pivot: 0, 0.5;
+                        @Value: 3, 0;
+                        @Size: 24, 24;
+                    }
+                }
+
+                #I18nLabel:Name {
+                    @Pos: {
+                        @Anchor: 0, 1;
+                        @Pivot: 0, 1;
+                        @Value: 30, -2;
+                        @Size: 48, 12;
+                    }
+
+                    @Text: "champion.ult";
+                    @Size: 3;
+                    @XAlign: "Center";
+                    @YAlign: "Center";
+                }
+
+                #Image:CooltimeIcon {
+                    @Pos: {
+                        @Anchor: 0, 0;
+                        @Pivot: 0, 0;
+                        @Value: 30, 4;
+                        @Size: 9, 9;
+                    }
+                }
+
+                #I18nLabel:Cooltime {
+                    @Pos: {
+                        @Anchor: 0, 0;
+                        @Pivot: 0, 0;
+                        @Value: 42, 2;
+                        @Size: 36, 13;
+                    }
+
+                    @Text: "match.ult_cool";
+                    @Size: 3;
+                    @YAlign: "Center";
+                    @XAlign: "Left";
+                }
+
+                #I18nLabel:Desc {
+                    @Fill: {
+                        @XAnchor: 0, 1;
+                        @YAnchor: 0, 1;
+                        @XOffset: 83, 2;
+                        @YOffset: 2, 2;
+                    }
+
+                    @Size: 2;
+                }
+            }
+            
+            #Empty:Tabs {
+                @Pos: {
+                    @Anchor: 0, 0;
+                    @Pivot: 0, 1;
+                    @Value: -2, 0;
+                    @Size: 0, 0;
+                }
+
+                #Empty:LB {
+                    @Pos: {
+                        @Size: 24, 18;
+                    }
+
+                    #Image:Indicator {
+                        @Pos: {
+                            @Value: 0, -1;
+                            @Size: 33, 33;
+                        }
+
+                        @Sprite: "ButtonIndicator";
+                    }
+                }
+                
+                #Empty:RB {
+                    @Pos: {
+                        @Size: 24, 18;
+                    }
+
+                    #Image:Indicator {
+                        @Pos: {
+                            @Value: 0, -1;
+                            @Size: 33, 33;
+                        }
+
+                        @Sprite: "ButtonIndicator";
+                    }
+                }
+            }
+        }
+
+        #Empty:Bans {
+            @Pos: {
+                @Anchor: 0, 1;
+                @Pivot: 0, 1;
+                @Size: 414, 50;
+                @Value: 113, -306;
+            }
+
+            #I18nLabel:Bans {
+                @Fill: {
+                    @XAnchor: 0, 1;
+                    @YAnchor: 0, 1;
+                    @XOffset: 138, 138;
+                    @YOffset: 2, 2;
+                }
+
+                @Text: "match.ban";
+                @Size: 6;
+                @XAlign: "Center";
+                @YAlign: "Center";
+            }
+
+            #Label:EventTitle {
+                @Fill: {
+                    @XAnchor: 0, 1;
+                    @YAnchor: 0, 1;
+                    @XOffset: 138, 138;
+                    @YOffset: 28, 2;
+                }
+
+                @Text: "title";
+                @Size: 4;
+                @XAlign: "Center";
+                @YAlign: "Center";
+            }
+
+            #Label:EventDesc {
+                @Fill: {
+                    @XAnchor: 0, 1;
+                    @YAnchor: 0, 1;
+                    @XOffset: 143, 143;
+                    @YOffset: 2, 25;
+                }
+
+                @Text: "desc";
+                @Size: 3;
+                @XAlign: "Center";
+                @YAlign: "Up";
+                @Color: "MainSelectedYellow";
+            }
+
+            #Empty:Time {
+                @Fill: {
+                    @XAnchor: 0, 1;
+                    @YAnchor: 0, 1;
+                    @XOffset: 138, 138;
+                    @YOffset: 2, 2;
+                }
+
+                #I18nLabel:Label {
+                    @Pos: {
+                        @Anchor: 0.5, 0.5;
+                        @Pivot: 0.5, 0.5;
+                        @Value: 0, 10;
+                        @Size: 80, 10;
+                    }
+
+                    @Text: "match.remain_time";
+                    @Size: 4;
+                    @XAlign: "Center";
+                    @YAlign: "Center";
+                }
+
+                #Label:Remain {
+                    @Pos: {
+                        @Anchor: 0.5, 0.5;
+                        @Pivot: 0.5, 0.5;
+                        @Value: 0, -7;
+                        @Size: 80, 14;
+                    }
+
+                    @Text: "99";
+                    @Size: 5;
+                    @XAlign: "Center";
+                    @YAlign: "Center";
+                }
+            }
+
+            #Empty:BlueBans {
+                @Pos: {
+                    @Anchor: 0, 1;
+                    @Pivot: 0, 1;
+                    @Size: 136, 50;
+                    @Value: 0, 0;
+                }
+
+                #Empty:Container {
+                    @Pos: {
+                        @Anchor: 0.5, 0.5;
+                        @Pivot: 0.5, 0.5;
+                        @Size: 0, 50;
+                        @Value: 0, 0;
+                    }
+                }
+            }
+
+            #Empty:RedBans {
+                @Pos: {
+                    @Anchor: 1, 1;
+                    @Pivot: 1, 1;
+                    @Size: 136, 50;
+                    @Value: 0, 0;
+                }
+
+                #Empty:Container {
+                    @Pos: {
+                        @Anchor: 0.5, 0.5;
+                        @Pivot: 0.5, 0.5;
+                        @Size: 0, 50;
+                        @Value: 0, 0;
+                    }
+
+                    @Masked: true;
+                }
+            }
+        }
+
+        #Empty:Middle {
+            @Fill: {
+                @XAnchor: 0, 1;
+                @YAnchor: 0, 1;
+                @XOffset: 0, 0;
+                @YOffset: 0, 0;
+            }
+
+            #Image:Blue {
+                @Pos: {
+                    @Anchor: 0, 0.5;
+                    @Pivot: 0, 0.5;
+                    @Value: 0, -18;
+                    @Size: 111, 2;
+                }
+
+                #I18nLabel:Ban {
+                    @Pos: {
+                        @Anchor: 1, 1;
+                        @Pivot: 1, 1;
+                        @Value: 0, -2;
+                        @Size: 30, 18;
+                    }
+
+                    @Text: "match.phase.ban";
+                    @Size: 2;
+                    @XAlign: "Center";
+                    @YAlign: "Center";
+                }
+            }
+
+            #Image:Red {
+                @Pos: {
+                    @Anchor: 1, 0.5;
+                    @Pivot: 1, 0.5;
+                    @Value: 0, -18;
+                    @Size: 111, 2;
+                }
+
+                
+                #I18nLabel:Ban {
+                    @Pos: {
+                        @Anchor: 0, 1;
+                        @Pivot: 0, 1;
+                        @Value: 0, -2;
+                        @Size: 30, 18;
+                    }
+
+                    @Text: "match.phase.ban";
+                    @Size: 2;
+                    @XAlign: "Center";
+                    @YAlign: "Center";
+                }
+            }
+        }
+    }
+}

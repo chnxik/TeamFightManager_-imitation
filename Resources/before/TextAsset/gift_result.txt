@@ -1,0 +1,37 @@
+#Image:GiftResultSlot {
+    @Pos: {
+        @Size: 263, 46;
+    }
+
+    #Image:Icon {
+        @Pos: {
+            @Anchor: 0, 0.5;
+            @Pivot: 0, 0.5;
+            @Value: 4, 0;
+            @Size: 38, 38;
+        }
+    }
+
+    #I18nLabel:Name {
+        @Pos: {
+            @Anchor: 0, 1;
+            @Pivot: 0, 1;
+            @Size: 150, 14;
+            @Value: 48, -4;
+        }
+
+        @Size: 5;
+        @YAlign: "Center";
+    }
+
+    #Label:Desc {
+        @Pos: {
+            @Anchor: 0, 1;
+            @Pivot: 0, 1;
+            @Size: 210, 21;
+            @Value: 48, -21;
+        }
+
+        @Size: 4;
+    }
+}

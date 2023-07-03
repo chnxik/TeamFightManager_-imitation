@@ -1,0 +1,274 @@
+#Empty:UI {
+    @Pos: {
+        @Size: 640, 360;
+    }
+
+    #Empty:CenterPanel {
+        @Pos: {
+            @Anchor: 0.5, 1;
+            @Pivot: 0.5, 1;
+            @Value: 0, -71;
+            @Size: 250, 102;
+        }
+
+        #Empty:Blue {
+            @Pos: {
+                @Anchor: 0, 1;
+                @Pivot: 0, 1;
+                @Size: 90, 102;
+                @Value: 0, 0; 
+            }
+            
+            #Image:LogoBG {
+                @Pos: {
+                    @Anchor: 0.5, 0.5;
+                    @Pivot: 0.5, 0;
+                    @Size: 30, 30;
+                    @Value: 0, 0;
+                }
+
+                @Sprite: "TeamLogoBG";
+            }
+
+            #Image:Logo {
+                @Pos: {
+                    @Anchor: 0.5, 0.5;
+                    @Pivot: 0.5, 0;
+                    @Size: 30, 30;
+                    @Value: 0, 0;
+                }
+            }
+
+            #Label:Name {
+                @Pos: {
+                    @Anchor: 0.5, 0.5;
+                    @Pivot: 0.5, 1;
+                    @Size: 90, 22;
+                    @Value: 0, -2;
+                }
+                @Text: "testte say";
+                @Color: "Black";
+                @Size: 4;
+                @XAlign: "Center";
+                @YAlign: "Center";
+            }
+
+            #I18nLabel:State {
+                @Pos: {
+                    @Anchor: 0.5, 0.5;
+                    @Pivot: 0.5, 1;
+                    @Size: 80, 10;
+                    @Value: 0, -24;
+                }
+                @Text: "match.intro.team_info";
+                @Color: "Black";
+                @Size: 3;
+                @XAlign: "Center";
+                @YAlign: "Center";
+            }
+        }
+
+        #Empty:Info {
+            @Pos: {
+                @Anchor: 0.5, 1;
+                @Pivot: 0.5, 1;
+                @Size: 70, 102;
+                @Value: 0, 0; 
+            }
+
+            #I18nLabel:Competition {
+                @Pos: {
+                    @Anchor: 0.5, 0.5;
+                    @Pivot: 0.5, 0;
+                    @Size: 60, 12;
+                    @Value: 0, 17;
+                }
+                @Text: "testte say";
+                @Color: "Black";
+                @Size: 4;
+                @XAlign: "Center";
+                @YAlign: "Center";
+            }
+
+            #Label:Match {
+                @Pos: {
+                    @Anchor: 0.5, 0.5;
+                    @Pivot: 0.5, 0;
+                    @Size: 60, 12;
+                    @Value: 0, 5;
+                }
+                @Text: "testte say";
+                @Color: "Black";
+                @Size: 4;
+                @XAlign: "Center";
+                @YAlign: "Center";
+            }
+
+            #Label:VS {
+                @Pos: {
+                    @Anchor: 0.5, 0.5;
+                    @Pivot: 0.5, 0.5;
+                    @Size: 50, 25;
+                    @Value: 0, -7;
+                }
+                @Text: "VS";
+                @Color: "Black";
+                @Size: 6;
+                @XAlign: "Center";
+                @YAlign: "Center";
+            }
+
+            #Label:BO {
+                @Pos: {
+                    @Anchor: 0.5, 0.5;
+                    @Pivot: 0.5, 1;
+                    @Size: 80, 10;
+                    @Value: 0, -20;
+                }
+                @Text: "BO3";
+                @Color: "Black";
+                @Size: 3;
+                @XAlign: "Center";
+                @YAlign: "Center";
+            }
+        }
+        
+        #Empty:Red {
+            @Pos: {
+                @Anchor: 1, 1;
+                @Pivot: 1, 1;
+                @Size: 90, 102;
+                @Value: 0, 0; 
+            }
+
+            #Image:LogoBG {
+                @Pos: {
+                    @Anchor: 0.5, 0.5;
+                    @Pivot: 0.5, 0;
+                    @Size: 30, 30;
+                    @Value: 0, 0;
+                }
+
+                @Sprite: "TeamLogoBG";
+            }
+            
+            #Image:Logo {
+                @Pos: {
+                    @Anchor: 0.5, 0.5;
+                    @Pivot: 0.5, 0;
+                    @Size: 30, 30;
+                    @Value: 0, 0;
+                }
+            }
+
+            #Label:Name {
+                @Pos: {
+                    @Anchor: 0.5, 0.5;
+                    @Pivot: 0.5, 1;
+                    @Size: 90, 22;
+                    @Value: 0, -2;
+                }
+                @Text: "testte say";
+                @Color: "Black";
+                @Size: 4;
+                @XAlign: "Center";
+                @YAlign: "Center";
+            }
+
+            #I18nLabel:State {
+                @Pos: {
+                    @Anchor: 0.5, 0.5;
+                    @Pivot: 0.5, 1;
+                    @Size: 80, 10;
+                    @Value: 0, -24;
+                }
+                @Text: "match.intro.team_info";
+                @Color: "Black";
+                @Size: 3;
+                @XAlign: "Center";
+                @YAlign: "Center";
+            }
+        }
+    }
+
+    #Empty:BlueTeam {
+        @Pos: {
+            @Anchor: 0, 1;
+            @Pivot: 0, 1;
+            @Value: 51, -84;
+            @Size: 136, 23;
+        }
+
+        #Image:Logo {
+            @Pos: {
+                @Anchor: 1, 0.5;
+                @Pivot: 1, 0.5;
+                @Value: -1.5, 0;
+                @Size: 20, 20;
+            }
+        }
+
+        #Label:Name {
+            @Pos: {
+                @Anchor: 1, 0.5;
+                @Pivot: 1, 0.5;
+                @Value: -28, 0;
+                @Size: 100, 20;
+            }
+
+            @Text: "test";
+            @Size: 4;
+            @XAlign: "Right";
+            @YAlign: "Center";
+        }
+    }
+
+    #Empty:RedTeam {
+        @Pos: {
+            @Anchor: 1, 1;
+            @Pivot: 1, 1;
+            @Value: -51, -84;
+            @Size: 136, 23;
+        }
+
+        #Image:Logo {
+            @Pos: {
+                @Anchor: 0, 0.5;
+                @Pivot: 0, 0.5;
+                @Value: 1.5, 0;
+                @Size: 20, 20;
+            }
+        }
+        #Label:Name {
+            @Pos: {
+                @Anchor: 0, 0.5;
+                @Pivot: 0, 0.5;
+                @Value: 28, 0;
+                @Size: 100, 20;
+            }
+
+            @Text: "test";
+            @Size: 4;
+            @XAlign: "Left";
+            @YAlign: "Center";
+        }
+    }
+
+    #Empty:BlueCards {
+        @Pos: {
+            @Anchor: 0.5, 1;
+            @Pivot: 1, 1;
+            @Value: -131.666666, -113.3333333;
+            @Size: 150, 57.3333333;
+        }
+    }
+
+    #Empty:RedCards {
+        @Pos: {
+            @Anchor: 0.5, 1;
+            @Pivot: 0, 1;
+            @Value: 131.666666, -113.3333333;
+            @Size: 150, 57.3333333;
+        }
+    }
+}

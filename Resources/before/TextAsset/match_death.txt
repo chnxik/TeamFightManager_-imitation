@@ -1,0 +1,44 @@
+#Image:DeathIndicator {
+    @Pos: {
+        @Size: 22, 34;
+    }
+
+    @Sprite: "MatchDeathPanel";
+
+    #Image:Mask {
+        @Pos: {
+            @Anchor: 0, 1;
+            @Pivot: 0, 1;
+            @Size: 22, 34;
+            @Value: 0, 0;
+        }
+
+        @Sprite: "MatchDeathMask";
+
+        #Image:Champ {
+            @Pos: {
+                @Anchor: 0.5, 0.5;
+                @Pivot: 0.5, 0.5;
+                @Size: 96, 96;
+                @Value: 0, -8;
+            }
+
+            @Sprite: "Champion";
+        }
+    }
+
+    #Label:Time {
+        @Pos: {
+            @Anchor: 0.5, 0;
+            @Pivot: 0.5, 0;
+            @Size: 12, 9;
+            @Value: 0, 1;
+        }
+
+        @Text: "3";
+        @Size: 3;
+        @Color: "WarnRed";
+        @XAlign: "Center";
+        @YAlign: "Center";
+    }
+}

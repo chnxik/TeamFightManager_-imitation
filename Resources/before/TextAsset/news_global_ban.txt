@@ -1,0 +1,64 @@
+#Empty:NewsGlobalBan {
+    @XFill: {
+        @Anchor: 0, 1;
+        @OffMin: 0;
+        @OffMax: 0;
+    }
+
+    @YPos: {
+        @Anchor: 1;
+        @Pivot: 1;
+        @Value: 0;
+        @Size: 180;
+    }
+
+    #I18nLabel:Pre {
+        @Pos: {
+            @Anchor: 0, 1;
+            @Pivot: 0, 1;
+            @Value: 0, 0;
+            @Size: 580, 16;
+        }
+
+        @Text: "news.global_ban.contents_pre";
+        @Size: 4;
+        @XAlign: "Left";
+        @YAlign: "Up";
+    }
+
+    #Empty:Ban {
+        @Pos: {
+            @Anchor: 0, 1;
+            @Pivot: 0, 1;
+            @Value: 0, -16;
+            @Size: 142, 21;
+        }
+
+        #I18nLabel:Name {
+            @Pos: {
+                @Anchor: 0, 0.5;
+                @Pivot: 0, 0.5;
+                @Value: 24, 0;
+                @Size: 90, 21;
+            }
+
+            @Text: "test";
+            @Size: 4;
+            @YAlign: "Center";
+        }
+    }
+
+    #I18nLabel:After {
+        @Pos: {
+            @Anchor: 0, 1;
+            @Pivot: 0, 1;
+            @Value: 0, -44;
+            @Size: 580, 16;
+        }
+
+        @Text: "news.global_ban.contents_after";
+        @Size: 4;
+        @XAlign: "Left";
+        @YAlign: "Up";
+    }
+}

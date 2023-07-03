@@ -1,0 +1,62 @@
+#Empty:MatchExpSlot {
+    @Pos: {
+        @Anchor: 0, 1;
+        @Pivot: 0, 1;
+        @Size: 18, 18;
+    }
+
+    #Image:Mask {
+        @Pos: {
+            @Anchor: 0, 1;
+            @Pivot: 0, 1;
+            @Value: 0, 0;
+            @Size: 18, 18;
+        }
+
+        @Sprite: "MatchExpMask";
+
+        #Image:Background {
+            @Pos: {
+                @Anchor: 0, 1;
+                @Pivot: 0, 1;
+                @Value: 0, 0;
+                @Size: 18, 18;
+            }
+
+            @Color: "MatchExpBG";
+        }
+
+        #Image:Face {
+            @Pos: {
+                @Value: -1, -12;
+                @Size: 64, 64;
+            }
+
+            @Sprite: "Champion";
+        }
+    }
+
+    #Image:Front {
+        @Pos: {
+            @Value: 0, 0;
+            @Size: 18, 18;
+        }
+
+        @Color: "MatchExpFront";
+        @Sprite: "MatchExpFront";
+    }
+
+    #Label:Value {
+        @Pos: {
+            @Anchor: 1, 1;
+            @Pivot: 1, 1;
+            @Size: 7, 5;
+            @Value: -1, -1;
+        }
+
+        @Text: "99";
+        @Size: 2;
+        @XAlign: "Center";
+        @YAlign: "Center";
+    }
+}

@@ -1,0 +1,159 @@
+#Button:StreamingAthleteSlot {
+    @Pos: {
+        @Anchor: 0.5, 1;
+        @Pivot: 0.5, 1;
+        @Size: 269, 30;
+    }
+
+    @FirstFocus: true;
+
+    @Sliced: true;
+    @Normal: {
+        @Sprite: "SquadSlot";
+    }
+
+    @Hover: {
+        @Sprite: "SquadSlotHover";
+    }
+
+    #Image:FaceSlot {
+        @Pos: {
+            @Anchor: 0, 0.5;
+            @Pivot: 0, 0.5;
+            @Size: 26, 26;
+            @Value: 2, 0;
+        }
+
+        @Sprite: "SmallSlotBG";
+        
+        #Empty:Mask {
+            @Fill: {
+                @XAnchor: 0, 1;
+                @YAnchor: 0, 1;
+                @XOffset: 1, 1;
+                @YOffset: 1, 1;
+            }
+
+            @Masked: true;
+
+            #Image:Athlete {
+                @Pos: {
+                    @Pivot: 0.5, 0.5;
+                    @Anchor: 0.5, 0.5;
+                    @Value: 0, -1;
+                    @Size: 64, 64;
+                }
+
+                @Sprite: "Athlete";
+            }
+        }
+
+        #Image:FaceFront {
+            @Fill: {
+                @XAnchor: 0, 1;
+                @YAnchor: 0, 1;
+                @XOffset: 0, 0;
+                @YOffset: 0, 0;
+            }
+
+            @Sprite: "SmallSlotFront";
+        }
+    }
+
+    #I18nLabel:Name {
+        @Pos: {
+            @Pivot: 0, 1;
+            @Anchor: 0, 1;
+            @Value: 30, -5;
+            @Size: 66, 16;
+        }
+
+        @Text: "Test";
+        @Size: 4;
+        @YAlign: "Center";
+    }
+
+    
+    #Empty:Star {
+        @Pos: {
+            @Pivot: 0, 1;
+            @Anchor: 0, 1;
+            @Value: 30, -21;
+            @Size: 0, 4;
+        }
+
+        @XFitter: true;
+    }
+
+    #Image:Attack {
+        @Pos: {
+            @Pivot: 0, 0.5;
+            @Anchor: 0, 0.5;
+            @Value: 110, 0;
+            @Size: 10, 10;
+        }
+
+        @Sprite: "Attack";
+    }
+
+    #Label:AttackValue {
+        @Pos: {
+            @Pivot: 0, 0.5;
+            @Anchor: 0, 0.5;
+            @Value: 124, 0;
+            @Size: 25, 20;
+        }
+
+        @Text: "99";
+        @YAlign: "Center";
+        @Size: 4;
+    }
+
+    #Image:Defence {
+        @Pos: {
+            @Pivot: 0, 0.5;
+            @Anchor: 0, 0.5;
+            @Value: 162, 0;
+            @Size: 8, 10;
+        }
+
+        @Sprite: "Defence";
+    }
+
+    #Label:DefenceValue {
+        @Pos: {
+            @Pivot: 0, 0.5;
+            @Anchor: 0, 0.5;
+            @Value: 174, 0;
+            @Size: 30, 20;
+        }
+
+        @Text: "99";
+        @YAlign: "Center";
+        @Size: 4;
+    }
+
+    #Image:Fan {
+        @Pos: {
+            @Pivot: 0, 0.5;
+            @Anchor: 0, 0.5;
+            @Value: 210, 0;
+            @Size: 10, 10;
+        }
+
+        @Sprite: "Fan";
+    }
+
+    #Label:FanValue {
+        @Pos: {
+            @Pivot: 0, 0.5;
+            @Anchor: 0, 0.5;
+            @Value: 224, 0;
+            @Size: 42, 20;
+        }
+
+        @Text: "0";
+        @YAlign: "Center";
+        @Size: 4;
+    }
+}

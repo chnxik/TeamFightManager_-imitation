@@ -1,0 +1,313 @@
+#Image:TrainingReportSlot {
+    @Pos: {
+        @Size: 219, 77;
+    }
+
+    #Image:FaceSlot {
+        @Pos: {
+            @Anchor: 0, 1;
+            @Pivot: 0, 1;
+            @Size: 26, 26;
+            @Value: 4, -4;
+        }
+
+        @Sprite: "SmallSlotBG";
+        
+        #Empty:Mask {
+            @Fill: {
+                @XAnchor: 0, 1;
+                @YAnchor: 0, 1;
+                @XOffset: 1, 1;
+                @YOffset: 1, 1;
+            }
+
+            @Masked: true;
+
+            #Image:Athlete {
+                @Pos: {
+                    @Pivot: 0.5, 0.5;
+                    @Anchor: 0.5, 0.5;
+                    @Value: 0, -1;
+                    @Size: 64, 64;
+                }
+
+                @Sprite: "Athlete";
+            }
+        }
+
+        #Image:FaceFront {
+            @Fill: {
+                @XAnchor: 0, 1;
+                @YAnchor: 0, 1;
+                @XOffset: 0, 0;
+                @YOffset: 0, 0;
+            }
+
+            @Sprite: "SmallSlotFront";
+        }
+    }
+
+    #I18nLabel:Name {
+        @Pos: {
+            @Pivot: 0, 1;
+            @Anchor: 0, 1;
+            @Value: 36, -2;
+            @Size: 80, 16;
+        }
+
+        @Text: "Test";
+        @Size: 4;
+        @YAlign: "Center";
+        @XFitter: true;
+
+        #Empty:Star {
+            @Pos: {
+                @Pivot: 0, 0;
+                @Anchor: 1, 0;
+                @Value: 4, 3;
+                @Size: 0, 4;
+            }
+
+            @XFitter: true;
+        }
+    }
+
+    #I18nLabel:Age {
+        @Pos: {
+            @Pivot: 1, 1;
+            @Anchor: 1, 1;
+            @Value: -6, -3;
+            @Size: 50, 16;
+        }
+
+        @Text: "athlete.stat.age";
+        @Size: 4;
+        @YAlign: "Center";
+        @XAlign: "Right";
+    }
+
+    #Empty:Properties {
+        @Pos: {
+            @Pivot: 0, 1;
+            @Anchor: 0, 1;
+            @Value: 36, -19;
+            @Size: 178, 10;
+        }
+    }
+
+
+    #Label:AttackValue {
+        @Pos: {
+            @Pivot: 0, 1;
+            @Anchor: 0, 1;
+            @Value: 19, -36;
+            @Size: 30, 18;
+        }
+
+        @Text: "999";
+        @YAlign: "Center";
+        @Size: 4;
+    }
+
+    #Image:AttackExpDelta {
+        @Pos: {
+            @Anchor: 0, 0;
+            @Pivot: 0, 0;
+            @Size: 48, 11;
+            @Value: 3, 7;
+        }
+
+        @Sprite: "TrainingExpBG";
+
+        #Label:Value {
+            @Fill: {
+                @XAnchor: 0, 1;
+                @YAnchor: 0, 1;
+                @XOffset: 1, 1;
+                @YOffset: 1, 1;
+            }
+
+            @Size: 3;
+            @XAlign: "Center";
+            @YAlign: "Center";
+            @Text: "+2";
+        }
+    }
+
+    #Image:AttackExpBG {
+        @Pos: {
+            @Anchor: 0, 0;
+            @Pivot: 0, 0;
+            @Size: 48, 4;
+            @Value: 3, 2;
+        }
+
+        @Sprite: "TrainingExpBG";
+
+        #Image:ExpGreen {
+            @XPos: {
+                @Anchor: 0;
+                @Pivot: 0;
+                @Size: 12;
+                @Value: 0;
+            }
+
+            @YFill: {
+                @Anchor: 0, 1;
+                @OffMin: 0;
+                @OffMax: 0;
+            }
+
+            @Sprite: "TrainingExpGreen";
+            @Sliced: true;
+        }
+
+        #Image:ExpYellow {
+            @XPos: {
+                @Anchor: 0;
+                @Pivot: 0;
+                @Size: 12;
+                @Value: 10;
+            }
+
+            @YFill: {
+                @Anchor: 0, 1;
+                @OffMin: 0;
+                @OffMax: 0;
+            }
+
+            @Sprite: "TrainingExpYellow";
+            @Sliced: true;
+        }
+
+        #Image:ExpRed {
+            @XPos: {
+                @Anchor: 0;
+                @Pivot: 0;
+                @Size: 2;
+                @Value: 10;
+            }
+
+            @YFill: {
+                @Anchor: 0, 1;
+                @OffMin: 0;
+                @OffMax: 0;
+            }
+
+            @Sprite: "TrainingExpRed";
+            @Sliced: true;
+        }
+    }
+
+    #Label:DefenceValue {
+        @Pos: {
+            @Pivot: 0, 1;
+            @Anchor: 0, 1;
+            @Value: 67, -36;
+            @Size: 30, 18;
+        }
+
+        @Text: "999";
+        @YAlign: "Center";
+        @Size: 4;
+    }
+
+    #Image:DefenceExpDelta {
+        @Pos: {
+            @Anchor: 0, 0;
+            @Pivot: 0, 0;
+            @Size: 48, 11;
+            @Value: 52, 7;
+        }
+
+        @Sprite: "TrainingExpBG";
+
+        #Label:Value {
+            @Fill: {
+                @XAnchor: 0, 1;
+                @YAnchor: 0, 1;
+                @XOffset: 1, 1;
+                @YOffset: 1, 1;
+            }
+
+            @Size: 3;
+            @XAlign: "Center";
+            @YAlign: "Center";
+            @Text: "+2";
+        }
+    }
+
+    #Image:DefenceExpBG {
+        @Pos: {
+            @Anchor: 0, 0;
+            @Pivot: 0, 0;
+            @Size: 48, 4;
+            @Value: 52, 2;
+        }
+
+        @Sprite: "TrainingExpBG";
+
+        #Image:ExpGreen {
+            @XPos: {
+                @Anchor: 0;
+                @Pivot: 0;
+                @Size: 12;
+                @Value: 0;
+            }
+
+            @YFill: {
+                @Anchor: 0, 1;
+                @OffMin: 0;
+                @OffMax: 0;
+            }
+
+            @Sprite: "TrainingExpGreen";
+            @Sliced: true;
+        }
+
+        #Image:ExpYellow {
+            @XPos: {
+                @Anchor: 0;
+                @Pivot: 0;
+                @Size: 12;
+                @Value: 10;
+            }
+
+            @YFill: {
+                @Anchor: 0, 1;
+                @OffMin: 0;
+                @OffMax: 0;
+            }
+
+            @Sprite: "TrainingExpYellow";
+            @Sliced: true;
+        }
+
+        #Image:ExpRed {
+            @XPos: {
+                @Anchor: 0;
+                @Pivot: 0;
+                @Size: 2;
+                @Value: 10;
+            }
+
+            @YFill: {
+                @Anchor: 0, 1;
+                @OffMin: 0;
+                @OffMax: 0;
+            }
+
+            @Sprite: "TrainingExpRed";
+            @Sliced: true;
+        }
+    }
+
+    #Empty:Exps {
+        @Pos: {
+            @Pivot: 1, 1;
+            @Anchor: 1, 1;
+            @Value: -3, -30;
+            @Size: 110, 45;
+        }
+    }
+}

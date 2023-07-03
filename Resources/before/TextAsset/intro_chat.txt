@@ -1,0 +1,17 @@
+#Image:_ {
+    @Sliced: true;
+
+    @CanvasGroup: {}
+
+    #Label:Chat {
+        @Fill: {
+            @XAnchor: 0, 1;
+            @YAnchor: 0, 1;
+            @XOffset: 6, 6;
+            @YOffset: 16, 6;
+        }
+
+        @Color: "Black";
+        @Size: 2;
+    }
+}

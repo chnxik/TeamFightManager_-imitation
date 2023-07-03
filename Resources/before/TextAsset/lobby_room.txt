@@ -1,0 +1,72 @@
+#Button:LobbyRoom {
+    @Pos: {
+        @Size: 357, 24;
+    }
+
+    @Normal: {
+        @Sprite: "LobbyRoomBG";
+    }
+
+    @Hover: {
+        @Sprite: "LobbyRoomHoverBG";
+    }
+
+    @Focused: {
+        @Sprite: "LobbyRoomHoverBG";
+    }
+
+    #Label:Name {
+        @Pos: {
+            @Anchor: 0, 0.5;
+            @Pivot: 0, 0.5;
+            @Value: 8, 0;
+            @Size: 150, 20;
+        }
+
+        @Text: "Test";
+        @Size: 3;
+        @YAlign: "Center";
+    }
+
+    #Label:Host {
+        @Pos: {
+            @Anchor: 0, 0.5;
+            @Pivot: 0, 0.5;
+            @Value: 164, 0;
+            @Size: 70, 20;
+        }
+
+        @Text: "HostName";
+        @Size: 3;
+        @XAlign: "Center";
+        @YAlign: "Center";
+    }
+
+    #I18nLabel:Mode {
+        @Pos: {
+            @Anchor: 0, 0.5;
+            @Pivot: 0, 0.5;
+            @Value: 238, 0;
+            @Size: 80, 20;
+        }
+
+        @Text: "ModeTest";
+        @Size: 3;
+        @XAlign: "Center";
+        @YAlign: "Center";
+    }
+
+    #Label:Count {
+        @Pos: {
+            @Anchor: 0, 0.5;
+            @Pivot: 0, 0.5;
+            @Value: 323, 0;
+            @Size: 32, 20;
+        }
+
+        @Text: "10/10";
+        @Size: 3;
+        @XAlign: "Center";
+        @YAlign: "Center";
+    }
+}

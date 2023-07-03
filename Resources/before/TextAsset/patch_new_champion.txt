@@ -1,0 +1,49 @@
+#Empty:PatchNewChampion {
+    @XFill: {
+        @Anchor: 0, 1;
+        @OffMin: 0;
+        @OffMax: 0;
+    }
+
+    @YPos: {
+        @Anchor: 1;
+        @Pivot: 1;
+        @Value: 0;
+        @Size: 50;
+    }
+
+    #I18nLabel:Desc {
+        @XFill: {
+            @Anchor: 0, 1;
+            @OffMin: 0;
+            @OffMax: 0;
+        }
+
+        @YPos: {
+            @Anchor: 1;
+            @Pivot: 1;
+            @Value: 0;
+            @Size: 16;
+        }
+
+        @Text: "news.patch.new";
+        @Size: 4;
+        @XAlign: "Left";
+        @YAlign: "Up";
+    }
+
+    #Empty:Container {
+        @XFill: {
+            @Anchor: 0, 1;
+            @OffMin: 0;
+            @OffMax: 0;
+        }
+
+        @YPos: {
+            @Anchor: 1;
+            @Pivot: 1;
+            @Value: -20;
+            @Size: 24;
+        }
+    }
+}

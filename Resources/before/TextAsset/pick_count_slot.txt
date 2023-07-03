@@ -1,0 +1,49 @@
+#Empty:PickCountSlot {
+    @Pos: {
+        @Size: 91, 115;
+    }
+
+    #Image:Role {
+        @Pos: {
+            @Anchor: 0.5, 0;
+            @Pivot: 0.5, 0;
+            @Value: 0, 0;
+            @Size: 91, 23;
+        }
+
+        #I18nLabel:Category {
+            @Pos: {
+                @Anchor: 0, 0;
+                @Pivot: 0, 0;
+                @Value: 20, 1;
+                @Size: 70, 21;
+            }
+
+            @Size: 5;
+            @XAlign: "Center";
+            @YAlign: "Center";
+        }
+    }
+
+    #Image:Rate {
+        @Pos: {
+            @Anchor: 0.5, 0;
+            @Pivot: 0.5, 0;
+            @Value: 0, 25;
+        }
+
+        #Label:Value {
+            @Pos: {
+                @Anchor: 0.5, 1;
+                @Pivot: 0.5, 0;
+                @Value: 0, 1;
+                @Size: 91, 12;
+            }
+
+            @Text: "154/154(99.99%)";
+            @XAlign: "Center";
+            @YAlign: "Center";
+            @Size: 4;
+        }
+    }
+}

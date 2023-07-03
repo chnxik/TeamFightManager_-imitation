@@ -1,0 +1,42 @@
+#Empty:RecruitPropertySlot {
+    @Pos: {
+        @Size: 140, 20;
+    }
+
+    #Image:NameBG {
+        @Pos: {
+            @Anchor: 0, 1;
+            @Pivot: 0, 1;
+            @Value: 0, -4;
+            @Size: 47, 8;
+        }
+
+        @Sprite: "Property";
+
+        #I18nLabel:Name {
+            @Fill: {
+                @XAnchor: 0, 1;
+                @YAnchor: 0, 1;
+                @XOffset: 2, 2;
+                @YOffset: 1, 1;
+            }
+
+            @Text: "test";
+            @Size: 2;
+            @YAlign: "Center";
+            @XAlign: "Center";
+        }
+    }
+
+    #I18nLabel:Desc {
+        @Fill: {
+            @XAnchor: 0, 1;
+            @YAnchor: 0, 1;
+            @XOffset: 52, 4;
+            @YOffset: 2, 2;
+        }
+
+        @Text: "tesawftawftawf awftawfta wftsarst arstarst aawftaw ftawft rsttets";
+        @Size: 2;
+    }
+}

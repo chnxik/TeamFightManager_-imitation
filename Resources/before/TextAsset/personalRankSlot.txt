@@ -1,0 +1,96 @@
+#Image:PersonalRankSlot {
+    @Pos: {
+        @Anchor: 0, 1;
+        @Pivot: 0, 1;
+        @Size: 294, 32;
+    }
+
+    @Sprite: "PersonalRankSlot";
+
+    #Label:Ranking {
+        @Pos: {
+            @Anchor: 0, 1;
+            @Pivot: 0, 1;
+            @Value: 0, 0;
+            @Size: 32, 32;
+        }
+
+        @XAlign: "Center";
+        @YAlign: "Center";
+        @Size: 6;
+        @Text: "10";
+    }
+
+    #Empty:FaceSlot {
+        @Pos: {
+            @Anchor: 0, 0.5;
+            @Pivot: 0, 0.5;
+            @Size: 30, 30;
+            @Value: 33, 0;
+        }
+        
+        @Masked: true;
+
+        #Image:Athlete {
+            @Pos: {
+                @Pivot: 0.5, 0.5;
+                @Anchor: 0.5, 0.5;
+                @Value: 0, -1;
+                @Size: 64, 64;
+            }
+
+            @Sprite: "Athlete";
+        }
+    }
+
+    #I18nLabel:Name {
+        @Pos: {
+            @Anchor: 0, 1;
+            @Pivot: 0, 1;
+            @Value: 66, -1;
+            @Size: 140, 14;
+        }
+
+        @XAlign: "Left";
+        @YAlign: "Center";
+        @Text: "name";
+        @Size: 4;
+    }
+
+    #Image:TeamLogo {
+        @Pos: {
+            @Anchor: 0, 1;
+            @Pivot: 0, 1;
+            @Value: 64, -16;
+            @Size: 15, 15;
+        }
+    }
+
+    #Label:Team {
+        @Pos: {
+            @Anchor: 0, 1;
+            @Pivot: 0, 1;
+            @Value: 82, -16;
+            @Size: 120, 15;
+        }
+
+        @XAlign: "Left";
+        @YAlign: "Center";
+        @Text: "ranking.record";
+        @Size: 4;
+    }
+    
+    #I18nLabel:Value {
+        @Pos: {
+            @Anchor: 1, 0.5;
+            @Pivot: 1, 0.5;
+            @Value: -6, 0;
+            @Size: 70, 30;
+        }
+
+        @XAlign: "Right";
+        @YAlign: "Center";
+        @Text: "ranking.personal.kill";
+        @Size: 4;
+    }
+}

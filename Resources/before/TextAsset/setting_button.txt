@@ -1,0 +1,13 @@
+#Button:SettingButton {
+    @Pos: {
+        @Size: 13, 13;
+    }
+
+    @Normal: {
+        @Sprite: "SettingButton";
+    }
+
+    @Hover: {
+        @Sprite: "SettingButtonHover";
+    }
+}

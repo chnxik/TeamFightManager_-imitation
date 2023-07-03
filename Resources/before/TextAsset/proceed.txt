@@ -1,0 +1,86 @@
+#Button:ProgressButton {
+    @Pos: {
+        @Anchor: 1, 0;
+        @Pivot: 1, 0;
+        @Size: 129, 44;
+    }
+
+    @Normal: {
+        @Sprite: "ProgressNormal";
+    }
+
+    @Hover: {
+        @Sprite: "ProgressHover";
+    }
+
+    #Image:Arrow {
+        @Pos: {
+            @Anchor: 1, 0.5;
+            @Pivot: 1, 0.5;
+            @Size: 129, 44;
+        }
+
+        @Sprite: "ProgressArrow";
+    }
+
+    #Image:ButtonIcon {
+        @Pos: {
+            @Anchor: 0, 1;
+            @Pivot: 0, 1;
+            @Value: -5, 5;
+            @Size: 33, 33;
+        }
+    }
+
+    #I18nLabel:Desc {
+        @YPos: {
+            @Anchor: 1;
+            @Pivot: 1;
+            @Value: -7;
+            @Size: 20;
+        }
+
+        @XFill: {
+            @Anchor: 0, 1;
+            @OffMin: 22;
+            @OffMax: 4;
+        }
+
+        @Text: "경기장으로";
+        @Size: 4;
+
+        @Normal: {
+            @Color: "MainSelectedDark";
+        }
+
+        @Hover: {
+            @Color: "White";
+        }
+    }
+
+    #I18nLabel:Match {
+        @YPos: {
+            @Anchor: 1;
+            @Pivot: 1;
+            @Value: -28;
+            @Size: 12;
+        }
+
+        @XFill: {
+            @Anchor: 0, 1;
+            @OffMin: 6;
+            @OffMax: 4;
+        }
+
+        @Text: "14R  vs  OverPowerd Era";
+        @Size: 3;
+
+        @Normal: {
+            @Color: "MainSelectedDark";
+        }
+
+        @Hover: {
+            @Color: "White";
+        }
+    }
+}

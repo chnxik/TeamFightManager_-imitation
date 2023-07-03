@@ -1,0 +1,116 @@
+#Image:MatchPlayerSwapCard {
+    @Pos: {
+        @Size: 61, 78;
+    }
+
+    @Normal: {
+        @Sprite: "MatchSwapBG";
+    }
+
+    @Hover: {
+        @Sprite: "MatchSwapHoverBG";
+    }
+
+    @Focused: {
+        @Sprite: "MatchSwapBlueBG";
+    }
+
+    #Empty:Header {
+        @Pos: {
+            @Pivot: 0.5, 1;
+            @Anchor: 0.5, 1;
+            @Value: 0, -2;
+            @Size: 57, 11;
+        }
+
+        #Image:TagLeft {
+            @Pos: {
+                @Pivot: 1, 0.5;
+                @Anchor: 0.5, 0.5;
+                @Value: -18, 0;
+                @Size: 3, 8;
+            }
+
+            @Normal: {
+                @Sprite: "MiniTagLeft";
+            }
+
+            @Hover: {
+                @Sprite: "MiniTagLeft";
+            }
+
+            @Focused: {
+                @Sprite: "MiniTagBlueLeft";
+            }
+        }
+
+        #Image:TagRight {
+            @Pos: {
+                @Pivot: 0, 0.5;
+                @Anchor: 0.5, 0.5;
+                @Value: 18, 0;
+                @Size: 3, 8;
+            }
+
+            @Normal: {
+                @Sprite: "MiniTagRight";
+            }
+
+            @Hover: {
+                @Sprite: "MiniTagRight";
+            }
+
+            @Focused: {
+                @Sprite: "MiniTagBlueRight";
+            }
+        }
+
+        #I18nLabel:Category {
+            @Pos: {
+                @Pivot: 0.5, 0.5;
+                @Anchor: 0.5, 0.5;
+                @Value: 0, 0;
+                @Size: 36, 8;
+            }
+
+            @Text: "test";
+            @Size: 3;
+            @XAlign: "Center";
+            @YAlign: "Center";
+        }
+    }
+
+    #Empty:Mask {
+        @Pos: {
+            @Pivot: 0.5, 1;
+            @Anchor: 0.5, 1;
+            @Size: 53, 45;
+            @Value: 0, -14;
+        }
+
+        @Masked: true;
+
+        #Image:Face {
+            @Pos: {
+                @Value: 0, -6;
+                @Size: 96, 96;
+            }
+
+            @Sprite: "Champion";
+        }
+    }
+
+    #I18nLabel:Name {
+        @Pos: {
+            @Pivot: 0.5, 0;
+            @Anchor: 0.5, 0;
+            @Size: 51, 11;
+            @Value: 0, 5;
+        }
+
+        @Text: "test";
+        @Size: 3;
+        @XAlign: "Center";
+        @YAlign: "Center";
+    }
+}

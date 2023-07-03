@@ -1,0 +1,10 @@
+#I18nLabel:EndingChamp {
+    @Pos: {
+        @Size: 640, 20;
+    }
+
+    @Size: 5;
+    @Text: "stadium.ending_credit.champion";
+    @XAlign: "Center";
+    @YAlign: "Center";
+}

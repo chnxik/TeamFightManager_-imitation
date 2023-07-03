@@ -1,0 +1,10 @@
+#I18nLabel:MoveIndicator {
+
+    @Pos: {
+        @Size: 200, 12;
+    }
+
+    @Text: "multiplayer.waiting.indicator.move";
+    @Size: 3;
+    @YAlign: "Center";
+}

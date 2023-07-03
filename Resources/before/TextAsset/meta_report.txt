@@ -1,0 +1,91 @@
+#Empty:NewsMetaReport {
+    @XFill: {
+        @Anchor: 0, 1;
+        @OffMin: 0;
+        @OffMax: 0;
+    }
+
+    @YPos: {
+        @Anchor: 1;
+        @Pivot: 1;
+        @Size: 460;
+    }
+
+    #Image:Background {
+        @Pos: {
+            @Anchor: 0.5, 1;
+            @Pivot: 0.5, 1;
+            @Value: 0, 0;
+            @Size: 479, 451;
+        }
+
+        #I18nLabel:Title {
+            @Pos: {
+                @Anchor: 0.5, 1;
+                @Pivot: 0.5, 1;
+                @Value: 0, -2;
+                @Size: 460, 19;
+            }
+
+            @Text: "news.meta.meta";
+            @Size: 5;
+            @XAlign: "Center";
+            @YAlign: "Center";
+        }
+
+        #Empty:MetaContainer {
+            @Pos: {
+                @Anchor: 0.5, 1;
+                @Pivot: 0.5, 1;
+                @Value: 0, -21;
+                @Size: 475, 118;
+            }
+        }
+
+        #I18nLabel:SynergyTitle {
+            @Pos: {
+                @Anchor: 0.5, 1;
+                @Pivot: 0.5, 1;
+                @Value: 0, -155;
+                @Size: 460, 19;
+            }
+
+            @Text: "news.meta.synergy";
+            @Size: 5;
+            @XAlign: "Center";
+            @YAlign: "Center";
+        }
+        
+        #Empty:SynergyContainer {
+            @Pos: {
+                @Anchor: 0.5, 1;
+                @Pivot: 0.5, 1;
+                @Value: 0, -175;
+                @Size: 475, 118;
+            }
+        }
+
+        #I18nLabel:PickCount {
+            @Pos: {
+                @Anchor: 0.5, 1;
+                @Pivot: 0.5, 1;
+                @Value: 0, -308;
+                @Size: 460, 19;
+            }
+
+            @Text: "news.meta.pick";
+            @Size: 5;
+            @XAlign: "Center";
+            @YAlign: "Center";
+        }
+
+        #Empty:PickContainer {
+            @Pos: {
+                @Anchor: 0.5, 1;
+                @Pivot: 0.5, 1;
+                @Value: 0, -330;
+                @Size: 467, 115;
+            }
+        }
+    }
+}

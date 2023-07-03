@@ -1,0 +1,628 @@
+#Empty:ChangeProfile {
+    @Fill: {
+        @XAnchor: 0, 1;
+        @YAnchor: 0, 1;
+        @XOffset: 0, 0;
+        @YOffset: 0, 0;
+    }
+
+    @CanvasGroup: {}
+
+    #Image:Dimmed {
+        @Fill: {
+            @XAnchor: 0, 1;
+            @YAnchor: 0, 1;
+            @XOffset: 0, 0;
+            @YOffset: 0, 0;
+        }
+        
+        @Sprite: "White";
+        @Color: "Dimmed";
+    }
+
+    #Image:UI {
+        @Pos: {
+            @Anchor: 0.5, 0.5;
+            @Pivot: 0.5, 0.5;
+            @Value: 0, 16;
+            @Size: 450, 286;
+        }
+
+        #I18nLabel:Title {
+            @Pos: {
+                @Anchor: 0.5, 1;
+                @Pivot: 0.5, 1;
+                @Value: 0, -8;
+                @Size: 436, 28;
+            }
+
+            @Text: "setting.change_info.my_title";
+            @Size: 6;
+            @XAlign: "Center";
+            @YAlign: "Center";
+        }
+
+        #Empty:Teams {
+            @Pos: {
+                @Anchor: 0, 1;
+                @Pivot: 0, 1;
+                @Value: 7, -41;
+                @Size: 212, 204;
+            }
+
+            #I18nLabel:Name {
+                @Pos: {
+                    @Anchor: 0, 1;
+                    @Pivot: 0, 1;
+                    @Value: 0, 0;
+                    @Size: 212, 24;
+                }
+
+                @Text: "new_game.team.name";
+                @Size: 5;
+                @XAlign: "Center";
+                @YAlign: "Center";
+            }
+
+            #Empty:NowNameContainer {
+                @Pos: {
+                    @Anchor: 0.5, 1;
+                    @Pivot: 0.5, 1;
+                    @Value: 0, -32;
+                    @Size: 208, 24;
+                }
+
+                #I18nLabel:Header {
+                    @Pos: {
+                        @Anchor: 0, 0.5;
+                        @Pivot: 0, 0.5;
+                        @Value: 5, 0;
+                        @Size: 60, 16;
+                    }
+
+                    @Text: "setting.change_info.now_name";
+                    @Size: 3;
+                    @YAlign: "Center";
+                }
+                
+                #Image:LogoSlot {
+                    @Pos: {
+                        @Anchor: 0, 0.5;
+                        @Pivot: 0, 0.5;
+                        @Value: 70, 0;
+                        @Size: 16, 16;
+                    }
+
+                    @Sprite: "NewGameSlotBG";
+
+                    #Image:Logo {
+                        @Pos: {
+                            @Anchor: 0.5, 0.5;
+                            @Pivot: 0.5, 0.5;
+                            @Value: 0, 0;
+                            @Size: 15, 15;
+                        }
+                    }
+                }
+
+                #Label:Name {
+                    @Pos: {
+                        @Anchor: 0, 0.5;
+                        @Pivot: 0, 0.5;
+                        @Value: 90, 0;
+                        @Size: 100, 16;
+                    }
+
+                    @Text: "test";
+                    @Size: 3;
+                    @YAlign: "Center";
+                }
+            }
+
+
+            #Empty:NameContainer {
+                @Pos: {
+                    @Anchor: 0.5, 1;
+                    @Pivot: 0.5, 1;
+                    @Value: 0, -54;
+                    @Size: 208, 36;
+                }
+                
+                #Image:LogoSlot {
+                    @Pos: {
+                        @Anchor: 0, 0.5;
+                        @Pivot: 0, 0.5;
+                        @Value: 5, 0;
+                        @Size: 32, 32;
+                    }
+
+                    @Sprite: "NewGameSlotBG";
+
+                    #Image:Logo {
+                        @Pos: {
+                            @Anchor: 0.5, 0.5;
+                            @Pivot: 0.5, 0.5;
+                            @Value: 0, 0;
+                            @Size: 30, 30;
+                        }
+                    }
+                }
+            }
+
+            #I18nLabel:Symbol {
+                @Pos: {
+                    @Anchor: 0, 1;
+                    @Pivot: 0, 1;
+                    @Value: 0, -98;
+                    @Size: 212, 24;
+                }
+
+                @Text: "new_game.team.symbol";
+                @Size: 5;
+                @XAlign: "Center";
+                @YAlign: "Center";
+            }
+            
+            #Empty:SymbolContainer {
+                @Pos: {
+                    @Anchor: 0.5, 1;
+                    @Pivot: 0.5, 1;
+                    @Value: 0, -128;
+                    @Size: 208, 74;
+                }
+
+                #Empty:Symbols {
+                    @Pos: {
+                        @Anchor: 0.5, 0.5;
+                        @Pivot: 0.5, 0.5;
+                        @Value: 0, 0;
+                        @Size: 168, 66;
+                    }
+                }
+
+                #Button:Left {
+                    @Pos: {
+                        @Anchor: 0, 0.5;
+                        @Pivot: 0, 0.5;
+                        @Value: 7, 0;
+                        @Size: 8, 13;
+                    }
+
+                    @Normal: {
+                        @Sprite: "SmallGreenArrowLeft";
+                    }
+
+                    @Hover: {
+                        @Sprite: "SmallGreenArrowLeftHover";
+                    }
+
+                    #Image:LB {
+                        @Pos: {
+                            @Anchor: 0, 0.5;
+                            @Pivot: 0, 0.5;
+                            @Value: -13, -17;
+                            @Size: 33, 33;
+                        }
+                    }
+
+                    #Label:LeftPage {
+                        @Pos: {
+                            @Anchor: 0, 0.5;
+                            @Pivot: 0, 0.5;
+                            @Value: -1, 15;
+                            @Size: 8, 13;
+                        }
+
+                        @Text: "1";
+                        @Size: 3;
+
+                        @XAlign: "Right";
+                        @YAlign: "Center";
+                    }
+                }
+
+                #Button:Right {
+                    @Pos: {
+                        @Anchor: 1, 0.5;
+                        @Pivot: 1, 0.5;
+                        @Value: -7, 0;
+                        @Size: 8, 13;
+                    }
+
+                    @Normal: {
+                        @Sprite: "SmallGreenArrowRight";
+                    }
+
+                    @Hover: {
+                        @Sprite: "SmallGreenArrowRightHover";
+                    }
+
+                    #Image:RB {
+                        @Pos: {
+                            @Anchor: 1, 0.5;
+                            @Pivot: 1, 0.5;
+                            @Value: 13, -17;
+                            @Size: 33, 33;
+                        }
+                    }
+
+                    #Label:RightPage {
+                        @Pos: {
+                            @Anchor: 0, 0.5;
+                            @Pivot: 0, 0.5;
+                            @Value: 1, 15;
+                            @Size: 8, 13;
+                        }
+
+                        @Text: "3";
+                        @Size: 3;
+
+                        @XAlign: "Left";
+                        @YAlign: "Center";
+                    }
+                }
+            }
+        }
+
+        #Empty:Coach {
+            @Pos: {
+                @Anchor: 1, 1;
+                @Pivot: 1, 1;
+                @Value: -7, -41;
+                @Size: 212, 204;
+            }
+
+            #I18nLabel:Name {
+                @Pos: {
+                    @Anchor: 0, 1;
+                    @Pivot: 0, 1;
+                    @Value: 0, 0;
+                    @Size: 212, 24;
+                }
+
+                @Text: "new_game.coach.name";
+                @Size: 5;
+                @XAlign: "Center";
+                @YAlign: "Center";
+            }
+
+            #Empty:NowCoachContainer {
+                @Pos: {
+                    @Anchor: 0.5, 1;
+                    @Pivot: 0.5, 1;
+                    @Value: 0, -32;
+                    @Size: 208, 24;
+                }
+
+                #I18nLabel:Header {
+                    @Pos: {
+                        @Anchor: 0, 0.5;
+                        @Pivot: 0, 0.5;
+                        @Value: 5, 0;
+                        @Size: 60, 16;
+                    }
+
+                    @Text: "setting.change_info.now_coach";
+                    @Size: 3;
+                    @YAlign: "Center";
+                }
+                
+                #Image:CoachSlot {
+                    @Pos: {
+                        @Anchor: 0, 0.5;
+                        @Pivot: 0, 0.5;
+                        @Value: 70, 0;
+                        @Size: 16, 16;
+                    }
+
+                    @Sprite: "NewGameSlotBG";
+                    @Masked: true;
+
+                    #Image:Coach {
+                        @Pos: {
+                            @Anchor: 0.5, 0.5;
+                            @Pivot: 0.5, 0.5;
+                            @Value: 0, -1;
+                            @Size: 32, 32;
+                        }
+
+                        #Image:Hair {
+                            @Pos: {
+                                @Anchor: 0.5, 0.5;
+                                @Pivot: 0.5, 0.5;
+                                @Value: 0, 1;
+                                @Size: 32, 32;
+                            }
+                        }
+                    }
+                }
+
+                #Label:Name {
+                    @Pos: {
+                        @Anchor: 0, 0.5;
+                        @Pivot: 0, 0.5;
+                        @Value: 90, 0;
+                        @Size: 100, 16;
+                    }
+
+                    @Text: "test";
+                    @Size: 3;
+                    @YAlign: "Center";
+                }
+            }
+
+            #Empty:NameContainer {
+                @Pos: {
+                    @Anchor: 0.5, 1;
+                    @Pivot: 0.5, 1;
+                    @Value: 0, -54;
+                    @Size: 208, 36;
+                }
+                
+                #Image:CoachSlot {
+                    @Pos: {
+                        @Anchor: 0, 0.5;
+                        @Pivot: 0, 0.5;
+                        @Value: 5, 0;
+                        @Size: 32, 32;
+                    }
+
+                    @Sprite: "NewGameSlotBG";
+                    @Masked: true;
+
+                    #Image:Coach {
+                        @Pos: {
+                            @Anchor: 0.5, 0.5;
+                            @Pivot: 0.5, 0.5;
+                            @Value: 0, -1;
+                            @Size: 64, 64;
+                        }
+
+                        #Image:Hair {
+                            @Pos: {
+                                @Anchor: 0.5, 0.5;
+                                @Pivot: 0.5, 0.5;
+                                @Value: 0, 1;
+                                @Size: 64, 64;
+                            }
+                        }
+                    }
+                }
+            }
+
+            #I18nLabel:Hair {
+                @Pos: {
+                    @Anchor: 0, 1;
+                    @Pivot: 0, 1;
+                    @Value: 0, -98;
+                    @Size: 212, 24;
+                }
+
+                @Text: "new_game.coach.hair";
+                @Size: 5;
+                @XAlign: "Center";
+                @YAlign: "Center";
+            }
+            
+            #Empty:HairContainer {
+                @Pos: {
+                    @Anchor: 0.5, 1;
+                    @Pivot: 0.5, 1;
+                    @Value: 0, -128;
+                    @Size: 208, 74;
+                }
+
+                #Empty:Hairs {
+                    @Pos: {
+                        @Anchor: 0.5, 0.5;
+                        @Pivot: 0.5, 0.5;
+                        @Value: 0, 0;
+                        @Size: 168, 66;
+                    }
+                }
+
+                #Button:Left {
+                    @Pos: {
+                        @Anchor: 0, 0.5;
+                        @Pivot: 0, 0.5;
+                        @Value: 7, 0;
+                        @Size: 8, 13;
+                    }
+
+                    @Normal: {
+                        @Sprite: "SmallGreenArrowLeft";
+                    }
+
+                    @Hover: {
+                        @Sprite: "SmallGreenArrowLeftHover";
+                    }
+
+                    #Image:LB {
+                        @Pos: {
+                            @Anchor: 0, 0.5;
+                            @Pivot: 0, 0.5;
+                            @Value: -13, -17;
+                            @Size: 33, 33;
+                        }
+                    }
+
+                    #Label:LeftPage {
+                        @Pos: {
+                            @Anchor: 0, 0.5;
+                            @Pivot: 0, 0.5;
+                            @Value: -1, 15;
+                            @Size: 8, 13;
+                        }
+
+                        @Text: "1";
+                        @Size: 3;
+
+                        @XAlign: "Right";
+                        @YAlign: "Center";
+                    }
+                }
+
+                #Button:Right {
+                    @Pos: {
+                        @Anchor: 1, 0.5;
+                        @Pivot: 1, 0.5;
+                        @Value: -7, 0;
+                        @Size: 8, 13;
+                    }
+
+                    @Normal: {
+                        @Sprite: "SmallGreenArrowRight";
+                    }
+
+                    @Hover: {
+                        @Sprite: "SmallGreenArrowRightHover";
+                    }
+
+                    #Image:RB {
+                        @Pos: {
+                            @Anchor: 1, 0.5;
+                            @Pivot: 1, 0.5;
+                            @Value: 13, -17;
+                            @Size: 33, 33;
+                        }
+                    }
+
+                    #Label:RightPage {
+                        @Pos: {
+                            @Anchor: 0, 0.5;
+                            @Pivot: 0, 0.5;
+                            @Value: 1, 15;
+                            @Size: 8, 13;
+                        }
+
+                        @Text: "3";
+                        @Size: 3;
+
+                        @XAlign: "Left";
+                        @YAlign: "Center";
+                    }
+                }
+            }
+        }
+
+        #Button:Next {
+            @Pos: {
+                @Anchor: 0.5, 0;
+                @Pivot: 1, 0;
+                @Value: -6, 6;
+                @Size: 69, 25;
+            }
+            
+            @Normal: {
+                @Sprite: "Important";
+            }
+
+            @Hover: {
+                @Sprite: "ImportantHover";
+            }
+
+            #I18nLabel:Label {
+                @Fill: {
+                    @XAnchor: 0, 1;
+                    @YAnchor: 0, 1;
+                    @XOffset: 22, 4;
+                    @YOffset: 2, 2;
+                }
+
+                @Text: "multiplayer.profile.change";
+                @Size: 4;
+                @XAlign: "Center";
+                @YAlign: "Center";
+            }
+
+            #Image:ButtonIcon {
+                @Pos: {
+                    @Anchor: 0, 0.5;
+                    @Pivot: 0, 0.5;
+                    @Value: -3, 0;
+                    @Size: 33, 33;
+                }
+            }
+        }
+
+        #Button:Cancel {
+            @Pos: {
+                @Anchor: 0.5, 0;
+                @Pivot: 0, 0;
+                @Value: 6, 6;
+                @Size: 69, 25;
+            }
+            
+            @Normal: {
+                @Sprite: "Button";
+            }
+
+            @Hover: {
+                @Sprite: "ButtonHover";
+            }
+
+            #I18nLabel:Label {
+                @Fill: {
+                    @XAnchor: 0, 1;
+                    @YAnchor: 0, 1;
+                    @XOffset: 22, 4;
+                    @YOffset: 2, 2;
+                }
+
+                @Text: "indicator.cancel";
+                @Size: 4;
+                @XAlign: "Center";
+                @YAlign: "Center";
+            }
+
+            #Image:ButtonIcon {
+                @Pos: {
+                    @Anchor: 0, 0.5;
+                    @Pivot: 0, 0.5;
+                    @Value: -3, 0;
+                    @Size: 33, 33;
+                }
+            }
+        }
+
+        #Button:RemoveSlot {
+            @Pos: {
+                @Anchor: 0, 0;
+                @Pivot: 0, 0;
+                @Value: 6, 6;
+                @Size: 69, 25;
+            }
+            
+            @Normal: {
+                @Sprite: "Button";
+            }
+
+            @Hover: {
+                @Sprite: "ButtonHover";
+            }
+
+            #I18nLabel:Label {
+                @Fill: {
+                    @XAnchor: 0, 1;
+                    @YAnchor: 0, 1;
+                    @XOffset: 22, 4;
+                    @YOffset: 2, 2;
+                }
+
+                @Text: "new_game.remove";
+                @Size: 4;
+                @XAlign: "Center";
+                @YAlign: "Center";
+            }
+
+            #Image:ButtonIcon {
+                @Pos: {
+                    @Anchor: 0, 0.5;
+                    @Pivot: 0, 0.5;
+                    @Value: -3, 0;
+                    @Size: 33, 33;
+                }
+            }
+        }
+    }
+}

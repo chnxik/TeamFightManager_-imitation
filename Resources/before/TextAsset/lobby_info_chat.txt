@@ -1,0 +1,8 @@
+#I18nLabel:LobbyInfoChat {
+    @Pos: {
+        @Size: 363, 10;
+    }
+
+    @Text: "test";
+    @Size: 4;
+}

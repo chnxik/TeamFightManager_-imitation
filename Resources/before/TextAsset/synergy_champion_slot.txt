@@ -1,0 +1,297 @@
+#Empty:SynergyChampionSlot {
+    @Pos: {
+        @Size: 236, 118;
+    }
+
+    #Label:Title {
+        @Pos: {
+            @Anchor: 0.5, 1;
+            @Pivot: 0.5, 1;
+            @Size: 236, 16;
+            @Value: 0, 0;
+        }
+
+        @Text: "SET 1";
+        @Size: 4;
+        @XAlign: "Center";
+        @YAlign: "Center";
+    }
+
+    #Image:BigSlot1 {
+        @Pos: {
+            @Anchor: 0, 1;
+            @Pivot: 0, 1;
+            @Size: 48, 65;
+            @Value: 4, -21;
+        }
+
+        #Empty:FaceSlot {
+            @Pos: {
+                @Anchor: 0, 1;
+                @Pivot: 0, 1;
+                @Size: 48, 50;
+                @Value: 0, 0;
+            }
+
+            @Masked: true;
+
+            #Image:Face {
+                @Pos: {
+                    @Value: 0, -8;
+                    @Size: 96, 96;
+                }
+            }
+        }
+
+        #I18nLabel:Name {
+            @Pos: {
+                @Anchor: 0, 0;
+                @Pivot: 0, 0;
+                @Size: 48, 15;
+                @Value: 0, 0;
+            }
+
+            @Text: "name";
+            @Size: 3;
+            @XAlign: "Center";
+            @YAlign: "Center";
+        }
+    }
+
+    #I18nLabel:BanpickDesc1 {
+        @Pos: {
+            @Anchor: 0, 1;
+            @Pivot: 0, 1;
+            @Size: 25, 10;
+            @Value: 4, -92;
+        }
+
+        @Text: "stat.champion.header.banpick_rate";
+        @Size: 3;
+        @YAlign: "Center";
+    }
+
+    #Label:BanpickValue1 {
+        @Pos: {
+            @Anchor: 0, 1;
+            @Pivot: 0, 1;
+            @Size: 23, 10;
+            @Value: 29, -92;
+        }
+
+        @Text: "99.99%";
+        @Size: 3;
+        @XAlign: "Right";
+        @YAlign: "Center";
+    }
+
+    #I18nLabel:WinRateDesc1 {
+        @Pos: {
+            @Anchor: 0, 1;
+            @Pivot: 0, 1;
+            @Size: 25, 10;
+            @Value: 4, -103;
+        }
+
+        @Text: "stat.champion.header.win_rate";
+        @Size: 3;
+        @YAlign: "Center";
+    }
+
+    #Label:WinRateValue1 {
+        @Pos: {
+            @Anchor: 0, 1;
+            @Pivot: 0, 1;
+            @Size: 23, 10;
+            @Value: 29, -103;
+        }
+
+        @Text: "99.99%";
+        @Size: 3;
+        @XAlign: "Right";
+        @YAlign: "Center";
+    }
+
+    #Image:Plus {
+        @Pos: {
+            @Anchor: 0, 1;
+            @Pivot: 0, 1;
+            @Value: 59, -46;
+            @Size: 15, 15;
+        }
+    }
+
+    #Image:BigSlot2 {
+        @Pos: {
+            @Anchor: 0, 1;
+            @Pivot: 0, 1;
+            @Size: 48, 65;
+            @Value: 81, -21;
+        }
+
+        #Empty:FaceSlot {
+            @Pos: {
+                @Anchor: 0, 1;
+                @Pivot: 0, 1;
+                @Size: 48, 50;
+                @Value: 0, 0;
+            }
+
+            @Masked: true;
+
+            #Image:Face {
+                @Pos: {
+                    @Value: 0, -8;
+                    @Size: 96, 96;
+                }
+            }
+        }
+
+        #I18nLabel:Name {
+            @Pos: {
+                @Anchor: 0, 0;
+                @Pivot: 0, 0;
+                @Size: 48, 15;
+                @Value: 0, 0;
+            }
+
+            @Text: "name";
+            @Size: 3;
+            @XAlign: "Center";
+            @YAlign: "Center";
+        }
+    }
+
+    #I18nLabel:BanpickDesc2 {
+        @Pos: {
+            @Anchor: 0, 1;
+            @Pivot: 0, 1;
+            @Size: 25, 10;
+            @Value: 81, -92;
+        }
+
+        @Text: "stat.champion.header.banpick_rate";
+        @Size: 3;
+        @YAlign: "Center";
+    }
+
+    #Label:BanpickValue2 {
+        @Pos: {
+            @Anchor: 0, 1;
+            @Pivot: 0, 1;
+            @Size: 23, 10;
+            @Value: 106, -92;
+        }
+
+        @Text: "99.99%";
+        @Size: 3;
+        @XAlign: "Right";
+        @YAlign: "Center";
+    }
+
+    #I18nLabel:WinRateDesc2 {
+        @Pos: {
+            @Anchor: 0, 1;
+            @Pivot: 0, 1;
+            @Size: 25, 10;
+            @Value: 81, -103;
+        }
+
+        @Text: "stat.champion.header.win_rate";
+        @Size: 3;
+        @YAlign: "Center";
+    }
+
+    #Label:WinRateValue2 {
+        @Pos: {
+            @Anchor: 0, 1;
+            @Pivot: 0, 1;
+            @Size: 23, 10;
+            @Value: 106, -103;
+        }
+
+        @Text: "99.99%";
+        @Size: 3;
+        @XAlign: "Right";
+        @YAlign: "Center";
+    }
+
+    #Empty:Info {
+        @Pos: {
+            @Anchor: 1, 1;
+            @Pivot: 1, 1;
+            @Value: 0, -18;
+            @Size: 100, 98;
+        }
+
+        #I18nLabel:Desc {
+            @Pos: {
+                @Anchor: 0.5, 1;
+                @Pivot: 0.5, 1;
+                @Value: 0, -9;
+                @Size: 100, 14;
+            }
+
+            @Text: "news.meta.duo";
+            @XAlign: "Center";
+            @YAlign: "Center";
+            @Size: 4;
+        }
+
+        #I18nLabel:Match {
+            @Pos: {
+                @Anchor: 0.5, 1;
+                @Pivot: 0.5, 1;
+                @Value: 0, -27;
+                @Size: 90, 15;
+            }
+
+            @Text: "news.meta.duo_match";
+            @XAlign: "Center";
+            @YAlign: "Center";
+            @Size: 3;
+        }
+        
+        #I18nLabel:WinLose {
+            @Pos: {
+                @Anchor: 0.5, 1;
+                @Pivot: 0.5, 1;
+                @Value: 0, -42;
+                @Size: 90, 15;
+            }
+
+            @Text: "news.meta.duo_winlose";
+            @XAlign: "Center";
+            @YAlign: "Center";
+            @Size: 3;
+        }
+
+        #I18nLabel:WinRate {
+            @Pos: {
+                @Anchor: 0.5, 1;
+                @Pivot: 0.5, 1;
+                @Value: 0, -57;
+                @Size: 90, 15;
+            }
+
+            @Text: "news.meta.duo_winrate";
+            @XAlign: "Center";
+            @YAlign: "Center";
+            @Size: 3;
+        }
+
+        #I18nLabel:Rate {
+            @Pos: {
+                @Anchor: 0.5, 1;
+                @Pivot: 0.5, 1;
+                @Value: 0, -72;
+                @Size: 90, 15;
+            }
+
+            @Text: "news.meta.duo_rate";
+            @XAlign: "Center";
+            @YAlign: "Center";
+            @Size: 3;
+        }
+    }
+}

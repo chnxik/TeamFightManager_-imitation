@@ -1,0 +1,150 @@
+#Image:TeamSelectAthlete {
+    #Image:FaceSlot {
+        @Pos: {
+            @Anchor: 0, 1;
+            @Pivot: 0, 1;
+            @Size: 26, 26;
+            @Value: 4, -4;
+        }
+
+        @Sprite: "SmallSlotBG";
+        
+        #Empty:Mask {
+            @Fill: {
+                @XAnchor: 0, 1;
+                @YAnchor: 0, 1;
+                @XOffset: 1, 1;
+                @YOffset: 1, 1;
+            }
+
+            @Masked: true;
+
+            #Image:Athlete {
+                @Pos: {
+                    @Pivot: 0.5, 0.5;
+                    @Anchor: 0.5, 0.5;
+                    @Value: 0, -1;
+                    @Size: 64, 64;
+                }
+
+                @Sprite: "Athlete";
+            }
+        }
+
+        #Image:FaceFront {
+            @Fill: {
+                @XAnchor: 0, 1;
+                @YAnchor: 0, 1;
+                @XOffset: 0, 0;
+                @YOffset: 0, 0;
+            }
+
+            @Sprite: "SmallSlotFront";
+        }
+    }
+
+    #I18nLabel:Name {
+        @Pos: {
+            @Pivot: 0, 1;
+            @Anchor: 0, 1;
+            @Value: 36, -2;
+            @Size: 80, 16;
+        }
+
+        @Text: "Test";
+        @Size: 4;
+        @YAlign: "Center";
+        @XFitter: true;
+
+        #Empty:Star {
+            @Pos: {
+                @Pivot: 0, 0;
+                @Anchor: 1, 0;
+                @Value: 4, 3;
+                @Size: 0, 4;
+            }
+
+            @XFitter: true;
+        }
+    }
+
+    #I18nLabel:Age {
+        @Pos: {
+            @Pivot: 1, 1;
+            @Anchor: 1, 1;
+            @Value: -6, -3;
+            @Size: 50, 16;
+        }
+
+        @Text: "athlete.stat.age";
+        @Size: 4;
+        @YAlign: "Center";
+        @XAlign: "Right";
+    }
+
+    #Empty:Properties {
+        @Pos: {
+            @Pivot: 0, 1;
+            @Anchor: 0, 1;
+            @Value: 36, -19;
+            @Size: 178, 10;
+        }
+    }
+
+    #Image:Attack {
+        @Pos: {
+            @Pivot: 0, 1;
+            @Anchor: 0, 1;
+            @Value: 5, -40;
+            @Size: 10, 10;
+        }
+
+        @Sprite: "Attack";
+    }
+
+    #Label:AttackValue {
+        @Pos: {
+            @Pivot: 0, 1;
+            @Anchor: 0, 1;
+            @Value: 20, -35;
+            @Size: 30, 18;
+        }
+
+        @Text: "999";
+        @YAlign: "Center";
+        @Size: 4;
+    }
+
+    #Image:Defence {
+        @Pos: {
+            @Pivot: 0, 1;
+            @Anchor: 0, 1;
+            @Value: 50, -40;
+            @Size: 8, 10;
+        }
+
+        @Sprite: "Defence";
+    }
+
+    #Label:DefenceValue {
+        @Pos: {
+            @Pivot: 0, 1;
+            @Anchor: 0, 1;
+            @Value: 65, -35;
+            @Size: 30, 18;
+        }
+
+        @Text: "999";
+        @YAlign: "Center";
+        @Size: 4;
+    }
+
+    #Empty:Exps {
+        @Pos: {
+            @Pivot: 1, 1;
+            @Anchor: 1, 1;
+            @Value: -3, -30;
+            @Size: 110, 26;
+        }
+    }
+}

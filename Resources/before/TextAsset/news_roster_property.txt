@@ -1,0 +1,10 @@
+#I18nLabel:NewsRosterProperty {
+    @Pos: {
+        @Size: 54, 8;
+    }
+
+    @Text: "test";
+    @XAlign: "Center";
+    @YAlign: "Center";
+    @Size: 2;
+}

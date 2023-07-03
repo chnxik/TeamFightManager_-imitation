@@ -1,0 +1,58 @@
+#Image:TeamStatExp {
+    @Pos: {
+        @Anchor: 0.5, 0.5;
+        @Pivot: 0,5, 0.5;
+        @Size: 18, 18;
+    }
+
+    @Sprite: "TeamStatChampBG";
+
+    #Empty:Mask {
+        @Fill: {
+            @XAnchor: 0, 1;
+            @YAnchor: 0, 1;
+            @XOffset: 1, 1;
+            @YOffset: 1, 1;
+        }
+
+        @Masked: true;
+
+        #Image:Champ {
+            @Pos: {
+                @Anchor: 0.5, 0.5;
+                @Pivot: 0.5, 0.5;
+                @Size: 64, 64;
+                @Value: -1, -12;
+            }
+
+            @Sprite: "Champion";
+        }
+    }
+
+    #Image:Front {
+        @Fill: {
+            @XAnchor: 0, 1;
+            @YAnchor: 0, 1;
+            @XOffset: 0, 0;
+            @YOffset: 0, 0;
+        }
+
+        @Sliced: true;
+
+        @Sprite: "TeamStatChampFront";
+    }
+
+    #Label:Exp {
+        @Pos: {
+            @Anchor: 1, 1;
+            @Pivot: 1, 1;
+            @Value: -1, -1;
+            @Size: 7, 4;
+        }
+
+        @Text: "999";
+        @Size: 1;
+        @XAlign: "Center";
+        @YAlign: "Center";
+    }
+}

@@ -1,0 +1,169 @@
+#Button:NewsRosterSlot {
+    @Pos: {
+        @Anchor: 0, 1;
+        @Pivot: 0, 1;
+        @Size: 151, 67;
+    }
+
+    @FirstFocus: true;
+
+    #Empty:Contents {
+        @Pos: {
+            @Anchor: 0, 1;
+            @Pivot: 0, 1;
+            @Value: 0, 0;
+            @Size: 148, 64;
+        }
+
+        #Image:BG {
+            @Pos: {
+                @Anchor: 0, 1;
+                @Pivot: 0, 1;
+                @Value: 0, 0;
+                @Size: 148, 64;
+            }
+
+            @Normal: {
+                @Sprite: "NewsRosterSlotBG";
+            }
+
+            @Hover: {
+                @Sprite: "NewsRosterSlotHoverBG";
+            }
+        }
+
+        #Image:FocusedBG {
+            @Pos: {
+                @Anchor: 0, 1;
+                @Pivot: 0, 1;
+                @Value: 0, 0;
+                @Size: 148, 64;
+            }
+
+            @Sprite: "NewsRosterSlotFocusedBG";
+        }
+
+        #Empty:FaceSlot {
+            @Pos: {
+                @Anchor: 0, 1;
+                @Pivot: 0, 1;
+                @Size: 24, 24;
+                @Value: 5, -6;
+            }
+
+            @Masked: true;
+
+            #Image:Athlete {
+                @Pos: {
+                    @Pivot: 0.5, 0.5;
+                    @Anchor: 0.5, 0.5;
+                    @Value: 0, -1;
+                    @Size: 64, 64;
+                }
+
+                @Sprite: "Athlete";
+            }
+
+            #Image:Star {
+                @Pos: {
+                    @Pivot: 0, 1;
+                    @Anchor: 0, 1;
+                    @Value: 0, 0;
+                    @Size: 18, 5;
+                }
+
+                #Empty:Container {
+                    @Pos: {
+                        @Pivot: 0, 1;
+                        @Anchor: 0, 1;
+                        @Value: 0, 0;
+                        @Size: 0, 4;
+                    }
+
+                    @XFitter: true;
+                }
+            }
+            
+            #Image:Age {
+                @Pos: {
+                    @Pivot: 0.5, 0;
+                    @Anchor: 0.5, 0;
+                    @Value: 0, 0;
+                    @Size: 25, 7;
+                }
+
+                #I18nLabel:Age {
+                    @Fill: {
+                        @XAnchor: 0, 1;
+                        @YAnchor: 0, 1;
+                        @XOffset: 0, 0;
+                        @YOffset: 0, 1;
+                    }
+
+                    @Text: "athlete.stat.age";
+                    @Size: 2;
+
+                    @XAlign: "Center";
+                    @YAlign: "Center";
+                }
+            }
+        }
+        
+        #I18nLabel:Name {
+            @Pos: {
+                @Pivot: 0, 1;
+                @Anchor: 0, 1;
+                @Value: 34, -6;
+                @Size: 52, 26;
+            }
+
+            @Text: "Test";
+            @Size: 4;
+            @YAlign: "Up";
+        }
+
+        #Empty:Exps {
+            @Pos: {
+                @Pivot: 0, 1;
+                @Anchor: 0, 1;
+                @Value: 90, -6;
+                @Size: 54, 54;
+            }
+        }
+
+        #Empty:Properties {
+            @Pos: {
+                @Pivot: 0, 1;
+                @Anchor: 0, 1;
+                @Value: 33, -33;
+                @Size: 54, 26;
+            }
+        }
+
+        #Label:AttackValue {
+            @Pos: {
+                @Pivot: 0, 1;
+                @Anchor: 0, 1;
+                @Value: 16, -32;
+                @Size: 16, 12;
+            }
+
+            @Text: "999";
+            @YAlign: "Center";
+            @Size: 3;
+        }
+
+        #Label:DefenceValue {
+            @Pos: {
+                @Pivot: 0, 1;
+                @Anchor: 0, 1;
+                @Value: 16, -47;
+                @Size: 16, 12;
+            }
+
+            @Text: "999";
+            @YAlign: "Center";
+            @Size: 3;
+        }
+    }
+}

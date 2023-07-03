@@ -1,0 +1,336 @@
+#Empty:Sponser {
+    @Fill: {
+        @XAnchor: 0, 1;
+        @YAnchor: 0, 1;
+        @XOffset: 0, 0;
+        @YOffset: 0, 0;
+    }
+
+    @CanvasGroup: {}
+
+    #Image:Dimmed {
+        @Fill: {
+            @XAnchor: 0, 1;
+            @YAnchor: 0, 1;
+            @XOffset: 0, 0;
+            @YOffset: 0, 0;
+        }
+        
+        @Sprite: "White";
+        @Color: "Dimmed";
+    }
+
+    #Image:UI {
+        @Pos: {
+            @Anchor: 0.5, 0.5;
+            @Pivot: 0.5, 0.5;
+            @Value: 0, 0;
+            @Size: 626, 278;
+        }
+
+        @Sprite: "SponserBG";
+
+        #I18nLabel:Title {
+            @Pos: {
+                @Anchor: 0.5, 1;
+                @Pivot: 0.5, 1;
+                @Value: 0, -8;
+                @Size: 610, 28;
+            }
+
+            @Text: "menu.operation.sponser";
+            @Size: 6;
+            @XAlign: "Center";
+            @YAlign: "Center";
+        }
+
+        #Empty:Contents {
+            @Pos: {
+                @Anchor: 0, 1;
+                @Pivot: 0, 1;
+                @Value: 10, -46;
+                @Size: 445, 192;
+            }
+
+            #Empty:Header {
+                @XFill: {
+                    @Anchor: 0, 1;
+                    @OffMin: 0;
+                    @OffMax: 0;
+                }
+
+                @YPos: {
+                    @Anchor: 1;
+                    @Pivot: 1;
+                    @Value: 0;
+                    @Size: 20;
+                }
+
+                #I18nLabel:Name {
+                    @Pos: {
+                        @Anchor: 0, 1;
+                        @Pivot: 0, 1;
+                        @Value: 0, 0;
+                        @Size: 300, 20;
+                    }
+
+                    @Text: "sponser.header.name";
+                    @XAlign: "Center";
+                    @YAlign: "Center";
+                    @Size: 3;
+                }
+
+                #I18nLabel:State {
+                    @Pos: {
+                        @Anchor: 1, 1;
+                        @Pivot: 1, 1;
+                        @Value: 0, 0;
+                        @Size: 145, 20;
+                    }
+
+                    @Text: "sponser.header.state";
+                    @XAlign: "Center";
+                    @YAlign: "Center";
+                    @Size: 3;
+                }
+            }
+
+            #Empty:List {
+                @Pos: {
+                    @Anchor: 0.5, 1;
+                    @Pivot: 0.5, 1;
+                    @Size: 435, 172;
+                    @Value: 0, -22;
+                }
+            }
+        }
+
+        #Empty:Info {
+            @Pos: {
+                @Anchor: 1, 1;
+                @Pivot: 1, 1;
+                @Value: -10, -46;
+                @Size: 153, 192;
+            }
+
+            #Empty:Contract {
+                @XFill: {
+                    @Anchor: 0, 1;
+                    @OffMin: 4;
+                    @OffMax: 4;
+                }
+                
+                @YPos: {
+                    @Anchor: 1;
+                    @Pivot: 1;
+                    @Value: -4;
+                    @Size: 24;
+                }
+
+                #I18nLabel:Label {
+                    @Fill: {
+                        @XAnchor: 0, 1;
+                        @YAnchor: 0, 1;
+                        @XOffset: 2, 2;
+                        @YOffset: 2, 2;
+                    }
+
+                    @XAlign: "Center";
+                    @YAlign: "Center";
+                    @Text: "sponser.contract";
+                    @Size: 4;
+                }
+            }
+
+            #Image:LogoBG {
+                @Pos: {
+                    @Pivot: 0, 1;
+                    @Anchor: 0, 1;
+                    @Value: 4, -34;
+                    @Size: 32, 32;
+                }
+
+                @Sprite: "SmallSlotFront";
+                @Sliced: true;
+
+                #Image:Logo {
+                    @Pos: {
+                        @Size: 30, 30;
+                    }
+                }
+            }
+
+            #I18nLabel:Name {
+                @Pos: {
+                    @Pivot: 0, 1;
+                    @Anchor: 0, 1;
+                    @Value: 42, -36;
+                    @Size: 110, 14;
+                }
+
+                @Text: "test";
+                @Size: 4;
+            }
+
+            #I18nLabel:State {
+                @Pos: {
+                    @Pivot: 0, 1;
+                    @Anchor: 0, 1;
+                    @Value: 42, -50;
+                    @Size: 110, 14;
+                }
+
+                @Text: "test";
+                @Size: 3;
+            }
+
+            #Label:Condition {
+                @Pos: {
+                    @Pivot: 0, 1;
+                    @Anchor: 0, 1;
+                    @Value: 5, -70;
+                    @Size: 145, 20;
+                }
+
+                @Size: 4;
+
+                #Label:Pre {
+                    @Pos: {
+                        @Anchor: 0, 0;
+                        @Pivot: 0, 1;
+                        @Value: 0, -2;
+                        @Size: 145, 9;
+                    }
+
+                    @Color: "MainSelectedYellow";
+                    @Size: 4;
+                }
+            }
+
+            #Empty:Income {
+                @XFill: {
+                    @Anchor: 0, 1;
+                    @OffMin: 0;
+                    @OffMax: 0;
+                }
+
+                @YPos: {
+                    @Anchor: 0;
+                    @Pivot: 0;
+                    @Size: 88;
+                    @Value: 0;
+                }
+
+                #I18nLabel:Reward {
+                    @XFill: {
+                        @Anchor: 0, 1;
+                        @OffMin: 4;
+                        @OffMax: 4;
+                    }
+
+                    @YPos: {
+                        @Anchor: 1;
+                        @Pivot: 1;
+                        @Size: 24;
+                        @Value: 0;
+                    }
+
+                    @Text: "sponser.reward";
+                    @Size: 4;
+                    @XAlign: "Center";
+                    @YAlign: "Center";
+                }
+
+                #I18nLabel:Detail {
+                    @Pos: {
+                        @Anchor: 0, 1;
+                        @Pivot: 0, 1;
+                        @Value: 4, -32;
+                        @Size: 70, 10;
+                    }
+
+                    @Size: 4;
+                    @Text: "sponser.income_detail";
+                }
+
+                #Label:Gold {
+                    @Pos: {
+                        @Anchor: 1, 1;
+                        @Pivot: 1, 1;
+                        @Value: -20, -32;
+                        @Size: 50, 10;
+                    }
+
+                    @Size: 4;
+                    @XAlign: "Right";
+                    @Text: "999";
+                }
+
+                #Image:Icon {
+                    @Pos: {
+                        @Anchor: 1, 1;
+                        @Pivot: 1, 1;
+                        @Value: -5, -31;
+                        @Size: 12, 12;
+                    }
+
+                    @Sprite: "Gold";
+                }
+
+                #Empty:Materials {
+                    @Pos: {
+                        @Anchor: 0.5, 0;
+                        @Pivot: 0.5, 0;
+                        @Size: 144, 15;
+                        @Value: 0, 22;
+                    }
+                }
+
+                #I18nLabel:Item {
+                    @Pos: {
+                        @Anchor: 0, 1;
+                        @Pivot: 0, 1;
+                        @Value: 4, -71;
+                        @Size: 145, 10;
+                    }
+
+                    @Size: 4;
+                    @Text: "sponser.item";
+                    @Color: "MainSelectedYellow";
+                }
+            }
+        }
+
+        #Button:Close {
+            @Pos: {
+                @Anchor: 1, 0;
+                @Pivot: 1, 0;
+                @Value: -8, 8;
+                @Size: 69, 25;
+            }
+            @Sliced: true;
+            @FirstFocus: true;
+
+            @Normal: {
+                @Sprite: "Button";
+            }
+
+            @Hover: {
+                @Sprite: "ButtonHover";
+            }
+
+            #I18nLabel:CloseLabel {
+                @Fill: {
+                    @XAnchor: 0, 1;
+                    @YAnchor: 0, 1;
+                    @XOffset: 3, 3;
+                    @YOffset: 3, 3;
+                }
+                @Text: "common.close";
+                @Size: 4;
+                @XAlign: "Center";
+                @YAlign: "Center";
+            }
+        }
+    }
+}

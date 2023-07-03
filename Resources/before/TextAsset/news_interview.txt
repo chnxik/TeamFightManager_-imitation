@@ -1,0 +1,14 @@
+#Empty:NewsInterview {
+    @XFill: {
+        @Anchor: 0, 1;
+        @OffMin: 0;
+        @OffMax: 0;
+    }
+
+    @YPos: {
+        @Anchor: 1;
+        @Pivot: 1;
+        @Value: 0;
+        @Size: 180;
+    }
+}

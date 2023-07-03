@@ -1,0 +1,81 @@
+#Button:_ {
+    @Pos: {
+        @Size: 32, 32;
+    }
+
+    #Image:Normal {
+        @Pos: {
+            @Size: 32, 32;
+        }
+
+        @Normal: {
+            @Sprite: "NewGameSlotBG";
+        }
+
+        @Hover: {
+            @Sprite: "NewGameSlotHoverBG";
+        }
+    }
+
+    #Image:CustomLogo {
+        @Pos: {
+            @Pivot: 0, 1;
+            @Anchor: 0, 1;
+            @Size: 5, 4;
+            @Value: 3, -3;
+        }
+    }
+
+    #Image:Selected {
+        @Pos: {
+            @Size: 32, 32;
+        }
+
+        @Normal: {
+            @Sprite: "NewGameSlotSelectedBG";
+        }
+
+        @Hover: {
+            @Sprite: "NewGameSlotSelectedHoverBG";
+        }
+    }
+
+    #Image:Data {
+    }
+
+    #Image:CustomSelect {
+        @Pos: {
+            @Size: 32, 32;
+        }
+
+        @Sliced: true;
+
+        @Normal: {
+            @Sprite: "Button";
+        }
+
+        @Hover: {
+            @Sprite: "ButtonHover";
+        }
+
+        #Image:Logo {
+            @Pos: {
+                @Size: 30, 30;
+            }
+        }
+
+        #I18nLabel:Text {
+            @Pos: {
+                @Size: 26, 8;
+                @Anchor: 0.5, 0;
+                @Pivot: 0.5, 0;
+                @Value: 0, 3;
+            }
+
+            @Text: "new_game.custom";
+            @Size: 2;
+            @XAlign: "Center";
+            @YAlign: "Center";
+        }
+    }
+}

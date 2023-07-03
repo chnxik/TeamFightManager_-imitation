@@ -1,0 +1,188 @@
+#Empty:Header {
+    @Pos: {
+        @Anchor: 0.5, 1;
+        @Pivot: 0.5, 1;
+        @Size: 588, 45;
+    }
+
+    #Image:Background {
+        @Pos: {
+            @Anchor: 0.5, 1;
+            @Pivot: 0.5, 1;
+            @Value: 0, 0;
+            @Size: 588, 27;
+        }
+
+        @Sprite: "SquadHeader";
+    }
+
+
+    #I18nLabel:Text {
+        @Fill: {
+            @XAnchor: 0, 1;
+            @YAnchor: 0, 1;
+            @XOffset: 2, 2;
+            @YOffset: 20, 2;
+        }
+
+        @Text: "member.first";
+        @Size: 5;
+        @XAlign: "Center";
+        @YAlign: "Center";
+    }
+
+    #Empty:Header {
+        @XFill: {
+            @Anchor: 0, 1;
+            @OffMin: 0;
+            @OffMax: 0;
+        }
+
+        @YPos: {
+            @Anchor: 1;
+            @Pivot: 1;
+            @Value: -27;
+            @Size: 18;
+        }
+
+        #I18nLabel:Name {
+            @XPos: {
+                @Anchor: 0;
+                @Pivot: 0;
+                @Value: 0;
+                @Size: 126;
+            }
+
+            @YFill: {
+                @Anchor: 0, 1;
+                @OffMin: 0;
+                @OffMax: 0;
+            }
+
+            @Text: "athlete.stat.name";
+            @Size: 3;
+            @XAlign: "Center";
+            @YAlign: "Center";
+        }
+
+        #I18nLabel:Age {
+            @XPos: {
+                @Anchor: 0;
+                @Pivot: 0;
+                @Value: 146;
+                @Size: 30;
+            }
+
+            @YFill: {
+                @Anchor: 0, 1;
+                @OffMin: 0;
+                @OffMax: 0;
+            }
+
+            @Text: "athlete.stat.age_header";
+            @Size: 3;
+            @XAlign: "Center";
+            @YAlign: "Center";
+        }
+
+        #I18nLabel:Condition {
+            @XPos: {
+                @Anchor: 0;
+                @Pivot: 0;
+                @Value: 176;
+                @Size: 50;
+            }
+
+            @YFill: {
+                @Anchor: 0, 1;
+                @OffMin: 0;
+                @OffMax: 0;
+            }
+
+            @Text: "athlete.stat.condition.name";
+            @Size: 3;
+            @XAlign: "Center";
+            @YAlign: "Center";
+        }
+
+        #I18nLabel:Attack {
+            @XPos: {
+                @Anchor: 0;
+                @Pivot: 0;
+                @Value: 226;
+                @Size: 65;
+            }
+
+            @YFill: {
+                @Anchor: 0, 1;
+                @OffMin: 0;
+                @OffMax: 0;
+            }
+
+            @Text: "athlete.stat.attack";
+            @Size: 3;
+            @XAlign: "Center";
+            @YAlign: "Center";
+        }
+
+        #I18nLabel:Defence {
+            @XPos: {
+                @Anchor: 0;
+                @Pivot: 0;
+                @Value: 291;
+                @Size: 65;
+            }
+
+            @YFill: {
+                @Anchor: 0, 1;
+                @OffMin: 0;
+                @OffMax: 0;
+            }
+
+            @Text: "athlete.stat.defence";
+            @Size: 3;
+            @XAlign: "Center";
+            @YAlign: "Center";
+        }
+
+        #I18nLabel:Exp {
+            @XPos: {
+                @Anchor: 0;
+                @Pivot: 0;
+                @Value: 356;
+                @Size: 140;
+            }
+
+            @YFill: {
+                @Anchor: 0, 1;
+                @OffMin: 0;
+                @OffMax: 0;
+            }
+
+            @Text: "athlete.stat.champion_exp";
+            @Size: 3;
+            @XAlign: "Center";
+            @YAlign: "Center";
+        }
+
+        #I18nLabel:Salary {
+            @XPos: {
+                @Anchor: 0;
+                @Pivot: 0;
+                @Value: 496;
+                @Size: 92;
+            }
+
+            @YFill: {
+                @Anchor: 0, 1;
+                @OffMin: 0;
+                @OffMax: 0;
+            }
+
+            @Text: "news.contract.cost";
+            @Size: 3;
+            @XAlign: "Center";
+            @YAlign: "Center";
+        }
+    }
+}

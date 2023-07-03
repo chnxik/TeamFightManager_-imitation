@@ -1,0 +1,775 @@
+#Empty:Strategy {
+    @Pos: {
+        @Size: 640, 360;
+    }
+
+    @CanvasGroup: {}
+
+    #Image:Dimmed {
+        @Fill: {
+            @XAnchor: 0, 1;
+            @YAnchor: 0, 1;
+            @XOffset: 0, 0;
+            @YOffset: 0, 0;
+        }
+        
+        @Sprite: "White";
+        @Color: "Dimmed";
+    }
+
+    #Image:Contents {
+        @Pos: {
+            @Anchor: 0.5, 0.5;
+            @Pivot: 0.5, 0.5;
+            @Value: 0, 0;
+            @Size: 474, 232;
+        }
+
+        @Sprite: "StrategyBG";
+
+        #I18nLabel:Header {
+            @Pos: {
+                @Anchor: 0.5, 1;
+                @Pivot: 0.5, 1;
+                @Size: 450, 28;
+                @Value: 0, -8;
+            }
+
+            @Text: "stadium.strategy.header";
+            @Size: 6;
+            @XAlign: "Center";
+            @YAlign: "Center";
+        }
+
+        #Empty:Timing {
+            @Pos: {
+                @Anchor: 0, 1;
+                @Pivot: 0, 1;
+                @Value: 10, -44;
+                @Size: 289, 53;
+            }
+
+            #I18nLabel:Header {
+                @Pos: {
+                    @Anchor: 0.5, 1;
+                    @Pivot: 0.5, 1;
+                    @Value: 0, -3;
+                    @Size: 282, 18;
+                }
+
+                @Text: "stadium.strategy.timing.header";
+                @Size: 5;
+                @XAlign: "Center";
+                @YAlign: "Center";
+            }
+
+            #Empty:Container {
+                @Pos: {
+                    @Anchor: 0.5, 1;
+                    @Pivot: 0.5, 1;
+                    @Value: 0, -25;
+                    @Size: 269, 23;
+                }
+
+                #Button:Null {
+                    @Pos: {
+                        @Size: 87, 23;
+                    }
+
+                    @Sliced: true;
+
+                    @Normal: {
+                        @Sprite: "Button";
+                    }
+
+                    @Hover: {
+                        @Sprite: "ButtonHover";
+                    }
+
+                    @Focused: {
+                        @Sprite: "GreenButton";
+                    }
+
+                    @FocusedHover: {
+                        @Sprite: "GreenButtonHover";
+                    }
+
+                    #I18nLabel:Text {
+                        @Fill: {
+                            @XAnchor: 0, 1;
+                            @YAnchor: 0, 1;
+                            @XOffset: 2, 2;
+                            @YOffset: 2, 2;
+                        }
+
+                        @Size: 3;
+                        @Text: "stadium.strategy.null";
+                        @XAlign: "Center";
+                        @YAlign: "Center";
+
+                        @Normal: {
+                            @Color: "White";
+                        }
+
+                        @Hover: {
+                            @Color: "White";
+                        }
+
+                        @Focused: {
+                            @Color: "DarkGrey";
+                        }
+
+                        @FocusedHover: {
+                            @Color: "DarkGrey";
+                        }
+                    }
+                }
+
+                #Button:Early {
+                    @Pos: {
+                        @Size: 87, 23;
+                    }
+
+                    @Sliced: true;
+
+                    @Normal: {
+                        @Sprite: "Button";
+                    }
+
+                    @Hover: {
+                        @Sprite: "ButtonHover";
+                    }
+
+                    @Focused: {
+                        @Sprite: "GreenButton";
+                    }
+
+                    @FocusedHover: {
+                        @Sprite: "GreenButtonHover";
+                    }
+
+                    #I18nLabel:Text {
+                        @Fill: {
+                            @XAnchor: 0, 1;
+                            @YAnchor: 0, 1;
+                            @XOffset: 2, 2;
+                            @YOffset: 2, 2;
+                        }
+
+                        @Size: 3;
+                        @Text: "stadium.strategy.timing.early";
+                        @XAlign: "Center";
+                        @YAlign: "Center";
+
+                        @Normal: {
+                            @Color: "White";
+                        }
+
+                        @Hover: {
+                            @Color: "White";
+                        }
+
+                        @Focused: {
+                            @Color: "DarkGrey";
+                        }
+
+                        @FocusedHover: {
+                            @Color: "DarkGrey";
+                        }
+                    }
+                }
+
+                #Button:Late {
+                    @Pos: {
+                        @Size: 87, 23;
+                    }
+
+                    @Sliced: true;
+
+                    @Normal: {
+                        @Sprite: "Button";
+                    }
+
+                    @Hover: {
+                        @Sprite: "ButtonHover";
+                    }
+
+                    @Focused: {
+                        @Sprite: "GreenButton";
+                    }
+
+                    @FocusedHover: {
+                        @Sprite: "GreenButtonHover";
+                    }
+
+                    #I18nLabel:Text {
+                        @Fill: {
+                            @XAnchor: 0, 1;
+                            @YAnchor: 0, 1;
+                            @XOffset: 2, 2;
+                            @YOffset: 2, 2;
+                        }
+
+                        @Size: 3;
+                        @Text: "stadium.strategy.timing.late";
+                        @XAlign: "Center";
+                        @YAlign: "Center";
+
+                        @Normal: {
+                            @Color: "White";
+                        }
+
+                        @Hover: {
+                            @Color: "White";
+                        }
+
+                        @Focused: {
+                            @Color: "DarkGrey";
+                        }
+
+                        @FocusedHover: {
+                            @Color: "DarkGrey";
+                        }
+                    }
+                }
+            }
+        }
+
+        #Empty:Combo {
+            @Pos: {
+                @Anchor: 0, 1;
+                @Pivot: 0, 1;
+                @Value: 10, -107;
+                @Size: 289, 53;
+            }
+
+            #I18nLabel:Header {
+                @Pos: {
+                    @Anchor: 0.5, 1;
+                    @Pivot: 0.5, 1;
+                    @Value: 0, -3;
+                    @Size: 282, 18;
+                }
+
+                @Text: "stadium.strategy.combo.header";
+                @Size: 5;
+                @XAlign: "Center";
+                @YAlign: "Center";
+            }
+
+            #Image:Lock {
+                @Pos: {
+                    @Anchor: 0.5, 0;
+                    @Pivot: 0.5, 0;
+                    @Value: 0, 7;
+                    @Size: 14, 18;
+                }
+
+                @Sprite: "LockMiddle";
+            }
+
+            #Empty:Container {
+                @Pos: {
+                    @Anchor: 0.5, 1;
+                    @Pivot: 0.5, 1;
+                    @Value: 0, -25;
+                    @Size: 269, 23;
+                }
+
+                #Button:Null {
+                    @Pos: {
+                        @Size: 87, 23;
+                    }
+
+                    @Sliced: true;
+
+                    @Normal: {
+                        @Sprite: "Button";
+                    }
+
+                    @Hover: {
+                        @Sprite: "ButtonHover";
+                    }
+
+                    @Focused: {
+                        @Sprite: "GreenButton";
+                    }
+
+                    @FocusedHover: {
+                        @Sprite: "GreenButtonHover";
+                    }
+
+                    #I18nLabel:Text {
+                        @Fill: {
+                            @XAnchor: 0, 1;
+                            @YAnchor: 0, 1;
+                            @XOffset: 2, 2;
+                            @YOffset: 2, 2;
+                        }
+
+                        @Size: 3;
+                        @Text: "stadium.strategy.null";
+                        @XAlign: "Center";
+                        @YAlign: "Center";
+
+                        @Normal: {
+                            @Color: "White";
+                        }
+
+                        @Hover: {
+                            @Color: "White";
+                        }
+
+                        @Focused: {
+                            @Color: "DarkGrey";
+                        }
+
+                        @FocusedHover: {
+                            @Color: "DarkGrey";
+                        }
+                    }
+                }
+
+                #Button:Same {
+                    @Pos: {
+                        @Size: 87, 23;
+                    }
+
+                    @Sliced: true;
+
+                    @Normal: {
+                        @Sprite: "Button";
+                    }
+
+                    @Hover: {
+                        @Sprite: "ButtonHover";
+                    }
+
+                    @Focused: {
+                        @Sprite: "GreenButton";
+                    }
+
+                    @FocusedHover: {
+                        @Sprite: "GreenButtonHover";
+                    }
+
+                    #I18nLabel:Text {
+                        @Fill: {
+                            @XAnchor: 0, 1;
+                            @YAnchor: 0, 1;
+                            @XOffset: 2, 2;
+                            @YOffset: 2, 2;
+                        }
+
+                        @Size: 3;
+                        @Text: "stadium.strategy.combo.same";
+                        @XAlign: "Center";
+                        @YAlign: "Center";
+
+                        @Normal: {
+                            @Color: "White";
+                        }
+
+                        @Hover: {
+                            @Color: "White";
+                        }
+
+                        @Focused: {
+                            @Color: "DarkGrey";
+                        }
+
+                        @FocusedHover: {
+                            @Color: "DarkGrey";
+                        }
+                    }
+                }
+
+                #Button:Separate {
+                    @Pos: {
+                        @Size: 87, 23;
+                    }
+
+                    @Sliced: true;
+
+                    @Normal: {
+                        @Sprite: "Button";
+                    }
+
+                    @Hover: {
+                        @Sprite: "ButtonHover";
+                    }
+
+                    @Focused: {
+                        @Sprite: "GreenButton";
+                    }
+
+                    @FocusedHover: {
+                        @Sprite: "GreenButtonHover";
+                    }
+
+                    #I18nLabel:Text {
+                        @Fill: {
+                            @XAnchor: 0, 1;
+                            @YAnchor: 0, 1;
+                            @XOffset: 2, 2;
+                            @YOffset: 2, 2;
+                        }
+
+                        @Size: 3;
+                        @Text: "stadium.strategy.combo.separate";
+                        @XAlign: "Center";
+                        @YAlign: "Center";
+
+                        @Normal: {
+                            @Color: "White";
+                        }
+
+                        @Hover: {
+                            @Color: "White";
+                        }
+
+                        @Focused: {
+                            @Color: "DarkGrey";
+                        }
+
+                        @FocusedHover: {
+                            @Color: "DarkGrey";
+                        }
+                    }
+                }
+            }
+        }
+
+        #Empty:Distance {
+            @Pos: {
+                @Anchor: 0, 1;
+                @Pivot: 0, 1;
+                @Value: 10, -170;
+                @Size: 289, 53;
+            }
+
+            #I18nLabel:Header {
+                @Pos: {
+                    @Anchor: 0.5, 1;
+                    @Pivot: 0.5, 1;
+                    @Value: 0, -3;
+                    @Size: 282, 18;
+                }
+
+                @Text: "stadium.strategy.distance.header";
+                @Size: 5;
+                @XAlign: "Center";
+                @YAlign: "Center";
+            }
+
+            #Image:Lock {
+                @Pos: {
+                    @Anchor: 0.5, 0;
+                    @Pivot: 0.5, 0;
+                    @Value: 0, 7;
+                    @Size: 14, 18; 
+                }
+
+                @Sprite: "LockMiddle";
+            }
+
+            #Empty:Container {
+                @Pos: {
+                    @Anchor: 0.5, 1;
+                    @Pivot: 0.5, 1;
+                    @Value: 0, -25;
+                    @Size: 269, 23;
+                }
+
+                #Button:Null {
+                    @Pos: {
+                        @Size: 87, 23;
+                    }
+
+                    @Sliced: true;
+
+                    @Normal: {
+                        @Sprite: "Button";
+                    }
+
+                    @Hover: {
+                        @Sprite: "ButtonHover";
+                    }
+
+                    @Focused: {
+                        @Sprite: "GreenButton";
+                    }
+
+                    @FocusedHover: {
+                        @Sprite: "GreenButtonHover";
+                    }
+
+                    #I18nLabel:Text {
+                        @Fill: {
+                            @XAnchor: 0, 1;
+                            @YAnchor: 0, 1;
+                            @XOffset: 2, 2;
+                            @YOffset: 2, 2;
+                        }
+
+                        @Size: 3;
+                        @Text: "stadium.strategy.null";
+                        @XAlign: "Center";
+                        @YAlign: "Center";
+
+                        @Normal: {
+                            @Color: "White";
+                        }
+
+                        @Hover: {
+                            @Color: "White";
+                        }
+
+                        @Focused: {
+                            @Color: "DarkGrey";
+                        }
+
+                        @FocusedHover: {
+                            @Color: "DarkGrey";
+                        }
+                    }
+                }
+
+                #Button:Near {
+                    @Pos: {
+                        @Size: 87, 23;
+                    }
+
+                    @Sliced: true;
+
+                    @Normal: {
+                        @Sprite: "Button";
+                    }
+
+                    @Hover: {
+                        @Sprite: "ButtonHover";
+                    }
+
+                    @Focused: {
+                        @Sprite: "GreenButton";
+                    }
+
+                    @FocusedHover: {
+                        @Sprite: "GreenButtonHover";
+                    }
+
+                    #I18nLabel:Text {
+                        @Fill: {
+                            @XAnchor: 0, 1;
+                            @YAnchor: 0, 1;
+                            @XOffset: 2, 2;
+                            @YOffset: 2, 2;
+                        }
+
+                        @Size: 3;
+                        @Text: "stadium.strategy.distance.near";
+                        @XAlign: "Center";
+                        @YAlign: "Center";
+
+                        @Normal: {
+                            @Color: "White";
+                        }
+
+                        @Hover: {
+                            @Color: "White";
+                        }
+
+                        @Focused: {
+                            @Color: "DarkGrey";
+                        }
+
+                        @FocusedHover: {
+                            @Color: "DarkGrey";
+                        }
+                    }
+                }
+
+                #Button:Far {
+                    @Pos: {
+                        @Size: 87, 23;
+                    }
+
+                    @Sliced: true;
+
+                    @Normal: {
+                        @Sprite: "Button";
+                    }
+
+                    @Hover: {
+                        @Sprite: "ButtonHover";
+                    }
+
+                    @Focused: {
+                        @Sprite: "GreenButton";
+                    }
+
+                    @FocusedHover: {
+                        @Sprite: "GreenButtonHover";
+                    }
+
+                    #I18nLabel:Text {
+                        @Fill: {
+                            @XAnchor: 0, 1;
+                            @YAnchor: 0, 1;
+                            @XOffset: 2, 2;
+                            @YOffset: 2, 2;
+                        }
+
+                        @Size: 3;
+                        @Text: "stadium.strategy.distance.far";
+                        @XAlign: "Center";
+                        @YAlign: "Center";
+
+                        @Normal: {
+                            @Color: "White";
+                        }
+
+                        @Hover: {
+                            @Color: "White";
+                        }
+
+                        @Focused: {
+                            @Color: "DarkGrey";
+                        }
+
+                        @FocusedHover: {
+                            @Color: "DarkGrey";
+                        }
+                    }
+                }
+            }
+        }
+
+        #Empty:Applyed {
+            @Pos: {
+                @Anchor: 1, 1;
+                @Pivot: 1, 1;
+                @Value: -10, -44;
+                @Size: 151, 116;
+            }
+
+            #I18nLabel:Header {
+                @Pos: {
+                    @Anchor: 0.5, 1;
+                    @Pivot: 0.5, 1;
+                    @Value: 0, -3;
+                    @Size: 100, 18;
+                }
+
+                @Text: "stadium.strategy.used";
+                @Size: 5;
+                @XAlign: "Center";
+                @YAlign: "Center";
+            }
+
+            #Label:Count {
+                @Pos: {
+                    @Anchor: 1, 1;
+                    @Pivot: 1, 1;
+                    @Value: -4, -8;
+                    @Size: 20, 12;
+                }
+
+                @XAlign: "Right";
+                @YAlign: "Down";
+                @Size: 3;
+            }
+
+            #Empty:Container {
+                @Pos: {
+                    @Anchor: 0.5, 1;
+                    @Pivot: 0.5, 1;
+                    @Size: 143, 87;
+                    @Value: 0, -25;
+                }
+            }
+        }
+
+        #Button:Start {
+            @Pos: {
+                @Anchor: 1, 0;
+                @Pivot: 1, 0;
+                @Value: -8, 8;
+                @Size: 155, 26;
+            }
+            
+            @Sliced: true;
+
+            @Normal: {
+                @Sprite: "Important";
+            }
+
+            @Hover: {
+                @Sprite: "ImportantHover";
+            }
+
+            #Image:Icon {
+                @Pos: {
+                    @Anchor: 0, 0.5;
+                    @Pivot: 0, 0.5;
+                    @Value: -4, 0;
+                    @Size: 33, 33;
+                }
+            }
+
+            #I18nLabel:Label {
+                @Fill: {
+                    @XAnchor: 0, 1;
+                    @YAnchor: 0, 1;
+                    @XOffset: 18, 14;
+                    @YOffset: 3, 3;
+                }
+                @Text: "stadium.strategy.start";
+                @Size: 4;
+                @XAlign: "Center";
+                @YAlign: "Center";
+            }
+        }
+
+        #Button:Init {
+            @Pos: {
+                @Anchor: 1, 0;
+                @Pivot: 1, 0;
+                @Value: -8, 38;
+                @Size: 155, 26;
+            }
+
+            @Sliced: true;
+
+            @Normal: {
+                @Sprite: "Button";
+            }
+
+            @Hover: {
+                @Sprite: "ButtonHover";
+            }
+
+            #Image:Icon {
+                @Pos: {
+                    @Anchor: 0, 0.5;
+                    @Pivot: 0, 0.5;
+                    @Value: -4, 0;
+                    @Size: 33, 33;
+                }
+            }
+
+            #I18nLabel:Label {
+                @Fill: {
+                    @XAnchor: 0, 1;
+                    @YAnchor: 0, 1;
+                    @XOffset: 18, 14;
+                    @YOffset: 3, 3;
+                }
+                @Text: "stadium.strategy.reset";
+                @Size: 4;
+                @XAlign: "Center";
+                @YAlign: "Center";
+            }
+        }
+    }
+}

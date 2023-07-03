@@ -1,0 +1,55 @@
+#Empty:Notification {
+    @Pos: {
+        @Size: 138, 44;
+        @Anchor: 1, 1;
+        @Pivot: 1, 1;
+    }
+
+    #Image:Title {
+        @Pos: {
+            @Anchor: 0, 1;
+            @Pivot: 0, 1;
+            @Value: 0, 0;
+            @Size: 110, 12;
+        }
+
+        @Sprite: "NotificationTitle";
+        @Sliced: true;
+
+        #I18nLabel:Title {
+            @Pos: {
+                @Anchor: 0, 1;
+                @Pivot: 0, 1;
+                @Size: 104, 7;
+                @Value: 3, -3;
+            }
+
+            @Text: "선수 모집 완료";
+            @Size: 2;
+        }
+    }
+
+    #Image:Background {
+        @Pos: {
+            @Anchor: 0, 0;
+            @Pivot: 0, 0;
+            @Value: 0, 4;
+            @Size: 208, 29;
+        }
+
+        @Sprite: "MainNotification";
+        @Sliced: true;
+
+        #I18nLabel:Contents {
+            @Pos: {
+                @Anchor: 0, 1;
+                @Pivot: 0, 1;
+                @Size: 134, 24;
+                @Value: 3, -2;
+            }
+
+            @Text: "선수 모집 완료";
+            @Size: 2;
+        }
+    }
+}

@@ -1,0 +1,244 @@
+#Empty:SpecialAthleteSelect {
+    @Fill: {
+        @XAnchor: 0, 1;
+        @YAnchor: 0, 1;
+        @XOffset: 0, 0;
+        @YOffset: 0, 0;
+    }
+
+    @CanvasGroup: {}
+
+    #Image:Dimmed {
+        @Fill: {
+            @XAnchor: 0, 1;
+            @YAnchor: 0, 1;
+            @XOffset: 0, 0;
+            @YOffset: 0, 0;
+        }
+        
+        @Sprite: "White";
+        @Color: "Dimmed";
+    }
+
+    #Image:UI {
+        @Pos: {
+            @Anchor: 0.5, 0.5;
+            @Pivot: 0.5, 0.5;
+            @Value: 0, 16;
+            @Size: 488, 278;
+        }
+
+        @Sprite: "SpecialTrainingBG1";
+
+        #I18nLabel:Title {
+            @Pos: {
+                @Anchor: 0.5, 1;
+                @Pivot: 0.5, 1;
+                @Value: 0, -8;
+                @Size: 468, 28;
+            }
+
+            @Text: "weekly.stat.header";
+            @Size: 6;
+            @XAlign: "Center";
+            @YAlign: "Center";
+        }
+
+        #Empty:Contents {
+            @Pos: {
+                @Anchor: 0.5, 1;
+                @Pivot: 0.5, 1;
+                @Value: 0, -46;
+                @Size: 468, 192;
+            }
+
+            #I18nLabel:Title {
+                @Pos: {
+                    @Anchor: 0.5, 1;
+                    @Pivot: 0.5, 1;
+                    @Value: 0, 0;
+                    @Size: 468, 19;
+                }
+
+                @Text: "weekly.streaming.select_athlete";
+                @Size: 5;
+                @XAlign: "Center";
+                @YAlign: "Center";
+            }
+
+            #Empty:Header {
+                @Pos: {
+                    @Anchor: 0, 1;
+                    @Pivot: 0, 1;
+                    @Value: 4, -22;
+                    @Size: 454, 14;
+                }
+
+                #I18nLabel:Name {
+                    @Pos: {
+                        @Anchor: 0, 1;
+                        @Pivot: 0, 1;
+                        @Value: 0, 0;
+                        @Size: 140, 14;
+                    }
+                    
+                    @Text: "athlete.stat.name";
+                    @Size: 4;
+                    @XAlign: "Center";
+                    @YAlign: "Center";
+                }
+
+                #I18nLabel:Property {
+                    @Pos: {
+                        @Anchor: 0, 1;
+                        @Pivot: 0, 1;
+                        @Value: 140, 0;
+                        @Size: 80, 14;
+                    }
+
+                    @Text: "athlete.stat.property";
+                    @Size: 4;
+                    @XAlign: "Center";
+                    @YAlign: "Center";
+                }
+
+                #I18nLabel:Age {
+                    @Pos: {
+                        @Anchor: 0, 1;
+                        @Pivot: 0, 1;
+                        @Value: 224, 0;
+                        @Size: 35, 14;
+                    }
+
+                    @Text: "athlete.stat.age_header";
+                    @Size: 4;
+                    @XAlign: "Center";
+                    @YAlign: "Center";
+                }
+
+                #I18nLabel:Attack {
+                    @Pos: {
+                        @Anchor: 0, 1;
+                        @Pivot: 0, 1;
+                        @Value: 265, 0;
+                        @Size: 35, 14;
+                    }
+
+                    @Text: "athlete.stat.attack";
+                    @Size: 4;
+                    @XAlign: "Center";
+                    @YAlign: "Center";
+                }
+
+                #I18nLabel:Defence {
+                    @Pos: {
+                        @Anchor: 0, 1;
+                        @Pivot: 0, 1;
+                        @Value: 300, 0;
+                        @Size: 35, 14;
+                    }
+                    @Text: "athlete.stat.defence";
+                    @Size: 4;
+                    @XAlign: "Center";
+                    @YAlign: "Center";
+                }
+
+                #I18nLabel:Exp {
+                    @Pos: {
+                        @Anchor: 0, 1;
+                        @Pivot: 0, 1;
+                        @Value: 340, 0;
+                        @Size: 110, 14;
+                    }
+
+                    @Text: "athlete.stat.champion_exp";
+                    @Size: 4;
+                    @XAlign: "Center";
+                    @YAlign: "Center";
+                }
+            }
+
+            #List:List {
+                @Pos: {
+                    @Anchor: 0.5, 1;
+                    @Pivot: 0.5, 1;
+                    @Value: 0, -38;
+                    @Size: 464, 152;
+                }
+
+                @Scroll: {
+                    @BackgroundColor: "ScrollBG";
+                    @BarColor: "ScrollBar";
+                }
+            }
+        }
+
+        #Image:GoldSlot {
+            @Pos: {
+                @Anchor: 0, 0;
+                @Pivot: 0, 0;
+                @Value: 8, 8;
+                @Size: 113, 24;
+            }
+
+            @Sprite: "MainHeaderSlot";
+
+            #Image:Icon {
+                @Pos: {
+                    @Anchor: 0, 0.5;
+                    @Pivot: 0, 0.5;
+                    @Value: 4, 0;
+                    @Size: 14, 14;
+                }
+
+                @Sprite: "HeaderGold";
+            }
+
+            #Label:Value {
+                @Fill: {
+                    @XAnchor: 0, 1;
+                    @YAnchor: 0, 1;
+                    @XOffset: 18, 4;
+                    @YOffset: 4, 4;
+                }
+
+                @Text: "3,050";
+                @Size: 4;
+                @XAlign: "Right";
+                @YAlign: "Center";
+            }
+        }
+
+        #Button:Prev {
+            @Pos: {
+                @Anchor: 1, 0;
+                @Pivot: 1, 0;
+                @Value: -8, 8;
+                @Size: 69, 25;
+            }
+            @Sliced: true;
+            @FirstFocus: true;
+
+            @Normal: {
+                @Sprite: "Button";
+            }
+
+            @Hover: {
+                @Sprite: "ButtonHover";
+            }
+
+            #I18nLabel:Label {
+                @Fill: {
+                    @XAnchor: 0, 1;
+                    @YAnchor: 0, 1;
+                    @XOffset: 3, 3;
+                    @YOffset: 3, 3;
+                }
+                @Text: "common.prev";
+                @Size: 4;
+                @XAlign: "Center";
+                @YAlign: "Center";
+            }
+        }
+    }
+}

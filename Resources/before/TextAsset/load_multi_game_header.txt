@@ -1,0 +1,89 @@
+#Empty:LoadMultiGameHeaderSlot {
+    @Pos: {
+        @Anchor: 0, 1;
+        @Pivot: 0, 1;
+        @Size: 588, 19;
+    }
+
+    #Image:Contents {
+        @Pos: {
+            @Anchor: 0, 1;
+            @Pivot: 0, 1;
+            @Size: 588, 15;
+        }
+
+        @Sprite: "SaveSlotCategoryBG";
+
+        #I18nLabel:Name {
+            @Pos: {
+                @Anchor: 0, 0.5;
+                @Pivot: 0, 0.5;
+                @Value: 10, 0;
+                @Size: 130, 13;
+            }
+
+            @Text: "multiplayer.load.file.host";
+            @Size: 3;
+            @XAlign: "Center";
+            @YAlign: "Center";
+        }
+
+        #I18nLabel:Season {
+            @Pos: {
+                @Anchor: 0, 0.5;
+                @Pivot: 0, 0.5;
+                @Value: 150, 0;
+                @Size: 70, 13;
+            }
+            
+            @Text: "multiplayer.load.file.season";
+            @Size: 3;
+
+            @XAlign: "Center";
+            @YAlign: "Center";
+        }
+
+        #I18nLabel:Team {
+            @Pos: {
+                @Anchor: 0, 0.5;
+                @Pivot: 0, 0.5;
+                @Value: 230, 0;
+                @Size: 70, 13;
+            }
+
+            @Text: "multiplayer.load.file.team";
+            @Size: 3;
+            
+            @XAlign: "Center";
+            @YAlign: "Center";
+        }
+
+        #I18nLabel:Players {
+            @Pos: {
+                @Anchor: 0, 0.5;
+                @Pivot: 0, 0.5;
+                @Value: 310, 0;
+                @Size: 130, 13;
+            }
+
+            @Text: "multiplayer.load.file.recent";
+            @Size: 3;
+            @XAlign: "Center";
+            @YAlign: "Center";
+        }
+
+        #I18nLabel:Playing {
+            @Pos: {
+                @Anchor: 0, 0.5;
+                @Pivot: 0, 0.5;
+                @Value: 445, 0;
+                @Size: 85, 13;
+            }
+
+            @Text: "save.time";
+            @Size: 3;
+            @XAlign: "Center";
+            @YAlign: "Center";
+        }
+    }
+}

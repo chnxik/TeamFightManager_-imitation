@@ -1,0 +1,10 @@
+#I18nLabel:CreditHeader {
+    @Pos: {
+        @Size: 471, 50;
+    }
+
+    @Text: "header";
+    @Size: 4;
+    @XAlign: "Center";
+    @YAlign: "Center";
+}

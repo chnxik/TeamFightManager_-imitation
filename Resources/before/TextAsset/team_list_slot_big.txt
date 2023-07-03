@@ -1,0 +1,35 @@
+#Button:TeamListSlotBig {
+    @Pos: {
+        @Size: 112, 17;
+    }
+
+    @Normal: {
+        @Sprite: "TeamListSlotBig";
+    }
+
+    @Hover: {
+        @Sprite: "TeamListSlotBigHover";
+    }
+
+    #Image:Logo {
+        @Pos: {
+            @Anchor: 0, 0.5;
+            @Pivot: 0, 0.5;
+            @Value: 1, 0;
+            @Size: 15, 15;
+        }
+    }
+
+    #Label:Name {
+        @Pos: {
+            @Anchor: 0, 0.5;
+            @Pivot: 0, 0.5;
+            @Value: 20, 0;
+            @Size: 90, 15;
+        }
+
+        @Text: "Team Name";
+        @YAlign: "Center";
+        @Size: 3;
+    }
+}

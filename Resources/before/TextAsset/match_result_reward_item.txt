@@ -1,0 +1,27 @@
+#Image:MatchResultRewardItem {
+    @Pos: {
+        @Size: 30, 30;
+    }
+
+    @Sprite: "MatchResultRewardItem";
+
+    #Image:Icon {
+        @Pos: {
+            @Size: 30, 30;
+        }
+    }
+
+    #Label:Count {
+        @Pos: {
+            @Anchor: 1, 0;
+            @Pivot: 1, 0;
+            @Value: -1, 1;
+            @Size: 25, 10;
+        }
+
+        @Text: "x0";
+        @Size: 3;
+        @XAlign: "Right";
+        @YAlign: "Center";
+    }
+}

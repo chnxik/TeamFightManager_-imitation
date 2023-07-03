@@ -1,0 +1,59 @@
+#Button:_ {
+    @Pos: {
+        @Size: 100, 24;
+    }
+
+    #I18nLabel:Text {
+        @YFill: {
+            @Anchor: 0, 1;
+            @OffMin: 0;
+            @OffMax: 0;
+        }
+
+        @XFitter: true;
+        @XAlign: "Center";
+        @YAlign: "Center";
+
+        @Normal: {
+            @Size: 7;
+            @Color: "TitleNormal";
+        }
+
+        @Hover: {
+            @Size: 8;
+            @Color: "White";
+        }
+
+        #Empty:BlueSword {
+            @Pos: {
+                @Anchor: 0, 0.5;
+                @Pivot: 1, 0.5;
+                @Value: -10, 0;
+            }
+
+            @Normal: {
+                @Active: false;
+            }
+            
+            @Hover: {
+                @Active: true;
+            }
+        }
+
+        #Empty:RedSword {
+            @Pos: {
+                @Anchor: 1, 0.5;
+                @Pivot: 0, 0.5;
+                @Value: 10, 0;
+            }
+
+            @Normal: {
+                @Active: false;
+            }
+            
+            @Hover: {
+                @Active: true;
+            }
+        }
+    }
+}

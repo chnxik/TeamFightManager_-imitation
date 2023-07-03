@@ -1,0 +1,162 @@
+#Image:HistoryStatSlot {
+    @Pos: {
+        @Size: 419, 18;
+    }
+
+    #Label:Ranking {
+        @Text: "1";
+        @Size: 3;
+        @XAlign: "Center";
+        @YAlign: "Center";
+
+        @YFill: {
+            @Anchor: 0, 1;
+            @OffMin: 0;
+            @OffMax: 0;
+        }
+
+        @XPos: {
+            @Anchor: 0;
+            @Pivot: 0;
+            @Value: 0;
+            @Size: 20;
+        }
+    }
+
+    #Empty:Face {
+        @Pos: {
+            @Anchor: 0, 0.5;
+            @Pivot: 0, 0.5;
+            @Size: 16, 16;
+            @Value: 29, 0;
+        }
+
+        @Masked: true;
+
+        #Image:Icon {
+            @Pos: {
+                @Anchor: 0.5, 0.5;
+                @Pivot: 0.5, 0.5;
+                @Size: 96, 96;
+                @Value: 0, -13;
+            }
+        }
+    }
+
+    #I18nLabel:Name {
+        @Text: "champion";
+        @Size: 3;
+        @XAlign: "Center";
+        @YAlign: "Center";
+
+        @YFill: {
+            @Anchor: 0, 1;
+            @OffMin: 0;
+            @OffMax: 0;
+        }
+
+        @XPos: {
+            @Anchor: 0;
+            @Pivot: 0;
+            @Value: 47;
+            @Size: 121;
+        }
+    }
+
+    #Label:Pick {
+        @Text: "65.5%";
+        @Size: 3;
+        @XAlign: "Center";
+        @YAlign: "Center";
+        @YFill: {
+            @Anchor: 0, 1;
+            @OffMin: 0;
+            @OffMax: 0;
+        }
+
+        @XPos: {
+            @Anchor: 0;
+            @Pivot: 0;
+            @Value: 168;
+            @Size: 50;
+        }
+    }
+
+    #Label:Win {
+        @Text: "19";
+        @Size: 3;
+        @XAlign: "Center";
+        @YAlign: "Center";
+        @YFill: {
+            @Anchor: 0, 1;
+            @OffMin: 0;
+            @OffMax: 0;
+        }
+
+        @XPos: {
+            @Anchor: 0;
+            @Pivot: 0;
+            @Value: 218;
+            @Size: 50;
+        }
+    }
+    
+    #Label:Lose {
+        @Text: "11";
+        @Size: 3;
+        @XAlign: "Center";
+        @YAlign: "Center";
+        @YFill: {
+            @Anchor: 0, 1;
+            @OffMin: 0;
+            @OffMax: 0;
+        }
+
+        @XPos: {
+            @Anchor: 0;
+            @Pivot: 0;
+            @Value: 268;
+            @Size: 50;
+        }
+    }
+
+    #Label:WinRate {
+        @Text: "55.5%";
+        @Size: 3;
+        @XAlign: "Center";
+        @YAlign: "Center";
+        
+        @YFill: {
+            @Anchor: 0, 1;
+            @OffMin: 0;
+            @OffMax: 0;
+        }
+
+        @XPos: {
+            @Anchor: 0;
+            @Pivot: 0;
+            @Value: 318;
+            @Size: 50;
+        }
+    }
+
+    #Label:Rate {
+        @Text: "3.21:1";
+        @Size: 3;
+        @XAlign: "Center";
+        @YAlign: "Center";
+
+        @YFill: {
+            @Anchor: 0, 1;
+            @OffMin: 0;
+            @OffMax: 0;
+        }
+
+        @XPos: {
+            @Anchor: 0;
+            @Pivot: 0;
+            @Value: 368;
+            @Size: 50;
+        }
+    }
+}

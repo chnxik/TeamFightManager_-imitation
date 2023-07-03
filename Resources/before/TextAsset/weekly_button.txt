@@ -1,0 +1,63 @@
+#Button:WeeklyButton {
+    @Pos: {
+        @Anchor: 1, 0;
+        @Pivot: 1, 0;
+        @Value: -8, 60;
+        @Size: 129, 22;
+    }
+
+    @Normal: {
+        @Sprite: "Weekly";
+    }
+
+    @Hover: {
+        @Sprite: "WeeklyHover";
+    }
+
+    @Focused: {
+        @Sprite: "WeeklyUsed";
+    }
+
+    @FocusedHover: {
+        @Sprite: "WeeklyUsedHover";
+    }
+
+    #Image:ButtonIcon {
+        @Pos: {
+            @Anchor: 0, 1;
+            @Pivot: 0, 1;
+            @Value: -5, 5;
+            @Size: 33, 33;
+        }
+    }
+
+    #I18nLabel:Desc {
+        @Fill: {
+            @XAnchor: 0, 1;
+            @YAnchor: 0, 1;
+            @XOffset: 22, 3;
+            @YOffset: 3, 3;
+        }
+
+        @Text: "weekly.header";
+        @Size: 4;
+        @XAlign: "Left";
+        @YAlign: "Center";
+
+        @Normal: {
+            @Color: "MainSelectedDark";
+        }
+
+        @Hover: {
+            @Color: "White";
+        }
+
+        @Focused: {
+            @Color: "MainSelectedDark";
+        }
+
+        @FocusedHover: {
+            @Color: "White";
+        }
+    }
+}

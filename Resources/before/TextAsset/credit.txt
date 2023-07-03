@@ -1,0 +1,21 @@
+#Image:Credit {
+    @Pos: {
+        @Anchor: 0.5, 0.5;
+        @Pivot: 0.5, 0.5;
+        @Value: 0, 18;
+        @Size: 471, 265;
+    }
+
+    @Color: "Credit";
+    @Masked: true;
+    @CanvasGroup: {}
+
+    #Empty:View {
+        @Pos: {
+            @Anchor: 0.5, 0;
+            @Pivot: 0.5, 1;
+            @Value: 0, 0;
+            @Size: 471, 200;
+        }
+    }
+}

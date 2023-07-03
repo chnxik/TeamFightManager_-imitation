@@ -1,0 +1,181 @@
+#Empty:HistoryScrimHeader {
+    @XFill: { 
+        @Anchor: 0, 1;
+        @OffMin: 0;
+        @OffMax: 0;
+    }
+
+    @YPos: {
+        @Pivot: 1;
+        @Anchor: 1;
+        @Size: 18;
+    }
+
+
+    #Image:Slot {
+        @XPos: {
+            @Pivot: 0.5;
+            @Anchor: 0.5;
+            @Size: 588;
+        }
+
+        @YFill: {
+            @Anchor: 0, 1;
+            @OffMin: 3;
+            @OffMax: 0;
+        }
+
+        @Sprite: "HistoryScrimHeaderBG";
+        @Masked: true;
+
+        #I18nLabel:Number {
+            @XPos: {
+                @Pivot: 0;
+                @Anchor: 0;
+                @Value: 1;
+                @Size: 43;
+            }
+
+            @YFill: {
+                @Anchor: 0, 1;
+                @OffMin: 2;
+                @OffMax: 2;
+            }
+
+            @Size: 3;
+            @Text: "simulation.category.number";
+            @XAlign: "Center";
+            @YAlign: "Center";
+        }
+
+        #I18nLabel:Result {
+            @XPos: {
+                @Pivot: 0.5;
+                @Anchor: 0.5;
+                @Value: 0;
+                @Size: 80;
+            }
+
+            @YFill: {
+                @Anchor: 0, 1;
+                @OffMin: 2;
+                @OffMax: 2;
+            }
+
+            @Size: 3;
+            @Text: "simulation.category.result";
+            @XAlign: "Center";
+            @YAlign: "Center";
+        }
+
+        #Empty:Blue {
+            @XPos: {
+                @Pivot: 0;
+                @Anchor: 0;
+                @Value: 47;
+                @Size: 247;
+            }
+
+            @YFill: {
+                @Anchor: 0, 1;
+                @OffMin: 0;
+                @OffMax: 0;
+            }
+
+            #I18nLabel:Team {
+                @XPos: {
+                    @Pivot: 0;
+                    @Anchor: 0;
+                    @Value: 3;
+                    @Size: 80;
+                }
+
+                @YFill: {
+                    @Anchor: 0, 1;
+                    @OffMin: 2;
+                    @OffMax: 2;
+                }
+
+                @Text: "simulation.category.team";
+                @Size: 3;
+                @XAlign: "Center";
+                @YAlign: "Center";
+            }
+
+            #I18nLabel:Champ {
+                @XPos: {
+                    @Pivot: 0.5;
+                    @Anchor: 0;
+                    @Value: 140;
+                    @Size: 80;
+                }
+
+                @YFill: {
+                    @Anchor: 0, 1;
+                    @OffMin: 2;
+                    @OffMax: 2;
+                }
+
+                @Text: "simulation.category.champion";
+                @Size: 3;
+                @XAlign: "Center";
+                @YAlign: "Center";
+            }
+        }
+
+        #Empty:Red {
+            @XPos: {
+                @Pivot: 0;
+                @Anchor: 0;
+                @Value: 294;
+                @Size: 247;
+            }
+
+            @YFill: {
+                @Anchor: 0, 1;
+                @OffMin: 0;
+                @OffMax: 0;
+            }
+
+            #I18nLabel:Team {
+                @XPos: {
+                    @Pivot: 1;
+                    @Anchor: 1;
+                    @Value: -3;
+                    @Size: 80;
+                }
+
+                @YFill: {
+                    @Anchor: 0, 1;
+                    @OffMin: 2;
+                    @OffMax: 2;
+                }
+
+                @Text: "simulation.category.team";
+                @Size: 3;
+                @XAlign: "Center";
+                @YAlign: "Center";
+            }
+
+            #I18nLabel:Champ {
+                @XPos: {
+                    @Pivot: 0.5;
+                    @Anchor: 1;
+                    @Value: -140;
+                    @Size: 80;
+                }
+
+                @YFill: {
+                    @Anchor: 0, 1;
+                    @OffMin: 2;
+                    @OffMax: 2;
+                }
+
+                @Text: "simulation.category.champion";
+                @Size: 3;
+                @XAlign: "Center";
+                @YAlign: "Center";
+            }
+        }
+    }
+}

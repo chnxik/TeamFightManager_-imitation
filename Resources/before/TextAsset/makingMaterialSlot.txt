@@ -1,0 +1,230 @@
+#Empty:MakingMaterialSlot {
+    @Pos: {
+        @Size: 234, 30;
+    }
+
+    #Image:IconBG {
+        @Pos: {
+            @Anchor: 0, 0.5;
+            @Pivot: 0, 0.5;
+            @Size: 32, 32;
+            @Value: 0, 0;
+        }
+
+        @Normal: {
+            @Sprite: "MaterialBG";
+        }
+
+        @Hover: {
+            @Sprite: "MaterialSelectedBG";
+        }
+
+        #Image:Icon {
+            @Pos: {
+                @Anchor: 0.5, 0.5;
+                @Pivot: 0.5, 0.5;
+                @Value: 0, 0;
+                @Size: 38, 38;
+            }
+            
+            #Label:Count {
+                @Pos: {
+                    @Anchor: 1, 0;
+                    @Pivot: 1, 0;
+                    @Value: -6, 6;
+                    @Size: 20, 20;
+                }
+
+                @Size: 7;
+                @XAlign: "Right";
+                @YAlign: "Down";
+            }
+        }
+    }
+
+    #Image:Background {
+        @Pos: {
+            @Anchor: 0, 0.5;
+            @Pivot: 0, 0.5;
+            @Size: 198, 30;
+            @Value: 36, 0;
+        }
+
+        @Sliced: true;
+
+        @Normal: {
+            @Sprite: "EquipMakingBG";
+        }
+
+        @Hover: {
+            @Sprite: "EquipMakingHoverBG";
+        }
+
+        #I18nLabel:Name {
+            @Pos: {
+                @Anchor: 0, 1;
+                @Pivot: 0, 1;
+                @Value: 6, -2;
+                @Size: 100, 14;
+            }
+
+            @Size: 4;
+            @YAlign: "Center";
+        }
+
+        #I18nLabel:State {
+            @Pos: {
+                @Anchor: 0, 1;
+                @Pivot: 0, 1;
+                @Value: 6, -16;
+                @Size: 100, 10;
+            }
+
+            @Text: "equip.making.state";
+            @Size: 3;
+            @YAlign: "Center";
+        }
+
+        #Button:Plus5 {
+            @Pos: {
+                @Anchor: 1, 0.5;
+                @Pivot: 1, 0.5;
+                @Value: -4, -1;
+                @Size: 16, 13;
+            }
+            @Sliced: true;
+            @FirstFocus: true;
+
+            @Normal: {
+                @Sprite: "Button";
+            }
+
+            @Hover: {
+                @Sprite: "ButtonHover";
+            }
+
+            #Label:Desc {
+                @Fill: {
+                    @XAnchor: 0, 1;
+                    @YAnchor: 0, 1;
+                    @XOffset: 1, 1;
+                    @YOffset: 2, 1;
+                }
+                @Text: "+5";
+                @Size: 3;
+                @XAlign: "Center";
+                @YAlign: "Center";
+            }
+        }
+
+        #Button:Plus1 {
+            @Pos: {
+                @Anchor: 1, 0.5;
+                @Pivot: 1, 0.5;
+                @Value: -20, -1;
+                @Size: 16, 13;
+            }
+            @Sliced: true;
+            @FirstFocus: true;
+
+            @Normal: {
+                @Sprite: "Button";
+            }
+
+            @Hover: {
+                @Sprite: "ButtonHover";
+            }
+
+            #Label:Desc {
+                @Fill: {
+                    @XAnchor: 0, 1;
+                    @YAnchor: 0, 1;
+                    @XOffset: 1, 1;
+                    @YOffset: 2, 1;
+                }
+                @Text: "+1";
+                @Size: 3;
+                @XAlign: "Center";
+                @YAlign: "Center";
+            }
+        }
+
+        #Label:Count {
+            @Pos: {
+                @Anchor: 1, 0.5;
+                @Pivot: 1, 0.5;
+                @Value: -39, 0;
+                @Size: 18, 14;
+            }
+            
+            @Text: "20";
+            @Size: 4;
+            @XAlign: "Center";
+            @YAlign: "Center";
+        }
+
+        #Button:Minus1 {
+            @Pos: {
+                @Anchor: 1, 0.5;
+                @Pivot: 1, 0.5;
+                @Value: -60, -1;
+                @Size: 16, 13;
+            }
+            @Sliced: true;
+            @FirstFocus: true;
+
+            @Normal: {
+                @Sprite: "Button";
+            }
+
+            @Hover: {
+                @Sprite: "ButtonHover";
+            }
+
+            #Label:Desc {
+                @Fill: {
+                    @XAnchor: 0, 1;
+                    @YAnchor: 0, 1;
+                    @XOffset: 1, 1;
+                    @YOffset: 2, 1;
+                }
+                @Text: "-1";
+                @Size: 3;
+                @XAlign: "Center";
+                @YAlign: "Center";
+            }
+        }
+
+        #Button:Minus5 {
+            @Pos: {
+                @Anchor: 1, 0.5;
+                @Pivot: 1, 0.5;
+                @Value: -76, -1;
+                @Size: 16, 13;
+            }
+            @Sliced: true;
+            @FirstFocus: true;
+
+            @Normal: {
+                @Sprite: "Button";
+            }
+
+            @Hover: {
+                @Sprite: "ButtonHover";
+            }
+
+            #Label:Desc {
+                @Fill: {
+                    @XAnchor: 0, 1;
+                    @YAnchor: 0, 1;
+                    @XOffset: 1, 1;
+                    @YOffset: 2, 1;
+                }
+                @Text: "-5";
+                @Size: 3;
+                @XAlign: "Center";
+                @YAlign: "Center";
+            }
+        }
+    }
+}

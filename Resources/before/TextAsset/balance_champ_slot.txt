@@ -1,0 +1,204 @@
+#Button:BalanceChampSlot {
+    @Pos: {
+        @Anchor: 0, 1;
+        @Pivot: 0, 1;
+        @Size: 86, 78;
+    }
+
+    @FirstFocus: true;
+
+    #Empty:Data {
+        @Pos: {
+            @Anchor: 0, 1;
+            @Pivot: 0, 1;
+            @Size: 85, 75;
+        }
+
+        #Image:Background {
+            @Fill: {
+                @XAnchor: 0, 1;
+                @YAnchor: 0, 1;
+                @XOffset: 0, 0;
+                @YOffset: 0, 0;
+            }
+
+            @Normal: {
+                @Sprite: "BalanceChampSlotBG";
+            }
+
+            @Hover: {
+                @Sprite: "BalanceChampSlotHoverBG";
+            }
+
+            @Focused: {
+                @Sprite: "BalanceChampSlotFocusBG";
+            }
+            
+            @FocusedHover: {
+                @Sprite: "BalanceChampSlotFocusHoverBG";
+            } 
+        }
+
+        #Empty:Stats {
+            @Fill: {
+                @XAnchor: 0, 1;
+                @YAnchor: 0, 1;
+                @XOffset: 50, 1;
+                @YOffset: 1, 1;
+            }
+
+            #Label:Attack {
+                @Pos: {
+                    @Anchor: 1, 1;
+                    @Pivot: 1, 1;
+                    @Value: -1, -1;
+                    @Size: 18, 11;
+                }
+            
+                @Text: "99";
+                @Size: 3;
+                @YAlign: "Center";
+            }
+            
+            #Label:AttackSpeed {
+                @Pos: {
+                    @Anchor: 1, 1;
+                    @Pivot: 1, 1;
+                    @Value: -1, -16;
+                    @Size: 18, 11;
+                }
+            
+                @Text: "99";
+                @Size: 3;
+                @YAlign: "Center";
+            }
+            
+            #Label:Defence {
+                @Pos: {
+                    @Anchor: 1, 1;
+                    @Pivot: 1, 1;
+                    @Value: -1, -31;
+                    @Size: 18, 11;
+                }
+            
+                @Text: "99";
+                @Size: 3;
+                @YAlign: "Center";
+            }
+                        
+            #Label:Hp {
+                @Pos: {
+                    @Anchor: 1, 1;
+                    @Pivot: 1, 1;
+                    @Value: -1, -46;
+                    @Size: 18, 11;
+                }
+            
+                @Text: "99";
+                @Size: 3;
+                @YAlign: "Center";
+            }
+                        
+            #Label:SkillCool {
+                @Pos: {
+                    @Anchor: 1, 1;
+                    @Pivot: 1, 1;
+                    @Value: -1, -61;
+                    @Size: 18, 11;
+                }
+            
+                @Text: "99";
+                @Size: 3;
+                @YAlign: "Center";
+            }
+        }
+
+        #Empty:Contents {
+            @Fill: {
+                @XAnchor: 0, 1;
+                @YAnchor: 0, 1;
+                @XOffset: 1, 35;
+                @YOffset: 1, 1;
+            }
+
+            #Empty:FaceSlot {
+                @Fill: {
+                    @XAnchor: 0, 1;
+                    @YAnchor: 0, 1;
+                    @XOffset: 1, 0;
+                    @YOffset: 14, 9;
+                }
+
+                @Masked: true;
+
+                #Image:Face {
+                    @Pos: {
+                        @Anchor: 0.5, 0.5;
+                        @Pivot: 0.5, 0.5;
+                        @Value: 0, -8;
+                        @Size: 96, 96;
+                    }
+
+                    @Sprite: "Champion";
+                }
+            }
+
+            #Empty:Header {
+                @XFill: {
+                    @Anchor: 0, 1;
+                    @OffMin: 0;
+                    @OffMax: 0;
+                }
+
+                @YPos: {
+                    @Anchor: 1;
+                    @Pivot: 1;
+                    @Value: 0;
+                    @Size: 9;
+                }
+
+                #I18nLabel:Category {
+                    @Fill: {
+                        @XAnchor: 0, 1;
+                        @YAnchor: 0, 1;
+                        @XOffset: 1, 1;
+                        @YOffset: 1, 1;
+                    }
+
+                    @Size: 2;
+                    @Text: "testtest";
+                    @YAlign: "Center";
+                }
+            }
+
+            #Empty:Footer {
+                @XFill: {
+                    @Anchor: 0, 1;
+                    @OffMin: 0;
+                    @OffMax: 0;
+                }
+
+                @YPos: {
+                    @Anchor: 0;
+                    @Pivot: 0;
+                    @Value: 0;
+                    @Size: 14;
+                }
+
+                #I18nLabel:Name {
+                    @Fill: {
+                        @XAnchor: 0, 1;
+                        @YAnchor: 0, 1;
+                        @XOffset: 1, 1;
+                        @YOffset: 1, 1;
+                    }
+
+                    @Size: 3;
+                    @Text: "testtest";
+                    @XAlign: "Center";
+                    @YAlign: "Center";
+                }
+            }
+        }
+    }
+}

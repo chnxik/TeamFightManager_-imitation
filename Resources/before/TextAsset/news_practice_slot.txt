@@ -1,0 +1,125 @@
+#Button:NewsPracticeSlot {
+    @Pos: {
+        @Size: 154, 38;
+    }
+
+    @FirstFocus: true;
+
+    #Image:Slot {
+        @Fill: {
+            @XAnchor: 0, 1;
+            @YAnchor: 0, 1;
+            @XOffset: 0, 0;
+            @YOffset: 0, 0;
+        }
+
+        @Masked: true;
+
+        @Normal: {
+            @Sprite: "InboxPracticeSlot";
+        }
+
+        @Hover: {
+            @Sprite: "InboxPracticeSlotHover";
+        }
+    }
+
+    #Image:Selected {
+        @Fill: {
+            @XAnchor: 0, 1;
+            @YAnchor: 0, 1;
+            @XOffset: 0, 0;
+            @YOffset: 0, 0;
+        }
+
+        @Sprite: "InboxPracticeSlotSelected";
+    }
+
+    #Empty:Data {
+        @Fill: {
+            @XAnchor: 0, 1;
+            @YAnchor: 0, 1;
+            @XOffset: 0, 0;
+            @YOffset: 0, 0;
+        }
+
+        #Empty:NamePanel {
+            @Fill: {
+                @XAnchor: 0.0, 1;
+                @YAnchor: 0, 1;
+                @XOffset: 0, 0;
+                @YOffset: 0, 0;
+            }
+
+            #Image:Logo {
+                @Pos: {
+                    @Pivot: 0, 0.5;
+                    @Anchor: 0, 0.5;
+                    @Value: 3, 0;
+                    @Size: 30, 30;
+                }
+            }
+
+            #Label:Name {
+                @Pos: {
+                    @Anchor: 0, 1;
+                    @Pivot: 0, 1;
+                    @Value: 36, -4;
+                    @Size: 110, 16;
+                }
+                @XAlign: "Left";
+                @YAlign: "Up";
+                @Text: "남현욱";
+                @Size: 5;
+            }
+
+            #Image:Attack {
+                @Pos: {
+                    @Pivot: 0, 0;
+                    @Anchor: 0, 0;
+                    @Value: 36, 5;
+                    @Size: 10, 10;
+                }
+
+                @Sprite: "Attack";
+            }
+
+            #Label:AttackValue {
+                @Pos: {
+                    @Pivot: 0, 0;
+                    @Anchor: 0, 0;
+                    @Value: 50, 5;
+                    @Size: 15, 10;
+                }
+
+                @Text: "9";
+                @YAlign: "Center";
+                @Size: 4;
+            }
+
+            #Image:Defence {
+                @Pos: {
+                    @Pivot: 0, 0;
+                    @Anchor: 0, 0;
+                    @Value: 76, 5;
+                    @Size: 8, 10;
+                }
+
+                @Sprite: "Defence";
+            }
+
+            #Label:DefenceValue {
+                @Pos: {
+                    @Pivot: 0, 0;
+                    @Anchor: 0, 0;
+                    @Value: 88, 5;
+                    @Size: 15, 10;
+                }
+
+                @Text: "9";
+                @YAlign: "Center";
+                @Size: 4;
+            }
+        }
+    }
+}

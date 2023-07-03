@@ -1,0 +1,191 @@
+#Empty:LoadSlot {
+    @Pos: {
+        @Anchor: 0, 1;
+        @Pivot: 0, 1;
+        @Size: 588, 34;
+    }
+
+    #Image:Contents {
+        @Pos: {
+            @Anchor: 0, 1;
+            @Pivot: 0, 1;
+            @Size: 588, 30;
+        }
+
+        @Sprite: "SaveSlotBG";
+
+        #Image:Logo {
+            @Pos: {
+                @Anchor: 0, 0.5;
+                @Pivot: 0, 0.5;
+                @Value: 0, 0;
+                @Size: 30, 30;
+            }
+        }
+
+        #Label:Name {
+            @Pos: {
+                @Anchor: 0, 0.5;
+                @Pivot: 0, 0.5;
+                @Value: 40, 0;
+                @Size: 80, 15;
+            }
+
+            @Text: "test 1233455";
+            @Size: 4;
+            @YAlign: "Center";
+        }
+
+        #Image:CompetitionLogoBG {
+            @Pos: {
+                @Anchor: 0, 0.5;
+                @Pivot: 0, 0.5;
+                @Size: 18, 18;
+                @Value: 130, 0;
+            }
+
+            @Sprite: "LeagueIconBG";
+            
+            #Image:CompetitionLogo {
+                @Pos: {
+                    @Size: 18, 18;
+                }
+            }
+        }
+
+        #I18nLabel:CompetitionName {
+            @Pos: {
+                @Anchor: 0, 0.5;
+                @Pivot: 0, 0.5;
+                @Size: 100, 15;
+                @Value: 155, 0;
+            }
+            
+            @Text: "main_header.competition";
+            @Size: 4;
+
+            @YAlign: "Center";
+        }
+
+        #I18nLabel:State {
+            @Pos: {
+                @Anchor: 0, 0.5;
+                @Pivot: 0, 0.5;
+                @Size: 100, 15;
+                @Value: 260, 0;
+            }
+
+            @Text: "save.state_league";
+            @Size: 4;
+            
+            @XAlign: "Center";
+            @YAlign: "Center";
+        }
+
+        #Label:Gold {
+            @Pos: {
+                @Anchor: 0, 0.5;
+                @Pivot: 0, 0.5;
+                @Size: 45, 14;
+                @Value: 370, 0;
+            }
+
+            @Text: "0";
+            @Size: 4;
+            @XAlign: "Right";
+            @YAlign: "Center";
+        }
+
+        #Image:GoldIcon {
+            @Pos: {
+                @Anchor: 0, 0.5;
+                @Pivot: 0, 0.5;
+                @Size: 12, 12;
+                @Value: 420, 0;
+            }
+
+            @Sprite: "Gold";
+        }
+
+        #I18nLabel:Playing {
+            @Pos: {
+                @Anchor: 0, 0.5;
+                @Pivot: 0, 0.5;
+                @Size: 85, 24;
+                @Value: 435, 0;
+            }
+
+            @Text: "save.playing";
+            @Size: 3;
+            @XAlign: "Center";
+            @YAlign: "Center";
+        }
+
+        #Button:Action {
+            @Pos: {
+                @Anchor: 1, 0.5;
+                @Pivot: 1, 0.5;
+                @Value: -8, 0;
+                @Size: 57, 20;
+            }
+            @FirstFocus: true;
+
+            #Image:Load {
+                @Pos: {
+                    @Size: 57, 20;
+                }
+
+                @Sliced: true;
+
+                @Normal: {
+                    @Sprite: "Button";
+                }
+
+                @Hover: {
+                    @Sprite: "ButtonHover";
+                }
+
+                #I18nLabel:Label {
+                    @Fill: {
+                        @XAnchor: 0, 1;
+                        @YAnchor: 0, 1;
+                        @XOffset: 3, 3;
+                        @YOffset: 3, 3;
+                    }
+                    @Text: "title.load_game";
+                    @Size: 4;
+                    @XAlign: "Center";
+                    @YAlign: "Center";
+                }
+            }
+
+            #Image:Delete {
+                @Pos: {
+                    @Size: 57, 20;
+                }
+                @Sliced: true;
+
+                @Normal: {
+                    @Sprite: "RedButton";
+                }
+
+                @Hover: {
+                    @Sprite: "RedButtonHover";
+                }
+
+                #I18nLabel:Label {
+                    @Fill: {
+                        @XAnchor: 0, 1;
+                        @YAnchor: 0, 1;
+                        @XOffset: 3, 3;
+                        @YOffset: 3, 3;
+                    }
+                    @Text: "save.delete";
+                    @Size: 4;
+                    @XAlign: "Center";
+                    @YAlign: "Center";
+                }
+            }
+        }
+    }
+}

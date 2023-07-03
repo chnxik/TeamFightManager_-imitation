@@ -1,0 +1,143 @@
+#Empty:NewsResult {
+    @XFill: {
+        @Anchor: 0, 1;
+        @OffMin: 0;
+        @OffMax: 0;
+    }
+
+    @YPos: {
+        @Anchor: 1;
+        @Pivot: 1;
+        @Size: 180;
+    }
+
+    #I18nLabel:Desc {
+        @Pos: {
+            @Anchor: 0, 1;
+            @Pivot: 0, 1;
+            @Value: 0, 0;
+            @Size: 580, 16;
+        }
+
+        @Text: "news.interview.result_ask";
+        @Size: 4;
+        @XAlign: "Left";
+        @YAlign: "Up";
+    }
+
+    #I18nLabel:Answer {
+        @Pos: {
+            @Anchor: 0, 1;
+            @Pivot: 0, 1;
+            @Value: 6, -16;
+            @Size: 574, 16;
+        }
+
+        @Text: "news.interview.answer";
+        @Color: "MainSelectedYellow";
+        @Size: 4;
+        @XAlign: "Left";
+        @YAlign: "Up";
+    }
+
+    #Image:UpRect {
+        @Pos: {
+            @Anchor: 0, 1;
+            @Pivot: 0, 1;
+            @Value: 0, -36;
+            @Size: 288, 90;
+        }
+
+        @Sprite: "White";
+        @Color: "Header";
+
+        #Empty:HeaderObj {
+            @Pos: {
+                @Size: 282, 26;
+            }
+
+            #Image:Header {
+                @Pos: {
+                    @Anchor: 0.5, 0;
+                    @Pivot: 0.5, 0;
+                    @Size: 282, 20;
+                    @Value: 0, 2;
+                }
+
+                @Sprite: "PatchUpHeader";
+
+                #I18nLabel:Text {
+                    @Fill: {
+                        @XAnchor: 0, 1;
+                        @YAnchor: 0, 1;
+                        @XOffset: 10, 10;
+                        @YOffset: 2, 2;
+                    }
+
+                    @Text: "news.interview.positive";
+                    @XAlign: "Center";
+                    @YAlign: "Center";
+                    @Size: 4;
+                }
+            }
+        }
+    }
+
+    #Image:DownRect {
+        @Pos: {
+            @Anchor: 0, 1;
+            @Pivot: 0, 1;
+            @Value: 294, -36;
+            @Size: 288, 90;
+        }
+
+        @Sprite: "White";
+        @Color: "Header";
+
+        #Empty:HeaderObj {
+            @Pos: {
+                @Size: 282, 26;
+            }
+
+            #Image:Header {
+                @Pos: {
+                    @Anchor: 0.5, 0;
+                    @Pivot: 0.5, 0;
+                    @Size: 282, 20;
+                    @Value: 0, 2;
+                }
+
+                @Sprite: "PatchDownHeader";
+
+                #I18nLabel:Text {
+                    @Fill: {
+                        @XAnchor: 0, 1;
+                        @YAnchor: 0, 1;
+                        @XOffset: 10, 10;
+                        @YOffset: 2, 2;
+                    }
+
+                    @Text: "news.interview.negative";
+                    @XAlign: "Center";
+                    @YAlign: "Center";
+                    @Size: 4;
+                }
+            }
+        }
+    }
+
+    
+    #I18nLabel:NoResponse {
+        @Pos: {
+            @Anchor: 0, 1;
+            @Pivot: 0, 1;
+            @Value: 0, -100;
+            @Size: 580, 16;
+        }
+
+        @Text: "news.interview.response_none";
+        @Size: 4;
+        @XAlign: "Left";
+        @YAlign: "Up";
+    }
+}

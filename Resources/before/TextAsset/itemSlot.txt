@@ -1,0 +1,83 @@
+#Button:ItemSlot {
+    @Pos: {
+        @Anchor: 0, 1;
+        @Pivot: 0, 1;
+        @Size: 32, 32;
+    }
+
+    @FirstFocus: true;
+
+    #Empty:Data {
+        @Pos: {
+            @Anchor: 0, 1;
+            @Pivot: 0, 1;
+            @Size: 30, 30;
+            @Value: 0, 0;
+        }
+
+        #Image:NormalBG {
+            @Pos: {
+                @Anchor: 0, 1;
+                @Pivot: 0, 1;
+                @Size: 30, 30;
+                @Value: 0, 0;
+            }
+
+            @Normal: {
+                @Sprite: "EquipIconBG";
+            }
+
+            @Hover: {
+                @Sprite: "EquipIconHoverBG";
+            }
+        }
+
+        #Image:SelectedBG {
+            @Pos: {
+                @Anchor: 0, 1;
+                @Pivot: 0, 1;
+                @Size: 30, 30;
+                @Value: 0, 0;
+            }
+
+            @Normal: {
+                @Sprite: "EquipIconSelectBG";
+            }
+
+            @Hover: {
+                @Sprite: "EquipIconSelectHoverBG";
+            }
+        }
+
+        #Image:Noti {
+            @Pos: {
+                @Anchor: 1, 1;
+                @Pivot: 1, 1;
+                @Value: -2, -2;
+                @Size: 5, 5;
+            }
+
+            @Sprite: "MainWarn";
+        }
+
+        #Image:Icon {
+            @Pos: {
+                @Anchor: 0.5, 0.5;
+                @Pivot: 0.5, 0.5;
+                @Value: 0, 0;
+                @Size: 38, 38;
+            }
+        }
+
+        #Image:Lock {
+            @Pos: {
+                @Anchor: 1, 1;
+                @Pivot: 1, 1;
+                @Value: -2, -2;
+                @Size: 7, 9;
+            }
+
+            @Sprite: "Lock";
+        }
+    }
+}

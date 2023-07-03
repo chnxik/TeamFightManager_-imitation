@@ -1,0 +1,227 @@
+#Button:MatchPlayerCardBlue {
+    @Pos: {
+        @Size: 80, 78;
+        @Anchor: 1, 1;
+        @Pivot: 1, 1;
+    }
+
+    @FirstFocus: true;
+
+    #Image:Background {
+        @Pos: {
+            @Size: 81, 78;
+            @Anchor: 1, 1;
+            @Pivot: 1, 1;
+            @Value: 0, 0;
+        }
+
+        @Normal: {
+            @Sprite: "MatchBlueBG";
+        }
+
+        @Hover: {
+            @Sprite: "MatchBlueHoverBG";
+        }
+
+        @Focused: {
+            @Sprite: "MatchBlueSelectedBG";
+        }
+    }
+
+    #Image:Turn {
+        @Pos: {
+            @Size: 85, 78;
+            @Anchor: 1, 1;
+            @Pivot: 1, 1;
+            @Value: 0, 0;
+        }
+
+        @Sprite: "MatchBlueTurnBG";
+    }
+
+    #Empty:Data {
+        @Pos: {
+            @Size: 81, 78;
+            @Anchor: 1, 1;
+            @Pivot: 1, 1;
+            @Value: 0, 0;
+        }
+
+        #Empty:NamePanel {
+            @Pos: {
+                @Anchor: 0, 1;
+                @Pivot: 0, 1;
+                @Size: 61, 14;
+                @Value: 1, -1;
+            }
+
+            #I18nLabel:Name {
+                @Fill: {
+                    @XAnchor: 0, 1;
+                    @YAnchor: 0, 1;
+                    @XOffset: 2, 2;
+                    @YOffset: 2, 2;
+                }
+
+                @Size: 3;
+                @Text: "test";
+                @YAlign: "Center";
+            }
+
+            #Empty:Mask {
+                @Pos: {
+                    @Anchor: 0, 1;
+                    @Pivot: 0, 1;
+                    @Size: 26, 26;
+                    @Value: 2, -16;
+                }
+
+                @Masked: true;
+
+                #Image:Athlete {
+                    @Pos: {
+                        @Pivot: 0.5, 0.5;
+                        @Anchor: 0.5, 0.5;
+                        @Value: 0, -2;
+                        @Size: 64, 64;
+                    }
+
+                    @Sprite: "Athlete";
+                }
+
+                #Image:Champ {
+                    @Pos: {
+                        @Pivot: 0.5, 0.5;
+                        @Anchor: 0.5, 0.5;
+                        @Value: 0, -12;
+                        @Size: 96, 96;
+                    }
+
+                    @Sprite: "Champion";
+                }
+            }
+        }
+
+        #Image:Condition {
+            @Pos: {
+                @Pivot: 1, 1;
+                @Anchor: 1, 1;
+                @Value: -2, -1;
+                @Size: 14, 14;
+            }
+        }
+
+        #Image:Attack {
+            @Pos: {
+                @Pivot: 0, 1;
+                @Anchor: 0, 1;
+                @Value: 2, -45;
+                @Size: 10, 10;
+            }
+
+            @Sprite: "Attack";
+        }
+
+        #Label:AttackValue {
+            @Pos: {
+                @Pivot: 0, 1;
+                @Anchor: 0, 1;
+                @Value: 13, -46;
+                @Size: 14, 8;
+            }
+
+            @Text: "999";
+            @XAlign: "Right";
+            @YAlign: "Center";
+            @Size: 3;
+
+            #Label:AttackAdded {
+                @Pos: {
+                    @Anchor: 1, 0;
+                    @Pivot: 0, 0;
+                    @Value: 0, 0;
+                    @Size: 15, 6;
+                }
+
+                @Text: "(+99)";
+                @Color: "MainSelectedYellow";
+                @Size: 2;
+                @YAlign: "Down";
+            }
+        }
+
+        #Image:Defence {
+            @Pos: {
+                @Pivot: 0, 1;
+                @Anchor: 0, 1;
+                @Value: 42, -45;
+                @Size: 8, 10;
+            }
+
+            @Sprite: "Defence";
+        }
+
+        #Label:DefenceValue {
+            @Pos: {
+                @Pivot: 0, 1;
+                @Anchor: 0, 1;
+                @Value: 51, -46;
+                @Size: 14, 8;
+            }
+
+            @Text: "999";
+            @XAlign: "Right";
+            @YAlign: "Center";
+            @Size: 3;
+            
+            #Label:DefenceAdded {
+                @Pos: {
+                    @Anchor: 1, 0;
+                    @Pivot: 0, 0;
+                    @Value: 0, 0;
+                    @Size: 15, 6;
+                }
+
+                @Text: "(+99)";
+                @Color: "MainSelectedYellow";
+                @Size: 2;
+                @YAlign: "Down";
+            }
+        }
+        
+        #Empty:Exps {
+            @Pos: {
+                @Anchor: 0, 0;
+                @Pivot: 0, 0;
+                @Value: 3, 3;
+                @Size: 18, 18;
+            }
+        }
+
+        #Empty:Props {
+            @Pos: {
+                @Anchor: 0, 1;
+                @Pivot: 0, 1;
+                @Value: 31, -17;
+                @Size: 47, 26;
+            }
+        }
+    }
+
+    #Image:Properties {
+        @Pos: {
+            @Size: 109, 78;
+        }
+
+        @Sprite: "MatchPropertyPanel";
+        
+        #Empty:Data {
+            @Fill: {
+                @XAnchor: 0, 1;
+                @YAnchor: 0, 1;
+                @XOffset: 1, 1;
+                @YOffset: 1, 1;
+            }
+        }
+    }
+}

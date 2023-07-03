@@ -1,0 +1,74 @@
+#Button:MailHeader {
+    @Pos: {
+        @Anchor: 0.5, 1;
+        @Pivot: 0.5, 1;
+        @Size: 582, 22;
+    }
+
+    @FirstFocus: true;
+
+    #Image:BG {
+        @Pos: {
+            @Anchor: 0, 1;
+            @Pivot: 0, 1;
+            @Size: 582, 22;
+            @Value: 0, 0;
+        }
+
+        @Normal: {
+            @Sprite: "MailSlot";
+        }
+
+        @Hover: {
+            @Sprite: "MailSlotHover";
+        }
+
+        #Image:Icon {
+            @Pos: {
+                @Anchor: 0, 0.5;
+                @Pivot: 0, 0.5;
+                @Value: 4, 0;
+                @Size: 16, 16;
+            }
+        }
+
+        #I18nLabel:Title {
+            @Pos: {
+                @Anchor: 0, 0.5;
+                @Pivot: 0, 0.5;
+                @Value: 24, 0;
+                @Size: 380, 20;
+            }
+
+            @Text: "test";
+            @Size: 5;
+            @YAlign: "Center";
+        }
+
+        #Image:Alert {
+            @Pos: {
+                @Anchor: 0, 0.5;
+                @Pivot: 0, 0.5;
+                @Value: 424, 0;
+                @Size: 16, 16;
+            }
+
+            @Sprite: "Alert";
+        }
+
+        #I18nLabel:Time {
+            @Pos: {
+                @Anchor: 1, 0.5;
+                @Pivot: 1, 0.5;
+                @Value: -10, 0;
+                @Size: 100, 20;
+            }
+
+            @Text: "mailbox.time";
+            @Size: 4;
+            @XAlign: "Right";
+            @YAlign: "Center";
+            @Color: "LightGrey";
+        }
+    }
+}

@@ -1,0 +1,113 @@
+#Empty:PlayoffSlot {
+    @Pos: {
+        @Anchor: 0, 1;
+        @Pivot: 0, 1;
+        @Size: 139, 67;
+    }
+
+    #Image:Blue {
+        @Pos: {
+            @Anchor: 0, 1;
+            @Pivot: 0, 1;
+            @Value: 0, 0;
+            @Size: 139, 32;
+        }
+
+        @Normal: {
+            @Sprite: "PlayoffTeamBG";
+        }
+
+        @Focused: {
+            @Sprite: "PlayoffTeamWinBG";
+        }
+
+        #Image:Icon {
+            @Pos: {
+                @Anchor: 0, 0.5;
+                @Pivot: 0, 0.5;
+                @Value: 1, 0;
+                @Size: 30, 30;
+            }
+        }
+
+        #Label:Name {
+            @Pos: {
+                @Anchor: 0, 0.5;
+                @Pivot: 0, 0.5;
+                @Value: 38, 0;
+                @Size: 84, 22;
+            }
+
+            @Size: 4;
+            @Text: "name test";
+            @YAlign: "Center";
+        }
+
+        #Label:Score {
+            @Pos: {
+                @Anchor: 1, 0.5;
+                @Pivot: 1, 0.5;
+                @Value: -5, 0;
+                @Size: 10, 16;
+            }
+
+            @Size: 4;
+            @Text: "3";
+            @XAlign: "Right";
+            @YAlign: "Center";
+        }
+    }
+
+    #Image:Red {
+        @Pos: {
+            @Anchor: 0, 1;
+            @Pivot: 0, 1;
+            @Value: 0, -35;
+            @Size: 139, 32;
+        }
+
+        @Normal: {
+            @Sprite: "PlayoffTeamBG";
+        }
+
+        @Focused: {
+            @Sprite: "PlayoffTeamWinBG";
+        }
+
+        #Image:Icon {
+            @Pos: {
+                @Anchor: 0, 0.5;
+                @Pivot: 0, 0.5;
+                @Value: 1, 0;
+                @Size: 30, 30;
+            }
+        }
+
+        #Label:Name {
+            @Pos: {
+                @Anchor: 0, 0.5;
+                @Pivot: 0, 0.5;
+                @Value: 38, 0;
+                @Size: 84, 22;
+            }
+
+            @Size: 4;
+            @Text: "name test";
+            @YAlign: "Center";
+        }
+
+        #Label:Score {
+            @Pos: {
+                @Anchor: 1, 0.5;
+                @Pivot: 1, 0.5;
+                @Value: -5, 0;
+                @Size: 10, 16;
+            }
+
+            @Size: 4;
+            @Text: "3";
+            @XAlign: "Right";
+            @YAlign: "Center";
+        }
+    }
+}

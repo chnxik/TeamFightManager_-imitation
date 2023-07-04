@@ -171,6 +171,7 @@
     <ClInclude Include="sszCursorScript.h" />
     <ClInclude Include="sszMainLobbyScene.h" />
     <ClInclude Include="sszPrlgScene.h" />
+    <ClInclude Include="sszStadiumScene.h" />
     <ClInclude Include="sszTitleScene.h" />
   </ItemGroup>
   <ItemGroup>
@@ -180,6 +181,7 @@
     <ClCompile Include="sszCursorScript.cpp" />
     <ClCompile Include="sszMainLobbyScene.cpp" />
     <ClCompile Include="sszPrlgScene.cpp" />
+    <ClCompile Include="sszStadiumScene.cpp" />
     <ClCompile Include="sszTitleScene.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

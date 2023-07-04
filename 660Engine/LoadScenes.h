@@ -3,6 +3,7 @@
 #include "sszTitleScene.h"
 #include "sszPrlgScene.h"
 #include "sszMainLobbyScene.h"
+#include "sszStadiumScene.h"
 
 #ifdef _DEBUG
 #pragma comment(lib, "..\\x64\\Debug\\660Engine.lib")
@@ -17,7 +18,8 @@ namespace ssz
 		SceneManager::CreateScene<TitleScene>(L"TitleScene");
 		SceneManager::CreateScene<PrlgScene>(L"PrlgScene");
 		SceneManager::CreateScene<MainLobbyScene>(L"MainLobbyScene");
+		SceneManager::CreateScene<StadiumScene>(L"StadiumScene");
 
-		SceneManager::LoadScene(L"TitleScene");
+		SceneManager::LoadScene(L"StadiumScene");
 	}
 }

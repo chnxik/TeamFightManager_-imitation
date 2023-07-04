@@ -75,11 +75,7 @@ namespace ssz
 		Transform* OwnerTf = GetOwner()->GetComponent<Transform>();
 		OwnerTf->SetPosition(ArrangePos);
 		OwnerTf->SetScale(FinalScale);
-
-		if (Input::GetKey(eKeyCode::LBUTTON))
-		{
-			int a = 0;
-		}
+		
 	}
 	
 }

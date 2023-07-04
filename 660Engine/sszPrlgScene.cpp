@@ -1,6 +1,7 @@
 #include "sszPrlgScene.h"
 
 #include "sszInput.h"
+#include "sszSceneManager.h"
 
 // Resources
 #include "sszResources.h"
@@ -14,7 +15,7 @@
 
 // Script
 #include "sszArrangementScript.h"
-
+#include "sszCursorScript.h"
 
 namespace ssz
 {
@@ -39,6 +40,9 @@ namespace ssz
 			std::shared_ptr<Texture> CutScene04Tex = Resources::Load<Texture>(L"CutScene04", L"..\\Resources\\useResource\\Prlg\\Cutscene\\cutscene4.png");
 			std::shared_ptr<Texture> CutScene05Tex = Resources::Load<Texture>(L"CutScene05", L"..\\Resources\\useResource\\Prlg\\Cutscene\\cutscene5.png");
 			std::shared_ptr<Texture> CutScene06Tex = Resources::Load<Texture>(L"CutScene06", L"..\\Resources\\useResource\\Prlg\\Cutscene\\cutscene6.png");
+
+			// Mouse Cursor Tex
+			std::shared_ptr<Texture> CursorTex = Resources::Load<Texture>(L"CursorTex", L"..\\Resources\\useResource\\Cursor\\mouse_cursor.png");
 
 			// Make Material
 			std::shared_ptr<Material> CutScene01_Mt = std::make_shared<Material>();
@@ -76,6 +80,13 @@ namespace ssz
 			CutScene06_Mt->SetTexture(CutScene06Tex);
 			CutScene06_Mt->SetRenderingMode(eRenderingMode::Opaque);
 			Resources::Insert(L"CutScene06_Mt", CutScene06_Mt);
+
+			// Mouse Cursor Material
+			std::shared_ptr<Material> Cursor_Mt = std::make_shared<Material>();
+			Cursor_Mt->SetShader(SpriteShader);
+			Cursor_Mt->SetTexture(CursorTex);
+			Cursor_Mt->SetRenderingMode(eRenderingMode::Transparent);
+			Resources::Insert(L"CursorMt", Cursor_Mt);
 		}
 #pragma endregion
 #pragma region Create Object for this Scene
@@ -150,6 +161,20 @@ namespace ssz
 			CutScenes.push_back(CutScene06);
 		}
 
+		// MouseCursor
+		{
+			GameObject* Cursor = new GameObject();
+			Cursor->SetName(L"Cursor");
+			AddGameObject(eLayerType::Cursor, Cursor);
+
+			MeshRenderer* Cursor_mr = Cursor->AddComponent<MeshRenderer>();
+			Cursor_mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
+			Cursor_mr->SetMaterial(Resources::Find<Material>(L"CursorMt"));
+			Cursor->GetComponent<Transform>()->SetPosition(Vector3(-0.9f, 0.0f, 0.01f));
+			Cursor->GetComponent<Transform>()->SetScale(Vector3(0.032f, 0.032f, 1.0f));
+			Cursor->AddComponent<CursorScript>();
+		}
+
 		// Main Camera
 		{
 			GameObject* camera = new GameObject();
@@ -177,12 +202,13 @@ namespace ssz
 	{
 		if (5 == CutSceneIdx)
 		{
-			if (ssz::Input::GetKeyDown(eKeyCode::SPACE))
+			if (Input::GetKeyDown(eKeyCode::LBUTTON))
 			{
 				// Next Scene
+				SceneManager::LoadScene(L"MainLobbyScene");
 			}
 		}
-		else if (ssz::Input::GetKeyDown(eKeyCode::SPACE))
+		else if (Input::GetKeyDown(eKeyCode::LBUTTON))
 		{
 			Transform* tf = CutScenes[CutSceneIdx++]->GetComponent<Transform>();
 			Vector3 CutScenePos = tf->GetPosition();

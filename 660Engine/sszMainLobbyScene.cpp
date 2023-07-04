@@ -191,7 +191,7 @@ namespace ssz
 				break;
 			case 2:
 				// Next Scene
-				//SceneManager::LoadScene(L"MainLobbyScene");
+				SceneManager::LoadScene(L"StadiumScene");
 				break;
 			}
 		}

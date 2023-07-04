@@ -167,8 +167,10 @@
     <ClInclude Include="framework.h" />
     <ClInclude Include="LoadScenes.h" />
     <ClInclude Include="sszArrangementScript.h" />
+    <ClInclude Include="sszBanPickScene.h" />
     <ClInclude Include="sszCameraScript.h" />
     <ClInclude Include="sszCursorScript.h" />
+    <ClInclude Include="sszIGStadiumScene.h" />
     <ClInclude Include="sszMainLobbyScene.h" />
     <ClInclude Include="sszPrlgScene.h" />
     <ClInclude Include="sszStadiumScene.h" />
@@ -177,8 +179,10 @@
   <ItemGroup>
     <ClCompile Include="660Engine.cpp" />
     <ClCompile Include="sszArrangementScript.cpp" />
+    <ClCompile Include="sszBanPickScene.cpp" />
     <ClCompile Include="sszCameraScript.cpp" />
     <ClCompile Include="sszCursorScript.cpp" />
+    <ClCompile Include="sszIGStadiumScene.cpp" />
     <ClCompile Include="sszMainLobbyScene.cpp" />
     <ClCompile Include="sszPrlgScene.cpp" />
     <ClCompile Include="sszStadiumScene.cpp" />

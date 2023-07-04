@@ -26,6 +26,12 @@
     <ClInclude Include="sszStadiumScene.h">
       <Filter>Contents\Scene\Stadium</Filter>
     </ClInclude>
+    <ClInclude Include="sszIGStadiumScene.h">
+      <Filter>Contents\Scene\IGStadium</Filter>
+    </ClInclude>
+    <ClInclude Include="sszBanPickScene.h">
+      <Filter>Contents\Scene\Banpick</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="660Engine.cpp" />
@@ -49,6 +55,12 @@
     </ClCompile>
     <ClCompile Include="sszStadiumScene.cpp">
       <Filter>Contents\Scene\Stadium</Filter>
+    </ClCompile>
+    <ClCompile Include="sszBanPickScene.cpp">
+      <Filter>Contents\Scene\Banpick</Filter>
+    </ClCompile>
+    <ClCompile Include="sszIGStadiumScene.cpp">
+      <Filter>Contents\Scene\IGStadium</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -84,6 +96,12 @@
     </Filter>
     <Filter Include="Contents\Scene\Stadium">
       <UniqueIdentifier>{fefa87e7-eb70-497a-907e-a0ff5e971b9e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Scene\IGStadium">
+      <UniqueIdentifier>{b4c3226c-b774-46f9-9046-a79f9b339ca7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Scene\Banpick">
+      <UniqueIdentifier>{33b10c18-461d-4ac3-91e7-c4d86b4ef5f3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

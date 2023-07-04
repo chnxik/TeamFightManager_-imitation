@@ -40,10 +40,10 @@ namespace ssz
 		// Position
 		if (Input::GetKey(eKeyCode::A))
 		{
-			if (Input::GetKey(eKeyCode::UP))	{ ArrangePos.y += 1.f * (float)Time::DeltaTime(); }
-			if (Input::GetKey(eKeyCode::DOWN))	{ ArrangePos.y -= 1.f * (float)Time::DeltaTime(); }
-			if (Input::GetKey(eKeyCode::LEFT))	{ ArrangePos.x -= 1.f * (float)Time::DeltaTime(); }
-			if (Input::GetKey(eKeyCode::RIGHT))	{ ArrangePos.x += 1.f * (float)Time::DeltaTime(); }
+			if (Input::GetKey(eKeyCode::UP))	{ ArrangePos.y += 0.5f * (float)Time::DeltaTime(); }
+			if (Input::GetKey(eKeyCode::DOWN))	{ ArrangePos.y -= 0.5f * (float)Time::DeltaTime(); }
+			if (Input::GetKey(eKeyCode::LEFT))	{ ArrangePos.x -= 0.5f * (float)Time::DeltaTime(); }
+			if (Input::GetKey(eKeyCode::RIGHT))	{ ArrangePos.x += 0.5f * (float)Time::DeltaTime(); }
 		}
 
 		

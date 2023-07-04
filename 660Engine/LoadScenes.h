@@ -4,6 +4,8 @@
 #include "sszPrlgScene.h"
 #include "sszMainLobbyScene.h"
 #include "sszStadiumScene.h"
+#include "sszBanPickScene.h"
+#include "sszIGStadiumScene.h"
 
 #ifdef _DEBUG
 #pragma comment(lib, "..\\x64\\Debug\\660Engine.lib")
@@ -19,7 +21,9 @@ namespace ssz
 		SceneManager::CreateScene<PrlgScene>(L"PrlgScene");
 		SceneManager::CreateScene<MainLobbyScene>(L"MainLobbyScene");
 		SceneManager::CreateScene<StadiumScene>(L"StadiumScene");
+		SceneManager::CreateScene<BanPickScene>(L"BanPickScene");
+		SceneManager::CreateScene<IGStadiumScene>(L"IGStadiumScene");
 
-		SceneManager::LoadScene(L"StadiumScene");
+		SceneManager::LoadScene(L"TitleScene");
 	}
 }

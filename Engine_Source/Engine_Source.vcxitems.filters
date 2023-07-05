@@ -88,6 +88,12 @@
     <Filter Include="GameObject\UI">
       <UniqueIdentifier>{e1c40993-6147-4c6d-9d41-f929df134295}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GameObject\Component\UI">
+      <UniqueIdentifier>{8ba303aa-97d3-4fe4-a2b8-7f10fd90c6ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject\Component\UI\Masking">
+      <UniqueIdentifier>{d51cf8d5-ce80-43f4-910a-d25f0b0f4acd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h">
@@ -174,6 +180,9 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)sszUI.h">
       <Filter>GameObject\UI</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszMasking.h">
+      <Filter>GameObject\Component\UI\Masking</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)sszMath.cpp">
@@ -247,6 +256,9 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)sszUI.cpp">
       <Filter>GameObject\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszMasking.cpp">
+      <Filter>GameObject\Component\UI\Masking</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

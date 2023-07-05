@@ -49,10 +49,15 @@ namespace renderer
 			, shader->GetVSCode()
 			, shader->GetInputLayoutAddressOf());
 
-		shader = ssz::Resources::Find<Shader>(L"SpriteShader");
+		std::shared_ptr<Shader> Spriteshader = ssz::Resources::Find<Shader>(L"SpriteShader");
 		ssz::graphics::GetDevice()->CreateInputLayout(arrLayout, 3
-			, shader->GetVSCode()
-			, shader->GetInputLayoutAddressOf());
+			, Spriteshader->GetVSCode()
+			, Spriteshader->GetInputLayoutAddressOf());
+
+		std::shared_ptr<Shader> MaskShader = ssz::Resources::Find<Shader>(L"MaskShader");
+		ssz::graphics::GetDevice()->CreateInputLayout(arrLayout, 3
+			, MaskShader->GetVSCode()
+			, MaskShader->GetInputLayoutAddressOf());
 #pragma endregion
 #pragma region Sampler State
 		// Sampler State
@@ -185,6 +190,9 @@ namespace renderer
 		// Constant Buffer
 		constantBuffer[(UINT)eCBType::Transform] = new ConstantBuffer(eCBType::Transform);
 		constantBuffer[(UINT)eCBType::Transform]->Create(sizeof(TransformCB));
+
+		constantBuffer[(UINT)eCBType::Masking] = new ConstantBuffer(eCBType::Masking);
+		constantBuffer[(UINT)eCBType::Masking]->Create(sizeof(MaskingCB));
 	}
 
 	void LoadShader()
@@ -199,14 +207,10 @@ namespace renderer
 		spriteshader->Create(eShaderStage::PS, L"SpritePS.hlsl", "main");
 		ssz::Resources::Insert(L"SpriteShader", spriteshader);
 
-		// std::shared_ptr<Texture> texture
-		// 	= Resources::Load<Texture>(L"TitleBg", L"..\\Resources\\useResource\\Title\\teamfight_manager_title_bg.png");
-		// 
-		// std::shared_ptr<Material> spriteMaterial = std::make_shared<Material>();
-		// spriteMaterial->SetShader(spriteshader);
-		// spriteMaterial->SetTexture(texture);
-		// spriteMaterial->SetRenderingMode(eRenderingMode::Transparent);
-		// Resources::Insert(L"SpriteMaterial", spriteMaterial);
+		std::shared_ptr<Shader> MaskShader = std::make_shared<Shader>();
+		MaskShader->Create(eShaderStage::VS, L"MaskVS.hlsl", "main");
+		MaskShader->Create(eShaderStage::PS, L"MaskPS.hlsl", "main");
+		ssz::Resources::Insert(L"MaskShader", MaskShader);
 	}
 
 	void Initialize()

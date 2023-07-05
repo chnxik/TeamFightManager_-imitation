@@ -31,6 +31,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)sszEngine.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sszMesh.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sszMeshRenderer.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszMasking.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sszRenderer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sszResource.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sszResources.h" />
@@ -57,6 +58,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)sszMath.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sszMesh.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sszMeshRenderer.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszMasking.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sszRenderer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sszResource.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sszResources.cpp" />

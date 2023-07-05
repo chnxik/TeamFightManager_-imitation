@@ -6,9 +6,12 @@ namespace ssz
 	class CursorScript : public Script
 	{
 	public:
-		virtual void Update() override;
+		CursorScript();
+		virtual ~CursorScript();
+		virtual void Initialize() override;
+		virtual void LateUpdate() override;
 
 	private:
-
+		Vector2 CursorSize;
 	};
 }

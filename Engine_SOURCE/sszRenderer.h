@@ -24,6 +24,14 @@ namespace renderer
 		Matrix mView;
 		Matrix mProjection;
 	};
+
+	CBUFFER(MaskingCB, CBSLOT_MASKING)
+	{
+		float Left;
+		float Top;
+		float Right;
+		float Bottom;
+	};
 	
 	extern Vertex vertexes[];
 	extern ssz::graphics::ConstantBuffer* constantBuffer[(UINT)eCBType::END];

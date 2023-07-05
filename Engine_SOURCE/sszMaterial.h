@@ -21,6 +21,14 @@ namespace ssz::graphics
 		void SetRenderingMode(eRenderingMode mode) { mMode = mode; }
 		eRenderingMode GetRenderingMode() { return mMode; }
 
+		std::shared_ptr<Texture> GetTexture() 
+		{ 
+			if (mTexture != nullptr)
+				return mTexture;
+			else
+				return nullptr;
+		}
+
 	private:
 		std::shared_ptr<Shader> mShader;
 		std::shared_ptr<Texture> mTexture;

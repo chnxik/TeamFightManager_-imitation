@@ -6,34 +6,54 @@
 #include "sszInput.h"
 
 #include "sszTransform.h"
+#include "sszMeshRenderer.h"
+#include "sszMaterial.h"
+#include "sszCamera.h"
 
 extern ssz::Application application;
 
 namespace ssz
 {
-	void CursorScript::Update()
+	CursorScript::CursorScript()
+		: CursorSize{}
 	{
-		RECT rect = {};
-		GetClientRect(application.GetHwnd(), &rect);
-		float width = (float)(rect.right - rect.left);
-		float height = (float)(rect.bottom - rect.top);
+	}
 
-		// Get Mouse Pos
-		Vector2 vMousePos = Input::GetMousePos();
-		
-		// winPos -> wolrdPos 변환 / camera 배율
-		vMousePos.x = (vMousePos.x - width / 2.f) / 1000.f;
-		vMousePos.y = -(vMousePos.y - height / 2.f) / 1000.f;
+	CursorScript::~CursorScript()
+	{
+	}
 
-		// Cursor icon 보정
-		Vector3 vCursorScale = GetOwner()->GetComponent<Transform>()->GetScale();
-		vMousePos.x += vCursorScale.x / 2.f;
-		vMousePos.y -= vCursorScale.y / 2.f;
+	void CursorScript::Initialize()
+	{
+		CursorSize = GetOwner()->GetComponent<MeshRenderer>()->GetMaterial()->GetTexture()->GetTextureSize() / 2.f;
+	}
+	
+	void CursorScript::LateUpdate()
+	{
+		{
+			// Get Mouse Pos
+			Vector2 MousePos = Input::GetMousePos();
 
-		Vector3 FinalPos = GetOwner()->GetComponent<Transform>()->GetPosition();
-		FinalPos.x = vMousePos.x;
-		FinalPos.y = vMousePos.y;
+			// CursorSize로 위치 조정
+			Vector3 FinalPos(MousePos.x + CursorSize.x, MousePos.y + CursorSize.y, 0.0f);
 
-		GetOwner()->GetComponent<Transform>()->SetPosition(FinalPos);
+			RECT rect = {};
+			GetClientRect(application.GetHwnd(), &rect);
+			float width = (float)(rect.right - rect.left);
+			float height = (float)(rect.bottom - rect.top);
+
+			Viewport viewport;
+			viewport.width = width;
+			viewport.height = height;
+			
+			viewport.x = (float)rect.left;
+			viewport.y = (float)rect.top;
+			viewport.minDepth = 0.0f;
+			viewport.maxDepth = 1.0f;
+			
+			FinalPos = viewport.Unproject(FinalPos, Camera::GetProjectionMatrix(), Camera::GetViewMatrix(), Matrix::Identity);
+			
+			GetOwner()->GetComponent<Transform>()->SetPosition(FinalPos);
+		}
 	}
 }

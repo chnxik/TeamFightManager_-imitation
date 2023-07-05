@@ -1,6 +1,7 @@
 #include "sszMeshRenderer.h"
 #include "sszGameObject.h"
 #include "sszTransform.h"
+#include "sszMasking.h"
 #include "sszRenderer.h"
 
 namespace ssz
@@ -30,6 +31,12 @@ namespace ssz
 	{
 		Transform* tr = GetOwner()->GetComponent<Transform>();
 		tr->BindConstantBuffer();
+
+		Masking* ms = GetOwner()->GetComponent<Masking>();
+		if (ms != nullptr)
+		{
+			ms->BindConstantBuffer();
+		}
 
 		mMesh->BindBuffer();
 		mMaterial->Binds();

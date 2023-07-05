@@ -5,6 +5,14 @@ cbuffer Transform : register(b0)
     row_major matrix mProjection;
 }
 
+cbuffer Masking : register(b1)
+{
+    float Left;
+    float Top;
+    float Right;
+    float Bottom;
+}
+
 Texture2D albedoTexture : register(t0);
 
 SamplerState PointSampler : register(s0);

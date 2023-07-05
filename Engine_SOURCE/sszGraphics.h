@@ -11,7 +11,8 @@
 #define CBUFFER(name, slot) static const int CB_GETBINDSLOT(name) = slot; struct alignas(16) name
 
 #define CBSLOT_TRANSFORM			0
-//#define CBSLOT_PARTICLE			1
+#define CBSLOT_MASKING				1
+//#define CBSLOT_PARTICLE			2
 
 namespace ssz::graphics
 {
@@ -29,6 +30,7 @@ namespace ssz::graphics
 	enum class eCBType
 	{
 		Transform,
+		Masking,
 		Material,
 		END,
 	};

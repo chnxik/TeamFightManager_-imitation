@@ -9,7 +9,8 @@ namespace ssz::graphics
 		, mTexture(nullptr)
 		, mSRV(nullptr)
 		, mDesc{}
-
+		, width()
+		, height()
 	{
 	}
 
@@ -49,6 +50,9 @@ namespace ssz::graphics
 		);
 		
 		mSRV->GetResource((ID3D11Resource**)mTexture.GetAddressOf());
+
+		width = (float)mImage.GetImages()->width;
+		height = (float)mImage.GetImages()->height;
 
 		return S_OK;
 	}

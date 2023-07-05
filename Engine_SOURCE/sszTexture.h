@@ -22,12 +22,17 @@ namespace ssz::graphics
 		virtual HRESULT Load(const std::wstring& path) override;
 		void BindShader(eShaderStage stage, UINT startSlot);
 		void Clear();
+		const Image* GetImage() { return mImage.GetImages(); }
+		math::Vector2 GetTextureSize() { return math::Vector2(width, height); }
 
 	private:
 		ScratchImage mImage;
 		Microsoft::WRL::ComPtr<ID3D11Texture2D> mTexture;
 		Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> mSRV;
 		D3D11_TEXTURE2D_DESC mDesc;
+
+		float width;
+		float height;
 	};
 
 }

@@ -1,3 +1,5 @@
+#include "globals.hlsli"
+
 struct VSIn
 {
 	float3 Pos : POSITION;

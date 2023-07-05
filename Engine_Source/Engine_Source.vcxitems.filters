@@ -82,6 +82,12 @@
     <Filter Include="Graphics\Renderer">
       <UniqueIdentifier>{45fad881-649e-4b99-a570-702fd2505a91}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GameObject\Base">
+      <UniqueIdentifier>{62e43b49-3957-4698-9df6-16d8cb21864e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject\UI">
+      <UniqueIdentifier>{e1c40993-6147-4c6d-9d41-f929df134295}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h">
@@ -129,9 +135,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)sszLayer.h">
       <Filter>Scene\Layer</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)sszGameObject.h">
-      <Filter>GameObject</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)sszScript.h">
       <Filter>GameObject\Component\Script</Filter>
     </ClInclude>
@@ -164,6 +167,12 @@
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)sszRenderer.h">
       <Filter>Graphics\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszGameObject.h">
+      <Filter>GameObject\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszUI.h">
+      <Filter>GameObject\UI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -200,9 +209,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)sszLayer.cpp">
       <Filter>Scene\Layer</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)sszGameObject.cpp">
-      <Filter>GameObject</Filter>
-    </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)sszScript.cpp">
       <Filter>GameObject\Component\Script</Filter>
     </ClCompile>
@@ -235,6 +241,12 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)sszRenderer.cpp">
       <Filter>Graphics\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszGameObject.cpp">
+      <Filter>GameObject\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszUI.cpp">
+      <Filter>GameObject\UI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

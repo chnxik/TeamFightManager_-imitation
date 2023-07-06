@@ -17,6 +17,7 @@ struct VSOut
 float4 main(VSOut In) : SV_TARGET
 {
     float4 color = (float) (1.0f, 0.f, 1.0f, 1.0f);
+    color = albedoTexture.Sample(PointSampler, In.UV);
     
     if (Left >= In.Pos.x || Right <= In.Pos.x)
         discard;
@@ -24,7 +25,6 @@ float4 main(VSOut In) : SV_TARGET
     if (Top >= In.Pos.y || Bottom <= In.Pos.y)
         discard;
     
-    color = albedoTexture.Sample(PointSampler, In.UV);
 
     return color;
 }

@@ -39,7 +39,7 @@ namespace ssz
 			
 
 			// Get Using Texture
-			std::shared_ptr<Texture> TestUI = Resources::Load<Texture>(L"TestUI", L"..\\Resources\\useResource\\Title\\teamfight_manager_title_bg.png");
+			std::shared_ptr<Texture> TestUI = Resources::Load<Texture>(L"TestUI", L"..\\Resources\\useResource\\GameScene\\BanPick\\banpick_ui_bg.png");
 			
 			// Mouse Cursor Tex
 			std::shared_ptr<Texture> CursorTex = Resources::Load<Texture>(L"CursorTex", L"..\\Resources\\useResource\\Cursor\\mouse_cursor.png");
@@ -73,7 +73,7 @@ namespace ssz
 			TestUI_mr->SetMaterial(Resources::Find<Material>(L"TestUI_Mt"));
 			TestUI->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, 1.0f));
 
-			Vector2 TextureSize = TestUI_mr->GetMaterial()->GetTexture()->GetTextureSize() / 1000.f * 2.f;
+			Vector2 TextureSize = TestUI_mr->GetMaterial()->GetTexture()->GetTextureSize() / 1000.f * 3.f;
 			TestUI->GetComponent<Transform>()->SetScale(Vector3(TextureSize.x, TextureSize.y, 1.f));
 			TestUI->AddComponent<Masking>();
 

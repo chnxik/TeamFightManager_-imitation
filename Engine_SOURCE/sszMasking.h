@@ -17,6 +17,7 @@ namespace ssz
 		void BindConstantBuffer();
 
 	private:
-
+		Vector3 LeftTop;
+		Vector3 RightBottom;
 	};
 }

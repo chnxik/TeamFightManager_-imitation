@@ -4,6 +4,8 @@
 #include "sszConstantBuffer.h"
 #include "sszCamera.h"
 
+#include "sszInput.h"
+
 extern ssz::Application application;
 
 namespace ssz
@@ -11,6 +13,8 @@ namespace ssz
 	using namespace ssz::graphics;
 	Masking::Masking()
 		: Component(eComponentType::Panel)
+		, LeftTop{-0.2f, 0.2f, 0.0f}
+		, RightBottom{0.2f, -0.2f, 0.0f}
 	{
 	}
 
@@ -24,6 +28,27 @@ namespace ssz
 
 	void Masking::Update()
 	{
+		// masking area Mouse로 지정
+		if (Input::GetKeyDown(eKeyCode::LBUTTON))
+		{
+			Vector2 MousePos = Input::GetMousePos();
+			LeftTop.x = MousePos.x;
+			LeftTop.y = MousePos.y;
+		}
+
+		if (Input::GetKey(eKeyCode::LBUTTON))
+		{
+			Vector2 MousePos = Input::GetMousePos();
+			RightBottom.x = MousePos.x;
+			RightBottom.y = MousePos.y;
+		}
+
+		if (Input::GetKeyUp(eKeyCode::LBUTTON))
+		{
+			Vector2 MousePos = Input::GetMousePos();
+			RightBottom.x = MousePos.x;
+			RightBottom.y = MousePos.y;
+		}
 	}
 
 	void Masking::LateUpdate()
@@ -36,11 +61,13 @@ namespace ssz
 
 	void Masking::BindConstantBuffer()
 	{
+		// 윈도우 해상도
 		RECT rect = {};
 		GetClientRect(application.GetHwnd(), &rect);
 		float width = (float)(rect.right - rect.left);
 		float height = (float)(rect.bottom - rect.top);
 
+		// 뷰포트 정보
 		Viewport viewport;
 		viewport.width = width;
 		viewport.height = height;
@@ -50,18 +77,21 @@ namespace ssz
 		viewport.minDepth = 0.0f;
 		viewport.maxDepth = 1.0f;
 
-		Vector3 LT(0.0f, 0.0f, 0.0f);
-		Vector3 RB(0.5f, 0.5f, 0.0f);
+		// 임의 지정 LT, BT
+		LeftTop.x = -0.96f;
+		LeftTop.y = 0.59f;
+		RightBottom.x = 0.96f;
+		RightBottom.y = -0.59f;
 
-		LT = viewport.Project(LT, Camera::GetProjectionMatrix(), Camera::GetViewMatrix(), Matrix::Identity);
-
-		RB = viewport.Project(RB, Camera::GetProjectionMatrix(), Camera::GetViewMatrix(), Matrix::Identity);
+		// mask area world -> winpos 변환
+		LeftTop = viewport.Project(LeftTop, Camera::GetProjectionMatrix(), Camera::GetViewMatrix(), Matrix::Identity);
+		RightBottom = viewport.Project(RightBottom, Camera::GetProjectionMatrix(), Camera::GetViewMatrix(), Matrix::Identity);
 
 		renderer::MaskingCB paCB;
-		paCB.Left = LT.x;
-		paCB.Top = RB.y;
-		paCB.Right = RB.x;
-		paCB.Bottom = LT.y;
+		paCB.Left = LeftTop.x;
+		paCB.Top = LeftTop.y;
+		paCB.Right = RightBottom.x;
+		paCB.Bottom = RightBottom.y;
 
 		ConstantBuffer* cb = renderer::constantBuffer[(UINT)eCBType::Masking];
 		cb->SetData(&paCB);

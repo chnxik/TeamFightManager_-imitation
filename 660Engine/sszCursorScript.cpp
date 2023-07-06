@@ -36,7 +36,9 @@ namespace ssz
 
 			// CursorSize로 위치 조정
 			Vector3 FinalPos(MousePos.x + CursorSize.x, MousePos.y + CursorSize.y, 0.0f);
+			Vector3 TestPos1 = FinalPos;
 
+			// Mouse Cursor는 Adjust window rect 하면 달라짐
 			RECT rect = {};
 			GetClientRect(application.GetHwnd(), &rect);
 			float width = (float)(rect.right - rect.left);
@@ -52,6 +54,8 @@ namespace ssz
 			viewport.maxDepth = 1.0f;
 			
 			FinalPos = viewport.Unproject(FinalPos, Camera::GetProjectionMatrix(), Camera::GetViewMatrix(), Matrix::Identity);
+
+			Vector3 TestPos2 = viewport.Project(FinalPos, Camera::GetProjectionMatrix(), Camera::GetViewMatrix(), Matrix::Identity);
 			
 			GetOwner()->GetComponent<Transform>()->SetPosition(FinalPos);
 		}

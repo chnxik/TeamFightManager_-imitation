@@ -40,6 +40,7 @@ namespace ssz
 
 			// Get Using Texture
 			std::shared_ptr<Texture> TestUI = Resources::Load<Texture>(L"TestUI", L"..\\Resources\\useResource\\GameScene\\BanPick\\banpick_ui_bg.png");
+			std::shared_ptr<Texture> TestUI2 = Resources::Load<Texture>(L"TestUI2", L"..\\Resources\\useResource\\stadium\\stadium_bg.png");
 			
 			// Mouse Cursor Tex
 			std::shared_ptr<Texture> CursorTex = Resources::Load<Texture>(L"CursorTex", L"..\\Resources\\useResource\\Cursor\\mouse_cursor.png");
@@ -50,6 +51,12 @@ namespace ssz
 			TestUI_Mt->SetTexture(TestUI);
 			TestUI_Mt->SetRenderingMode(eRenderingMode::Transparent);
 			Resources::Insert(L"TestUI_Mt", TestUI_Mt);
+
+			std::shared_ptr<Material> TestUI2_Mt = std::make_shared<Material>();
+			TestUI2_Mt->SetShader(SpriteShader);
+			TestUI2_Mt->SetTexture(TestUI2);
+			TestUI2_Mt->SetRenderingMode(eRenderingMode::Transparent);
+			Resources::Insert(L"TestUI2_Mt", TestUI2_Mt);
 
 			// Mouse Cursor Material
 			std::shared_ptr<Material> Cursor_Mt = std::make_shared<Material>();
@@ -71,11 +78,23 @@ namespace ssz
 			MeshRenderer* TestUI_mr = TestUI->AddComponent<MeshRenderer>();
 			TestUI_mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
 			TestUI_mr->SetMaterial(Resources::Find<Material>(L"TestUI_Mt"));
-			TestUI->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, 1.0f));
+			TestUI->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, 0.9f));
 
 			Vector2 TextureSize = TestUI_mr->GetMaterial()->GetTexture()->GetTextureSize() / 1000.f * 3.f;
 			TestUI->GetComponent<Transform>()->SetScale(Vector3(TextureSize.x, TextureSize.y, 1.f));
 			TestUI->AddComponent<Masking>();
+
+			GameObject* TestUI2 = new GameObject();
+			TestUI2->SetName(L"TestUI2");
+			AddGameObject(eLayerType::BackGround, TestUI2);
+
+			MeshRenderer* TestUI2_mr = TestUI2->AddComponent<MeshRenderer>();
+			TestUI2_mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
+			TestUI2_mr->SetMaterial(Resources::Find<Material>(L"TestUI2_Mt"));
+			TestUI2->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, 1.0f));
+
+			Vector2 Texture2Size = TestUI2_mr->GetMaterial()->GetTexture()->GetTextureSize() / 1000.f * 4.f;
+			TestUI2->GetComponent<Transform>()->SetScale(Vector3(TextureSize.x, TextureSize.y, 1.f));
 
 			// 오브젝트 배치용 스크립트
 			ArrangementScript* ArScript = TestUI->AddComponent<ArrangementScript>();

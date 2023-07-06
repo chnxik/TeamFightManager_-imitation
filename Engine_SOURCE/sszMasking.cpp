@@ -78,20 +78,23 @@ namespace ssz
 		viewport.maxDepth = 1.0f;
 
 		// 임의 지정 LT, BT
-		LeftTop.x = -0.96f;
-		LeftTop.y = 0.59f;
-		RightBottom.x = 0.96f;
-		RightBottom.y = -0.59f;
+		// LeftTop.x = -0.96f;
+		// LeftTop.y = 0.59f;
+		// RightBottom.x = 0.96f;
+		// RightBottom.y = -0.59f;
 
 		// mask area world -> winpos 변환
-		LeftTop = viewport.Project(LeftTop, Camera::GetProjectionMatrix(), Camera::GetViewMatrix(), Matrix::Identity);
-		RightBottom = viewport.Project(RightBottom, Camera::GetProjectionMatrix(), Camera::GetViewMatrix(), Matrix::Identity);
+		// Vector3 FianlLT = viewport.Project(LeftTop, Camera::GetProjectionMatrix(), Camera::GetViewMatrix(), Matrix::Identity);
+		// Vector3 FinalRB = viewport.Project(RightBottom, Camera::GetProjectionMatrix(), Camera::GetViewMatrix(), Matrix::Identity);
+
+		Vector3 FianlLT = LeftTop;
+		Vector3 FinalRB = RightBottom;
 
 		renderer::MaskingCB paCB;
-		paCB.Left = LeftTop.x;
-		paCB.Top = LeftTop.y;
-		paCB.Right = RightBottom.x;
-		paCB.Bottom = RightBottom.y;
+		paCB.Left = FianlLT.x;
+		paCB.Top = FianlLT.y;
+		paCB.Right = FinalRB.x;
+		paCB.Bottom = FinalRB.y;
 
 		ConstantBuffer* cb = renderer::constantBuffer[(UINT)eCBType::Masking];
 		cb->SetData(&paCB);

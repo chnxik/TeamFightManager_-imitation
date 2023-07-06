@@ -94,6 +94,9 @@
     <Filter Include="GameObject\Component\UI\Masking">
       <UniqueIdentifier>{d51cf8d5-ce80-43f4-910a-d25f0b0f4acd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Common\Object">
+      <UniqueIdentifier>{527dd873-7fa4-41d9-8c66-2e3d22f8005a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h">
@@ -182,6 +185,9 @@
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)sszMasking.h">
       <Filter>GameObject\Component\UI\Masking</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszObject.h">
+      <Filter>Common\Object</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -32,6 +32,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)sszMesh.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sszMeshRenderer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sszMasking.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszObject.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sszRenderer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sszResource.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sszResources.h" />

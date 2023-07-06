@@ -14,6 +14,7 @@ namespace ssz
 		virtual void Update();
 		virtual void LateUpdate();
 		virtual void Render();
+		virtual void Destory();
 
 		void AddGameObject(GameObject* gameObj);
 		const std::vector<GameObject*> GetGameObjects()
@@ -23,5 +24,6 @@ namespace ssz
 
 	private:
 		std::vector<GameObject*> mGameObjects;
+		std::vector<GameObject*> mGarbageObjects;
 	};
 }

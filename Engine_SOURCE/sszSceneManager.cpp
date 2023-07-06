@@ -33,6 +33,11 @@ namespace ssz
         }
     }
 
+    void SceneManager::Destroy()
+    {
+        mActiveScene->Destroy();
+    }
+
     Scene* SceneManager::LoadScene(std::wstring name)
     {
         std::map<std::wstring, Scene*>::iterator iter

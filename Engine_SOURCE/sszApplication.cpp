@@ -25,6 +25,7 @@ namespace ssz
 		Update();
 		LateUpdate();
 		Render();
+		Destory();
 	}
 
 	void Application::Initialize()
@@ -58,6 +59,11 @@ namespace ssz
 		renderer::Render();
 
 		graphicDevice->Present();
+	}
+
+	void Application::Destory()
+	{
+		SceneManager::Destroy();
 	}
 
 	void Application::SetWindow(HWND hwnd, UINT width, UINT height)

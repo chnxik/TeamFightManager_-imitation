@@ -17,6 +17,7 @@ namespace ssz
 		void Update();
 		void LateUpdate();
 		void Render();
+		void Destory();
 
 		void SetWindow(HWND hwnd, UINT width, UINT height);
 

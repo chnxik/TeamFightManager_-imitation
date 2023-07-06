@@ -68,6 +68,10 @@ namespace ssz
 			return comp;
 		}
 
+		void SetState(eState state) { mState = state; }
+		bool IsDead() { return eState::Dead == mState; }
+		eState GetState() { return mState; }
+
 	private:
 		eState mState;
 		std::vector<Component*> mComponents;

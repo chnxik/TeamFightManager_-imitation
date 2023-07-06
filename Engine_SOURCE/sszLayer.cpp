@@ -47,6 +47,41 @@ namespace ssz
 		}
 	}
 
+	void Layer::Destory()
+	{
+		// 이전 프레임에서 삭제요청된 오브젝트들을 삭제하고 Garbage배열을 비워준다.
+		{
+			// Garbage에 있는 것 삭제처리
+			for (GameObject* gameObj : mGarbageObjects)
+			{
+				delete gameObj;
+				gameObj = nullptr;
+			}
+			// Garbage 벡터 비워주기
+			mGarbageObjects.clear();
+		}
+
+		{
+			// GameObjects에서 Garbage에 등록하기
+			typedef std::vector<GameObject*>::iterator GameObjectIter;
+			for (GameObjectIter iter = mGameObjects.begin(); iter != mGameObjects.end();)
+			{
+				// iter가 Dead상태이다.
+				if ((*iter)->IsDead())
+				{
+					// Garbage에 넣어주고 GameObject 배열에서 erase 하기.
+					mGarbageObjects.push_back(*iter);
+					iter = mGameObjects.erase(iter);
+				}
+				// iter가 Dead상태가 아니다.
+				else
+				{
+					iter++;
+				}
+			}
+		}
+	}
+
 	void Layer::AddGameObject(GameObject* gameObj)
 	{
 		mGameObjects.push_back(gameObj);

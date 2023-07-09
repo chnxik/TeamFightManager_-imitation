@@ -17,8 +17,14 @@
 #include "sszArrangementScript.h"
 #include "sszCursorScript.h"
 
+// Object
+#include "sszObject.h"
+#include "sszCursor.h"
+
 namespace ssz
 {
+	using namespace object;
+
 	IGStadiumScene::IGStadiumScene()
 	{
 	}
@@ -29,28 +35,15 @@ namespace ssz
 	{
 #pragma region Make Material for this Scene
 		{
-			// Get Using Shader
-			std::shared_ptr<Shader> SpriteShader = ssz::Resources::Find<Shader>(L"SpriteShader");
-
 			// Get Using Texture
-			std::shared_ptr<Texture> BattleHeaderTex = Resources::Load<Texture>(L"BattleHeaderTex", L"..\\Resources\\useResource\\GameScene\\header_bg.png");
-
-			// Mouse Cursor Tex
-			std::shared_ptr<Texture> CursorTex = Resources::Load<Texture>(L"CursorTex", L"..\\Resources\\useResource\\Cursor\\mouse_cursor.png");
+			Resources::Load<Texture>(L"BattleHeaderTex", L"..\\Resources\\useResource\\GameScene\\header_bg.png");
 
 			// Make Material
-			std::shared_ptr<Material> BattleHeader_Mt = std::make_shared<Material>();
-			BattleHeader_Mt->SetShader(SpriteShader);
-			BattleHeader_Mt->SetTexture(BattleHeaderTex);
-			BattleHeader_Mt->SetRenderingMode(eRenderingMode::Transparent);
-			Resources::Insert(L"BattleHeaderMt", BattleHeader_Mt);
-
-			// Mouse Cursor Material
-			std::shared_ptr<Material> Cursor_Mt = std::make_shared<Material>();
-			Cursor_Mt->SetShader(SpriteShader);
-			Cursor_Mt->SetTexture(CursorTex);
-			Cursor_Mt->SetRenderingMode(eRenderingMode::Transparent);
-			Resources::Insert(L"CursorMt", Cursor_Mt);
+//			std::shared_ptr<Material> BattleHeader_Mt = std::make_shared<Material>();
+//			BattleHeader_Mt->SetShader(SpriteShader);
+//			BattleHeader_Mt->SetTexture(BattleHeaderTex);
+//			BattleHeader_Mt->SetRenderingMode(eRenderingMode::Transparent);
+//			Resources::Insert(L"BattleHeaderMt", BattleHeader_Mt);
 		}
 #pragma endregion
 #pragma region Create Object for this Scene
@@ -96,39 +89,16 @@ namespace ssz
 
 		// MouseCursor
 		{
-			GameObject* Cursor = new GameObject();
-			Cursor->SetName(L"Cursor");
-			AddGameObject(eLayerType::Cursor, Cursor);
-
-			MeshRenderer* Cursor_mr = Cursor->AddComponent<MeshRenderer>();
-			Cursor_mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
-			Cursor_mr->SetMaterial(Resources::Find<Material>(L"CursorMt"));
-			Cursor->GetComponent<Transform>()->SetPosition(Vector3(-0.9f, 0.0f, 0.01f));
-			Cursor->GetComponent<Transform>()->SetScale(Vector3(0.032f, 0.032f, 1.0f));
-			Cursor->AddComponent<CursorScript>();
+			Cursor* CursorObj = Instantiate<Cursor>(Vector3(0.f, 0.f, 0.01f), Vector3(32.f, 32.f, 1.f), eLayerType::Cursor);
+			CursorObj->SetName(L"Cursor");
 		}
 
 		// Main Camera
 		{
-			GameObject* camera = new GameObject();
+			GameObject* camera = Instantiate<GameObject>(Vector3(0.0f, 0.0f, -10.f), eLayerType::UI);
 			camera->SetName(L"MainCamera");
-			AddGameObject(eLayerType::UI, camera);
-			camera->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, -10.f));
 			Camera* cameraComp = camera->AddComponent<Camera>();
 			cameraComp->TurnLayerMask(eLayerType::UI, false);
-		}
-
-
-		// UI Camera
-		{
-			GameObject* UIcamera = new GameObject();
-			UIcamera->SetName(L"UICamera");
-			AddGameObject(eLayerType::UI, UIcamera);
-			UIcamera->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, -10.f));
-			Camera* cameraComp = UIcamera->AddComponent<Camera>();
-			cameraComp->DisableLayerMasks();
-			cameraComp->TurnLayerMask(eLayerType::UI, true);
-			cameraComp->TurnLayerMask(eLayerType::Cursor, true);
 		}
 #pragma endregion
 	}

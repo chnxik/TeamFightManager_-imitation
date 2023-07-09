@@ -20,4 +20,3 @@
 #include "CommonInclude.h"
 #include "sszEnums.h"
 #include "sszMath.h"
-

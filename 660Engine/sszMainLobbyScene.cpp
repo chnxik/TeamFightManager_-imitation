@@ -17,8 +17,14 @@
 #include "sszArrangementScript.h"
 #include "sszCursorScript.h"
 
+// Object
+#include "sszObject.h"
+#include "sszCursor.h"
+
 namespace ssz
 {
+	using namespace object;
+
 	MainLobbyScene::MainLobbyScene()
 		: BgSky(nullptr)
 	{
@@ -32,100 +38,55 @@ namespace ssz
 	{
 #pragma region Make Material for this Scene
 		{
-			// Get Using Shader
-			std::shared_ptr<Shader> SpriteShader = ssz::Resources::Find<Shader>(L"SpriteShader");
-
 			// Get Using Texture
-			std::shared_ptr<Texture> Bg_SkydayTex = Resources::Load<Texture>(L"SkydayBgTex", L"..\\Resources\\useResource\\Mainlobby\\Bg\\sky\\sky_day.png");
-			std::shared_ptr<Texture> Bg_SkynightTex = Resources::Load<Texture>(L"SkynightBgTex", L"..\\Resources\\useResource\\Mainlobby\\Bg\\sky\\sky_night.png");
-			std::shared_ptr<Texture> Bg_SkysunsetTex = Resources::Load<Texture>(L"SkysunsetBgTex", L"..\\Resources\\useResource\\Mainlobby\\Bg\\sky\\sky_sunset.png");
-			std::shared_ptr<Texture> Bg_GroundTex = Resources::Load<Texture>(L"BgGroundTex", L"..\\Resources\\useResource\\Mainlobby\\Bg\\Ground\\ground.png");
-			std::shared_ptr<Texture> Bg_HouseTex = Resources::Load<Texture>(L"BgHouseTex", L"..\\Resources\\useResource\\Mainlobby\\Bg\\house\\house_bg.png");
-			std::shared_ptr<Texture> UIheaderBarTex = Resources::Load<Texture>(L"UIheaderBarTex", L"..\\Resources\\useResource\\Mainlobby\\UI\\header_bg.png");
+			Resources::Load<Texture>(L"SkydayBgTex", L"..\\Resources\\useResource\\Mainlobby\\Bg\\sky\\sky_day.png");
+			Resources::Load<Texture>(L"SkynightBgTex", L"..\\Resources\\useResource\\Mainlobby\\Bg\\sky\\sky_night.png");
+			Resources::Load<Texture>(L"SkysunsetBgTex", L"..\\Resources\\useResource\\Mainlobby\\Bg\\sky\\sky_sunset.png");
+			Resources::Load<Texture>(L"BgGroundTex", L"..\\Resources\\useResource\\Mainlobby\\Bg\\Ground\\ground.png");
+			Resources::Load<Texture>(L"BgHouseTex", L"..\\Resources\\useResource\\Mainlobby\\Bg\\house\\house_bg.png");
+			Resources::Load<Texture>(L"UIheaderBarTex", L"..\\Resources\\useResource\\Mainlobby\\UI\\header_bg.png");
 			
-			// Mouse Cursor Tex
-			std::shared_ptr<Texture> CursorTex = Resources::Load<Texture>(L"CursorTex", L"..\\Resources\\useResource\\Cursor\\mouse_cursor.png");
-
 			// Make Material
 			std::shared_ptr<Material> Bg_Skyday_Mt = std::make_shared<Material>();
-			Bg_Skyday_Mt->SetShader(SpriteShader);
-			Bg_Skyday_Mt->SetTexture(Bg_SkydayTex);
-			Bg_Skyday_Mt->SetRenderingMode(eRenderingMode::Transparent);
+			Bg_Skyday_Mt->SetMaterial(L"SpriteShader", L"SkydayBgTex", eRenderingMode::Transparent);
 			Resources::Insert(L"Bg_Skyday_Mt", Bg_Skyday_Mt);
 
 			std::shared_ptr<Material> Bg_Ground_Mt = std::make_shared<Material>();
-			Bg_Ground_Mt->SetShader(SpriteShader);
-			Bg_Ground_Mt->SetTexture(Bg_GroundTex);
-			Bg_Ground_Mt->SetRenderingMode(eRenderingMode::Transparent);
+			Bg_Ground_Mt->SetMaterial(L"SpriteShader", L"BgGroundTex", eRenderingMode::Transparent);
 			Resources::Insert(L"Bg_Ground_Mt", Bg_Ground_Mt);
 
 			std::shared_ptr<Material> Bg_House_Mt = std::make_shared<Material>();
-			Bg_House_Mt->SetShader(SpriteShader);
-			Bg_House_Mt->SetTexture(Bg_HouseTex);
-			Bg_House_Mt->SetRenderingMode(eRenderingMode::Transparent);
+			Bg_House_Mt->SetMaterial(L"SpriteShader", L"BgHouseTex", eRenderingMode::Transparent);
 			Resources::Insert(L"Bg_House_Mt", Bg_House_Mt);
 
 			std::shared_ptr<Material> UI_headerBar_Mt = std::make_shared<Material>();
-			UI_headerBar_Mt->SetShader(SpriteShader);
-			UI_headerBar_Mt->SetTexture(UIheaderBarTex);
-			UI_headerBar_Mt->SetRenderingMode(eRenderingMode::Transparent);
+			UI_headerBar_Mt->SetMaterial(L"SpriteShader", L"UIheaderBarTex", eRenderingMode::Transparent);
 			Resources::Insert(L"UI_headerBar_Mt", UI_headerBar_Mt);
-
-			// Mouse Cursor Material
-			std::shared_ptr<Material> Cursor_Mt = std::make_shared<Material>();
-			Cursor_Mt->SetShader(SpriteShader);
-			Cursor_Mt->SetTexture(CursorTex);
-			Cursor_Mt->SetRenderingMode(eRenderingMode::Transparent);
-			Resources::Insert(L"CursorMt", Cursor_Mt);
 		}
 #pragma endregion
 #pragma region Create Object for this Scene
 		// GameObject
 		{
 			// Bg_Sky
-			GameObject* Bg_Skyday = new GameObject();
-			Bg_Skyday->SetName(L"Bg_Skyday");
-			AddGameObject(eLayerType::BackGround, Bg_Skyday);
-			BgSky = Bg_Skyday;
-
-			MeshRenderer* Bg_Skyday_mr = Bg_Skyday->AddComponent<MeshRenderer>();
-			Bg_Skyday_mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
-			Bg_Skyday_mr->SetMaterial(Resources::Find<Material>(L"Bg_Skyday_Mt"));
-			Bg_Skyday->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.166f, 1.1f));
-			Bg_Skyday->GetComponent<Transform>()->SetScale(Vector3(1.92f, 1.92f, 1.f));
+			GameObject* Bg_Sky = Instantiate<GameObject>(Vector3(0.0f, 166.f, 1.1f), Vector3(1920.f, 1920.f, 1.f), eLayerType::BackGround);
+			Bg_Sky->SetName(L"Bg_Sky");
+			Bg_Sky->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"Bg_Skyday_Mt");
+			BgSky = Bg_Sky;
 
 			// Bg_Ground
-			GameObject* Bg_Ground = new GameObject();
+			GameObject* Bg_Ground = Instantiate<GameObject>(Vector3(0.0f, -445.f, 1.015f), Vector3(1920.f, 256.f, 1.f), eLayerType::BackGround);
 			Bg_Ground->SetName(L"Bg_Ground");
-			AddGameObject(eLayerType::BackGround, Bg_Ground);
-
-			MeshRenderer* Bg_Ground_mr = Bg_Ground->AddComponent<MeshRenderer>();
-			Bg_Ground_mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
-			Bg_Ground_mr->SetMaterial(Resources::Find<Material>(L"Bg_Ground_Mt"));
-			Bg_Ground->GetComponent<Transform>()->SetPosition(Vector3(0.0f, -0.412f, 1.001f));
-			Bg_Ground->GetComponent<Transform>()->SetScale(Vector3(1.92f, 0.256f, 1.f));
+			Bg_Ground->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"Bg_Ground_Mt");
 
 			// Bg_House
-			GameObject* Bg_House = new GameObject();
+			GameObject* Bg_House = Instantiate<GameObject>(Vector3(0.0f, -30.f, 1.014f), Vector3(668.f, 512.f, 1.f), eLayerType::BackGround);
 			Bg_House->SetName(L"Bg_House");
-			AddGameObject(eLayerType::BackGround, Bg_House);
-
-			MeshRenderer* Bg_House_mr = Bg_House->AddComponent<MeshRenderer>();
-			Bg_House_mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
-			Bg_House_mr->SetMaterial(Resources::Find<Material>(L"Bg_House_Mt"));
-			Bg_House->GetComponent<Transform>()->SetPosition(Vector3(0.0f, -0.028f, 1.0001f));
-			Bg_House->GetComponent<Transform>()->SetScale(Vector3(0.668f, 0.512f, 1.f));
+			Bg_House->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"Bg_House_Mt");
 
 			// UI_Headerbar
-			GameObject* UI_headerBar = new GameObject();
+			GameObject* UI_headerBar = Instantiate<GameObject>(Vector3(0.0f, 523.f, 1.015f), Vector3(1920.f, 111.f, 1.f), eLayerType::BackGround);
 			UI_headerBar->SetName(L"UI_header_Bar");
-			AddGameObject(eLayerType::BackGround, UI_headerBar);
-			
-			MeshRenderer* UI_headerBar_mr = UI_headerBar->AddComponent<MeshRenderer>();
-			UI_headerBar_mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
-			UI_headerBar_mr->SetMaterial(Resources::Find<Material>(L"UI_headerBar_Mt"));
-			UI_headerBar->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.4845f, 1.001f));
-			UI_headerBar->GetComponent<Transform>()->SetScale(Vector3(1.92f, 0.111f, 1.f));
+			UI_headerBar->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"UI_headerBar_Mt");
 
 			// 오브젝트 배치용 스크립트
 			ArrangementScript* ArScript = Bg_House->AddComponent<ArrangementScript>();
@@ -134,39 +95,16 @@ namespace ssz
 
 		// MouseCursor
 		{
-			GameObject* Cursor = new GameObject();
-			Cursor->SetName(L"Cursor");
-			AddGameObject(eLayerType::Cursor, Cursor);
-
-			MeshRenderer* Cursor_mr = Cursor->AddComponent<MeshRenderer>();
-			Cursor_mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
-			Cursor_mr->SetMaterial(Resources::Find<Material>(L"CursorMt"));
-			Cursor->GetComponent<Transform>()->SetPosition(Vector3(-0.9f, 0.0f, 0.01f));
-			Cursor->GetComponent<Transform>()->SetScale(Vector3(0.032f, 0.032f, 1.0f));
-			Cursor->AddComponent<CursorScript>();
+			Cursor* CursorObj = Instantiate<Cursor>(Vector3(0.f, 0.f, 0.01f), Vector3(32.f, 32.f, 1.f), eLayerType::Cursor);
+			CursorObj->SetName(L"Cursor");
 		}
 
 		// Main Camera
 		{
-			GameObject* camera = new GameObject();
+			GameObject* camera = Instantiate<GameObject>(Vector3(0.0f, 0.0f, -10.f), eLayerType::UI);
 			camera->SetName(L"MainCamera");
-			AddGameObject(eLayerType::UI, camera);
-			camera->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, -10.f));
 			Camera* cameraComp = camera->AddComponent<Camera>();
 			cameraComp->TurnLayerMask(eLayerType::UI, false);
-		}
-
-
-		// UI Camera
-		{
-			GameObject* UIcamera = new GameObject();
-			UIcamera->SetName(L"UICamera");
-			AddGameObject(eLayerType::UI, UIcamera);
-			UIcamera->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, -10.f));
-			Camera* cameraComp = UIcamera->AddComponent<Camera>();
-			cameraComp->DisableLayerMasks();
-			cameraComp->TurnLayerMask(eLayerType::UI, true);
-			cameraComp->TurnLayerMask(eLayerType::Cursor, true);
 		}
 #pragma endregion
 	}
@@ -182,7 +120,7 @@ namespace ssz
 			switch (skyBg)
 			{
 			case 0:
-				BgSky->GetComponent<MeshRenderer>()->GetMaterial()->SetTexture  (Resources::Find<Texture>(L"SkysunsetBgTex"));
+				BgSky->GetComponent<MeshRenderer>()->GetMaterial()->SetTexture (Resources::Find<Texture>(L"SkysunsetBgTex"));
 				skyBg++;
 				break;
 			case 1:

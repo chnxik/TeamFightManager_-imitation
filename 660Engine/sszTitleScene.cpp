@@ -105,10 +105,10 @@ namespace ssz
 	{
 		Scene::Update();
 
-		// if (Input::GetKeyDown(eKeyCode::LBUTTON))
-		// {
-		// 	SceneManager::LoadScene(L"PrlgScene");
-		// }
+		if (Input::GetKeyDown(eKeyCode::LBUTTON))
+		{
+			SceneManager::LoadScene(L"PrlgScene");
+		}
 	}
 	void TitleScene::LateUpdate()
 	{

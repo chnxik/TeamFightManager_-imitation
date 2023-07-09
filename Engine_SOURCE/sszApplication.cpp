@@ -84,5 +84,4 @@ namespace ssz
 		ShowWindow(mHwnd, true);
  		UpdateWindow(mHwnd);
 	}
-
 }

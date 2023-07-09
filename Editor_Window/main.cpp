@@ -106,7 +106,7 @@ ATOM MyRegisterClass(HINSTANCE hInstance)
     wcex.hIcon          = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_EDITORWINDOW));
     wcex.hCursor        = LoadCursor(nullptr, IDC_ARROW);
     wcex.hbrBackground  = (HBRUSH)(COLOR_WINDOW+1);
-    wcex.lpszMenuName   = NULL;// MAKEINTRESOURCEW(IDC_EDITORWINDOW);
+    wcex.lpszMenuName   = NULL; // MAKEINTRESOURCEW(IDC_EDITORWINDOW);
     wcex.lpszClassName  = szWindowClass;
     wcex.hIconSm        = LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_SMALL));
 
@@ -127,7 +127,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 {
    hInst = hInstance; // 인스턴스 핸들을 전역 변수에 저장합니다.
 
-   HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPED | WS_SYSMENU,
+   HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
       CW_USEDEFAULT, 0, 1920, 1080, nullptr, nullptr, hInstance, nullptr);
 
    if (!hWnd)
@@ -136,11 +136,9 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    }
 
    application.SetWindow(hWnd, 1920, 1080);
-   ShowWindow(hWnd, nCmdShow);
-   UpdateWindow(hWnd);
 
    // Cursor 감추기
-   ShowCursor(false);
+    ShowCursor(false);
 
    application.Initialize();
    ssz::InitializeScenes();

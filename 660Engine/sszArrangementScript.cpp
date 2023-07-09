@@ -40,10 +40,10 @@ namespace ssz
 		// Position
 		if (Input::GetKey(eKeyCode::A))
 		{
-			if (Input::GetKey(eKeyCode::UP))	{ ArrangePos.y += 0.5f * (float)Time::DeltaTime(); }
-			if (Input::GetKey(eKeyCode::DOWN))	{ ArrangePos.y -= 0.5f * (float)Time::DeltaTime(); }
-			if (Input::GetKey(eKeyCode::LEFT))	{ ArrangePos.x -= 0.5f * (float)Time::DeltaTime(); }
-			if (Input::GetKey(eKeyCode::RIGHT))	{ ArrangePos.x += 0.5f * (float)Time::DeltaTime(); }
+			if (Input::GetKey(eKeyCode::UP))	{ ArrangePos.y += 10.f * (float)Time::DeltaTime(); }
+			if (Input::GetKey(eKeyCode::DOWN))	{ ArrangePos.y -= 10.f * (float)Time::DeltaTime(); }
+			if (Input::GetKey(eKeyCode::LEFT))	{ ArrangePos.x -= 10.f * (float)Time::DeltaTime(); }
+			if (Input::GetKey(eKeyCode::RIGHT))	{ ArrangePos.x += 10.f * (float)Time::DeltaTime(); }
 		}
 
 		
@@ -75,7 +75,6 @@ namespace ssz
 		Transform* OwnerTf = GetOwner()->GetComponent<Transform>();
 		OwnerTf->SetPosition(ArrangePos);
 		OwnerTf->SetScale(FinalScale);
-		
 	}
 	
 }

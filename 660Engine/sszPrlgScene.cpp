@@ -17,8 +17,14 @@
 #include "sszArrangementScript.h"
 #include "sszCursorScript.h"
 
+// Object
+#include "sszObject.h"
+#include "sszCursor.h"
+
 namespace ssz
 {
+	using namespace object;
+
 	PrlgScene::PrlgScene()
 		: CutSceneIdx(0)
 	{
@@ -30,128 +36,71 @@ namespace ssz
 	{
 #pragma region Make Material for this Scene
 		{
-			// Get Using Shader
-			std::shared_ptr<Shader> SpriteShader = ssz::Resources::Find<Shader>(L"SpriteShader");
-
 			// Get Using Texture
-			std::shared_ptr<Texture> CutScene01Tex = Resources::Load<Texture>(L"CutScene01", L"..\\Resources\\useResource\\Prlg\\Cutscene\\cutscene1.png");
-			std::shared_ptr<Texture> CutScene02Tex = Resources::Load<Texture>(L"CutScene02", L"..\\Resources\\useResource\\Prlg\\Cutscene\\cutscene2.png");
-			std::shared_ptr<Texture> CutScene03Tex = Resources::Load<Texture>(L"CutScene03", L"..\\Resources\\useResource\\Prlg\\Cutscene\\cutscene3.png");
-			std::shared_ptr<Texture> CutScene04Tex = Resources::Load<Texture>(L"CutScene04", L"..\\Resources\\useResource\\Prlg\\Cutscene\\cutscene4.png");
-			std::shared_ptr<Texture> CutScene05Tex = Resources::Load<Texture>(L"CutScene05", L"..\\Resources\\useResource\\Prlg\\Cutscene\\cutscene5.png");
-			std::shared_ptr<Texture> CutScene06Tex = Resources::Load<Texture>(L"CutScene06", L"..\\Resources\\useResource\\Prlg\\Cutscene\\cutscene6.png");
-
-			// Mouse Cursor Tex
-			std::shared_ptr<Texture> CursorTex = Resources::Load<Texture>(L"CursorTex", L"..\\Resources\\useResource\\Cursor\\mouse_cursor.png");
+			Resources::Load<Texture>(L"CutScene01", L"..\\Resources\\useResource\\Prlg\\Cutscene\\cutscene1.png");
+			Resources::Load<Texture>(L"CutScene02", L"..\\Resources\\useResource\\Prlg\\Cutscene\\cutscene2.png");
+			Resources::Load<Texture>(L"CutScene03", L"..\\Resources\\useResource\\Prlg\\Cutscene\\cutscene3.png");
+			Resources::Load<Texture>(L"CutScene04", L"..\\Resources\\useResource\\Prlg\\Cutscene\\cutscene4.png");
+			Resources::Load<Texture>(L"CutScene05", L"..\\Resources\\useResource\\Prlg\\Cutscene\\cutscene5.png");
+			Resources::Load<Texture>(L"CutScene06", L"..\\Resources\\useResource\\Prlg\\Cutscene\\cutscene6.png");
 
 			// Make Material
 			std::shared_ptr<Material> CutScene01_Mt = std::make_shared<Material>();
-			CutScene01_Mt->SetShader(SpriteShader);
-			CutScene01_Mt->SetTexture(CutScene01Tex);
-			CutScene01_Mt->SetRenderingMode(eRenderingMode::Opaque);
+			CutScene01_Mt->SetMaterial(L"SpriteShader", L"CutScene01", eRenderingMode::Opaque);
 			Resources::Insert(L"CutScene01_Mt", CutScene01_Mt);
 
+			// Make Material
 			std::shared_ptr<Material> CutScene02_Mt = std::make_shared<Material>();
-			CutScene02_Mt->SetShader(SpriteShader);
-			CutScene02_Mt->SetTexture(CutScene02Tex);
-			CutScene02_Mt->SetRenderingMode(eRenderingMode::Opaque);
+			CutScene02_Mt->SetMaterial(L"SpriteShader", L"CutScene02", eRenderingMode::Opaque);
 			Resources::Insert(L"CutScene02_Mt", CutScene02_Mt);
 
+			// Make Material
 			std::shared_ptr<Material> CutScene03_Mt = std::make_shared<Material>();
-			CutScene03_Mt->SetShader(SpriteShader);
-			CutScene03_Mt->SetTexture(CutScene03Tex);
-			CutScene03_Mt->SetRenderingMode(eRenderingMode::Opaque);
+			CutScene03_Mt->SetMaterial(L"SpriteShader", L"CutScene03", eRenderingMode::Opaque);
 			Resources::Insert(L"CutScene03_Mt", CutScene03_Mt);
 
+			// Make Material
 			std::shared_ptr<Material> CutScene04_Mt = std::make_shared<Material>();
-			CutScene04_Mt->SetShader(SpriteShader);
-			CutScene04_Mt->SetTexture(CutScene04Tex);
-			CutScene04_Mt->SetRenderingMode(eRenderingMode::Opaque);
+			CutScene04_Mt->SetMaterial(L"SpriteShader", L"CutScene04", eRenderingMode::Opaque);
 			Resources::Insert(L"CutScene04_Mt", CutScene04_Mt);
 
+			// Make Material
 			std::shared_ptr<Material> CutScene05_Mt = std::make_shared<Material>();
-			CutScene05_Mt->SetShader(SpriteShader);
-			CutScene05_Mt->SetTexture(CutScene05Tex);
-			CutScene05_Mt->SetRenderingMode(eRenderingMode::Opaque);
+			CutScene05_Mt->SetMaterial(L"SpriteShader", L"CutScene05", eRenderingMode::Opaque);
 			Resources::Insert(L"CutScene05_Mt", CutScene05_Mt);
 
+			// Make Material
 			std::shared_ptr<Material> CutScene06_Mt = std::make_shared<Material>();
-			CutScene06_Mt->SetShader(SpriteShader);
-			CutScene06_Mt->SetTexture(CutScene06Tex);
-			CutScene06_Mt->SetRenderingMode(eRenderingMode::Opaque);
+			CutScene06_Mt->SetMaterial(L"SpriteShader", L"CutScene06", eRenderingMode::Opaque);
 			Resources::Insert(L"CutScene06_Mt", CutScene06_Mt);
-
-			// Mouse Cursor Material
-			std::shared_ptr<Material> Cursor_Mt = std::make_shared<Material>();
-			Cursor_Mt->SetShader(SpriteShader);
-			Cursor_Mt->SetTexture(CursorTex);
-			Cursor_Mt->SetRenderingMode(eRenderingMode::Transparent);
-			Resources::Insert(L"CursorMt", Cursor_Mt);
 		}
 #pragma endregion
 #pragma region Create Object for this Scene
 		// CutScene
 		{
-			GameObject* CutScene01 = new GameObject();
+			GameObject* CutScene01 = Instantiate<GameObject>(Vector3(0.0f, 0.0f, 1.001f), Vector3(1920.f, 1080.f, 1.f), eLayerType::BackGround);
 			CutScene01->SetName(L"CutScene01");
-			AddGameObject(eLayerType::BackGround, CutScene01);
+			CutScene01->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"CutScene01_Mt");
 
-			MeshRenderer* CutScene01_mr = CutScene01->AddComponent<MeshRenderer>();
-			CutScene01_mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
-			CutScene01_mr->SetMaterial(Resources::Find<Material>(L"CutScene01_Mt"));
-			CutScene01->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, 1.001f));
-			CutScene01->GetComponent<Transform>()->SetScale(Vector3(1.92f, 1.08f, 1.0f));
-
-
-			GameObject* CutScene02 = new GameObject();
+			GameObject* CutScene02 = Instantiate<GameObject>(Vector3(0.0f, 0.0f, 1.002f), Vector3(1920.f, 1080.f, 1.f), eLayerType::BackGround);
 			CutScene02->SetName(L"CutScene02");
-			AddGameObject(eLayerType::BackGround, CutScene02);
+			CutScene02->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"CutScene02_Mt");
 
-			MeshRenderer* CutScene02_mr = CutScene02->AddComponent<MeshRenderer>();
-			CutScene02_mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
-			CutScene02_mr->SetMaterial(Resources::Find<Material>(L"CutScene02_Mt"));
-			CutScene02->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, 1.002f));
-			CutScene02->GetComponent<Transform>()->SetScale(Vector3(1.92f, 1.08f, 1.0f));
-
-			GameObject* CutScene03 = new GameObject();
+			GameObject* CutScene03 = Instantiate<GameObject>(Vector3(0.0f, 0.0f, 1.003f), Vector3(1920.f, 1080.f, 1.f), eLayerType::BackGround);
 			CutScene03->SetName(L"CutScene03");
-			AddGameObject(eLayerType::BackGround, CutScene03);
+			CutScene03->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"CutScene03_Mt");
 
-			MeshRenderer* CutScene03_mr = CutScene03->AddComponent<MeshRenderer>();
-			CutScene03_mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
-			CutScene03_mr->SetMaterial(Resources::Find<Material>(L"CutScene03_Mt"));
-			CutScene03->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, 1.003f));
-			CutScene03->GetComponent<Transform>()->SetScale(Vector3(1.92f, 1.08f, 1.0f));
-
-			GameObject* CutScene04 = new GameObject();
+			GameObject* CutScene04 = Instantiate<GameObject>(Vector3(0.0f, 0.0f, 1.004f), Vector3(1920.f, 1080.f, 1.f), eLayerType::BackGround);
 			CutScene04->SetName(L"CutScene04");
-			AddGameObject(eLayerType::BackGround, CutScene04);
+			CutScene04->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"CutScene04_Mt");
 
-			MeshRenderer* CutScene04_mr = CutScene04->AddComponent<MeshRenderer>();
-			CutScene04_mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
-			CutScene04_mr->SetMaterial(Resources::Find<Material>(L"CutScene04_Mt"));
-			CutScene04->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, 1.004f));
-			CutScene04->GetComponent<Transform>()->SetScale(Vector3(1.92f, 1.08f, 1.0f));
-
-			GameObject* CutScene05 = new GameObject();
+			GameObject* CutScene05 = Instantiate<GameObject>(Vector3(0.0f, 0.0f, 1.005f), Vector3(1920.f, 1080.f, 1.f), eLayerType::BackGround);
 			CutScene05->SetName(L"CutScene05");
-			AddGameObject(eLayerType::BackGround, CutScene05);
+			CutScene05->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"CutScene05_Mt");
 
-			MeshRenderer* CutScene05_mr = CutScene05->AddComponent<MeshRenderer>();
-			CutScene05_mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
-			CutScene05_mr->SetMaterial(Resources::Find<Material>(L"CutScene05_Mt"));
-			CutScene05->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, 1.005f));
-			CutScene05->GetComponent<Transform>()->SetScale(Vector3(1.92f, 1.08f, 1.0f));
-
-			GameObject* CutScene06 = new GameObject();
+			GameObject* CutScene06 = Instantiate<GameObject>(Vector3(0.0f, 0.0f, 1.006f), Vector3(1920.f, 1080.f, 1.f), eLayerType::BackGround);
 			CutScene06->SetName(L"CutScene06");
-			AddGameObject(eLayerType::BackGround, CutScene06);
-
-			MeshRenderer* CutScene06_mr = CutScene06->AddComponent<MeshRenderer>();
-			CutScene06_mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
-			CutScene06_mr->SetMaterial(Resources::Find<Material>(L"CutScene06_Mt"));
-			CutScene06->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, 1.006f));
-			CutScene06->GetComponent<Transform>()->SetScale(Vector3(1.92f, 1.08f, 1.0f));
+			CutScene06->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"CutScene06_Mt");
 
 			CutScenes.push_back(CutScene01);
 			CutScenes.push_back(CutScene02);
@@ -163,37 +112,16 @@ namespace ssz
 
 		// MouseCursor
 		{
-			GameObject* Cursor = new GameObject();
-			Cursor->SetName(L"Cursor");
-			AddGameObject(eLayerType::Cursor, Cursor);
-
-			MeshRenderer* Cursor_mr = Cursor->AddComponent<MeshRenderer>();
-			Cursor_mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
-			Cursor_mr->SetMaterial(Resources::Find<Material>(L"CursorMt"));
-			Cursor->GetComponent<Transform>()->SetPosition(Vector3(-0.9f, 0.0f, 0.01f));
-			Cursor->GetComponent<Transform>()->SetScale(Vector3(0.032f, 0.032f, 1.0f));
-			Cursor->AddComponent<CursorScript>();
+			Cursor* CursorObj = Instantiate<Cursor>(Vector3(0.f, 0.f, 0.01f), Vector3(32.f, 32.f, 1.f), eLayerType::Cursor);
+			CursorObj->SetName(L"Cursor");
 		}
 
 		// Main Camera
 		{
-			GameObject* camera = new GameObject();
+			GameObject* camera = Instantiate<GameObject>(Vector3(0.0f, 0.0f, -10.f), eLayerType::UI);
 			camera->SetName(L"MainCamera");
-			AddGameObject(eLayerType::UI, camera);
-			camera->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, -10.f));
 			Camera* cameraComp = camera->AddComponent<Camera>();
 			cameraComp->TurnLayerMask(eLayerType::UI, false);
-		}
-
-		// UI Camera
-		{
-			GameObject* UIcamera = new GameObject();
-			UIcamera->SetName(L"UICamera");
-			AddGameObject(eLayerType::UI, UIcamera);
-			UIcamera->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, -10.f));
-			Camera* cameraComp = UIcamera->AddComponent<Camera>();
-			cameraComp->DisableLayerMasks();
-			cameraComp->TurnLayerMask(eLayerType::UI, true);
 		}
 #pragma endregion
 

@@ -47,8 +47,8 @@ namespace ssz
 			viewport.width = width;
 			viewport.height = height;
 			
-			viewport.x = (float)rect.left;
-			viewport.y = (float)rect.top;
+			viewport.x = 0;
+			viewport.y = 0;
 			viewport.minDepth = 0.0f;
 			viewport.maxDepth = 1.0f;
 			

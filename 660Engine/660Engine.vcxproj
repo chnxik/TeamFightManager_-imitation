@@ -169,6 +169,7 @@
     <ClInclude Include="sszArrangementScript.h" />
     <ClInclude Include="sszBanPickScene.h" />
     <ClInclude Include="sszCameraScript.h" />
+    <ClInclude Include="sszCursor.h" />
     <ClInclude Include="sszCursorScript.h" />
     <ClInclude Include="sszIGStadiumScene.h" />
     <ClInclude Include="sszMainLobbyScene.h" />
@@ -182,6 +183,7 @@
     <ClCompile Include="sszArrangementScript.cpp" />
     <ClCompile Include="sszBanPickScene.cpp" />
     <ClCompile Include="sszCameraScript.cpp" />
+    <ClCompile Include="sszCursor.cpp" />
     <ClCompile Include="sszCursorScript.cpp" />
     <ClCompile Include="sszIGStadiumScene.cpp" />
     <ClCompile Include="sszMainLobbyScene.cpp" />

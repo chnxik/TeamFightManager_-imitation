@@ -4,6 +4,10 @@
 #include "sszMasking.h"
 #include "sszRenderer.h"
 
+#include "sszResources.h"
+#include "sszMesh.h"
+#include "sszMaterial.h"
+
 namespace ssz
 {
 	MeshRenderer::MeshRenderer()
@@ -29,13 +33,9 @@ namespace ssz
 
 	void MeshRenderer::Render()
 	{
-		Transform* tr = GetOwner()->GetComponent<Transform>();
-		tr->BindConstantBuffer();
-
-		Masking* ms = GetOwner()->GetComponent<Masking>();
-		if (ms != nullptr)
+		for (Component* Comp : GetOwner()->GetComponents())
 		{
-			ms->BindConstantBuffer();
+			Comp->BindConstantBuffer();
 		}
 
 		mMesh->BindBuffer();
@@ -43,5 +43,13 @@ namespace ssz
 		mMesh->Render();
 
 		mMaterial->Clear();
+	}
+	void MeshRenderer::SetMeshRenderer(const std::wstring MeshKey, const std::wstring MaterialKey)
+	{
+		mMesh = ssz::Resources::Find<Mesh>(MeshKey);
+		assert(mMesh != nullptr);
+
+		mMaterial = ssz::Resources::Find<Material>(MaterialKey);
+		assert(mMaterial != nullptr);
 	}
 }

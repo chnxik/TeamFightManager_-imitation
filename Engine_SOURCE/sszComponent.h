@@ -18,6 +18,8 @@ namespace ssz
 		virtual void LateUpdate();
 		virtual void Render();
 
+		virtual void BindConstantBuffer();
+
 		GameObject* GetOwner() { return mOwner; }
 		void SetOwner(GameObject* owner) { mOwner = owner; }
 

@@ -2,6 +2,9 @@
 #include "sszRenderer.h"
 #include "sszConstantBuffer.h"
 #include "sszCamera.h"
+#include "sszApplication.h"
+
+extern ssz::Application application;
 
 namespace ssz
 {
@@ -11,8 +14,14 @@ namespace ssz
 		, mPosition(Vector3::Zero)
 		, mRotation(Vector3::Zero)
 		, mScale(Vector3::One)
+		, mResolution(Vector3::Zero)
 		, mParent(nullptr)
 	{
+		RECT rect = {};
+		GetClientRect(application.GetHwnd(), &rect);
+		float width = (float)(rect.right - rect.left);
+		float height = (float)(rect.bottom - rect.top);
+		mResolution = { width,height,1.0f };
 	}
 
 	Transform::~Transform()
@@ -32,7 +41,7 @@ namespace ssz
 	{
 		mWorld = Matrix::Identity;
 
-		Matrix scale = Matrix::CreateScale(mScale);
+		Matrix scale = Matrix::CreateScale(mScale / Vector3(1000.f, 1000.f, 1.f));
 
 		Matrix rotation;
 		rotation = Matrix::CreateRotationX(mRotation.x);
@@ -40,7 +49,7 @@ namespace ssz
 		rotation *= Matrix::CreateRotationZ(mRotation.z);
 
 		Matrix position;
-		position.Translation(mPosition);
+		position.Translation(mPosition / mResolution);
 
 		mWorld = scale * rotation * position;
 

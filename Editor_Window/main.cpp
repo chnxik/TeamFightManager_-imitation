@@ -140,7 +140,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    UpdateWindow(hWnd);
 
    // Cursor 감추기
-   // ShowCursor(false);
+   ShowCursor(false);
 
    application.Initialize();
    ssz::InitializeScenes();

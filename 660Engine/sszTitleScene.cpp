@@ -17,9 +17,15 @@
 #include "sszArrangementScript.h"
 #include "sszCursorScript.h"
 
+// Object
+#include "sszObject.h"
+#include "sszCursor.h"
+
 
 namespace ssz
 {
+	using namespace object;
+
 	TitleScene::TitleScene()
 	{
 	}
@@ -30,97 +36,50 @@ namespace ssz
 	{
 #pragma region Make Material for this Scene
 		{
-			// Get Using Shader
-			std::shared_ptr<Shader> SpriteShader = ssz::Resources::Find<Shader>(L"SpriteShader");
-
-			// Get Using Texture
-			std::shared_ptr<Texture> TitleBgTex = Resources::Load<Texture>(L"TitleBg", L"..\\Resources\\useResource\\Title\\teamfight_manager_title_bg.png");
-			std::shared_ptr<Texture> IG_stadiumtSkyTex = Resources::Load<Texture>(L"IGStadiumSkyTex", L"..\\Resources\\useResource\\stadium\\ingame\\stadium_sky_bg.png");
-			std::shared_ptr<Texture> IG_stadiumTex = Resources::Load<Texture>(L"IGStadiumTex", L"..\\Resources\\useResource\\stadium\\ingame\\stadium.png");
-			std::shared_ptr<Texture> TitleLogoTex = Resources::Load<Texture>(L"TitleLogoTex", L"..\\Resources\\useResource\\Title\\logo_tp.png");
+			// Texture Loading
+			Resources::Load<Texture>(L"TitleBg", L"..\\Resources\\useResource\\Title\\teamfight_manager_title_bg.png");
+			Resources::Load<Texture>(L"IGStadiumSkyTex", L"..\\Resources\\useResource\\stadium\\ingame\\stadium_sky_bg.png");
+			Resources::Load<Texture>(L"IGStadiumTex", L"..\\Resources\\useResource\\stadium\\ingame\\stadium.png");
+			Resources::Load<Texture>(L"TitleLogoTex", L"..\\Resources\\useResource\\Title\\logo_tp.png");
 			
-			// Mouse Cursor Tex
-			std::shared_ptr<Texture> CursorTex = Resources::Load<Texture>(L"CursorTex", L"..\\Resources\\useResource\\Cursor\\mouse_cursor.png");
 
 			// Make Material
-			std::shared_ptr<Material> TitleBg_1_Mt = std::make_shared<Material>();
-			TitleBg_1_Mt->SetShader(SpriteShader);
-			TitleBg_1_Mt->SetTexture(TitleBgTex);
-			TitleBg_1_Mt->SetRenderingMode(eRenderingMode::Transparent);
-			Resources::Insert(L"TitleBgMt", TitleBg_1_Mt);
-
-			std::shared_ptr<Material> IG_stadiumtSky_Mt = std::make_shared<Material>();
-			IG_stadiumtSky_Mt->SetShader(SpriteShader);
-			IG_stadiumtSky_Mt->SetTexture(IG_stadiumtSkyTex);
-			IG_stadiumtSky_Mt->SetRenderingMode(eRenderingMode::Opaque);
-			Resources::Insert(L"IGStadiumSkyMt", IG_stadiumtSky_Mt);
+			std::shared_ptr<Material> TitleBgMt = std::make_shared<Material>();
+			TitleBgMt->SetMaterial(L"SpriteShader", L"TitleBg", eRenderingMode::Transparent);
+			Resources::Insert(L"TitleBgMt", TitleBgMt);
 
 			std::shared_ptr<Material> IG_stadium_Mt = std::make_shared<Material>();
-			IG_stadium_Mt->SetShader(SpriteShader);
-			IG_stadium_Mt->SetTexture(IG_stadiumTex);
-			IG_stadium_Mt->SetRenderingMode(eRenderingMode::Transparent);
+			IG_stadium_Mt->SetMaterial(L"SpriteShader", L"IGStadiumTex", eRenderingMode::Transparent);
 			Resources::Insert(L"IGStadiumMt", IG_stadium_Mt);
 
+			std::shared_ptr<Material> IG_stadiumtSky_Mt = std::make_shared<Material>();
+			IG_stadiumtSky_Mt->SetMaterial(L"SpriteShader", L"IGStadiumSkyTex", eRenderingMode::Opaque);
+			Resources::Insert(L"IGStadiumSkyMt", IG_stadiumtSky_Mt);
+
+
 			std::shared_ptr<Material> TitleLogo_Mt = std::make_shared<Material>();
-			TitleLogo_Mt->SetShader(SpriteShader);
-			TitleLogo_Mt->SetTexture(TitleLogoTex);
-			TitleLogo_Mt->SetRenderingMode(eRenderingMode::Transparent);
+			TitleLogo_Mt->SetMaterial(L"SpriteShader", L"TitleLogoTex", eRenderingMode::Transparent);
 			Resources::Insert(L"TitleLogoMt", TitleLogo_Mt);
-
-			// Mouse Cursor Material
-			std::shared_ptr<Material> Cursor_Mt = std::make_shared<Material>();
-			Cursor_Mt->SetShader(SpriteShader);
-			Cursor_Mt->SetTexture(CursorTex);
-			Cursor_Mt->SetRenderingMode(eRenderingMode::Transparent);
-			Resources::Insert(L"CursorMt", Cursor_Mt);
-
-
 		}
 #pragma endregion
 #pragma region Create Object for this Scene
 		// GameObject
 		{
-			GameObject* TitleBg = new GameObject();
+			GameObject* TitleBg = Instantiate<GameObject>(Vector3(0.0f, 0.0f, 1.0f), Vector3(1920.f, 1080.f, 1.f), eLayerType::BackGround);
 			TitleBg->SetName(L"TitleBg");
-			AddGameObject(eLayerType::BackGround, TitleBg);
+			TitleBg->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"TitleBgMt");
 
-			MeshRenderer* TitleBg_mr = TitleBg->AddComponent<MeshRenderer>();
-			TitleBg_mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
-			TitleBg_mr->SetMaterial(Resources::Find<Material>(L"TitleBgMt"));
-			TitleBg->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, 1.0f));
-			TitleBg->GetComponent<Transform>()->SetScale(Vector3(1.92f, 1.08f, 1.f));
+			GameObject* IG_Stadium = Instantiate<GameObject>(Vector3(0.0f, -44.0f, 1.021f), Vector3(2235.f, 1460.f, 1.f), eLayerType::BackGround);
+			IG_Stadium->SetName(L"IG_Stadium");
+			IG_Stadium->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"IGStadiumMt");
 
+			GameObject* IG_StadiumSky = Instantiate<GameObject>(Vector3(0.0f, -53.0f, 1.022f), Vector3(2144.f, 1429.f, 1.f), eLayerType::BackGround);
+			IG_StadiumSky->SetName(L"IG_StadiumSky");
+			IG_StadiumSky->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"IGStadiumSkyMt");
 
-			GameObject* IG_Stadium = new GameObject();
-			IG_Stadium->SetName(L"Stadium");
-			AddGameObject(eLayerType::BackGround, IG_Stadium);
-
-			MeshRenderer* IG_Stadium_Mr = IG_Stadium->AddComponent<MeshRenderer>();
-			IG_Stadium_Mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
-			IG_Stadium_Mr->SetMaterial(Resources::Find<Material>(L"IGStadiumMt"));
-			IG_Stadium->GetComponent<Transform>()->SetPosition(Vector3(0.0f, -0.044f, 1.021f));
-			IG_Stadium->GetComponent<Transform>()->SetScale(Vector3(2.235f, 1.46f, 1.f));
-
-			GameObject* IG_StadiumSky = new GameObject();
-			IG_StadiumSky->SetName(L"StadiumSky");
-			AddGameObject(eLayerType::BackGround, IG_StadiumSky);
-
-			MeshRenderer* IG_StadimSky_mr = IG_StadiumSky->AddComponent<MeshRenderer>();
-			IG_StadimSky_mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
-			IG_StadimSky_mr->SetMaterial(Resources::Find<Material>(L"IGStadiumSkyMt"));
-			IG_StadiumSky->GetComponent<Transform>()->SetPosition(Vector3(0.0f, -0.053f, 1.022f));
-			IG_StadiumSky->GetComponent<Transform>()->SetScale(Vector3(2.144f, 1.429f, 1.f));
-
-
-			GameObject* TitleLogo = new GameObject();
+			GameObject* TitleLogo = Instantiate<GameObject>(Vector3(0.0f, 242.0f, 1.011f), Vector3(738.f, 271.f, 1.f), eLayerType::BackGround);
 			TitleLogo->SetName(L"TitleLogo");
-			AddGameObject(eLayerType::BackGround, TitleLogo);
-
-			MeshRenderer* TitleLogo_mr = TitleLogo->AddComponent<MeshRenderer>();
-			TitleLogo_mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
-			TitleLogo_mr->SetMaterial(Resources::Find<Material>(L"TitleLogoMt"));
-			TitleLogo->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.242f, 1.011f));
-			TitleLogo->GetComponent<Transform>()->SetScale(Vector3(0.738f, 0.271f, 1.f));
+			TitleLogo->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"TitleLogoMt");
 
 			// 오브젝트 배치용 스크립트
 			// ArrangementScript* ArScript = Cursor->AddComponent<ArrangementScript>();
@@ -129,39 +88,16 @@ namespace ssz
 
 		// MouseCursor
 		{
-			GameObject* Cursor = new GameObject();
-			Cursor->SetName(L"Cursor");
-			AddGameObject(eLayerType::Cursor, Cursor);
-
-			MeshRenderer* Cursor_mr = Cursor->AddComponent<MeshRenderer>();
-			Cursor_mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
-			Cursor_mr->SetMaterial(Resources::Find<Material>(L"CursorMt"));
-			Cursor->GetComponent<Transform>()->SetPosition(Vector3(-0.9f, 0.0f, 0.01f));
-			Cursor->GetComponent<Transform>()->SetScale(Vector3(0.032f, 0.032f, 1.0f));
-			Cursor->AddComponent<CursorScript>();
+			Cursor* CursorObj = Instantiate<Cursor>(Vector3(0.f, 0.f, 0.01f), Vector3(32.f, 32.f, 1.f), eLayerType::Cursor);
+			CursorObj->SetName(L"Cursor");
 		}
 
 		// Main Camera
 		{
-			GameObject* camera = new GameObject();
+			GameObject* camera = Instantiate<GameObject>(Vector3(0.0f, 0.0f, -10.f), eLayerType::UI);
 			camera->SetName(L"MainCamera");
-			AddGameObject(eLayerType::UI, camera);
-			camera->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, -10.f));
 			Camera* cameraComp = camera->AddComponent<Camera>();
 			cameraComp->TurnLayerMask(eLayerType::UI, false);
-		}
-
-
-		// UI Camera
-		{
-			GameObject* UIcamera = new GameObject();
-			UIcamera->SetName(L"UICamera");
-			AddGameObject(eLayerType::UI, UIcamera);
-			UIcamera->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, -10.f));
-			Camera* cameraComp = UIcamera->AddComponent<Camera>();
-			cameraComp->DisableLayerMasks();
-			cameraComp->TurnLayerMask(eLayerType::UI, true);
-			cameraComp->TurnLayerMask(eLayerType::Cursor, true);
 		}
 #pragma endregion
 	}
@@ -169,10 +105,10 @@ namespace ssz
 	{
 		Scene::Update();
 
-		if (Input::GetKeyDown(eKeyCode::LBUTTON))
-		{
-			SceneManager::LoadScene(L"PrlgScene");
-		}
+		// if (Input::GetKeyDown(eKeyCode::LBUTTON))
+		// {
+		// 	SceneManager::LoadScene(L"PrlgScene");
+		// }
 	}
 	void TitleScene::LateUpdate()
 	{

@@ -14,7 +14,7 @@ namespace ssz
 		virtual void LateUpdate() override;
 		virtual void Render() override;
 
-		void BindConstantBuffer();
+		virtual void BindConstantBuffer() override;
 
 		void SetPosition(Vector3 position) { mPosition = position; }
 		void SetRotation(Vector3 rotation) { mRotation = rotation; }
@@ -39,6 +39,8 @@ namespace ssz
 		Vector3 mPosition;
 		Vector3 mRotation;
 		Vector3 mScale;
+
+		Vector3 mResolution;
 
 		Vector3 mUp;
 		Vector3 mForward;

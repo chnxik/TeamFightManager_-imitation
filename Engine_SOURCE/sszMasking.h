@@ -14,7 +14,7 @@ namespace ssz
 		virtual void LateUpdate() override;
 		virtual void Render() override;
 
-		void BindConstantBuffer();
+		virtual void BindConstantBuffer() override;
 
 	private:
 		Vector3 LeftTop;

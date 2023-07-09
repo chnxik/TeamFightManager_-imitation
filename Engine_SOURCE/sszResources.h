@@ -50,9 +50,12 @@ namespace ssz
 		}
 
 		template <typename T>
-		static void Insert(const std::wstring& key, std::shared_ptr<T> resource)
+		static std::shared_ptr<T> Insert(const std::wstring& key, std::shared_ptr<T> resource)
 		{
 			mResources.insert(std::make_pair(key, resource));
+			std::map<std::wstring, std::shared_ptr<Resource>>::iterator iter = mResources.find(key);
+
+			return std::dynamic_pointer_cast<T>(iter->second);
 		}
 
 	private:

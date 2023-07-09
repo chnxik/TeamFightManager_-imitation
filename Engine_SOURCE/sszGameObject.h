@@ -23,6 +23,8 @@ namespace ssz
 		virtual void LateUpdate();
 		virtual void Render();
 
+		const std::vector<Component*> GetComponents() { return mComponents;	}
+
 		template <typename T>
 		T* GetComponent()
 		{

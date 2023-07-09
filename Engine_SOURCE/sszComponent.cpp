@@ -27,4 +27,7 @@ namespace ssz
 	void ssz::Component::Render()
 	{
 	}
+	void Component::BindConstantBuffer()
+	{
+	}
 }

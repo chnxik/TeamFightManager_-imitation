@@ -18,6 +18,7 @@ namespace ssz
 
 		void SetMesh(std::shared_ptr<Mesh> mesh) { mMesh = mesh; }
 		void SetMaterial(std::shared_ptr<Material> material) { mMaterial = material; }
+		void SetMeshRenderer(const std::wstring MeshKey, const std::wstring MaterialKey);
 		std::shared_ptr<Material> GetMaterial() { return mMaterial; }
 
 	private:

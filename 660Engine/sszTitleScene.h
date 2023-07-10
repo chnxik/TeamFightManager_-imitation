@@ -15,6 +15,6 @@ namespace ssz
 		virtual void Render() override;
 
 	private:
-
+		GameObject* TestObject;
 	};
 }

@@ -38,6 +38,9 @@
     <ClInclude Include="sszCursor.h">
       <Filter>Contents\GameObject\Cursor</Filter>
     </ClInclude>
+    <ClInclude Include="sszTestScript.h">
+      <Filter>Contents\Script\Test</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="660Engine.cpp" />
@@ -73,6 +76,9 @@
     </ClCompile>
     <ClCompile Include="sszCursor.cpp">
       <Filter>Contents\GameObject\Cursor</Filter>
+    </ClCompile>
+    <ClCompile Include="sszTestScript.cpp">
+      <Filter>Contents\Script\Test</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -123,6 +129,9 @@
     </Filter>
     <Filter Include="Contents\GameObject\Cursor">
       <UniqueIdentifier>{036de30b-eeee-4881-84f0-9b8c7846ca22}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Script\Test">
+      <UniqueIdentifier>{a688f2ac-cc77-4504-bd0d-b6bd5fadd9a4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

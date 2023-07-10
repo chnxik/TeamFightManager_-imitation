@@ -72,6 +72,8 @@ namespace ssz
 
 		void SetState(eState state) { mState = state; }
 		bool IsDead() { return eState::Dead == mState; }
+		bool IsActive() { return eState::Active == mState; }
+		bool IsPaused() { return eState::Paused == mState; }
 		eState GetState() { return mState; }
 
 	private:

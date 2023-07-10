@@ -12,6 +12,7 @@
 #include "sszTransform.h"
 #include "sszMeshRenderer.h"
 #include "sszCamera.h"
+#include "sszTestScript.h"
 
 // Script
 #include "sszArrangementScript.h"
@@ -27,6 +28,7 @@ namespace ssz
 	using namespace object;
 
 	TitleScene::TitleScene()
+		: TestObject(nullptr)
 	{
 	}
 	TitleScene::~TitleScene()
@@ -80,6 +82,12 @@ namespace ssz
 			GameObject* TitleLogo = Instantiate<GameObject>(Vector3(0.0f, 242.0f, 1.011f), Vector3(738.f, 271.f, 1.f), eLayerType::BackGround);
 			TitleLogo->SetName(L"TitleLogo");
 			TitleLogo->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"TitleLogoMt");
+
+			TestObject = Instantiate<GameObject>(Vector3(0.0f, 0.0f, 1.010f), Vector3(300.f, 300.f, 1.f), eLayerType::Player);
+			TestObject->SetName(L"Test");
+			TestObject->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"TitleLogoMt");
+			TestObject->AddComponent<TestScript>();
+
 
 			// 오브젝트 배치용 스크립트
 			// ArrangementScript* ArScript = Cursor->AddComponent<ArrangementScript>();

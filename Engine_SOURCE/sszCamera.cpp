@@ -198,8 +198,8 @@ namespace ssz
 		{
 			if (gameObj == nullptr)
 				continue;
-
-			gameObj->Render();
+			if(gameObj->IsActive())
+				gameObj->Render();
 		}
 	}
 	
@@ -209,7 +209,8 @@ namespace ssz
 		{
 			if (gameObj == nullptr)
 				continue;
-			gameObj->Render();
+			if (gameObj->IsActive())
+				gameObj->Render();
 		}
 	}
 	
@@ -219,7 +220,8 @@ namespace ssz
 		{
 			if (gameObj == nullptr)
 				continue;
-			gameObj->Render();
+			if (gameObj->IsActive())
+				gameObj->Render();
 		}
 	}
 	

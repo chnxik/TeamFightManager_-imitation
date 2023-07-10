@@ -35,6 +35,8 @@ namespace ssz
 		void SetParent(Transform* transform) { mParent = transform; }
 		Transform* GetParent() { return mParent; }
 
+		GameObject* GetParentOwner() { return mParent->GetOwner(); }
+
 	private:
 		Vector3 mPosition;
 		Vector3 mRotation;
@@ -48,6 +50,8 @@ namespace ssz
 
 		Matrix mWorld;
 
+	protected:
 		Transform* mParent;
+		GameObject* Owner;
 	};
 }

@@ -49,17 +49,6 @@ namespace ssz
 
 	void Layer::Destory()
 	{
-		// 이전 프레임에서 삭제요청된 오브젝트들을 삭제하고 Garbage배열을 비워준다.
-		{
-			// Garbage에 있는 것 삭제처리
-			for (GameObject* gameObj : mGarbageObjects)
-			{
-				delete gameObj;
-				gameObj = nullptr;
-			}
-			// Garbage 벡터 비워주기
-			mGarbageObjects.clear();
-		}
 
 		{
 			// GameObjects에서 Garbage에 등록하기
@@ -79,6 +68,18 @@ namespace ssz
 					iter++;
 				}
 			}
+		}
+
+		// 이전 프레임에서 삭제요청된 오브젝트들을 삭제하고 Garbage배열을 비워준다.
+		{
+			// Garbage에 있는 것 삭제처리
+			for (GameObject* gameObj : mGarbageObjects)
+			{
+				delete gameObj;
+				gameObj = nullptr;
+			}
+			// Garbage 벡터 비워주기
+			mGarbageObjects.clear();
 		}
 	}
 

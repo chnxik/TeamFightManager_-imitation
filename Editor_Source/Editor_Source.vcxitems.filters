@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Editor">
+      <UniqueIdentifier>{9cd55081-f796-4aae-9c8e-ea701ea1da3e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DebugObject">
+      <UniqueIdentifier>{667a3115-efed-4a03-b63f-11797a75c67e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EditorObject">
+      <UniqueIdentifier>{b4dd982a-b4b1-46d1-960f-d3cd9d89d26a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Widget">
+      <UniqueIdentifier>{ab36040f-bdd9-461e-bf3b-cbf5db933a24}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)guiDebugObject.h">
+      <Filter>DebugObject</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)guiEditorObject.h">
+      <Filter>EditorObject</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)guiWidget.h">
+      <Filter>Widget</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)guiEditor.h">
+      <Filter>Editor</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)guiDebugObject.cpp">
+      <Filter>DebugObject</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)guiEditorObject.cpp">
+      <Filter>EditorObject</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)guiWidget.cpp">
+      <Filter>Widget</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)guiEditor.cpp">
+      <Filter>Editor</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

@@ -57,13 +57,16 @@ namespace ssz
 		graphicDevice->UpdateViewPort();
 
 		renderer::Render();
-
-		graphicDevice->Present();
 	}
 
 	void Application::Destory()
 	{
 		SceneManager::Destroy();
+	}
+
+	void Application::Present()
+	{
+		graphicDevice->Present();
 	}
 
 	void Application::SetWindow(HWND hwnd, UINT width, UINT height)

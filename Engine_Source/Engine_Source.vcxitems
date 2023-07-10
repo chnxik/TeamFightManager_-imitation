@@ -17,6 +17,8 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sszApplication.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sszCamera.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszCollider2D.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszCollisionManager.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sszComponent.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sszConstantBuffer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sszEntity.h" />
@@ -48,6 +50,8 @@
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)sszApplication.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sszCamera.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszCollider2D.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszCollisionManager.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sszComponent.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sszConstantBuffer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sszEntity.cpp" />

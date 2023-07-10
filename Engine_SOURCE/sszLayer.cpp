@@ -27,7 +27,8 @@ namespace ssz
 	{
 		for (GameObject* gameObj : mGameObjects)
 		{
-			gameObj->Update();
+			if(gameObj->IsActive())
+				gameObj->Update();
 		}
 	}
 
@@ -35,7 +36,8 @@ namespace ssz
 	{
 		for (GameObject* gameObj : mGameObjects)
 		{
-			gameObj->LateUpdate();
+			if (gameObj->IsActive())
+				gameObj->LateUpdate();
 		}
 	}
 
@@ -43,7 +45,8 @@ namespace ssz
 	{
 		for (GameObject* gameObj : mGameObjects)
 		{
-			gameObj->Render();
+			if (gameObj->IsActive())
+				gameObj->Render();
 		}
 	}
 

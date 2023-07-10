@@ -8,14 +8,15 @@ namespace renderer
 	using namespace ssz;
 	using namespace ssz::graphics;
 
-	Vertex vertexes[4] = {};
 	ssz::graphics::ConstantBuffer* constantBuffer[(UINT)eCBType::END] = {};
 	Microsoft::WRL::ComPtr<ID3D11SamplerState> samplerState[(UINT)eSamplerType::END] = {};
+	
 	Microsoft::WRL::ComPtr<ID3D11RasterizerState> rasterizerStates[(UINT)eRSType::END] = {};
 	Microsoft::WRL::ComPtr<ID3D11DepthStencilState> depthStencilStates[(UINT)eDSType::END] = {};
 	Microsoft::WRL::ComPtr<ID3D11BlendState> blendStates[(UINT)eBSType::END] = {};
 
 	std::vector<ssz::Camera*> cameras = {};
+	std::vector<DebugMesh> debbugMeshs = {};
 
 	void SetupState()
 	{
@@ -58,6 +59,12 @@ namespace renderer
 		ssz::graphics::GetDevice()->CreateInputLayout(arrLayout, 3
 			, MaskShader->GetVSCode()
 			, MaskShader->GetInputLayoutAddressOf());
+
+		std::shared_ptr<Shader> MaskShader = ssz::Resources::Find<Shader>(L"DebugShader");
+		ssz::graphics::GetDevice()->CreateInputLayout(arrLayout, 3
+			, MaskShader->GetVSCode()
+			, MaskShader->GetInputLayoutAddressOf());
+
 #pragma endregion
 #pragma region Sampler State
 		// Sampler State
@@ -169,24 +176,89 @@ namespace renderer
 
 	}
 
-	void LoadBuffer()
+	void LoadMesh()
 	{
-		// Mesh
+		std::vector<Vertex> vertexes = {};
+		std::vector<UINT> indexes = {};
+
+		//RECT
+		vertexes.resize(4);
+		vertexes[0].pos = Vector3(-0.5f, 0.5f, 0.0f);
+		vertexes[0].color = Vector4(1.0f, 0.0f, 0.0f, 1.0f);
+		vertexes[0].uv = Vector2(0.0f, 0.0f);
+
+		vertexes[1].pos = Vector3(0.5f, 0.5f, 0.0f);
+		vertexes[1].color = Vector4(0.0f, 1.0f, 0.0f, 1.0f);
+		vertexes[1].uv = Vector2(1.0f, 0.0f);
+
+		vertexes[2].pos = Vector3(0.5f, -0.5f, 0.0f);
+		vertexes[2].color = Vector4(0.0f, 0.0f, 1.0f, 1.0f);
+		vertexes[2].uv = Vector2(1.0f, 1.0f);
+
+		vertexes[3].pos = Vector3(-0.5f, -0.5f, 0.0f);
+		vertexes[3].color = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
+		vertexes[3].uv = Vector2(0.0f, 1.0f);
+
+		// Vertex Buffer
 		std::shared_ptr<Mesh> mesh = std::make_shared<Mesh>();
 		Resources::Insert(L"RectMesh", mesh);
-		
-		mesh->CreateVertexBuffer(vertexes, 4);
 
-		std::vector<UINT> indexes = {};
+		mesh->CreateVertexBuffer(vertexes.data(), vertexes.size());
+
 		indexes.push_back(0);
 		indexes.push_back(1);
 		indexes.push_back(2);
-		
+
 		indexes.push_back(0);
 		indexes.push_back(2);
 		indexes.push_back(3);
-		mesh->CreateIndexBuffer(indexes.data(), (UINT)indexes.size());
+		mesh->CreateIndexBuffer(indexes.data(), indexes.size());
 
+
+
+		// Rect Debug Mesh
+		std::shared_ptr<Mesh> rectDebug = std::make_shared<Mesh>();
+		Resources::Insert(L"DebugRect", rectDebug);
+		rectDebug->CreateVertexBuffer(vertexes.data(), vertexes.size());
+		rectDebug->CreateIndexBuffer(indexes.data(), indexes.size());
+
+		// Circle Debug Mesh
+		vertexes.clear();
+		indexes.clear();
+
+		Vertex center = {};
+		center.pos = Vector3(0.0f, 0.0f, 0.0f);
+		center.color = Vector4(0.0f, 1.0f, 0.0f, 1.0f);
+		vertexes.push_back(center);
+
+		int iSlice = 40;
+		float fRadius = 0.5f;
+		float fTheta = XM_2PI / (float)iSlice;
+
+		for (int i = 0; i < iSlice; ++i)
+		{
+			center.pos = Vector3(fRadius * cosf(fTheta * (float)i)
+				, fRadius * sinf(fTheta * (float)i)
+				, 0.0f);
+			center.color = Vector4(0.0f, 1.0f, 0.0f, 1.f);
+			vertexes.push_back(center);
+		}
+
+		for (int i = 0; i < vertexes.size() - 2; ++i)
+		{
+			indexes.push_back(i + 1);
+		}
+		indexes.push_back(1);
+
+		std::shared_ptr<Mesh> circleDebug = std::make_shared<Mesh>();
+		Resources::Insert(L"DebugCircle", circleDebug);
+		circleDebug->CreateVertexBuffer(vertexes.data(), vertexes.size());
+		circleDebug->CreateIndexBuffer(indexes.data(), indexes.size());
+	}
+
+
+	void LoadBuffer()
+	{
 		// Constant Buffer
 		constantBuffer[(UINT)eCBType::Transform] = new ConstantBuffer(eCBType::Transform);
 		constantBuffer[(UINT)eCBType::Transform]->Create(sizeof(TransformCB));
@@ -211,30 +283,29 @@ namespace renderer
 		MaskShader->Create(eShaderStage::VS, L"MaskVS.hlsl", "main");
 		MaskShader->Create(eShaderStage::PS, L"MaskPS.hlsl", "main");
 		ssz::Resources::Insert(L"MaskShader", MaskShader);
+
+		std::shared_ptr<Shader> DebugShader = std::make_shared<Shader>();
+		DebugShader->Create(eShaderStage::VS, L"DebugVS.hlsl", "main");
+		DebugShader->Create(eShaderStage::PS, L"DebugPS.hlsl", "main");
+		DebugShader->SetTopology(D3D11_PRIMITIVE_TOPOLOGY::D3D_PRIMITIVE_TOPOLOGY_LINESTRIP);
+		DebugShader->SetRSState(eRSType::SolidNone);
+		Resources::Insert(L"DebugShader", DebugShader);
+	}
+
+	void LoadMaterial()
+	{
+		std::shared_ptr<Material> material = std::make_shared<Material>();
+		material->SetShader(L"DebugShader");
+		Resources::Insert(L"DebugMaterial", material);
 	}
 
 	void Initialize()
 	{
-		// vertex ¼³Á¤
-		vertexes[0].pos = Vector3(-0.5f, 0.5f, 0.0f);
-		vertexes[0].color = Vector4(1.0f, 0.0f, 0.0f, 1.0f);
-		vertexes[0].uv = Vector2(0.0f, 0.0f);
-
-		vertexes[1].pos = Vector3(0.5f, 0.5f, 0.0f);
-		vertexes[1].color = Vector4(0.0f, 1.0f, 0.0f, 1.0f);
-		vertexes[1].uv = Vector2(1.0f, 0.0f);
-
-		vertexes[2].pos = Vector3(0.5f, -0.5f, 0.0f);
-		vertexes[2].color = Vector4(0.0f, 0.0f, 1.0f, 1.0f);
-		vertexes[2].uv = Vector2(1.0f, 1.0f);
-
-		vertexes[3].pos = Vector3(-0.5f, -0.5f, 0.0f);
-		vertexes[3].color = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
-		vertexes[3].uv = Vector2(0.0f, 1.0f);
-
+		LoadMesh();
 		LoadBuffer();
 		LoadShader();
 		SetupState();
+		LoadMaterial();
 	}
 
 	void Render()
@@ -260,5 +331,9 @@ namespace renderer
 			delete buff;
 			buff = nullptr;
 		}
+	}
+	void PushDebugMeshAttribute(DebugMesh& mesh)
+	{
+		debbugMeshs.push_back(mesh);
 	}
 }

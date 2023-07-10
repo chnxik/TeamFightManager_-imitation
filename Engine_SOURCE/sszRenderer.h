@@ -33,7 +33,6 @@ namespace renderer
 		float Bottom;
 	};
 	
-	extern Vertex vertexes[];
 	extern ssz::graphics::ConstantBuffer* constantBuffer[(UINT)eCBType::END];
 
 	extern Microsoft::WRL::ComPtr<ID3D11SamplerState> samplerState[];
@@ -42,8 +41,11 @@ namespace renderer
 	extern Microsoft::WRL::ComPtr<ID3D11BlendState> blendStates[];
 
 	extern std::vector<ssz::Camera*> cameras;
+	extern std::vector<DebugMesh> debugMeshs;
 
 	void Initialize();
 	void Render();
 	void Release();
+
+	void PushDebugMeshAttribute(DebugMesh& mesh);
 }

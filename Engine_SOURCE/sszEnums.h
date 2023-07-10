@@ -7,6 +7,7 @@ namespace ssz::enums
 		None,
 		Tranform,
 		Mesh,
+		Collider2D,
 		Particle,
 		MeshRenderer,
 		Script,
@@ -31,6 +32,15 @@ namespace ssz::enums
 		Shader,
 		Material,
 		Mesh,
+		End,
+	};
+
+	enum class eColliderType
+	{
+		Rect,
+		Circle,
+		Sphere,
+		Cube,
 		End,
 	};
 }

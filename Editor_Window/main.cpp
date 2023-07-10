@@ -5,6 +5,7 @@
 #include "..\Engine_SOURCE\sszRenderer.h"
 #include "..\Engine_SOURCE\sszResources.h"
 #include "LoadScenes.h"
+#include "guiEditor.h"
 
 #ifdef _DEBUG
 #pragma comment(lib, "..\\x64\\Debug\\660Engine.lib")
@@ -76,11 +77,14 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         {
             // 여기서 게임 로직이 돌아가야한다.
             application.Run();
+            gui::Editor::Run();
+            application.Present();
         }
     }
 
     renderer::Release();
     ssz::SceneManager::Release();
+    gui::Editor::Release();
 
     return (int) msg.wParam;
 }
@@ -142,6 +146,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 
    application.Initialize();
    ssz::InitializeScenes();
+   gui::Editor::Initialize();
 
    return TRUE;
 }

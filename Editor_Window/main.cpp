@@ -2,9 +2,6 @@
 #include "Editor_Window.h"
 
 #include "..\Engine_SOURCE\sszApplication.h"
-#include "..\Engine_SOURCE\sszRenderer.h"
-#include "..\Engine_SOURCE\sszResources.h"
-#include "LoadScenes.h"
 #include "guiEditor.h"
 
 #ifdef _DEBUG
@@ -82,8 +79,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         }
     }
 
-    renderer::Release();
-    ssz::SceneManager::Release();
+    application.Release();
     gui::Editor::Release();
 
     return (int) msg.wParam;
@@ -145,7 +141,6 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
     ShowCursor(false);
 
    application.Initialize();
-   ssz::InitializeScenes();
    gui::Editor::Initialize();
 
    return TRUE;

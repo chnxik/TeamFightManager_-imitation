@@ -3,6 +3,7 @@
 #include "sszTime.h"
 #include "sszRenderer.h"
 #include "sszSceneManager.h"
+#include "..\660Engine\LoadScenes.h"
 
 namespace ssz
 {
@@ -34,7 +35,7 @@ namespace ssz
 		Input::Initialize();
 
 		renderer::Initialize();
-		SceneManager::Initialize();
+		ssz::InitializeScenes();
 	}
 
 	void Application::Update()
@@ -67,6 +68,12 @@ namespace ssz
 	void Application::Present()
 	{
 		graphicDevice->Present();
+	}
+
+	void Application::Release()
+	{
+		renderer::Release();
+		SceneManager::Release();
 	}
 
 	void Application::SetWindow(HWND hwnd, UINT width, UINT height)

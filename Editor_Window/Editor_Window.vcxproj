@@ -61,7 +61,6 @@
   </ImportGroup>
   <ImportGroup Label="Shared">
     <Import Project="..\Editor_Source\Editor_Source.vcxitems" Label="Shared" />
-    <Import Project="..\Engine_Source\Engine_Source.vcxitems" Label="Shared" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
@@ -172,6 +171,11 @@
     <None Update="C:\Dev\660\Cell\660_DirectX11\Engine_Source\sszMath.inl">
       <FileType>Document</FileType>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\660Engine\660Engine.vcxproj">
+      <Project>{9de7995a-c775-45e0-8c1b-c2c25c0728ea}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

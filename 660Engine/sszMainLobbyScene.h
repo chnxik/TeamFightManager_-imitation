@@ -1,6 +1,6 @@
 #pragma once
-#include <..\Engine_SOURCE\sszScene.h>
-#include <..\Engine_SOURCE\sszGameObject.h>
+#include "sszScene.h"
+#include "sszGameObject.h"
 
 namespace ssz
 {

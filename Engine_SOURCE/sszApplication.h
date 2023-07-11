@@ -19,6 +19,7 @@ namespace ssz
 		void Render();
 		void Destory();
 		void Present();
+		void Release();
 
 		void SetWindow(HWND hwnd, UINT width, UINT height);
 

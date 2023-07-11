@@ -46,9 +46,6 @@
     <Filter Include="GameObject\Component\Script">
       <UniqueIdentifier>{89d35540-5e41-4908-8d1c-0ba95cf5a122}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Scene\Manager">
-      <UniqueIdentifier>{1a651756-608c-49f3-8d64-dd7a7951bc5a}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Scene\Base">
       <UniqueIdentifier>{c0ae48bd-0316-4616-a1fe-3c256129112a}</UniqueIdentifier>
     </Filter>
@@ -100,10 +97,13 @@
     <Filter Include="GameObject\Component\Collider">
       <UniqueIdentifier>{a4516c8c-65e6-4552-bb05-6761430300f7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Scene\Manager\SceneMgr">
+    <Filter Include="Manager">
+      <UniqueIdentifier>{1a651756-608c-49f3-8d64-dd7a7951bc5a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Manager\SceneMgr">
       <UniqueIdentifier>{672b9f92-d3af-4152-82ae-f71091750234}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Scene\Manager\CollisionMgr">
+    <Filter Include="Manager\CollisionMgr">
       <UniqueIdentifier>{1ea2fe74-7b02-4999-8a2b-2fe8dab005bc}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -196,10 +196,10 @@
       <Filter>Common\Object</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)sszSceneManager.h">
-      <Filter>Scene\Manager\SceneMgr</Filter>
+      <Filter>Manager\SceneMgr</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)sszCollisionManager.h">
-      <Filter>Scene\Manager\CollisionMgr</Filter>
+      <Filter>Manager\CollisionMgr</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)sszCollider2D.h">
       <Filter>GameObject\Component\Collider</Filter>
@@ -279,10 +279,10 @@
       <Filter>GameObject\Component\UI\Masking</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)sszSceneManager.cpp">
-      <Filter>Scene\Manager\SceneMgr</Filter>
+      <Filter>Manager\SceneMgr</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)sszCollisionManager.cpp">
-      <Filter>Scene\Manager\CollisionMgr</Filter>
+      <Filter>Manager\CollisionMgr</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)sszCollider2D.cpp">
       <Filter>GameObject\Component\Collider</Filter>

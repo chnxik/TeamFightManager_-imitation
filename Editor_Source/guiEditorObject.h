@@ -1,5 +1,5 @@
 #pragma once
-#include "sszGameObject.h"
+#include "..\Engine_SOURCE\sszGameObject.h"
 
 namespace gui
 {

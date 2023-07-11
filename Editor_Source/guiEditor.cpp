@@ -1,10 +1,10 @@
 #include "guiEditor.h"
-#include "sszMesh.h"
-#include "sszResources.h"
-#include "sszTransform.h"
-#include "sszMeshRenderer.h"
-#include "sszMaterial.h"
-#include "sszRenderer.h"
+#include "..\Engine_SOURCE\sszMesh.h"
+#include "..\Engine_SOURCE\sszResources.h"
+#include "..\Engine_SOURCE\sszTransform.h"
+#include "..\Engine_SOURCE\sszMeshRenderer.h"
+#include "..\Engine_SOURCE\sszMaterial.h"
+#include "..\Engine_SOURCE\sszRenderer.h"
 
 namespace gui
 {

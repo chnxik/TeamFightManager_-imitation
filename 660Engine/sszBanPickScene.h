@@ -1,5 +1,5 @@
 #pragma once
-#include "..\Engine_SOURCE\sszScene.h"
+#include "sszScene.h"
 
 namespace ssz
 {

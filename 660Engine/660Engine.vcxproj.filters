@@ -80,6 +80,9 @@
     <ClCompile Include="sszTestScript.cpp">
       <Filter>Contents\Script\Test</Filter>
     </ClCompile>
+    <ClCompile Include="LoadScnes.cpp">
+      <Filter>Contents\Load</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Contents">

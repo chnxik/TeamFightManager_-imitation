@@ -16,7 +16,7 @@ namespace renderer
 	Microsoft::WRL::ComPtr<ID3D11BlendState> blendStates[(UINT)eBSType::END] = {};
 
 	std::vector<ssz::Camera*> cameras = {};
-	std::vector<DebugMesh> debbugMeshs = {};
+	std::vector<DebugMesh> debugMeshs = {};
 
 	void SetupState()
 	{
@@ -60,10 +60,10 @@ namespace renderer
 			, MaskShader->GetVSCode()
 			, MaskShader->GetInputLayoutAddressOf());
 
-		std::shared_ptr<Shader> MaskShader = ssz::Resources::Find<Shader>(L"DebugShader");
+		std::shared_ptr<Shader> DebugShader = ssz::Resources::Find<Shader>(L"DebugShader");
 		ssz::graphics::GetDevice()->CreateInputLayout(arrLayout, 3
-			, MaskShader->GetVSCode()
-			, MaskShader->GetInputLayoutAddressOf());
+			, DebugShader->GetVSCode()
+			, DebugShader->GetInputLayoutAddressOf());
 
 #pragma endregion
 #pragma region Sampler State
@@ -203,7 +203,7 @@ namespace renderer
 		std::shared_ptr<Mesh> mesh = std::make_shared<Mesh>();
 		Resources::Insert(L"RectMesh", mesh);
 
-		mesh->CreateVertexBuffer(vertexes.data(), vertexes.size());
+		mesh->CreateVertexBuffer(vertexes.data(), (UINT)vertexes.size());
 
 		indexes.push_back(0);
 		indexes.push_back(1);
@@ -212,15 +212,15 @@ namespace renderer
 		indexes.push_back(0);
 		indexes.push_back(2);
 		indexes.push_back(3);
-		mesh->CreateIndexBuffer(indexes.data(), indexes.size());
+		mesh->CreateIndexBuffer(indexes.data(), (UINT)indexes.size());
 
 
 
 		// Rect Debug Mesh
 		std::shared_ptr<Mesh> rectDebug = std::make_shared<Mesh>();
 		Resources::Insert(L"DebugRect", rectDebug);
-		rectDebug->CreateVertexBuffer(vertexes.data(), vertexes.size());
-		rectDebug->CreateIndexBuffer(indexes.data(), indexes.size());
+		rectDebug->CreateVertexBuffer(vertexes.data(), (UINT)vertexes.size());
+		rectDebug->CreateIndexBuffer(indexes.data(), (UINT)indexes.size());
 
 		// Circle Debug Mesh
 		vertexes.clear();
@@ -252,8 +252,8 @@ namespace renderer
 
 		std::shared_ptr<Mesh> circleDebug = std::make_shared<Mesh>();
 		Resources::Insert(L"DebugCircle", circleDebug);
-		circleDebug->CreateVertexBuffer(vertexes.data(), vertexes.size());
-		circleDebug->CreateIndexBuffer(indexes.data(), indexes.size());
+		circleDebug->CreateVertexBuffer(vertexes.data(), (UINT)vertexes.size());
+		circleDebug->CreateIndexBuffer(indexes.data(), (UINT)indexes.size());
 	}
 
 
@@ -334,6 +334,6 @@ namespace renderer
 	}
 	void PushDebugMeshAttribute(DebugMesh& mesh)
 	{
-		debbugMeshs.push_back(mesh);
+		debugMeshs.push_back(mesh);
 	}
 }

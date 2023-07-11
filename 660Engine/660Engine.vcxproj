@@ -181,6 +181,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="660Engine.cpp" />
+    <ClCompile Include="LoadScnes.cpp" />
     <ClCompile Include="sszArrangementScript.cpp" />
     <ClCompile Include="sszBanPickScene.cpp" />
     <ClCompile Include="sszCameraScript.cpp" />

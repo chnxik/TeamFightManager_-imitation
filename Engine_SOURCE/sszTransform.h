@@ -32,17 +32,25 @@ namespace ssz
 		Vector3 Right() { return mRight; }
 		Vector3 Up() { return mUp; }
 
-		void SetParent(Transform* transform) { mParent = transform; }
+		GameObject* GetParentOwner() { return mParent->mOwner; }
+		template <typename T>
+		T* GetParentComponent() { return mParent->mOwner->GetComponent<T>(); }
+
+		void SetParent(Transform* transform) 
+		{ 
+			mParent = transform; 
+			mParent->mChild.push_back(this);
+		}
 		Transform* GetParent() { return mParent; }
 
-		GameObject* GetParentOwner() { return mParent->GetOwner(); }
+		std::vector<Transform*>& GetChild() { return mChild; }
+
+
 
 	private:
 		Vector3 mPosition;
 		Vector3 mRotation;
 		Vector3 mScale;
-
-		Vector3 mResolution;
 
 		Vector3 mUp;
 		Vector3 mForward;
@@ -50,8 +58,7 @@ namespace ssz
 
 		Matrix mWorld;
 
-	protected:
 		Transform* mParent;
-		GameObject* Owner;
+		std::vector<Transform*> mChild;
 	};
 }

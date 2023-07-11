@@ -76,4 +76,10 @@ namespace ssz
 			script->Render();
 		}
 	}
+
+	void GameObject::SetParent(GameObject* parent)
+	{
+		Transform* parentTransform = parent->GetComponent<Transform>();
+		GetComponent<Transform>()->SetParent(parentTransform);
+	}
 }

@@ -25,6 +25,8 @@ namespace ssz
 
 	private:
 		const eComponentType mType;
+	
+	protected:
 		GameObject* mOwner;
 	};
 }

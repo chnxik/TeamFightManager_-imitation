@@ -76,6 +76,8 @@ namespace ssz
 		bool IsPaused() { return eState::Paused == mState; }
 		eState GetState() { return mState; }
 
+		void SetParent(GameObject* parent);
+
 	private:
 		eState mState;
 		std::vector<Component*> mComponents;

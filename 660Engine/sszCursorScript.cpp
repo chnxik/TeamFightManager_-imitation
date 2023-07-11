@@ -53,7 +53,6 @@ namespace ssz
 			viewport.maxDepth = 1.0f;
 			
 			FinalPos = viewport.Unproject(FinalPos, Camera::GetProjectionMatrix(), Camera::GetViewMatrix(), Matrix::Identity);
-			FinalPos *= Vector3(width, height, 1.0f);
 			
 			GetOwner()->GetComponent<Transform>()->SetPosition(FinalPos);
 		}

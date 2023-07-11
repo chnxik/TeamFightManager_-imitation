@@ -14,19 +14,12 @@ namespace ssz
 		, mPosition(Vector3::Zero)
 		, mRotation(Vector3::Zero)
 		, mScale(Vector3::One)
-		, mResolution(Vector3::Zero)
 		, mParent(nullptr)
 	{
-		RECT rect = {};
-		GetClientRect(application.GetHwnd(), &rect);
-		float width = (float)(rect.right - rect.left);
-		float height = (float)(rect.bottom - rect.top);
-		mResolution = { width,height,1.0f };
 	}
 
 	Transform::~Transform()
 	{
-	
 	}
 
 	void Transform::Initialize()
@@ -41,7 +34,7 @@ namespace ssz
 	{
 		mWorld = Matrix::Identity;
 
-		Matrix scale = Matrix::CreateScale(mScale / Vector3(1000.f, 1000.f, 1.f));
+		Matrix scale = Matrix::CreateScale(mScale);
 
 		Matrix rotation;
 		rotation = Matrix::CreateRotationX(mRotation.x);
@@ -49,7 +42,7 @@ namespace ssz
 		rotation *= Matrix::CreateRotationZ(mRotation.z);
 
 		Matrix position;
-		position.Translation(mPosition / mResolution);
+		position.Translation(mPosition);
 
 		mWorld = scale * rotation * position;
 

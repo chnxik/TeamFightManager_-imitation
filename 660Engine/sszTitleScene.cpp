@@ -86,12 +86,11 @@ namespace ssz
 			TestObject = Instantiate<GameObject>(Vector3(0.0f, 0.0f, 1.010f), Vector3(300.f, 300.f, 1.f), eLayerType::Player);
 			TestObject->SetName(L"Test");
 			TestObject->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"TitleLogoMt");
-			TestObject->AddComponent<TestScript>();
-
+			// TestObject->AddComponent<TestScript>();
 
 			// 오브젝트 배치용 스크립트
-			// ArrangementScript* ArScript = Cursor->AddComponent<ArrangementScript>();
-			// ArScript->SetDefault();
+			ArrangementScript* ArScript = TestObject->AddComponent<ArrangementScript>();
+			ArScript->SetDefault();
 		}
 
 		// MouseCursor

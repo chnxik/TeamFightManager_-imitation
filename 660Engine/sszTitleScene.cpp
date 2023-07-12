@@ -36,16 +36,13 @@ namespace ssz
 	}
 	void TitleScene::Initialize()
 	{
-#pragma region Make Material for this Scene
 		{
-			// Texture Loading
 			Resources::Load<Texture>(L"TitleBg", L"..\\Resources\\useResource\\Title\\teamfight_manager_title_bg.png");
 			Resources::Load<Texture>(L"IGStadiumSkyTex", L"..\\Resources\\useResource\\stadium\\ingame\\stadium_sky_bg.png");
 			Resources::Load<Texture>(L"IGStadiumTex", L"..\\Resources\\useResource\\stadium\\ingame\\stadium.png");
 			Resources::Load<Texture>(L"TitleLogoTex", L"..\\Resources\\useResource\\Title\\logo_tp.png");
-			
-
-			// Make Material
+		}
+		{
 			std::shared_ptr<Material> TitleBgMt = std::make_shared<Material>();
 			TitleBgMt->SetMaterial(L"SpriteShader", L"TitleBg", eRenderingMode::Transparent);
 			Resources::Insert(L"TitleBgMt", TitleBgMt);
@@ -58,12 +55,10 @@ namespace ssz
 			IG_stadiumtSky_Mt->SetMaterial(L"SpriteShader", L"IGStadiumSkyTex", eRenderingMode::Opaque);
 			Resources::Insert(L"IGStadiumSkyMt", IG_stadiumtSky_Mt);
 
-
 			std::shared_ptr<Material> TitleLogo_Mt = std::make_shared<Material>();
 			TitleLogo_Mt->SetMaterial(L"SpriteShader", L"TitleLogoTex", eRenderingMode::Transparent);
 			Resources::Insert(L"TitleLogoMt", TitleLogo_Mt);
 		}
-#pragma endregion
 #pragma region Create Object for this Scene
 		// GameObject
 		{
@@ -71,7 +66,7 @@ namespace ssz
 			TitleBg->SetName(L"TitleBg");
 			TitleBg->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"TitleBgMt");
 
-			GameObject* IG_Stadium = Instantiate<GameObject>(Vector3(0.0f, -44.0f, 1.021f), Vector3(2235.f, 1460.f, 1.f), eLayerType::BackGround);
+			GameObject* IG_Stadium = Instantiate<GameObject>(Vector3(0.0f, -44.0f, 1.021f), Vector3(2235.f, 1460.f, 1.f), eLayerType::BackGroundObj);
 			IG_Stadium->SetName(L"IG_Stadium");
 			IG_Stadium->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"IGStadiumMt");
 
@@ -79,7 +74,7 @@ namespace ssz
 			IG_StadiumSky->SetName(L"IG_StadiumSky");
 			IG_StadiumSky->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"IGStadiumSkyMt");
 
-			GameObject* TitleLogo = Instantiate<GameObject>(Vector3(0.0f, 242.0f, 1.011f), Vector3(738.f, 271.f, 1.f), eLayerType::BackGround);
+			GameObject* TitleLogo = Instantiate<GameObject>(Vector3(0.0f, 242.0f, 1.011f), Vector3(738.f, 271.f, 1.f), eLayerType::BackGroundObj);
 			TitleLogo->SetName(L"TitleLogo");
 			TitleLogo->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"TitleLogoMt");
 

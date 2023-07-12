@@ -34,47 +34,39 @@ namespace ssz
 	}
 	void PrlgScene::Initialize()
 	{
-#pragma region Make Material for this Scene
 		{
-			// Get Using Texture
 			Resources::Load<Texture>(L"CutScene01", L"..\\Resources\\useResource\\Prlg\\Cutscene\\cutscene1.png");
 			Resources::Load<Texture>(L"CutScene02", L"..\\Resources\\useResource\\Prlg\\Cutscene\\cutscene2.png");
 			Resources::Load<Texture>(L"CutScene03", L"..\\Resources\\useResource\\Prlg\\Cutscene\\cutscene3.png");
 			Resources::Load<Texture>(L"CutScene04", L"..\\Resources\\useResource\\Prlg\\Cutscene\\cutscene4.png");
 			Resources::Load<Texture>(L"CutScene05", L"..\\Resources\\useResource\\Prlg\\Cutscene\\cutscene5.png");
 			Resources::Load<Texture>(L"CutScene06", L"..\\Resources\\useResource\\Prlg\\Cutscene\\cutscene6.png");
-
-			// Make Material
+		}
+		{
 			std::shared_ptr<Material> CutScene01_Mt = std::make_shared<Material>();
 			CutScene01_Mt->SetMaterial(L"SpriteShader", L"CutScene01", eRenderingMode::Opaque);
 			Resources::Insert(L"CutScene01_Mt", CutScene01_Mt);
 
-			// Make Material
 			std::shared_ptr<Material> CutScene02_Mt = std::make_shared<Material>();
 			CutScene02_Mt->SetMaterial(L"SpriteShader", L"CutScene02", eRenderingMode::Opaque);
 			Resources::Insert(L"CutScene02_Mt", CutScene02_Mt);
 
-			// Make Material
 			std::shared_ptr<Material> CutScene03_Mt = std::make_shared<Material>();
 			CutScene03_Mt->SetMaterial(L"SpriteShader", L"CutScene03", eRenderingMode::Opaque);
 			Resources::Insert(L"CutScene03_Mt", CutScene03_Mt);
 
-			// Make Material
 			std::shared_ptr<Material> CutScene04_Mt = std::make_shared<Material>();
 			CutScene04_Mt->SetMaterial(L"SpriteShader", L"CutScene04", eRenderingMode::Opaque);
 			Resources::Insert(L"CutScene04_Mt", CutScene04_Mt);
 
-			// Make Material
 			std::shared_ptr<Material> CutScene05_Mt = std::make_shared<Material>();
 			CutScene05_Mt->SetMaterial(L"SpriteShader", L"CutScene05", eRenderingMode::Opaque);
 			Resources::Insert(L"CutScene05_Mt", CutScene05_Mt);
 
-			// Make Material
 			std::shared_ptr<Material> CutScene06_Mt = std::make_shared<Material>();
 			CutScene06_Mt->SetMaterial(L"SpriteShader", L"CutScene06", eRenderingMode::Opaque);
 			Resources::Insert(L"CutScene06_Mt", CutScene06_Mt);
 		}
-#pragma endregion
 #pragma region Create Object for this Scene
 		// CutScene
 		{

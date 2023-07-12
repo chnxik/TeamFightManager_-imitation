@@ -42,12 +42,12 @@ namespace ssz
 		// GameObject
 		{
 			// Battle Header
-			GameObject* BattleHeaderBg = Instantiate<GameObject>(Vector3(0.0f, 516.f, 1.04f), Vector3(1920.f, 123.f, 1.f), eLayerType::BackGround);
+			GameObject* BattleHeaderBg = Instantiate<GameObject>(Vector3(0.0f, 478.5f, 1.019f), Vector3(1920.f, 123.f, 1.f), eLayerType::BackGround);
 			BattleHeaderBg->SetName(L"BattleHeaderBg");
 			BattleHeaderBg->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"BattleHeaderMt");
 
 			// IG Stadium
-			GameObject* IG_Stadium = Instantiate<GameObject>(Vector3(0.0f, -44.0f, 1.021f), Vector3(2235.f, 1460.f, 1.f), eLayerType::BackGround);
+			GameObject* IG_Stadium = Instantiate<GameObject>(Vector3(0.0f, -139.0f, 1.021f), Vector3(2293.f, 1498.f, 1.f), eLayerType::BackGround);
 			IG_Stadium->SetName(L"IG_Stadium");
 			IG_Stadium->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"IGStadiumMt");
 

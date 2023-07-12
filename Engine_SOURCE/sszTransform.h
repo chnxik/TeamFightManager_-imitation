@@ -36,16 +36,8 @@ namespace ssz
 		template <typename T>
 		T* GetParentComponent() { return mParent->mOwner->GetComponent<T>(); }
 
-		void SetParent(Transform* transform) 
-		{ 
-			mParent = transform; 
-			mParent->mChild.push_back(this);
-		}
+		void SetParent(Transform* transform) { mParent = transform; }
 		Transform* GetParent() { return mParent; }
-
-		std::vector<Transform*>& GetChild() { return mChild; }
-
-
 
 	private:
 		Vector3 mPosition;
@@ -59,6 +51,5 @@ namespace ssz
 		Matrix mWorld;
 
 		Transform* mParent;
-		std::vector<Transform*> mChild;
 	};
 }

@@ -3,7 +3,7 @@
 #include "sszTime.h"
 #include "sszRenderer.h"
 #include "sszSceneManager.h"
-#include "..\660Engine\LoadScenes.h"
+#include "..\660Engine\Load.h"
 
 namespace ssz
 {

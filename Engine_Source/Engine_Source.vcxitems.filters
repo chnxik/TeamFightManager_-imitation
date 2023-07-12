@@ -82,9 +82,6 @@
     <Filter Include="GameObject\Base">
       <UniqueIdentifier>{62e43b49-3957-4698-9df6-16d8cb21864e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="GameObject\UI">
-      <UniqueIdentifier>{e1c40993-6147-4c6d-9d41-f929df134295}</UniqueIdentifier>
-    </Filter>
     <Filter Include="GameObject\Component\UI">
       <UniqueIdentifier>{8ba303aa-97d3-4fe4-a2b8-7f10fd90c6ad}</UniqueIdentifier>
     </Filter>
@@ -186,9 +183,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)sszGameObject.h">
       <Filter>GameObject\Base</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)sszUI.h">
-      <Filter>GameObject\UI</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)sszMasking.h">
       <Filter>GameObject\Component\UI\Masking</Filter>
     </ClInclude>
@@ -271,9 +265,6 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)sszGameObject.cpp">
       <Filter>GameObject\Base</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)sszUI.cpp">
-      <Filter>GameObject\UI</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)sszMasking.cpp">
       <Filter>GameObject\Component\UI\Masking</Filter>

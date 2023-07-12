@@ -1,7 +1,8 @@
-#include "LoadScenes.h"
+#include "Load.h"
 
 #include "sszSceneManager.h"
 
+// Scenes
 #include "sszTitleScene.h"
 #include "sszPrlgScene.h"
 #include "sszMainLobbyScene.h"
@@ -9,6 +10,11 @@
 #include "sszBanPickScene.h"
 #include "sszIGStadiumScene.h"
 #include "sszTestScene.h"
+
+// Resources
+#include "sszResources.h"
+#include "sszMaterial.h"
+#include "sszMesh.h"
 
 namespace ssz
 {

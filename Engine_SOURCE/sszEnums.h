@@ -19,8 +19,8 @@ namespace ssz::enums
 	enum class eLayerType
 	{
 		BackGround,
+		BackGroundObj,
 		Player,
-		Monster,
 		UI,
 		Cursor,
 		End,

@@ -165,7 +165,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
-    <ClInclude Include="LoadScenes.h" />
+    <ClInclude Include="Load.h" />
     <ClInclude Include="sszArrangementScript.h" />
     <ClInclude Include="sszBanPickScene.h" />
     <ClInclude Include="sszCameraScript.h" />
@@ -178,10 +178,11 @@
     <ClInclude Include="sszTestScene.h" />
     <ClInclude Include="sszTestScript.h" />
     <ClInclude Include="sszTitleScene.h" />
+    <ClInclude Include="sszUI.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="660Engine.cpp" />
-    <ClCompile Include="LoadScnes.cpp" />
+    <ClCompile Include="Load.cpp" />
     <ClCompile Include="sszArrangementScript.cpp" />
     <ClCompile Include="sszBanPickScene.cpp" />
     <ClCompile Include="sszCameraScript.cpp" />
@@ -194,6 +195,7 @@
     <ClCompile Include="sszTestScene.cpp" />
     <ClCompile Include="sszTestScript.cpp" />
     <ClCompile Include="sszTitleScene.cpp" />
+    <ClCompile Include="sszUI.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

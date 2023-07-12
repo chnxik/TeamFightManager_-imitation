@@ -36,17 +36,16 @@ namespace ssz
 
 	void MainLobbyScene::Initialize()
 	{
-#pragma region Make Material for this Scene
 		{
-			// Get Using Texture
 			Resources::Load<Texture>(L"SkydayBgTex", L"..\\Resources\\useResource\\Mainlobby\\Bg\\sky\\sky_day.png");
 			Resources::Load<Texture>(L"SkynightBgTex", L"..\\Resources\\useResource\\Mainlobby\\Bg\\sky\\sky_night.png");
 			Resources::Load<Texture>(L"SkysunsetBgTex", L"..\\Resources\\useResource\\Mainlobby\\Bg\\sky\\sky_sunset.png");
 			Resources::Load<Texture>(L"BgGroundTex", L"..\\Resources\\useResource\\Mainlobby\\Bg\\Ground\\ground.png");
 			Resources::Load<Texture>(L"BgHouseTex", L"..\\Resources\\useResource\\Mainlobby\\Bg\\house\\house_bg.png");
-			Resources::Load<Texture>(L"UIheaderBarTex", L"..\\Resources\\useResource\\Mainlobby\\UI\\header_bg.png");
-			
-			// Make Material
+
+			Resources::Load<Texture>(L"UIheaderBarTex", L"..\\Resources\\useResource\\Mainlobby\\UI\\header\\header_bg.png");
+		}
+		{
 			std::shared_ptr<Material> Bg_Skyday_Mt = std::make_shared<Material>();
 			Bg_Skyday_Mt->SetMaterial(L"SpriteShader", L"SkydayBgTex", eRenderingMode::Transparent);
 			Resources::Insert(L"Bg_Skyday_Mt", Bg_Skyday_Mt);
@@ -59,38 +58,47 @@ namespace ssz
 			Bg_House_Mt->SetMaterial(L"SpriteShader", L"BgHouseTex", eRenderingMode::Transparent);
 			Resources::Insert(L"Bg_House_Mt", Bg_House_Mt);
 
+			// header
 			std::shared_ptr<Material> UI_headerBar_Mt = std::make_shared<Material>();
 			UI_headerBar_Mt->SetMaterial(L"SpriteShader", L"UIheaderBarTex", eRenderingMode::Transparent);
 			Resources::Insert(L"UI_headerBar_Mt", UI_headerBar_Mt);
 		}
-#pragma endregion
 #pragma region Create Object for this Scene
 		// GameObject
 		{
-			// Bg_Sky
-			GameObject* Bg_Sky = Instantiate<GameObject>(Vector3(0.0f, 166.f, 1.1f), Vector3(1920.f, 1920.f, 1.f), eLayerType::BackGround);
-			Bg_Sky->SetName(L"Bg_Sky");
-			Bg_Sky->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"Bg_Skyday_Mt");
-			BgSky = Bg_Sky;
+#pragma region BgObj
+			{
+				// Bg_Sky
+				GameObject* Bg_Sky = Instantiate<GameObject>(Vector3(0.0f, 166.f, 1.1f), Vector3(1920.f, 1920.f, 1.f), eLayerType::BackGround);
+				Bg_Sky->SetName(L"Bg_Sky");
+				Bg_Sky->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"Bg_Skyday_Mt");
+				BgSky = Bg_Sky;
 
-			// Bg_Ground
-			GameObject* Bg_Ground = Instantiate<GameObject>(Vector3(0.0f, -445.f, 1.015f), Vector3(1920.f, 256.f, 1.f), eLayerType::BackGround);
-			Bg_Ground->SetName(L"Bg_Ground");
-			Bg_Ground->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"Bg_Ground_Mt");
+				// Bg_Ground
+				GameObject* Bg_Ground = Instantiate<GameObject>(Vector3(0.0f, -412.f, 1.015f), Vector3(1920.f, 256.f, 1.f), eLayerType::BackGround);
+				Bg_Ground->SetName(L"Bg_Ground");
+				Bg_Ground->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"Bg_Ground_Mt");
 
-			// Bg_House
-			GameObject* Bg_House = Instantiate<GameObject>(Vector3(0.0f, -30.f, 1.014f), Vector3(668.f, 512.f, 1.f), eLayerType::BackGround);
-			Bg_House->SetName(L"Bg_House");
-			Bg_House->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"Bg_House_Mt");
+				// Bg_House
+				GameObject* Bg_House = Instantiate<GameObject>(Vector3(0.0f, -28.f, 1.014f), Vector3(668.f, 512.f, 1.f), eLayerType::BackGroundObj);
+				Bg_House->SetName(L"Bg_House");
+				Bg_House->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"Bg_House_Mt");
 
-			// UI_Headerbar
-			GameObject* UI_headerBar = Instantiate<GameObject>(Vector3(0.0f, 523.f, 1.015f), Vector3(1920.f, 111.f, 1.f), eLayerType::BackGround);
-			UI_headerBar->SetName(L"UI_header_Bar");
-			UI_headerBar->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"UI_headerBar_Mt");
 
-			// 오브젝트 배치용 스크립트
-			ArrangementScript* ArScript = Bg_House->AddComponent<ArrangementScript>();
-			ArScript->SetDefault();
+			}
+#pragma endregion
+#pragma region UI
+			{
+				// UI_Headerbar
+				GameObject* UI_headerBar = Instantiate<GameObject>(Vector3(0.0f, 484.5f, 1.015f), Vector3(1920.f, 111.f, 1.f), eLayerType::UI);
+				UI_headerBar->SetName(L"UI_header_Bar");
+				UI_headerBar->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"UI_headerBar_Mt");
+
+				// 오브젝트 배치용 스크립트
+				// ArrangementScript* ArScript = UI_headerBar->AddComponent<ArrangementScript>();
+				// ArScript->SetDefault();
+			}
+#pragma endregion
 		}
 
 		// MouseCursor
@@ -104,7 +112,7 @@ namespace ssz
 			GameObject* camera = Instantiate<GameObject>(Vector3(0.0f, 0.0f, -10.f), eLayerType::UI);
 			camera->SetName(L"MainCamera");
 			Camera* cameraComp = camera->AddComponent<Camera>();
-			cameraComp->TurnLayerMask(eLayerType::UI, false);
+			// cameraComp->TurnLayerMask(eLayerType::UI, false);
 		}
 #pragma endregion
 	}

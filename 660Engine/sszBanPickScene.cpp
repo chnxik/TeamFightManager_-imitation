@@ -58,7 +58,7 @@ namespace ssz
 			BanpickBg->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"BanpickBgMt");
 
 			// Battle Header
-			GameObject* BattleHeaderBg = Instantiate<GameObject>(Vector3(0.0f, 516.f, 1.04f), Vector3(1920.f, 123.f, 1.f), eLayerType::BackGround);
+			GameObject* BattleHeaderBg = Instantiate<GameObject>(Vector3(0.0f, 478.5f, 1.04f), Vector3(1920.f, 123.f, 1.f), eLayerType::BackGround);
 			BattleHeaderBg->SetName(L"BattleHeaderBg");
 			BattleHeaderBg->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"BattleHeaderMt");
 
@@ -86,7 +86,7 @@ namespace ssz
 	{
 		Scene::Update();
 
-		if (Input::GetKeyDown(eKeyCode::LBUTTON))
+		if (Input::GetKeyDown(eKeyCode::RBUTTON))
 		{
 			SceneManager::LoadScene(L"IGStadiumScene");
 		}

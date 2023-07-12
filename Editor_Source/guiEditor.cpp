@@ -61,6 +61,23 @@ namespace gui
 
     void Editor::Release()
     {
+        for (EditorObject* obj : mEditorObjects)
+        {
+            if (obj != nullptr)
+            {
+                delete obj;
+                obj = nullptr;
+            }
+        }
+
+        for (DebugObject* obj : mDebugObjects)
+        {
+            if (obj != nullptr)
+            {
+                delete obj;
+                obj = nullptr;
+            }
+        }
     }
 
     void Editor::DebugRender(const ssz::graphics::DebugMesh& mesh)

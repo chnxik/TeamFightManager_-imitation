@@ -2,7 +2,7 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClInclude Include="framework.h" />
-    <ClInclude Include="LoadScenes.h">
+    <ClInclude Include="Load.h">
       <Filter>Contents\Load</Filter>
     </ClInclude>
     <ClInclude Include="sszCameraScript.h">
@@ -36,10 +36,13 @@
       <Filter>Contents\Scene\TestScene</Filter>
     </ClInclude>
     <ClInclude Include="sszCursor.h">
-      <Filter>Contents\GameObject\Cursor</Filter>
+      <Filter>Contents\Object\Cursor</Filter>
     </ClInclude>
     <ClInclude Include="sszTestScript.h">
       <Filter>Contents\Script\Test</Filter>
+    </ClInclude>
+    <ClInclude Include="sszUI.h">
+      <Filter>Contents\Object\UI\Base</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -75,13 +78,16 @@
       <Filter>Contents\Scene\TestScene</Filter>
     </ClCompile>
     <ClCompile Include="sszCursor.cpp">
-      <Filter>Contents\GameObject\Cursor</Filter>
+      <Filter>Contents\Object\Cursor</Filter>
     </ClCompile>
     <ClCompile Include="sszTestScript.cpp">
       <Filter>Contents\Script\Test</Filter>
     </ClCompile>
-    <ClCompile Include="LoadScnes.cpp">
+    <ClCompile Include="Load.cpp">
       <Filter>Contents\Load</Filter>
+    </ClCompile>
+    <ClCompile Include="sszUI.cpp">
+      <Filter>Contents\Object\UI\Base</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -127,14 +133,20 @@
     <Filter Include="Contents\Scene\TestScene">
       <UniqueIdentifier>{a1829e6a-36d3-4f4f-b507-2f1e50fa637b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Contents\GameObject">
-      <UniqueIdentifier>{91df6f40-37f8-4916-b7e5-b9d94c6bb02f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\GameObject\Cursor">
-      <UniqueIdentifier>{036de30b-eeee-4881-84f0-9b8c7846ca22}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Contents\Script\Test">
       <UniqueIdentifier>{a688f2ac-cc77-4504-bd0d-b6bd5fadd9a4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object">
+      <UniqueIdentifier>{91df6f40-37f8-4916-b7e5-b9d94c6bb02f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\Cursor">
+      <UniqueIdentifier>{036de30b-eeee-4881-84f0-9b8c7846ca22}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\UI">
+      <UniqueIdentifier>{9a4b64b7-2e62-4a0a-b19f-6dbd19264584}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\UI\Base">
+      <UniqueIdentifier>{9af3035c-4622-409f-a162-db3214ca9366}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

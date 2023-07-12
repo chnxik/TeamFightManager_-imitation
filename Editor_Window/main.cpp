@@ -35,7 +35,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
     // 메모리릭(누수) 찾기
     _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
-    // _CrtSetBreakAlloc(402);
+    // _CrtSetBreakAlloc(213);
     _CrtDumpMemoryLeaks();
 
     SetProcessDPIAware();
@@ -138,7 +138,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    application.SetWindow(hWnd, 1920, 1080);
 
    // Cursor 감추기
-   // ShowCursor(false);
+   ShowCursor(false);
 
    application.Initialize();
    gui::Editor::Initialize();

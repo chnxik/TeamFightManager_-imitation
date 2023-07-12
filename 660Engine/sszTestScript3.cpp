@@ -1,4 +1,4 @@
-#include "sszTestScript.h"
+#include "sszTestScript3.h"
 
 #include "sszGameObject.h"
 
@@ -10,7 +10,7 @@
 
 namespace ssz
 {
-	TestScript::TestScript()
+	TestScript3::TestScript3()
 		: OffsetPos{}
 		, OffsetScale{}
 		, OffsetRotation{}
@@ -20,15 +20,15 @@ namespace ssz
 	{
 	}
 
-	TestScript::~TestScript()
+	TestScript3::~TestScript3()
 	{
 	}
 
-	void TestScript::Initialize()
+	void TestScript3::Initialize()
 	{
 	}
 
-	void TestScript::SetDefault()
+	void TestScript3::SetDefault()
 	{
 		// Owner 의 Transform에 접근해 초기 Pos와 Scale을 가져온다.
 		Transform* OwnerTf = GetOwner()->GetComponent<Transform>();
@@ -37,10 +37,10 @@ namespace ssz
 		OffsetRotation = OwnerTf->GetRotation();
 	}
 
-	void TestScript::Update()
+	void TestScript3::Update()
 	{
 		// Position
-		if (Input::GetKey(eKeyCode::Q))
+		if (Input::GetKey(eKeyCode::Z))
 		{
 			if (Input::GetKey(eKeyCode::UP)) { OffsetPos.y += 10.f * (float)Time::DeltaTime(); }
 			if (Input::GetKey(eKeyCode::DOWN)) { OffsetPos.y -= 10.f * (float)Time::DeltaTime(); }
@@ -50,7 +50,7 @@ namespace ssz
 
 
 		// Scale
-		if (Input::GetKey(eKeyCode::W))
+		if (Input::GetKey(eKeyCode::X))
 		{
 			if (Input::GetKey(eKeyCode::UP)) { fradius += 50.f * (float)Time::DeltaTime(); }
 			if (Input::GetKey(eKeyCode::DOWN)) { fradius -= 50.f * (float)Time::DeltaTime(); }
@@ -58,7 +58,7 @@ namespace ssz
 
 		// Rotation
 		float RotZ = RtoD(OffsetRotation.z);
-		if (ssz::Input::GetKey(eKeyCode::E))
+		if (ssz::Input::GetKey(eKeyCode::C))
 		{
 			if (Input::GetKey(eKeyCode::UP)) { RotZ += 10.f * (float)Time::DeltaTime(); }
 			if (Input::GetKey(eKeyCode::DOWN)) { RotZ -= 10.f * (float)Time::DeltaTime(); }

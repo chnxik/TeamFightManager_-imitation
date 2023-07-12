@@ -3,11 +3,11 @@
 
 namespace ssz
 {
-	class TestScript : public Script
+	class TestScript3 : public Script
 	{
 	public:
-		TestScript();
-		virtual ~TestScript();
+		TestScript3();
+		virtual ~TestScript3();
 
 		virtual void Initialize() override;
 		virtual void Update() override;

@@ -78,10 +78,10 @@ namespace ssz
 			MeshRenderer* TestUI_mr = TestUI->AddComponent<MeshRenderer>();
 			TestUI_mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
 			TestUI_mr->SetMaterial(Resources::Find<Material>(L"TestUI_Mt"));
-			TestUI->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, 0.9f));
+			TestUI->GetComponent<Transform>()->SetLocalPosition(Vector3(0.0f, 0.0f, 0.9f));
 
 			Vector2 TextureSize = TestUI_mr->GetMaterial()->GetTexture()->GetTextureSize() / 1000.f * 3.f;
-			TestUI->GetComponent<Transform>()->SetScale(Vector3(TextureSize.x, TextureSize.y, 1.f));
+			TestUI->GetComponent<Transform>()->SetLocalScale(Vector3(TextureSize.x, TextureSize.y, 1.f));
 			TestUI->AddComponent<Masking>();
 
 			GameObject* TestUI2 = new GameObject();
@@ -91,10 +91,10 @@ namespace ssz
 			MeshRenderer* TestUI2_mr = TestUI2->AddComponent<MeshRenderer>();
 			TestUI2_mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
 			TestUI2_mr->SetMaterial(Resources::Find<Material>(L"TestUI2_Mt"));
-			TestUI2->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, 1.0f));
+			TestUI2->GetComponent<Transform>()->SetLocalPosition(Vector3(0.0f, 0.0f, 1.0f));
 
 			Vector2 Texture2Size = TestUI2_mr->GetMaterial()->GetTexture()->GetTextureSize() / 1000.f * 4.f;
-			TestUI2->GetComponent<Transform>()->SetScale(Vector3(TextureSize.x, TextureSize.y, 1.f));
+			TestUI2->GetComponent<Transform>()->SetLocalScale(Vector3(TextureSize.x, TextureSize.y, 1.f));
 
 			// 오브젝트 배치용 스크립트
 			ArrangementScript* ArScript = TestUI->AddComponent<ArrangementScript>();
@@ -110,8 +110,8 @@ namespace ssz
 			MeshRenderer* Cursor_mr = Cursor->AddComponent<MeshRenderer>();
 			Cursor_mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
 			Cursor_mr->SetMaterial(Resources::Find<Material>(L"CursorMt"));
-			Cursor->GetComponent<Transform>()->SetPosition(Vector3(-0.9f, 0.0f, 0.01f));
-			Cursor->GetComponent<Transform>()->SetScale(Vector3(0.032f, 0.032f, 1.0f));
+			Cursor->GetComponent<Transform>()->SetLocalPosition(Vector3(-0.9f, 0.0f, 0.01f));
+			Cursor->GetComponent<Transform>()->SetLocalScale(Vector3(0.032f, 0.032f, 1.0f));
 			Cursor->AddComponent<CursorScript>()->Initialize();
 		}
 
@@ -120,7 +120,7 @@ namespace ssz
 			GameObject* camera = new GameObject();
 			camera->SetName(L"MainCamera");
 			AddGameObject(eLayerType::UI, camera);
-			camera->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, -10.f));
+			camera->GetComponent<Transform>()->SetLocalPosition(Vector3(0.0f, 0.0f, -10.f));
 			Camera* cameraComp = camera->AddComponent<Camera>();
 			cameraComp->TurnLayerMask(eLayerType::UI, false);
 		}
@@ -131,7 +131,7 @@ namespace ssz
 			GameObject* UIcamera = new GameObject();
 			UIcamera->SetName(L"UICamera");
 			AddGameObject(eLayerType::UI, UIcamera);
-			UIcamera->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, -10.f));
+			UIcamera->GetComponent<Transform>()->SetLocalPosition(Vector3(0.0f, 0.0f, -10.f));
 			Camera* cameraComp = UIcamera->AddComponent<Camera>();
 			cameraComp->DisableLayerMasks();
 			cameraComp->TurnLayerMask(eLayerType::UI, true);

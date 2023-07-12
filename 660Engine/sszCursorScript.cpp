@@ -54,7 +54,7 @@ namespace ssz
 			
 			FinalPos = viewport.Unproject(FinalPos, Camera::GetProjectionMatrix(), Camera::GetViewMatrix(), Matrix::Identity);
 			
-			GetOwner()->GetComponent<Transform>()->SetPosition(FinalPos);
+			GetOwner()->GetComponent<Transform>()->SetLocalPosition(FinalPos);
 		}
 	}
 }

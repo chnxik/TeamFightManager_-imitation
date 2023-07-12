@@ -11,10 +11,14 @@ namespace ssz
 	using namespace ssz::graphics;
 	Transform::Transform()
 		: Component(eComponentType::Tranform)
-		, mPosition(Vector3::Zero)
-		, mRotation(Vector3::Zero)
-		, mScale(Vector3::One)
+		, mLocalPosition(Vector3::Zero)
+		, mLocalRotation(Vector3::Zero)
+		, mLocalScale(Vector3::One)
+		, mWorldPosition(Vector3::Zero)
+		, mWorldRotation(Vector3::Zero)
+		, mWorldScale(Vector3::One)
 		, mParent(nullptr)
+		, mTransformType(eTransformType::Default)
 	{
 	}
 
@@ -32,28 +36,84 @@ namespace ssz
 
 	void Transform::LateUpdate()
 	{
-		mWorld = Matrix::Identity;
-
-		Matrix scale = Matrix::CreateScale(mScale);
-
-		Matrix rotation;
-		rotation = Matrix::CreateRotationX(mRotation.x);
-		rotation *= Matrix::CreateRotationY(mRotation.y);
-		rotation *= Matrix::CreateRotationZ(mRotation.z);
-
-		Matrix position;
-		position.Translation(mPosition);
-
-		mWorld = scale * rotation * position;
-
-		mUp = Vector3::TransformNormal(Vector3::Up, rotation);
-		mForward = Vector3::TransformNormal(Vector3::Forward, rotation);
-		mRight = Vector3::TransformNormal(Vector3::Right, rotation);
-
 		if (mParent != nullptr)
 		{
-			mWorld *= mParent->mWorld;
+			if (eTransformType::Default == mTransformType)
+			{
+				mWorld = Matrix::Identity;
+
+				Matrix scale = Matrix::CreateScale(mLocalScale);
+
+				Matrix rotation;
+				rotation = Matrix::CreateRotationX(mLocalRotation.x);
+				rotation *= Matrix::CreateRotationY(mLocalRotation.y);
+				rotation *= Matrix::CreateRotationZ(mLocalRotation.z);
+
+				Matrix position;
+				position.Translation(mLocalPosition);
+
+				mWorld = scale * rotation * position;
+
+				mUp = Vector3::TransformNormal(Vector3::Up, rotation);
+				mForward = Vector3::TransformNormal(Vector3::Forward, rotation);
+				mRight = Vector3::TransformNormal(Vector3::Right, rotation);
+
+				mWorld *= mParent->mWorld;
+				Quaternion mWorldRot;
+				mWorld.Decompose(mWorldScale, mWorldRot, mWorldPosition);
+				mWorldRotation = Vector3(mWorldRot.x, mWorldRot.y, mWorldRot.z);
+			}
+			else if (eTransformType::Add == mTransformType)
+			{
+				mWorldPosition = mLocalPosition + mParent->mWorldPosition;
+				mWorldRotation = mLocalRotation + mParent->mWorldRotation;
+				mWorldScale = mLocalScale + mParent->mWorldScale;
+
+				mWorld = Matrix::Identity;
+
+				Matrix scale = Matrix::CreateScale(mWorldScale);
+
+				Matrix rotation;
+				rotation = Matrix::CreateRotationX(mWorldRotation.x);
+				rotation *= Matrix::CreateRotationY(mWorldRotation.y);
+				rotation *= Matrix::CreateRotationZ(mWorldRotation.z);
+
+				Matrix position;
+				position.Translation(mWorldPosition);
+
+				mWorld = scale * rotation * position;
+
+				mUp = Vector3::TransformNormal(Vector3::Up, rotation);
+				mForward = Vector3::TransformNormal(Vector3::Forward, rotation);
+				mRight = Vector3::TransformNormal(Vector3::Right, rotation);
+			}
 		}
+		else
+		{
+			mWorldPosition = mLocalPosition;
+			mWorldRotation = mLocalRotation;
+			mWorldScale = mLocalScale;
+
+			mWorld = Matrix::Identity;
+
+			Matrix scale = Matrix::CreateScale(mWorldScale);
+
+			Matrix rotation;
+			rotation = Matrix::CreateRotationX(mWorldRotation.x);
+			rotation *= Matrix::CreateRotationY(mWorldRotation.y);
+			rotation *= Matrix::CreateRotationZ(mWorldRotation.z);
+
+			Matrix position;
+			position.Translation(mWorldPosition);
+
+			mWorld = scale * rotation * position;
+
+			mUp = Vector3::TransformNormal(Vector3::Up, rotation);
+			mForward = Vector3::TransformNormal(Vector3::Forward, rotation);
+			mRight = Vector3::TransformNormal(Vector3::Right, rotation);
+		}
+
+		std::wstring name = GetOwner()->GetName();
 	}
 
 	void Transform::Render()

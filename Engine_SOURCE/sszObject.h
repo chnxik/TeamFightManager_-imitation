@@ -38,7 +38,7 @@ namespace ssz::object
 	{
 		T* gameObj = new T();
 		Transform* tr = gameObj->GetComponent<Transform>();
-		tr->SetPosition(pos);
+		tr->SetLocalPosition(pos);
 
 		Scene* scene = SceneManager::GetActiveScene();
 		scene->AddGameObject(layer, gameObj);
@@ -51,8 +51,8 @@ namespace ssz::object
 	{
 		T* gameObj = new T();
 		Transform* tr = gameObj->GetComponent<Transform>();
-		tr->SetPosition(pos);
-		tr->SetScale(scale);
+		tr->SetLocalPosition(pos);
+		tr->SetLocalScale(scale);
 
 		Scene* scene = SceneManager::GetActiveScene();
 		scene->AddGameObject(layer, gameObj);
@@ -65,9 +65,9 @@ namespace ssz::object
 	{
 		T* gameObj = new T();
 		Transform* tr = gameObj->GetComponent<Transform>();
-		tr->SetPosition(pos);
-		tr->SetRotation(rotate);
-		tr->SetScale(scale);
+		tr->SetLocalPosition(pos);
+		tr->SetLocalRotation(rotate);
+		tr->SetLocalScale(scale);
 
 		Scene* scene = SceneManager::GetActiveScene();
 		scene->AddGameObject(layer, gameObj);

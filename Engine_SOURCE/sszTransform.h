@@ -9,6 +9,12 @@ namespace ssz
 		Transform();
 		~Transform();
 
+		enum eTransformType
+		{
+			Default,
+			Add,
+		};
+
 		virtual void Initialize() override;
 		virtual void Update() override;
 		virtual void LateUpdate() override;
@@ -16,17 +22,24 @@ namespace ssz
 
 		virtual void BindConstantBuffer() override;
 
-		void SetPosition(Vector3 position) { mPosition = position; }
-		void SetRotation(Vector3 rotation) { mRotation = rotation; }
-		void SetScale(Vector3 scale) { mScale = scale; }
+		void SetLocalPosition(Vector3 position) { mLocalPosition = position; }
+		void SetLocalRotation(Vector3 rotation) { mLocalRotation = rotation; }
+		void SetLocalScale(Vector3 scale) { mLocalScale = scale; }
 
-		void SetPosition(float x, float y, float z) { mPosition = Vector3(x, y, z); }
-		void SetRotation(float x, float y, float z) { mRotation = Vector3(x, y, z); }
-		void SetScale(float x, float y, float z) { mScale = Vector3(x, y, z); }
+		void SetLocalPosition(float x, float y, float z) { mLocalPosition = Vector3(x, y, z); }
+		void SetLocalRotation(float x, float y, float z) { mLocalRotation = Vector3(x, y, z); }
+		void SetLocalScale(float x, float y, float z) { mLocalScale = Vector3(x, y, z); }
+		
+		void SetDefaultType() { mTransformType = eTransformType::Default; }
+		void SetAddType() { mTransformType = eTransformType::Add; }
 
-		Vector3 GetPosition() { return mPosition;}
-		Vector3 GetRotation() { return mRotation;}
-		Vector3 GetScale() { return mScale; }
+		Vector3 GetLocalPosition() { return mLocalPosition;}
+		Vector3 GetLocalRotation() { return mLocalRotation;}
+		Vector3 GetLocalScale() { return mLocalScale; }
+
+		Vector3 GetWorldPosition() { return mWorldPosition; }
+		Vector3 GetWorldRotation() { return mWorldRotation; }
+		Vector3 GetWorldScale() { return mWorldScale; }
 
 		Vector3 Forward() { return mForward; }
 		Vector3 Right() { return mRight; }
@@ -40,9 +53,13 @@ namespace ssz
 		Transform* GetParent() { return mParent; }
 
 	private:
-		Vector3 mPosition;
-		Vector3 mRotation;
-		Vector3 mScale;
+		Vector3 mLocalPosition;
+		Vector3 mLocalRotation;
+		Vector3 mLocalScale;
+
+		Vector3 mWorldPosition;
+		Vector3 mWorldRotation;
+		Vector3 mWorldScale;
 
 		Vector3 mUp;
 		Vector3 mForward;
@@ -51,5 +68,7 @@ namespace ssz
 		Matrix mWorld;
 
 		Transform* mParent;
+
+		eTransformType mTransformType;
 	};
 }

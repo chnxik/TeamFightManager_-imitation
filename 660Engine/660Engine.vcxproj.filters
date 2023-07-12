@@ -44,6 +44,12 @@
     <ClInclude Include="sszUI.h">
       <Filter>Contents\Object\UI\Base</Filter>
     </ClInclude>
+    <ClInclude Include="sszTestScript2.h">
+      <Filter>Contents\Script\Test</Filter>
+    </ClInclude>
+    <ClInclude Include="sszTestScript3.h">
+      <Filter>Contents\Script\Test</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="660Engine.cpp" />
@@ -88,6 +94,12 @@
     </ClCompile>
     <ClCompile Include="sszUI.cpp">
       <Filter>Contents\Object\UI\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="sszTestScript2.cpp">
+      <Filter>Contents\Script\Test</Filter>
+    </ClCompile>
+    <ClCompile Include="sszTestScript3.cpp">
+      <Filter>Contents\Script\Test</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

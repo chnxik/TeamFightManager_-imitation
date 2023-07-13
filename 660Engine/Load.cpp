@@ -11,11 +11,6 @@
 #include "sszIGStadiumScene.h"
 #include "sszTestScene.h"
 
-// Resources
-#include "sszResources.h"
-#include "sszMaterial.h"
-#include "sszMesh.h"
-
 namespace ssz
 {
 	void InitializeScenes()
@@ -27,8 +22,8 @@ namespace ssz
 		SceneManager::CreateScene<BanPickScene>(L"BanPickScene");
 		SceneManager::CreateScene<IGStadiumScene>(L"IGStadiumScene");
 
-		// SceneManager::CreateScene<TestScene>(L"TestScene");
+		SceneManager::CreateScene<TestScene>(L"TestScene");
 
-		SceneManager::LoadScene(L"TitleScene");
+		SceneManager::LoadScene(L"TestScene");
 	}
 }

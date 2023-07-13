@@ -52,9 +52,9 @@ namespace ssz
 			viewport.minDepth = 0.0f;
 			viewport.maxDepth = 1.0f;
 			
-			FinalPos = viewport.Unproject(FinalPos, Camera::GetProjectionMatrix(), Camera::GetViewMatrix(), Matrix::Identity);
+			FinalPos = viewport.Unproject(FinalPos, Camera::GetGpuProjectionMatrix(), Camera::GetGpuViewMatrix(), Matrix::Identity);
 			
-			GetOwner()->GetComponent<Transform>()->SetLocalPosition(FinalPos);
+			GetOwner()->GetComponent<Transform>()->SetPosition(FinalPos);
 		}
 	}
 }

@@ -2,6 +2,7 @@
 
 #include "sszInput.h"
 #include "sszSceneManager.h"
+#include "sszRenderer.h"
 
 // Resources
 #include "sszResources.h"
@@ -12,14 +13,23 @@
 #include "sszTransform.h"
 #include "sszMeshRenderer.h"
 #include "sszCamera.h"
-#include "sszMasking.h"
+#include "sszCollider2D.h"
+#include "sszTestScript.h"
+#include "sszTestScript2.h"
+#include "sszTestScript3.h"
 
 // Script
 #include "sszArrangementScript.h"
 #include "sszCursorScript.h"
 
+// Object
+#include "sszObject.h"
+#include "sszCursor.h"
+
 namespace ssz
 {
+	using namespace object;
+
 	TestScene::TestScene()
 	{
 	}
@@ -30,112 +40,51 @@ namespace ssz
 
 	void TestScene::Initialize()
 	{
-#pragma region Make Material for this Scene
-		{
-			// Get Using Shader
-			std::shared_ptr<Shader> SpriteShader = ssz::Resources::Find<Shader>(L"SpriteShader");
+		Resources::Load<Texture>(L"TitleLogoTex", L"..\\Resources\\useResource\\Title\\logo_tp.png");
 
-			std::shared_ptr<Shader> MaskShader = ssz::Resources::Find<Shader>(L"MaskShader");
-			
+		std::shared_ptr<Material> TitleLogo_Mt = std::make_shared<Material>();
+		TitleLogo_Mt->SetMaterial(L"SpriteShader", L"TitleLogoTex", eRenderingMode::Transparent);
+		Resources::Insert(L"TitleLogoMt", TitleLogo_Mt);
 
-			// Get Using Texture
-			std::shared_ptr<Texture> TestUI = Resources::Load<Texture>(L"TestUI", L"..\\Resources\\useResource\\GameScene\\BanPick\\banpick_ui_bg.png");
-			std::shared_ptr<Texture> TestUI2 = Resources::Load<Texture>(L"TestUI2", L"..\\Resources\\useResource\\stadium\\stadium_bg.png");
-			
-			// Mouse Cursor Tex
-			std::shared_ptr<Texture> CursorTex = Resources::Load<Texture>(L"CursorTex", L"..\\Resources\\useResource\\Cursor\\mouse_cursor.png");
+		GameObject* TestObject = Instantiate<GameObject>(Vector3(0.0f, 0.0f, 1.010f), Vector3(300.f, 300.f, 1.f), eLayerType::Player);
+		TestObject->SetName(L"Test");
+		TestObject->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"TitleLogoMt");
+		TestObject->AddComponent<TestScript>()->SetDefault();
+		TestObject->AddComponent<Collider2D>()->Initialize();
+		TestObject->GetComponent<Transform>()->SetTransTypeADD();
 
-			// Make Material
-			std::shared_ptr<Material> TestUI_Mt = std::make_shared<Material>();
-			TestUI_Mt->SetShader(MaskShader);
-			TestUI_Mt->SetTexture(TestUI);
-			TestUI_Mt->SetRenderingMode(eRenderingMode::Transparent);
-			Resources::Insert(L"TestUI_Mt", TestUI_Mt);
-
-			std::shared_ptr<Material> TestUI2_Mt = std::make_shared<Material>();
-			TestUI2_Mt->SetShader(SpriteShader);
-			TestUI2_Mt->SetTexture(TestUI2);
-			TestUI2_Mt->SetRenderingMode(eRenderingMode::Transparent);
-			Resources::Insert(L"TestUI2_Mt", TestUI2_Mt);
-
-			// Mouse Cursor Material
-			std::shared_ptr<Material> Cursor_Mt = std::make_shared<Material>();
-			Cursor_Mt->SetShader(SpriteShader);
-			Cursor_Mt->SetTexture(CursorTex);
-			Cursor_Mt->SetRenderingMode(eRenderingMode::Transparent);
-			Resources::Insert(L"CursorMt", Cursor_Mt);
-
-
-		}
-#pragma endregion
-#pragma region Create Object for this Scene
-		// GameObject
-		{
-			GameObject* TestUI = new GameObject();
-			TestUI->SetName(L"TitleBg");
-			AddGameObject(eLayerType::BackGround, TestUI);
-
-			MeshRenderer* TestUI_mr = TestUI->AddComponent<MeshRenderer>();
-			TestUI_mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
-			TestUI_mr->SetMaterial(Resources::Find<Material>(L"TestUI_Mt"));
-			TestUI->GetComponent<Transform>()->SetLocalPosition(Vector3(0.0f, 0.0f, 0.9f));
-
-			Vector2 TextureSize = TestUI_mr->GetMaterial()->GetTexture()->GetTextureSize() / 1000.f * 3.f;
-			TestUI->GetComponent<Transform>()->SetLocalScale(Vector3(TextureSize.x, TextureSize.y, 1.f));
-			TestUI->AddComponent<Masking>();
-
-			GameObject* TestUI2 = new GameObject();
-			TestUI2->SetName(L"TestUI2");
-			AddGameObject(eLayerType::BackGround, TestUI2);
-
-			MeshRenderer* TestUI2_mr = TestUI2->AddComponent<MeshRenderer>();
-			TestUI2_mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
-			TestUI2_mr->SetMaterial(Resources::Find<Material>(L"TestUI2_Mt"));
-			TestUI2->GetComponent<Transform>()->SetLocalPosition(Vector3(0.0f, 0.0f, 1.0f));
-
-			Vector2 Texture2Size = TestUI2_mr->GetMaterial()->GetTexture()->GetTextureSize() / 1000.f * 4.f;
-			TestUI2->GetComponent<Transform>()->SetLocalScale(Vector3(TextureSize.x, TextureSize.y, 1.f));
-
-			// 오브젝트 배치용 스크립트
-			ArrangementScript* ArScript = TestUI->AddComponent<ArrangementScript>();
-			ArScript->SetDefault();
-		}
+		GameObject* TestObject2 = Instantiate<GameObject>(Vector3(300.0f, 0.0f, 1.009f), Vector3(0.f, 0.f, 0.f), eLayerType::Player);
+		//GameObject* TestObject2 = Instantiate<GameObject>(Vector3(1.0f, 0.0f, 1.009f), Vector3(0.f, 0.f, 0.f), eLayerType::Player);
+		TestObject2->SetName(L"Test2");
+		TestObject2->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"TitleLogoMt");
+		TestObject2->AddComponent<TestScript2>()->SetDefault();
+		TestObject2->SetParent(TestObject);
+		TestObject2->AddComponent<Collider2D>()->Initialize();
+		TestObject2->GetComponent<Transform>()->SetTransTypeADD();
+		
+		GameObject* TestObject3 = Instantiate<GameObject>(Vector3(300.0f, 0.0f, 1.009f), Vector3(0.f, 0.f, 0.f), eLayerType::Player);
+		//GameObject* TestObject3 = Instantiate<GameObject>(Vector3(1.0f, 0.0f, 1.009f), Vector3(0.f, 0.f, 0.f), eLayerType::Player);
+		TestObject3->SetName(L"Test2");
+		TestObject3->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"TitleLogoMt");
+		TestObject3->AddComponent<TestScript3>()->SetDefault();
+		TestObject3->SetParent(TestObject2);
+		TestObject3->AddComponent<Collider2D>()->Initialize();
+		TestObject3->GetComponent<Transform>()->SetTransTypeADD();
 
 		// MouseCursor
 		{
-			GameObject* Cursor = new GameObject();
-			Cursor->SetName(L"Cursor");
-			AddGameObject(eLayerType::Cursor, Cursor);
-
-			MeshRenderer* Cursor_mr = Cursor->AddComponent<MeshRenderer>();
-			Cursor_mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
-			Cursor_mr->SetMaterial(Resources::Find<Material>(L"CursorMt"));
-			Cursor->GetComponent<Transform>()->SetLocalPosition(Vector3(-0.9f, 0.0f, 0.01f));
-			Cursor->GetComponent<Transform>()->SetLocalScale(Vector3(0.032f, 0.032f, 1.0f));
-			Cursor->AddComponent<CursorScript>()->Initialize();
+			Cursor* CursorObj = Instantiate<Cursor>(Vector3(0.f, 0.f, 0.01f), Vector3(32.f, 32.f, 1.f), eLayerType::Cursor);
+			CursorObj->SetName(L"Cursor");
+			CursorObj->AddComponent<Collider2D>()->Initialize();
 		}
 
 		// Main Camera
 		{
-			GameObject* camera = new GameObject();
+			GameObject* camera = Instantiate<GameObject>(Vector3(0.0f, 0.0f, -10.f), eLayerType::UI);
 			camera->SetName(L"MainCamera");
-			AddGameObject(eLayerType::UI, camera);
-			camera->GetComponent<Transform>()->SetLocalPosition(Vector3(0.0f, 0.0f, -10.f));
 			Camera* cameraComp = camera->AddComponent<Camera>();
 			cameraComp->TurnLayerMask(eLayerType::UI, false);
-		}
-
-
-		// UI Camera
-		{
-			GameObject* UIcamera = new GameObject();
-			UIcamera->SetName(L"UICamera");
-			AddGameObject(eLayerType::UI, UIcamera);
-			UIcamera->GetComponent<Transform>()->SetLocalPosition(Vector3(0.0f, 0.0f, -10.f));
-			Camera* cameraComp = UIcamera->AddComponent<Camera>();
-			cameraComp->DisableLayerMasks();
-			cameraComp->TurnLayerMask(eLayerType::UI, true);
-			cameraComp->TurnLayerMask(eLayerType::Cursor, true);
+			renderer::cameras.push_back(cameraComp);
 		}
 #pragma endregion
 	}

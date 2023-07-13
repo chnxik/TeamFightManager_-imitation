@@ -6,14 +6,14 @@ namespace ssz
 	class Transform : public Component
 	{
 	public:
-		Transform();
-		~Transform();
-
-		enum eTransformType
+		enum eTransType
 		{
-			Default,
-			Add,
+			MUL,
+			ADD,
 		};
+
+		Transform();
+		virtual ~Transform();
 
 		virtual void Initialize() override;
 		virtual void Update() override;
@@ -22,20 +22,17 @@ namespace ssz
 
 		virtual void BindConstantBuffer() override;
 
-		void SetLocalPosition(Vector3 position) { mLocalPosition = position; }
-		void SetLocalRotation(Vector3 rotation) { mLocalRotation = rotation; }
-		void SetLocalScale(Vector3 scale) { mLocalScale = scale; }
+		void SetPosition(Vector3 position) { mPosition = position; }
+		void SetRotation(Vector3 rotation) { mRotation = rotation; }
+		void SetScale(Vector3 scale) { mScale = scale; }
 
-		void SetLocalPosition(float x, float y, float z) { mLocalPosition = Vector3(x, y, z); }
-		void SetLocalRotation(float x, float y, float z) { mLocalRotation = Vector3(x, y, z); }
-		void SetLocalScale(float x, float y, float z) { mLocalScale = Vector3(x, y, z); }
+		void SetPosition(float x, float y, float z) { mPosition = Vector3(x, y, z); }
+		void SetRotation(float x, float y, float z) { mRotation = Vector3(x, y, z); }
+		void SetScale(float x, float y, float z) { mScale = Vector3(x, y, z); }
 		
-		void SetDefaultType() { mTransformType = eTransformType::Default; }
-		void SetAddType() { mTransformType = eTransformType::Add; }
-
-		Vector3 GetLocalPosition() { return mLocalPosition;}
-		Vector3 GetLocalRotation() { return mLocalRotation;}
-		Vector3 GetLocalScale() { return mLocalScale; }
+		Vector3 GetPosition() { return mPosition;}
+		Vector3 GetRotation() { return mRotation;}
+		Vector3 GetScale() { return mScale; }
 
 		Vector3 GetWorldPosition() { return mWorldPosition; }
 		Vector3 GetWorldRotation() { return mWorldRotation; }
@@ -45,6 +42,9 @@ namespace ssz
 		Vector3 Right() { return mRight; }
 		Vector3 Up() { return mUp; }
 
+		void SetTransTypeMUL() { mType = eTransType::MUL; }
+		void SetTransTypeADD() { mType = eTransType::ADD; }
+
 		GameObject* GetParentOwner() { return mParent->mOwner; }
 		template <typename T>
 		T* GetParentComponent() { return mParent->mOwner->GetComponent<T>(); }
@@ -53,9 +53,9 @@ namespace ssz
 		Transform* GetParent() { return mParent; }
 
 	private:
-		Vector3 mLocalPosition;
-		Vector3 mLocalRotation;
-		Vector3 mLocalScale;
+		Vector3 mPosition;
+		Vector3 mRotation;
+		Vector3 mScale;
 
 		Vector3 mWorldPosition;
 		Vector3 mWorldRotation;
@@ -68,7 +68,6 @@ namespace ssz
 		Matrix mWorld;
 
 		Transform* mParent;
-
-		eTransformType mTransformType;
+		eTransType mType;
 	};
 }

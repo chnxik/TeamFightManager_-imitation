@@ -6,10 +6,10 @@ namespace ssz
 {
 	Collider2D::Collider2D()
 		: Component(eComponentType::Collider2D)
-		, mType(eColliderType::End)
+		, mType(eColliderType::Rect)
 		, mTransform(nullptr)
-		, mSize(Vector2::One)
-		, mCenter(Vector2::Zero)
+		, mOffsetScale(Vector2::One)
+		, mOffsetPosition(Vector2::Zero)
 	{
 	}
 
@@ -28,20 +28,21 @@ namespace ssz
 
 	void Collider2D::LateUpdate()
 	{
-		Vector3 FinalScale = mTransform->GetScale();
-		FinalScale.x *= mSize.x;
-		FinalScale.y *= mSize.y;
+		Vector3 scale = mTransform->GetWorldScale();
+		scale.x *= mOffsetScale.x;
+		scale.y *= mOffsetScale.y;
 
-		Vector3 pos = mTransform->GetPosition();
-		pos.x += mCenter.x;
-		pos.y += mCenter.y;
+		Vector3 pos = mTransform->GetWorldPosition();
+		pos.x += mOffsetPosition.x;
+		pos.y += mOffsetPosition.y;
 
-		
+		mColliderPosition = pos;
+
 		graphics::DebugMesh mesh = {};
-		mesh.position;
-		mesh.scale;
-		mesh.rotation;
-		mesh.type = mType;
+		mesh.position = pos;
+		mesh.scale = scale;
+		mesh.rotation = mTransform->GetWorldRotation();
+		mesh.type = eColliderType::Rect;
 
 		renderer::PushDebugMeshAttribute(mesh);
 	}

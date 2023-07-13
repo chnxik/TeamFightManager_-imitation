@@ -16,14 +16,15 @@ namespace ssz
 		virtual void Render() override;
 
 		void SetType(eColliderType type) { mType = type; }
-		void SetSize(Vector2 size) { mSize = size; }
-		void SetCenter(Vector2 size) { mCenter = size; }
+		void SetSize(Vector2 size) { mOffsetScale = size; }
+		void SetCenter(Vector2 size) { mOffsetPosition = size; }
 
 	private:
 		eColliderType mType;
 		Transform* mTransform;
 
-		Vector2 mSize;
-		Vector2 mCenter;
+		Vector3 mColliderPosition;
+		Vector2 mOffsetScale;
+		Vector2 mOffsetPosition;
 	};
 }

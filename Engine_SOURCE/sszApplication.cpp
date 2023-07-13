@@ -68,6 +68,7 @@ namespace ssz
 	void Application::Present()
 	{
 		graphicDevice->Present();
+		renderer::CameraClear();
 	}
 
 	void Application::Release()

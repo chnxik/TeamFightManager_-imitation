@@ -18,7 +18,6 @@ namespace gui
         mDebugObjects.resize((UINT)eColliderType::End);
      
         mDebugObjects[(UINT)eColliderType::Rect] = new DebugObject();
-        mDebugObjects[(UINT)eColliderType::Rect]->AddComponent<ssz::Transform>();
         mDebugObjects[(UINT)eColliderType::Rect]->AddComponent<ssz::MeshRenderer>()->SetMeshRenderer(L"DebugRect", L"DebugMaterial");
     }
 
@@ -56,33 +55,50 @@ namespace gui
         {
             DebugRender(mesh);
         }
-
+        renderer::debugMeshs.clear();
     }
 
     void Editor::Release()
     {
-        for (EditorObject* obj : mEditorObjects)
+        for (auto widget : mWidgets)
         {
-            if (obj != nullptr)
-            {
-                delete obj;
-                obj = nullptr;
-            }
+            delete widget;
+            widget = nullptr;
         }
 
-        for (DebugObject* obj : mDebugObjects)
+        for (auto editorObj : mEditorObjects)
         {
-            if (obj != nullptr)
-            {
-                delete obj;
-                obj = nullptr;
-            }
+            delete editorObj;
+            editorObj = nullptr;
+        }
+
+        for (auto debugObj : mDebugObjects)
+        {
+            delete debugObj;
+            debugObj = nullptr;
         }
     }
 
     void Editor::DebugRender(const ssz::graphics::DebugMesh& mesh)
     {
         DebugObject* debugObj = mDebugObjects[(UINT)mesh.type];
+
+        ssz::Transform* tr = debugObj->GetComponent<ssz::Transform>();
+
+        Vector3 pos = mesh.position;
+        pos.z -= 0.01f;
+
+        tr->SetPosition(pos);
+        tr->SetScale(mesh.scale);
+        tr->SetRotation(mesh.rotation);
+
+        tr->LateUpdate();
+
+        // enum 값으로 DebugMesh에 ColliderType별로 정할 수 있도록 하기. UI이인지 Obj인지
+
+        ssz::Camera* mainCamera = renderer::cameras[0];
+        ssz::Camera::SetGpuViewMatrix(mainCamera->GetViewMatrix());
+        ssz::Camera::SetGpuProjectionMatrix(mainCamera->GetProjectionMatrix());
 
         debugObj->Render();
     }

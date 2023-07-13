@@ -131,9 +131,9 @@ namespace ssz
 		else if (Input::GetKeyDown(eKeyCode::LBUTTON))
 		{
 			Transform* tf = CutScenes[CutSceneIdx++]->GetComponent<Transform>();
-			Vector3 CutScenePos = tf->GetLocalPosition();
+			Vector3 CutScenePos = tf->GetPosition();
 			CutScenePos.z = 1.01f;
-			tf->SetLocalPosition(CutScenePos);
+			tf->SetPosition(CutScenePos);
 		}
 
 		Scene::Update();

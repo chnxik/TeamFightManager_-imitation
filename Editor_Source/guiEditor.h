@@ -2,6 +2,7 @@
 #include "..\Engine_SOURCE\Commoninclude.h"
 #include "..\Engine_SOURCE\sszEngine.h"
 #include "..\Engine_SOURCE\sszGraphics.h"
+
 #include "guiWidget.h"
 #include "guiEditorObject.h"
 #include "guiDebugObject.h"

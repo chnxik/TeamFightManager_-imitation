@@ -31,8 +31,8 @@ namespace ssz
 	{
 		// Owner 의 Transform에 접근해 초기 Pos와 Scale을 가져온다.
 		Transform* OwnerTf = GetOwner()->GetComponent<Transform>();
-		ArrangePos = OwnerTf->GetLocalPosition();
-		ArrangeScale = OwnerTf->GetLocalScale();
+		ArrangePos = OwnerTf->GetPosition();
+		ArrangeScale = OwnerTf->GetScale();
 	}
 
 	void ArrangementScript::Update()
@@ -73,8 +73,8 @@ namespace ssz
 		FinalScale.z = 1.f;
 
 		Transform* OwnerTf = GetOwner()->GetComponent<Transform>();
-		OwnerTf->SetLocalPosition(ArrangePos);
-		OwnerTf->SetLocalScale(FinalScale);
+		OwnerTf->SetPosition(ArrangePos);
+		OwnerTf->SetScale(FinalScale);
 	}
 	
 }

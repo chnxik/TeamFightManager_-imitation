@@ -11,14 +11,14 @@ namespace ssz
 	using namespace ssz::graphics;
 	Transform::Transform()
 		: Component(eComponentType::Tranform)
-		, mLocalPosition(Vector3::Zero)
-		, mLocalRotation(Vector3::Zero)
-		, mLocalScale(Vector3::One)
+		, mPosition(Vector3::Zero)
+		, mRotation(Vector3::Zero)
+		, mScale(Vector3::One)
 		, mWorldPosition(Vector3::Zero)
 		, mWorldRotation(Vector3::Zero)
 		, mWorldScale(Vector3::One)
 		, mParent(nullptr)
-		, mTransformType(eTransformType::Default)
+		, mType(eTransType::MUL)
 	{
 	}
 
@@ -36,21 +36,21 @@ namespace ssz
 
 	void Transform::LateUpdate()
 	{
-		if (mParent != nullptr)
+		if (mParent)
 		{
-			if (eTransformType::Default == mTransformType)
+			if (mType == eTransType::MUL)
 			{
 				mWorld = Matrix::Identity;
 
-				Matrix scale = Matrix::CreateScale(mLocalScale);
+				Matrix scale = Matrix::CreateScale(mScale);
 
 				Matrix rotation;
-				rotation = Matrix::CreateRotationX(mLocalRotation.x);
-				rotation *= Matrix::CreateRotationY(mLocalRotation.y);
-				rotation *= Matrix::CreateRotationZ(mLocalRotation.z);
+				rotation = Matrix::CreateRotationX(mRotation.x);
+				rotation *= Matrix::CreateRotationY(mRotation.y);
+				rotation *= Matrix::CreateRotationZ(mRotation.z);
 
 				Matrix position;
-				position.Translation(mLocalPosition);
+				position.Translation(mPosition);
 
 				mWorld = scale * rotation * position;
 
@@ -59,15 +59,15 @@ namespace ssz
 				mRight = Vector3::TransformNormal(Vector3::Right, rotation);
 
 				mWorld *= mParent->mWorld;
-				Quaternion mWorldRot;
-				mWorld.Decompose(mWorldScale, mWorldRot, mWorldPosition);
-				mWorldRotation = Vector3(mWorldRot.x, mWorldRot.y, mWorldRot.z);
+				Quaternion tmp;
+				mWorld.Decompose(mWorldScale, tmp, mWorldPosition);
+				mWorldRotation = mRotation + mParent->mWorldRotation; // Rotation은 합으로 계산
 			}
-			else if (eTransformType::Add == mTransformType)
+			else if (mType == eTransType::ADD)
 			{
-				mWorldPosition = mLocalPosition + mParent->mWorldPosition;
-				mWorldRotation = mLocalRotation + mParent->mWorldRotation;
-				mWorldScale = mLocalScale + mParent->mWorldScale;
+				mWorldPosition = mPosition + mParent->mWorldPosition;
+				mWorldRotation = mRotation + mParent->mWorldRotation;
+				mWorldScale = mScale + mParent->mWorldScale;
 
 				mWorld = Matrix::Identity;
 
@@ -86,34 +86,33 @@ namespace ssz
 				mUp = Vector3::TransformNormal(Vector3::Up, rotation);
 				mForward = Vector3::TransformNormal(Vector3::Forward, rotation);
 				mRight = Vector3::TransformNormal(Vector3::Right, rotation);
+
 			}
 		}
 		else
 		{
-			mWorldPosition = mLocalPosition;
-			mWorldRotation = mLocalRotation;
-			mWorldScale = mLocalScale;
-
 			mWorld = Matrix::Identity;
 
-			Matrix scale = Matrix::CreateScale(mWorldScale);
+			Matrix scale = Matrix::CreateScale(mScale);
 
 			Matrix rotation;
-			rotation = Matrix::CreateRotationX(mWorldRotation.x);
-			rotation *= Matrix::CreateRotationY(mWorldRotation.y);
-			rotation *= Matrix::CreateRotationZ(mWorldRotation.z);
+			rotation = Matrix::CreateRotationX(mRotation.x);
+			rotation *= Matrix::CreateRotationY(mRotation.y);
+			rotation *= Matrix::CreateRotationZ(mRotation.z);
 
 			Matrix position;
-			position.Translation(mWorldPosition);
+			position.Translation(mPosition);
 
 			mWorld = scale * rotation * position;
 
 			mUp = Vector3::TransformNormal(Vector3::Up, rotation);
 			mForward = Vector3::TransformNormal(Vector3::Forward, rotation);
 			mRight = Vector3::TransformNormal(Vector3::Right, rotation);
-		}
 
-		std::wstring name = GetOwner()->GetName();
+			mWorldPosition = mPosition;
+			mWorldRotation = mRotation;
+			mWorldScale = mScale;
+		}
 	}
 
 	void Transform::Render()
@@ -124,8 +123,8 @@ namespace ssz
 	{
 		renderer::TransformCB trCB = {};
 		trCB.mWorld = mWorld;
-		trCB.mView = Camera::GetViewMatrix();
-		trCB.mProjection = Camera::GetProjectionMatrix();
+		trCB.mView = Camera::GetGpuViewMatrix();
+		trCB.mProjection = Camera::GetGpuProjectionMatrix();
 
 		ConstantBuffer* cb = renderer::constantBuffer[(UINT)eCBType::Transform];
 		cb->SetData(&trCB);

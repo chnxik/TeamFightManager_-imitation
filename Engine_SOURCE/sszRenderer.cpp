@@ -15,6 +15,7 @@ namespace renderer
 	Microsoft::WRL::ComPtr<ID3D11DepthStencilState> depthStencilStates[(UINT)eDSType::END] = {};
 	Microsoft::WRL::ComPtr<ID3D11BlendState> blendStates[(UINT)eBSType::END] = {};
 
+	ssz::Camera* mainCamera = nullptr;
 	std::vector<ssz::Camera*> cameras = {};
 	std::vector<DebugMesh> debugMeshs = {};
 
@@ -87,7 +88,7 @@ namespace renderer
 		GetDevice()->CreateRasterizerState(&rasterizerDesc, rasterizerStates[(UINT)eRSType::SolidBack].GetAddressOf());
 
 		rasterizerDesc.FillMode = D3D11_FILL_MODE::D3D11_FILL_SOLID;
-		rasterizerDesc.CullMode = D3D11_CULL_MODE::D3D11_CULL_NONE;
+		rasterizerDesc.CullMode = D3D11_CULL_MODE::D3D11_CULL_FRONT;
 		GetDevice()->CreateRasterizerState(&rasterizerDesc, rasterizerStates[(UINT)eRSType::SolidFront].GetAddressOf());
 
 		rasterizerDesc.FillMode = D3D11_FILL_MODE::D3D11_FILL_SOLID;
@@ -209,9 +210,9 @@ namespace renderer
 		indexes.push_back(1);
 		indexes.push_back(2);
 
-		indexes.push_back(0);
 		indexes.push_back(2);
 		indexes.push_back(3);
+		indexes.push_back(0);
 		mesh->CreateIndexBuffer(indexes.data(), (UINT)indexes.size());
 
 
@@ -284,12 +285,12 @@ namespace renderer
 		MaskShader->Create(eShaderStage::PS, L"MaskPS.hlsl", "main");
 		ssz::Resources::Insert(L"MaskShader", MaskShader);
 
-		std::shared_ptr<Shader> DebugShader = std::make_shared<Shader>();
-		DebugShader->Create(eShaderStage::VS, L"DebugVS.hlsl", "main");
-		DebugShader->Create(eShaderStage::PS, L"DebugPS.hlsl", "main");
-		DebugShader->SetTopology(D3D11_PRIMITIVE_TOPOLOGY::D3D_PRIMITIVE_TOPOLOGY_LINESTRIP);
-		DebugShader->SetRSState(eRSType::SolidNone);
-		Resources::Insert(L"DebugShader", DebugShader);
+		std::shared_ptr<Shader> debugShader = std::make_shared<Shader>();
+		debugShader->Create(eShaderStage::VS, L"DebugVS.hlsl", "main");
+		debugShader->Create(eShaderStage::PS, L"DebugPS.hlsl", "main");
+		debugShader->SetTopology(D3D11_PRIMITIVE_TOPOLOGY::D3D_PRIMITIVE_TOPOLOGY_LINESTRIP);
+		debugShader->SetRSState(eRSType::SolidNone);
+		ssz::Resources::Insert(L"DebugShader", debugShader);
 	}
 
 	void LoadMaterial()
@@ -317,7 +318,10 @@ namespace renderer
 			
 			cam->Render();
 		}
+	}
 
+	void CameraClear()
+	{
 		cameras.clear();
 	}
 

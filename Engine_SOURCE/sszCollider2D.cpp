@@ -41,8 +41,9 @@ namespace ssz
 		graphics::DebugMesh mesh = {};
 		mesh.position = pos;
 		mesh.scale = scale;
+		mesh.radius = (scale.x + scale.y) / 4.f;
 		mesh.rotation = mTransform->GetWorldRotation();
-		mesh.type = eColliderType::Rect;
+		mesh.type = mType;
 
 		renderer::PushDebugMeshAttribute(mesh);
 	}

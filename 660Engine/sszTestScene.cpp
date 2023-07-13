@@ -51,25 +51,26 @@ namespace ssz
 		TestObject->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"TitleLogoMt");
 		TestObject->AddComponent<TestScript>()->SetDefault();
 		TestObject->AddComponent<Collider2D>()->Initialize();
-		TestObject->GetComponent<Transform>()->SetTransTypeADD();
+		TestObject->GetComponent<Collider2D>()->SetType(eColliderType::Circle);
+		//TestObject->GetComponent<Transform>()->SetTransTypeADD();
 
-		GameObject* TestObject2 = Instantiate<GameObject>(Vector3(300.0f, 0.0f, 1.009f), Vector3(0.f, 0.f, 0.f), eLayerType::Player);
+		GameObject* TestObject2 = Instantiate<GameObject>(Vector3(1.0f, 0.0f, 1.009f), Vector3(0.f, 0.f, 0.f), eLayerType::Player);
 		//GameObject* TestObject2 = Instantiate<GameObject>(Vector3(1.0f, 0.0f, 1.009f), Vector3(0.f, 0.f, 0.f), eLayerType::Player);
 		TestObject2->SetName(L"Test2");
 		TestObject2->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"TitleLogoMt");
 		TestObject2->AddComponent<TestScript2>()->SetDefault();
 		TestObject2->SetParent(TestObject);
 		TestObject2->AddComponent<Collider2D>()->Initialize();
-		TestObject2->GetComponent<Transform>()->SetTransTypeADD();
+		//TestObject2->GetComponent<Transform>()->SetTransTypeADD();
 		
-		GameObject* TestObject3 = Instantiate<GameObject>(Vector3(300.0f, 0.0f, 1.009f), Vector3(0.f, 0.f, 0.f), eLayerType::Player);
+		GameObject* TestObject3 = Instantiate<GameObject>(Vector3(1.0f, 0.0f, 1.009f), Vector3(0.f, 0.f, 0.f), eLayerType::Player);
 		//GameObject* TestObject3 = Instantiate<GameObject>(Vector3(1.0f, 0.0f, 1.009f), Vector3(0.f, 0.f, 0.f), eLayerType::Player);
 		TestObject3->SetName(L"Test2");
 		TestObject3->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"TitleLogoMt");
 		TestObject3->AddComponent<TestScript3>()->SetDefault();
 		TestObject3->SetParent(TestObject2);
 		TestObject3->AddComponent<Collider2D>()->Initialize();
-		TestObject3->GetComponent<Transform>()->SetTransTypeADD();
+		//TestObject3->GetComponent<Transform>()->SetTransTypeADD();
 
 		// MouseCursor
 		{

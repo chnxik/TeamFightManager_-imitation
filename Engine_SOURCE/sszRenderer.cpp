@@ -15,7 +15,6 @@ namespace renderer
 	Microsoft::WRL::ComPtr<ID3D11DepthStencilState> depthStencilStates[(UINT)eDSType::END] = {};
 	Microsoft::WRL::ComPtr<ID3D11BlendState> blendStates[(UINT)eBSType::END] = {};
 
-	ssz::Camera* mainCamera = nullptr;
 	std::vector<ssz::Camera*> cameras = {};
 	std::vector<DebugMesh> debugMeshs = {};
 

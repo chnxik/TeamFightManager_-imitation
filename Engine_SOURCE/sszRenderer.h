@@ -40,7 +40,6 @@ namespace renderer
 	extern Microsoft::WRL::ComPtr<ID3D11DepthStencilState> depthStencilStates[];
 	extern Microsoft::WRL::ComPtr<ID3D11BlendState> blendStates[];
 
-	extern ssz::Camera* mainCamera;
 	extern std::vector<ssz::Camera*> cameras;
 	extern std::vector<DebugMesh> debugMeshs;
 

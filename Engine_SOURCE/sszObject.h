@@ -61,7 +61,7 @@ namespace ssz::object
 	}
 
 	template <typename T>
-	static __forceinline T* Instantiate(Vector3 pos, Vector3 rotate, Vector3 scale, enums::eLayerType layer)
+	static __forceinline T* Instantiate(Vector3 pos, Vector3 scale, Vector3 rotate, enums::eLayerType layer)
 	{
 		T* gameObj = new T();
 		Transform* tr = gameObj->GetComponent<Transform>();

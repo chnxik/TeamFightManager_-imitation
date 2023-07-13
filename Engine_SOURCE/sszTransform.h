@@ -46,8 +46,6 @@ namespace ssz
 		void SetTransTypeADD() { mType = eTransType::ADD; }
 
 		GameObject* GetParentOwner() { return mParent->mOwner; }
-		template <typename T>
-		T* GetParentComponent() { return mParent->mOwner->GetComponent<T>(); }
 
 		void SetParent(Transform* transform) { mParent = transform; }
 		Transform* GetParent() { return mParent; }

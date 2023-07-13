@@ -23,7 +23,7 @@ namespace ssz::enums
 		Player,
 		UI,
 		Cursor,
-		End,
+		End = 16,
 	};
 
 	enum class eResourceType

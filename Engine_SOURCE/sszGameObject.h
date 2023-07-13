@@ -23,7 +23,31 @@ namespace ssz
 		virtual void LateUpdate();
 		virtual void Render();
 
-		const std::vector<Component*> GetComponents() { return mComponents;	}
+		std::vector<Component*> GetComponents() { return mComponents; }
+		std::vector<Script*> GetScripts() { return mScripts; }
+
+		template <typename T>
+		const std::vector<T*>& GetComponents()
+		{
+			std::vector<T*> comps;
+
+			T* component;
+			for (Component* comp : mComponents)
+			{
+				component = dynamic_cast<T*>(comp);
+				if (component != nullptr)
+					comps.push_back(component);
+			}
+
+			for (Script* script : mScripts)
+			{
+				component = dynamic_cast<T*>(script);
+				if (component != nullptr)
+					comps.push_back(component);
+			}
+
+			return comps;
+		}
 
 		template <typename T>
 		T* GetComponent()

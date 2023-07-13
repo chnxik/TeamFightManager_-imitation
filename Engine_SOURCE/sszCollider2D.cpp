@@ -4,12 +4,14 @@
 
 namespace ssz
 {
+	UINT Collider2D::mColliderNumber = 1;
 	Collider2D::Collider2D()
 		: Component(eComponentType::Collider2D)
 		, mType(eColliderType::Rect)
 		, mTransform(nullptr)
 		, mOffsetScale(Vector2::One)
 		, mOffsetPosition(Vector2::Zero)
+		, mColliderID(mColliderNumber++)
 	{
 	}
 
@@ -50,5 +52,36 @@ namespace ssz
 
 	void Collider2D::Render()
 	{
+	}
+
+	void Collider2D::OnCollisionEnter(Collider2D* other)
+	{
+		const std::vector<Script*>& scripts
+			= GetOwner()->GetScripts();
+
+		for (Script* script : scripts)
+		{
+			script->OnCollisionEnter(other);
+		}
+	}
+	void Collider2D::OnCollisionStay(Collider2D* other)
+	{
+		const std::vector<Script*>& scripts
+			= GetOwner()->GetScripts();
+
+		for (Script* script : scripts)
+		{
+			script->OnCollisionStay(other);
+		}
+	}
+	void Collider2D::OnCollisionExit(Collider2D* other)
+	{
+		const std::vector<Script*>& scripts
+			= GetOwner()->GetScripts();
+
+		for (Script* script : scripts)
+		{
+			script->OnCollisionExit(other);
+		}
 	}
 }

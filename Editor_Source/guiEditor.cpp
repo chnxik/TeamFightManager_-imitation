@@ -103,6 +103,16 @@ namespace gui
         ssz::Camera::SetGpuViewMatrix(mainCamera->GetViewMatrix());
         ssz::Camera::SetGpuProjectionMatrix(mainCamera->GetProjectionMatrix());
 
+        // Collider Line Color CB Bind
+        {
+            renderer::ColliderCB ColCB = {};
+            ColCB.OverlapCnt = mesh.OverlapCnt;
+
+            ConstantBuffer* cb = renderer::constantBuffer[(UINT)eCBType::Collider];
+            cb->SetData(&ColCB);
+            cb->Bind(eShaderStage::PS);
+        }
+
         debugObj->Render();
     }
 }

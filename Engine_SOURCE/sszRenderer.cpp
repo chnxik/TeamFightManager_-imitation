@@ -265,6 +265,9 @@ namespace renderer
 
 		constantBuffer[(UINT)eCBType::Masking] = new ConstantBuffer(eCBType::Masking);
 		constantBuffer[(UINT)eCBType::Masking]->Create(sizeof(MaskingCB));
+
+		constantBuffer[(UINT)eCBType::Collider] = new ConstantBuffer(eCBType::Collider);
+		constantBuffer[(UINT)eCBType::Collider]->Create(sizeof(ColliderCB));
 	}
 
 	void LoadShader()

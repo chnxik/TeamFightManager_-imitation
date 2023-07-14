@@ -42,10 +42,10 @@ namespace ssz
 		// Position
 		if (Input::GetKey(eKeyCode::A))
 		{
-			if (Input::GetKey(eKeyCode::UP)) { OffsetPos.y += 10.f * (float)Time::DeltaTime(); }
-			if (Input::GetKey(eKeyCode::DOWN)) { OffsetPos.y -= 10.f * (float)Time::DeltaTime(); }
-			if (Input::GetKey(eKeyCode::LEFT)) { OffsetPos.x -= 10.f * (float)Time::DeltaTime(); }
-			if (Input::GetKey(eKeyCode::RIGHT)) { OffsetPos.x += 10.f * (float)Time::DeltaTime(); }
+			if (Input::GetKey(eKeyCode::UP)) { OffsetPos.y += 100.f * (float)Time::DeltaTime(); }
+			if (Input::GetKey(eKeyCode::DOWN)) { OffsetPos.y -= 100.f * (float)Time::DeltaTime(); }
+			if (Input::GetKey(eKeyCode::LEFT)) { OffsetPos.x -= 100.f * (float)Time::DeltaTime(); }
+			if (Input::GetKey(eKeyCode::RIGHT)) { OffsetPos.x += 100.f * (float)Time::DeltaTime(); }
 		}
 
 

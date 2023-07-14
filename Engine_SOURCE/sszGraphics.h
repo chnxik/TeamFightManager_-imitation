@@ -15,7 +15,8 @@
 
 #define CBSLOT_TRANSFORM			0
 #define CBSLOT_MASKING				1
-//#define CBSLOT_PARTICLE			2
+#define CBSLOT_OVERLAPCNT			2
+//#define CBSLOT_PARTICLE			3
 
 namespace ssz::graphics
 {
@@ -34,6 +35,7 @@ namespace ssz::graphics
 	{
 		Transform,
 		Masking,
+		Collider,
 		Material,
 		END,
 	};
@@ -103,5 +105,7 @@ namespace ssz::graphics
 		float radius;
 		float duration;
 		float time;
+		
+		int OverlapCnt;
 	};
 }

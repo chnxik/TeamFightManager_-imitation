@@ -13,6 +13,11 @@ cbuffer Masking : register(b1)
     float Bottom;
 }
 
+cbuffer Collider : register(b2)
+{
+    int overlapcnt;
+}
+
 Texture2D albedoTexture : register(t0);
 
 SamplerState PointSampler : register(s0);

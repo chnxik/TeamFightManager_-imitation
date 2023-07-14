@@ -21,7 +21,7 @@ namespace ssz
 		};
 
 		static void Initialize();
-		static void Update();
+		static void LateUpdate();
 		static void LayerCollision(eLayerType left, eLayerType right);
 		static void ColliderCollision(Collider2D* left, Collider2D* right, bool bDead);
 		static bool RectIntersect(Collider2D* left, Collider2D* right);

@@ -31,7 +31,6 @@ namespace ssz
 	using namespace object;
 
 	TitleScene::TitleScene()
-		: TestObject(nullptr)
 	{
 	}
 	TitleScene::~TitleScene()
@@ -81,26 +80,6 @@ namespace ssz
 			TitleLogo->SetName(L"TitleLogo");
 			TitleLogo->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"TitleLogoMt");
 
-			TestObject = Instantiate<GameObject>(Vector3(0.0f, 0.0f, 1.010f), Vector3(300.f, 300.f, 1.f), eLayerType::Player);
-			TestObject->SetName(L"Test");
-			TestObject->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"TitleLogoMt");
-			TestObject->AddComponent<TestScript>()->SetDefault();
-			TestObject->AddComponent<Collider2D>()->Initialize();
-
-			GameObject* TestObject2 = Instantiate<GameObject>(Vector3(1.0f, 0.0f, 1.009f), Vector3(0.f, 0.f, 0.f), eLayerType::Player);
-			TestObject2->SetName(L"Test2");
-			TestObject2->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"TitleLogoMt");
-			TestObject2->AddComponent<TestScript2>()->SetDefault();
-			TestObject2->SetParent(TestObject);
-			TestObject2->AddComponent<Collider2D>()->Initialize();
-
-			GameObject* TestObject3 = Instantiate<GameObject>(Vector3(1.0f, 0.0f, 1.009f), Vector3(0.f, 0.f, 0.f), eLayerType::Player);
-			TestObject3->SetName(L"Test2");
-			TestObject3->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"TitleLogoMt");
-			TestObject3->AddComponent<TestScript3>()->SetDefault();
-			TestObject3->SetParent(TestObject2);
-			TestObject3->AddComponent<Collider2D>()->Initialize();
-
 			// 오브젝트 배치용 스크립트
 			// ArrangementScript* ArScript = TestObject->AddComponent<ArrangementScript>();
 			// ArScript->SetDefault();
@@ -137,5 +116,11 @@ namespace ssz
 	void TitleScene::Render()
 	{
 		Scene::Render();
+	}
+	void TitleScene::OnEnter()
+	{
+	}
+	void TitleScene::OnExit()
+	{
 	}
 }

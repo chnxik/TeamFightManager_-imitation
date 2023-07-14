@@ -88,4 +88,10 @@ namespace ssz
 	{
 		Scene::Render();
 	}
+	void IGStadiumScene::OnEnter()
+	{
+	}
+	void IGStadiumScene::OnExit()
+	{
+	}
 }

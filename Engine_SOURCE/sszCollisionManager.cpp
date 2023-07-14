@@ -18,14 +18,16 @@ namespace ssz
 	{
 	}
 
-	void CollisionManager::Update()
+	void CollisionManager::LateUpdate()
 	{
 		for (UINT iRow = 0; iRow < (UINT)eLayerType::End; ++iRow)
 		{
 			for (UINT iCol = iRow; iCol < (UINT)eLayerType::End; ++iCol) // 중복 검사를 피하기 위해 열의 시작을 행번호부터 시작 
 			{
 				if (mMatrix[iRow][iCol])
+				{
 					LayerCollision((eLayerType)iRow, (eLayerType)iCol); // 충돌검사
+				}
 			}
 		}
 	}
@@ -161,7 +163,19 @@ namespace ssz
 	{
 		// 사각형 충돌
 
-		return false;
+		Vector3 vLeftPos = left->GetColliderPos();
+		Vector3 vLeftScale = left->GetColliderScale();
+
+		Vector3 vRightPos = right->GetColliderPos();
+		Vector3 vRightScale = right->GetColliderScale();
+
+		if (fabsf(vLeftPos.x - vRightPos.x) > (vLeftScale.x / 2.f + vRightScale.x / 2.f))
+			return false;
+
+		if (fabsf(vLeftPos.y - vRightPos.y) > (vLeftScale.y / 2.f + vRightScale.y / 2.f))
+			return false;
+
+		return true;
 	}
 
 	bool CollisionManager::CircleIntersect(Collider2D* left, Collider2D* right)

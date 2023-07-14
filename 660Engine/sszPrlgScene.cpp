@@ -146,4 +146,10 @@ namespace ssz
 	{
 		Scene::Render();
 	}
+	void PrlgScene::OnEnter()
+	{
+	}
+	void PrlgScene::OnExit()
+	{
+	}
 }

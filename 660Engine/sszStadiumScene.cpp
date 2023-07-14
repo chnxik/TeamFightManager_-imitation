@@ -136,4 +136,10 @@ namespace ssz
 	{
 		Scene::Render();
 	}
+	void StadiumScene::OnEnter()
+	{
+	}
+	void StadiumScene::OnExit()
+	{
+	}
 }

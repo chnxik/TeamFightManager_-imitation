@@ -103,6 +103,9 @@
     <Filter Include="Manager\CollisionMgr">
       <UniqueIdentifier>{1ea2fe74-7b02-4999-8a2b-2fe8dab005bc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GameObject\Component\Script\Base">
+      <UniqueIdentifier>{cb7e8944-62cb-4885-83d4-e6c28c48d066}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h">
@@ -150,9 +153,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)sszLayer.h">
       <Filter>Scene\Layer</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)sszScript.h">
-      <Filter>GameObject\Component\Script</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)sszScene.h">
       <Filter>Scene\Base</Filter>
     </ClInclude>
@@ -198,6 +198,9 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)sszCollider2D.h">
       <Filter>GameObject\Component\Collider</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszScript.h">
+      <Filter>GameObject\Component\Script\Base</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)sszMath.cpp">
@@ -232,9 +235,6 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)sszLayer.cpp">
       <Filter>Scene\Layer</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)sszScript.cpp">
-      <Filter>GameObject\Component\Script</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)sszScene.cpp">
       <Filter>Scene\Base</Filter>
@@ -277,6 +277,9 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)sszCollider2D.cpp">
       <Filter>GameObject\Component\Collider</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszScript.cpp">
+      <Filter>GameObject\Component\Script\Base</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

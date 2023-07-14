@@ -1,8 +1,12 @@
 #include "sszApplication.h"
+
 #include "sszInput.h"
 #include "sszTime.h"
+
 #include "sszRenderer.h"
 #include "sszSceneManager.h"
+#include "sszCollisionManager.h"
+
 #include "..\660Engine\Load.h"
 
 namespace ssz
@@ -48,6 +52,7 @@ namespace ssz
 	void Application::LateUpdate()
 	{
 		SceneManager::LateUpdate();
+		CollisionManager::LateUpdate();
 	}
 
 	void Application::Render()

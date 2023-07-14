@@ -32,6 +32,11 @@ namespace renderer
 		float Right;
 		float Bottom;
 	};
+
+	CBUFFER(ColliderCB, CBSLOT_OVERLAPCNT)
+	{
+		int OverlapCnt;
+	};
 	
 	extern ssz::graphics::ConstantBuffer* constantBuffer[(UINT)eCBType::END];
 

@@ -15,13 +15,19 @@ namespace ssz
 		virtual void LateUpdate() override;
 		virtual void Render() override;
 
+		void BindConstantBuffer() override;
+
 		void OnCollisionEnter(Collider2D* other);
 		void OnCollisionStay(Collider2D* other);
 		void OnCollisionExit(Collider2D* other);
 		
 		void SetType(eColliderType type) { mType = type; }
-		void SetSize(Vector2 size) { mOffsetScale = size; }
-		void SetCenter(Vector2 size) { mOffsetPosition = size; }
+		void SetSize(Vector3 size) { mOffsetScale = size; }
+		void SetCenter(Vector3 size) { mOffsetPosition = size; }
+
+		Vector3 GetColliderScale() { return mFinalScale; }
+		Vector3 GetColliderPos() { return mFinalPos; }
+		Vector3 GetColliderRotation() { return mFinalRotation; }
 		
 		UINT GetColliderID() { return mColliderID; }
 		eColliderType GetType() { return mType; }
@@ -32,8 +38,13 @@ namespace ssz
 		eColliderType mType;
 		Transform* mTransform;
 
-		Vector3 mColliderPosition;
-		Vector2 mOffsetScale;
-		Vector2 mOffsetPosition;
+		Vector3 mOffsetScale;
+		Vector3 mOffsetPosition;
+
+		Vector3 mFinalScale;
+		Vector3 mFinalPos;
+		Vector3 mFinalRotation;
+
+		int mOverlapCnt;
 	};
 }

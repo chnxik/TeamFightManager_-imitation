@@ -152,4 +152,10 @@ namespace ssz
 	{
 		Scene::Render();
 	}
+	void MainLobbyScene::OnEnter()
+	{
+	}
+	void MainLobbyScene::OnExit()
+	{
+	}
 }

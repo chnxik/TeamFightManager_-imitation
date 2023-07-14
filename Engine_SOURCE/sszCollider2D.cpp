@@ -4,14 +4,20 @@
 
 namespace ssz
 {
+	using namespace ssz::graphics;
+
 	UINT Collider2D::mColliderNumber = 1;
 	Collider2D::Collider2D()
 		: Component(eComponentType::Collider2D)
 		, mType(eColliderType::Rect)
 		, mTransform(nullptr)
-		, mOffsetScale(Vector2::One)
-		, mOffsetPosition(Vector2::Zero)
+		, mOffsetScale(Vector3::One)
+		, mOffsetPosition(Vector3::Zero)
 		, mColliderID(mColliderNumber++)
+		, mOverlapCnt(0)
+		, mFinalScale(Vector3::One)
+		, mFinalPos(Vector3::Zero)
+		, mFinalRotation(Vector3::Zero)
 	{
 	}
 
@@ -26,26 +32,25 @@ namespace ssz
 
 	void Collider2D::Update()
 	{
+		assert(!(mOverlapCnt < 0)); // 중첩이 음수인 경우
 	}
 
 	void Collider2D::LateUpdate()
 	{
-		Vector3 scale = mTransform->GetWorldScale();
-		scale.x *= mOffsetScale.x;
-		scale.y *= mOffsetScale.y;
+		mFinalScale = mTransform->GetWorldScale();
+		mFinalScale *= mOffsetScale;
 
-		Vector3 pos = mTransform->GetWorldPosition();
-		pos.x += mOffsetPosition.x;
-		pos.y += mOffsetPosition.y;
+		mFinalPos = mTransform->GetWorldPosition();
+		mFinalPos += mOffsetPosition;
 
-		mColliderPosition = pos;
+		mFinalRotation = mTransform->GetWorldRotation();
 
 		graphics::DebugMesh mesh = {};
-		mesh.position = pos;
-		mesh.scale = scale;
-		mesh.radius = (scale.x + scale.y) / 4.f;
-		mesh.rotation = mTransform->GetWorldRotation();
+		mesh.position = mFinalPos;
+		mesh.scale = mFinalScale;
+		mesh.rotation = mFinalRotation;
 		mesh.type = mType;
+		mesh.OverlapCnt = mOverlapCnt;
 
 		renderer::PushDebugMeshAttribute(mesh);
 	}
@@ -54,8 +59,14 @@ namespace ssz
 	{
 	}
 
+	void Collider2D::BindConstantBuffer()
+	{
+	}
+
 	void Collider2D::OnCollisionEnter(Collider2D* other)
 	{
+		++mOverlapCnt;
+
 		const std::vector<Script*>& scripts
 			= GetOwner()->GetScripts();
 
@@ -76,6 +87,8 @@ namespace ssz
 	}
 	void Collider2D::OnCollisionExit(Collider2D* other)
 	{
+		--mOverlapCnt;
+
 		const std::vector<Script*>& scripts
 			= GetOwner()->GetScripts();
 

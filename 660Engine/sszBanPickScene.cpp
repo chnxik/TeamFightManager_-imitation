@@ -99,4 +99,10 @@ namespace ssz
 	{
 		Scene::Render();
 	}
+	void BanPickScene::OnEnter()
+	{
+	}
+	void BanPickScene::OnExit()
+	{
+	}
 }

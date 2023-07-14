@@ -38,7 +38,7 @@ namespace ssz
 	void Collider2D::LateUpdate()
 	{
 		mFinalScale = mTransform->GetWorldScale();
-		mFinalScale *= mOffsetScale;
+		mFinalScale += mOffsetScale;
 
 		mFinalPos = mTransform->GetWorldPosition();
 		mFinalPos += mOffsetPosition;

@@ -63,20 +63,23 @@ namespace ssz
 		TestObject2->AddComponent<Collider2D>()->Initialize();
 		//TestObject2->GetComponent<Transform>()->SetTransTypeADD();
 		
-		GameObject* TestObject3 = Instantiate<GameObject>(Vector3(250.0f, 200.0f, 1.009f), Vector3(100.f, 100.f, 0.f), eLayerType::Player);
+		GameObject* TestObject3 = Instantiate<GameObject>(Vector3(250.f, 0.0f, 1.009f), Vector3(50.f, 50.f, 0.f), eLayerType::Player);
 		// GameObject* TestObject3 = Instantiate<GameObject>(Vector3(1.0f, 0.0f, 1.009f), Vector3(0.f, 0.f, 0.f), eLayerType::Player);
 		TestObject3->SetName(L"Test3");
 		TestObject3->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"TitleLogoMt");
 		TestObject3->AddComponent<TestScript3>()->SetDefault();
-		// TestObject3->SetParent(TestObject2);
+		TestObject3->SetParent(TestObject2);
 		TestObject3->AddComponent<Collider2D>()->Initialize();
-		//TestObject3->GetComponent<Transform>()->SetTransTypeADD();
+		TestObject3->GetComponent<Transform>()->SetTransTypeADD();
 
 		// MouseCursor
 		{
 			Cursor* CursorObj = Instantiate<Cursor>(Vector3(0.f, 0.f, 0.01f), Vector3(32.f, 32.f, 1.f), eLayerType::Cursor);
 			CursorObj->SetName(L"Cursor");
-			CursorObj->AddComponent<Collider2D>()->Initialize();
+			Collider2D* Col = CursorObj->AddComponent<Collider2D>();
+			Col->Initialize();
+			Col->SetOffsetSize(Vector3(-31.f, -31.f, 0.f));
+			Col->SetOffsetPos(Vector3(-14.f, 14.f, 0.f));
 		}
 
 		// Main Camera
@@ -105,6 +108,7 @@ namespace ssz
 	void TestScene::OnEnter()
 	{
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Player, true);
+		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Cursor, true);
 	}
 	void TestScene::OnExit()
 	{

@@ -22,8 +22,8 @@ namespace ssz
 		void OnCollisionExit(Collider2D* other);
 		
 		void SetType(eColliderType type) { mType = type; }
-		void SetSize(Vector3 size) { mOffsetScale = size; }
-		void SetCenter(Vector3 size) { mOffsetPosition = size; }
+		void SetOffsetSize(Vector3 size) { mOffsetScale = size; }
+		void SetOffsetPos(Vector3 pos) { mOffsetPosition = pos; }
 
 		Vector3 GetColliderScale() { return mFinalScale; }
 		Vector3 GetColliderPos() { return mFinalPos; }

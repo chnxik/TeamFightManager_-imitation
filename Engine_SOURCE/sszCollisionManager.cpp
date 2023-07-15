@@ -239,9 +239,63 @@ namespace ssz
 
 	bool CollisionManager::MixIntersect(Collider2D* Rect, Collider2D* Circle)
 	{
-		// 사각 원 혼합 충돌
+		// 사각 원 혼합 충돌 : OBB 응용
+		{
+			Vector3 RectPos = Rect->GetColliderPos();
+			Vector3 RectScale = Rect->GetColliderScale();
 
-		return false;
+			Vector3 CirclePos = Circle->GetColliderPos();
+			Vector3 CircleScale = Circle->GetColliderScale();
+
+			Vector3 CenterDir = RectPos - CirclePos; // 두 객체의 중심끼리의 거리벡터
+			Vector3 Axis; // 기준 투영축
+			float CenterProjDist; // 투영축 기준으로 두 중심점 사이의 거리 스칼라
+			float r1, r2; // 비교 대상인 두 벡터의 투영길이
+			
+			
+			//  1. Rect의 right축 투영
+			Axis = Rect->GetAxis(Collider2D::eAxis::Right);
+			CenterProjDist = abs(CenterDir.Dot(Axis));
+
+			r1 = RectScale.x / 2.f;
+			r2 = CircleScale.x / 2.f;
+
+			if (r1 + r2 < CenterProjDist)
+				return false;
+
+			// 2. Rect의 up축 투영
+			Axis = Rect->GetAxis(Collider2D::eAxis::Up);
+			CenterProjDist = abs(CenterDir.Dot(Axis));
+
+			r1 = RectScale.y / 2.f;
+			r2 = CircleScale.y / 2.f;
+
+			if (r1 + r2 < CenterProjDist)
+				return false;
+
+			
+			// 3. Circle기준 right축 투영
+			Axis = Circle->GetAxis(Collider2D::eAxis::Right);
+			CenterProjDist = abs(CenterDir.Dot(Axis));
+
+			r1 = CircleScale.x / 2.f;
+			r2 = Rect->GetLength4OBB(Axis);
+
+			if (r1 + r2 < CenterProjDist)
+				return false;
+
+			// 4. Circle기준 up축 투영
+			Axis = Circle->GetAxis(Collider2D::eAxis::Up);
+			CenterProjDist = abs(CenterDir.Dot(Axis));
+
+			r1 = CircleScale.y / 2.f;
+			r2 = Rect->GetLength4OBB(Axis);
+
+			if (r1 + r2 < CenterProjDist)
+				return false;
+		}
+
+		return true;
 	}
 
 	void CollisionManager::SetLayer(eLayerType left, eLayerType right, bool enable)

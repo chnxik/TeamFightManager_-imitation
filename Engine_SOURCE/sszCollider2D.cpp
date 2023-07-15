@@ -18,6 +18,7 @@ namespace ssz
 		, mFinalScale(Vector3::One)
 		, mFinalPos(Vector3::Zero)
 		, mFinalRotation(Vector3::Zero)
+		, Axis{}
 	{
 	}
 
@@ -44,6 +45,9 @@ namespace ssz
 		mFinalPos += mOffsetPosition;
 
 		mFinalRotation = mTransform->GetWorldRotation();
+
+		Axis[eAxis::Right] = mTransform->Right();
+		Axis[eAxis::Up] = mTransform->Up();
 
 		graphics::DebugMesh mesh = {};
 		mesh.position = mFinalPos;
@@ -96,5 +100,18 @@ namespace ssz
 		{
 			script->OnCollisionExit(other);
 		}
+	}
+	float Collider2D::GetLength4OBB(Vector3 MainAxis)
+	{
+		float res = 0.f;
+
+		Vector3 TargetAxisRight = Axis[eAxis::Right];
+		Vector3 TargetAxisUp = Axis[eAxis::Up];
+
+		// Right축(단위벡터 + 축 길이)와 Up축을 각각 투영축에 내적시키고 두 값을 더한다.
+		res = abs(TargetAxisRight.Dot(MainAxis) * (mFinalScale.x) / 2.f) +
+			abs(TargetAxisUp.Dot(MainAxis) * (mFinalScale.y) / 2.f);
+
+		return res;
 	}
 }

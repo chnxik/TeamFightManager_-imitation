@@ -29,7 +29,7 @@ namespace ssz::math
 
     //------------------------------------------------------------------------------
     // ssz custom
-    inline float DtoR(float degree) { return degree * (__PI / 180.f); }
+    inline float DtoR(float degree) { return degree * (__PI / 180.f); } 
     inline float RtoD(float radian) { return radian * (180.f / __PI); }
 
     //------------------------------------------------------------------------------

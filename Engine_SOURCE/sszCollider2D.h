@@ -7,6 +7,13 @@ namespace ssz
 	class Collider2D : public Component
 	{
 	public:
+		enum eAxis
+		{
+			Right,
+			Up,
+			End
+		};
+
 		Collider2D();
 		~Collider2D();
 
@@ -28,9 +35,17 @@ namespace ssz
 		Vector3 GetColliderScale() { return mFinalScale; }
 		Vector3 GetColliderPos() { return mFinalPos; }
 		Vector3 GetColliderRotation() { return mFinalRotation; }
+
+		Vector2 GetColliderScale2D() { return Vector2(mFinalScale.x,mFinalScale.y); }
+		Vector2 GetColliderPos2D() { return Vector2(mFinalPos.x,mFinalPos.y); }
+
+		Vector3 GetAxis(eAxis type) { return Axis[type]; }
+		Vector2 GetAxis2D(eAxis type) { return Vector2(Axis[type].x,Axis[type].y); }
 		
 		UINT GetColliderID() { return mColliderID; }
 		eColliderType GetType() { return mType; }
+
+		float GetLength4OBB(Vector3 MainAxis);
 
 	private:
 		static UINT mColliderNumber;
@@ -44,6 +59,8 @@ namespace ssz
 		Vector3 mFinalScale;
 		Vector3 mFinalPos;
 		Vector3 mFinalRotation;
+
+		Vector3 Axis[eAxis::End];
 
 		int mOverlapCnt;
 	};

@@ -113,6 +113,13 @@ namespace ssz
 			mWorldRotation = mRotation;
 			mWorldScale = mScale;
 		}
+
+		if (GetOwner()->GetName() == L"Test")
+		{
+			float up = RtoD(mUp.y);
+			float right = RtoD(mRight.x);
+			int a = 0;
+		}
 	}
 
 	void Transform::Render()

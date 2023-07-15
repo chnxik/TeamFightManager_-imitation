@@ -53,6 +53,7 @@ namespace ssz
 	void Layer::Destory()
 	{
 
+
 		{
 			// GameObjects에서 Garbage에 등록하기
 			typedef std::vector<GameObject*>::iterator GameObjectIter;

@@ -161,19 +161,59 @@ namespace ssz
 
 	bool CollisionManager::RectIntersect(Collider2D* left, Collider2D* right)
 	{
-		// 사각형 충돌
+		// OBB
+		{
+			Vector3 LeftPos = left->GetColliderPos();
+			Vector3 LeftScale = left->GetColliderScale();
 
-		Vector3 vLeftPos = left->GetColliderPos();
-		Vector3 vLeftScale = left->GetColliderScale();
+			Vector3 RightPos = right->GetColliderPos();
+			Vector3 RightScale = right->GetColliderScale();
 
-		Vector3 vRightPos = right->GetColliderPos();
-		Vector3 vRightScale = right->GetColliderScale();
+			Vector3 CenterDir = LeftPos - RightPos; // 두 객체의 중심끼리의 거리벡터
+			Vector3 Axis; // 기준 투영축
+			float CenterProjDist; // 투영축 기준으로 두 중심점 사이의 거리 스칼라
+			float r1, r2; // 비교 대상인 두 벡터의 투영길이
+			
+			//  1. left의 right축 기준 투영
+			Axis = left->GetAxis(Collider2D::eAxis::Right);
+			CenterProjDist = abs(CenterDir.Dot(Axis));
+			
+			r1 = LeftScale.x / 2.f;
+			r2 = right->GetLength4OBB(Axis);
 
-		if (fabsf(vLeftPos.x - vRightPos.x) > (vLeftScale.x / 2.f + vRightScale.x / 2.f))
-			return false;
+			if (r1 + r2 < CenterProjDist)
+				return false;
 
-		if (fabsf(vLeftPos.y - vRightPos.y) > (vLeftScale.y / 2.f + vRightScale.y / 2.f))
-			return false;
+			// 2. left의 up축 기준 투영
+			Axis = left->GetAxis(Collider2D::eAxis::Up);
+			CenterProjDist = abs(CenterDir.Dot(Axis));
+
+			r1 = LeftScale.y / 2.f;
+			r2 = right->GetLength4OBB(Axis);
+
+			if (r1 + r2 < CenterProjDist)
+				return false;
+
+			// 3. right의 right축 기준 투영
+			Axis = right->GetAxis(Collider2D::eAxis::Right);
+			CenterProjDist = abs(CenterDir.Dot(Axis));
+
+			r1 = RightScale.x / 2.f;
+			r2 = left->GetLength4OBB(Axis);
+
+			if (r1 + r2 < CenterProjDist)
+				return false;
+
+			// 4. right의 up축 기준 투영
+			Axis = right->GetAxis(Collider2D::eAxis::Up);
+			CenterProjDist = abs(CenterDir.Dot(Axis));
+
+			r1 = RightScale.y / 2.f;
+			r2 = left->GetLength4OBB(Axis);
+
+			if (r1 + r2 < CenterProjDist)
+				return false;
+		}
 
 		return true;
 	}
@@ -181,8 +221,20 @@ namespace ssz
 	bool CollisionManager::CircleIntersect(Collider2D* left, Collider2D* right)
 	{
 		// 원 충돌
+		Vector3 vLeftPos = left->GetColliderPos();
+		Vector3 vLeftScale = left->GetColliderScale();
+		float LeftRadius = (vLeftScale.x + vLeftScale.y) / 4.f;
 
-		return false;
+		Vector3 vRightPos = right->GetColliderPos();
+		Vector3 vRightScale = right->GetColliderScale();
+		float RightRadius = (vRightScale.x + vRightScale.y) / 4.f;
+
+		float Distance = sqrt((vRightPos.x - vLeftPos.x) * (vRightPos.x - vLeftPos.x) + (vRightPos.y - vLeftPos.y) * (vRightPos.y - vLeftPos.y));
+
+		if ((LeftRadius + RightRadius) < Distance)
+			return false;
+
+		return true;
 	}
 
 	bool CollisionManager::MixIntersect(Collider2D* Rect, Collider2D* Circle)

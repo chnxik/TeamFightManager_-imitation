@@ -47,14 +47,16 @@ namespace ssz
 		TitleLogo_Mt->SetMaterial(L"SpriteShader", L"TitleLogoTex", eRenderingMode::Transparent);
 		Resources::Insert(L"TitleLogoMt", TitleLogo_Mt);
 
-		GameObject* TestObject = Instantiate<GameObject>(Vector3(-50.0f, 0.0f, 1.010f), Vector3(100.f, 100.f, 1.f), eLayerType::Player);
+		GameObject* TestObject = Instantiate<GameObject>(Vector3(-50.0f, 0.0f, 1.010f), Vector3(100.f, 100.f, 1.f), Vector3(0.f,0.f,DtoR(90.f)), eLayerType::Player);
 		TestObject->SetName(L"Test");
 		TestObject->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"TitleLogoMt");
 		TestObject->AddComponent<TestScript>()->SetDefault();
 		TestObject->AddComponent<Collider2D>()->Initialize();
 		//TestObject->GetComponent<Transform>()->SetTransTypeADD();
 
-		GameObject* TestObject2 = Instantiate<GameObject>(Vector3(100.0f, 0.0f, 1.009f), Vector3(100.f, 100.f, 0.f), eLayerType::Player);
+		
+
+		GameObject* TestObject2 = Instantiate<GameObject>(Vector3(100.0f, 0.0f, 1.009f), Vector3(100.f, 100.f, 0.f), Vector3(0.f, 0.f, DtoR(90.f)), eLayerType::Player);
 		//GameObject* TestObject2 = Instantiate<GameObject>(Vector3(1.0f, 0.0f, 1.009f), Vector3(0.f, 0.f, 0.f), eLayerType::Player);
 		TestObject2->SetName(L"Test2");
 		TestObject2->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"TitleLogoMt");
@@ -63,14 +65,17 @@ namespace ssz
 		TestObject2->AddComponent<Collider2D>()->Initialize();
 		//TestObject2->GetComponent<Transform>()->SetTransTypeADD();
 		
-		GameObject* TestObject3 = Instantiate<GameObject>(Vector3(250.f, 0.0f, 1.009f), Vector3(50.f, 50.f, 0.f), eLayerType::Player);
+		/*
+		GameObject* TestObject3 = Instantiate<GameObject>(Vector3(1.f, 0.0f, 1.009f), Vector3(1.f, 1.f, 0.f), Vector3(0.f, 0.f, DtoR(90.f)), eLayerType::Player);
 		// GameObject* TestObject3 = Instantiate<GameObject>(Vector3(1.0f, 0.0f, 1.009f), Vector3(0.f, 0.f, 0.f), eLayerType::Player);
 		TestObject3->SetName(L"Test3");
 		TestObject3->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"TitleLogoMt");
 		TestObject3->AddComponent<TestScript3>()->SetDefault();
 		TestObject3->SetParent(TestObject2);
 		TestObject3->AddComponent<Collider2D>()->Initialize();
-		TestObject3->GetComponent<Transform>()->SetTransTypeADD();
+		// TestObject3->GetComponent<Transform>()->SetTransTypeADD();
+
+		*/
 
 		// MouseCursor
 		{

@@ -173,6 +173,7 @@
     <ClInclude Include="sszCursorScript.h" />
     <ClInclude Include="sszIGStadiumScene.h" />
     <ClInclude Include="sszMainLobbyScene.h" />
+    <ClInclude Include="sszMasking.h" />
     <ClInclude Include="sszPrlgScene.h" />
     <ClInclude Include="sszStadiumScene.h" />
     <ClInclude Include="sszTestScene.h" />
@@ -192,6 +193,7 @@
     <ClCompile Include="sszCursorScript.cpp" />
     <ClCompile Include="sszIGStadiumScene.cpp" />
     <ClCompile Include="sszMainLobbyScene.cpp" />
+    <ClCompile Include="sszMasking.cpp" />
     <ClCompile Include="sszPrlgScene.cpp" />
     <ClCompile Include="sszStadiumScene.cpp" />
     <ClCompile Include="sszTestScene.cpp" />

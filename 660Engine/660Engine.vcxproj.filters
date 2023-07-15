@@ -50,6 +50,9 @@
     <ClInclude Include="sszTestScript3.h">
       <Filter>Contents\Script\Test</Filter>
     </ClInclude>
+    <ClInclude Include="sszMasking.h">
+      <Filter>Contents\Script\Masking</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="660Engine.cpp" />
@@ -100,6 +103,9 @@
     </ClCompile>
     <ClCompile Include="sszTestScript3.cpp">
       <Filter>Contents\Script\Test</Filter>
+    </ClCompile>
+    <ClCompile Include="sszMasking.cpp">
+      <Filter>Contents\Script\Masking</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -159,6 +165,9 @@
     </Filter>
     <Filter Include="Contents\Object\UI\Base">
       <UniqueIdentifier>{9af3035c-4622-409f-a162-db3214ca9366}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Script\Masking">
+      <UniqueIdentifier>{470eae73-8547-43b4-a211-e5cd3ad79448}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

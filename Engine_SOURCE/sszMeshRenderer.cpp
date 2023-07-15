@@ -1,7 +1,6 @@
 #include "sszMeshRenderer.h"
 #include "sszGameObject.h"
 #include "sszTransform.h"
-#include "sszMasking.h"
 #include "sszRenderer.h"
 
 #include "sszResources.h"

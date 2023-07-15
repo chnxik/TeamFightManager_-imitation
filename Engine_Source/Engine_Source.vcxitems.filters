@@ -85,9 +85,6 @@
     <Filter Include="GameObject\Component\UI">
       <UniqueIdentifier>{8ba303aa-97d3-4fe4-a2b8-7f10fd90c6ad}</UniqueIdentifier>
     </Filter>
-    <Filter Include="GameObject\Component\UI\Masking">
-      <UniqueIdentifier>{d51cf8d5-ce80-43f4-910a-d25f0b0f4acd}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Common\Object">
       <UniqueIdentifier>{527dd873-7fa4-41d9-8c66-2e3d22f8005a}</UniqueIdentifier>
     </Filter>
@@ -183,9 +180,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)sszGameObject.h">
       <Filter>GameObject\Base</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)sszMasking.h">
-      <Filter>GameObject\Component\UI\Masking</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)sszObject.h">
       <Filter>Common\Object</Filter>
     </ClInclude>
@@ -265,9 +259,6 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)sszGameObject.cpp">
       <Filter>GameObject\Base</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)sszMasking.cpp">
-      <Filter>GameObject\Component\UI\Masking</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)sszSceneManager.cpp">
       <Filter>Manager\SceneMgr</Filter>

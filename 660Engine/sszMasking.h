@@ -1,9 +1,9 @@
 #pragma once
-#include "sszComponent.h"
+#include "sszScript.h"
 
 namespace ssz
 {
-	class Masking : public Component
+	class Masking : public Script
 	{
 	public:
 		Masking();

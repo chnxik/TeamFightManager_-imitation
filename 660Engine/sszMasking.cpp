@@ -12,8 +12,7 @@ namespace ssz
 {
 	using namespace ssz::graphics;
 	Masking::Masking()
-		: Component(eComponentType::Panel)
-		, LeftTop{-0.2f, 0.2f, 0.0f}
+		: LeftTop{-0.2f, 0.2f, 0.0f}
 		, RightBottom{0.2f, -0.2f, 0.0f}
 	{
 	}

@@ -19,7 +19,6 @@
 
 // Object
 #include "sszObject.h"
-#include "sszCursor.h"
 
 namespace ssz
 {
@@ -69,8 +68,8 @@ namespace ssz
 
 		// MouseCursor
 		{
-			Cursor* CursorObj = Instantiate<Cursor>(Vector3(0.f, 0.f, 0.01f), Vector3(32.f, 32.f, 1.f), eLayerType::Cursor);
-			CursorObj->SetName(L"Cursor");
+		//	Cursor* CursorObj = Instantiate<Cursor>(Vector3(0.f, 0.f, 0.01f), Vector3(32.f, 32.f, 1.f), eLayerType::Cursor);
+		//	CursorObj->SetName(L"Cursor");
 		}
 
 		// Main Camera
@@ -86,7 +85,7 @@ namespace ssz
 	{
 		Scene::Update();
 
-		if (Input::GetKeyDown(eKeyCode::RBUTTON))
+		if (Input::GetKeyDown(eKeyCode::ENTER))
 		{
 			SceneManager::LoadScene(L"IGStadiumScene");
 		}

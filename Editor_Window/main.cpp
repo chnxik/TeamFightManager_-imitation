@@ -138,7 +138,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    application.SetWindow(hWnd, 1920, 1080);
 
    // Cursor 감추기
-   ShowCursor(false);
+   // ShowCursor(false);
 
    application.Initialize();
    gui::Editor::Initialize();

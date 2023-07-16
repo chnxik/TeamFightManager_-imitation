@@ -6,6 +6,7 @@
 #include "sszLayer.h"
 
 #include "sszGameObject.h"
+#include "sszUIObject.h"
 
 #include "sszCollider2D.h"
 
@@ -26,7 +27,10 @@ namespace ssz
 			{
 				if (mMatrix[iRow][iCol])
 				{
-					LayerCollision((eLayerType)iRow, (eLayerType)iCol); // 충돌검사
+					if (iRow == (UINT)eLayerType::UI && (UINT)eLayerType::Cursor)
+						UILayerCollision((eLayerType)iRow, (eLayerType)iCol); // UI,Cursor 충돌검사
+					else
+						LayerCollision((eLayerType)iRow, (eLayerType)iCol); // 충돌검사
 				}
 			}
 		}
@@ -68,6 +72,47 @@ namespace ssz
 				bool bDead = lefts[LeftIdx]->IsDead() || rights[RightIdx]->IsDead(); // 검사 대상 객채중 한 객체가 Dead상태이다.
 
 				ColliderCollision(leftCol, rightCol, bDead); // 충돌검사 로직
+			}
+		}
+	}
+
+	void CollisionManager::UILayerCollision(eLayerType UI, eLayerType Cursor)
+	{
+		Scene* ActiveScene = SceneManager::GetActiveScene();
+
+		const std::vector<GameObject*>& vecUI
+			= ActiveScene->GetLayer(UI).GetGameObjects();
+		const std::vector<GameObject*>& vecCursor
+			= ActiveScene->GetLayer(Cursor).GetGameObjects();
+
+		for (int i = (int)vecUI.size() - 1; 0 <= i; --i)
+		{
+			// UIObject충돌 검사
+
+			static std::queue<UIObject*> CollisionUIQueue;
+			CollisionUIQueue.push((UIObject*)vecUI[i]);
+
+			while (!CollisionUIQueue.empty())
+			{
+				UIObject* pUI = CollisionUIQueue.front();
+				CollisionUIQueue.pop();
+
+				const std::vector<UIObject*> ChildUI = pUI->GetChildUI();
+
+				for (size_t j = 0; j < ChildUI.size(); ++j)
+				{
+					CollisionUIQueue.push(ChildUI[j]);
+				}
+
+				Collider2D* UICol = pUI->GetComponent<Collider2D>();
+				Collider2D* CursorCol = vecCursor[0]->GetComponent<Collider2D>();
+				
+				if (UICol == nullptr)
+					continue;
+
+				bool bDead = pUI->IsDead() || vecCursor[0]->IsDead();
+
+				ColliderCollision(UICol, CursorCol, bDead); // 충돌검사 로직
 			}
 		}
 	}

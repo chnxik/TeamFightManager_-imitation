@@ -44,6 +44,8 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)sszTexture.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sszTime.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sszTransform.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszUIManager.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszUIObject.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)sszApplication.cpp" />
@@ -71,6 +73,8 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)sszTexture.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sszTime.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sszTransform.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszUIManager.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszUIObject.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)sszMath.inl" />

@@ -22,6 +22,7 @@ namespace ssz::enums
 		Player,
 		UI,
 		Cursor,
+		Camera,
 		End = 16,
 	};
 

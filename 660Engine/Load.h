@@ -7,5 +7,6 @@
 
 namespace ssz
 {
+	void InitializeCursor();
 	void InitializeScenes();
 }

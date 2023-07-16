@@ -6,6 +6,7 @@
 #include "sszRenderer.h"
 #include "sszSceneManager.h"
 #include "sszCollisionManager.h"
+#include "sszUIManager.h"
 
 #include "..\660Engine\Load.h"
 
@@ -40,6 +41,7 @@ namespace ssz
 
 		renderer::Initialize();
 		ssz::InitializeScenes();
+
 	}
 
 	void Application::Update()
@@ -53,6 +55,7 @@ namespace ssz
 	{
 		SceneManager::LateUpdate();
 		CollisionManager::LateUpdate();
+		UIManager::LateUpdate();
 	}
 
 	void Application::Render()

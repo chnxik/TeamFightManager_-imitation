@@ -1,6 +1,7 @@
 #pragma once
 #include "sszLayer.h"
 #include "sszGameObject.h"
+#include "sszUIObject.h"
 #include "sszScene.h"
 #include "sszSceneManager.h"
 #include "sszTransform.h"
@@ -23,57 +24,63 @@ namespace ssz::object
 		return true;
 	}
 
-	template <typename T>
-	static __forceinline T* Instantiate(enums::eLayerType layer)
-	{
-		T* gameObj = new T();
-		Scene* scene = SceneManager::GetActiveScene();
-		scene->AddGameObject(layer, gameObj);
+	
+#pragma region GameObject Instantiate
+		template <typename T>
+		static __forceinline T* Instantiate(enums::eLayerType layer)
+		{
+			T* gameObj = new T();
+			Transform* tr = gameObj->AddComponent<Transform>();
 
-		return gameObj;
-	}
+			Scene* scene = SceneManager::GetActiveScene();
+			scene->AddGameObject(layer, gameObj);
 
-	template <typename T>
-	static __forceinline T* Instantiate(Vector3 pos, enums::eLayerType layer)
-	{
-		T* gameObj = new T();
-		Transform* tr = gameObj->GetComponent<Transform>();
-		tr->SetPosition(pos);
+			return gameObj;
+		}
 
-		Scene* scene = SceneManager::GetActiveScene();
-		scene->AddGameObject(layer, gameObj);
+		template <typename T>
+		static __forceinline T* Instantiate(Vector3 pos, enums::eLayerType layer)
+		{
+			T* gameObj = new T();
+			Transform* tr = gameObj->AddComponent<Transform>();
+			tr->SetPosition(pos);
 
-		return gameObj;
-	}
+			Scene* scene = SceneManager::GetActiveScene();
+			scene->AddGameObject(layer, gameObj);
 
-	template <typename T>
-	static __forceinline T* Instantiate(Vector3 pos, Vector3 scale, enums::eLayerType layer)
-	{
-		T* gameObj = new T();
-		Transform* tr = gameObj->GetComponent<Transform>();
-		tr->SetPosition(pos);
-		tr->SetScale(scale);
+			return gameObj;
+		}
 
-		Scene* scene = SceneManager::GetActiveScene();
-		scene->AddGameObject(layer, gameObj);
+		template <typename T>
+		static __forceinline T* Instantiate(Vector3 pos, Vector3 scale, enums::eLayerType layer)
+		{
+			T* gameObj = new T();
+			Transform* tr = gameObj->AddComponent<Transform>();
+			tr->SetPosition(pos);
+			tr->SetScale(scale);
 
-		return gameObj;
-	}
+			Scene* scene = SceneManager::GetActiveScene();
+			scene->AddGameObject(layer, gameObj);
 
-	template <typename T>
-	static __forceinline T* Instantiate(Vector3 pos, Vector3 scale, Vector3 rotate, enums::eLayerType layer)
-	{
-		T* gameObj = new T();
-		Transform* tr = gameObj->GetComponent<Transform>();
-		tr->SetPosition(pos);
-		tr->SetRotation(rotate);
-		tr->SetScale(scale);
+			return gameObj;
+		}
 
-		Scene* scene = SceneManager::GetActiveScene();
-		scene->AddGameObject(layer, gameObj);
+		template <typename T>
+		static __forceinline T* Instantiate(Vector3 pos, Vector3 scale, Vector3 rotate, enums::eLayerType layer)
+		{
+			T* gameObj = new T();
+			Transform* tr = gameObj->AddComponent<Transform>();
+			tr->SetPosition(pos);
+			tr->SetRotation(rotate);
+			tr->SetScale(scale);
 
-		return gameObj;
-	}
+			Scene* scene = SceneManager::GetActiveScene();
+			scene->AddGameObject(layer, gameObj);
+
+			return gameObj;
+		}
+#pragma endregion
+	// Destory
 
 	static __forceinline void Destroy(GameObject* gameObj)
 	{

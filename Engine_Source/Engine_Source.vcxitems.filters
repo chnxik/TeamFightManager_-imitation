@@ -103,6 +103,24 @@
     <Filter Include="GameObject\Component\Script\Base">
       <UniqueIdentifier>{cb7e8944-62cb-4885-83d4-e6c28c48d066}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Manager\UIManager">
+      <UniqueIdentifier>{c8fecc12-765c-4cfd-a6f9-624c8ad47b86}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject\UI">
+      <UniqueIdentifier>{02bd9774-1fa5-4935-8422-91a4341d03c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject\Component\UI\Button">
+      <UniqueIdentifier>{707515b4-5eac-437c-a967-939501c5e0aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject\Component\UI\Canvas">
+      <UniqueIdentifier>{daa9b2a1-98cc-4e37-b348-165b7a656404}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject\Component\UI\Panel">
+      <UniqueIdentifier>{5d830522-d669-4d7c-b7cb-baada0d68245}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject\Component\UI\Text">
+      <UniqueIdentifier>{4b62c147-9b39-42ef-8ef7-259958726128}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h">
@@ -195,6 +213,12 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)sszScript.h">
       <Filter>GameObject\Component\Script\Base</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszUIManager.h">
+      <Filter>Manager\UIManager</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszUIObject.h">
+      <Filter>GameObject\UI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)sszMath.cpp">
@@ -271,6 +295,12 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)sszScript.cpp">
       <Filter>GameObject\Component\Script\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszUIManager.cpp">
+      <Filter>Manager\UIManager</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszUIObject.cpp">
+      <Filter>GameObject\UI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

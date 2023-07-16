@@ -9,7 +9,7 @@ namespace ssz
 	GameObject::GameObject()
 		: mState(eState::Active)
 	{
-		AddComponent<Transform>();
+		// AddComponent<Transform>();
 	}
 
 	GameObject::~GameObject()

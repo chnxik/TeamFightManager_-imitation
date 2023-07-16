@@ -23,7 +23,6 @@
 
 // Object
 #include "sszObject.h"
-#include "sszCursor.h"
 
 
 namespace ssz
@@ -45,6 +44,7 @@ namespace ssz
 			Resources::Load<Texture>(L"TitleLogoTex", L"..\\Resources\\useResource\\Title\\logo_tp.png");
 		}
 		{
+			// ¹è°æ
 			std::shared_ptr<Material> TitleBgMt = std::make_shared<Material>();
 			TitleBgMt->SetMaterial(L"SpriteShader", L"TitleBg", eRenderingMode::Transparent);
 			Resources::Insert(L"TitleBgMt", TitleBgMt);
@@ -60,6 +60,9 @@ namespace ssz
 			std::shared_ptr<Material> TitleLogo_Mt = std::make_shared<Material>();
 			TitleLogo_Mt->SetMaterial(L"SpriteShader", L"TitleLogoTex", eRenderingMode::Transparent);
 			Resources::Insert(L"TitleLogoMt", TitleLogo_Mt);
+
+			// UI
+
 		}
 #pragma region Create Object for this Scene
 		// GameObject
@@ -87,8 +90,8 @@ namespace ssz
 
 		// MouseCursor
 		{
-			Cursor* CursorObj = Instantiate<Cursor>(Vector3(0.f, 0.f, 0.01f), Vector3(32.f, 32.f, 1.f), eLayerType::Cursor);
-			CursorObj->SetName(L"Cursor");
+		//	Cursor* CursorObj = Instantiate<Cursor>(Vector3(0.f, 0.f, 0.01f), Vector3(32.f, 32.f, 1.f), eLayerType::Cursor);
+		//	CursorObj->SetName(L"Cursor");
 		}
 
 		// Main Camera
@@ -104,7 +107,7 @@ namespace ssz
 	{
 		Scene::Update();
 
-		if (Input::GetKeyDown(eKeyCode::LBUTTON))
+		if (Input::GetKeyDown(eKeyCode::ENTER))
 		{
 			SceneManager::LoadScene(L"PrlgScene");
 		}

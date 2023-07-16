@@ -1,5 +1,6 @@
 #include "sszInput.h"
 #include "sszApplication.h"
+#include "sszCamera.h"
 
 extern ssz::Application application;
 
@@ -11,7 +12,7 @@ namespace ssz
 		'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L',
 		'Z', 'X', 'C', 'V', 'B', 'N', 'M',
 
-		VK_UP, VK_DOWN, VK_LEFT ,VK_RIGHT, VK_SPACE,
+		VK_UP, VK_DOWN, VK_LEFT ,VK_RIGHT, VK_SPACE, VK_RETURN,
 		VK_LBUTTON, VK_RBUTTON,
 	};
 

@@ -35,14 +35,8 @@
     <ClInclude Include="sszTestScene.h">
       <Filter>Contents\Scene\TestScene</Filter>
     </ClInclude>
-    <ClInclude Include="sszCursor.h">
-      <Filter>Contents\Object\Cursor</Filter>
-    </ClInclude>
     <ClInclude Include="sszTestScript.h">
       <Filter>Contents\Script\Test</Filter>
-    </ClInclude>
-    <ClInclude Include="sszUI.h">
-      <Filter>Contents\Object\UI\Base</Filter>
     </ClInclude>
     <ClInclude Include="sszTestScript2.h">
       <Filter>Contents\Script\Test</Filter>
@@ -86,17 +80,11 @@
     <ClCompile Include="sszTestScene.cpp">
       <Filter>Contents\Scene\TestScene</Filter>
     </ClCompile>
-    <ClCompile Include="sszCursor.cpp">
-      <Filter>Contents\Object\Cursor</Filter>
-    </ClCompile>
     <ClCompile Include="sszTestScript.cpp">
       <Filter>Contents\Script\Test</Filter>
     </ClCompile>
     <ClCompile Include="Load.cpp">
       <Filter>Contents\Load</Filter>
-    </ClCompile>
-    <ClCompile Include="sszUI.cpp">
-      <Filter>Contents\Object\UI\Base</Filter>
     </ClCompile>
     <ClCompile Include="sszTestScript2.cpp">
       <Filter>Contents\Script\Test</Filter>
@@ -156,15 +144,6 @@
     </Filter>
     <Filter Include="Contents\Object">
       <UniqueIdentifier>{91df6f40-37f8-4916-b7e5-b9d94c6bb02f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Object\Cursor">
-      <UniqueIdentifier>{036de30b-eeee-4881-84f0-9b8c7846ca22}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Object\UI">
-      <UniqueIdentifier>{9a4b64b7-2e62-4a0a-b19f-6dbd19264584}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Object\UI\Base">
-      <UniqueIdentifier>{9af3035c-4622-409f-a162-db3214ca9366}</UniqueIdentifier>
     </Filter>
     <Filter Include="Contents\Script\Masking">
       <UniqueIdentifier>{470eae73-8547-43b4-a211-e5cd3ad79448}</UniqueIdentifier>

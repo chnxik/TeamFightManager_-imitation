@@ -25,7 +25,6 @@
 
 // Object
 #include "sszObject.h"
-#include "sszCursor.h"
 
 namespace ssz
 {
@@ -47,23 +46,32 @@ namespace ssz
 		TitleLogo_Mt->SetMaterial(L"SpriteShader", L"TitleLogoTex", eRenderingMode::Transparent);
 		Resources::Insert(L"TitleLogoMt", TitleLogo_Mt);
 
-		GameObject* TestObject = Instantiate<GameObject>(Vector3(-50.0f, 0.0f, 1.010f), Vector3(100.f, 100.f, 1.f), eLayerType::Player);
+		UIObject* TestObject = Instantiate<UIObject>(Vector3(-50.0f, 0.0f, 1.010f), Vector3(100.f, 100.f, 1.f), eLayerType::UI);
 		TestObject->SetName(L"Test");
 		TestObject->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"TitleLogoMt");
 		TestObject->AddComponent<TestScript>()->SetDefault();
 		TestObject->AddComponent<Collider2D>()->Initialize();
 		//TestObject->GetComponent<Transform>()->SetTransTypeADD();
 
-		
+		UIObject* TestChildUIObject = new UIObject;
+		Transform* tr = TestChildUIObject->AddComponent<Transform>();
+		tr->SetPosition(Vector3(100.0f, 0.0f, 1.009f));
+		tr->SetScale(Vector3(100.f, 100.f, 0.f));
+		TestChildUIObject->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"TitleLogoMt");
+		TestChildUIObject->SetName(L"TestChildUI");
+		TestChildUIObject->AddComponent<Collider2D>()->Initialize();
+		TestChildUIObject->GetComponent<Collider2D>()->SetType(eColliderType::Circle);
 
-		GameObject* TestObject2 = Instantiate<GameObject>(Vector3(100.0f, 0.0f, 1.009f), Vector3(100.f, 100.f, 0.f), eLayerType::Player);
+		TestObject->AddChildUI(TestChildUIObject);
+
+		//UIObject* TestObject2 = Instantiate<UIObject>(Vector3(100.0f, 0.0f, 1.009f), Vector3(100.f, 100.f, 0.f), eLayerType::UI);
 		//GameObject* TestObject2 = Instantiate<GameObject>(Vector3(1.0f, 0.0f, 1.009f), Vector3(0.f, 0.f, 0.f), eLayerType::Player);
-		TestObject2->SetName(L"Test2");
-		TestObject2->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"TitleLogoMt");
-		TestObject2->AddComponent<TestScript2>()->SetDefault();
+		//TestObject2->SetName(L"Test2");
+		//TestObject2->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"TitleLogoMt");
+		//TestObject2->AddComponent<TestScript2>()->SetDefault();
 		// TestObject2->SetParent(TestObject);
-		TestObject2->AddComponent<Collider2D>()->Initialize();
-		TestObject2->GetComponent<Collider2D>()->SetType(eColliderType::Circle);
+		//TestObject2->AddComponent<Collider2D>()->Initialize();
+		//TestObject2->GetComponent<Collider2D>()->SetType(eColliderType::Circle);
 		//TestObject2->GetComponent<Transform>()->SetTransTypeADD();
 		
 		/*
@@ -80,20 +88,27 @@ namespace ssz
 
 		// MouseCursor
 		{
-			Cursor* CursorObj = Instantiate<Cursor>(Vector3(0.f, 0.f, 0.01f), Vector3(32.f, 32.f, 1.f), eLayerType::Cursor);
-			CursorObj->SetName(L"Cursor");
-			Collider2D* Col = CursorObj->AddComponent<Collider2D>();
-			Col->Initialize();
-			Col->SetOffsetSize(Vector3(-31.f, -31.f, 0.f));
-			Col->SetOffsetPos(Vector3(-14.f, 14.f, 0.f));
+			GameObject* Cursor = Instantiate<GameObject>(Vector3(0.f, 0.f, 0.01f), Vector3(32.f, 32.f, 1.f), eLayerType::Cursor);
+			Cursor->SetName(L"Cursor");
+			
+			// Init
+			Resources::Load<Texture>(L"CursorTex", L"..\\Resources\\useResource\\Cursor\\mouse_cursor.png");
+
+			std::shared_ptr<Material>CursorMt = std::make_shared<Material>();
+			CursorMt->SetMaterial(L"SpriteShader", L"CursorTex", eRenderingMode::Transparent);
+			CursorMt = Resources::Insert(L"CursorMt", CursorMt);
+
+			Cursor->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"CursorMt");
+			Cursor->AddComponent<Collider2D>()->Initialize();
+			Cursor->AddComponent<CursorScript>()->Initialize();
 		}
 
 		// Main Camera
 		{
-			GameObject* camera = Instantiate<GameObject>(Vector3(0.0f, 0.0f, -10.f), eLayerType::UI);
+			GameObject* camera = Instantiate<GameObject>(Vector3(0.0f, 0.0f, -10.f), eLayerType::Camera);
 			camera->SetName(L"MainCamera");
 			Camera* cameraComp = camera->AddComponent<Camera>();
-			cameraComp->TurnLayerMask(eLayerType::UI, false);
+			// cameraComp->TurnLayerMask(eLayerType::UI, false);
 			renderer::cameras.push_back(cameraComp);
 		}
 #pragma endregion
@@ -113,8 +128,7 @@ namespace ssz
 	}
 	void TestScene::OnEnter()
 	{
-		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Player, true);
-		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Cursor, true);
+		CollisionManager::SetLayer(eLayerType::UI, eLayerType::Cursor, true);
 	}
 	void TestScene::OnExit()
 	{

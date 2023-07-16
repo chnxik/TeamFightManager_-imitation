@@ -169,7 +169,6 @@
     <ClInclude Include="sszArrangementScript.h" />
     <ClInclude Include="sszBanPickScene.h" />
     <ClInclude Include="sszCameraScript.h" />
-    <ClInclude Include="sszCursor.h" />
     <ClInclude Include="sszCursorScript.h" />
     <ClInclude Include="sszIGStadiumScene.h" />
     <ClInclude Include="sszMainLobbyScene.h" />
@@ -181,7 +180,6 @@
     <ClInclude Include="sszTestScript2.h" />
     <ClInclude Include="sszTestScript3.h" />
     <ClInclude Include="sszTitleScene.h" />
-    <ClInclude Include="sszUI.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="660Engine.cpp" />
@@ -189,7 +187,6 @@
     <ClCompile Include="sszArrangementScript.cpp" />
     <ClCompile Include="sszBanPickScene.cpp" />
     <ClCompile Include="sszCameraScript.cpp" />
-    <ClCompile Include="sszCursor.cpp" />
     <ClCompile Include="sszCursorScript.cpp" />
     <ClCompile Include="sszIGStadiumScene.cpp" />
     <ClCompile Include="sszMainLobbyScene.cpp" />
@@ -201,7 +198,6 @@
     <ClCompile Include="sszTestScript2.cpp" />
     <ClCompile Include="sszTestScript3.cpp" />
     <ClCompile Include="sszTitleScene.cpp" />
-    <ClCompile Include="sszUI.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -4,6 +4,8 @@
 
 namespace ssz
 {
+	class UIObject;
+
 	class Camera : public Component
 	{
 	public:
@@ -38,6 +40,7 @@ namespace ssz
 		void AlphaSortGameObjects();
 		void ZSortTransparencyGameObjects();
 		void DivideAlphaBlendGameObjects(const std::vector<GameObject*> gameObjs);
+		void DivideAlphaBlendUIObject(UIObject* UIObjs);
 		void RenderOpaque();
 		void RenderCutOut();
 		void RenderTransparent();

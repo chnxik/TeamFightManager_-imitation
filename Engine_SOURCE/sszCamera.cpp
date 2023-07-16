@@ -1,11 +1,15 @@
 #include "sszCamera.h"
-#include "sszTransform.h"
-#include "sszGameObject.h"
 #include "sszApplication.h"
-#include "sszRenderer.h"
-#include "sszScene.h"
+
 #include "sszSceneManager.h"
+#include "sszScene.h"
+
+#include "sszTransform.h"
 #include "sszMeshRenderer.h"
+#include "sszRenderer.h"
+
+#include "sszGameObject.h"
+#include "sszUIObject.h"
 
 extern ssz::Application application;
 
@@ -144,11 +148,25 @@ namespace ssz
 			if (mLayerMask[i] == true)
 			{
 				Layer& layer = scene->GetLayer((eLayerType)i);
-				const std::vector<GameObject*> gameObjs
-					= layer.GetGameObjects();
-				// layer에 있는 게임오브젝트를 들고온다.
+				
+				if (i == (UINT)eLayerType::UI) // UI Layer
+				{
+					const std::vector<GameObject*> UIObjs
+						= layer.GetGameObjects();
 
-				DivideAlphaBlendGameObjects(gameObjs);
+					for (int j = (int)UIObjs.size() - 1; 0 <= j; --j)
+					{
+						DivideAlphaBlendUIObject((UIObject*)UIObjs[j]);
+					}
+				}
+				else
+				{
+					const std::vector<GameObject*> gameObjs
+						= layer.GetGameObjects();
+					
+					// layer에 있는 게임오브젝트를 들고온다.
+					DivideAlphaBlendGameObjects(gameObjs);
+				}
 			}
 		}
 	}
@@ -189,6 +207,48 @@ namespace ssz
 			default:
 				break;
 			}
+		}
+	}
+
+	void Camera::DivideAlphaBlendUIObject(UIObject* UIObjs)
+	{
+		static std::queue<UIObject*> UIQueue;
+		UIQueue.push(UIObjs);
+
+		while (!UIQueue.empty())
+		{
+			UIObject* pUI = UIQueue.front();
+			UIQueue.pop();
+
+			const std::vector<UIObject*> UIChilds = pUI->GetChildUI();
+			for (size_t k = 0; k < UIChilds.size(); ++k)
+			{
+				UIQueue.push(UIChilds[k]);
+			}
+
+			// 렌더러 컴포넌트가 없다면?
+			MeshRenderer* mr
+				= pUI->GetComponent<MeshRenderer>();
+			if (mr == nullptr)
+				continue;
+
+			std::shared_ptr<Material> mt = mr->GetMaterial();
+			eRenderingMode mode = mt->GetRenderingMode();
+			switch (mode)
+			{
+			case ssz::graphics::eRenderingMode::Opaque:
+				mOpaqueGameObjects.push_back((GameObject*)pUI);
+				break;
+			case ssz::graphics::eRenderingMode::CutOut:
+				mCutOutGameObjects.push_back((GameObject*)pUI);
+				break;
+			case ssz::graphics::eRenderingMode::Transparent:
+				mTransparentGameObjects.push_back((GameObject*)pUI);
+				break;
+			default:
+				break;
+			}
+
 		}
 	}
 	

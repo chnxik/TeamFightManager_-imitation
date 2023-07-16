@@ -9,6 +9,7 @@
 #include "sszMeshRenderer.h"
 #include "sszMaterial.h"
 #include "sszCamera.h"
+#include "sszCollider2D.h"
 
 extern ssz::Application application;
 
@@ -25,7 +26,17 @@ namespace ssz
 
 	void CursorScript::Initialize()
 	{
-		CursorSize = GetOwner()->GetComponent<MeshRenderer>()->GetMaterial()->GetTexture()->GetTextureSize() / 2.f;
+		CursorSize = GetOwner()->GetComponent<MeshRenderer>()->GetMaterial()->GetTexture()->GetTextureSize();
+		
+		Collider2D* CursorCol = GetOwner()->GetComponent<Collider2D>();
+		if (CursorCol)
+		{
+			CursorCol->SetOffsetSize(Vector3(1.f - CursorSize.x, 1.f - CursorSize.y, 0.f));
+			CursorCol->SetOffsetPos(Vector3(-CursorSize.x, CursorSize.y, 0.f) / 2.f);
+		}
+
+		CursorSize /= 2.f;
+
 	}
 	
 	void CursorScript::LateUpdate()
@@ -37,7 +48,6 @@ namespace ssz
 			// CursorSize로 위치 조정
 			Vector3 FinalPos(MousePos.x + CursorSize.x, MousePos.y + CursorSize.y, 0.0f);
 		
-			// Mouse Cursor는 Adjust window rect 하면 달라짐
 			RECT rect = {};
 			GetClientRect(application.GetHwnd(), &rect);
 			float width = (float)(rect.right - rect.left);

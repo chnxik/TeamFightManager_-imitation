@@ -1,5 +1,5 @@
 #pragma once
-#include "..\Engine_SOURCE\sszScene.h"
+#include "sszScene.h"
 
 namespace ssz
 {
@@ -18,6 +18,5 @@ namespace ssz
 		virtual void OnExit() override;
 
 	private:
-
 	};
 }

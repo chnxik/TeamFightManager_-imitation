@@ -2,6 +2,9 @@
 
 #include "sszInput.h"
 #include "sszSceneManager.h"
+#include "sszCollisionManager.h"
+
+#include "sszUIObject.h"
 
 // Resources
 #include "sszResources.h"
@@ -13,6 +16,8 @@
 #include "sszMeshRenderer.h"
 #include "sszCamera.h"
 #include "sszCollider2D.h"
+
+// Script
 #include "sszTestScript.h"
 #include "sszTestScript2.h"
 #include "sszTestScript3.h"
@@ -30,8 +35,10 @@ namespace ssz
 	using namespace object;
 
 	TitleScene::TitleScene()
+		: NewGameUI(nullptr)
 	{
 	}
+
 	TitleScene::~TitleScene()
 	{
 	}
@@ -42,6 +49,8 @@ namespace ssz
 			Resources::Load<Texture>(L"IGStadiumSkyTex", L"..\\Resources\\useResource\\stadium\\ingame\\stadium_sky_bg.png");
 			Resources::Load<Texture>(L"IGStadiumTex", L"..\\Resources\\useResource\\stadium\\ingame\\stadium.png");
 			Resources::Load<Texture>(L"TitleLogoTex", L"..\\Resources\\useResource\\Title\\logo_tp.png");
+
+			Resources::Load<Texture>(L"NewGameUITex", L"..\\Resources\\useResource\\Title\\NewGame\\new_game_ui_bg.png");
 		}
 		{
 			// ¹è°æ
@@ -62,24 +71,27 @@ namespace ssz
 			Resources::Insert(L"TitleLogoMt", TitleLogo_Mt);
 
 			// UI
+			std::shared_ptr<Material> NewGameUI_Mt = std::make_shared<Material>();
+			NewGameUI_Mt->SetMaterial(L"SpriteShader", L"NewGameUITex", eRenderingMode::Transparent);
+			Resources::Insert(L"NewGameUIMt", NewGameUI_Mt);
 
 		}
 #pragma region Create Object for this Scene
-		// GameObject
+		// Bagk Ground
 		{
-			GameObject* TitleBg = Instantiate<GameObject>(Vector3(0.0f, 0.0f, 1.0f), Vector3(1920.f, 1080.f, 1.f), eLayerType::BackGround);
+			GameObject* TitleBg = Instantiate<GameObject>(Vector3(0.0f, 0.0f, 1.1f), Vector3(1920.f, 1080.f, 1.f), eLayerType::BackGround);
 			TitleBg->SetName(L"TitleBg");
 			TitleBg->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"TitleBgMt");
 
-			GameObject* IG_Stadium = Instantiate<GameObject>(Vector3(0.0f, -44.0f, 1.021f), Vector3(2235.f, 1460.f, 1.f), eLayerType::BackGroundObj);
+			GameObject* IG_Stadium = Instantiate<GameObject>(Vector3(0.0f, -44.0f, 1.121f), Vector3(2235.f, 1460.f, 1.f), eLayerType::BackGroundObj);
 			IG_Stadium->SetName(L"IG_Stadium");
 			IG_Stadium->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"IGStadiumMt");
 
-			GameObject* IG_StadiumSky = Instantiate<GameObject>(Vector3(0.0f, -53.0f, 1.022f), Vector3(2144.f, 1429.f, 1.f), eLayerType::BackGround);
+			GameObject* IG_StadiumSky = Instantiate<GameObject>(Vector3(0.0f, -53.0f, 1.122f), Vector3(2144.f, 1429.f, 1.f), eLayerType::BackGround);
 			IG_StadiumSky->SetName(L"IG_StadiumSky");
 			IG_StadiumSky->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"IGStadiumSkyMt");
 
-			GameObject* TitleLogo = Instantiate<GameObject>(Vector3(0.0f, 242.0f, 1.011f), Vector3(738.f, 271.f, 1.f), eLayerType::BackGroundObj);
+			GameObject* TitleLogo = Instantiate<GameObject>(Vector3(0.0f, 242.0f, 1.111f), Vector3(738.f, 271.f, 1.f), eLayerType::BackGroundObj);
 			TitleLogo->SetName(L"TitleLogo");
 			TitleLogo->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"TitleLogoMt");
 
@@ -88,24 +100,51 @@ namespace ssz
 			// ArScript->SetDefault();
 		}
 
+		// UI
+		{
+			NewGameUI = Instantiate<UIObject>(Vector3(0.f, 50.f, 1.01f), Vector3(1350.f, 786.f, 1.f), eLayerType::UI);
+			NewGameUI->SetName(L"NewGameUIPanel");
+			NewGameUI->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"NewGameUIMt");
+			NewGameUI->AddComponent<Collider2D>()->Initialize();
+			NewGameUI->SetState(ssz::GameObject::eState::Paused);
+		}
+
 		// MouseCursor
 		{
-		//	Cursor* CursorObj = Instantiate<Cursor>(Vector3(0.f, 0.f, 0.01f), Vector3(32.f, 32.f, 1.f), eLayerType::Cursor);
-		//	CursorObj->SetName(L"Cursor");
+			GameObject* Cursor = Instantiate<GameObject>(Vector3(0.f, 0.f, 0.01f), Vector3(32.f, 32.f, 1.f), eLayerType::Cursor);
+			Cursor->SetName(L"Cursor");
+
+			// Init
+			Resources::Load<Texture>(L"CursorTex", L"..\\Resources\\useResource\\Cursor\\mouse_cursor.png");
+
+			std::shared_ptr<Material>CursorMt = std::make_shared<Material>();
+			CursorMt->SetMaterial(L"SpriteShader", L"CursorTex", eRenderingMode::Transparent);
+			CursorMt = Resources::Insert(L"CursorMt", CursorMt);
+
+			Cursor->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"CursorMt");
+			Cursor->AddComponent<Collider2D>()->Initialize();
+			Cursor->AddComponent<CursorScript>()->Initialize();
 		}
 
 		// Main Camera
 		{
-			GameObject* camera = Instantiate<GameObject>(Vector3(0.0f, 0.0f, -10.f), eLayerType::UI);
+			GameObject* camera = Instantiate<GameObject>(Vector3(0.0f, 0.0f, -10.f), eLayerType::Camera);
 			camera->SetName(L"MainCamera");
 			Camera* cameraComp = camera->AddComponent<Camera>();
-			cameraComp->TurnLayerMask(eLayerType::UI, false);
 		}
 #pragma endregion
 	}
 	void TitleScene::Update()
 	{
 		Scene::Update();
+
+		if (Input::GetKeyDown(eKeyCode::LBUTTON))
+		{
+			if (NewGameUI->GetState() == GameObject::eState::Paused)
+			{
+				NewGameUI->SetState(GameObject::eState::Active);
+			}
+		}
 
 		if (Input::GetKeyDown(eKeyCode::ENTER))
 		{
@@ -122,8 +161,10 @@ namespace ssz
 	}
 	void TitleScene::OnEnter()
 	{
+		CollisionManager::SetLayer(eLayerType::UI, eLayerType::Cursor, true);
 	}
 	void TitleScene::OnExit()
 	{
+		CollisionManager::Clear();
 	}
 }

@@ -3,6 +3,8 @@
 
 namespace ssz
 {
+	class UIObject;
+
 	class TitleScene : public Scene
 	{
 	public:
@@ -18,5 +20,6 @@ namespace ssz
 		virtual void OnExit() override;
 
 	private:
+		UIObject* NewGameUI;
 	};
 }

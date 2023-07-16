@@ -2,6 +2,7 @@
 
 #include "sszInput.h"
 #include "sszSceneManager.h"
+#include "sszCollisionManager.h"
 
 // Resources
 #include "sszResources.h"
@@ -89,9 +90,10 @@ namespace ssz
 #pragma region UI
 			{
 				// UI_Headerbar
-				GameObject* UI_headerBar = Instantiate<GameObject>(Vector3(0.0f, 484.5f, 1.015f), Vector3(1920.f, 111.f, 1.f), eLayerType::UI);
+				UIObject* UI_headerBar = Instantiate<UIObject>(Vector3(0.0f, 484.5f, 1.015f), Vector3(1920.f, 111.f, 1.f), eLayerType::UI);
 				UI_headerBar->SetName(L"UI_header_Bar");
 				UI_headerBar->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"UI_headerBar_Mt");
+				UI_headerBar->AddComponent<Collider2D>()->Initialize();
 
 				// 오브젝트 배치용 스크립트
 				// ArrangementScript* ArScript = UI_headerBar->AddComponent<ArrangementScript>();
@@ -102,16 +104,26 @@ namespace ssz
 
 		// MouseCursor
 		{
-		//	Cursor* CursorObj = Instantiate<Cursor>(Vector3(0.f, 0.f, 0.01f), Vector3(32.f, 32.f, 1.f), eLayerType::Cursor);
-		//	CursorObj->SetName(L"Cursor");
+			GameObject* Cursor = Instantiate<GameObject>(Vector3(0.f, 0.f, 0.01f), Vector3(32.f, 32.f, 1.f), eLayerType::Cursor);
+			Cursor->SetName(L"Cursor");
+
+			// Init
+			Resources::Load<Texture>(L"CursorTex", L"..\\Resources\\useResource\\Cursor\\mouse_cursor.png");
+
+			std::shared_ptr<Material>CursorMt = std::make_shared<Material>();
+			CursorMt->SetMaterial(L"SpriteShader", L"CursorTex", eRenderingMode::Transparent);
+			CursorMt = Resources::Insert(L"CursorMt", CursorMt);
+
+			Cursor->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"CursorMt");
+			Cursor->AddComponent<Collider2D>()->Initialize();
+			Cursor->AddComponent<CursorScript>()->Initialize();
 		}
 
 		// Main Camera
 		{
-			GameObject* camera = Instantiate<GameObject>(Vector3(0.0f, 0.0f, -10.f), eLayerType::UI);
+			GameObject* camera = Instantiate<GameObject>(Vector3(0.0f, 0.0f, -10.f), eLayerType::Camera);
 			camera->SetName(L"MainCamera");
 			Camera* cameraComp = camera->AddComponent<Camera>();
-			// cameraComp->TurnLayerMask(eLayerType::UI, false);
 		}
 #pragma endregion
 	}
@@ -153,8 +165,10 @@ namespace ssz
 	}
 	void MainLobbyScene::OnEnter()
 	{
+		CollisionManager::SetLayer(eLayerType::UI, eLayerType::Cursor, true);
 	}
 	void MainLobbyScene::OnExit()
 	{
+		CollisionManager::Clear();
 	}
 }

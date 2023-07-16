@@ -65,6 +65,8 @@ namespace ssz
 
 		UIObject* pPriorityUI = nullptr;
 
+		UIObject* ppUI = pParentUI;
+		
 		static std::queue<UIObject*> _queue;
 		_queue.push(pParentUI); // 인자로 들어온 부모UI를 가장 먼저 넣는다.
 

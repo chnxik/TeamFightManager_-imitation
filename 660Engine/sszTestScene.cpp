@@ -21,23 +21,37 @@ namespace ssz
 		TitleLogo_Mt->SetMaterial(L"SpriteShader", L"TitleLogoTex", eRenderingMode::Transparent);
 		Resources::Insert(L"TitleLogoMt", TitleLogo_Mt);
 
-		UIObject* TestObject = Instantiate<UIObject>(Vector3(-50.0f, 0.0f, 1.010f), Vector3(200.f, 200.f, 1.f),Vector3(0.f,0.f,DtoR(30.f)), eLayerType::UI);
+		UIObject* TestObject = Instantiate<UIObject>(Vector3(-50.0f, 0.0f, 1.010f), Vector3(200.f, 200.f, 1.f),Vector3(0.f,0.f,DtoR(30.f)), eLayerType::Player);
 		TestObject->SetName(L"Test");
 		TestObject->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"TitleLogoMt");
 		TestObject->AddComponent<TestScript>()->SetDefault();
 		TestObject->AddComponent<Collider2D>()->Initialize();
 		//TestObject->GetComponent<Transform>()->SetTransTypeADD();
 
-		UIObject* TestChildUIObject = new UIObject;
-		Transform* tr = TestChildUIObject->AddComponent<Transform>();
-		tr->SetPosition(Vector3(400.0f, 0.0f, 1.009f));
-		tr->SetScale(Vector3(200.f, 200.f, 0.f));
-		TestChildUIObject->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"TitleLogoMt");
-		TestChildUIObject->SetName(L"TestChildUI");
-		TestChildUIObject->AddComponent<Collider2D>()->Initialize();
-		TestChildUIObject->GetComponent<Collider2D>()->SetType(eColliderType::Circle);
+		UIObject* TestObject2 = Instantiate<UIObject>(Vector3(-300.0f, 0.0f, 1.010f), Vector3(200.f, 200.f, 1.f), Vector3(0.f, 0.f, 0.f), eLayerType::Player);
+		TestObject2->SetName(L"Test2");
+		TestObject2->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"TitleLogoMt");
+		TestObject2->AddComponent<TestScript2>()->SetDefault();
+		TestObject2->AddComponent<Collider2D>()->Initialize();
 
-		TestObject->AddChildUI(TestChildUIObject);
+		UIObject* TestObject3 = Instantiate<UIObject>(Vector3(300.0f, 0.0f, 1.010f), Vector3(200.f, 200.f, 1.f), Vector3(0.f, 0.f, 0.f), eLayerType::Player);
+		TestObject3->SetName(L"Test2");
+		TestObject3->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"TitleLogoMt");
+		TestObject3->AddComponent<TestScript3>()->SetDefault();
+		Collider2D* Col = TestObject3->AddComponent<Collider2D>();
+		Col->Initialize();
+		Col->SetType(eColliderType::Circle);
+
+		// UIObject* TestChildUIObject = new UIObject;
+		// Transform* tr = TestChildUIObject->AddComponent<Transform>();
+		// tr->SetPosition(Vector3(400.0f, 0.0f, 1.009f));
+		// tr->SetScale(Vector3(200.f, 200.f, 0.f));
+		// TestChildUIObject->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"TitleLogoMt");
+		// TestChildUIObject->SetName(L"TestChildUI");
+		// TestChildUIObject->AddComponent<Collider2D>()->Initialize();
+		// TestChildUIObject->GetComponent<Collider2D>()->SetType(eColliderType::Circle);
+		// 
+		// TestObject->AddChildUI(TestChildUIObject);
 
 		//UIObject* TestObject2 = Instantiate<UIObject>(Vector3(100.0f, 0.0f, 1.009f), Vector3(100.f, 100.f, 0.f), eLayerType::UI);
 		//GameObject* TestObject2 = Instantiate<GameObject>(Vector3(1.0f, 0.0f, 1.009f), Vector3(0.f, 0.f, 0.f), eLayerType::Player);
@@ -106,7 +120,8 @@ namespace ssz
 	}
 	void TestScene::OnEnter()
 	{
-		CollisionManager::SetLayer(eLayerType::UI, eLayerType::Cursor, true);
+		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Cursor, true);
+		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Player, true);
 	}
 	void TestScene::OnExit()
 	{

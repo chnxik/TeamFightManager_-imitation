@@ -34,6 +34,10 @@ namespace ssz
 			Resources::Load<Texture>(L"ProceedBtnArrowTex", L"..\\Resources\\useResource\\Mainlobby\\UI\\btn\\proceed\\proceed_button_2.png");
 			Resources::Load<Texture>(L"ProceedBtnDownTex", L"..\\Resources\\useResource\\Mainlobby\\UI\\btn\\proceed\\proceed_button_3.png");
 
+			Resources::Load<Texture>(L"WeeklyEventRedBtnIdleTex", L"..\\Resources\\useResource\\Mainlobby\\UI\\btn\\weekly\\weekly_event_button_0.png");
+			Resources::Load<Texture>(L"WeeklyEventRedBtnOnTex", L"..\\Resources\\useResource\\Mainlobby\\UI\\btn\\weekly\\weekly_event_button_1.png");
+			Resources::Load<Texture>(L"WeeklyEventGrayBtnIdleTex", L"..\\Resources\\useResource\\Mainlobby\\UI\\btn\\weekly\\weekly_event_button_3.png");
+			Resources::Load<Texture>(L"WeeklyEventGrayBtnOnTex", L"..\\Resources\\useResource\\Mainlobby\\UI\\btn\\weekly\\weekly_event_button_4.png");
 		}
 		{
 			LoadMaterial(L"Bg_Skyday_Mt", L"SpriteShader", L"SkydayBgTex", eRenderingMode::Transparent);
@@ -44,6 +48,8 @@ namespace ssz
 			LoadMaterial(L"MainMenuBtnIdleMt", L"SpriteShader", L"MainMenuBtnIdleTex", eRenderingMode::Transparent);
 			LoadMaterial(L"ProceedBtnIdleMt", L"SpriteShader", L"ProceedBtnIdleTex", eRenderingMode::Transparent);
 			LoadMaterial(L"ProceedBtnArrowMt", L"SpriteShader", L"ProceedBtnArrowTex", eRenderingMode::Transparent);
+
+			LoadMaterial(L"WeeklyEventBtnIdleMt", L"SpriteShader", L"WeeklyEventRedBtnIdleTex", eRenderingMode::Transparent);
 		}
 #pragma region Create Object for this Scene
 		// GameObject
@@ -76,13 +82,13 @@ namespace ssz
 				UI_headerBar->AddComponent<Collider2D>()->Initialize();
 
 				// Menu Btn
-				Vector3 MainMenuBtnSize(240.f, 70.f, 1.f);
+				Vector3 MainMenuBtnSize(230.f, 60.f, 1.f);
 				Vector3 MainMenuBtnPos[5] = {};
 
 				for (int i = 0; i < 5; ++i)
 				{
 					float x = -810.f; // 버튼 첫 시작 x좌표
-					x += (MainMenuBtnSize.x + 30.f) * i;
+					x += (MainMenuBtnSize.x + 27.f) * i;
 					float y = -460.f;
 					MainMenuBtnPos[i] = Vector3(x, y, 1.001f);
 				}
@@ -114,9 +120,7 @@ namespace ssz
 
 
 				// ProceedBtn
-				//495
-				// 67.5
-				UIObject* ProceedBtn = Instantiate<UIObject>(Vector3(735.f, -428.f, 1.002f), Vector3(390.f, 135.f, 1.f), eLayerType::UI);
+				UIObject* ProceedBtn = Instantiate<UIObject>(Vector3(735.f, -430.f, 1.002f), Vector3(340.f, 120.f, 1.f), eLayerType::UI);
 				ProceedBtn->SetName(L"ProceedMenuBtn");
 				ProceedBtn->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"ProceedBtnIdleMt");
 				ProceedBtn->AddComponent<Collider2D>()->Initialize();
@@ -127,6 +131,13 @@ namespace ssz
 				Transform* Proceedtr = ProceedArrow->GetComponent<Transform>();
 				Proceedtr->SetParent(ProceedBtn->GetComponent<Transform>());
 				Proceedtr->SetTransTypeADD();
+
+				// WeeklyEventBtn
+				UIObject* WeeklyEventBtn = Instantiate<UIObject>(Vector3(735.f, -320.f, 1.002f), Vector3(340.f, 60.f, 1.f), eLayerType::UI);
+				WeeklyEventBtn->SetName(L"WeeklyEventBtn");
+				WeeklyEventBtn->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"WeeklyEventBtnIdleMt");
+				WeeklyEventBtn->AddComponent<Collider2D>()->Initialize();
+
 
 				// 오브젝트 배치용 스크립트
 				// ArrangementScript* ArScript = UI_headerBar->AddComponent<ArrangementScript>();

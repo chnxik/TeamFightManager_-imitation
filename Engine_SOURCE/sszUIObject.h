@@ -15,6 +15,11 @@ namespace ssz
 		virtual void LateUpdate();
 		virtual void Render();
 
+		virtual void SetState(eState state) override;
+		virtual void SetDead() override;
+		virtual void SetActive() override;
+		virtual void SetPaused() override;
+
 		bool IsMouseOn() { return bMouseOn; }
 		bool IsLbtnDown() { return bLbtnDown; }
 
@@ -25,6 +30,12 @@ namespace ssz
 		{
 			pChildUI->mParentUI = this;
 			mChildUI.push_back(pChildUI);
+		}
+
+		void AddParentUI(UIObject* pParentUI)
+		{
+			mParentUI = pParentUI;
+			pParentUI->mChildUI.push_back(this);
 		}
 
 		bool IsUIOpen() { return bOpen; }

@@ -57,6 +57,46 @@ namespace ssz
         GameObject::Render();
     }
 
+    void UIObject::SetState(eState state)
+    {
+        GameObject::SetState(state);
+
+        for (size_t i = 0; i < mChildUI.size(); ++i)
+        {
+            mChildUI[i]->SetState(state);
+        }
+    }
+
+    void UIObject::SetDead()
+    {
+        GameObject::SetDead();
+
+        for (size_t i = 0; i < mChildUI.size(); ++i)
+        {
+            mChildUI[i]->SetDead();
+        }
+    }
+
+    void UIObject::SetActive()
+    {
+        GameObject::SetActive();
+
+        for (size_t i = 0; i < mChildUI.size(); ++i)
+        {
+            mChildUI[i]->SetActive();
+        }
+    }
+
+    void UIObject::SetPaused()
+    {
+        GameObject::SetPaused();
+
+        for (size_t i = 0; i < mChildUI.size(); ++i)
+        {
+            mChildUI[i]->SetPaused();
+        }
+    }
+
     void UIObject::MouseOnCheck()
     {
         Vector3 Pos = GetComponent<Transform>()->GetWorldPosition();

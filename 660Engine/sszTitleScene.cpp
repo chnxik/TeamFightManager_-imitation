@@ -51,8 +51,15 @@ namespace ssz
 			Resources::Load<Texture>(L"TitleLogoTex", L"..\\Resources\\useResource\\Title\\logo_tp.png");
 
 			Resources::Load<Texture>(L"NewGameUITex", L"..\\Resources\\useResource\\Title\\NewGame\\new_game_ui_bg.png");
+			Resources::Load<Texture>(L"ImportantBtn_IdleTex", L"..\\Resources\\useResource\\CommonUI\\btn\\important_button_0.png");
+			Resources::Load<Texture>(L"ImportantBtn_OnTex", L"..\\Resources\\useResource\\CommonUI\\btn\\important_button_1.png");
+			Resources::Load<Texture>(L"ImportantBtn_DownTex", L"..\\Resources\\useResource\\CommonUI\\btn\\important_button_2.png");
+			Resources::Load<Texture>(L"DefaultBtn_IdleTex", L"..\\Resources\\useResource\\CommonUI\\btn\\default_button_0.png");
+			Resources::Load<Texture>(L"DefaultBtn_OnTex", L"..\\Resources\\useResource\\CommonUI\\btn\\default_button_1.png");
+			Resources::Load<Texture>(L"DefaultBtn_DownTex", L"..\\Resources\\useResource\\CommonUI\\btn\\default_button_2.png");
 		}
 		{
+			/*
 			// ¹è°æ
 			std::shared_ptr<Material> TitleBgMt = std::make_shared<Material>();
 			TitleBgMt->SetMaterial(L"SpriteShader", L"TitleBg", eRenderingMode::Transparent);
@@ -69,11 +76,23 @@ namespace ssz
 			std::shared_ptr<Material> TitleLogo_Mt = std::make_shared<Material>();
 			TitleLogo_Mt->SetMaterial(L"SpriteShader", L"TitleLogoTex", eRenderingMode::Transparent);
 			Resources::Insert(L"TitleLogoMt", TitleLogo_Mt);
-
+			
 			// UI
 			std::shared_ptr<Material> NewGameUI_Mt = std::make_shared<Material>();
 			NewGameUI_Mt->SetMaterial(L"SpriteShader", L"NewGameUITex", eRenderingMode::Transparent);
 			Resources::Insert(L"NewGameUIMt", NewGameUI_Mt);
+
+			std::shared_ptr<Material> ImportantBtn_Mt = std::make_shared<Material>();
+			ImportantBtn_Mt->SetMaterial(L"SpriteShader", L"ImportantBtn_IdleTex", eRenderingMode::Transparent);
+			*/
+			
+			LoadMaterial(L"TitleBgMt", L"SpriteShader", L"TitleBg", eRenderingMode::Transparent);
+			LoadMaterial(L"IGStadiumMt", L"SpriteShader", L"IGStadiumTex", eRenderingMode::Transparent);
+			LoadMaterial(L"IGStadiumSkyMt", L"SpriteShader", L"IGStadiumSkyTex", eRenderingMode::Transparent);
+			LoadMaterial(L"TitleLogoMt", L"SpriteShader", L"TitleLogoTex", eRenderingMode::Transparent);
+			LoadMaterial(L"NewGameUIMt", L"SpriteShader", L"NewGameUITex", eRenderingMode::Transparent);
+			LoadMaterial(L"InportantBtnMt", L"SpriteShader", L"ImportantBtn_IdleTex", eRenderingMode::Transparent);
+			LoadMaterial(L"DefaultUIMt", L"SpriteShader", L"DefaultBtn_IdleTex", eRenderingMode::Transparent);
 
 		}
 #pragma region Create Object for this Scene
@@ -102,11 +121,24 @@ namespace ssz
 
 		// UI
 		{
-			NewGameUI = Instantiate<UIObject>(Vector3(0.f, 50.f, 1.01f), Vector3(1350.f, 786.f, 1.f), eLayerType::UI);
+			NewGameUI = Instantiate<UIObject>(Vector3(0.f, 50.f, 1.01f), 
+				Vector3(1350.f, 786.f, 1.f), eLayerType::UI);
 			NewGameUI->SetName(L"NewGameUIPanel");
-			NewGameUI->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"NewGameUIMt");
+			NewGameUI->AddComponent<MeshRenderer>()->
+				SetMeshRenderer(L"RectMesh", L"NewGameUIMt");
 			NewGameUI->AddComponent<Collider2D>()->Initialize();
 			NewGameUI->SetState(ssz::GameObject::eState::Paused);
+
+			UIObject* BtnUI = InstantiateUI<UIObject>(Vector3(-123.f, -285.f, 1.009f), 
+				Vector3(207.f, 75.f, 1.f), NewGameUI, true);
+			BtnUI->SetName(L"InportantUI");
+			BtnUI->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"InportantBtnMt");
+
+			UIObject* BtnUI2 = InstantiateUI<UIObject>(Vector3(123.f, -285.f, 1.009f),
+				Vector3(207.f, 75.f, 1.f), NewGameUI, true);
+			BtnUI2->SetName(L"DefaultUI");
+			BtnUI2->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"DefaultUIMt");
+			
 		}
 
 		// MouseCursor
@@ -142,7 +174,13 @@ namespace ssz
 		{
 			if (NewGameUI->GetState() == GameObject::eState::Paused)
 			{
-				NewGameUI->SetState(GameObject::eState::Active);
+				NewGameUI->SetActive();
+		//		std::vector<UIObject*> BtnUI = NewGameUI->GetChildUI();
+		//		
+		//		for (int i = 0; i < (UINT)BtnUI.size(); ++i)
+		//		{
+		//			BtnUI[i]->SetState(GameObject::eState::Active);
+		//		}
 			}
 		}
 

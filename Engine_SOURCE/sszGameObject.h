@@ -94,12 +94,16 @@ namespace ssz
 			return comp;
 		}
 
-		void SetState(eState state) { mState = state; }
+		virtual void SetState(eState state) { mState = state; }
+		virtual void SetDead() { mState = eState::Dead; }
+		virtual void SetActive() { mState = eState::Active; }
+		virtual void SetPaused() { mState = eState::Paused; }
+
 		bool IsDead() { return eState::Dead == mState; }
 		bool IsActive() { return eState::Active == mState; }
 		bool IsPaused() { return eState::Paused == mState; }
+		
 		eState GetState() { return mState; }
-
 		void SetParent(GameObject* parent);
 
 	private:

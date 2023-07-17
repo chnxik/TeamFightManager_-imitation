@@ -38,6 +38,8 @@ namespace ssz
 			Resources::Load<Texture>(L"WeeklyEventRedBtnOnTex", L"..\\Resources\\useResource\\Mainlobby\\UI\\btn\\weekly\\weekly_event_button_1.png");
 			Resources::Load<Texture>(L"WeeklyEventGrayBtnIdleTex", L"..\\Resources\\useResource\\Mainlobby\\UI\\btn\\weekly\\weekly_event_button_3.png");
 			Resources::Load<Texture>(L"WeeklyEventGrayBtnOnTex", L"..\\Resources\\useResource\\Mainlobby\\UI\\btn\\weekly\\weekly_event_button_4.png");
+
+			Resources::Load<Texture>(L"UIheaderSlotBgTex", L"..\\Resources\\useResource\\Mainlobby\\UI\\header\\header_slot_bg.png");
 		}
 		{
 			LoadMaterial(L"Bg_Skyday_Mt", L"SpriteShader", L"SkydayBgTex", eRenderingMode::Transparent);
@@ -50,6 +52,8 @@ namespace ssz
 			LoadMaterial(L"ProceedBtnArrowMt", L"SpriteShader", L"ProceedBtnArrowTex", eRenderingMode::Transparent);
 
 			LoadMaterial(L"WeeklyEventBtnIdleMt", L"SpriteShader", L"WeeklyEventRedBtnIdleTex", eRenderingMode::Transparent);
+
+			LoadMaterial(L"UIheaderSlotBgMt", L"SpriteShader", L"UIheaderSlotBgTex",eRenderingMode::Transparent);
 		}
 #pragma region Create Object for this Scene
 		// GameObject
@@ -137,7 +141,16 @@ namespace ssz
 				WeeklyEventBtn->SetName(L"WeeklyEventBtn");
 				WeeklyEventBtn->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"WeeklyEventBtnIdleMt");
 				WeeklyEventBtn->AddComponent<Collider2D>()->Initialize();
+				
 
+				// UI header Slot
+				UIObject* HeaderGoldSlotUI = Instantiate<UIObject>(Vector3(775.f, 485.f, 1.002f), Vector3(339.f, 72.f, 1.f), eLayerType::UI);
+				HeaderGoldSlotUI->SetName(L"HeaderGoldSlotUI");
+				HeaderGoldSlotUI->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"UIheaderSlotBgMt");
+
+				UIObject* HeaderDaySlotUI = Instantiate<UIObject>(Vector3(416.f, 485.f, 1.002f), Vector3(339.f, 72.f, 1.f), eLayerType::UI);
+				HeaderDaySlotUI->SetName(L"HeaderDaySlotUI");
+				HeaderDaySlotUI->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"UIheaderSlotBgMt");
 
 				// 오브젝트 배치용 스크립트
 				// ArrangementScript* ArScript = UI_headerBar->AddComponent<ArrangementScript>();

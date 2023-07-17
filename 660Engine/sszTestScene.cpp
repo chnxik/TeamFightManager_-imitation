@@ -42,39 +42,6 @@ namespace ssz
 		Col->Initialize();
 		Col->SetType(eColliderType::Circle);
 
-		// UIObject* TestChildUIObject = new UIObject;
-		// Transform* tr = TestChildUIObject->AddComponent<Transform>();
-		// tr->SetPosition(Vector3(400.0f, 0.0f, 1.009f));
-		// tr->SetScale(Vector3(200.f, 200.f, 0.f));
-		// TestChildUIObject->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"TitleLogoMt");
-		// TestChildUIObject->SetName(L"TestChildUI");
-		// TestChildUIObject->AddComponent<Collider2D>()->Initialize();
-		// TestChildUIObject->GetComponent<Collider2D>()->SetType(eColliderType::Circle);
-		// 
-		// TestObject->AddChildUI(TestChildUIObject);
-
-		//UIObject* TestObject2 = Instantiate<UIObject>(Vector3(100.0f, 0.0f, 1.009f), Vector3(100.f, 100.f, 0.f), eLayerType::UI);
-		//GameObject* TestObject2 = Instantiate<GameObject>(Vector3(1.0f, 0.0f, 1.009f), Vector3(0.f, 0.f, 0.f), eLayerType::Player);
-		//TestObject2->SetName(L"Test2");
-		//TestObject2->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"TitleLogoMt");
-		//TestObject2->AddComponent<TestScript2>()->SetDefault();
-		// TestObject2->SetParent(TestObject);
-		//TestObject2->AddComponent<Collider2D>()->Initialize();
-		//TestObject2->GetComponent<Collider2D>()->SetType(eColliderType::Circle);
-		//TestObject2->GetComponent<Transform>()->SetTransTypeADD();
-		
-		/*
-		GameObject* TestObject3 = Instantiate<GameObject>(Vector3(1.f, 0.0f, 1.009f), Vector3(1.f, 1.f, 0.f), Vector3(0.f, 0.f, DtoR(90.f)), eLayerType::Player);
-		// GameObject* TestObject3 = Instantiate<GameObject>(Vector3(1.0f, 0.0f, 1.009f), Vector3(0.f, 0.f, 0.f), eLayerType::Player);
-		TestObject3->SetName(L"Test3");
-		TestObject3->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"TitleLogoMt");
-		TestObject3->AddComponent<TestScript3>()->SetDefault();
-		TestObject3->SetParent(TestObject2);
-		TestObject3->AddComponent<Collider2D>()->Initialize();
-		// TestObject3->GetComponent<Transform>()->SetTransTypeADD();
-
-		*/
-
 		// MouseCursor
 		{
 			GameObject* Cursor = Instantiate<GameObject>(Vector3(0.f, 0.f, 0.01f), Vector3(32.f, 32.f, 1.f), eLayerType::Cursor);

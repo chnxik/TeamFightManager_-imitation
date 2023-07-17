@@ -12,6 +12,7 @@ namespace ssz::enums
 		MeshRenderer,
 		Script,
 		Camera,
+		UI,
 		End,
 	};
 

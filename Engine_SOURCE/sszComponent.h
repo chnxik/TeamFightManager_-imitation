@@ -21,7 +21,7 @@ namespace ssz
 		virtual void BindConstantBuffer();
 
 		GameObject* GetOwner() { return mOwner; }
-		void SetOwner(GameObject* owner) { mOwner = owner; }
+		virtual void SetOwner(GameObject* owner) { mOwner = owner; }
 
 	private:
 		const eComponentType mType;

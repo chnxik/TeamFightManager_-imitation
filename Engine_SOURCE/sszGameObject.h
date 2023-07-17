@@ -27,7 +27,7 @@ namespace ssz
 		std::vector<Script*> GetScripts() { return mScripts; }
 
 		template <typename T>
-		const std::vector<T*>& GetComponents()
+		std::vector<T*> GetComponents()
 		{
 			std::vector<T*> comps;
 

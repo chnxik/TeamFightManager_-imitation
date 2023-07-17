@@ -6,7 +6,6 @@ namespace ssz
 	class UIObject : public GameObject
 	{
 	public:
-
 		UIObject();
 		virtual ~UIObject();
 
@@ -15,10 +14,10 @@ namespace ssz
 		virtual void LateUpdate();
 		virtual void Render();
 
-		virtual void SetState(eState state) override;
-		virtual void SetDead() override;
-		virtual void SetActive() override;
-		virtual void SetPaused() override;
+		virtual void SetState(eState state);
+		virtual void SetDead();
+		virtual void SetActive();
+		virtual void SetPaused();
 
 		bool IsMouseOn() { return bMouseOn; }
 		bool IsLbtnDown() { return bLbtnDown; }
@@ -42,10 +41,10 @@ namespace ssz
 		void UIOpen() { bOpen = true; }
 		void UIClose() { bOpen = false; }
 
-		virtual void MouseLbtnDown() { bLbtnDown = true; }
-		virtual void MouseLbtnUp() { bLbtnDown = false; }
-		virtual void MouseLbtnClicked() {};
-		virtual void MouseOn() {};
+		virtual void MouseLbtnDown();
+		virtual void MouseLbtnUp();
+		virtual void MouseLbtnClicked();
+		virtual void MouseOn();
 
 	private:
 		void MouseOnCheck();

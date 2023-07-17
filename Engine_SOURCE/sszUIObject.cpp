@@ -1,7 +1,9 @@
 #include "sszUIObject.h"
 #include "sszCollisionManager.h"
-
 #include "sszInput.h"
+
+#include "sszUIComponent.h"
+#include "sszButton.h"
 
 namespace ssz
 {
@@ -94,6 +96,50 @@ namespace ssz
         for (size_t i = 0; i < mChildUI.size(); ++i)
         {
             mChildUI[i]->SetPaused();
+        }
+    }
+
+    void UIObject::MouseLbtnDown()
+    {
+        bLbtnDown = true;
+
+        std::vector<UIComponent*> UIComponents = GetComponents<UIComponent>();
+
+        for (UIComponent* UIComp : UIComponents)
+        {
+            UIComp->MouseLbtnDown();
+        }
+    }
+
+    void UIObject::MouseLbtnUp()
+    {
+        bLbtnDown = false;
+
+        std::vector<UIComponent*> UIComponents = GetComponents<UIComponent>();
+
+        for (UIComponent* UIComp : UIComponents)
+        {
+            UIComp->MouseLbtnUp();
+        }
+    }
+
+    void UIObject::MouseLbtnClicked()
+    {
+        std::vector<UIComponent*> UIComponents = GetComponents<UIComponent>();
+
+        for (UIComponent* UIComp : UIComponents)
+        {
+            UIComp->MouseLbtnClicked();
+        }
+    }
+
+    void UIObject::MouseOn()
+    {
+        std::vector<UIComponent*> UIComponents = GetComponents<UIComponent>();
+
+        for (UIComponent* UIComp : UIComponents)
+        {
+            UIComp->MouseOn();
         }
     }
 

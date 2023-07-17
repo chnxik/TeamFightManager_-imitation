@@ -76,12 +76,18 @@ namespace ssz
 				Vector3(207.f, 75.f, 1.f), NewGameUI, true);
 			BtnUI->SetName(L"InportantUI");
 			BtnUI->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"InportantBtnMt");
+			Button* BtnUIComp = BtnUI->AddComponent<Button>();
+			BtnUIComp->Initialize();
+			BtnUIComp->SetIdleTex(L"ImportantBtn_IdleTex");
+			BtnUIComp->SetOnTex(L"ImportantBtn_OnTex");
+			BtnUIComp->SetDownTex(L"ImportantBtn_DownTex");
+			
 
 			UIObject* BtnUI2 = InstantiateUI<UIObject>(Vector3(123.f, -285.f, 1.009f),
 				Vector3(207.f, 75.f, 1.f), NewGameUI, true);
 			BtnUI2->SetName(L"DefaultUI");
 			BtnUI2->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"DefaultUIMt");
-			
+			Button* BtnUI2Comp = BtnUI2->AddComponent<Button>();
 		}
 
 		// MouseCursor

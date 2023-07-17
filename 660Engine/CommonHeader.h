@@ -25,6 +25,9 @@
 #include "sszCamera.h"
 #include "sszCollider2D.h"
 
+#include "sszUIComponent.h"
+#include "sszButton.h"
+
 // Script
 #include "sszCursorScript.h"
 #include "sszArrangementScript.h"

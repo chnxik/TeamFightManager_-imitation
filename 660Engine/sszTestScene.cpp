@@ -21,7 +21,7 @@ namespace ssz
 		TitleLogo_Mt->SetMaterial(L"SpriteShader", L"TitleLogoTex", eRenderingMode::Transparent);
 		Resources::Insert(L"TitleLogoMt", TitleLogo_Mt);
 
-		UIObject* TestObject = Instantiate<UIObject>(Vector3(-50.0f, 0.0f, 1.010f), Vector3(100.f, 100.f, 1.f), eLayerType::UI);
+		UIObject* TestObject = Instantiate<UIObject>(Vector3(-50.0f, 0.0f, 1.010f), Vector3(200.f, 200.f, 1.f),Vector3(0.f,0.f,DtoR(30.f)), eLayerType::UI);
 		TestObject->SetName(L"Test");
 		TestObject->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"TitleLogoMt");
 		TestObject->AddComponent<TestScript>()->SetDefault();
@@ -30,8 +30,8 @@ namespace ssz
 
 		UIObject* TestChildUIObject = new UIObject;
 		Transform* tr = TestChildUIObject->AddComponent<Transform>();
-		tr->SetPosition(Vector3(100.0f, 0.0f, 1.009f));
-		tr->SetScale(Vector3(100.f, 100.f, 0.f));
+		tr->SetPosition(Vector3(400.0f, 0.0f, 1.009f));
+		tr->SetScale(Vector3(200.f, 200.f, 0.f));
 		TestChildUIObject->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"TitleLogoMt");
 		TestChildUIObject->SetName(L"TestChildUI");
 		TestChildUIObject->AddComponent<Collider2D>()->Initialize();
@@ -94,6 +94,11 @@ namespace ssz
 	void TestScene::LateUpdate()
 	{
 		Scene::LateUpdate();
+
+		if (Input::GetKeyDown(eKeyCode::ENTER))
+		{
+			SceneManager::LoadScene(L"TitleScene");
+		}
 	}
 	void TestScene::Render()
 	{

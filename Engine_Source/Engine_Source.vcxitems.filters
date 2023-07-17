@@ -121,6 +121,9 @@
     <Filter Include="GameObject\Component\UI\Text">
       <UniqueIdentifier>{4b62c147-9b39-42ef-8ef7-259958726128}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GameObject\UI\Base">
+      <UniqueIdentifier>{f5cc811a-1195-4364-97af-0343c52ca46c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h">
@@ -217,7 +220,7 @@
       <Filter>Manager\UIManager</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)sszUIObject.h">
-      <Filter>GameObject\UI</Filter>
+      <Filter>GameObject\UI\Base</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -300,7 +303,7 @@
       <Filter>Manager\UIManager</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)sszUIObject.cpp">
-      <Filter>GameObject\UI</Filter>
+      <Filter>GameObject\UI\Base</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

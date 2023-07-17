@@ -1,6 +1,7 @@
 #include "sszButton.h"
 
 #include "sszGameObject.h"
+
 #include "sszUIObject.h"
 #include "sszUIComponent.h"
 
@@ -15,9 +16,8 @@ namespace ssz
 	Button::Button()
 		: mCurState(eBtnState::Idle)
 		, bActive(true)
-		, mFunc(nullptr)
 		, mInst(nullptr)
-		, mDelegateFunc(nullptr)
+		, mOwnerMaterial(nullptr)
 	{
 	}
 
@@ -32,7 +32,10 @@ namespace ssz
 
 	void Button::Update()
 	{
+		if (!mOwnerMaterial)
+			return;
 		
+		bool bMouseOn = GetOwnerUI()->IsMouseOn();
 
 		switch (mCurState)
 		{
@@ -41,7 +44,7 @@ namespace ssz
 				mOwnerMaterial->SetTexture(mBtnTex[(UINT)eBtnState::Idle]);
 			break;
 		case ssz::Button::eBtnState::On:
-			if (GetOwnerUI()->IsMouseOn())
+			if (bMouseOn)
 			{
 				if (nullptr != mBtnTex[(UINT)eBtnState::On])
 					mOwnerMaterial->SetTexture(mBtnTex[(UINT)eBtnState::On]);
@@ -54,7 +57,6 @@ namespace ssz
 				mOwnerMaterial->SetTexture(mBtnTex[(UINT)eBtnState::Down]);
 			break;
 		}
-
 	}
 
 	
@@ -98,11 +100,17 @@ namespace ssz
 		{
 			(mInst->*mDelegateFunc)();
 		}
+		else if (mInst && mDelegateWFunc)
+		{
+			(mInst->*mDelegateWFunc)(mDelegateKey);
+		}
 	}
 	
 	void Button::MouseOn()
 	{
-		if(!(GetOwnerUI()->IsLbtnDown()))
+		bool bLbtnDown = GetOwnerUI()->IsLbtnDown();
+
+		if(!bLbtnDown)
 			mCurState = eBtnState::On;
 	}
 }

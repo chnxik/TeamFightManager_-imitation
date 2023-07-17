@@ -40,6 +40,8 @@ namespace ssz
 		}
 		Layer& GetLayer(eLayerType type) { return mLayers[(UINT)type]; }
 
+		void ChangeScene(const std::wstring& SceneName);
+
 	private:
 		std::vector<Layer> mLayers;
 	};

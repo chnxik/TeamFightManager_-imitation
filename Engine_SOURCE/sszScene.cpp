@@ -1,4 +1,5 @@
 #include "sszScene.h"
+#include "sszSceneManager.h"
 
 namespace ssz
 {
@@ -58,5 +59,9 @@ namespace ssz
 	void Scene::AddGameObject(eLayerType type, GameObject* gameObj)
 	{
 		mLayers[(int)type].AddGameObject(gameObj);
+	}
+	void Scene::ChangeScene(const std::wstring& SceneName)
+	{
+		SceneManager::LoadScene(SceneName);
 	}
 }

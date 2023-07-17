@@ -81,13 +81,18 @@ namespace ssz
 			BtnUIComp->SetIdleTex(L"ImportantBtn_IdleTex");
 			BtnUIComp->SetOnTex(L"ImportantBtn_OnTex");
 			BtnUIComp->SetDownTex(L"ImportantBtn_DownTex");
-			
+			BtnUIComp->SetDelegateW(this,(DELEGATEW)&Scene::ChangeScene,L"PrlgScene");
 
 			UIObject* BtnUI2 = InstantiateUI<UIObject>(Vector3(123.f, -285.f, 1.009f),
 				Vector3(207.f, 75.f, 1.f), NewGameUI, true);
 			BtnUI2->SetName(L"DefaultUI");
 			BtnUI2->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"DefaultUIMt");
 			Button* BtnUI2Comp = BtnUI2->AddComponent<Button>();
+			BtnUI2Comp->Initialize();
+			BtnUI2Comp->SetIdleTex(L"DefaultBtn_IdleTex");
+			BtnUI2Comp->SetOnTex(L"DefaultBtn_OnTex");
+			BtnUI2Comp->SetDownTex(L"DefaultBtn_DownTex");
+			BtnUI2Comp->SetDelegate(NewGameUI, (DELEGATE)&GameObject::SetPaused);
 		}
 
 		// MouseCursor
@@ -121,32 +126,24 @@ namespace ssz
 			if (NewGameUI->GetState() == GameObject::eState::Paused)
 			{
 				NewGameUI->SetActive();
-		//		std::vector<UIObject*> BtnUI = NewGameUI->GetChildUI();
-		//		
-		//		for (int i = 0; i < (UINT)BtnUI.size(); ++i)
-		//		{
-		//			BtnUI[i]->SetState(GameObject::eState::Active);
-		//		}
 			}
-		}
-
-		if (Input::GetKeyDown(eKeyCode::ENTER))
-		{
-			SceneManager::LoadScene(L"PrlgScene");
 		}
 	}
 	void TitleScene::LateUpdate()
 	{
 		Scene::LateUpdate();
 	}
+
 	void TitleScene::Render()
 	{
 		Scene::Render();
 	}
+
 	void TitleScene::OnEnter()
 	{
 		CollisionManager::SetLayer(eLayerType::UI, eLayerType::Cursor, true);
 	}
+
 	void TitleScene::OnExit()
 	{
 		CollisionManager::Clear();

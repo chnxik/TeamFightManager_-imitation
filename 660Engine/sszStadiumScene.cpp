@@ -1,25 +1,5 @@
 #include "sszStadiumScene.h"
-
-#include "sszInput.h"
-#include "sszSceneManager.h"
-#include "sszCollisionManager.h"
-
-// Resources
-#include "sszResources.h"
-#include "sszMaterial.h"
-#include "sszMesh.h"
-
-// Component
-#include "sszTransform.h"
-#include "sszMeshRenderer.h"
-#include "sszCamera.h"
-
-// Script
-#include "sszArrangementScript.h"
-#include "sszCursorScript.h"
-
-// Object
-#include "sszObject.h"
+#include "CommonHeader.h"
 
 namespace ssz
 {
@@ -111,10 +91,7 @@ namespace ssz
 
 			// Init
 			Resources::Load<Texture>(L"CursorTex", L"..\\Resources\\useResource\\Cursor\\mouse_cursor.png");
-
-			std::shared_ptr<Material>CursorMt = std::make_shared<Material>();
-			CursorMt->SetMaterial(L"SpriteShader", L"CursorTex", eRenderingMode::Transparent);
-			CursorMt = Resources::Insert(L"CursorMt", CursorMt);
+			LoadMaterial(L"CursorMt", L"SpriteShader", L"CursorTex", eRenderingMode::Transparent);
 
 			Cursor->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"CursorMt");
 			Cursor->AddComponent<Collider2D>()->Initialize();
@@ -126,7 +103,6 @@ namespace ssz
 			GameObject* camera = Instantiate<GameObject>(Vector3(0.0f, 0.0f, -10.f), eLayerType::Camera);
 			camera->SetName(L"MainCamera");
 			Camera* cameraComp = camera->AddComponent<Camera>();
-			cameraComp->TurnLayerMask(eLayerType::UI, false);
 		}
 #pragma endregion
 	}

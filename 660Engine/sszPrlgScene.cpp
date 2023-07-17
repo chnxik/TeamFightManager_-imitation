@@ -1,25 +1,5 @@
 #include "sszPrlgScene.h"
-
-#include "sszInput.h"
-#include "sszSceneManager.h"
-#include "sszCollisionManager.h"
-
-// Resources
-#include "sszResources.h"
-#include "sszMaterial.h"
-#include "sszMesh.h"
-
-// Component
-#include "sszTransform.h"
-#include "sszMeshRenderer.h"
-#include "sszCamera.h"
-
-// Script
-#include "sszArrangementScript.h"
-#include "sszCursorScript.h"
-
-// Object
-#include "sszObject.h"
+#include "CommonHeader.h"
 
 namespace ssz
 {
@@ -43,29 +23,12 @@ namespace ssz
 			Resources::Load<Texture>(L"CutScene06", L"..\\Resources\\useResource\\Prlg\\Cutscene\\cutscene6.png");
 		}
 		{
-			std::shared_ptr<Material> CutScene01_Mt = std::make_shared<Material>();
-			CutScene01_Mt->SetMaterial(L"SpriteShader", L"CutScene01", eRenderingMode::Opaque);
-			Resources::Insert(L"CutScene01_Mt", CutScene01_Mt);
-
-			std::shared_ptr<Material> CutScene02_Mt = std::make_shared<Material>();
-			CutScene02_Mt->SetMaterial(L"SpriteShader", L"CutScene02", eRenderingMode::Opaque);
-			Resources::Insert(L"CutScene02_Mt", CutScene02_Mt);
-
-			std::shared_ptr<Material> CutScene03_Mt = std::make_shared<Material>();
-			CutScene03_Mt->SetMaterial(L"SpriteShader", L"CutScene03", eRenderingMode::Opaque);
-			Resources::Insert(L"CutScene03_Mt", CutScene03_Mt);
-
-			std::shared_ptr<Material> CutScene04_Mt = std::make_shared<Material>();
-			CutScene04_Mt->SetMaterial(L"SpriteShader", L"CutScene04", eRenderingMode::Opaque);
-			Resources::Insert(L"CutScene04_Mt", CutScene04_Mt);
-
-			std::shared_ptr<Material> CutScene05_Mt = std::make_shared<Material>();
-			CutScene05_Mt->SetMaterial(L"SpriteShader", L"CutScene05", eRenderingMode::Opaque);
-			Resources::Insert(L"CutScene05_Mt", CutScene05_Mt);
-
-			std::shared_ptr<Material> CutScene06_Mt = std::make_shared<Material>();
-			CutScene06_Mt->SetMaterial(L"SpriteShader", L"CutScene06", eRenderingMode::Opaque);
-			Resources::Insert(L"CutScene06_Mt", CutScene06_Mt);
+			LoadMaterial(L"CutScene01_Mt", L"SpriteShader", L"CutScene01", eRenderingMode::Opaque);
+			LoadMaterial(L"CutScene02_Mt", L"SpriteShader", L"CutScene02", eRenderingMode::Opaque);
+			LoadMaterial(L"CutScene03_Mt", L"SpriteShader", L"CutScene03", eRenderingMode::Opaque);
+			LoadMaterial(L"CutScene04_Mt", L"SpriteShader", L"CutScene04", eRenderingMode::Opaque);
+			LoadMaterial(L"CutScene05_Mt", L"SpriteShader", L"CutScene05", eRenderingMode::Opaque);
+			LoadMaterial(L"CutScene06_Mt", L"SpriteShader", L"CutScene06", eRenderingMode::Opaque);
 		}
 #pragma region Create Object for this Scene
 		// CutScene
@@ -109,10 +72,7 @@ namespace ssz
 
 			// Init
 			Resources::Load<Texture>(L"CursorTex", L"..\\Resources\\useResource\\Cursor\\mouse_cursor.png");
-
-			std::shared_ptr<Material>CursorMt = std::make_shared<Material>();
-			CursorMt->SetMaterial(L"SpriteShader", L"CursorTex", eRenderingMode::Transparent);
-			CursorMt = Resources::Insert(L"CursorMt", CursorMt);
+			LoadMaterial(L"CursorMt", L"SpriteShader", L"CursorTex", eRenderingMode::Transparent);
 
 			Cursor->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"CursorMt");
 			Cursor->AddComponent<Collider2D>()->Initialize();
@@ -124,7 +84,6 @@ namespace ssz
 			GameObject* camera = Instantiate<GameObject>(Vector3(0.0f, 0.0f, -10.f), eLayerType::Camera);
 			camera->SetName(L"MainCamera");
 			Camera* cameraComp = camera->AddComponent<Camera>();
-			cameraComp->TurnLayerMask(eLayerType::UI, false);
 		}
 #pragma endregion
 

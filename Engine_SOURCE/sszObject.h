@@ -1,13 +1,25 @@
 #pragma once
 #include "sszLayer.h"
+
+#include "sszSceneManager.h"
+#include "sszScene.h"
+
+// Object
 #include "sszGameObject.h"
 #include "sszUIObject.h"
-#include "sszScene.h"
-#include "sszSceneManager.h"
+
+// Component
 #include "sszTransform.h"
+#include "sszRenderer.h"
+
+// Resources
+#include "sszResources.h"
+#include "sszMaterial.h"
 
 namespace ssz::object
 {
+	using namespace ssz::graphics;
+
 	// 활성오브젝트 판단
 	static __forceinline bool IsValid(GameObject*& pTarget)
 	{
@@ -165,7 +177,7 @@ namespace ssz::object
 
 
 	// Material
-		static __forceinline std::shared_ptr<Material> LoadMaterial(const std::wstring& MaterialKey, const std::wstring& ShaderKey, const std::wstring& TextureKey, eRenderingMode type)
+		static __forceinline std::shared_ptr<Material> LoadMaterial(const std::wstring& MaterialKey, const std::wstring& ShaderKey, const std::wstring& TextureKey, graphics::eRenderingMode type)
 		{
 			std::shared_ptr<Material> NewMaterial = Resources::Find<Material>(MaterialKey);
 

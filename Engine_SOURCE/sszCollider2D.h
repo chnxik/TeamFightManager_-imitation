@@ -47,6 +47,8 @@ namespace ssz
 
 		float GetLength4OBB(Vector3 MainAxis);
 
+		int GetOverlapCnt() { return mOverlapCnt; }
+
 	private:
 		static UINT mColliderNumber;
 		UINT mColliderID;

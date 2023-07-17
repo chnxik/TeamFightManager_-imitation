@@ -47,6 +47,9 @@
     <ClInclude Include="sszMasking.h">
       <Filter>Contents\Script\Masking</Filter>
     </ClInclude>
+    <ClInclude Include="CommonHeader.h">
+      <Filter>Common</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="660Engine.cpp" />
@@ -147,6 +150,9 @@
     </Filter>
     <Filter Include="Contents\Script\Masking">
       <UniqueIdentifier>{470eae73-8547-43b4-a211-e5cd3ad79448}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common">
+      <UniqueIdentifier>{35f42c5c-3c5e-4748-b50a-15d7a7f511a2}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

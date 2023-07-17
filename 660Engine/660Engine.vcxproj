@@ -164,6 +164,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="CommonHeader.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Load.h" />
     <ClInclude Include="sszArrangementScript.h" />

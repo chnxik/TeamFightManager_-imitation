@@ -1,30 +1,5 @@
 #include "sszTestScene.h"
-
-#include "sszInput.h"
-#include "sszSceneManager.h"
-#include "sszCollisionManager.h"
-#include "sszRenderer.h"
-
-// Resources
-#include "sszResources.h"
-#include "sszMaterial.h"
-#include "sszMesh.h"
-
-// Component
-#include "sszTransform.h"
-#include "sszMeshRenderer.h"
-#include "sszCamera.h"
-#include "sszCollider2D.h"
-#include "sszTestScript.h"
-#include "sszTestScript2.h"
-#include "sszTestScript3.h"
-
-// Script
-#include "sszArrangementScript.h"
-#include "sszCursorScript.h"
-
-// Object
-#include "sszObject.h"
+#include "CommonHeader.h"
 
 namespace ssz
 {
@@ -108,8 +83,6 @@ namespace ssz
 			GameObject* camera = Instantiate<GameObject>(Vector3(0.0f, 0.0f, -10.f), eLayerType::Camera);
 			camera->SetName(L"MainCamera");
 			Camera* cameraComp = camera->AddComponent<Camera>();
-			// cameraComp->TurnLayerMask(eLayerType::UI, false);
-			renderer::cameras.push_back(cameraComp);
 		}
 #pragma endregion
 	}

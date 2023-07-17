@@ -99,18 +99,15 @@ namespace ssz
 
     void UIObject::MouseOnCheck()
     {
-        Vector3 Pos = GetComponent<Transform>()->GetWorldPosition();
-        Vector3 Scale = GetComponent<Transform>()->GetWorldScale();
-        Vector2 MousePos = ssz::Input::GetMousePos();
+        Collider2D* Collider = GetComponent<Collider2D>();
+        if (Collider)
+        {
+            int OverlapCnt = Collider->GetOverlapCnt();
 
-        if (Pos.x <= MousePos.x && MousePos.x <= Pos.x + Scale.x
-            && Pos.y <= MousePos.y && MousePos.y <= Pos.y + Scale.y)
-        {
-            bMouseOn = true;
-        }
-        else
-        {
-            bMouseOn = false;
+            if(0 < OverlapCnt)
+                bMouseOn = true;
+            else
+                bMouseOn = false;
         }
     }
 }

@@ -1,34 +1,5 @@
 #include "sszTitleScene.h"
-
-#include "sszInput.h"
-#include "sszSceneManager.h"
-#include "sszCollisionManager.h"
-
-#include "sszUIObject.h"
-
-// Resources
-#include "sszResources.h"
-#include "sszMaterial.h"
-#include "sszMesh.h"
-
-// Component
-#include "sszTransform.h"
-#include "sszMeshRenderer.h"
-#include "sszCamera.h"
-#include "sszCollider2D.h"
-
-// Script
-#include "sszTestScript.h"
-#include "sszTestScript2.h"
-#include "sszTestScript3.h"
-
-// Script
-#include "sszArrangementScript.h"
-#include "sszCursorScript.h"
-
-// Object
-#include "sszObject.h"
-
+#include "CommonHeader.h"
 
 namespace ssz
 {
@@ -59,33 +30,6 @@ namespace ssz
 			Resources::Load<Texture>(L"DefaultBtn_DownTex", L"..\\Resources\\useResource\\CommonUI\\btn\\default_button_2.png");
 		}
 		{
-			/*
-			// ¹è°æ
-			std::shared_ptr<Material> TitleBgMt = std::make_shared<Material>();
-			TitleBgMt->SetMaterial(L"SpriteShader", L"TitleBg", eRenderingMode::Transparent);
-			Resources::Insert(L"TitleBgMt", TitleBgMt);
-
-			std::shared_ptr<Material> IG_stadium_Mt = std::make_shared<Material>();
-			IG_stadium_Mt->SetMaterial(L"SpriteShader", L"IGStadiumTex", eRenderingMode::Transparent);
-			Resources::Insert(L"IGStadiumMt", IG_stadium_Mt);
-
-			std::shared_ptr<Material> IG_stadiumtSky_Mt = std::make_shared<Material>();
-			IG_stadiumtSky_Mt->SetMaterial(L"SpriteShader", L"IGStadiumSkyTex", eRenderingMode::Opaque);
-			Resources::Insert(L"IGStadiumSkyMt", IG_stadiumtSky_Mt);
-
-			std::shared_ptr<Material> TitleLogo_Mt = std::make_shared<Material>();
-			TitleLogo_Mt->SetMaterial(L"SpriteShader", L"TitleLogoTex", eRenderingMode::Transparent);
-			Resources::Insert(L"TitleLogoMt", TitleLogo_Mt);
-			
-			// UI
-			std::shared_ptr<Material> NewGameUI_Mt = std::make_shared<Material>();
-			NewGameUI_Mt->SetMaterial(L"SpriteShader", L"NewGameUITex", eRenderingMode::Transparent);
-			Resources::Insert(L"NewGameUIMt", NewGameUI_Mt);
-
-			std::shared_ptr<Material> ImportantBtn_Mt = std::make_shared<Material>();
-			ImportantBtn_Mt->SetMaterial(L"SpriteShader", L"ImportantBtn_IdleTex", eRenderingMode::Transparent);
-			*/
-			
 			LoadMaterial(L"TitleBgMt", L"SpriteShader", L"TitleBg", eRenderingMode::Transparent);
 			LoadMaterial(L"IGStadiumMt", L"SpriteShader", L"IGStadiumTex", eRenderingMode::Transparent);
 			LoadMaterial(L"IGStadiumSkyMt", L"SpriteShader", L"IGStadiumSkyTex", eRenderingMode::Transparent);
@@ -93,7 +37,6 @@ namespace ssz
 			LoadMaterial(L"NewGameUIMt", L"SpriteShader", L"NewGameUITex", eRenderingMode::Transparent);
 			LoadMaterial(L"InportantBtnMt", L"SpriteShader", L"ImportantBtn_IdleTex", eRenderingMode::Transparent);
 			LoadMaterial(L"DefaultUIMt", L"SpriteShader", L"DefaultBtn_IdleTex", eRenderingMode::Transparent);
-
 		}
 #pragma region Create Object for this Scene
 		// Bagk Ground
@@ -148,10 +91,7 @@ namespace ssz
 
 			// Init
 			Resources::Load<Texture>(L"CursorTex", L"..\\Resources\\useResource\\Cursor\\mouse_cursor.png");
-
-			std::shared_ptr<Material>CursorMt = std::make_shared<Material>();
-			CursorMt->SetMaterial(L"SpriteShader", L"CursorTex", eRenderingMode::Transparent);
-			CursorMt = Resources::Insert(L"CursorMt", CursorMt);
+			LoadMaterial(L"CursorMt", L"SpriteShader", L"CursorTex", eRenderingMode::Transparent);
 
 			Cursor->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"CursorMt");
 			Cursor->AddComponent<Collider2D>()->Initialize();

@@ -1,25 +1,5 @@
 #include "sszMainLobbyScene.h"
-
-#include "sszInput.h"
-#include "sszSceneManager.h"
-#include "sszCollisionManager.h"
-
-// Resources
-#include "sszResources.h"
-#include "sszMaterial.h"
-#include "sszMesh.h"
-
-// Component
-#include "sszTransform.h"
-#include "sszMeshRenderer.h"
-#include "sszCamera.h"
-
-// Script
-#include "sszArrangementScript.h"
-#include "sszCursorScript.h"
-
-// Object
-#include "sszObject.h"
+#include "CommonHeader.h"
 
 namespace ssz
 {
@@ -46,22 +26,10 @@ namespace ssz
 			Resources::Load<Texture>(L"UIheaderBarTex", L"..\\Resources\\useResource\\Mainlobby\\UI\\header\\header_bg.png");
 		}
 		{
-			std::shared_ptr<Material> Bg_Skyday_Mt = std::make_shared<Material>();
-			Bg_Skyday_Mt->SetMaterial(L"SpriteShader", L"SkydayBgTex", eRenderingMode::Transparent);
-			Resources::Insert(L"Bg_Skyday_Mt", Bg_Skyday_Mt);
-
-			std::shared_ptr<Material> Bg_Ground_Mt = std::make_shared<Material>();
-			Bg_Ground_Mt->SetMaterial(L"SpriteShader", L"BgGroundTex", eRenderingMode::Transparent);
-			Resources::Insert(L"Bg_Ground_Mt", Bg_Ground_Mt);
-
-			std::shared_ptr<Material> Bg_House_Mt = std::make_shared<Material>();
-			Bg_House_Mt->SetMaterial(L"SpriteShader", L"BgHouseTex", eRenderingMode::Transparent);
-			Resources::Insert(L"Bg_House_Mt", Bg_House_Mt);
-
-			// header
-			std::shared_ptr<Material> UI_headerBar_Mt = std::make_shared<Material>();
-			UI_headerBar_Mt->SetMaterial(L"SpriteShader", L"UIheaderBarTex", eRenderingMode::Transparent);
-			Resources::Insert(L"UI_headerBar_Mt", UI_headerBar_Mt);
+			LoadMaterial(L"Bg_Skyday_Mt", L"SpriteShader", L"SkydayBgTex", eRenderingMode::Transparent);
+			LoadMaterial(L"Bg_Ground_Mt", L"SpriteShader", L"BgGroundTex", eRenderingMode::Transparent);
+			LoadMaterial(L"Bg_House_Mt", L"SpriteShader", L"BgHouseTex", eRenderingMode::Transparent);
+			LoadMaterial(L"UI_headerBar_Mt", L"SpriteShader", L"UIheaderBarTex", eRenderingMode::Transparent);
 		}
 #pragma region Create Object for this Scene
 		// GameObject
@@ -109,10 +77,7 @@ namespace ssz
 
 			// Init
 			Resources::Load<Texture>(L"CursorTex", L"..\\Resources\\useResource\\Cursor\\mouse_cursor.png");
-
-			std::shared_ptr<Material>CursorMt = std::make_shared<Material>();
-			CursorMt->SetMaterial(L"SpriteShader", L"CursorTex", eRenderingMode::Transparent);
-			CursorMt = Resources::Insert(L"CursorMt", CursorMt);
+			LoadMaterial(L"CursorMt", L"SpriteShader", L"CursorTex", eRenderingMode::Transparent);
 
 			Cursor->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"CursorMt");
 			Cursor->AddComponent<Collider2D>()->Initialize();

@@ -1,25 +1,5 @@
 #include "sszBanPickScene.h"
-
-#include "sszInput.h"
-#include "sszSceneManager.h"
-#include "sszCollisionManager.h"
-
-// Resources
-#include "sszResources.h"
-#include "sszMaterial.h"
-#include "sszMesh.h"
-
-// Component
-#include "sszTransform.h"
-#include "sszMeshRenderer.h"
-#include "sszCamera.h"
-
-// Script
-#include "sszArrangementScript.h"
-#include "sszCursorScript.h"
-
-// Object
-#include "sszObject.h"
+#include "CommonHeader.h"
 
 namespace ssz
 {
@@ -40,13 +20,8 @@ namespace ssz
 			Resources::Load<Texture>(L"BattleHeaderTex", L"..\\Resources\\useResource\\GameScene\\header_bg.png");
 
 			// Make Material
-			std::shared_ptr<Material> BanpickBg_Mt = std::make_shared<Material>();
-			BanpickBg_Mt->SetMaterial(L"SpriteShader", L"BanpickBgTex", eRenderingMode::Transparent);
-			Resources::Insert(L"BanpickBgMt", BanpickBg_Mt);
-
-			std::shared_ptr<Material> BattleHeader_Mt = std::make_shared<Material>();
-			BattleHeader_Mt->SetMaterial(L"SpriteShader", L"BattleHeaderTex", eRenderingMode::Transparent);
-			Resources::Insert(L"BattleHeaderMt", BattleHeader_Mt);
+			LoadMaterial(L"BanpickBgMt", L"SpriteShader", L"BanpickBgTex", eRenderingMode::Transparent);
+			LoadMaterial(L"BattleHeaderMt", L"SpriteShader", L"BattleHeaderTex", eRenderingMode::Transparent);
 		}
 #pragma endregion
 #pragma region Create Object for this Scene
@@ -74,10 +49,7 @@ namespace ssz
 
 			// Init
 			Resources::Load<Texture>(L"CursorTex", L"..\\Resources\\useResource\\Cursor\\mouse_cursor.png");
-
-			std::shared_ptr<Material>CursorMt = std::make_shared<Material>();
-			CursorMt->SetMaterial(L"SpriteShader", L"CursorTex", eRenderingMode::Transparent);
-			CursorMt = Resources::Insert(L"CursorMt", CursorMt);
+			LoadMaterial(L"CursorMt", L"SpriteShader", L"CursorTex", eRenderingMode::Transparent);
 
 			Cursor->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"CursorMt");
 			Cursor->AddComponent<Collider2D>()->Initialize();

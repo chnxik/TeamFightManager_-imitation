@@ -12,28 +12,28 @@
       <Filter>Contents\Script\Arrangement</Filter>
     </ClInclude>
     <ClInclude Include="sszTitleScene.h">
-      <Filter>Contents\Scene\Title</Filter>
+      <Filter>Contents\Scene\1. Title</Filter>
     </ClInclude>
     <ClInclude Include="sszPrlgScene.h">
-      <Filter>Contents\Scene\Prlg</Filter>
+      <Filter>Contents\Scene\2. Prlg</Filter>
     </ClInclude>
     <ClInclude Include="sszCursorScript.h">
       <Filter>Contents\Script\CursorScript</Filter>
     </ClInclude>
     <ClInclude Include="sszMainLobbyScene.h">
-      <Filter>Contents\Scene\MainLobby</Filter>
+      <Filter>Contents\Scene\3. MainLobby</Filter>
     </ClInclude>
     <ClInclude Include="sszStadiumScene.h">
-      <Filter>Contents\Scene\Stadium</Filter>
+      <Filter>Contents\Scene\4. Stadium</Filter>
     </ClInclude>
     <ClInclude Include="sszIGStadiumScene.h">
-      <Filter>Contents\Scene\IGStadium</Filter>
+      <Filter>Contents\Scene\6. IGStadium</Filter>
     </ClInclude>
     <ClInclude Include="sszBanPickScene.h">
-      <Filter>Contents\Scene\Banpick</Filter>
+      <Filter>Contents\Scene\5. Banpick</Filter>
     </ClInclude>
     <ClInclude Include="sszTestScene.h">
-      <Filter>Contents\Scene\TestScene</Filter>
+      <Filter>Contents\Scene\0. TestScene</Filter>
     </ClInclude>
     <ClInclude Include="sszTestScript.h">
       <Filter>Contents\Script\Test</Filter>
@@ -60,28 +60,28 @@
       <Filter>Contents\Script\Arrangement</Filter>
     </ClCompile>
     <ClCompile Include="sszTitleScene.cpp">
-      <Filter>Contents\Scene\Title</Filter>
+      <Filter>Contents\Scene\1. Title</Filter>
     </ClCompile>
     <ClCompile Include="sszPrlgScene.cpp">
-      <Filter>Contents\Scene\Prlg</Filter>
+      <Filter>Contents\Scene\2. Prlg</Filter>
     </ClCompile>
     <ClCompile Include="sszCursorScript.cpp">
       <Filter>Contents\Script\CursorScript</Filter>
     </ClCompile>
     <ClCompile Include="sszMainLobbyScene.cpp">
-      <Filter>Contents\Scene\MainLobby</Filter>
+      <Filter>Contents\Scene\3. MainLobby</Filter>
     </ClCompile>
     <ClCompile Include="sszStadiumScene.cpp">
-      <Filter>Contents\Scene\Stadium</Filter>
+      <Filter>Contents\Scene\4. Stadium</Filter>
     </ClCompile>
     <ClCompile Include="sszBanPickScene.cpp">
-      <Filter>Contents\Scene\Banpick</Filter>
+      <Filter>Contents\Scene\5. Banpick</Filter>
     </ClCompile>
     <ClCompile Include="sszIGStadiumScene.cpp">
-      <Filter>Contents\Scene\IGStadium</Filter>
+      <Filter>Contents\Scene\6. IGStadium</Filter>
     </ClCompile>
     <ClCompile Include="sszTestScene.cpp">
-      <Filter>Contents\Scene\TestScene</Filter>
+      <Filter>Contents\Scene\0. TestScene</Filter>
     </ClCompile>
     <ClCompile Include="sszTestScript.cpp">
       <Filter>Contents\Script\Test</Filter>
@@ -112,47 +112,44 @@
     <Filter Include="Contents\Script">
       <UniqueIdentifier>{c8ed79e1-3e5e-4b74-b9b3-887ec0621126}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Contents\Scene\Title">
-      <UniqueIdentifier>{9a216870-610a-4d23-a309-e1ab936e847b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Contents\Script\Camera">
       <UniqueIdentifier>{b8d5be9b-621b-4cbc-8a47-e3e782c95e0c}</UniqueIdentifier>
     </Filter>
     <Filter Include="Contents\Script\Arrangement">
       <UniqueIdentifier>{5ae5190e-3062-45e8-9c9e-fdcbcd1e86f8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Contents\Scene\Prlg">
-      <UniqueIdentifier>{46c32d6a-9e33-4f3b-9d31-1d46a507cc7c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Contents\Script\CursorScript">
       <UniqueIdentifier>{45209c28-2268-47ff-b33f-39693f0f9eca}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Contents\Scene\MainLobby">
-      <UniqueIdentifier>{68106073-b93c-49ad-ba42-3fcba360800f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Scene\Stadium">
-      <UniqueIdentifier>{fefa87e7-eb70-497a-907e-a0ff5e971b9e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Scene\IGStadium">
-      <UniqueIdentifier>{b4c3226c-b774-46f9-9046-a79f9b339ca7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Scene\Banpick">
-      <UniqueIdentifier>{33b10c18-461d-4ac3-91e7-c4d86b4ef5f3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Scene\TestScene">
-      <UniqueIdentifier>{a1829e6a-36d3-4f4f-b507-2f1e50fa637b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Contents\Script\Test">
       <UniqueIdentifier>{a688f2ac-cc77-4504-bd0d-b6bd5fadd9a4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Object">
-      <UniqueIdentifier>{91df6f40-37f8-4916-b7e5-b9d94c6bb02f}</UniqueIdentifier>
     </Filter>
     <Filter Include="Contents\Script\Masking">
       <UniqueIdentifier>{470eae73-8547-43b4-a211-e5cd3ad79448}</UniqueIdentifier>
     </Filter>
     <Filter Include="Common">
       <UniqueIdentifier>{35f42c5c-3c5e-4748-b50a-15d7a7f511a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Scene\0. TestScene">
+      <UniqueIdentifier>{a1829e6a-36d3-4f4f-b507-2f1e50fa637b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Scene\1. Title">
+      <UniqueIdentifier>{9a216870-610a-4d23-a309-e1ab936e847b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Scene\2. Prlg">
+      <UniqueIdentifier>{46c32d6a-9e33-4f3b-9d31-1d46a507cc7c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Scene\3. MainLobby">
+      <UniqueIdentifier>{68106073-b93c-49ad-ba42-3fcba360800f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Scene\4. Stadium">
+      <UniqueIdentifier>{fefa87e7-eb70-497a-907e-a0ff5e971b9e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Scene\5. Banpick">
+      <UniqueIdentifier>{33b10c18-461d-4ac3-91e7-c4d86b4ef5f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Scene\6. IGStadium">
+      <UniqueIdentifier>{b4c3226c-b774-46f9-9046-a79f9b339ca7}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -16,9 +16,6 @@
     <Filter Include="Common\Entity">
       <UniqueIdentifier>{4f50f731-41c8-46c3-848d-1d3100899a86}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Input">
-      <UniqueIdentifier>{53075aad-7f72-44c4-acf8-3f637af401fb}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Common\Time">
       <UniqueIdentifier>{2cefdafa-df06-4179-b150-db80b977e095}</UniqueIdentifier>
     </Filter>
@@ -127,6 +124,9 @@
     <Filter Include="GameObject\Component\UI\Base">
       <UniqueIdentifier>{f10cb6a3-f4b3-455c-b089-76d939211de7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Common\Input">
+      <UniqueIdentifier>{53075aad-7f72-44c4-acf8-3f637af401fb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h">
@@ -148,7 +148,7 @@
       <Filter>Common\Entity</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)sszInput.h">
-      <Filter>Input</Filter>
+      <Filter>Common\Input</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)sszTime.h">
       <Filter>Common\Time</Filter>
@@ -243,7 +243,7 @@
       <Filter>Common\Entity</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)sszInput.cpp">
-      <Filter>Input</Filter>
+      <Filter>Common\Input</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)sszTime.cpp">
       <Filter>Common\Time</Filter>

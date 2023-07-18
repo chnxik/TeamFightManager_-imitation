@@ -56,10 +56,6 @@ namespace ssz
 			GameObject* TitleLogo = Instantiate<GameObject>(Vector3(0.0f, 242.0f, 1.111f), Vector3(738.f, 271.f, 1.f), eLayerType::BackGroundObj);
 			TitleLogo->SetName(L"TitleLogo");
 			TitleLogo->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"TitleLogoMt");
-
-			// 오브젝트 배치용 스크립트
-			// ArrangementScript* ArScript = TestObject->AddComponent<ArrangementScript>();
-			// ArScript->SetDefault();
 		}
 
 		// UI
@@ -72,8 +68,7 @@ namespace ssz
 			NewGameUI->AddComponent<Collider2D>()->Initialize();
 			NewGameUI->SetState(ssz::GameObject::eState::Paused);
 
-			UIObject* BtnUI = InstantiateUI<UIObject>(Vector3(-123.f, -285.f, 1.009f), 
-				Vector3(207.f, 75.f, 1.f), NewGameUI, true);
+			UIObject* BtnUI = InstantiateUI<UIObject>(Vector3(-123.f, -285.f, 1.009f), Vector3(207.f, 75.f, 1.f), NewGameUI, true);
 			BtnUI->SetName(L"InportantUI");
 			BtnUI->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"InportantBtnMt");
 			Button* BtnUIComp = BtnUI->AddComponent<Button>();
@@ -83,8 +78,7 @@ namespace ssz
 			BtnUIComp->SetDownTex(L"ImportantBtn_DownTex");
 			BtnUIComp->SetDelegateW(this,(DELEGATEW)&Scene::ChangeScene,L"PrlgScene");
 
-			UIObject* BtnUI2 = InstantiateUI<UIObject>(Vector3(123.f, -285.f, 1.009f),
-				Vector3(207.f, 75.f, 1.f), NewGameUI, true);
+			UIObject* BtnUI2 = InstantiateUI<UIObject>(Vector3(123.f, -285.f, 1.009f), Vector3(207.f, 75.f, 1.f), NewGameUI, true);
 			BtnUI2->SetName(L"DefaultUI");
 			BtnUI2->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"DefaultUIMt");
 			Button* BtnUI2Comp = BtnUI2->AddComponent<Button>();
@@ -99,13 +93,6 @@ namespace ssz
 		{
 			GameObject* Cursor = Instantiate<GameObject>(Vector3(0.f, 0.f, 0.01f), Vector3(32.f, 32.f, 1.f), eLayerType::Cursor);
 			Cursor->SetName(L"Cursor");
-
-			// Init
-			Resources::Load<Texture>(L"CursorTex", L"..\\Resources\\useResource\\Cursor\\mouse_cursor.png");
-			LoadMaterial(L"CursorMt", L"SpriteShader", L"CursorTex", eRenderingMode::Transparent);
-
-			Cursor->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"CursorMt");
-			Cursor->AddComponent<Collider2D>()->Initialize();
 			Cursor->AddComponent<CursorScript>()->Initialize();
 		}
 

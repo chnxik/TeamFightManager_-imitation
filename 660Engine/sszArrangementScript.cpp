@@ -77,24 +77,7 @@ namespace ssz
 
 		if (OwnerUI !=nullptr && OwnerUI->IsLbtnDown())
 		{
-			Vector2 MousePos = Input::GetMousePos();
-			Vector3 CurPos = Vector3(MousePos.x, MousePos.y, 0.f);
-
-			RECT rect = {};
-			GetClientRect(application.GetHwnd(), &rect);
-			float width = (float)(rect.right - rect.left);
-			float height = (float)(rect.bottom - rect.top);
-
-			Viewport viewport;
-			viewport.width = width;
-			viewport.height = height;
-
-			viewport.x = 0;
-			viewport.y = 0;
-			viewport.minDepth = 0.0f;
-			viewport.maxDepth = 1.0f;
-
-			CurPos = viewport.Unproject(CurPos, Camera::GetGpuProjectionMatrix(), Camera::GetGpuViewMatrix(), Matrix::Identity);
+			Vector3 CurPos = Input::GetMousePos4DX();
 
 			Vector2 amount = mPrevMousePos - Vector2(CurPos.x,CurPos.y);
 
@@ -105,25 +88,7 @@ namespace ssz
 		}
 		else
 		{
-			Vector2 MousePos = Input::GetMousePos();
-			Vector3 CurPos = Vector3(MousePos.x, MousePos.y, 0.f);
-
-			RECT rect = {};
-			GetClientRect(application.GetHwnd(), &rect);
-			float width = (float)(rect.right - rect.left);
-			float height = (float)(rect.bottom - rect.top);
-
-			Viewport viewport;
-			viewport.width = width;
-			viewport.height = height;
-
-			viewport.x = 0;
-			viewport.y = 0;
-			viewport.minDepth = 0.0f;
-			viewport.maxDepth = 1.0f;
-
-			CurPos = viewport.Unproject(CurPos, Camera::GetGpuProjectionMatrix(), Camera::GetGpuViewMatrix(), Matrix::Identity);
-
+			Vector3 CurPos = Input::GetMousePos4DX();
 			mPrevMousePos = Vector2(CurPos.x, CurPos.y);
 		}
 

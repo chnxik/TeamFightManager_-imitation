@@ -62,9 +62,13 @@ namespace ssz
 		}
 		
 		static __forceinline Vector2 GetMousePos() { return mMousePos; }
+		static __forceinline Vector3 GetMousePos4DX() { return mMousePos4DX; }
 
 	private:
 		static std::vector<Key> mKeys;
 		static Vector2 mMousePos;
+		static Vector3 mMousePos4DX;
+		
+		static Vector3 UnProjectMousePos(Vector2 WinMousePos);
 	};
 }

@@ -35,7 +35,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
     // 메모리릭(누수) 찾기
     _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
-    // _CrtSetBreakAlloc(213);
+    // _CrtSetBreakAlloc(228);
     _CrtDumpMemoryLeaks();
 
     SetProcessDPIAware();
@@ -84,7 +84,6 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
     return (int) msg.wParam;
 }
-
 
 
 //

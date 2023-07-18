@@ -51,8 +51,8 @@ namespace ssz::graphics
 		
 		mSRV->GetResource((ID3D11Resource**)mTexture.GetAddressOf());
 
-		width = (float)mImage.GetImages()->width;
-		height = (float)mImage.GetImages()->height;
+		width = (float)mImage.GetMetadata().width;
+		height = (float)mImage.GetMetadata().height;
 
 		return S_OK;
 	}

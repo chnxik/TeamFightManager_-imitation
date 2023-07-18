@@ -45,13 +45,6 @@ namespace ssz
 		{
 			GameObject* Cursor = Instantiate<GameObject>(Vector3(0.f, 0.f, 0.01f), Vector3(32.f, 32.f, 1.f), eLayerType::Cursor);
 			Cursor->SetName(L"Cursor");
-
-			// Init
-			Resources::Load<Texture>(L"CursorTex", L"..\\Resources\\useResource\\Cursor\\mouse_cursor.png");
-			LoadMaterial(L"CursorMt", L"SpriteShader", L"CursorTex", eRenderingMode::Transparent);
-
-			Cursor->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"CursorMt");
-			Cursor->AddComponent<Collider2D>()->Initialize();
 			Cursor->AddComponent<CursorScript>()->Initialize();
 		}
 

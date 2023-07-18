@@ -18,6 +18,7 @@ namespace ssz
 
 	std::vector<Input::Key> Input::mKeys;
 	Vector2 Input::mMousePos = Vector2::Zero;
+	Vector3 Input::mMousePos4DX = Vector3::Zero;
 
 	void Input::Initialize()
 	{
@@ -67,6 +68,8 @@ namespace ssz
 			ScreenToClient(application.GetHwnd(), &mousePos);
 			mMousePos.x = (float)mousePos.x;
 			mMousePos.y = (float)mousePos.y;
+
+			mMousePos4DX = UnProjectMousePos(mMousePos);
 		}
 		else
 		{
@@ -90,5 +93,27 @@ namespace ssz
 	void Input::Render(HDC hdc)
 	{
 
+	}
+	Vector3 Input::UnProjectMousePos(Vector2 WinMousePos)
+	{
+		Vector3 ReturnMousePos(WinMousePos.x, WinMousePos.y, 0.f);
+
+		RECT rect = {};
+		GetClientRect(application.GetHwnd(), &rect);
+		float width = (float)(rect.right - rect.left);
+		float height = (float)(rect.bottom - rect.top);
+
+		Viewport viewport;
+		viewport.width = width;
+		viewport.height = height;
+
+		viewport.x = 0;
+		viewport.y = 0;
+		viewport.minDepth = 0.0f;
+		viewport.maxDepth = 1.0f;
+
+		ReturnMousePos = viewport.Unproject(ReturnMousePos, Camera::GetGpuProjectionMatrix(), Camera::GetGpuViewMatrix(), Matrix::Identity);
+
+		return ReturnMousePos;
 	}
 }

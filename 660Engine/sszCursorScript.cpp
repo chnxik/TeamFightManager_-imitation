@@ -1,15 +1,18 @@
 #include "sszCursorScript.h"
 
 #include "sszApplication.h"
-#include "sszGameObject.h"
-
 #include "sszInput.h"
+
+#include "sszGameObject.h"
+#include "sszObject.h"
 
 #include "sszTransform.h"
 #include "sszMeshRenderer.h"
-#include "sszMaterial.h"
 #include "sszCamera.h"
 #include "sszCollider2D.h"
+
+#include "sszResources.h"
+#include "sszMaterial.h"
 
 extern ssz::Application application;
 
@@ -26,8 +29,21 @@ namespace ssz
 
 	void CursorScript::Initialize()
 	{
-		CursorSize = GetOwner()->GetComponent<MeshRenderer>()->GetMaterial()->GetTexture()->GetTextureSize();
+		GameObject* OwnerObj = GetOwner();
+
+		// Set MeshRenderer
+		Resources::Load<Texture>(L"CursorTex", L"..\\Resources\\useResource\\Cursor\\mouse_cursor.png");
+		object::LoadMaterial(L"CursorMt", L"SpriteShader", L"CursorTex", eRenderingMode::Transparent);
+
+		MeshRenderer* OwnerMeshRenderer = OwnerObj->AddComponent<MeshRenderer>();
+		OwnerMeshRenderer->SetMeshRenderer(L"RectMesh", L"CursorMt");
+
+		// Set CursorSize
+		CursorSize = OwnerMeshRenderer->GetMaterial()->GetTexture()->GetTextureSize();
 		
+		// Set Collider
+		OwnerObj->AddComponent<Collider2D>()->Initialize();
+
 		Collider2D* CursorCol = GetOwner()->GetComponent<Collider2D>();
 		if (CursorCol)
 		{
@@ -42,29 +58,14 @@ namespace ssz
 	void CursorScript::LateUpdate()
 	{
 		{
-			// Get Mouse Pos
-			Vector2 MousePos = Input::GetMousePos();
-		
-			// CursorSize로 위치 조정
-			Vector3 FinalPos(MousePos.x + CursorSize.x, MousePos.y + CursorSize.y, 0.0f);
-		
-			RECT rect = {};
-			GetClientRect(application.GetHwnd(), &rect);
-			float width = (float)(rect.right - rect.left);
-			float height = (float)(rect.bottom - rect.top);
-		
-			Viewport viewport;
-			viewport.width = width;
-			viewport.height = height;
+			// Get Mouse Pos for DX
+			Vector3 Pos = Input::GetMousePos4DX();
+
+			// Cursor Size 보정
+			Pos.x += CursorSize.x;
+			Pos.y -= CursorSize.y;
 			
-			viewport.x = 0;
-			viewport.y = 0;
-			viewport.minDepth = 0.0f;
-			viewport.maxDepth = 1.0f;
-			
-			FinalPos = viewport.Unproject(FinalPos, Camera::GetGpuProjectionMatrix(), Camera::GetGpuViewMatrix(), Matrix::Identity);
-			
-			GetOwner()->GetComponent<Transform>()->SetPosition(FinalPos);
+			GetOwner()->GetComponent<Transform>()->SetPosition(Pos);
 		}
 	}
 }

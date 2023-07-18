@@ -25,6 +25,7 @@ namespace ssz
 		}
 #pragma endregion
 #pragma region Create Object for this Scene
+#pragma region GameObject
 		// GameObject
 		{
 			// BanpickBg
@@ -37,25 +38,23 @@ namespace ssz
 			BattleHeaderBg->SetName(L"BattleHeaderBg");
 			BattleHeaderBg->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"BattleHeaderMt");
 
-			// 오브젝트 배치용 스크립트
-			ArrangementScript* ArScript = BattleHeaderBg->AddComponent<ArrangementScript>();
-			ArScript->SetDefault();
 		}
+#pragma endregion
+#pragma region UI
+		{
+
+
+			// 오브젝트 배치용 스크립트
+			// BattleHeaderBg->AddComponent<ArrangementScript>()->SetDefault();
+		}
+#pragma endregion
 
 		// MouseCursor
 		{
 			GameObject* Cursor = Instantiate<GameObject>(Vector3(0.f, 0.f, 0.01f), Vector3(32.f, 32.f, 1.f), eLayerType::Cursor);
 			Cursor->SetName(L"Cursor");
-
-			// Init
-			Resources::Load<Texture>(L"CursorTex", L"..\\Resources\\useResource\\Cursor\\mouse_cursor.png");
-			LoadMaterial(L"CursorMt", L"SpriteShader", L"CursorTex", eRenderingMode::Transparent);
-
-			Cursor->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"CursorMt");
-			Cursor->AddComponent<Collider2D>()->Initialize();
 			Cursor->AddComponent<CursorScript>()->Initialize();
 		}
-
 		// Main Camera
 		{
 			GameObject* camera = Instantiate<GameObject>(Vector3(0.0f, 0.0f, -10.f), eLayerType::Camera);

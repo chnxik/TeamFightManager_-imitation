@@ -66,6 +66,8 @@ namespace ssz
 			LoadMaterial(L"EnemyTeam_1_CardMt", L"SpriteShader", L"BluePlayerCardIdleTex", eRenderingMode::Transparent);
 			LoadMaterial(L"EnemyTeam_2_CardMt", L"SpriteShader", L"BluePlayerCardIdleTex", eRenderingMode::Transparent);
 			LoadMaterial(L"EnemyTeam_3_CardMt", L"SpriteShader", L"BluePlayerCardIdleTex", eRenderingMode::Transparent);
+
+			LoadMaterial(L"LineUpUI_CorrectBtnMt", L"SpriteShader", L"DefaultBtn_IdleTex", eRenderingMode::Transparent);
 		}
 #pragma region Create Object for this Scene
 		// GameObject
@@ -103,88 +105,89 @@ namespace ssz
 
 		// UI
 		{
+#pragma region LineUpUI
 			UIObject* LineUpUI = Instantiate<UIObject>(Vector3(0.f, 0.f, 1.004f), Vector3(1630.f, 850.f, 1.f), eLayerType::UI);
 			LineUpUI->SetName(L"LineUpUIBg");
 			LineUpUI->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh",L"LineUpUIBgMt");
 			LineUpUI->AddComponent<Collider2D>()->Initialize();
 
-			UIObject* PlayerTeamTitle = InstantiateUI<UIObject>(Vector3(-565.f, 238.f, 1.003f), Vector3(417.f, 70.f, 1.f), LineUpUI, false);
+			UIObject* PlayerTeamTitle = InstantiateUI<UIObject>(Vector3(-522.f, 240.f, 1.003f), Vector3(500.f, 70.f, 1.f), LineUpUI, false);
 			PlayerTeamTitle->SetName(L"LineUp_PlayerTeamTitle");
 			PlayerTeamTitle->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"LineUpUI_PlayerTeamTitle_Mt");
 
-			UIObject* EnemyTeamTitle = InstantiateUI<UIObject>(Vector3(447.f, 238.f, 1.003f), Vector3(655.f, 70.f, 1.f), LineUpUI, false);
+			UIObject* EnemyTeamTitle = InstantiateUI<UIObject>(Vector3(523.f, 240.f, 1.003f), Vector3(500.f, 70.f, 1.f), LineUpUI, false);
 			EnemyTeamTitle->SetName(L"LineUp_EnemyTeamTitle");
 			EnemyTeamTitle->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"LineUpUI_EnemyTeamTitle_Mt");
 
-			UIObject* PlayerTeamCharCard_1 = InstantiateUI<UIObject>(Vector3(-674.f, 90.f, 1.003f), Vector3(198.f, 190.f, 1.f), LineUpUI, false);
+			UIObject* PlayerTeamCharCard_1 = InstantiateUI<UIObject>(Vector3(-650.f, 74.f, 1.003f), Vector3(235.f, 226.f, 1.f), LineUpUI, true);
 			PlayerTeamCharCard_1->SetName(L"PlayerTeamCharCard_1");
 			PlayerTeamCharCard_1->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"PlayerTeam_1_CardMt");
-			PlayerTeamCharCard_1->AddComponent<Collider2D>()->Initialize();
 			Button* PTCharCard_1_Btn = PlayerTeamCharCard_1->AddComponent<Button>();
 			PTCharCard_1_Btn->Initialize();
 			PTCharCard_1_Btn->SetIdleTex(L"RedPlayerCardIdleTex");
 			PTCharCard_1_Btn->SetOnTex(L"RedPlayerCardOnTex");
 			PTCharCard_1_Btn->SetDownTex(L"RedPlayerCardHighlightedTex");
 
-			UIObject* PlayerTeamCharCard_2 = InstantiateUI<UIObject>(Vector3(-455.f, 90.f, 1.003f), Vector3(198.f, 190.f, 1.f), LineUpUI, false);
+			UIObject* PlayerTeamCharCard_2 = InstantiateUI<UIObject>(Vector3(-395, 74.f, 1.003f), Vector3(235.f, 226.f, 1.f), LineUpUI, true);
 			PlayerTeamCharCard_2->SetName(L"PlayerTeamCharCard_2");
 			PlayerTeamCharCard_2->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"PlayerTeam_2_CardMt");
-			PlayerTeamCharCard_2->AddComponent<Collider2D>()->Initialize();
 			Button* PTCharCard_2_Btn = PlayerTeamCharCard_2->AddComponent<Button>();
 			PTCharCard_2_Btn->Initialize();
 			PTCharCard_2_Btn->SetIdleTex(L"RedPlayerCardIdleTex");
 			PTCharCard_2_Btn->SetOnTex(L"RedPlayerCardOnTex");
 			PTCharCard_2_Btn->SetDownTex(L"RedPlayerCardHighlightedTex");
 
-			UIObject* PlayerTeamSubCharCard_1 = InstantiateUI<UIObject>(Vector3(-62.f, 90.f, 1.003f), Vector3(198.f, 190.f, 1.f), LineUpUI, false);
+			UIObject* PlayerTeamSubCharCard_1 = InstantiateUI<UIObject>(Vector3(65.f, 74.f, 1.003f), Vector3(235.f, 226.f, 1.f), LineUpUI, true);
 			PlayerTeamSubCharCard_1->SetName(L"PlayerTeamSubCharCard_1");
 			PlayerTeamSubCharCard_1->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"PlayerTeam_Sub1_CardMt");
-			PlayerTeamSubCharCard_1->AddComponent<Collider2D>()->Initialize();
 			Button* PTSubCharCard_1_Btn = PlayerTeamSubCharCard_1->AddComponent<Button>();
 			PTSubCharCard_1_Btn->Initialize();
 			PTSubCharCard_1_Btn->SetIdleTex(L"RedPlayerCardIdleTex");
 			PTSubCharCard_1_Btn->SetOnTex(L"RedPlayerCardOnTex");
 			PTSubCharCard_1_Btn->SetDownTex(L"RedPlayerCardHighlightedTex");
 
-			UIObject* EnemyTeamCharCard_1 = InstantiateUI<UIObject>(Vector3(219.f, 90.f, 1.003f), Vector3(198.f, 190.f, 1.f), LineUpUI, false);
+			UIObject* EnemyTeamCharCard_1 = InstantiateUI<UIObject>(Vector3(399.f, 74.f, 1.003f), Vector3(235.f, 226.f, 1.f), LineUpUI, true);
 			EnemyTeamCharCard_1->SetName(L"EnemyTeamCharCard_1");
 			EnemyTeamCharCard_1->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"EnemyTeam_1_CardMt");
-			EnemyTeamCharCard_1->AddComponent<Collider2D>()->Initialize();
 			Button* ETCharCard_1_Btn = EnemyTeamCharCard_1->AddComponent<Button>();
 			ETCharCard_1_Btn->Initialize();
 			ETCharCard_1_Btn->SetIdleTex(L"BluePlayerCardIdleTex");
 			ETCharCard_1_Btn->SetOnTex(L"BluePlayerCardOnTex");
 			ETCharCard_1_Btn->SetDownTex(L"BluePlayerCardHighlightedTex");
 
-			UIObject* EnemyTeamCharCard_2 = InstantiateUI<UIObject>(Vector3(438.f, 90.f, 1.003f), Vector3(198.f, 190.f, 1.f), LineUpUI, false);
+			UIObject* EnemyTeamCharCard_2 = InstantiateUI<UIObject>(Vector3(652.f, 74.f, 1.003f), Vector3(235.f, 226.f, 1.f), LineUpUI, true);
 			EnemyTeamCharCard_2->SetName(L"EnemyTeamCharCard_2");
 			EnemyTeamCharCard_2->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"EnemyTeam_2_CardMt");
-			EnemyTeamCharCard_2->AddComponent<Collider2D>()->Initialize();
 			Button* ETCharCard_2_Btn = EnemyTeamCharCard_2->AddComponent<Button>();
 			ETCharCard_2_Btn->Initialize();
 			ETCharCard_2_Btn->SetIdleTex(L"BluePlayerCardIdleTex");
 			ETCharCard_2_Btn->SetOnTex(L"BluePlayerCardOnTex");
 			ETCharCard_2_Btn->SetDownTex(L"BluePlayerCardHighlightedTex");
 
-			// 오브젝트 배치용 스크립트
-			// ArrangementScript* ArScript = PlayerTeamCharCard_1->AddComponent<ArrangementScript>();
-			// ArScript->SetDefault();
+			UIObject* PlayerChangeIcon = InstantiateUI<UIObject>(Vector3(-159.f, 3.f, 1.003f),Vector3(135.f,120.f,1.f),LineUpUI,true);
+			PlayerChangeIcon->SetName(L"PlayerChangeIcon");
+			PlayerChangeIcon->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"PlayerChangeIconMt");
 
-			// ArrangementScript* ArScript2 = EnemyTeamCharCard_1->AddComponent<ArrangementScript>();
-			// ArScript2->SetDefault();
+
+			UIObject* LineUpCorrectBtn = InstantiateUI<UIObject>(Vector3(0.f, -368.f, 1.003f), Vector3(207.f, 75.f, 1.f), LineUpUI, true);
+			LineUpCorrectBtn->SetName(L"DefaultUI");
+			LineUpCorrectBtn->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"LineUpUI_CorrectBtnMt");
+			Button* LineUpCorrectBtnComp = LineUpCorrectBtn->AddComponent<Button>();
+			LineUpCorrectBtnComp->Initialize();
+			LineUpCorrectBtnComp->SetIdleTex(L"DefaultBtn_IdleTex");
+			LineUpCorrectBtnComp->SetOnTex(L"DefaultBtn_OnTex");
+			LineUpCorrectBtnComp->SetDownTex(L"DefaultBtn_DownTex");
+			LineUpCorrectBtnComp->SetDelegateW(this, (DELEGATEW)&Scene::ChangeScene, L"BanPickScene");
+#pragma endregion
+
+			// 오브젝트 배치용 스크립트
+			// PlayerChangeIcon->AddComponent<ArrangementScript>()->SetDefault();
 		}
 
 		// MouseCursor
 		{
 			GameObject* Cursor = Instantiate<GameObject>(Vector3(0.f, 0.f, 0.01f), Vector3(32.f, 32.f, 1.f), eLayerType::Cursor);
 			Cursor->SetName(L"Cursor");
-
-			// Init
-			Resources::Load<Texture>(L"CursorTex", L"..\\Resources\\useResource\\Cursor\\mouse_cursor.png");
-			LoadMaterial(L"CursorMt", L"SpriteShader", L"CursorTex", eRenderingMode::Transparent);
-
-			Cursor->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"CursorMt");
-			Cursor->AddComponent<Collider2D>()->Initialize();
 			Cursor->AddComponent<CursorScript>()->Initialize();
 		}
 
@@ -199,11 +202,6 @@ namespace ssz
 	void StadiumScene::Update()
 	{
 		Scene::Update();
-
-		if (Input::GetKeyDown(eKeyCode::ENTER))
-		{
-			SceneManager::LoadScene(L"BanPickScene");
-		}
 	}
 	void StadiumScene::LateUpdate()
 	{

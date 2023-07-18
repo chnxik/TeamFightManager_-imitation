@@ -51,6 +51,12 @@ namespace ssz
 			LoadMaterial(L"ProceedBtnIdleMt", L"SpriteShader", L"ProceedBtnIdleTex", eRenderingMode::Transparent);
 			LoadMaterial(L"ProceedBtnArrowMt", L"SpriteShader", L"ProceedBtnArrowTex", eRenderingMode::Transparent);
 
+			LoadMaterial(L"TeamManageMenuBtnMt", L"SpriteShader", L"MainMenuBtnIdleTex", eRenderingMode::Transparent);
+			LoadMaterial(L"OperateMenuBtnMt", L"SpriteShader", L"MainMenuBtnIdleTex", eRenderingMode::Transparent);
+			LoadMaterial(L"LeagueMenuBtnMt", L"SpriteShader", L"MainMenuBtnIdleTex", eRenderingMode::Transparent);
+			LoadMaterial(L"GameMenuBtnMt", L"SpriteShader", L"MainMenuBtnIdleTex", eRenderingMode::Transparent);
+			LoadMaterial(L"SystemMenuBtnMt", L"SpriteShader", L"MainMenuBtnIdleTex", eRenderingMode::Transparent);
+
 			LoadMaterial(L"WeeklyEventBtnIdleMt", L"SpriteShader", L"WeeklyEventRedBtnIdleTex", eRenderingMode::Transparent);
 
 			LoadMaterial(L"UIheaderSlotBgMt", L"SpriteShader", L"UIheaderSlotBgTex",eRenderingMode::Transparent);
@@ -85,63 +91,109 @@ namespace ssz
 				UI_headerBar->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"UI_headerBar_Mt");
 				UI_headerBar->AddComponent<Collider2D>()->Initialize();
 
-				// Menu Btn
-				Vector3 MainMenuBtnSize(230.f, 60.f, 1.f);
-				Vector3 MainMenuBtnPos[5] = {};
-
-				for (int i = 0; i < 5; ++i)
+#pragma region Menu Button
 				{
-					float x = -810.f; // 버튼 첫 시작 x좌표
-					x += (MainMenuBtnSize.x + 27.f) * i;
-					float y = -460.f;
-					MainMenuBtnPos[i] = Vector3(x, y, 1.001f);
+					// Menu Btn
+					Vector3 MainMenuBtnSize(230.f, 60.f, 1.f);
+					Vector3 MainMenuBtnPos[5] = {};
+
+					for (int i = 0; i < 5; ++i)
+					{
+						float x = -810.f; // 버튼 첫 시작 x좌표
+						x += (MainMenuBtnSize.x + 27.f) * i;
+						float y = -460.f;
+						MainMenuBtnPos[i] = Vector3(x, y, 1.001f);
+					}
+
+					UIObject* TeamManageMenu = Instantiate<UIObject>(MainMenuBtnPos[0], MainMenuBtnSize, eLayerType::UI);
+					TeamManageMenu->SetName(L"TeamManageMenuBtn");
+					TeamManageMenu->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"TeamManageMenuBtnMt");
+					TeamManageMenu->AddComponent<Collider2D>()->Initialize();
+
+					Button* TeamManageMenuBtn = TeamManageMenu->AddComponent<Button>();
+					TeamManageMenuBtn->Initialize();
+					TeamManageMenuBtn->SetIdleTex(L"MainMenuBtnIdleTex");
+					TeamManageMenuBtn->SetOnTex(L"MainMenuBtnOnTex");
+					TeamManageMenuBtn->SetDownTex(L"MainMenuBtnDownTex");
+
+					UIObject* OperateMenu = Instantiate<UIObject>(MainMenuBtnPos[1], MainMenuBtnSize, eLayerType::UI);
+					OperateMenu->SetName(L"OperateMenuBtn");
+					OperateMenu->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"OperateMenuBtnMt");
+					OperateMenu->AddComponent<Collider2D>()->Initialize();
+
+					Button* OperateMenuBtn = OperateMenu->AddComponent<Button>();
+					OperateMenuBtn->Initialize();
+					OperateMenuBtn->SetIdleTex(L"MainMenuBtnIdleTex");
+					OperateMenuBtn->SetOnTex(L"MainMenuBtnOnTex");
+					OperateMenuBtn->SetDownTex(L"MainMenuBtnDownTex");
+
+					UIObject* LeagueMenu = Instantiate<UIObject>(MainMenuBtnPos[2], MainMenuBtnSize, eLayerType::UI);
+					LeagueMenu->SetName(L"LeagueMenuBtn");
+					LeagueMenu->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"LeagueMenuBtnMt");
+					LeagueMenu->AddComponent<Collider2D>()->Initialize();
+
+					Button* LeagueMenuBtn = LeagueMenu->AddComponent<Button>();
+					LeagueMenuBtn->Initialize();
+					LeagueMenuBtn->SetIdleTex(L"MainMenuBtnIdleTex");
+					LeagueMenuBtn->SetOnTex(L"MainMenuBtnOnTex");
+					LeagueMenuBtn->SetDownTex(L"MainMenuBtnDownTex");
+
+					UIObject* GameMenu = Instantiate<UIObject>(MainMenuBtnPos[3], MainMenuBtnSize, eLayerType::UI);
+					GameMenu->SetName(L"GameMenuBtn");
+					GameMenu->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"GameMenuBtnMt");
+					GameMenu->AddComponent<Collider2D>()->Initialize();
+
+					Button* GameMenuBtn = GameMenu->AddComponent<Button>();
+					GameMenuBtn->Initialize();
+					GameMenuBtn->SetIdleTex(L"MainMenuBtnIdleTex");
+					GameMenuBtn->SetOnTex(L"MainMenuBtnOnTex");
+					GameMenuBtn->SetDownTex(L"MainMenuBtnDownTex");
+
+					UIObject* SystemMenu = Instantiate<UIObject>(MainMenuBtnPos[4], MainMenuBtnSize, eLayerType::UI);
+					SystemMenu->SetName(L"SystemMenuBtn");
+					SystemMenu->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"SystemMenuBtnMt");
+					SystemMenu->AddComponent<Collider2D>()->Initialize();
+
+					Button* SystemMenuBtn = SystemMenu->AddComponent<Button>();
+					SystemMenuBtn->Initialize();
+					SystemMenuBtn->SetIdleTex(L"MainMenuBtnIdleTex");
+					SystemMenuBtn->SetOnTex(L"MainMenuBtnOnTex");
+					SystemMenuBtn->SetDownTex(L"MainMenuBtnDownTex");
 				}
+#pragma endregion
+#pragma region Proceed Btn
+				{
+					// ProceedBtn
+					UIObject* ProceedBtn = Instantiate<UIObject>(Vector3(735.f, -430.f, 1.002f), Vector3(340.f, 120.f, 1.f), eLayerType::UI);
+					ProceedBtn->SetName(L"ProceedMenuBtn");
+					ProceedBtn->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"ProceedBtnIdleMt");
+					ProceedBtn->AddComponent<Collider2D>()->Initialize();
 
-				UIObject* TeamManageMenu = Instantiate<UIObject>(MainMenuBtnPos[0], MainMenuBtnSize, eLayerType::UI);
-				TeamManageMenu->SetName(L"TeamManageMenuBtn");
-				TeamManageMenu->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"MainMenuBtnIdleMt");
-				TeamManageMenu->AddComponent<Collider2D>()->Initialize();
+					Button* ProceedBtnComp = ProceedBtn->AddComponent<Button>();
+					ProceedBtnComp->Initialize();
+					ProceedBtnComp->SetIdleTex(L"ProceedBtnIdleTex");
+					ProceedBtnComp->SetOnTex(L"ProceedBtnOnTex");
+					ProceedBtnComp->SetDownTex(L"ProceedBtnDownTex");
+					ProceedBtnComp->SetDelegateW(this, (DELEGATEW)&Scene::ChangeScene, L"StadiumScene");
 
-				UIObject* OperateMenu = Instantiate<UIObject>(MainMenuBtnPos[1], MainMenuBtnSize, eLayerType::UI);
-				OperateMenu->SetName(L"OperateMenuBtn");
-				OperateMenu->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"MainMenuBtnIdleMt");
-				OperateMenu->AddComponent<Collider2D>()->Initialize();
+					UIObject* ProceedArrow = InstantiateUI<UIObject>(Vector3(97.f, 0.f, -0.001f), Vector3(-195.f, 0.f, 0.f), ProceedBtn, false);
+					ProceedArrow->SetName(L"ProceedMenuBtnArrow");
+					ProceedArrow->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"ProceedBtnArrowMt");
+					Transform* Proceedtr = ProceedArrow->GetComponent<Transform>();
+					Proceedtr->SetParent(ProceedBtn->GetComponent<Transform>());
+					Proceedtr->SetTransTypeADD();
 
-				UIObject* LeagueMenu = Instantiate<UIObject>(MainMenuBtnPos[2], MainMenuBtnSize, eLayerType::UI);
-				LeagueMenu->SetName(L"LeagueMenuBtn");
-				LeagueMenu->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"MainMenuBtnIdleMt");
-				LeagueMenu->AddComponent<Collider2D>()->Initialize();
-
-				UIObject* GameMenu = Instantiate<UIObject>(MainMenuBtnPos[3], MainMenuBtnSize, eLayerType::UI);
-				GameMenu->SetName(L"GameMenuBtn");
-				GameMenu->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"MainMenuBtnIdleMt");
-				GameMenu->AddComponent<Collider2D>()->Initialize();
-
-				UIObject* SystemMenu = Instantiate<UIObject>(MainMenuBtnPos[4], MainMenuBtnSize, eLayerType::UI);
-				SystemMenu->SetName(L"SystemMenuBtn");
-				SystemMenu->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"MainMenuBtnIdleMt");
-				SystemMenu->AddComponent<Collider2D>()->Initialize();
-
-
-				// ProceedBtn
-				UIObject* ProceedBtn = Instantiate<UIObject>(Vector3(735.f, -430.f, 1.002f), Vector3(340.f, 120.f, 1.f), eLayerType::UI);
-				ProceedBtn->SetName(L"ProceedMenuBtn");
-				ProceedBtn->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"ProceedBtnIdleMt");
-				ProceedBtn->AddComponent<Collider2D>()->Initialize();
-
-				UIObject* ProceedArrow = InstantiateUI<UIObject>(Vector3(97.f, 0.f, -0.001f), Vector3(-195.f, 0.f, 0.f), ProceedBtn, false);
-				ProceedArrow->SetName(L"ProceedMenuBtnArrow");
-				ProceedArrow->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"ProceedBtnArrowMt");
-				Transform* Proceedtr = ProceedArrow->GetComponent<Transform>();
-				Proceedtr->SetParent(ProceedBtn->GetComponent<Transform>());
-				Proceedtr->SetTransTypeADD();
-
-				// WeeklyEventBtn
-				UIObject* WeeklyEventBtn = Instantiate<UIObject>(Vector3(735.f, -320.f, 1.002f), Vector3(340.f, 60.f, 1.f), eLayerType::UI);
-				WeeklyEventBtn->SetName(L"WeeklyEventBtn");
-				WeeklyEventBtn->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"WeeklyEventBtnIdleMt");
-				WeeklyEventBtn->AddComponent<Collider2D>()->Initialize();
-				
+				}
+#pragma endregion
+#pragma region WeeklyEvent Btn
+				{
+					// WeeklyEventBtn
+					UIObject* WeeklyEventBtn = Instantiate<UIObject>(Vector3(735.f, -320.f, 1.002f), Vector3(340.f, 60.f, 1.f), eLayerType::UI);
+					WeeklyEventBtn->SetName(L"WeeklyEventBtn");
+					WeeklyEventBtn->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"WeeklyEventBtnIdleMt");
+					WeeklyEventBtn->AddComponent<Collider2D>()->Initialize();
+				}
+#pragma endregion
 
 				// UI header Slot
 				UIObject* HeaderGoldSlotUI = Instantiate<UIObject>(Vector3(775.f, 485.f, 1.002f), Vector3(339.f, 72.f, 1.f), eLayerType::UI);
@@ -201,8 +253,8 @@ namespace ssz
 				skyBg++;
 				break;
 			case 2:
-				// Next Scene
-				SceneManager::LoadScene(L"StadiumScene");
+				BgSky->GetComponent<MeshRenderer>()->GetMaterial()->SetTexture(Resources::Find<Texture>(L"SkydayBgTex"));
+				skyBg = 0;
 				break;
 			}
 		}

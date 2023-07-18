@@ -20,6 +20,20 @@ namespace ssz
 			Resources::Load<Texture>(L"Stadium_frameTex", L"..\\Resources\\useResource\\stadium\\stadium_frame.png");
 			Resources::Load<Texture>(L"Stadium_frame_frontTex", L"..\\Resources\\useResource\\stadium\\stadium_frame_front.png");
 			Resources::Load<Texture>(L"Stadium_frame_BgTex", L"..\\Resources\\useResource\\stadium\\frame_bg.png");
+
+			Resources::Load<Texture>(L"LineUpUITex", L"..\\Resources\\useResource\\stadium\\multi_lineup_ui_bg.png");
+
+			Resources::Load<Texture>(L"LineUpUI_Blue_Left_TTTex", L"..\\Resources\\useResource\\stadium\\lineup_ui_team_title_bg_0.png");
+			Resources::Load<Texture>(L"LineUpUI_Blue_Right_TTTex", L"..\\Resources\\useResource\\stadium\\lineup_ui_team_title_bg_1.png");
+			Resources::Load<Texture>(L"LineUpUI_Red_Left_TTTex", L"..\\Resources\\useResource\\stadium\\lineup_ui_team_title_bg_3.png");
+			Resources::Load<Texture>(L"LineUpUI_Red_Right_TTTex", L"..\\Resources\\useResource\\stadium\\lineup_ui_team_title_bg_2.png");
+			Resources::Load<Texture>(L"BluePlayerCardIdleTex", L"..\\Resources\\useResource\\stadium\\player_card_bg_0.png");
+			Resources::Load<Texture>(L"BluePlayerCardOnTex", L"..\\Resources\\useResource\\stadium\\player_card_bg_1.png");
+			Resources::Load<Texture>(L"RedPlayerCardIdleTex", L"..\\Resources\\useResource\\stadium\\player_card_bg_4.png");
+			Resources::Load<Texture>(L"RedPlayerCardOnTex", L"..\\Resources\\useResource\\stadium\\player_card_bg_5.png");
+
+			Resources::Load<Texture>(L"BludPlayerCardIdleTex", L"..\\Resources\\useResource\\stadium\\multi_lineup_ui_bg.png");
+			Resources::Load<Texture>(L"BludPlayerCardIdleTex", L"..\\Resources\\useResource\\stadium\\multi_lineup_ui_bg.png");
 		}
 		{
 			std::shared_ptr<Material> Stadium_Mt = std::make_shared<Material>();

@@ -1,21 +1,31 @@
 #include "sszArrangementScript.h"
 
+#include "sszMath.h"
+
+#include "sszApplication.h"
+
 #include "sszGameObject.h"
+#include "sszUIObject.h"
 
 #include "sszInput.h"
 #include "sszTime.h"
 
 // Component
 #include "sszTransform.h"
+#include "sszCamera.h"
+
+extern ssz::Application application;
 
 namespace ssz
 {
 	ArrangementScript::ArrangementScript()
 		: ArrangePos{}
 		, ArrangeScale{}
+		, mPrevMousePos{}
 		, fradius(1.f)
 		, fradiusx(1.f)
 		, fradiusy(1.f)
+		, OwnerUI(nullptr)
 	{
 	}
 
@@ -33,6 +43,7 @@ namespace ssz
 		Transform* OwnerTf = GetOwner()->GetComponent<Transform>();
 		ArrangePos = OwnerTf->GetPosition();
 		ArrangeScale = OwnerTf->GetScale();
+		OwnerUI = dynamic_cast<UIObject*>(GetOwner());
 	}
 
 	void ArrangementScript::Update()
@@ -64,7 +75,57 @@ namespace ssz
 			if (Input::GetKey(eKeyCode::RIGHT)) { fradiusx += 1.f * (float)Time::DeltaTime(); }
 		}
 
-		
+		if (OwnerUI !=nullptr && OwnerUI->IsLbtnDown())
+		{
+			Vector2 MousePos = Input::GetMousePos();
+			Vector3 CurPos = Vector3(MousePos.x, MousePos.y, 0.f);
+
+			RECT rect = {};
+			GetClientRect(application.GetHwnd(), &rect);
+			float width = (float)(rect.right - rect.left);
+			float height = (float)(rect.bottom - rect.top);
+
+			Viewport viewport;
+			viewport.width = width;
+			viewport.height = height;
+
+			viewport.x = 0;
+			viewport.y = 0;
+			viewport.minDepth = 0.0f;
+			viewport.maxDepth = 1.0f;
+
+			CurPos = viewport.Unproject(CurPos, Camera::GetGpuProjectionMatrix(), Camera::GetGpuViewMatrix(), Matrix::Identity);
+
+			Vector2 amount = mPrevMousePos - Vector2(CurPos.x,CurPos.y);
+
+			ArrangePos.x -= amount.x;
+			ArrangePos.y -= amount.y;
+
+			mPrevMousePos = Vector2(CurPos.x,CurPos.y);
+		}
+		else
+		{
+			Vector2 MousePos = Input::GetMousePos();
+			Vector3 CurPos = Vector3(MousePos.x, MousePos.y, 0.f);
+
+			RECT rect = {};
+			GetClientRect(application.GetHwnd(), &rect);
+			float width = (float)(rect.right - rect.left);
+			float height = (float)(rect.bottom - rect.top);
+
+			Viewport viewport;
+			viewport.width = width;
+			viewport.height = height;
+
+			viewport.x = 0;
+			viewport.y = 0;
+			viewport.minDepth = 0.0f;
+			viewport.maxDepth = 1.0f;
+
+			CurPos = viewport.Unproject(CurPos, Camera::GetGpuProjectionMatrix(), Camera::GetGpuViewMatrix(), Matrix::Identity);
+
+			mPrevMousePos = Vector2(CurPos.x, CurPos.y);
+		}
 
 		Vector3 FinalPos = ArrangePos;
 		Vector3 FinalScale = {};
@@ -75,6 +136,22 @@ namespace ssz
 		Transform* OwnerTf = GetOwner()->GetComponent<Transform>();
 		OwnerTf->SetPosition(ArrangePos);
 		OwnerTf->SetScale(FinalScale);
+
+		if (Input::GetKeyDown(eKeyCode::RBUTTON))
+		{
+			int Fin = 0;
+		}
 	}
-	
+
+	void ArrangementScript::OnCollisionEnter(Collider2D* other)
+	{
+	}
+
+	void ArrangementScript::OnCollisionStay(Collider2D* other)
+	{
+	}
+
+	void ArrangementScript::OnCollisionExit(Collider2D* other)
+	{
+	}
 }

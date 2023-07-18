@@ -21,44 +21,45 @@ namespace ssz
 			Resources::Load<Texture>(L"Stadium_frame_frontTex", L"..\\Resources\\useResource\\stadium\\stadium_frame_front.png");
 			Resources::Load<Texture>(L"Stadium_frame_BgTex", L"..\\Resources\\useResource\\stadium\\frame_bg.png");
 
-			Resources::Load<Texture>(L"LineUpUITex", L"..\\Resources\\useResource\\stadium\\multi_lineup_ui_bg.png");
+			Resources::Load<Texture>(L"LineUpUITex", L"..\\Resources\\useResource\\stadium\\UI\\multi_lineup_ui_bg.png");
+			Resources::Load<Texture>(L"LineUpUI_Highlight_SlotStartingMemTex", L"..\\Resources\\useResource\\stadium\\UI\\highlighted_slot_starting_member_bg.png");
+			Resources::Load<Texture>(L"LineUpUI_Highlight_SlotSubMemTex", L"..\\Resources\\useResource\\stadium\\UI\\highlighted_slot_sub_bg.png");
 
-			Resources::Load<Texture>(L"LineUpUI_Blue_Left_TTTex", L"..\\Resources\\useResource\\stadium\\lineup_ui_team_title_bg_0.png");
-			Resources::Load<Texture>(L"LineUpUI_Blue_Right_TTTex", L"..\\Resources\\useResource\\stadium\\lineup_ui_team_title_bg_1.png");
-			Resources::Load<Texture>(L"LineUpUI_Red_Left_TTTex", L"..\\Resources\\useResource\\stadium\\lineup_ui_team_title_bg_3.png");
-			Resources::Load<Texture>(L"LineUpUI_Red_Right_TTTex", L"..\\Resources\\useResource\\stadium\\lineup_ui_team_title_bg_2.png");
-			Resources::Load<Texture>(L"BluePlayerCardIdleTex", L"..\\Resources\\useResource\\stadium\\player_card_bg_0.png");
-			Resources::Load<Texture>(L"BluePlayerCardOnTex", L"..\\Resources\\useResource\\stadium\\player_card_bg_1.png");
-			Resources::Load<Texture>(L"RedPlayerCardIdleTex", L"..\\Resources\\useResource\\stadium\\player_card_bg_4.png");
-			Resources::Load<Texture>(L"RedPlayerCardOnTex", L"..\\Resources\\useResource\\stadium\\player_card_bg_5.png");
+			Resources::Load<Texture>(L"LineUpUI_Blue_Left_TTTex", L"..\\Resources\\useResource\\stadium\\UI\\lineup_ui_team_title_bg_0.png");
+			Resources::Load<Texture>(L"LineUpUI_Blue_Right_TTTex", L"..\\Resources\\useResource\\stadium\\UI\\lineup_ui_team_title_bg_1.png");
+			Resources::Load<Texture>(L"LineUpUI_Red_Left_TTTex", L"..\\Resources\\useResource\\stadium\\UI\\lineup_ui_team_title_bg_3.png");
+			Resources::Load<Texture>(L"LineUpUI_Red_Right_TTTex", L"..\\Resources\\useResource\\stadium\\UI\\lineup_ui_team_title_bg_2.png");
 
-			Resources::Load<Texture>(L"BludPlayerCardIdleTex", L"..\\Resources\\useResource\\stadium\\multi_lineup_ui_bg.png");
-			Resources::Load<Texture>(L"BludPlayerCardIdleTex", L"..\\Resources\\useResource\\stadium\\multi_lineup_ui_bg.png");
+			Resources::Load<Texture>(L"BluePlayerCardIdleTex", L"..\\Resources\\useResource\\stadium\\UI\\player_card_bg_0.png");
+			Resources::Load<Texture>(L"BluePlayerCardOnTex", L"..\\Resources\\useResource\\stadium\\UI\\player_card_bg_1.png");
+			Resources::Load<Texture>(L"BluePlayerCardHighlightedTex", L"..\\Resources\\useResource\\stadium\\UI\\player_card_bg_2.png");
+			Resources::Load<Texture>(L"RedPlayerCardIdleTex", L"..\\Resources\\useResource\\stadium\\UI\\player_card_bg_4.png");
+			Resources::Load<Texture>(L"RedPlayerCardOnTex", L"..\\Resources\\useResource\\stadium\\UI\\player_card_bg_5.png");
+			Resources::Load<Texture>(L"RedPlayerCardHighlightedTex", L"..\\Resources\\useResource\\stadium\\UI\\player_card_bg_6.png");
+
+			Resources::Load<Texture>(L"PlayerChangeIconTex", L"..\\Resources\\useResource\\stadium\\UI\\player_change_icon_0.png");
+			Resources::Load<Texture>(L"PlayerChangeIconHighlightTex", L"..\\Resources\\useResource\\stadium\\UI\\player_change_icon_1.png");
 		}
+
 		{
-			std::shared_ptr<Material> Stadium_Mt = std::make_shared<Material>();
-			Stadium_Mt->SetMaterial(L"SpriteShader", L"StadiumTex", eRenderingMode::Transparent);
-			Resources::Insert(L"StadiumMt", Stadium_Mt);
+			LoadMaterial(L"StadiumMt", L"SpriteShader", L"StadiumTex", eRenderingMode::Transparent);
+			LoadMaterial(L"Stadium_chairMt", L"SpriteShader", L"Stadium_ChairTex", eRenderingMode::Transparent);
+			LoadMaterial(L"Stadium_deskMt", L"SpriteShader", L"Stadium_deskTex", eRenderingMode::Transparent);
+			LoadMaterial(L"Stadium_frameMt", L"SpriteShader", L"Stadium_frameTex", eRenderingMode::Transparent);
+			LoadMaterial(L"Stadium_frame_frontMt", L"SpriteShader", L"Stadium_frame_frontTex", eRenderingMode::Transparent);
+			LoadMaterial(L"Stadium_frame_BgMt", L"SpriteShader", L"Stadium_frame_BgTex", eRenderingMode::Transparent);
 
-			std::shared_ptr<Material> Stadium_chair_Mt = std::make_shared<Material>();
-			Stadium_chair_Mt->SetMaterial(L"SpriteShader", L"Stadium_ChairTex", eRenderingMode::Transparent);
-			Resources::Insert(L"Stadium_chairMt", Stadium_chair_Mt);
-
-			std::shared_ptr<Material> Stadium_desk_Mt = std::make_shared<Material>();
-			Stadium_desk_Mt->SetMaterial(L"SpriteShader", L"Stadium_deskTex", eRenderingMode::Transparent);
-			Resources::Insert(L"Stadium_deskMt", Stadium_desk_Mt);
-
-			std::shared_ptr<Material> Stadium_frame_Mt = std::make_shared<Material>();
-			Stadium_frame_Mt->SetMaterial(L"SpriteShader", L"Stadium_frameTex", eRenderingMode::Transparent);
-			Resources::Insert(L"Stadium_frameMt", Stadium_frame_Mt);
-
-			std::shared_ptr<Material> Stadium_frame_front_Mt = std::make_shared<Material>();
-			Stadium_frame_front_Mt->SetMaterial(L"SpriteShader", L"Stadium_frame_frontTex", eRenderingMode::Transparent);
-			Resources::Insert(L"Stadium_frame_frontMt", Stadium_frame_front_Mt);
-
-			std::shared_ptr<Material> Stadium_frame_Bg_Mt = std::make_shared<Material>();
-			Stadium_frame_Bg_Mt->SetMaterial(L"SpriteShader", L"Stadium_frame_BgTex", eRenderingMode::Transparent);
-			Resources::Insert(L"Stadium_frame_BgMt", Stadium_frame_Bg_Mt);
+			//UI
+			LoadMaterial(L"LineUpUIBgMt", L"SpriteShader", L"LineUpUITex", eRenderingMode::Transparent);
+			LoadMaterial(L"LineUpUI_SlotStartingMem_HighlightMt", L"SpriteShader", L"LineUpUI_Highlight_SlotStartingMemTex", eRenderingMode::Transparent);
+			LoadMaterial(L"LineUpUI_SlotSub_HighlightMt", L"SpriteShader", L"LineUpUI_Highlight_SlotSubMemTex", eRenderingMode::Transparent);
+			
+			LoadMaterial(L"LineUpUI_PlayerTeamTitle_Mt", L"SpriteShader", L"LineUpUI_Red_Left_TTTex", eRenderingMode::Transparent);
+			LoadMaterial(L"LineUpUI_EnemyTeamTitle_Mt", L"SpriteShader", L"LineUpUI_Blue_Right_TTTex", eRenderingMode::Transparent);
+			LoadMaterial(L"PlayerChangeIconMt", L"SpriteShader", L"PlayerChangeIconTex", eRenderingMode::Transparent);
+			
+			LoadMaterial(L"PlayerTeam_1_CardMt", L"SpriteShader", L"RedPlayerCardIdleTex", eRenderingMode::Transparent);
+			LoadMaterial(L"EnemyTeam_1_CardMt", L"SpriteShader", L"BluePlayerCardIdleTex", eRenderingMode::Transparent);
 		}
 #pragma region Create Object for this Scene
 		// GameObject
@@ -73,29 +74,47 @@ namespace ssz
 			Stadium_Chair->SetName(L"StadiumChair");
 			Stadium_Chair->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"Stadium_chairMt");
 			
-			 // Stadium Desk
-			 GameObject* Stadium_desk = Instantiate<GameObject>(Vector3(0.0f, -147.f, 1.02f), Vector3(1273.f, 141.f, 1.f), eLayerType::BackGround);
-			 Stadium_desk->SetName(L"StadiumDesk");
-			 Stadium_desk->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"Stadium_deskMt");
-			 
-			 // Stadium frame
-			 GameObject* Stadium_frame = Instantiate<GameObject>(Vector3(0.0f, -100.f, 1.04f), Vector3(1735.f, 200.f, 1.f), eLayerType::BackGround);
-			 Stadium_frame->SetName(L"StadiumFrame");
-			 Stadium_frame->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"Stadium_frameMt");
-			 
-			 // Stadium frame front
-			 GameObject* Stadium_frame_front = Instantiate<GameObject>(Vector3(0.0f, -232.f, 1.01f), Vector3(1768.f, 80.f, 1.f), eLayerType::BackGround);
-			 Stadium_frame_front->SetName(L"StadiumFrameFront");
-			 Stadium_frame_front->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"Stadium_frame_frontMt");
-			 
-			 // Stadium frame Bg
-			 GameObject* Stadium_frame_Bg = Instantiate<GameObject>(Vector3(0.0f, -100.f, 1.05f), Vector3(1252.f, 160.f, 1.f), eLayerType::BackGround);
-			 Stadium_frame_Bg->SetName(L"StadiumframeBg");
-			 Stadium_frame_Bg->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"Stadium_frame_BgMt");
+			// Stadium Desk
+			GameObject* Stadium_desk = Instantiate<GameObject>(Vector3(0.0f, -147.f, 1.02f), Vector3(1273.f, 141.f, 1.f), eLayerType::BackGround);
+			Stadium_desk->SetName(L"StadiumDesk");
+			Stadium_desk->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"Stadium_deskMt");
+			
+			// Stadium frame
+			GameObject* Stadium_frame = Instantiate<GameObject>(Vector3(0.0f, -100.f, 1.04f), Vector3(1735.f, 200.f, 1.f), eLayerType::BackGround);
+			Stadium_frame->SetName(L"StadiumFrame");
+			Stadium_frame->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"Stadium_frameMt");
+			
+			// Stadium frame front
+			GameObject* Stadium_frame_front = Instantiate<GameObject>(Vector3(0.0f, -232.f, 1.01f), Vector3(1768.f, 80.f, 1.f), eLayerType::BackGround);
+			Stadium_frame_front->SetName(L"StadiumFrameFront");
+			Stadium_frame_front->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"Stadium_frame_frontMt");
+			
+			// Stadium frame Bg
+			GameObject* Stadium_frame_Bg = Instantiate<GameObject>(Vector3(0.0f, -100.f, 1.05f), Vector3(1252.f, 160.f, 1.f), eLayerType::BackGround);
+			Stadium_frame_Bg->SetName(L"StadiumframeBg");
+			Stadium_frame_Bg->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"Stadium_frame_BgMt");
+		}
+
+		// UI
+		{
+			UIObject* LineUpUI = Instantiate<UIObject>(Vector3(0.f, 0.f, 1.004f), Vector3(1630.f, 850.f, 1.f), eLayerType::UI);
+			LineUpUI->SetName(L"LineUpUIBg");
+			LineUpUI->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh",L"LineUpUIBgMt");
+			LineUpUI->AddComponent<Collider2D>()->Initialize();
+
+			UIObject* PlayerTeamTitle = InstantiateUI<UIObject>(Vector3(-565.f, 238.f, 1.003f), Vector3(417.f, 70.f, 1.f), LineUpUI, false);
+			PlayerTeamTitle->SetName(L"LineUp_PlayerTeamTitle");
+			PlayerTeamTitle->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"LineUpUI_PlayerTeamTitle_Mt");
+			PlayerTeamTitle->AddComponent<Collider2D>()->Initialize();
+
+			UIObject* EnemyTeamTitle = InstantiateUI<UIObject>(Vector3(-0.f, 238.f, 1.003f), Vector3(417.f, 70.f, 1.f), LineUpUI, false);
+			EnemyTeamTitle->SetName(L"LineUp_EnemyTeamTitle");
+			EnemyTeamTitle->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"LineUpUI_EnemyTeamTitle_Mt");
+			EnemyTeamTitle->AddComponent<Collider2D>()->Initialize();
 
 			// 오브젝트 배치용 스크립트
-			 ArrangementScript* ArScript = Stadium_frame_front->AddComponent<ArrangementScript>();
-			 ArScript->SetDefault();
+			ArrangementScript* ArScript = EnemyTeamTitle->AddComponent<ArrangementScript>();
+			ArScript->SetDefault();
 		}
 
 		// MouseCursor

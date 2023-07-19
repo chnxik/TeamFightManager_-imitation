@@ -13,6 +13,10 @@ namespace ssz
 	{
 	}
 
+	void UIComponent::Initialize()
+	{
+	}
+
 	void UIComponent::SetOwner(GameObject* owner)
 	{
 		mOwner = owner;

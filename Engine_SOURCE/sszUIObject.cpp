@@ -3,7 +3,7 @@
 #include "sszInput.h"
 
 #include "sszUIComponent.h"
-#include "sszButton.h"
+#include "sszButtonUI.h"
 
 namespace ssz
 {
@@ -13,6 +13,15 @@ namespace ssz
         , bMouseOn(false)
         , bOpen(false)
     {
+    }
+    UIObject::UIObject(const std::wstring& Key)
+        : mUIKey(Key)
+        , mParentUI(nullptr)
+        , bLbtnDown(false)
+        , bMouseOn(false)
+        , bOpen(false)
+    {
+        SetName(mUIKey);
     }
 
     UIObject::~UIObject()

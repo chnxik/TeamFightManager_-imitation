@@ -17,14 +17,10 @@ namespace gui
     {
         mDebugObjects.resize((UINT)eColliderType::End);
      
-        mDebugObjects[(UINT)eColliderType::Rect] = new DebugObject();
-        mDebugObjects[(UINT)eColliderType::Rect]->AddComponent<ssz::Transform>();
-        mDebugObjects[(UINT)eColliderType::Rect]->AddComponent<ssz::MeshRenderer>()->SetMeshRenderer(L"DebugRect", L"DebugMaterial");
-
-
-        mDebugObjects[(UINT)eColliderType::Circle] = new DebugObject();
-        mDebugObjects[(UINT)eColliderType::Circle]->AddComponent<ssz::Transform>();
-        mDebugObjects[(UINT)eColliderType::Circle]->AddComponent<ssz::MeshRenderer>()->SetMeshRenderer(L"DebugCircle", L"DebugMaterial");
+        for (UINT etype = 0; etype < (UINT)eColliderType::Sphere; ++etype) // 아직 2가지만 구현
+        {
+            mDebugObjects[etype] = new DebugObject((eColliderType)etype);
+        }
     }
 
     void Editor::Run()

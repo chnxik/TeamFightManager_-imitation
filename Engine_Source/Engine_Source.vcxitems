@@ -16,7 +16,7 @@
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sszApplication.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)sszButton.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszButtonUI.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sszCamera.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sszCollider2D.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sszCollisionManager.h" />
@@ -35,6 +35,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)sszMesh.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sszMeshRenderer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sszObject.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszPanelUI.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sszRenderer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sszResource.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sszResources.h" />
@@ -51,7 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)sszApplication.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)sszButton.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszButtonUI.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sszCamera.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sszCollider2D.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sszCollisionManager.cpp" />
@@ -66,6 +67,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)sszMath.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sszMesh.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sszMeshRenderer.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszPanelUI.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sszRenderer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sszResource.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sszResources.cpp" />

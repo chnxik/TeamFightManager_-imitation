@@ -122,7 +122,7 @@ namespace ssz
 			UIObject* PlayerTeamCharCard_1 = InstantiateUI<UIObject>(Vector3(-650.f, 74.f, 1.003f), Vector3(235.f, 226.f, 1.f), LineUpUI, true);
 			PlayerTeamCharCard_1->SetName(L"PlayerTeamCharCard_1");
 			PlayerTeamCharCard_1->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"PlayerTeam_1_CardMt");
-			Button* PTCharCard_1_Btn = PlayerTeamCharCard_1->AddComponent<Button>();
+			ButtonUI* PTCharCard_1_Btn = PlayerTeamCharCard_1->AddComponent<ButtonUI>();
 			PTCharCard_1_Btn->Initialize();
 			PTCharCard_1_Btn->SetIdleTex(L"RedPlayerCardIdleTex");
 			PTCharCard_1_Btn->SetOnTex(L"RedPlayerCardOnTex");
@@ -131,7 +131,7 @@ namespace ssz
 			UIObject* PlayerTeamCharCard_2 = InstantiateUI<UIObject>(Vector3(-395, 74.f, 1.003f), Vector3(235.f, 226.f, 1.f), LineUpUI, true);
 			PlayerTeamCharCard_2->SetName(L"PlayerTeamCharCard_2");
 			PlayerTeamCharCard_2->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"PlayerTeam_2_CardMt");
-			Button* PTCharCard_2_Btn = PlayerTeamCharCard_2->AddComponent<Button>();
+			ButtonUI* PTCharCard_2_Btn = PlayerTeamCharCard_2->AddComponent<ButtonUI>();
 			PTCharCard_2_Btn->Initialize();
 			PTCharCard_2_Btn->SetIdleTex(L"RedPlayerCardIdleTex");
 			PTCharCard_2_Btn->SetOnTex(L"RedPlayerCardOnTex");
@@ -140,7 +140,7 @@ namespace ssz
 			UIObject* PlayerTeamSubCharCard_1 = InstantiateUI<UIObject>(Vector3(65.f, 74.f, 1.003f), Vector3(235.f, 226.f, 1.f), LineUpUI, true);
 			PlayerTeamSubCharCard_1->SetName(L"PlayerTeamSubCharCard_1");
 			PlayerTeamSubCharCard_1->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"PlayerTeam_Sub1_CardMt");
-			Button* PTSubCharCard_1_Btn = PlayerTeamSubCharCard_1->AddComponent<Button>();
+			ButtonUI* PTSubCharCard_1_Btn = PlayerTeamSubCharCard_1->AddComponent<ButtonUI>();
 			PTSubCharCard_1_Btn->Initialize();
 			PTSubCharCard_1_Btn->SetIdleTex(L"RedPlayerCardIdleTex");
 			PTSubCharCard_1_Btn->SetOnTex(L"RedPlayerCardOnTex");
@@ -149,7 +149,7 @@ namespace ssz
 			UIObject* EnemyTeamCharCard_1 = InstantiateUI<UIObject>(Vector3(399.f, 74.f, 1.003f), Vector3(235.f, 226.f, 1.f), LineUpUI, true);
 			EnemyTeamCharCard_1->SetName(L"EnemyTeamCharCard_1");
 			EnemyTeamCharCard_1->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"EnemyTeam_1_CardMt");
-			Button* ETCharCard_1_Btn = EnemyTeamCharCard_1->AddComponent<Button>();
+			ButtonUI* ETCharCard_1_Btn = EnemyTeamCharCard_1->AddComponent<ButtonUI>();
 			ETCharCard_1_Btn->Initialize();
 			ETCharCard_1_Btn->SetIdleTex(L"BluePlayerCardIdleTex");
 			ETCharCard_1_Btn->SetOnTex(L"BluePlayerCardOnTex");
@@ -158,7 +158,7 @@ namespace ssz
 			UIObject* EnemyTeamCharCard_2 = InstantiateUI<UIObject>(Vector3(652.f, 74.f, 1.003f), Vector3(235.f, 226.f, 1.f), LineUpUI, true);
 			EnemyTeamCharCard_2->SetName(L"EnemyTeamCharCard_2");
 			EnemyTeamCharCard_2->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"EnemyTeam_2_CardMt");
-			Button* ETCharCard_2_Btn = EnemyTeamCharCard_2->AddComponent<Button>();
+			ButtonUI* ETCharCard_2_Btn = EnemyTeamCharCard_2->AddComponent<ButtonUI>();
 			ETCharCard_2_Btn->Initialize();
 			ETCharCard_2_Btn->SetIdleTex(L"BluePlayerCardIdleTex");
 			ETCharCard_2_Btn->SetOnTex(L"BluePlayerCardOnTex");
@@ -172,7 +172,7 @@ namespace ssz
 			UIObject* LineUpCorrectBtn = InstantiateUI<UIObject>(Vector3(0.f, -368.f, 1.003f), Vector3(207.f, 75.f, 1.f), LineUpUI, true);
 			LineUpCorrectBtn->SetName(L"DefaultUI");
 			LineUpCorrectBtn->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"LineUpUI_CorrectBtnMt");
-			Button* LineUpCorrectBtnComp = LineUpCorrectBtn->AddComponent<Button>();
+			ButtonUI* LineUpCorrectBtnComp = LineUpCorrectBtn->AddComponent<ButtonUI>();
 			LineUpCorrectBtnComp->Initialize();
 			LineUpCorrectBtnComp->SetIdleTex(L"DefaultBtn_IdleTex");
 			LineUpCorrectBtnComp->SetOnTex(L"DefaultBtn_OnTex");

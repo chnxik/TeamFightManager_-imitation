@@ -12,6 +12,9 @@
 #include "sszTransform.h"
 #include "sszRenderer.h"
 
+// UI Component
+#include "sszPanelUI.h"
+
 // Resources
 #include "sszResources.h"
 #include "sszMaterial.h"
@@ -42,7 +45,6 @@ namespace ssz::object
 		static __forceinline T* Instantiate(enums::eLayerType layer)
 		{
 			T* gameObj = new T();
-			Transform* tr = gameObj->AddComponent<Transform>();
 
 			Scene* scene = SceneManager::GetActiveScene();
 			scene->AddGameObject(layer, gameObj);
@@ -54,7 +56,7 @@ namespace ssz::object
 		static __forceinline T* Instantiate(Vector3 pos, enums::eLayerType layer)
 		{
 			T* gameObj = new T();
-			Transform* tr = gameObj->AddComponent<Transform>();
+			Transform* tr = gameObj->GetComponent<Transform>();
 			tr->SetPosition(pos);
 
 			Scene* scene = SceneManager::GetActiveScene();
@@ -67,7 +69,7 @@ namespace ssz::object
 		static __forceinline T* Instantiate(Vector3 pos, Vector3 scale, enums::eLayerType layer)
 		{
 			T* gameObj = new T();
-			Transform* tr = gameObj->AddComponent<Transform>();
+			Transform* tr = gameObj->GetComponent<Transform>();
 			tr->SetPosition(pos);
 			tr->SetScale(scale);
 
@@ -81,7 +83,7 @@ namespace ssz::object
 		static __forceinline T* Instantiate(Vector3 pos, Vector3 scale, Vector3 rotate, enums::eLayerType layer)
 		{
 			T* gameObj = new T();
-			Transform* tr = gameObj->AddComponent<Transform>();
+			Transform* tr = gameObj->GetComponent<Transform>();
 			tr->SetPosition(pos);
 			tr->SetRotation(rotate);
 			tr->SetScale(scale);
@@ -94,84 +96,110 @@ namespace ssz::object
 #pragma endregion
 #pragma region ChildUI Instantiate
 		template <typename T>
-		static __forceinline T* InstantiateUI(UIObject* pParentUI,bool UseCollider)
+		static __forceinline T* InstantiateUI(UIObject* pParentUI,const std::wstring& objKey)
 		{
-			T* gameObj = new T();
-			UIObject* UIObj = dynamic_cast<UIObject>(gameObj);
-			assert(UIObj);
-
-			Transform* tr = UIObj->AddComponent<Transform>();
+			T* gameObj = new T(objKey);
 			
-			if (UseCollider)
-				UIObj->AddComponent<Collider2D>()->Initialize();
+			PanelUI* Panel = pParentUI->GetComponent<PanelUI>();
+			assert(Panel);
+			
+			// UIObject 부모자식 설정
+			Panel->AddChildUI(gameObj);
+			gameObj->SetState(pParentUI->GetState());
 
-			UIObj->AddParentUI(pParentUI);
-			UIObj->SetState(pParentUI->GetState());
+			Transform* tr = gameObj->GetComponent<Transform>();
 
-			return UIObj;
+			return gameObj;
 		}
 
 		template <typename T>
-		static __forceinline T* InstantiateUI(Vector3 pos, UIObject* pParentUI, bool UseCollider)
+		static __forceinline T* InstantiateUI(Vector3 pos, UIObject* pParentUI, const std::wstring& objKey)
 		{
-			T* gameObj = new T();
-			UIObject* UIObj = dynamic_cast<UIObject>(gameObj);
-			assert(UIObj);
+			T* gameObj = new T(objKey);
 
-			Transform* tr = UIObj->AddComponent<Transform>();
 
-			tr->SetPosition(pos);
+			PanelUI* Panel = pParentUI->GetComponent<PanelUI>();
+			assert(Panel);
 
-			if (UseCollider)
-				UIObj->AddComponent<Collider2D>()->Initialize();
+			// UIObject 부모자식 설정
+			Panel->AddChildUI(gameObj);
+			gameObj->SetState(pParentUI->GetState());
+			
+			Transform* tr = gameObj->GetComponent<Transform>();
+			
+			Vector3 vPos = pos;
 
-			UIObj->AddParentUI(pParentUI);
-			UIObj->SetState(pParentUI->GetState());
+			if (Panel->GetPanerType() == ssz::PanelUI::AddPraentPos)
+			{
+				Vector3 ParentPos = pParentUI->GetComponent<Transform>()->GetPosition();
+				vPos.x += ParentPos.x;
+				vPos.y += ParentPos.y;
+			}
 
-			return UIObj;
+			tr->SetPosition(vPos);
+
+
+			return gameObj;
 		}
 
 		template <typename T>
-		static __forceinline T* InstantiateUI(Vector3 pos, Vector3 scale, UIObject* pParentUI, bool UseCollider)
+		static __forceinline T* InstantiateUI(Vector3 pos, Vector3 scale, UIObject* pParentUI, const std::wstring& objKey)
 		{
-			T* gameObj = new T();
-			UIObject* UIObj = dynamic_cast<UIObject*>(gameObj);
-			assert(UIObj);
+			T* gameObj = new T(objKey);
 
-			Transform* tr = UIObj->AddComponent<Transform>();
+			PanelUI* Panel = pParentUI->GetComponent<PanelUI>();
+			assert(Panel);
 
-			tr->SetPosition(pos);
+			// UIObject 부모자식 설정
+			Panel->AddChildUI(gameObj);
+			gameObj->SetState(pParentUI->GetState());
+
+			Transform* tr = gameObj->GetComponent<Transform>();
+
+			Vector3 vPos = pos;
+
+			if (Panel->GetPanerType() == ssz::PanelUI::AddPraentPos)
+			{
+				Vector3 ParentPos = pParentUI->GetComponent<Transform>()->GetPosition();
+				vPos.x += ParentPos.x;
+				vPos.y += ParentPos.y;
+			}
+
+			tr->SetPosition(vPos);
 			tr->SetScale(scale);
 
-			if (UseCollider)
-				UIObj->AddComponent<Collider2D>()->Initialize();
-
-			UIObj->AddParentUI(pParentUI);
-			UIObj->SetState(pParentUI->GetState());
-
-			return UIObj;
+			return gameObj;
 		}
 
 		template <typename T>
-		static __forceinline T* InstantiateUI(Vector3 pos, Vector3 scale, Vector3 rotate, UIObject* pParentUI, bool UseCollider)
+		static __forceinline T* InstantiateUI(Vector3 pos, Vector3 scale, Vector3 rotate, UIObject* pParentUI, const std::wstring& objKey)
 		{
-			T* gameObj = new T();
-			UIObject* UIObj = dynamic_cast<UIObject>(gameObj);
-			assert(UIObj);
+			T* gameObj = new T(objKey);
+			
+			PanelUI* Panel = pParentUI->GetComponent<PanelUI>();
+			assert(Panel);
 
-			Transform* tr = UIObj->AddComponent<Transform>();
+			// UIObject 부모자식 설정
+			Panel->AddChildUI(gameObj);
+			gameObj->SetState(pParentUI->GetState());
 
-			tr->SetPosition(pos);
+			Transform* tr = gameObj->GetComponent<Transform>();
+
+			Vector3 vPos = pos;
+
+			if (Panel->GetPanerType() == ssz::PanelUI::AddPraentPos)
+			{
+				Vector3 ParentPos = pParentUI->GetComponent<Transform>()->GetPosition();
+				vPos.x += ParentPos.x;
+				vPos.y += ParentPos.y;
+			}
+
+			tr->SetPosition(vPos);
 			tr->SetRotation(rotate);
 			tr->SetScale(scale);
 
-			if (UseCollider)
-				UIObj->AddComponent<Collider2D>()->Initialize();
 
-			UIObj->AddParentUI(pParentUI);
-			UIObj->SetState(pParentUI->GetState());
-
-			return UIObj;
+			return gameObj;
 		}
 #pragma endregion 
 

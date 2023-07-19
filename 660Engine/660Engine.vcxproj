@@ -168,32 +168,27 @@
     <ClInclude Include="framework.h" />
     <ClInclude Include="Load.h" />
     <ClInclude Include="sszArrangementScript.h" />
-    <ClInclude Include="sszBanPickScene.h" />
     <ClInclude Include="sszCameraScript.h" />
     <ClInclude Include="sszCursorScript.h" />
-    <ClInclude Include="sszIGStadiumScene.h" />
-    <ClInclude Include="sszMainLobbyScene.h" />
+    <ClInclude Include="sszDefaultBtn.h" />
+    <ClInclude Include="sszImportantBtn.h" />
     <ClInclude Include="sszMasking.h" />
-    <ClInclude Include="sszPrlgScene.h" />
-    <ClInclude Include="sszStadiumScene.h" />
     <ClInclude Include="sszTestScene.h" />
     <ClInclude Include="sszTestScript.h" />
     <ClInclude Include="sszTestScript2.h" />
     <ClInclude Include="sszTestScript3.h" />
     <ClInclude Include="sszTitleScene.h" />
+    <ClInclude Include="CommonObjHeader.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="660Engine.cpp" />
     <ClCompile Include="Load.cpp" />
     <ClCompile Include="sszArrangementScript.cpp" />
-    <ClCompile Include="sszBanPickScene.cpp" />
     <ClCompile Include="sszCameraScript.cpp" />
     <ClCompile Include="sszCursorScript.cpp" />
-    <ClCompile Include="sszIGStadiumScene.cpp" />
-    <ClCompile Include="sszMainLobbyScene.cpp" />
+    <ClCompile Include="sszDefaultBtn.cpp" />
+    <ClCompile Include="sszImportantBtn.cpp" />
     <ClCompile Include="sszMasking.cpp" />
-    <ClCompile Include="sszPrlgScene.cpp" />
-    <ClCompile Include="sszStadiumScene.cpp" />
     <ClCompile Include="sszTestScene.cpp" />
     <ClCompile Include="sszTestScript.cpp" />
     <ClCompile Include="sszTestScript2.cpp" />

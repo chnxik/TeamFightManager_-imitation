@@ -6,7 +6,7 @@ namespace gui
 	class DebugObject : public ssz::GameObject
 	{
 	public:
-		DebugObject();
+		DebugObject(ssz::enums::eColliderType eType);
 		~DebugObject();
 
 		virtual void Initialize() override;
@@ -15,5 +15,6 @@ namespace gui
 		virtual void Render() override;
 
 	private:
+		ssz::enums::eColliderType mType;
 	};
 }

@@ -7,6 +7,7 @@ namespace ssz
 	{
 	public:
 		UIObject();
+		UIObject(const std::wstring& Key);
 		virtual ~UIObject();
 
 		virtual void Initialize();
@@ -25,18 +26,6 @@ namespace ssz
 		UIObject* GetParentUI() { return mParentUI; }
 		const std::vector<UIObject*>& GetChildUI() { return mChildUI; }
 
-		void AddChildUI(UIObject* pChildUI)
-		{
-			pChildUI->mParentUI = this;
-			mChildUI.push_back(pChildUI);
-		}
-
-		void AddParentUI(UIObject* pParentUI)
-		{
-			mParentUI = pParentUI;
-			pParentUI->mChildUI.push_back(this);
-		}
-
 		bool IsUIOpen() { return bOpen; }
 		void UIOpen() { bOpen = true; }
 		void UIClose() { bOpen = false; }
@@ -50,6 +39,7 @@ namespace ssz
 		void MouseOnCheck();
 
 	private:
+
 		UIObject* mParentUI;
 		std::vector<UIObject*> mChildUI;
 
@@ -57,5 +47,21 @@ namespace ssz
 		bool bMouseOn;
 
 		bool bOpen;
+
+		void AddChildUI(UIObject* pChildUI)
+		{
+			pChildUI->mParentUI = this;
+			mChildUI.push_back(pChildUI);
+		}
+
+		void AddParentUI(UIObject* pParentUI)
+		{
+			mParentUI = pParentUI;
+			pParentUI->mChildUI.push_back(this);
+		}
+	protected:
+		const std::wstring mUIKey;
+
+		friend class PanelUI;
 	};
 }

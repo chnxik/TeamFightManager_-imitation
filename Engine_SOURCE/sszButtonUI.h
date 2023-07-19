@@ -10,7 +10,7 @@ typedef void(ssz::Entity::* DELEGATEW)(const std::wstring&);
 namespace ssz
 {
 
-	class Button : public UIComponent
+	class ButtonUI : public UIComponent
 	{
 	public:
 		enum class eBtnState
@@ -18,11 +18,17 @@ namespace ssz
 			Idle,
 			On,
 			Down,
-			End,
+			End
 		};
 
-		Button();
-		virtual ~Button();
+		enum class eBtnType
+		{
+			Selected,
+			Push,
+		};
+
+		ButtonUI();
+		virtual ~ButtonUI();
 
 	public:
 		virtual void Initialize();
@@ -41,6 +47,11 @@ namespace ssz
 		void SetOnTex(const std::wstring& TextureKey);
 		void SetDownTex(const std::wstring& TextureKey);
 
+		void SetBtnState(eBtnState eState) { mCurState = eState; }
+		void SetBtnType(eBtnType eType) { mType = eType; }
+
+		bool ChangeBtnTex(eBtnState eState);
+
 		void SetActive(bool b) { bActive = b; }
 		void SetOwnerMaterial();
 
@@ -51,10 +62,10 @@ namespace ssz
 
 	private:
 		std::shared_ptr<Texture> mBtnTex[(UINT)eBtnState::End];
-
 		std::shared_ptr<Material> mOwnerMaterial;
 
 		eBtnState mCurState;
+		eBtnType mType;
 
 		bool bActive;
 

@@ -109,9 +109,6 @@
     <Filter Include="GameObject\Component\UI\Button">
       <UniqueIdentifier>{707515b4-5eac-437c-a967-939501c5e0aa}</UniqueIdentifier>
     </Filter>
-    <Filter Include="GameObject\Component\UI\Canvas">
-      <UniqueIdentifier>{daa9b2a1-98cc-4e37-b348-165b7a656404}</UniqueIdentifier>
-    </Filter>
     <Filter Include="GameObject\Component\UI\Panel">
       <UniqueIdentifier>{5d830522-d669-4d7c-b7cb-baada0d68245}</UniqueIdentifier>
     </Filter>
@@ -228,8 +225,11 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)sszUIComponent.h">
       <Filter>GameObject\Component\UI\Base</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)sszButton.h">
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszButtonUI.h">
       <Filter>GameObject\Component\UI\Button</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszPanelUI.h">
+      <Filter>GameObject\Component\UI\Panel</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -317,8 +317,11 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)sszUIComponent.cpp">
       <Filter>GameObject\Component\UI\Base</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)sszButton.cpp">
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszButtonUI.cpp">
       <Filter>GameObject\Component\UI\Button</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszPanelUI.cpp">
+      <Filter>GameObject\Component\UI\Panel</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

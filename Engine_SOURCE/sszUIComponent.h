@@ -1,7 +1,6 @@
 #pragma once
 #include "sszComponent.h"
-
-class UIObject;
+#include "sszUIObject.h"
 
 namespace ssz
 {
@@ -11,7 +10,7 @@ namespace ssz
 		UIComponent();
 		virtual ~UIComponent();
 
-		virtual void Initialize() {};
+		virtual void Initialize();
 		virtual void Update() {};
 		virtual void LateUpdate() {};
 
@@ -23,6 +22,7 @@ namespace ssz
 		virtual void MouseOn() {};
 
 		UIObject* GetOwnerUI() { return mOwnerUI; }
+		std::vector<UIComponent*> GetUIComponents()	{ return mOwnerUI->GetComponents<UIComponent>(); }
 		virtual void SetOwner(GameObject* owner) override;
 
 	private:

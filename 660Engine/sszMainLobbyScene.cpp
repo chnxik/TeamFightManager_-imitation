@@ -91,7 +91,7 @@ namespace ssz
 				UI_headerBar->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"UI_headerBar_Mt");
 				UI_headerBar->AddComponent<Collider2D>()->Initialize();
 
-#pragma region Menu Button
+#pragma region Menu ButtonUI
 				{
 					// Menu Btn
 					Vector3 MainMenuBtnSize(230.f, 60.f, 1.f);
@@ -110,7 +110,7 @@ namespace ssz
 					TeamManageMenu->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"TeamManageMenuBtnMt");
 					TeamManageMenu->AddComponent<Collider2D>()->Initialize();
 
-					Button* TeamManageMenuBtn = TeamManageMenu->AddComponent<Button>();
+					ButtonUI* TeamManageMenuBtn = TeamManageMenu->AddComponent<ButtonUI>();
 					TeamManageMenuBtn->Initialize();
 					TeamManageMenuBtn->SetIdleTex(L"MainMenuBtnIdleTex");
 					TeamManageMenuBtn->SetOnTex(L"MainMenuBtnOnTex");
@@ -121,7 +121,7 @@ namespace ssz
 					OperateMenu->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"OperateMenuBtnMt");
 					OperateMenu->AddComponent<Collider2D>()->Initialize();
 
-					Button* OperateMenuBtn = OperateMenu->AddComponent<Button>();
+					ButtonUI* OperateMenuBtn = OperateMenu->AddComponent<ButtonUI>();
 					OperateMenuBtn->Initialize();
 					OperateMenuBtn->SetIdleTex(L"MainMenuBtnIdleTex");
 					OperateMenuBtn->SetOnTex(L"MainMenuBtnOnTex");
@@ -132,7 +132,7 @@ namespace ssz
 					LeagueMenu->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"LeagueMenuBtnMt");
 					LeagueMenu->AddComponent<Collider2D>()->Initialize();
 
-					Button* LeagueMenuBtn = LeagueMenu->AddComponent<Button>();
+					ButtonUI* LeagueMenuBtn = LeagueMenu->AddComponent<ButtonUI>();
 					LeagueMenuBtn->Initialize();
 					LeagueMenuBtn->SetIdleTex(L"MainMenuBtnIdleTex");
 					LeagueMenuBtn->SetOnTex(L"MainMenuBtnOnTex");
@@ -143,7 +143,7 @@ namespace ssz
 					GameMenu->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"GameMenuBtnMt");
 					GameMenu->AddComponent<Collider2D>()->Initialize();
 
-					Button* GameMenuBtn = GameMenu->AddComponent<Button>();
+					ButtonUI* GameMenuBtn = GameMenu->AddComponent<ButtonUI>();
 					GameMenuBtn->Initialize();
 					GameMenuBtn->SetIdleTex(L"MainMenuBtnIdleTex");
 					GameMenuBtn->SetOnTex(L"MainMenuBtnOnTex");
@@ -154,7 +154,7 @@ namespace ssz
 					SystemMenu->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"SystemMenuBtnMt");
 					SystemMenu->AddComponent<Collider2D>()->Initialize();
 
-					Button* SystemMenuBtn = SystemMenu->AddComponent<Button>();
+					ButtonUI* SystemMenuBtn = SystemMenu->AddComponent<ButtonUI>();
 					SystemMenuBtn->Initialize();
 					SystemMenuBtn->SetIdleTex(L"MainMenuBtnIdleTex");
 					SystemMenuBtn->SetOnTex(L"MainMenuBtnOnTex");
@@ -169,7 +169,7 @@ namespace ssz
 					ProceedBtn->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"ProceedBtnIdleMt");
 					ProceedBtn->AddComponent<Collider2D>()->Initialize();
 
-					Button* ProceedBtnComp = ProceedBtn->AddComponent<Button>();
+					ButtonUI* ProceedBtnComp = ProceedBtn->AddComponent<ButtonUI>();
 					ProceedBtnComp->Initialize();
 					ProceedBtnComp->SetIdleTex(L"ProceedBtnIdleTex");
 					ProceedBtnComp->SetOnTex(L"ProceedBtnOnTex");

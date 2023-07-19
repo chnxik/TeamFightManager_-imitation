@@ -14,23 +14,8 @@
     <ClInclude Include="sszTitleScene.h">
       <Filter>Contents\Scene\1. Title</Filter>
     </ClInclude>
-    <ClInclude Include="sszPrlgScene.h">
-      <Filter>Contents\Scene\2. Prlg</Filter>
-    </ClInclude>
     <ClInclude Include="sszCursorScript.h">
       <Filter>Contents\Script\CursorScript</Filter>
-    </ClInclude>
-    <ClInclude Include="sszMainLobbyScene.h">
-      <Filter>Contents\Scene\3. MainLobby</Filter>
-    </ClInclude>
-    <ClInclude Include="sszStadiumScene.h">
-      <Filter>Contents\Scene\4. Stadium</Filter>
-    </ClInclude>
-    <ClInclude Include="sszIGStadiumScene.h">
-      <Filter>Contents\Scene\6. IGStadium</Filter>
-    </ClInclude>
-    <ClInclude Include="sszBanPickScene.h">
-      <Filter>Contents\Scene\5. Banpick</Filter>
     </ClInclude>
     <ClInclude Include="sszTestScene.h">
       <Filter>Contents\Scene\0. TestScene</Filter>
@@ -50,6 +35,15 @@
     <ClInclude Include="CommonHeader.h">
       <Filter>Common</Filter>
     </ClInclude>
+    <ClInclude Include="CommonObjHeader.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="sszDefaultBtn.h">
+      <Filter>Contents\Object\UI\Button\DefaultBtn</Filter>
+    </ClInclude>
+    <ClInclude Include="sszImportantBtn.h">
+      <Filter>Contents\Object\UI\Button\InportantBtn</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="660Engine.cpp" />
@@ -62,23 +56,8 @@
     <ClCompile Include="sszTitleScene.cpp">
       <Filter>Contents\Scene\1. Title</Filter>
     </ClCompile>
-    <ClCompile Include="sszPrlgScene.cpp">
-      <Filter>Contents\Scene\2. Prlg</Filter>
-    </ClCompile>
     <ClCompile Include="sszCursorScript.cpp">
       <Filter>Contents\Script\CursorScript</Filter>
-    </ClCompile>
-    <ClCompile Include="sszMainLobbyScene.cpp">
-      <Filter>Contents\Scene\3. MainLobby</Filter>
-    </ClCompile>
-    <ClCompile Include="sszStadiumScene.cpp">
-      <Filter>Contents\Scene\4. Stadium</Filter>
-    </ClCompile>
-    <ClCompile Include="sszBanPickScene.cpp">
-      <Filter>Contents\Scene\5. Banpick</Filter>
-    </ClCompile>
-    <ClCompile Include="sszIGStadiumScene.cpp">
-      <Filter>Contents\Scene\6. IGStadium</Filter>
     </ClCompile>
     <ClCompile Include="sszTestScene.cpp">
       <Filter>Contents\Scene\0. TestScene</Filter>
@@ -97,6 +76,12 @@
     </ClCompile>
     <ClCompile Include="sszMasking.cpp">
       <Filter>Contents\Script\Masking</Filter>
+    </ClCompile>
+    <ClCompile Include="sszDefaultBtn.cpp">
+      <Filter>Contents\Object\UI\Button\DefaultBtn</Filter>
+    </ClCompile>
+    <ClCompile Include="sszImportantBtn.cpp">
+      <Filter>Contents\Object\UI\Button\InportantBtn</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -150,6 +135,39 @@
     </Filter>
     <Filter Include="Contents\Scene\6. IGStadium">
       <UniqueIdentifier>{b4c3226c-b774-46f9-9046-a79f9b339ca7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object">
+      <UniqueIdentifier>{593de4cf-0d47-4de9-a2ba-315be2b7512c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\UI">
+      <UniqueIdentifier>{9c43af0a-c0b8-4d13-9c4c-f926ca438d8b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\UI\PopUPWin">
+      <UniqueIdentifier>{e94a1987-8685-4206-8a67-0dcbb218e5a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\UI\PopUPWin\NewGame">
+      <UniqueIdentifier>{7fca46c7-b174-495d-a603-f3b3391984b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\UI\PopUPWin\Base">
+      <UniqueIdentifier>{89c47677-9ff2-4dfb-a68a-18c5147ae85a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\GameObject">
+      <UniqueIdentifier>{65edb0b7-1aca-40e8-b544-096bdd12c655}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\GameObject\BackGround">
+      <UniqueIdentifier>{0b13dca3-a679-46e9-9142-2aa00b8a562e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\UI\Button">
+      <UniqueIdentifier>{43a2ca78-96e8-4858-b07e-eff7607330fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\UI\PlayerCard">
+      <UniqueIdentifier>{79620b10-abe6-49c4-b321-ac155d5b51e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\UI\Button\DefaultBtn">
+      <UniqueIdentifier>{c6c6b886-6d39-4477-a55f-5923165d5492}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\UI\Button\InportantBtn">
+      <UniqueIdentifier>{15d426a2-86ee-4fff-ade7-4f4729be0a91}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

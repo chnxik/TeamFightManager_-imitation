@@ -1,6 +1,9 @@
 #include "sszTitleScene.h"
 #include "CommonHeader.h"
 
+#include "sszDefaultBtn.h"
+#include "sszImportantBtn.h"
+
 namespace ssz
 {
 	using namespace object;
@@ -22,21 +25,14 @@ namespace ssz
 			Resources::Load<Texture>(L"TitleLogoTex", L"..\\Resources\\useResource\\Title\\logo_tp.png");
 
 			Resources::Load<Texture>(L"NewGameUITex", L"..\\Resources\\useResource\\Title\\NewGame\\new_game_ui_bg.png");
-			Resources::Load<Texture>(L"ImportantBtn_IdleTex", L"..\\Resources\\useResource\\CommonUI\\btn\\important_button_0.png");
-			Resources::Load<Texture>(L"ImportantBtn_OnTex", L"..\\Resources\\useResource\\CommonUI\\btn\\important_button_1.png");
-			Resources::Load<Texture>(L"ImportantBtn_DownTex", L"..\\Resources\\useResource\\CommonUI\\btn\\important_button_2.png");
-			Resources::Load<Texture>(L"DefaultBtn_IdleTex", L"..\\Resources\\useResource\\CommonUI\\btn\\default_button_0.png");
-			Resources::Load<Texture>(L"DefaultBtn_OnTex", L"..\\Resources\\useResource\\CommonUI\\btn\\default_button_1.png");
-			Resources::Load<Texture>(L"DefaultBtn_DownTex", L"..\\Resources\\useResource\\CommonUI\\btn\\default_button_2.png");
 		}
 		{
 			LoadMaterial(L"TitleBgMt", L"SpriteShader", L"TitleBg", eRenderingMode::Transparent);
 			LoadMaterial(L"IGStadiumMt", L"SpriteShader", L"IGStadiumTex", eRenderingMode::Transparent);
 			LoadMaterial(L"IGStadiumSkyMt", L"SpriteShader", L"IGStadiumSkyTex", eRenderingMode::Transparent);
 			LoadMaterial(L"TitleLogoMt", L"SpriteShader", L"TitleLogoTex", eRenderingMode::Transparent);
+
 			LoadMaterial(L"NewGameUIMt", L"SpriteShader", L"NewGameUITex", eRenderingMode::Transparent);
-			LoadMaterial(L"InportantBtnMt", L"SpriteShader", L"ImportantBtn_IdleTex", eRenderingMode::Transparent);
-			LoadMaterial(L"DefaultUIMt", L"SpriteShader", L"DefaultBtn_IdleTex", eRenderingMode::Transparent);
 		}
 #pragma region Create Object for this Scene
 		// Bagk Ground
@@ -60,33 +56,17 @@ namespace ssz
 
 		// UI
 		{
-			NewGameUI = Instantiate<UIObject>(Vector3(0.f, 50.f, 1.01f), 
-				Vector3(1350.f, 786.f, 1.f), eLayerType::UI);
+			NewGameUI = Instantiate<UIObject>(Vector3(0.f, 50.f, 1.01f), Vector3(1350.f, 786.f, 1.f), eLayerType::UI);
 			NewGameUI->SetName(L"NewGameUIPanel");
-			NewGameUI->AddComponent<MeshRenderer>()->
-				SetMeshRenderer(L"RectMesh", L"NewGameUIMt");
-			NewGameUI->AddComponent<Collider2D>()->Initialize();
+			NewGameUI->AddComponent<PanelUI>()->SetPanelType(ssz::PanelUI::ePanelType::AddPraentPos);
+			NewGameUI->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"NewGameUIMt");
 			NewGameUI->SetState(ssz::GameObject::eState::Paused);
 
-			UIObject* BtnUI = InstantiateUI<UIObject>(Vector3(-123.f, -285.f, 1.009f), Vector3(207.f, 75.f, 1.f), NewGameUI, true);
-			BtnUI->SetName(L"InportantUI");
-			BtnUI->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"InportantBtnMt");
-			Button* BtnUIComp = BtnUI->AddComponent<Button>();
-			BtnUIComp->Initialize();
-			BtnUIComp->SetIdleTex(L"ImportantBtn_IdleTex");
-			BtnUIComp->SetOnTex(L"ImportantBtn_OnTex");
-			BtnUIComp->SetDownTex(L"ImportantBtn_DownTex");
-			BtnUIComp->SetDelegateW(this,(DELEGATEW)&Scene::ChangeScene,L"PrlgScene");
+			ImportantBtn* NewGameStartBtn = InstantiateUI<ImportantBtn>(Vector3(-123.f, -335.f, 1.009f), NewGameUI, L"NewGameStartBtn");
+			NewGameStartBtn->GetBtnComponent()->SetDelegateW(this, (DELEGATEW)&Scene::ChangeScene, L"PrlgScene");
 
-			UIObject* BtnUI2 = InstantiateUI<UIObject>(Vector3(123.f, -285.f, 1.009f), Vector3(207.f, 75.f, 1.f), NewGameUI, true);
-			BtnUI2->SetName(L"DefaultUI");
-			BtnUI2->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"DefaultUIMt");
-			Button* BtnUI2Comp = BtnUI2->AddComponent<Button>();
-			BtnUI2Comp->Initialize();
-			BtnUI2Comp->SetIdleTex(L"DefaultBtn_IdleTex");
-			BtnUI2Comp->SetOnTex(L"DefaultBtn_OnTex");
-			BtnUI2Comp->SetDownTex(L"DefaultBtn_DownTex");
-			BtnUI2Comp->SetDelegate(NewGameUI, (DELEGATE)&GameObject::SetPaused);
+			DefaultBtn* NewGameUICloseBtn = InstantiateUI<DefaultBtn>(Vector3(123.f, -335.f, 1.009f), NewGameUI, L"NewGameUICloseBtn");
+			NewGameUICloseBtn->GetBtnComponent()->SetDelegate(NewGameUI, (DELEGATE)&GameObject::SetPaused);
 		}
 
 		// MouseCursor
@@ -108,7 +88,7 @@ namespace ssz
 	{
 		Scene::Update();
 
-		if (Input::GetKeyDown(eKeyCode::LBUTTON))
+		if (Input::GetKeyDown(eKeyCode::ENTER))
 		{
 			if (NewGameUI->GetState() == GameObject::eState::Paused)
 			{

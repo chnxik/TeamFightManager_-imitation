@@ -34,7 +34,7 @@ namespace ssz
 			mBtnComp->Initialize();
 			mBtnComp->SetBtnType(ssz::ButtonUI::eBtnType::Selected);
 
-			ChangeRed();
+			SetRed();
 
 			// Set default Size
 			Transform* tr = GetComponent<Transform>();
@@ -48,13 +48,13 @@ namespace ssz
 	PlayerCardBtn::~PlayerCardBtn()
 	{
 	}
-	void PlayerCardBtn::ChangeRed()
+	void PlayerCardBtn::SetRed()
 	{
 		mBtnComp->SetIdleTex(vecCardTex[eTeamColor::Red][eBtnState::Idle]);
 		mBtnComp->SetOnTex(vecCardTex[eTeamColor::Red][eBtnState::On]);
 		mBtnComp->SetDownTex(vecCardTex[eTeamColor::Red][eBtnState::Down]);
 	}
-	void PlayerCardBtn::ChangeBlue()
+	void PlayerCardBtn::SetBlue()
 	{
 		mBtnComp->SetIdleTex(vecCardTex[eTeamColor::Blue][eBtnState::Idle]);
 		mBtnComp->SetOnTex(vecCardTex[eTeamColor::Blue][eBtnState::On]);

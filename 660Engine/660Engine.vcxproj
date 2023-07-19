@@ -168,6 +168,10 @@
     <ClInclude Include="framework.h" />
     <ClInclude Include="Load.h" />
     <ClInclude Include="sszArrangementScript.h" />
+    <ClInclude Include="sszBanLine.h" />
+    <ClInclude Include="sszBanPickScene.h" />
+    <ClInclude Include="sszBanPickStat.h" />
+    <ClInclude Include="sszBattleHeader.h" />
     <ClInclude Include="sszCameraScript.h" />
     <ClInclude Include="sszCursorScript.h" />
     <ClInclude Include="sszDefaultBtn.h" />
@@ -181,6 +185,7 @@
     <ClInclude Include="sszMasking.h" />
     <ClInclude Include="sszNewGameWindow.h" />
     <ClInclude Include="sszPlayerCardBtn.h" />
+    <ClInclude Include="sszPlayerCardSlot.h" />
     <ClInclude Include="sszProceedBtn.h" />
     <ClInclude Include="sszStadiumScene.h" />
     <ClInclude Include="sszTestScene.h" />
@@ -195,6 +200,10 @@
     <ClCompile Include="660Engine.cpp" />
     <ClCompile Include="Load.cpp" />
     <ClCompile Include="sszArrangementScript.cpp" />
+    <ClCompile Include="sszBanLine.cpp" />
+    <ClCompile Include="sszBanPickScene.cpp" />
+    <ClCompile Include="sszBanPickStat.cpp" />
+    <ClCompile Include="sszBattleHeader.cpp" />
     <ClCompile Include="sszCameraScript.cpp" />
     <ClCompile Include="sszCursorScript.cpp" />
     <ClCompile Include="sszDefaultBtn.cpp" />
@@ -208,6 +217,7 @@
     <ClCompile Include="sszMasking.cpp" />
     <ClCompile Include="sszNewGameWindow.cpp" />
     <ClCompile Include="sszPlayerCardBtn.cpp" />
+    <ClCompile Include="sszPlayerCardSlot.cpp" />
     <ClCompile Include="sszProceedBtn.cpp" />
     <ClCompile Include="sszStadiumScene.cpp" />
     <ClCompile Include="sszTestScene.cpp" />

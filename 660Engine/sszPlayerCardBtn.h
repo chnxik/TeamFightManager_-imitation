@@ -11,8 +11,8 @@ namespace ssz
 		virtual ~PlayerCardBtn();
 
 		ButtonUI* GetBtnComponent() { return mBtnComp; }
-		void ChangeRed();
-		void ChangeBlue();
+		void SetRed();
+		void SetBlue();
 
 	private:
 		enum eTeamColor

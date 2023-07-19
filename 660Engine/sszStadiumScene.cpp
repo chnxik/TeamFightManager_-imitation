@@ -83,11 +83,11 @@ namespace ssz
 			DefaultBtn* LineUpProgressBtn = InstantiateUI<DefaultBtn>(Vector3(0.f, -368.f, 1.003f), LineUpUI, L"LineUpProgressBtn");
 			LineUpProgressBtn->GetBtnComponent()->SetDelegateW(this, (DELEGATEW)&Scene::ChangeScene, L"BanPickScene");
 
-			InstantiateUI<PlayerCardBtn>(Vector3(-650.f, 74.f, 1.003f), LineUpUI, L"PlayerTeamCard_1")->ChangeRed();
-			InstantiateUI<PlayerCardBtn>(Vector3(-395.f, 74.f, 1.003f), LineUpUI, L"PlayerTeamCard_2")->ChangeRed();
-			InstantiateUI<PlayerCardBtn>(Vector3(65.f, 74.f, 1.003f), LineUpUI, L"PlayerTeamSubCard_1")->ChangeRed();
-			InstantiateUI<PlayerCardBtn>(Vector3(399.f, 74.f, 1.003f), LineUpUI, L"EnemyTeamCard_1")->ChangeBlue();
-			InstantiateUI<PlayerCardBtn>(Vector3(652.f, 74.f, 1.003f), LineUpUI, L"EnemyTeamCard_2")->ChangeBlue();
+			InstantiateUI<PlayerCardBtn>(Vector3(-650.f, 74.f, 1.003f), LineUpUI, L"PlayerTeamCard_1")->SetRed();
+			InstantiateUI<PlayerCardBtn>(Vector3(-395.f, 74.f, 1.003f), LineUpUI, L"PlayerTeamCard_2")->SetRed();
+			InstantiateUI<PlayerCardBtn>(Vector3(65.f, 74.f, 1.003f), LineUpUI, L"PlayerTeamSubCard_1")->SetRed();
+			InstantiateUI<PlayerCardBtn>(Vector3(399.f, 74.f, 1.003f), LineUpUI, L"EnemyTeamCard_1")->SetBlue();
+			InstantiateUI<PlayerCardBtn>(Vector3(652.f, 74.f, 1.003f), LineUpUI, L"EnemyTeamCard_2")->SetBlue();
 
 			UIObject* PlayerChangeIcon = InstantiateUI<UIObject>(Vector3(-159.f, 3.f, 1.003f),Vector3(135.f,120.f,1.f),LineUpUI,L"PlayerChangeIcon");
 			PlayerChangeIcon->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"PlayerChangeIconMt");

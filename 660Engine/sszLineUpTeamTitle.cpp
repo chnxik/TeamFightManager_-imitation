@@ -29,6 +29,7 @@ namespace ssz
 			// Set default Size
 			Transform* tr = GetComponent<Transform>();
 			tr->SetScale(Vector3(500, 70.f, 1.f));
+			tr->SetTransType(ssz::Transform::eTransType::PosAdd);
 		}
 #pragma endregion
 	}

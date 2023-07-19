@@ -3,6 +3,7 @@
 
 #include "sszLineUpWindow.h"
 #include "sszPlayerCardBtn.h"
+#include "sszDefaultBtn.h"
 
 namespace ssz
 {
@@ -27,9 +28,6 @@ namespace ssz
 			Resources::Load<Texture>(L"LineUpUI_Highlight_SlotStartingMemTex", L"..\\Resources\\useResource\\stadium\\UI\\highlighted_slot_starting_member_bg.png");
 			Resources::Load<Texture>(L"LineUpUI_Highlight_SlotSubMemTex", L"..\\Resources\\useResource\\stadium\\UI\\highlighted_slot_sub_bg.png");
 
-			Resources::Load<Texture>(L"PlayerChangeIconTex", L"..\\Resources\\useResource\\stadium\\UI\\player_change_icon_0.png");
-			Resources::Load<Texture>(L"PlayerChangeIconHighlightTex", L"..\\Resources\\useResource\\stadium\\UI\\player_change_icon_1.png");
-
 			LoadMaterial(L"StadiumMt", L"SpriteShader", L"StadiumTex", eRenderingMode::Transparent);
 			LoadMaterial(L"Stadium_chairMt", L"SpriteShader", L"Stadium_ChairTex", eRenderingMode::Transparent);
 			LoadMaterial(L"Stadium_deskMt", L"SpriteShader", L"Stadium_deskTex", eRenderingMode::Transparent);
@@ -38,12 +36,8 @@ namespace ssz
 			LoadMaterial(L"Stadium_frame_BgMt", L"SpriteShader", L"Stadium_frame_BgTex", eRenderingMode::Transparent);
 
 			//UI
-			LoadMaterial(L"LineUpUI_SlotStartingMem_HighlightMt", L"SpriteShader", L"LineUpUI_Highlight_SlotStartingMemTex", eRenderingMode::Transparent);
-			LoadMaterial(L"LineUpUI_SlotSub_HighlightMt", L"SpriteShader", L"LineUpUI_Highlight_SlotSubMemTex", eRenderingMode::Transparent);
-			
+			Resources::Load<Texture>(L"PlayerChangeIconTex", L"..\\Resources\\useResource\\stadium\\UI\\player_change_icon_0.png");
 			LoadMaterial(L"PlayerChangeIconMt", L"SpriteShader", L"PlayerChangeIconTex", eRenderingMode::Transparent);
-
-			LoadMaterial(L"LineUpUI_CorrectBtnMt", L"SpriteShader", L"DefaultBtn_IdleTex", eRenderingMode::Transparent);
 		}
 #pragma region Create Object for this Scene
 		// GameObject
@@ -85,6 +79,9 @@ namespace ssz
 			LineUpWindow* LineUpUI = InstantiateUI<LineUpWindow>(Vector3(0.f, 0.f, 1.004f), eLayerType::UI, L"LineUpWindowBg");
 			LineUpUI->SetPlayerTeamTitle(ssz::LineUpTeamTitle::eColorType::Red);
 			LineUpUI->SetEnemyTeamTitle(ssz::LineUpTeamTitle::eColorType::Blue);
+			
+			DefaultBtn* LineUpProgressBtn = InstantiateUI<DefaultBtn>(Vector3(0.f, -368.f, 1.003f), LineUpUI, L"LineUpProgressBtn");
+			LineUpProgressBtn->GetBtnComponent()->SetDelegateW(this, (DELEGATEW)&Scene::ChangeScene, L"BanPickScene");
 
 			InstantiateUI<PlayerCardBtn>(Vector3(-650.f, 74.f, 1.003f), LineUpUI, L"PlayerTeamCard_1")->ChangeRed();
 			InstantiateUI<PlayerCardBtn>(Vector3(-395.f, 74.f, 1.003f), LineUpUI, L"PlayerTeamCard_2")->ChangeRed();
@@ -92,20 +89,9 @@ namespace ssz
 			InstantiateUI<PlayerCardBtn>(Vector3(399.f, 74.f, 1.003f), LineUpUI, L"EnemyTeamCard_1")->ChangeBlue();
 			InstantiateUI<PlayerCardBtn>(Vector3(652.f, 74.f, 1.003f), LineUpUI, L"EnemyTeamCard_2")->ChangeBlue();
 
-			// UIObject* PlayerChangeIcon = InstantiateUI<UIObject>(Vector3(-159.f, 3.f, 1.003f),Vector3(135.f,120.f,1.f),LineUpUI,true);
-			// PlayerChangeIcon->SetName(L"PlayerChangeIcon");
-			// PlayerChangeIcon->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"PlayerChangeIconMt");
-			// 
-			// 
-			// UIObject* LineUpCorrectBtn = InstantiateUI<UIObject>(Vector3(0.f, -368.f, 1.003f), Vector3(207.f, 75.f, 1.f), LineUpUI, true);
-			// LineUpCorrectBtn->SetName(L"DefaultUI");
-			// LineUpCorrectBtn->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"LineUpUI_CorrectBtnMt");
-			// ButtonUI* LineUpCorrectBtnComp = LineUpCorrectBtn->AddComponent<ButtonUI>();
-			// LineUpCorrectBtnComp->Initialize();
-			// LineUpCorrectBtnComp->SetIdleTex(L"DefaultBtn_IdleTex");
-			// LineUpCorrectBtnComp->SetOnTex(L"DefaultBtn_OnTex");
-			// LineUpCorrectBtnComp->SetDownTex(L"DefaultBtn_DownTex");
-			// LineUpCorrectBtnComp->SetDelegateW(this, (DELEGATEW)&Scene::ChangeScene, L"BanPickScene");
+			UIObject* PlayerChangeIcon = InstantiateUI<UIObject>(Vector3(-159.f, 3.f, 1.003f),Vector3(135.f,120.f,1.f),LineUpUI,L"PlayerChangeIcon");
+			PlayerChangeIcon->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"PlayerChangeIconMt");
+			PlayerChangeIcon->GetComponent<Transform>()->SetTransType(ssz::Transform::eTransType::PosAdd);
 #pragma endregion
 
 			// 오브젝트 배치용 스크립트

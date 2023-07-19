@@ -32,7 +32,9 @@ namespace ssz
 			mBtnComp->SetDownTex(L"ImportantBtn_DownTex");
 
 			// Set default Size
-			GetComponent<Transform>()->SetScale(Vector3(207, 75.f, 1.f));
+			Transform* tr = GetComponent<Transform>();
+			tr->SetScale(Vector3(207, 75.f, 1.f));
+			tr->SetTransType(ssz::Transform::eTransType::PosAdd);
 		}
 #pragma endregion
 	}

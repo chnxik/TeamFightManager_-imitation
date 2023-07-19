@@ -171,17 +171,25 @@
     <ClInclude Include="sszCameraScript.h" />
     <ClInclude Include="sszCursorScript.h" />
     <ClInclude Include="sszDefaultBtn.h" />
+    <ClInclude Include="sszHeaderSlot.h" />
     <ClInclude Include="sszImportantBtn.h" />
+    <ClInclude Include="sszLineUpTeamTitle.h" />
+    <ClInclude Include="sszLineUpWindow.h" />
+    <ClInclude Include="sszLobbyHeader.h" />
     <ClInclude Include="sszLobbyMenuBtn.h" />
     <ClInclude Include="sszMainLobbyScene.h" />
     <ClInclude Include="sszMasking.h" />
+    <ClInclude Include="sszNewGameWindow.h" />
+    <ClInclude Include="sszPlayerCardBtn.h" />
     <ClInclude Include="sszProceedBtn.h" />
+    <ClInclude Include="sszStadiumScene.h" />
     <ClInclude Include="sszTestScene.h" />
     <ClInclude Include="sszTestScript.h" />
     <ClInclude Include="sszTestScript2.h" />
     <ClInclude Include="sszTestScript3.h" />
     <ClInclude Include="sszTitleScene.h" />
     <ClInclude Include="CommonObjHeader.h" />
+    <ClInclude Include="sszWeeklyEventBtn.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="660Engine.cpp" />
@@ -190,16 +198,24 @@
     <ClCompile Include="sszCameraScript.cpp" />
     <ClCompile Include="sszCursorScript.cpp" />
     <ClCompile Include="sszDefaultBtn.cpp" />
+    <ClCompile Include="sszHeaderSlot.cpp" />
     <ClCompile Include="sszImportantBtn.cpp" />
+    <ClCompile Include="sszLineUpTeamTitle.cpp" />
+    <ClCompile Include="sszLineUpWindow.cpp" />
+    <ClCompile Include="sszLobbyHeader.cpp" />
     <ClCompile Include="sszLobbyMenuBtn.cpp" />
     <ClCompile Include="sszMainLobbyScene.cpp" />
     <ClCompile Include="sszMasking.cpp" />
+    <ClCompile Include="sszNewGameWindow.cpp" />
+    <ClCompile Include="sszPlayerCardBtn.cpp" />
     <ClCompile Include="sszProceedBtn.cpp" />
+    <ClCompile Include="sszStadiumScene.cpp" />
     <ClCompile Include="sszTestScene.cpp" />
     <ClCompile Include="sszTestScript.cpp" />
     <ClCompile Include="sszTestScript2.cpp" />
     <ClCompile Include="sszTestScript3.cpp" />
     <ClCompile Include="sszTitleScene.cpp" />
+    <ClCompile Include="sszWeeklyEventBtn.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

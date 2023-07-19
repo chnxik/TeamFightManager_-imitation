@@ -53,6 +53,30 @@
     <ClInclude Include="sszProceedBtn.h">
       <Filter>Contents\Object\UI\Button\ProceedBtn</Filter>
     </ClInclude>
+    <ClInclude Include="sszWeeklyEventBtn.h">
+      <Filter>Contents\Object\UI\Button\WeeklyEventBtn</Filter>
+    </ClInclude>
+    <ClInclude Include="sszLobbyHeader.h">
+      <Filter>Contents\Object\UI\HeaderUI\Lobby</Filter>
+    </ClInclude>
+    <ClInclude Include="sszHeaderSlot.h">
+      <Filter>Contents\Object\UI\Slot\LobbyHeaderSlot</Filter>
+    </ClInclude>
+    <ClInclude Include="sszNewGameWindow.h">
+      <Filter>Contents\Object\UI\Window\NewGame</Filter>
+    </ClInclude>
+    <ClInclude Include="sszStadiumScene.h">
+      <Filter>Contents\Scene\4. Stadium</Filter>
+    </ClInclude>
+    <ClInclude Include="sszLineUpWindow.h">
+      <Filter>Contents\Object\UI\Window\LineUp</Filter>
+    </ClInclude>
+    <ClInclude Include="sszLineUpTeamTitle.h">
+      <Filter>Contents\Object\UI\Slot\LineUpTeamTitle</Filter>
+    </ClInclude>
+    <ClInclude Include="sszPlayerCardBtn.h">
+      <Filter>Contents\Object\UI\Button\PlayerCardBtn</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="660Engine.cpp" />
@@ -100,6 +124,30 @@
     </ClCompile>
     <ClCompile Include="sszProceedBtn.cpp">
       <Filter>Contents\Object\UI\Button\ProceedBtn</Filter>
+    </ClCompile>
+    <ClCompile Include="sszWeeklyEventBtn.cpp">
+      <Filter>Contents\Object\UI\Button\WeeklyEventBtn</Filter>
+    </ClCompile>
+    <ClCompile Include="sszLobbyHeader.cpp">
+      <Filter>Contents\Object\UI\HeaderUI\Lobby</Filter>
+    </ClCompile>
+    <ClCompile Include="sszHeaderSlot.cpp">
+      <Filter>Contents\Object\UI\Slot\LobbyHeaderSlot</Filter>
+    </ClCompile>
+    <ClCompile Include="sszNewGameWindow.cpp">
+      <Filter>Contents\Object\UI\Window\NewGame</Filter>
+    </ClCompile>
+    <ClCompile Include="sszStadiumScene.cpp">
+      <Filter>Contents\Scene\4. Stadium</Filter>
+    </ClCompile>
+    <ClCompile Include="sszLineUpWindow.cpp">
+      <Filter>Contents\Object\UI\Window\LineUp</Filter>
+    </ClCompile>
+    <ClCompile Include="sszLineUpTeamTitle.cpp">
+      <Filter>Contents\Object\UI\Slot\LineUpTeamTitle</Filter>
+    </ClCompile>
+    <ClCompile Include="sszPlayerCardBtn.cpp">
+      <Filter>Contents\Object\UI\Button\PlayerCardBtn</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -160,15 +208,6 @@
     <Filter Include="Contents\Object\UI">
       <UniqueIdentifier>{9c43af0a-c0b8-4d13-9c4c-f926ca438d8b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Contents\Object\UI\PopUPWin">
-      <UniqueIdentifier>{e94a1987-8685-4206-8a67-0dcbb218e5a0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Object\UI\PopUPWin\NewGame">
-      <UniqueIdentifier>{7fca46c7-b174-495d-a603-f3b3391984b3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Object\UI\PopUPWin\Base">
-      <UniqueIdentifier>{89c47677-9ff2-4dfb-a68a-18c5147ae85a}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Contents\Object\GameObject">
       <UniqueIdentifier>{65edb0b7-1aca-40e8-b544-096bdd12c655}</UniqueIdentifier>
     </Filter>
@@ -192,6 +231,45 @@
     </Filter>
     <Filter Include="Contents\Object\UI\Button\LobbyMenuBtn">
       <UniqueIdentifier>{accba350-7e76-43a7-81b1-f6f759a112b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\UI\Button\WeeklyEventBtn">
+      <UniqueIdentifier>{d2badf14-905e-4d07-b0fe-9455ae8db1e0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\UI\HeaderUI">
+      <UniqueIdentifier>{26b70876-1997-4ddb-9a3e-6c93d13527fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\UI\HeaderUI\Lobby">
+      <UniqueIdentifier>{b11e3a25-a8da-4046-855c-66030a0138d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\UI\HeaderUI\Battle">
+      <UniqueIdentifier>{7f74714d-9a2b-465a-b5f1-c9e07da73fc3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\UI\Window">
+      <UniqueIdentifier>{e94a1987-8685-4206-8a67-0dcbb218e5a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\UI\Window\NewGame">
+      <UniqueIdentifier>{7fca46c7-b174-495d-a603-f3b3391984b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\UI\Slot">
+      <UniqueIdentifier>{8531973f-65d5-4c51-88c1-ebadddac8702}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\UI\Slot\LobbyHeaderSlot">
+      <UniqueIdentifier>{34c676f2-7337-46fa-8790-603d1191c06c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\UI\Icon">
+      <UniqueIdentifier>{82fe3ac5-2de4-4801-9e72-80dd192b8ec2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\UI\Logo">
+      <UniqueIdentifier>{9986c204-273f-4809-ba00-d0f6d2be6a6a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\UI\Window\LineUp">
+      <UniqueIdentifier>{f192984a-af85-44fe-bf3c-9323235e63f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\UI\Slot\LineUpTeamTitle">
+      <UniqueIdentifier>{ce5c10d8-531e-44fb-95b5-cd1c2fdbb7fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\UI\Button\PlayerCardBtn">
+      <UniqueIdentifier>{68afe796-c894-4e47-9e43-039bd2d71f2c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -1,8 +1,11 @@
 #include "sszMainLobbyScene.h"
 #include "CommonHeader.h"
 
+#include "sszLobbyHeader.h"
+
 #include "sszLobbyMenuBtn.h"
 #include "sszProceedBtn.h"
+#include "sszWeeklyEventBtn.h"
 
 namespace ssz
 {
@@ -26,24 +29,9 @@ namespace ssz
 			Resources::Load<Texture>(L"BgGroundTex", L"..\\Resources\\useResource\\Mainlobby\\Bg\\Ground\\ground.png");
 			Resources::Load<Texture>(L"BgHouseTex", L"..\\Resources\\useResource\\Mainlobby\\Bg\\house\\house_bg.png");
 
-			Resources::Load<Texture>(L"UIheaderBarTex", L"..\\Resources\\useResource\\Mainlobby\\UI\\header\\header_bg.png");
-
-			Resources::Load<Texture>(L"WeeklyEventRedBtnIdleTex", L"..\\Resources\\useResource\\Mainlobby\\UI\\btn\\weekly\\weekly_event_button_0.png");
-			Resources::Load<Texture>(L"WeeklyEventRedBtnOnTex", L"..\\Resources\\useResource\\Mainlobby\\UI\\btn\\weekly\\weekly_event_button_1.png");
-			Resources::Load<Texture>(L"WeeklyEventGrayBtnIdleTex", L"..\\Resources\\useResource\\Mainlobby\\UI\\btn\\weekly\\weekly_event_button_3.png");
-			Resources::Load<Texture>(L"WeeklyEventGrayBtnOnTex", L"..\\Resources\\useResource\\Mainlobby\\UI\\btn\\weekly\\weekly_event_button_4.png");
-
-			Resources::Load<Texture>(L"UIheaderSlotBgTex", L"..\\Resources\\useResource\\Mainlobby\\UI\\header\\header_slot_bg.png");
-		}
-		{
 			LoadMaterial(L"Bg_Skyday_Mt", L"SpriteShader", L"SkydayBgTex", eRenderingMode::Transparent);
 			LoadMaterial(L"Bg_Ground_Mt", L"SpriteShader", L"BgGroundTex", eRenderingMode::Transparent);
 			LoadMaterial(L"Bg_House_Mt", L"SpriteShader", L"BgHouseTex", eRenderingMode::Transparent);
-			LoadMaterial(L"UI_headerBar_Mt", L"SpriteShader", L"UIheaderBarTex", eRenderingMode::Transparent);
-
-			LoadMaterial(L"WeeklyEventBtnIdleMt", L"SpriteShader", L"WeeklyEventRedBtnIdleTex", eRenderingMode::Transparent);
-
-			LoadMaterial(L"UIheaderSlotBgMt", L"SpriteShader", L"UIheaderSlotBgTex",eRenderingMode::Transparent);
 		}
 #pragma region Create Object for this Scene
 		// GameObject
@@ -70,14 +58,10 @@ namespace ssz
 #pragma region UI
 			{
 				// UI_Headerbar
-				UIObject* UI_headerBar = Instantiate<UIObject>(Vector3(0.0f, 484.5f, 1.015f), Vector3(1920.f, 111.f, 1.f), eLayerType::UI);
-				UI_headerBar->SetName(L"UI_header_Bar");
-				UI_headerBar->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"UI_headerBar_Mt");
-				UI_headerBar->AddComponent<Collider2D>()->Initialize();
+				LobbyHeader* LobbyheaderBg = InstantiateUI<LobbyHeader>(Vector3(0.0f, 484.5f, 1.015f), eLayerType::UI, L"LobbyheaderBg");
 
-#pragma region Menu ButtonUI
+#pragma region ButtonUI
 				{
-					// Menu Btn
 					Vector3 MainMenuBtnSize(230.f, 70.f, 1.f);
 					Vector3 MainMenuBtnPos[5] = {};
 
@@ -89,41 +73,24 @@ namespace ssz
 						MainMenuBtnPos[i] = Vector3(x, y, 1.001f);
 					}
 
+					// Menu Btn
 					LobbyMenuBtn* TeamManageMenu = InstantiateUI<LobbyMenuBtn>(MainMenuBtnPos[0], eLayerType::UI, L"TeamManageMenu");
 					LobbyMenuBtn* OperateMenu = InstantiateUI<LobbyMenuBtn>(MainMenuBtnPos[1], eLayerType::UI, L"OperateMenu");
 					LobbyMenuBtn* LeagueMenuBtn = InstantiateUI<LobbyMenuBtn>(MainMenuBtnPos[2], eLayerType::UI, L"LeagueMenuBtn");
 					LobbyMenuBtn* GameMenu = InstantiateUI<LobbyMenuBtn>(MainMenuBtnPos[3], eLayerType::UI, L"GameMenu");
 					LobbyMenuBtn* SystemMenu = InstantiateUI<LobbyMenuBtn>(MainMenuBtnPos[4], eLayerType::UI, L"SystemMenu");
-				}
-#pragma endregion
-#pragma region Proceed Btn
-				{
-					ProceedBtn* ProceedMenu = InstantiateUI<ProceedBtn>(Vector3(735.f, -430.f, 1.002f), eLayerType::UI,L"ProceedMenu");
+				
+					// Proceed Btn
+					ProceedBtn* ProceedMenu = InstantiateUI<ProceedBtn>(Vector3(735.f, -430.f, 1.002f), eLayerType::UI, L"ProceedMenu");
 					ProceedMenu->GetBtnComponent()->SetDelegateW(this, (DELEGATEW)&Scene::ChangeScene, L"StadiumScene");
+	
+					// WeeklyEvent Btn
+					WeeklyEventBtn* WeeklyEventMenu = InstantiateUI<WeeklyEventBtn>(Vector3(735.f, -320.f, 1.002f), eLayerType::UI, L"WeeklyEventMenu");
 				}
 #pragma endregion
-#pragma region WeeklyEvent Btn
-				{
-					// WeeklyEventBtn
-					UIObject* WeeklyEventBtn = Instantiate<UIObject>(Vector3(735.f, -320.f, 1.002f), Vector3(340.f, 60.f, 1.f), eLayerType::UI);
-					WeeklyEventBtn->SetName(L"WeeklyEventBtn");
-					WeeklyEventBtn->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"WeeklyEventBtnIdleMt");
-					WeeklyEventBtn->AddComponent<Collider2D>()->Initialize();
-				}
-#pragma endregion
-
-				// UI header Slot
-				UIObject* HeaderGoldSlotUI = Instantiate<UIObject>(Vector3(775.f, 485.f, 1.002f), Vector3(339.f, 72.f, 1.f), eLayerType::UI);
-				HeaderGoldSlotUI->SetName(L"HeaderGoldSlotUI");
-				HeaderGoldSlotUI->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"UIheaderSlotBgMt");
-
-				UIObject* HeaderDaySlotUI = Instantiate<UIObject>(Vector3(416.f, 485.f, 1.002f), Vector3(339.f, 72.f, 1.f), eLayerType::UI);
-				HeaderDaySlotUI->SetName(L"HeaderDaySlotUI");
-				HeaderDaySlotUI->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"UIheaderSlotBgMt");
-
+				
 				// 오브젝트 배치용 스크립트
-				// ArrangementScript* ArScript = UI_headerBar->AddComponent<ArrangementScript>();
-				// ArScript->SetDefault();
+				// ProceedMenu->AddComponent<ArrangementScript>()->SetDefault();
 			}
 #pragma endregion
 		}

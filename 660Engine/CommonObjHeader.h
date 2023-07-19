@@ -3,7 +3,6 @@
 #include "sszInput.h"
 #include "sszTime.h"
 
-
 // Component
 #include "sszCamera.h"
 #include "sszTransform.h"

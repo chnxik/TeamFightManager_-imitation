@@ -170,8 +170,6 @@ namespace ssz::object
 			Panel->AddChildUI(gameObj);
 			gameObj->SetState(pParentUI->GetState());
 
-			Transform* tr = gameObj->GetComponent<Transform>();
-
 			return gameObj;
 		}
 
@@ -190,18 +188,7 @@ namespace ssz::object
 			
 			Transform* tr = gameObj->GetComponent<Transform>();
 			
-			Vector3 vPos = pos;
-
-			if (Panel->GetPanerType() == ssz::PanelUI::AddPraentPos)
-			{
-				Vector3 ParentPos = pParentUI->GetComponent<Transform>()->GetPosition();
-				vPos.x += ParentPos.x;
-				vPos.y += ParentPos.y;
-			}
-
-			tr->SetPosition(vPos);
-
-
+			tr->SetPosition(pos);
 			return gameObj;
 		}
 
@@ -219,16 +206,7 @@ namespace ssz::object
 
 			Transform* tr = gameObj->GetComponent<Transform>();
 
-			Vector3 vPos = pos;
-
-			if (Panel->GetPanerType() == ssz::PanelUI::AddPraentPos)
-			{
-				Vector3 ParentPos = pParentUI->GetComponent<Transform>()->GetPosition();
-				vPos.x += ParentPos.x;
-				vPos.y += ParentPos.y;
-			}
-
-			tr->SetPosition(vPos);
+			tr->SetPosition(pos);
 			tr->SetScale(scale);
 
 			return gameObj;
@@ -248,19 +226,9 @@ namespace ssz::object
 
 			Transform* tr = gameObj->GetComponent<Transform>();
 
-			Vector3 vPos = pos;
-
-			if (Panel->GetPanerType() == ssz::PanelUI::AddPraentPos)
-			{
-				Vector3 ParentPos = pParentUI->GetComponent<Transform>()->GetPosition();
-				vPos.x += ParentPos.x;
-				vPos.y += ParentPos.y;
-			}
-
-			tr->SetPosition(vPos);
+			tr->SetPosition(pos);
 			tr->SetRotation(rotate);
 			tr->SetScale(scale);
-
 
 			return gameObj;
 		}

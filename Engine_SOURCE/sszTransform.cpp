@@ -18,7 +18,7 @@ namespace ssz
 		, mWorldRotation(Vector3::Zero)
 		, mWorldScale(Vector3::One)
 		, mParent(nullptr)
-		, mType(eTransType::MUL)
+		, mType(eTransType::Multiply)
 	{
 	}
 
@@ -38,7 +38,9 @@ namespace ssz
 	{
 		if (mParent)
 		{
-			if (mType == eTransType::MUL)
+			switch (mType)
+			{
+			case ssz::Transform::Multiply:
 			{
 				mWorld = Matrix::Identity;
 
@@ -63,7 +65,8 @@ namespace ssz
 				mWorld.Decompose(mWorldScale, tmp, mWorldPosition);
 				mWorldRotation = mRotation + mParent->mWorldRotation; // Rotation은 합으로 계산
 			}
-			else if (mType == eTransType::ADD)
+				break;
+			case ssz::Transform::AddAll:
 			{
 				mWorldPosition = mPosition + mParent->mWorldPosition;
 				mWorldRotation = mRotation + mParent->mWorldRotation;
@@ -86,7 +89,35 @@ namespace ssz
 				mUp = Vector3::TransformNormal(Vector3::Up, rotation);
 				mForward = Vector3::TransformNormal(Vector3::Forward, rotation);
 				mRight = Vector3::TransformNormal(Vector3::Right, rotation);
+			}
+				break;
+			case ssz::Transform::PosAdd:
+			{
+				mWorldPosition = mPosition + mParent->mWorldPosition;
+				mWorldRotation = mRotation + mParent->mWorldRotation;
+				mWorldScale = mScale;
 
+				mWorld = Matrix::Identity;
+
+				Matrix scale = Matrix::CreateScale(mWorldScale);
+
+				Matrix rotation;
+				rotation = Matrix::CreateRotationX(mWorldRotation.x);
+				rotation *= Matrix::CreateRotationY(mWorldRotation.y);
+				rotation *= Matrix::CreateRotationZ(mWorldRotation.z);
+
+				Matrix position;
+				position.Translation(mWorldPosition);
+
+				mWorld = scale * rotation * position;
+
+				mUp = Vector3::TransformNormal(Vector3::Up, rotation);
+				mForward = Vector3::TransformNormal(Vector3::Forward, rotation);
+				mRight = Vector3::TransformNormal(Vector3::Right, rotation);
+			}
+				break;
+			default:
+				break;
 			}
 		}
 		else

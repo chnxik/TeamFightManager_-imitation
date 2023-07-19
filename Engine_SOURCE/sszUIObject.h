@@ -52,12 +52,16 @@ namespace ssz
 		{
 			pChildUI->mParentUI = this;
 			mChildUI.push_back(pChildUI);
+			Transform* Parenttr = GetComponent<Transform>();
+			pChildUI->GetComponent<Transform>()->SetParent(Parenttr);
 		}
 
 		void AddParentUI(UIObject* pParentUI)
 		{
 			mParentUI = pParentUI;
 			pParentUI->mChildUI.push_back(this);
+			Transform* Parenttr = pParentUI->GetComponent<Transform>();
+			GetComponent<Transform>()->SetParent(Parenttr);
 		}
 	protected:
 		const std::wstring mUIKey;

@@ -1,6 +1,7 @@
 #include "sszTitleScene.h"
 #include "CommonHeader.h"
 
+#include "sszNewGameWindow.h"
 #include "sszDefaultBtn.h"
 #include "sszImportantBtn.h"
 
@@ -24,15 +25,10 @@ namespace ssz
 			Resources::Load<Texture>(L"IGStadiumTex", L"..\\Resources\\useResource\\stadium\\ingame\\stadium.png");
 			Resources::Load<Texture>(L"TitleLogoTex", L"..\\Resources\\useResource\\Title\\logo_tp.png");
 
-			Resources::Load<Texture>(L"NewGameUITex", L"..\\Resources\\useResource\\Title\\NewGame\\new_game_ui_bg.png");
-		}
-		{
 			LoadMaterial(L"TitleBgMt", L"SpriteShader", L"TitleBg", eRenderingMode::Transparent);
 			LoadMaterial(L"IGStadiumMt", L"SpriteShader", L"IGStadiumTex", eRenderingMode::Transparent);
 			LoadMaterial(L"IGStadiumSkyMt", L"SpriteShader", L"IGStadiumSkyTex", eRenderingMode::Transparent);
 			LoadMaterial(L"TitleLogoMt", L"SpriteShader", L"TitleLogoTex", eRenderingMode::Transparent);
-
-			LoadMaterial(L"NewGameUIMt", L"SpriteShader", L"NewGameUITex", eRenderingMode::Transparent);
 		}
 #pragma region Create Object for this Scene
 		// Bagk Ground
@@ -56,10 +52,7 @@ namespace ssz
 
 		// UI
 		{
-			NewGameUI = Instantiate<UIObject>(Vector3(0.f, 50.f, 1.01f), Vector3(1350.f, 786.f, 1.f), eLayerType::UI);
-			NewGameUI->SetName(L"NewGameUIPanel");
-			NewGameUI->AddComponent<PanelUI>()->SetPanelType(ssz::PanelUI::ePanelType::AddPraentPos);
-			NewGameUI->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"NewGameUIMt");
+			NewGameUI = InstantiateUI<NewGameWindow>(Vector3(0.f, 50.f, 1.01f), eLayerType::UI, L"NewGameWindow");
 			NewGameUI->SetState(ssz::GameObject::eState::Paused);
 
 			ImportantBtn* NewGameStartBtn = InstantiateUI<ImportantBtn>(Vector3(-123.f, -335.f, 1.009f), NewGameUI, L"NewGameStartBtn");

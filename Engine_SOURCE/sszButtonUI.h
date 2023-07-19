@@ -47,6 +47,10 @@ namespace ssz
 		void SetOnTex(const std::wstring& TextureKey);
 		void SetDownTex(const std::wstring& TextureKey);
 
+		void SetIdleTex(std::shared_ptr<Texture> Texture);
+		void SetOnTex(std::shared_ptr<Texture> Texture);
+		void SetDownTex(std::shared_ptr<Texture> Texture);
+
 		void SetBtnState(eBtnState eState) { mCurState = eState; }
 		void SetBtnType(eBtnType eType) { mType = eType; }
 

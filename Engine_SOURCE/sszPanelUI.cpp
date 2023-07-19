@@ -3,7 +3,6 @@
 namespace ssz
 {
 	PanelUI::PanelUI()
-		: mtype(ePanelType::None)
 	{
 	}
 

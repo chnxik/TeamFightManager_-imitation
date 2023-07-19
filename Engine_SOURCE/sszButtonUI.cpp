@@ -76,6 +76,21 @@ namespace ssz
 	{
 		mBtnTex[(UINT)eBtnState::Down] = Resources::Find<Texture>(TextureKey);
 	}
+
+	void ButtonUI::SetIdleTex(std::shared_ptr<Texture> Texture)
+	{
+		mBtnTex[(UINT)eBtnState::Idle] = Texture;
+	}
+
+	void ButtonUI::SetOnTex(std::shared_ptr<Texture> Texture)
+	{
+		mBtnTex[(UINT)eBtnState::On] = Texture;
+	}
+
+	void ButtonUI::SetDownTex(std::shared_ptr<Texture> Texture)
+	{
+		mBtnTex[(UINT)eBtnState::Down] = Texture;
+	}
 	
 	bool ButtonUI::ChangeBtnTex(eBtnState eState)
 	{
@@ -99,6 +114,7 @@ namespace ssz
 		switch (mType)
 		{
 		case ssz::ButtonUI::eBtnType::Selected:
+			mCurState = eBtnState::Down;
 			break;
 		case ssz::ButtonUI::eBtnType::Push:
 			mCurState = eBtnState::Down;
@@ -123,9 +139,9 @@ namespace ssz
 		switch (mType)
 		{
 		case ssz::ButtonUI::eBtnType::Selected:
-			mCurState = eBtnState::Down;
 			break;
 		case ssz::ButtonUI::eBtnType::Push:
+			mCurState = eBtnState::Idle;
 			break;
 		}
 
@@ -146,7 +162,17 @@ namespace ssz
 	{
 		bool bLbtnDown = GetOwnerUI()->IsLbtnDown();
 
-		if(!bLbtnDown)
-			mCurState = eBtnState::On;
+
+		switch (mType)
+		{
+		case ssz::ButtonUI::eBtnType::Selected:
+			if (mCurState == eBtnState::Idle && !bLbtnDown)
+				mCurState = eBtnState::On;
+			break;
+		case ssz::ButtonUI::eBtnType::Push:
+			if (!bLbtnDown)
+				mCurState = eBtnState::On;
+			break;
+		}
 	}
 }

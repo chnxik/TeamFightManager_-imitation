@@ -8,8 +8,9 @@ namespace ssz
 	public:
 		enum eTransType
 		{
-			MUL,
-			ADD,
+			Multiply,
+			AddAll,
+			PosAdd,
 		};
 
 		Transform();
@@ -42,8 +43,8 @@ namespace ssz
 		Vector3 Right() { return mRight; }
 		Vector3 Up() { return mUp; }
 
-		void SetTransTypeMUL() { mType = eTransType::MUL; }
-		void SetTransTypeADD() { mType = eTransType::ADD; }
+		void SetTransType(eTransType eType) { mType = eType; }
+		eTransType GetTrasnTyppe() { return mType; }
 
 		GameObject* GetParentOwner() { return mParent->mOwner; }
 

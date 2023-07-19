@@ -17,6 +17,10 @@ namespace ssz
 			Resources::Load<Texture>(L"ProceedBtnDownTex", L"..\\Resources\\useResource\\Mainlobby\\UI\\btn\\proceed\\proceed_button_3.png");
 
 			ssz::object::LoadMaterial(MtKey, L"SpriteShader", L"ProceedBtnIdleTex", eRenderingMode::Transparent);
+
+			Resources::Load<Texture>(L"ProceedBtnArrowMarkTex", L"..\\Resources\\useResource\\Mainlobby\\UI\\btn\\proceed\\proceed_button_2.png");
+
+			ssz::object::LoadMaterial(L"ProceedBtnArrowMarkMt", L"SpriteShader", L"ProceedBtnArrowMarkTex", eRenderingMode::Transparent);
 		}
 #pragma endregion
 #pragma region Setting
@@ -33,6 +37,19 @@ namespace ssz
 
 			// Set default Size
 			GetComponent<Transform>()->SetScale(Vector3(340.f, 120.f, 1.f));
+		}
+#pragma endregion
+#pragma region Mark
+		{
+			// SetPanel
+			AddComponent<PanelUI>();
+			
+			// Add MarkTex
+			float BtnPosz = GetComponent<Transform>()->GetPosition().y;
+
+			UIObject* ProceedBtnArrowMark = ssz::object::InstantiateUI<UIObject>(Vector3(80.f, 0.f, BtnPosz - 0.0001f), Vector3(170.f, 120.f, 1.f), this, L"ProceedArrowMark");
+			ProceedBtnArrowMark->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"ProceedBtnArrowMarkMt");
+			ProceedBtnArrowMark->GetComponent<Transform>()->SetTransType(ssz::Transform::eTransType::PosAdd);
 		}
 #pragma endregion
 	}

@@ -3,9 +3,8 @@
 
 namespace ssz
 {
-    class StatIcon;
-    class BanPickStat : public UIObject
-    {
+	class StatIcon : public UIObject
+	{
     public:
         enum eStatType
         {
@@ -17,13 +16,12 @@ namespace ssz
             SPD,
             END
         };
+        StatIcon(const std::wstring& key);
+        virtual ~StatIcon();
 
-        BanPickStat(const std::wstring& key);
-        virtual ~BanPickStat();
-
-        void SetSlot(eStatType eType);
+        void SetIcon(eStatType eType);
 
     private:
-        StatIcon* mStatIcon;
-    };
+        std::shared_ptr<Texture> mStatIconTex[eStatType::END];
+	};
 }

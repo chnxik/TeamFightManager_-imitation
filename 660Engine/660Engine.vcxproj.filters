@@ -77,6 +77,27 @@
     <ClInclude Include="sszPlayerCardBtn.h">
       <Filter>Contents\Object\UI\Button\PlayerCardBtn</Filter>
     </ClInclude>
+    <ClInclude Include="sszPlayerCardSlot.h">
+      <Filter>Contents\Object\UI\Slot\PlayerCard</Filter>
+    </ClInclude>
+    <ClInclude Include="sszBattleHeader.h">
+      <Filter>Contents\Object\UI\HeaderUI\Battle</Filter>
+    </ClInclude>
+    <ClInclude Include="sszBanPickStat.h">
+      <Filter>Contents\Object\UI\Slot\BanpickStat</Filter>
+    </ClInclude>
+    <ClInclude Include="sszBanPickScene.h">
+      <Filter>Contents\Scene\5. Banpick</Filter>
+    </ClInclude>
+    <ClInclude Include="sszBanLine.h">
+      <Filter>Contents\Object\UI\Line\BanLine</Filter>
+    </ClInclude>
+    <ClInclude Include="sszStatIcon.h">
+      <Filter>Contents\Object\UI\Icon\StatIcon</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEnums.h">
+      <Filter>Common</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="660Engine.cpp" />
@@ -149,6 +170,24 @@
     <ClCompile Include="sszPlayerCardBtn.cpp">
       <Filter>Contents\Object\UI\Button\PlayerCardBtn</Filter>
     </ClCompile>
+    <ClCompile Include="sszPlayerCardSlot.cpp">
+      <Filter>Contents\Object\UI\Slot\PlayerCard</Filter>
+    </ClCompile>
+    <ClCompile Include="sszBattleHeader.cpp">
+      <Filter>Contents\Object\UI\HeaderUI\Battle</Filter>
+    </ClCompile>
+    <ClCompile Include="sszBanPickStat.cpp">
+      <Filter>Contents\Object\UI\Slot\BanpickStat</Filter>
+    </ClCompile>
+    <ClCompile Include="sszBanPickScene.cpp">
+      <Filter>Contents\Scene\5. Banpick</Filter>
+    </ClCompile>
+    <ClCompile Include="sszBanLine.cpp">
+      <Filter>Contents\Object\UI\Line\BanLine</Filter>
+    </ClCompile>
+    <ClCompile Include="sszStatIcon.cpp">
+      <Filter>Contents\Object\UI\Icon\StatIcon</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Contents">
@@ -217,9 +256,6 @@
     <Filter Include="Contents\Object\UI\Button">
       <UniqueIdentifier>{43a2ca78-96e8-4858-b07e-eff7607330fa}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Contents\Object\UI\PlayerCard">
-      <UniqueIdentifier>{79620b10-abe6-49c4-b321-ac155d5b51e7}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Contents\Object\UI\Button\DefaultBtn">
       <UniqueIdentifier>{c6c6b886-6d39-4477-a55f-5923165d5492}</UniqueIdentifier>
     </Filter>
@@ -256,9 +292,6 @@
     <Filter Include="Contents\Object\UI\Slot\LobbyHeaderSlot">
       <UniqueIdentifier>{34c676f2-7337-46fa-8790-603d1191c06c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Contents\Object\UI\Icon">
-      <UniqueIdentifier>{82fe3ac5-2de4-4801-9e72-80dd192b8ec2}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Contents\Object\UI\Logo">
       <UniqueIdentifier>{9986c204-273f-4809-ba00-d0f6d2be6a6a}</UniqueIdentifier>
     </Filter>
@@ -270,6 +303,24 @@
     </Filter>
     <Filter Include="Contents\Object\UI\Button\PlayerCardBtn">
       <UniqueIdentifier>{68afe796-c894-4e47-9e43-039bd2d71f2c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\UI\Slot\PlayerCard">
+      <UniqueIdentifier>{79620b10-abe6-49c4-b321-ac155d5b51e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\UI\Slot\BanpickStat">
+      <UniqueIdentifier>{ea18be57-baa9-43e4-977f-917a372d3645}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\UI\Line">
+      <UniqueIdentifier>{11fb3c8e-3e00-4816-9464-43056c020689}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\UI\Line\BanLine">
+      <UniqueIdentifier>{6c000f15-52ab-4820-b0b2-769fb841b94d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\UI\Icon">
+      <UniqueIdentifier>{b4cc266c-c3c2-4f65-91fc-5df7011e617e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\UI\Icon\StatIcon">
+      <UniqueIdentifier>{43303aef-9b44-4487-8215-f752573726bd}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

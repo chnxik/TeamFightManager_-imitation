@@ -166,6 +166,7 @@
   <ItemGroup>
     <ClInclude Include="CommonHeader.h" />
     <ClInclude Include="framework.h" />
+    <ClInclude Include="GameEnums.h" />
     <ClInclude Include="Load.h" />
     <ClInclude Include="sszArrangementScript.h" />
     <ClInclude Include="sszBanLine.h" />
@@ -188,6 +189,7 @@
     <ClInclude Include="sszPlayerCardSlot.h" />
     <ClInclude Include="sszProceedBtn.h" />
     <ClInclude Include="sszStadiumScene.h" />
+    <ClInclude Include="sszStatIcon.h" />
     <ClInclude Include="sszTestScene.h" />
     <ClInclude Include="sszTestScript.h" />
     <ClInclude Include="sszTestScript2.h" />
@@ -220,6 +222,7 @@
     <ClCompile Include="sszPlayerCardSlot.cpp" />
     <ClCompile Include="sszProceedBtn.cpp" />
     <ClCompile Include="sszStadiumScene.cpp" />
+    <ClCompile Include="sszStatIcon.cpp" />
     <ClCompile Include="sszTestScene.cpp" />
     <ClCompile Include="sszTestScript.cpp" />
     <ClCompile Include="sszTestScript2.cpp" />

@@ -4,6 +4,7 @@
 #include "sszBattleHeader.h"
 #include "sszBanLine.h"
 #include "sszPlayerCardSlot.h"
+#include "sszBanPickStat.h"
 
 namespace ssz
 {
@@ -44,6 +45,7 @@ namespace ssz
 			// BanLine
 			BanLine* BanLineUI = InstantiateUI<BanLine>(Vector3(0.f, 353.f, 1.03f), eLayerType::UI, L"BanLine");
 
+			// PlayerCard
 			PlayerCardSlot* RedPlayerCard_1 = InstantiateUI<PlayerCardSlot>(Vector3(843.f, 308.f, 1.02f), eLayerType::UI, L"RedPlayerCard_1");
 			RedPlayerCard_1->SetRed();
 			PlayerCardSlot* RedPlayerCard_2 = InstantiateUI<PlayerCardSlot>(Vector3(843.f, 69.f, 1.02f), eLayerType::UI, L"RedPlayerCard_2");
@@ -53,8 +55,18 @@ namespace ssz
 			PlayerCardSlot* BluePlayerCard_2 = InstantiateUI<PlayerCardSlot>(Vector3(-843.f, 69.f, 1.02f), eLayerType::UI, L"BluePlayerCard_2");
 			BluePlayerCard_2->SetBlue();
 
+			// StatSlot
+			InstantiateUI<BanPickStat>(Vector3(-375.f, -116.f, 1.02f), eLayerType::UI, L"ATKStatSlot")->SetSlot(ssz::BanPickStat::ATK);
+			InstantiateUI<BanPickStat>(Vector3(-215.f, -116.f, 1.02f), eLayerType::UI, L"DEFStatSlot")->SetSlot(ssz::BanPickStat::DEF);
+			InstantiateUI<BanPickStat>(Vector3(-375.f, -185, 1.02f), eLayerType::UI, L"APDStatSlot")->SetSlot(ssz::BanPickStat::APD);
+			InstantiateUI<BanPickStat>(Vector3(-215.f, -185, 1.02f), eLayerType::UI, L"HPStatSlot")->SetSlot(ssz::BanPickStat::HP);
+			InstantiateUI<BanPickStat>(Vector3(-375.f, -254.f, 1.02f), eLayerType::UI, L"RNGStatSlot")->SetSlot(ssz::BanPickStat::RNG);
+			InstantiateUI<BanPickStat>(Vector3(-215.f, -254.f, 1.02f), eLayerType::UI, L"SPDStatSlot")->SetSlot(ssz::BanPickStat::SPD);
+		
+			// BanpickClassTap
+			// 클래스탭은 Btn 묶음으로 부모객체에서 상태를 받아 선택된 버튼과 나머지 버튼의 크기와 위치가 바뀌도록 한다.
+
 			// 오브젝트 배치용 스크립트
-			// BattleHeaderBg->AddComponent<ArrangementScript>()->SetDefault();
 		}
 #pragma endregion
 

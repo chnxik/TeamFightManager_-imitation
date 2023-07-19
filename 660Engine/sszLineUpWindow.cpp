@@ -10,7 +10,7 @@ namespace ssz
 		, PlayerTeamTitle(nullptr)
 		, EnemyTeamTitle(nullptr)
 	{
-		std::wstring MtKey(mUIKey + L"_HeaderMt");
+		std::wstring MtKey(mUIKey + L"_WindowMt");
 
 #pragma region Meterial Load
 		{

@@ -1,4 +1,7 @@
 #pragma once
+// pch
+#include "GameEnums.h"
+
 // Engine
 #include "sszInput.h"
 #include "sszTime.h"

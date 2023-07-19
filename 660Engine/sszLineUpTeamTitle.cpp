@@ -7,7 +7,7 @@ namespace ssz
 		: UIObject(key)
 		, TitleTex{}
 	{
-		std::wstring MtKey(mUIKey + L"_HeaderMt");
+		std::wstring MtKey(mUIKey + L"_SlotMt");
 
 #pragma region Meterial Load
 		{

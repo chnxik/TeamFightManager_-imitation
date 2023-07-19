@@ -6,7 +6,7 @@ namespace ssz
 	HeaderSlot::HeaderSlot(const std::wstring& key)
 		: UIObject(key)
 	{
-		std::wstring MtKey(mUIKey + L"_HeaderMt");
+		std::wstring MtKey(mUIKey + L"_SlotMt");
 
 #pragma region Meterial Load
 		{
@@ -23,7 +23,7 @@ namespace ssz
 
 			// Set default Size
 			Transform* tr = GetComponent<Transform>();
-			tr->SetScale(Vector3(339, 72.f, 1.f));
+			tr->SetScale(Vector3(339.f, 72.f, 1.f));
 			tr->SetTransType(ssz::Transform::eTransType::PosAdd);
 		}
 	}

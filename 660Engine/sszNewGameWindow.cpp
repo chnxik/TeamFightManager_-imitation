@@ -6,7 +6,7 @@ namespace ssz
 	NewGameWindow::NewGameWindow(const std::wstring& key)
 		: UIObject(key)
 	{
-		std::wstring MtKey(mUIKey + L"_HeaderMt");
+		std::wstring MtKey(mUIKey + L"_WindowMt");
 
 #pragma region Meterial Load
 		{

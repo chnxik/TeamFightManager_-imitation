@@ -6,7 +6,7 @@ namespace ssz
 	PlayerCardSlot::PlayerCardSlot(const std::wstring& key)
 		: UIObject(key)
 	{
-		std::wstring MtKey(mUIKey + L"_HeaderMt");
+		std::wstring MtKey(mUIKey + L"_SlotMt");
 
 #pragma region Meterial Load
 		{

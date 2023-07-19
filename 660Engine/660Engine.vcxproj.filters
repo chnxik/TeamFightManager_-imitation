@@ -98,6 +98,12 @@
     <ClInclude Include="GameEnums.h">
       <Filter>Common</Filter>
     </ClInclude>
+    <ClInclude Include="sszBanpickClassTap.h">
+      <Filter>Contents\Object\UI\Button\BanpickClassTap</Filter>
+    </ClInclude>
+    <ClInclude Include="sszIGStadiumScene.h">
+      <Filter>Contents\Scene\6. IGStadium</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="660Engine.cpp" />
@@ -187,6 +193,12 @@
     </ClCompile>
     <ClCompile Include="sszStatIcon.cpp">
       <Filter>Contents\Object\UI\Icon\StatIcon</Filter>
+    </ClCompile>
+    <ClCompile Include="sszBanpickClassTap.cpp">
+      <Filter>Contents\Object\UI\Button\BanpickClassTap</Filter>
+    </ClCompile>
+    <ClCompile Include="sszIGStadiumScene.cpp">
+      <Filter>Contents\Scene\6. IGStadium</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -321,6 +333,9 @@
     </Filter>
     <Filter Include="Contents\Object\UI\Icon\StatIcon">
       <UniqueIdentifier>{43303aef-9b44-4487-8215-f752573726bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\UI\Button\BanpickClassTap">
+      <UniqueIdentifier>{839e1af5-6092-41ff-851a-5cb45ed6e7dd}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -18,5 +18,6 @@ namespace ssz
 		virtual void OnExit() override;
 
 	private:
+		GameObject* LineUpWin;
 	};
 }

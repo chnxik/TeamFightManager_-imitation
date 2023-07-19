@@ -170,6 +170,7 @@
     <ClInclude Include="Load.h" />
     <ClInclude Include="sszArrangementScript.h" />
     <ClInclude Include="sszBanLine.h" />
+    <ClInclude Include="sszBanpickClassTap.h" />
     <ClInclude Include="sszBanPickScene.h" />
     <ClInclude Include="sszBanPickStat.h" />
     <ClInclude Include="sszBattleHeader.h" />
@@ -177,6 +178,7 @@
     <ClInclude Include="sszCursorScript.h" />
     <ClInclude Include="sszDefaultBtn.h" />
     <ClInclude Include="sszHeaderSlot.h" />
+    <ClInclude Include="sszIGStadiumScene.h" />
     <ClInclude Include="sszImportantBtn.h" />
     <ClInclude Include="sszLineUpTeamTitle.h" />
     <ClInclude Include="sszLineUpWindow.h" />
@@ -203,6 +205,7 @@
     <ClCompile Include="Load.cpp" />
     <ClCompile Include="sszArrangementScript.cpp" />
     <ClCompile Include="sszBanLine.cpp" />
+    <ClCompile Include="sszBanpickClassTap.cpp" />
     <ClCompile Include="sszBanPickScene.cpp" />
     <ClCompile Include="sszBanPickStat.cpp" />
     <ClCompile Include="sszBattleHeader.cpp" />
@@ -210,6 +213,7 @@
     <ClCompile Include="sszCursorScript.cpp" />
     <ClCompile Include="sszDefaultBtn.cpp" />
     <ClCompile Include="sszHeaderSlot.cpp" />
+    <ClCompile Include="sszIGStadiumScene.cpp" />
     <ClCompile Include="sszImportantBtn.cpp" />
     <ClCompile Include="sszLineUpTeamTitle.cpp" />
     <ClCompile Include="sszLineUpWindow.cpp" />

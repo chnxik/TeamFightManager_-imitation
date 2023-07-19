@@ -46,14 +46,10 @@ namespace ssz
 			BanLine* BanLineUI = InstantiateUI<BanLine>(Vector3(0.f, 353.f, 1.03f), eLayerType::UI, L"BanLine");
 
 			// PlayerCard
-			PlayerCardSlot* RedPlayerCard_1 = InstantiateUI<PlayerCardSlot>(Vector3(843.f, 308.f, 1.02f), eLayerType::UI, L"RedPlayerCard_1");
-			RedPlayerCard_1->SetRed();
-			PlayerCardSlot* RedPlayerCard_2 = InstantiateUI<PlayerCardSlot>(Vector3(843.f, 69.f, 1.02f), eLayerType::UI, L"RedPlayerCard_2");
-			RedPlayerCard_2->SetRed();
-			PlayerCardSlot* BluePlayerCard_1 = InstantiateUI<PlayerCardSlot>(Vector3(-843.f, 308.f, 1.02f), eLayerType::UI, L"BluePlayerCard_1");
-			BluePlayerCard_1->SetBlue();
-			PlayerCardSlot* BluePlayerCard_2 = InstantiateUI<PlayerCardSlot>(Vector3(-843.f, 69.f, 1.02f), eLayerType::UI, L"BluePlayerCard_2");
-			BluePlayerCard_2->SetBlue();
+			InstantiateUI<PlayerCardSlot>(Vector3(843.f, 308.f, 1.02f), eLayerType::UI, L"RedPlayerCard_1")->SetRed();
+			InstantiateUI<PlayerCardSlot>(Vector3(843.f, 69.f, 1.02f), eLayerType::UI, L"RedPlayerCard_2")->SetRed();
+			InstantiateUI<PlayerCardSlot>(Vector3(-843.f, 308.f, 1.02f), eLayerType::UI, L"BluePlayerCard_1")->SetBlue();
+			InstantiateUI<PlayerCardSlot>(Vector3(-843.f, 69.f, 1.02f), eLayerType::UI, L"BluePlayerCard_2")->SetBlue();
 
 			// StatSlot
 			InstantiateUI<BanPickStat>(Vector3(-375.f, -116.f, 1.02f), eLayerType::UI, L"ATKStatSlot")->SetSlot(ssz::BanPickStat::ATK);

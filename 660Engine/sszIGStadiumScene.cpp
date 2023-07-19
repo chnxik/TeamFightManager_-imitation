@@ -1,6 +1,9 @@
 #include "sszIGStadiumScene.h"
 #include "CommonHeader.h"
 
+#include "sszBattleHeader.h"
+#include "sszPlayerCardSlot.h"
+
 namespace ssz
 {
 	using namespace object;
@@ -22,9 +25,13 @@ namespace ssz
 		// GameObject
 		{
 			// Battle Header
-			GameObject* BattleHeaderBg = Instantiate<GameObject>(Vector3(0.0f, 478.5f, 1.019f), Vector3(1920.f, 123.f, 1.f), eLayerType::BackGround);
-			BattleHeaderBg->SetName(L"BattleHeaderBg");
-			BattleHeaderBg->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"BattleHeaderMt");
+			BattleHeader* BattleHeaderBg = InstantiateUI<BattleHeader>(Vector3(0.0f, 478.5f, 1.019f), eLayerType::UI, L"BattleHeaderBg");
+
+			// PlayerCard
+			InstantiateUI<PlayerCardSlot>(Vector3(843.f, 308.f, 1.02f), eLayerType::UI, L"RedPlayerCard_1")->SetRed();
+			InstantiateUI<PlayerCardSlot>(Vector3(843.f, 69.f, 1.02f), eLayerType::UI, L"RedPlayerCard_2")->SetRed();
+			InstantiateUI<PlayerCardSlot>(Vector3(-843.f, 308.f, 1.02f), eLayerType::UI, L"BluePlayerCard_1")->SetBlue();
+			InstantiateUI<PlayerCardSlot>(Vector3(-843.f, 69.f, 1.02f), eLayerType::UI, L"BluePlayerCard_2")->SetBlue();
 
 			// IG Stadium
 			GameObject* IG_Stadium = Instantiate<GameObject>(Vector3(0.0f, -139.0f, 1.021f), Vector3(2293.f, 1498.f, 1.f), eLayerType::BackGround);

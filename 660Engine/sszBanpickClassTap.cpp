@@ -34,6 +34,8 @@ namespace ssz
 
 			// Set default Size
 			GetComponent<Transform>()->SetScale(Vector3(54, 18.f, 1.f));
+
+			// 
 		}
 #pragma endregion
 	}

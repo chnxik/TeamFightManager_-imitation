@@ -1,12 +1,13 @@
 #pragma once
 #include "sszUIObject.h"
+#include "sszButtonUI.h"
+#include "sszTexture.h"
 
 namespace ssz
 {
 	class PlayerCardBtn : public UIObject
 	{
 	public:
-
 		PlayerCardBtn(const std::wstring& key);
 		virtual ~PlayerCardBtn();
 

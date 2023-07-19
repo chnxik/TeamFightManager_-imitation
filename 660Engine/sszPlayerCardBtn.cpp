@@ -1,6 +1,8 @@
 #include "sszPlayerCardBtn.h"
 #include "CommonObjHeader.h"
 
+#include "sszButtonUI.h"
+
 namespace ssz
 {
 	PlayerCardBtn::PlayerCardBtn(const std::wstring& Key)

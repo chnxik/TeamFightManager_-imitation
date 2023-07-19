@@ -10,6 +10,7 @@ namespace ssz
 	using namespace object;
 
 	StadiumScene::StadiumScene()
+		: LineUpWin(nullptr)
 	{
 	}
 	StadiumScene::~StadiumScene()
@@ -79,6 +80,9 @@ namespace ssz
 			LineUpWindow* LineUpUI = InstantiateUI<LineUpWindow>(Vector3(0.f, 0.f, 1.004f), eLayerType::UI, L"LineUpWindowBg");
 			LineUpUI->SetPlayerTeamTitle(ssz::LineUpTeamTitle::eColorType::Red);
 			LineUpUI->SetEnemyTeamTitle(ssz::LineUpTeamTitle::eColorType::Blue);
+			LineUpUI->SetState(ssz::GameObject::eState::Paused);
+
+			LineUpWin = LineUpUI;
 			
 			DefaultBtn* LineUpProgressBtn = InstantiateUI<DefaultBtn>(Vector3(0.f, -368.f, 1.003f), LineUpUI, L"LineUpProgressBtn");
 			LineUpProgressBtn->GetBtnComponent()->SetDelegateW(this, (DELEGATEW)&Scene::ChangeScene, L"BanPickScene");
@@ -116,6 +120,14 @@ namespace ssz
 	void StadiumScene::Update()
 	{
 		Scene::Update();
+		
+		if (Input::GetKeyDown(eKeyCode::ENTER))
+		{
+			if (LineUpWin->GetState() == GameObject::eState::Paused)
+			{
+				LineUpWin->SetActive();
+			}
+		}
 	}
 	void StadiumScene::LateUpdate()
 	{

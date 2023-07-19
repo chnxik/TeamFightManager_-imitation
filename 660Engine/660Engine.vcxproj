@@ -172,7 +172,10 @@
     <ClInclude Include="sszCursorScript.h" />
     <ClInclude Include="sszDefaultBtn.h" />
     <ClInclude Include="sszImportantBtn.h" />
+    <ClInclude Include="sszLobbyMenuBtn.h" />
+    <ClInclude Include="sszMainLobbyScene.h" />
     <ClInclude Include="sszMasking.h" />
+    <ClInclude Include="sszProceedBtn.h" />
     <ClInclude Include="sszTestScene.h" />
     <ClInclude Include="sszTestScript.h" />
     <ClInclude Include="sszTestScript2.h" />
@@ -188,7 +191,10 @@
     <ClCompile Include="sszCursorScript.cpp" />
     <ClCompile Include="sszDefaultBtn.cpp" />
     <ClCompile Include="sszImportantBtn.cpp" />
+    <ClCompile Include="sszLobbyMenuBtn.cpp" />
+    <ClCompile Include="sszMainLobbyScene.cpp" />
     <ClCompile Include="sszMasking.cpp" />
+    <ClCompile Include="sszProceedBtn.cpp" />
     <ClCompile Include="sszTestScene.cpp" />
     <ClCompile Include="sszTestScript.cpp" />
     <ClCompile Include="sszTestScript2.cpp" />

@@ -44,6 +44,15 @@
     <ClInclude Include="sszImportantBtn.h">
       <Filter>Contents\Object\UI\Button\InportantBtn</Filter>
     </ClInclude>
+    <ClInclude Include="sszMainLobbyScene.h">
+      <Filter>Contents\Scene\3. MainLobby</Filter>
+    </ClInclude>
+    <ClInclude Include="sszLobbyMenuBtn.h">
+      <Filter>Contents\Object\UI\Button\LobbyMenuBtn</Filter>
+    </ClInclude>
+    <ClInclude Include="sszProceedBtn.h">
+      <Filter>Contents\Object\UI\Button\ProceedBtn</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="660Engine.cpp" />
@@ -82,6 +91,15 @@
     </ClCompile>
     <ClCompile Include="sszImportantBtn.cpp">
       <Filter>Contents\Object\UI\Button\InportantBtn</Filter>
+    </ClCompile>
+    <ClCompile Include="sszMainLobbyScene.cpp">
+      <Filter>Contents\Scene\3. MainLobby</Filter>
+    </ClCompile>
+    <ClCompile Include="sszLobbyMenuBtn.cpp">
+      <Filter>Contents\Object\UI\Button\LobbyMenuBtn</Filter>
+    </ClCompile>
+    <ClCompile Include="sszProceedBtn.cpp">
+      <Filter>Contents\Object\UI\Button\ProceedBtn</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -168,6 +186,12 @@
     </Filter>
     <Filter Include="Contents\Object\UI\Button\InportantBtn">
       <UniqueIdentifier>{15d426a2-86ee-4fff-ade7-4f4729be0a91}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\UI\Button\ProceedBtn">
+      <UniqueIdentifier>{ccd890c4-159b-4f81-b7aa-e0e1e66e1081}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\UI\Button\LobbyMenuBtn">
+      <UniqueIdentifier>{accba350-7e76-43a7-81b1-f6f759a112b7}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

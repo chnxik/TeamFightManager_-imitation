@@ -94,6 +94,69 @@ namespace ssz::object
 			return gameObj;
 		}
 #pragma endregion
+#pragma region UI Instantiate
+		template <typename T>
+		static __forceinline T* InstantiateUI(enums::eLayerType layer, const std::wstring& objKey)
+		{
+			T* gameObj = new T(objKey);
+
+			Transform* tr = gameObj->GetComponent<Transform>();
+
+			Scene* scene = SceneManager::GetActiveScene();
+			scene->AddGameObject(layer, gameObj);
+
+			return gameObj;
+		}
+
+		template <typename T>
+		static __forceinline T* InstantiateUI(Vector3 pos, enums::eLayerType layer, const std::wstring& objKey)
+		{
+			T* gameObj = new T(objKey);
+
+			Transform* tr = gameObj->GetComponent<Transform>();
+
+			tr->SetPosition(pos);
+
+			Scene* scene = SceneManager::GetActiveScene();
+			scene->AddGameObject(layer, gameObj);
+
+
+			return gameObj;
+		}
+
+		template <typename T>
+		static __forceinline T* InstantiateUI(Vector3 pos, Vector3 scale, enums::eLayerType layer, const std::wstring& objKey)
+		{
+			T* gameObj = new T(objKey);
+
+			Transform* tr = gameObj->GetComponent<Transform>();
+
+			tr->SetPosition(pos);
+			tr->SetScale(scale);
+
+			Scene* scene = SceneManager::GetActiveScene();
+			scene->AddGameObject(layer, gameObj);
+
+			return gameObj;
+		}
+
+		template <typename T>
+		static __forceinline T* InstantiateUI(Vector3 pos, Vector3 scale, Vector3 rotate, enums::eLayerType layer, const std::wstring& objKey)
+		{
+			T* gameObj = new T(objKey);
+
+			Transform* tr = gameObj->GetComponent<Transform>();
+
+			tr->SetPosition(pos);
+			tr->SetRotation(rotate);
+			tr->SetScale(scale);
+
+			Scene* scene = SceneManager::GetActiveScene();
+			scene->AddGameObject(layer, gameObj);
+
+			return gameObj;
+		}
+#pragma endregion
 #pragma region ChildUI Instantiate
 		template <typename T>
 		static __forceinline T* InstantiateUI(UIObject* pParentUI,const std::wstring& objKey)

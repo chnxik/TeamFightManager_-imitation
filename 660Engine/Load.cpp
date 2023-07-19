@@ -5,7 +5,7 @@
 // Scenes
 #include "sszTitleScene.h"
 // #include "sszPrlgScene.h"
-// #include "sszMainLobbyScene.h"
+#include "sszMainLobbyScene.h"
 // #include "sszStadiumScene.h"
 // #include "sszBanPickScene.h"
 // #include "sszIGStadiumScene.h"
@@ -17,7 +17,7 @@ namespace ssz
 	{
 		SceneManager::CreateScene<TitleScene>(L"TitleScene");
 		// SceneManager::CreateScene<PrlgScene>(L"PrlgScene");
-		// SceneManager::CreateScene<MainLobbyScene>(L"MainLobbyScene");
+		SceneManager::CreateScene<MainLobbyScene>(L"MainLobbyScene");
 		// SceneManager::CreateScene<StadiumScene>(L"StadiumScene");
 		// SceneManager::CreateScene<BanPickScene>(L"BanPickScene");
 		// SceneManager::CreateScene<IGStadiumScene>(L"IGStadiumScene");

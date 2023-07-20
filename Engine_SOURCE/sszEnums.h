@@ -10,9 +10,10 @@ namespace ssz::enums
 		Collider2D,
 		Particle,
 		MeshRenderer,
+		Animator,
 		Script,
-		Camera,
 		UI,
+		Camera,
 		End,
 	};
 
@@ -33,6 +34,7 @@ namespace ssz::enums
 		Shader,
 		Material,
 		Mesh,
+		Animation,
 		End,
 	};
 

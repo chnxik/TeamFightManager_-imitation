@@ -37,6 +37,14 @@ namespace renderer
 	{
 		int OverlapCnt;
 	};
+
+	CBUFFER(AnimatorCB, CBSLOT_ANIMATION2D)
+	{
+		Vector2 spriteLeftTop;
+		Vector2 spriteSize;
+		Vector2 spriteOffset;
+		Vector2 atlasSize;
+	};
 	
 	extern ssz::graphics::ConstantBuffer* constantBuffer[(UINT)eCBType::END];
 

@@ -124,6 +124,12 @@
     <Filter Include="Common\Input">
       <UniqueIdentifier>{53075aad-7f72-44c4-acf8-3f637af401fb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource\Animation">
+      <UniqueIdentifier>{6a78ef51-5622-4c9e-9e00-5868f3206546}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject\Component\Animator">
+      <UniqueIdentifier>{49a6fee5-1e1b-446a-a97f-f1f23ba65886}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h">
@@ -231,6 +237,12 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)sszPanelUI.h">
       <Filter>GameObject\Component\UI\Panel</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszAnimator.h">
+      <Filter>GameObject\Component\Animator</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszAnimation.h">
+      <Filter>Resource\Animation</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)sszMath.cpp">
@@ -322,6 +334,12 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)sszPanelUI.cpp">
       <Filter>GameObject\Component\UI\Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszAnimator.cpp">
+      <Filter>GameObject\Component\Animator</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszAnimation.cpp">
+      <Filter>Resource\Animation</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

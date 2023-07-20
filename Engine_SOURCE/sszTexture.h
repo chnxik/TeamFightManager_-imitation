@@ -22,8 +22,11 @@ namespace ssz::graphics
 		virtual HRESULT Load(const std::wstring& path) override;
 		void BindShader(eShaderStage stage, UINT startSlot);
 		void Clear();
+
 		const Image* GetImage() { return mImage.GetImages(); }
 		math::Vector2 GetTextureSize() { return math::Vector2(width, height); }
+		size_t GetWidth() { return mImage.GetMetadata().width; }
+		size_t GetHeight() { return mImage.GetMetadata().height; }
 
 	private:
 		ScratchImage mImage;

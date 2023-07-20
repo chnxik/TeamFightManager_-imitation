@@ -18,7 +18,16 @@ cbuffer Collider : register(b2)
     int overlapcnt;
 }
 
+cbuffer Animator : register(b3)
+{
+    float2 SpriteLeftTop;
+    float2 SpriteSize;
+    float2 SpriteOffset;
+    float2 AtlasSize;
+}
+
 Texture2D albedoTexture : register(t0);
+Texture2D atlasTexture : register(t12);
 
 SamplerState PointSampler : register(s0);
 SamplerState anisotropicSampler : register(s1);

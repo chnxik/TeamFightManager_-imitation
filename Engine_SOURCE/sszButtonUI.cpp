@@ -19,6 +19,7 @@ namespace ssz
 		: mCurState(eBtnState::Idle)
 		, mType(eBtnType::Push)
 		, bActive(true)
+		, bTogle(false)
 		, mFunc(nullptr)
 		, mInst(nullptr)
 		, mDelegateFunc(nullptr)
@@ -56,6 +57,7 @@ namespace ssz
 			{
 				// 이후 열려있는 팝업을 닫는 리셋기능은 이부분에 추가
 				SetBtnState(eBtnState::Idle);
+				bTogle = false;
 			}
 		}
 
@@ -114,7 +116,16 @@ namespace ssz
 		switch (mType)
 		{
 		case ssz::ButtonUI::eBtnType::Selected:
-			mCurState = eBtnState::Down;
+		{
+			if (SetTogle())
+			{
+				mCurState = eBtnState::Idle;
+			}
+			else
+			{
+				mCurState = eBtnState::Down;
+			}
+		}
 			break;
 		case ssz::ButtonUI::eBtnType::Push:
 			mCurState = eBtnState::Down;

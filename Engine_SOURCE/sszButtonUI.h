@@ -59,6 +59,22 @@ namespace ssz
 		void SetActive(bool b) { bActive = b; }
 		void SetOwnerMaterial();
 
+		bool SetTogle() 
+		{ 
+			bool before = bTogle;
+
+			if (before)
+			{
+				bTogle = false;
+			}
+			else
+			{
+				bTogle = true;
+			}
+
+			return before;
+		}
+
 		virtual void MouseLbtnDown() override;
 		virtual void MouseLbtnUp() override;
 		virtual void MouseLbtnClicked() override;
@@ -72,6 +88,7 @@ namespace ssz
 		eBtnType mType;
 
 		bool bActive;
+		bool bTogle;
 
 		voidFunc mFunc;
 

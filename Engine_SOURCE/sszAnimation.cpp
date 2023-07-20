@@ -28,7 +28,7 @@ namespace ssz
 		if (mbComplete)
 			return;
 
-		mTime += Time::DeltaTime();
+		mTime += (float)Time::DeltaTime();
 
 		if (mSprites[mIndex].duration <= mTime)
 		{
@@ -37,7 +37,7 @@ namespace ssz
 
 			if (mSprites.size() <= mIndex)
 			{
-				mIndex = mSprites.size() - 1;
+				mIndex = (UINT)mSprites.size() - 1;
 				mbComplete = true;
 			}
 		}

@@ -4,6 +4,7 @@
 
 namespace ssz
 {
+	using namespace math;
 	class Animator;
 	class Animation : public Resource
 	{

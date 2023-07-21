@@ -15,32 +15,16 @@ namespace ssz
 
 	void TestScene::Initialize()
 	{
-		Resources::Load<Texture>(L"TitleLogoTex", L"..\\Resources\\useResource\\Title\\logo_tp.png");
+		std::shared_ptr<Texture> atlas = Resources::Load<Texture>(L"TestSprite", L"..\\Resources\\useResource\\Sprite\\moderator_ani.png");
+		ssz::object::LoadMaterial(L"TestAniMt", L"AnimationShader", L"TestSprite", eRenderingMode::Transparent);
 
-		std::shared_ptr<Material> TitleLogo_Mt = std::make_shared<Material>();
-		TitleLogo_Mt->SetMaterial(L"SpriteShader", L"TitleLogoTex", eRenderingMode::Transparent);
-		Resources::Insert(L"TitleLogoMt", TitleLogo_Mt);
-
-		UIObject* TestObject = Instantiate<UIObject>(Vector3(-50.0f, 0.0f, 1.010f), Vector3(200.f, 200.f, 1.f),Vector3(0.f,0.f,DtoR(30.f)), eLayerType::Player);
-		TestObject->SetName(L"Test");
-		TestObject->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"TitleLogoMt");
-		TestObject->AddComponent<TestScript>()->SetDefault();
-		TestObject->AddComponent<Collider2D>()->Initialize();
-		//TestObject->GetComponent<Transform>()->SetTransTypeADD();
-
-		UIObject* TestObject2 = Instantiate<UIObject>(Vector3(-300.0f, 0.0f, 1.010f), Vector3(200.f, 200.f, 1.f), Vector3(0.f, 0.f, 0.f), eLayerType::Player);
-		TestObject2->SetName(L"Test2");
-		TestObject2->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"TitleLogoMt");
-		TestObject2->AddComponent<TestScript2>()->SetDefault();
-		TestObject2->AddComponent<Collider2D>()->Initialize();
-
-		UIObject* TestObject3 = Instantiate<UIObject>(Vector3(300.0f, 0.0f, 1.010f), Vector3(200.f, 200.f, 1.f), Vector3(0.f, 0.f, 0.f), eLayerType::Player);
-		TestObject3->SetName(L"Test2");
-		TestObject3->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"TitleLogoMt");
-		TestObject3->AddComponent<TestScript3>()->SetDefault();
-		Collider2D* Col = TestObject3->AddComponent<Collider2D>();
-		Col->Initialize();
-		Col->SetType(eColliderType::Circle);
+		GameObject* TestObj = Instantiate<GameObject>(Vector3(0.f, 0.f, 1.01f), Vector3(200.f, 200.f, 1.f), eLayerType::Player);
+		TestObj->AddComponent<Collider2D>()->Initialize();
+		TestObj->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"TestAniMt");
+		
+		Animator* AniComp = TestObj->AddComponent<Animator>();
+		AniComp->Create(L"TestAnim", atlas, Vector2(0.f, 96.f), Vector2(32.f, 32.f), 5, Vector2(0.f, 0.f), 1.f / 12.f);
+		AniComp->PlayAnimation(L"TestAnim", true);
 
 		// MouseCursor
 		{
@@ -77,8 +61,6 @@ namespace ssz
 	}
 	void TestScene::OnEnter()
 	{
-		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Cursor, true);
-		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Player, true);
 	}
 	void TestScene::OnExit()
 	{

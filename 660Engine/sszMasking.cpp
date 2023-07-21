@@ -58,7 +58,7 @@ namespace ssz
 	{
 	}
 
-	void Masking::BindConstantBuffer()
+	void Masking::Binds()
 	{
 		// 윈도우 해상도
 		RECT rect = {};

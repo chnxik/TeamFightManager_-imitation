@@ -150,7 +150,7 @@ namespace ssz
 	{
 	}
 
-	void Transform::BindConstantBuffer()
+	void Transform::Binds()
 	{
 		renderer::TransformCB trCB = {};
 		trCB.mWorld = mWorld;

@@ -34,7 +34,7 @@ namespace ssz
 	{
 		for (Component* Comp : GetOwner()->GetComponents())
 		{
-			Comp->BindConstantBuffer();
+			Comp->Binds();
 		}
 
 		mMesh->BindBuffer();

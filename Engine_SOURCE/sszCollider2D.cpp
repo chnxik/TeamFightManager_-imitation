@@ -63,7 +63,7 @@ namespace ssz
 	{
 	}
 
-	void Collider2D::BindConstantBuffer()
+	void Collider2D::Binds()
 	{
 	}
 

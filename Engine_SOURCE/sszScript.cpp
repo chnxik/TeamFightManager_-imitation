@@ -21,7 +21,7 @@ namespace ssz
 	void Script::Render()
 	{
 	}
-	void Script::BindConstantBuffer()
+	void Script::Binds()
 	{
 	}
 }

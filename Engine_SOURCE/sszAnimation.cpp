@@ -1,6 +1,8 @@
 #include "sszAnimation.h"
 #include "sszTime.h"
 #include "sszAnimator.h"
+#include "sszRenderer.h"
+#include "sszConstantBuffer.h"
 
 namespace ssz
 {
@@ -21,14 +23,10 @@ namespace ssz
 	
 	void Animation::Update()
 	{
-	}
-	
-	void Animation::LateUpdate()
-	{
 		if (mbComplete)
 			return;
 
-		mTime += Time::DeltaTime();
+		mTime += (float)Time::DeltaTime();
 
 		if (mSprites[mIndex].duration <= mTime)
 		{
@@ -37,10 +35,14 @@ namespace ssz
 
 			if (mSprites.size() <= mIndex)
 			{
-				mIndex = mSprites.size() - 1;
+				mIndex = (UINT)mSprites.size() - 1;
 				mbComplete = true;
 			}
 		}
+	}
+	
+	void Animation::LateUpdate()
+	{
 	}
 	
 	void Animation::Render()
@@ -54,14 +56,17 @@ namespace ssz
 
 		float width = (float)atlas->GetWidth();
 		float height = (float)atlas->GetHeight();
+		float ratio = 32.f;
 
 		for (size_t i = 0; i < columnLength; i++)
 		{
 			Sprite sprite = {};
 			sprite.leftTop.x = leftTop.x + (i * size.x) / width;
 			sprite.leftTop.y = leftTop.y / height;
-			sprite.size = size;
+			sprite.size.x = size.x / width;
+			sprite.size.y = size.y / height;
 			sprite.offset = offset;
+			sprite.atlasSize = Vector2(ratio / width, ratio / height);
 			sprite.duration = duration;
 
 			mSprites.push_back(sprite);
@@ -74,6 +79,18 @@ namespace ssz
 		mAtlas->BindShader(graphics::eShaderStage::PS, 12);
 
 		// AnimationCB
+		renderer::AnimatorCB data = {};
+
+		data.spriteLeftTop = mSprites[mIndex].leftTop;
+		data.spriteSize = mSprites[mIndex].size;
+		data.spriteOffset = mSprites[mIndex].offset;
+		data.atlasSize = mSprites[mIndex].atlasSize;
+
+		ConstantBuffer* cb = renderer::constantBuffer[(UINT)eCBType::Animator];
+		cb->SetData(&data);
+
+		cb->Bind(eShaderStage::VS);
+		cb->Bind(eShaderStage::PS);
 	}
 	
 	void Animation::Reset()

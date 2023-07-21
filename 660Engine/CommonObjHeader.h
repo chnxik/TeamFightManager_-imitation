@@ -11,6 +11,7 @@
 #include "sszTransform.h"
 #include "sszMeshRenderer.h"
 #include "sszCollider2D.h"
+#include "sszAnimator.h"
 
 // Object Func
 #include "sszObject.h"
@@ -24,3 +25,4 @@
 #include "sszMaterial.h"
 #include "sszMesh.h"
 #include "sszTexture.h"
+#include "sszAnimation.h"

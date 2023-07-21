@@ -65,6 +65,11 @@ namespace renderer
 			, DebugShader->GetVSCode()
 			, DebugShader->GetInputLayoutAddressOf());
 
+		std::shared_ptr<Shader> AnimationShader = ssz::Resources::Find<Shader>(L"AnimationShader");
+		ssz::graphics::GetDevice()->CreateInputLayout(arrLayout, 3
+			, AnimationShader->GetVSCode()
+			, AnimationShader->GetInputLayoutAddressOf());
+
 #pragma endregion
 #pragma region Sampler State
 		// Sampler State
@@ -296,6 +301,11 @@ namespace renderer
 		debugShader->SetTopology(D3D11_PRIMITIVE_TOPOLOGY::D3D_PRIMITIVE_TOPOLOGY_LINESTRIP);
 		debugShader->SetRSState(eRSType::SolidNone);
 		ssz::Resources::Insert(L"DebugShader", debugShader);
+
+		std::shared_ptr<Shader> AnimationShader = std::make_shared<Shader>();
+		AnimationShader->Create(eShaderStage::VS, L"AnimationVS.hlsl", "main");
+		AnimationShader->Create(eShaderStage::PS, L"AnimationPS.hlsl", "main");
+		ssz::Resources::Insert(L"AnimationShader", AnimationShader);
 	}
 
 	void LoadMaterial()

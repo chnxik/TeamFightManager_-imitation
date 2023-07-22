@@ -190,6 +190,9 @@
       <Filter>Contents\Scene\6. IGStadium</Filter>
     </ClCompile>
     <ClCompile Include="sszTestBTScript.cpp" />
+    <ClCompile Include="sszTestBt.cpp">
+      <Filter>Contents\Script\Test</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Contents">

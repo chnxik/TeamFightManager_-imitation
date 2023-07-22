@@ -13,7 +13,7 @@ namespace ssz
             {
                 mEvent = std::move(func);
             }
-            
+
             void operator()()
             {
                 if (mEvent)
@@ -62,6 +62,8 @@ namespace ssz
         std::function<void()>& StartEvent(const std::wstring key);
         std::function<void()>& CompleteEvent(const std::wstring key);
         std::function<void()>& EndEvent(const std::wstring key);
+
+        const std::wstring& GetCurAnimation() const {return mActiveAnimation->GetKey(); }
 
     private:
         std::map<std::wstring, Animation*> mAnimations;

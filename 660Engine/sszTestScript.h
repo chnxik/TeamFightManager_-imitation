@@ -15,9 +15,8 @@ namespace ssz
 		virtual void Initialize() override;
 		virtual void Update() override;
 
-		void Complete();
-
 	private:
+		Sequence* root;
 		Transform* tr;
 		Animator* anim;
 	};

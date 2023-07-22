@@ -226,6 +226,7 @@
     <ClCompile Include="sszProceedBtn.cpp" />
     <ClCompile Include="sszStadiumScene.cpp" />
     <ClCompile Include="sszStatIcon.cpp" />
+    <ClCompile Include="sszTestBt.cpp" />
     <ClCompile Include="sszTestBTScript.cpp" />
     <ClCompile Include="sszTestScene.cpp" />
     <ClCompile Include="sszTestScript.cpp" />

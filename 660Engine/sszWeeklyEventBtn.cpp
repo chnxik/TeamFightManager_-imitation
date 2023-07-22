@@ -7,6 +7,14 @@ namespace ssz
 		: UIObject(Key)
 		, mBtnComp(nullptr)
 	{
+		
+	}
+
+	WeeklyEventBtn::~WeeklyEventBtn()
+	{
+	}
+	void WeeklyEventBtn::Initialize()
+	{
 		std::wstring MtKey(mUIKey + L"_BtnMt");
 
 #pragma region Meterial Load
@@ -37,9 +45,5 @@ namespace ssz
 			GetComponent<Transform>()->SetScale(Vector3(340.f, 60.f, 1.f));
 		}
 #pragma endregion
-	}
-
-	WeeklyEventBtn::~WeeklyEventBtn()
-	{
 	}
 }

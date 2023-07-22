@@ -10,17 +10,25 @@ namespace ssz
 		, mBtnComp(nullptr)
 		, vecCardTex{}
 	{
+		
+	}
+
+	PlayerCardBtn::~PlayerCardBtn()
+	{
+	}
+	void PlayerCardBtn::Initialize()
+	{
 		std::wstring MtKey(mUIKey + L"_BtnMt");
 
 #pragma region Meterial Load
 		{
 
-			vecCardTex[eTeamColor::Red][eBtnState::Idle] = Resources::Load<Texture>(L"RedPlayerCardIdleTex", L"..\\Resources\\useResource\\stadium\\UI\\player_card_bg_4.png");
-			vecCardTex[eTeamColor::Red][eBtnState::On] = Resources::Load<Texture>(L"RedPlayerCardOnTex", L"..\\Resources\\useResource\\stadium\\UI\\player_card_bg_5.png");
-			vecCardTex[eTeamColor::Red][eBtnState::Down] = Resources::Load<Texture>(L"RedPlayerCardSelectedTex", L"..\\Resources\\useResource\\stadium\\UI\\player_card_bg_6.png");
-			vecCardTex[eTeamColor::Blue][eBtnState::Idle] = Resources::Load<Texture>(L"BluePlayerCardIdleTex", L"..\\Resources\\useResource\\stadium\\UI\\player_card_bg_0.png");
-			vecCardTex[eTeamColor::Blue][eBtnState::On] = Resources::Load<Texture>(L"BluePlayerCardOnTex", L"..\\Resources\\useResource\\stadium\\UI\\player_card_bg_1.png");
-			vecCardTex[eTeamColor::Blue][eBtnState::Down] = Resources::Load<Texture>(L"BluePlayerCardSelectedTex", L"..\\Resources\\useResource\\stadium\\UI\\player_card_bg_2.png");
+			vecCardTex[(UINT)eTeamColor::Red][(UINT)ButtonUI::eBtnState::Idle] = Resources::Load<Texture>(L"RedPlayerCardIdleTex", L"..\\Resources\\useResource\\stadium\\UI\\player_card_bg_4.png");
+			vecCardTex[(UINT)eTeamColor::Red][(UINT)ButtonUI::eBtnState::On] = Resources::Load<Texture>(L"RedPlayerCardOnTex", L"..\\Resources\\useResource\\stadium\\UI\\player_card_bg_5.png");
+			vecCardTex[(UINT)eTeamColor::Red][(UINT)ButtonUI::eBtnState::Down] = Resources::Load<Texture>(L"RedPlayerCardSelectedTex", L"..\\Resources\\useResource\\stadium\\UI\\player_card_bg_6.png");
+			vecCardTex[(UINT)eTeamColor::Blue][(UINT)ButtonUI::eBtnState::Idle] = Resources::Load<Texture>(L"BluePlayerCardIdleTex", L"..\\Resources\\useResource\\stadium\\UI\\player_card_bg_0.png");
+			vecCardTex[(UINT)eTeamColor::Blue][(UINT)ButtonUI::eBtnState::On] = Resources::Load<Texture>(L"BluePlayerCardOnTex", L"..\\Resources\\useResource\\stadium\\UI\\player_card_bg_1.png");
+			vecCardTex[(UINT)eTeamColor::Blue][(UINT)ButtonUI::eBtnState::Down] = Resources::Load<Texture>(L"BluePlayerCardSelectedTex", L"..\\Resources\\useResource\\stadium\\UI\\player_card_bg_2.png");
 
 			ssz::object::LoadMaterial(MtKey, L"SpriteShader", L"RedPlayerCardIdleTex", eRenderingMode::Transparent);
 		}
@@ -32,7 +40,7 @@ namespace ssz
 
 			// Set ButtonUI
 			mBtnComp = AddComponent<ButtonUI>();
-				
+
 			mBtnComp->Initialize();
 			mBtnComp->SetBtnType(ssz::ButtonUI::eBtnType::Selected);
 
@@ -46,20 +54,16 @@ namespace ssz
 		}
 #pragma endregion
 	}
-
-	PlayerCardBtn::~PlayerCardBtn()
-	{
-	}
 	void PlayerCardBtn::SetRed()
 	{
-		mBtnComp->SetIdleTex(vecCardTex[eTeamColor::Red][eBtnState::Idle]);
-		mBtnComp->SetOnTex(vecCardTex[eTeamColor::Red][eBtnState::On]);
-		mBtnComp->SetDownTex(vecCardTex[eTeamColor::Red][eBtnState::Down]);
+		mBtnComp->SetIdleTex(vecCardTex[(UINT)eTeamColor::Red][(UINT)ButtonUI::eBtnState::Idle]);
+		mBtnComp->SetOnTex(vecCardTex[(UINT)eTeamColor::Red][(UINT)ButtonUI::eBtnState::On]);
+		mBtnComp->SetDownTex(vecCardTex[(UINT)eTeamColor::Red][(UINT)ButtonUI::eBtnState::Down]);
 	}
 	void PlayerCardBtn::SetBlue()
 	{
-		mBtnComp->SetIdleTex(vecCardTex[eTeamColor::Blue][eBtnState::Idle]);
-		mBtnComp->SetOnTex(vecCardTex[eTeamColor::Blue][eBtnState::On]);
-		mBtnComp->SetDownTex(vecCardTex[eTeamColor::Blue][eBtnState::Down]);
+		mBtnComp->SetIdleTex(vecCardTex[(UINT)eTeamColor::Blue][(UINT)ButtonUI::eBtnState::Idle]);
+		mBtnComp->SetOnTex(vecCardTex[(UINT)eTeamColor::Blue][(UINT)ButtonUI::eBtnState::On]);
+		mBtnComp->SetDownTex(vecCardTex[(UINT)eTeamColor::Blue][(UINT)ButtonUI::eBtnState::Down]);
 	}
 }

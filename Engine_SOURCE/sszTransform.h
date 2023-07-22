@@ -6,7 +6,13 @@ namespace ssz
 	class Transform : public Component
 	{
 	public:
-		enum eTransType
+		enum class eDir
+		{
+			Left = -1,
+			Right = 1,
+		};
+
+		enum class eTransType
 		{
 			Multiply,
 			AddAll,
@@ -35,6 +41,11 @@ namespace ssz
 		Vector3 GetRotation() { return mRotation;}
 		Vector3 GetScale() { return mScale; }
 
+		bool IsLeft() { return mDir == eDir::Left; }
+		bool IsRight() { return mDir == eDir::Right; }
+		void SetLeft() { mDir = eDir::Left; }
+		void SetRight() { mDir = eDir::Right; }
+
 		Vector3 GetWorldPosition() { return mWorldPosition; }
 		Vector3 GetWorldRotation() { return mWorldRotation; }
 		Vector3 GetWorldScale() { return mWorldScale; }
@@ -55,6 +66,7 @@ namespace ssz
 		Vector3 mPosition;
 		Vector3 mRotation;
 		Vector3 mScale;
+		eDir	mDir;
 
 		Vector3 mWorldPosition;
 		Vector3 mWorldRotation;

@@ -192,10 +192,9 @@
     <ClInclude Include="sszProceedBtn.h" />
     <ClInclude Include="sszStadiumScene.h" />
     <ClInclude Include="sszStatIcon.h" />
+    <ClInclude Include="sszTestBTScript.h" />
     <ClInclude Include="sszTestScene.h" />
     <ClInclude Include="sszTestScript.h" />
-    <ClInclude Include="sszTestScript2.h" />
-    <ClInclude Include="sszTestScript3.h" />
     <ClInclude Include="sszTitleScene.h" />
     <ClInclude Include="CommonObjHeader.h" />
     <ClInclude Include="sszWeeklyEventBtn.h" />
@@ -227,10 +226,9 @@
     <ClCompile Include="sszProceedBtn.cpp" />
     <ClCompile Include="sszStadiumScene.cpp" />
     <ClCompile Include="sszStatIcon.cpp" />
+    <ClCompile Include="sszTestBTScript.cpp" />
     <ClCompile Include="sszTestScene.cpp" />
     <ClCompile Include="sszTestScript.cpp" />
-    <ClCompile Include="sszTestScript2.cpp" />
-    <ClCompile Include="sszTestScript3.cpp" />
     <ClCompile Include="sszTitleScene.cpp" />
     <ClCompile Include="sszWeeklyEventBtn.cpp" />
   </ItemGroup>

@@ -10,6 +10,14 @@ namespace ssz
 		, PlayerTeamTitle(nullptr)
 		, EnemyTeamTitle(nullptr)
 	{
+	}
+
+	LineUpWindow::~LineUpWindow()
+	{
+	}
+
+	void LineUpWindow::Initialize()
+	{
 		std::wstring MtKey(mUIKey + L"_WindowMt");
 
 #pragma region Meterial Load
@@ -41,18 +49,14 @@ namespace ssz
 #pragma endregion
 	}
 
-	LineUpWindow::~LineUpWindow()
+	void LineUpWindow::SetPlayerTeamTitle(eTeamColor eColor)
 	{
+		PlayerTeamTitle->SetTitleType(eCampType::Player, eColor);
 	}
 
-	void LineUpWindow::SetPlayerTeamTitle(ssz::LineUpTeamTitle::eColorType eColor)
+	void LineUpWindow::SetEnemyTeamTitle(eTeamColor eColor)
 	{
-		PlayerTeamTitle->SetTitleType(ssz::LineUpTeamTitle::eCampType::Player, eColor);
-	}
-
-	void LineUpWindow::SetEnemyTeamTitle(ssz::LineUpTeamTitle::eColorType eColor)
-	{
-		EnemyTeamTitle->SetTitleType(ssz::LineUpTeamTitle::eCampType::Enemy, eColor);
+		EnemyTeamTitle->SetTitleType(eCampType::Enemy, eColor);
 	}
 
 }

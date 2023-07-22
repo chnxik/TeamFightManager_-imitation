@@ -35,17 +35,13 @@ namespace ssz
 
 	void ArrangementScript::Initialize()
 	{
-	}
-
-	void ArrangementScript::SetDefault()
-	{
 		// Owner 의 Transform에 접근해 초기 Pos와 Scale을 가져온다.
 		Transform* OwnerTf = GetOwner()->GetComponent<Transform>();
 		ArrangePos = OwnerTf->GetPosition();
 		ArrangeScale = OwnerTf->GetScale();
 		OwnerUI = dynamic_cast<UIObject*>(GetOwner());
 	}
-
+	
 	void ArrangementScript::Update()
 	{
 		// Position

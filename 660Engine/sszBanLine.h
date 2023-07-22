@@ -9,7 +9,8 @@ namespace ssz
         BanLine(const std::wstring& key);
         virtual ~BanLine();
 
-    private:
+        virtual void Initialize() override;
 
+    private:
     };
 }

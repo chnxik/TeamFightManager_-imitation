@@ -111,7 +111,7 @@ namespace ssz
 
 		if (type == eProjectionType::OrthoGraphic)
 		{
-			float OrthoGraphicRatio = mSize;
+			float OrthoGraphicRatio = mSize; // Size = 1.f;
 			width *= OrthoGraphicRatio;
 			height *= OrthoGraphicRatio;
 

@@ -6,14 +6,21 @@ namespace ssz
 	PlayerCardSlot::PlayerCardSlot(const std::wstring& key)
 		: UIObject(key)
 	{
+	}
+
+	PlayerCardSlot::~PlayerCardSlot()
+	{
+	}
+	void PlayerCardSlot::Initialize()
+	{
 		std::wstring MtKey(mUIKey + L"_SlotMt");
 
 #pragma region Meterial Load
 		{
-			vecCardTex[eColor::Red][eSlotState::Idle] = Resources::Load<Texture>(L"RedPlayerCardIdleTex", L"..\\Resources\\useResource\\Banpick\\player_card_bg_4.png");
-			vecCardTex[eColor::Red][eSlotState::highlighted] = Resources::Load<Texture>(L"RedPlayerCardHighLightedTex", L"..\\Resources\\useResource\\Banpick\\player_card_highlighted_bg_1.png");
-			vecCardTex[eColor::Blue][eSlotState::Idle] = Resources::Load<Texture>(L"BluePlayerCardIdleTex", L"..\\Resources\\useResource\\Banpick\\player_card_bg_0.png");
-			vecCardTex[eColor::Blue][eSlotState::highlighted] = Resources::Load<Texture>(L"BluePlayerCardHighLightedTex", L"..\\Resources\\useResource\\Banpick\\player_card_highlighted_bg_0.png");
+			vecCardTex[(UINT)eTeamColor::Red][(UINT)eSlotState::Idle] = Resources::Load<Texture>(L"RedPlayerCardIdleTex", L"..\\Resources\\useResource\\Banpick\\player_card_bg_4.png");
+			vecCardTex[(UINT)eTeamColor::Red][(UINT)eSlotState::Selected] = Resources::Load<Texture>(L"RedPlayerCardHighLightedTex", L"..\\Resources\\useResource\\Banpick\\player_card_highlighted_bg_1.png");
+			vecCardTex[(UINT)eTeamColor::Blue][(UINT)eSlotState::Idle] = Resources::Load<Texture>(L"BluePlayerCardIdleTex", L"..\\Resources\\useResource\\Banpick\\player_card_bg_0.png");
+			vecCardTex[(UINT)eTeamColor::Blue][(UINT)eSlotState::Selected] = Resources::Load<Texture>(L"BluePlayerCardHighLightedTex", L"..\\Resources\\useResource\\Banpick\\player_card_highlighted_bg_0.png");
 
 			ssz::object::LoadMaterial(MtKey, L"SpriteShader", L"BattleHeaderTex", eRenderingMode::Transparent);
 		}
@@ -36,16 +43,12 @@ namespace ssz
 		}
 #pragma endregion
 	}
-
-	PlayerCardSlot::~PlayerCardSlot()
-	{
-	}
 	void PlayerCardSlot::SetRed()
 	{
-		GetComponent<MeshRenderer>()->GetMaterial()->SetTexture(vecCardTex[eColor::Red][eSlotState::Idle]);
+		GetComponent<MeshRenderer>()->GetMaterial()->SetTexture(vecCardTex[(UINT)eTeamColor::Red][(UINT)eSlotState::Idle]);
 	}
 	void PlayerCardSlot::SetBlue()
 	{
-		GetComponent<MeshRenderer>()->GetMaterial()->SetTexture(vecCardTex[eColor::Blue][eSlotState::Idle]);
+		GetComponent<MeshRenderer>()->GetMaterial()->SetTexture(vecCardTex[(UINT)eTeamColor::Blue][(UINT)eSlotState::Idle]);
 	}
 }

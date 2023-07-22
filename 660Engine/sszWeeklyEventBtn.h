@@ -11,6 +11,8 @@ namespace ssz
 		WeeklyEventBtn(const std::wstring& Key);
 		virtual ~WeeklyEventBtn();
 
+		virtual void Initialize() override;
+
 		ButtonUI* GetBtnComponent() { return mBtnComp; }
 
 	private:

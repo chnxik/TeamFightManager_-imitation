@@ -52,12 +52,12 @@ namespace ssz
 			InstantiateUI<PlayerCardSlot>(Vector3(-843.f, 69.f, 1.02f), eLayerType::UI, L"BluePlayerCard_2")->SetBlue();
 
 			// StatSlot
-			InstantiateUI<BanPickStat>(Vector3(-375.f, -116.f, 1.02f), eLayerType::UI, L"ATKStatSlot")->SetSlot(ssz::BanPickStat::ATK);
-			InstantiateUI<BanPickStat>(Vector3(-215.f, -116.f, 1.02f), eLayerType::UI, L"DEFStatSlot")->SetSlot(ssz::BanPickStat::DEF);
-			InstantiateUI<BanPickStat>(Vector3(-375.f, -185, 1.02f), eLayerType::UI, L"APDStatSlot")->SetSlot(ssz::BanPickStat::APD);
-			InstantiateUI<BanPickStat>(Vector3(-215.f, -185, 1.02f), eLayerType::UI, L"HPStatSlot")->SetSlot(ssz::BanPickStat::HP);
-			InstantiateUI<BanPickStat>(Vector3(-375.f, -254.f, 1.02f), eLayerType::UI, L"RNGStatSlot")->SetSlot(ssz::BanPickStat::RNG);
-			InstantiateUI<BanPickStat>(Vector3(-215.f, -254.f, 1.02f), eLayerType::UI, L"SPDStatSlot")->SetSlot(ssz::BanPickStat::SPD);
+			InstantiateUI<BanPickStat>(Vector3(-375.f, -116.f, 1.02f), eLayerType::UI, L"ATKStatSlot")->SetSlot(eStatType::ATK);
+			InstantiateUI<BanPickStat>(Vector3(-215.f, -116.f, 1.02f), eLayerType::UI, L"DEFStatSlot")->SetSlot(eStatType::DEF);
+			InstantiateUI<BanPickStat>(Vector3(-375.f, -185, 1.02f), eLayerType::UI, L"APDStatSlot")->SetSlot(eStatType::APD);
+			InstantiateUI<BanPickStat>(Vector3(-215.f, -185, 1.02f), eLayerType::UI, L"HPStatSlot")->SetSlot(eStatType::HP);
+			InstantiateUI<BanPickStat>(Vector3(-375.f, -254.f, 1.02f), eLayerType::UI, L"RNGStatSlot")->SetSlot(eStatType::RNG);
+			InstantiateUI<BanPickStat>(Vector3(-215.f, -254.f, 1.02f), eLayerType::UI, L"SPDStatSlot")->SetSlot(eStatType::SPD);
 		
 			// BanpickClassTap
 			// 클래스탭은 Btn 묶음으로 부모객체에서 상태를 받아 선택된 버튼과 나머지 버튼의 크기와 위치가 바뀌도록 한다.
@@ -70,7 +70,7 @@ namespace ssz
 		{
 			GameObject* Cursor = Instantiate<GameObject>(Vector3(0.f, 0.f, 0.01f), Vector3(32.f, 32.f, 1.f), eLayerType::Cursor);
 			Cursor->SetName(L"Cursor");
-			Cursor->AddComponent<CursorScript>()->Initialize();
+			Cursor->AddComponent<CursorScript>();
 		}
 		// Main Camera
 		{

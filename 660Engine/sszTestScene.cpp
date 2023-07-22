@@ -1,6 +1,8 @@
 #include "sszTestScene.h"
 #include "CommonHeader.h"
 
+#include "sszBattleHeader.h"
+
 namespace ssz
 {
 	using namespace object;
@@ -15,22 +17,44 @@ namespace ssz
 
 	void TestScene::Initialize()
 	{
-		std::shared_ptr<Texture> atlas = Resources::Load<Texture>(L"TestSprite", L"..\\Resources\\useResource\\Sprite\\moderator_ani.png");
-		ssz::object::LoadMaterial(L"TestAniMt", L"AnimationShader", L"TestSprite", eRenderingMode::Transparent);
+		// ¹è°æ
+		{
+			// Battle Header
+			BattleHeader* BattleHeaderBg = InstantiateUI<BattleHeader>(Vector3(0.0f, 478.5f, 1.019f), eLayerType::UI, L"BattleHeaderBg");
 
-		GameObject* TestObj = Instantiate<GameObject>(Vector3(0.f, 0.f, 1.01f), Vector3(200.f, 200.f, 1.f), eLayerType::Player);
-		TestObj->AddComponent<Collider2D>()->Initialize();
-		TestObj->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"TestAniMt");
-		
-		Animator* AniComp = TestObj->AddComponent<Animator>();
-		AniComp->Create(L"TestAnim", atlas, Vector2(0.f, 96.f), Vector2(32.f, 32.f), 5, Vector2(0.f, 0.f), 1.f / 12.f);
-		AniComp->PlayAnimation(L"TestAnim", true);
+			// IG Stadium
+			GameObject* IG_Stadium = Instantiate<GameObject>(Vector3(0.0f, -139.0f, 1.021f), Vector3(2293.f, 1498.f, 1.f), eLayerType::BackGround);
+			IG_Stadium->SetName(L"IG_Stadium");
+			IG_Stadium->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"IGStadiumMt");
+
+			// IG StadiumSky
+			GameObject* IG_StadiumSky = Instantiate<GameObject>(Vector3(0.0f, -53.0f, 1.022f), Vector3(2144.f, 1429.f, 1.f), eLayerType::BackGround);
+			IG_StadiumSky->SetName(L"IG_StadiumSky");
+			IG_StadiumSky->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"IGStadiumSkyMt");
+		}
+
+		// Player
+		{
+			
+
+			GameObject* TestObj = Instantiate<GameObject>(Vector3(0.f, 0.f, 1.01f), Vector3(128.f, 128.f, 1.f), eLayerType::Player);
+			Animator* AniComp = TestObj->AddComponent<Animator>();
+			
+			TestObj->AddComponent<TestScript>();
+			Collider2D* TestCol = TestObj->AddComponent<Collider2D>();
+			TestCol->SetOffsetSize(Vector3(-32.f, -32.f, 0.f));
+			
+			TestObj->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"archer_spriteMt");
+
+
+			
+		}
 
 		// MouseCursor
 		{
 			GameObject* Cursor = Instantiate<GameObject>(Vector3(0.f, 0.f, 0.01f), Vector3(32.f, 32.f, 1.f), eLayerType::Cursor);
 			Cursor->SetName(L"Cursor");
-			Cursor->AddComponent<CursorScript>()->Initialize();
+			Cursor->AddComponent<CursorScript>();
 		}
 
 		// Main Camera

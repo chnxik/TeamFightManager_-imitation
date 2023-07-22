@@ -10,6 +10,8 @@ namespace ssz
         NewGameWindow(const std::wstring& key);
         virtual ~NewGameWindow();
 
+        virtual void Initialize() override;
+
     private:
     };
 }

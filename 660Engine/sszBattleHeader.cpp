@@ -6,6 +6,14 @@ namespace ssz
 	BattleHeader::BattleHeader(const std::wstring& key)
 		: UIObject(key)
 	{
+	
+	}
+
+	BattleHeader::~BattleHeader()
+	{
+	}
+	void BattleHeader::Initialize()
+	{
 		std::wstring MtKey(mUIKey + L"_HeaderMt");
 
 #pragma region Meterial Load
@@ -33,9 +41,5 @@ namespace ssz
 		{
 		}
 #pragma endregion
-	}
-
-	BattleHeader::~BattleHeader()
-	{
 	}
 }

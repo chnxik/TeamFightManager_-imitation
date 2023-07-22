@@ -7,15 +7,23 @@ namespace ssz
 		: UIObject(key)
 		, TitleTex{}
 	{
+	}
+
+	LineUpTeamTitle::~LineUpTeamTitle()
+	{
+	}
+
+	void LineUpTeamTitle::Initialize()
+	{
 		std::wstring MtKey(mUIKey + L"_SlotMt");
 
 #pragma region Meterial Load
 		{
 			//	Header
-			TitleTex[eCampType::Player][eColorType::Red] = Resources::Load<Texture>(L"LineUpUI_Red_Left_TTTex", L"..\\Resources\\useResource\\stadium\\UI\\lineup_ui_team_title_bg_3.png");
-			TitleTex[eCampType::Enemy][eColorType::Red] = Resources::Load<Texture>(L"LineUpUI_Red_Right_TTTex", L"..\\Resources\\useResource\\stadium\\UI\\lineup_ui_team_title_bg_2.png");
-			TitleTex[eCampType::Player][eColorType::Blue] = Resources::Load<Texture>(L"LineUpUI_Blue_Left_TTTex", L"..\\Resources\\useResource\\stadium\\UI\\lineup_ui_team_title_bg_0.png");
-			TitleTex[eCampType::Enemy][eColorType::Blue] = Resources::Load<Texture>(L"LineUpUI_Blue_Right_TTTex", L"..\\Resources\\useResource\\stadium\\UI\\lineup_ui_team_title_bg_1.png");
+			TitleTex[(UINT)eCampType::Player][(UINT)eTeamColor::Red] = Resources::Load<Texture>(L"LineUpUI_Red_Left_TTTex", L"..\\Resources\\useResource\\stadium\\UI\\lineup_ui_team_title_bg_3.png");
+			TitleTex[(UINT)eCampType::Enemy][(UINT)eTeamColor::Red] = Resources::Load<Texture>(L"LineUpUI_Red_Right_TTTex", L"..\\Resources\\useResource\\stadium\\UI\\lineup_ui_team_title_bg_2.png");
+			TitleTex[(UINT)eCampType::Player][(UINT)eTeamColor::Blue] = Resources::Load<Texture>(L"LineUpUI_Blue_Left_TTTex", L"..\\Resources\\useResource\\stadium\\UI\\lineup_ui_team_title_bg_0.png");
+			TitleTex[(UINT)eCampType::Enemy][(UINT)eTeamColor::Blue] = Resources::Load<Texture>(L"LineUpUI_Blue_Right_TTTex", L"..\\Resources\\useResource\\stadium\\UI\\lineup_ui_team_title_bg_1.png");
 
 
 			ssz::object::LoadMaterial(MtKey, L"SpriteShader", L"LineUpUI_Red_Left_TTTex", eRenderingMode::Transparent);
@@ -34,12 +42,8 @@ namespace ssz
 #pragma endregion
 	}
 
-	LineUpTeamTitle::~LineUpTeamTitle()
+	void LineUpTeamTitle::SetTitleType(eCampType eCamp, eTeamColor eColor)
 	{
-	}
-
-	void LineUpTeamTitle::SetTitleType(eCampType eCamp, eColorType eColor)
-	{
-		GetComponent<MeshRenderer>()->GetMaterial()->SetTexture(TitleTex[eCamp][eColor]);
+		GetComponent<MeshRenderer>()->GetMaterial()->SetTexture(TitleTex[(UINT)eCamp][(UINT)eColor]);
 	}
 }

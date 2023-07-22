@@ -7,6 +7,14 @@ namespace ssz
 		: UIObject(Key)
 		, mBtnComp(nullptr)
 	{
+
+	}
+
+	BanpickClassTap::~BanpickClassTap()
+	{
+	}
+	void BanpickClassTap::Initialize()
+	{
 		std::wstring MtKey(mUIKey + L"_BtnMt");
 
 #pragma region Meterial Load
@@ -38,9 +46,5 @@ namespace ssz
 			// 
 		}
 #pragma endregion
-	}
-
-	BanpickClassTap::~BanpickClassTap()
-	{
 	}
 }

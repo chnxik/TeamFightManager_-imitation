@@ -19,6 +19,7 @@ float4 main(VSOut In) : SV_Target
     float4 color = (float4) 0.0f;
     
     float2 diff = (AtlasSize - SpriteSize) / 2.0f;
+    float2 frameUV = (SpriteLeftTop - diff - SpriteOffset);
     float2 UV = (SpriteLeftTop - diff - SpriteOffset) + (AtlasSize * In.UV);
     
     if (UV.x < SpriteLeftTop.x || UV.x > SpriteLeftTop.x + SpriteSize.x

@@ -7,6 +7,13 @@ namespace ssz
 		: UIObject(Key)
 		, mBtnComp(nullptr)
 	{
+	}
+
+	ProceedBtn::~ProceedBtn()
+	{
+	}
+	void ProceedBtn::Initialize()
+	{
 		std::wstring MtKey(mUIKey + L"_BtnMt");
 
 #pragma region Meterial Load
@@ -43,7 +50,7 @@ namespace ssz
 		{
 			// SetPanel
 			AddComponent<PanelUI>();
-			
+
 			// Add MarkTex
 			float BtnPosz = GetComponent<Transform>()->GetPosition().y;
 
@@ -52,9 +59,5 @@ namespace ssz
 			ProceedBtnArrowMark->GetComponent<Transform>()->SetTransType(ssz::Transform::eTransType::PosAdd);
 		}
 #pragma endregion
-	}
-
-	ProceedBtn::~ProceedBtn()
-	{
 	}
 }

@@ -9,6 +9,14 @@ namespace ssz
 		: UIObject(key)
 		, mStatIcon(nullptr)
 	{
+	}
+
+	BanPickStat::~BanPickStat()
+	{
+	}
+
+	void BanPickStat::Initialize()
+	{
 		std::wstring MtKey(mUIKey + L"_SlotMt");
 
 #pragma region Meterial Load
@@ -35,18 +43,14 @@ namespace ssz
 
 		{
 			float StatSlotPosZ = GetComponent<Transform>()->GetPosition().z;
-			
+
 			// Set Icon
 			mStatIcon = ssz::object::InstantiateUI<StatIcon>(Vector3(-59.f, 15.f, 1.019f), this, mUIKey);
 		}
 	}
-
-	BanPickStat::~BanPickStat()
-	{
-	}
 	
 	void BanPickStat::SetSlot(eStatType eType)
 	{
-		mStatIcon->SetIcon((ssz::StatIcon::eStatType)eType);
+		mStatIcon->SetIcon(eType);
 	}
 }

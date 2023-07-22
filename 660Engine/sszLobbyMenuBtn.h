@@ -12,6 +12,8 @@ namespace ssz
         LobbyMenuBtn(const std::wstring& Key);
         virtual ~LobbyMenuBtn();
 
+        virtual void Initialize() override;
+
         ButtonUI* GetBtnComponent() { return mBtnComp; }
 
     private:

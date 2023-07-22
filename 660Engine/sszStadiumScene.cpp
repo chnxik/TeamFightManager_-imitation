@@ -78,8 +78,8 @@ namespace ssz
 		{
 #pragma region LineUpUI
 			LineUpWindow* LineUpUI = InstantiateUI<LineUpWindow>(Vector3(0.f, 0.f, 1.004f), eLayerType::UI, L"LineUpWindowBg");
-			LineUpUI->SetPlayerTeamTitle(ssz::LineUpTeamTitle::eColorType::Red);
-			LineUpUI->SetEnemyTeamTitle(ssz::LineUpTeamTitle::eColorType::Blue);
+			LineUpUI->SetPlayerTeamTitle(eTeamColor::Red);
+			LineUpUI->SetEnemyTeamTitle(eTeamColor::Blue);
 			LineUpUI->SetState(ssz::GameObject::eState::Paused);
 
 			LineUpWin = LineUpUI;
@@ -106,7 +106,7 @@ namespace ssz
 		{
 			GameObject* Cursor = Instantiate<GameObject>(Vector3(0.f, 0.f, 0.01f), Vector3(32.f, 32.f, 1.f), eLayerType::Cursor);
 			Cursor->SetName(L"Cursor");
-			Cursor->AddComponent<CursorScript>()->Initialize();
+			Cursor->AddComponent<CursorScript>();
 		}
 
 		// Main Camera

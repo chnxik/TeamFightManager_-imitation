@@ -11,6 +11,8 @@ namespace ssz
 		ImportantBtn(const std::wstring& Key);
 		virtual ~ImportantBtn();
 
+		virtual void Initialize() override;
+
 		ButtonUI* GetBtnComponent() { return mBtnComp; }
 
 	private:

@@ -305,6 +305,7 @@ namespace renderer
 		std::shared_ptr<Shader> AnimationShader = std::make_shared<Shader>();
 		AnimationShader->Create(eShaderStage::VS, L"AnimationVS.hlsl", "main");
 		AnimationShader->Create(eShaderStage::PS, L"AnimationPS.hlsl", "main");
+		AnimationShader->SetRSState(eRSType::SolidNone);
 		ssz::Resources::Insert(L"AnimationShader", AnimationShader);
 	}
 

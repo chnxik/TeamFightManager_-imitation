@@ -10,6 +10,8 @@ namespace ssz
         HeaderSlot(const std::wstring& key);
         virtual ~HeaderSlot();
 
+        virtual void Initialize() override;
+
     private:
 
     };

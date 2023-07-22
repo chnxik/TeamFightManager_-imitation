@@ -18,8 +18,6 @@ namespace ssz
 		virtual void OnCollisionStay(Collider2D* other);
 		virtual void OnCollisionExit(Collider2D* other);
 
-		void SetDefault();
-
 	private:
 		Vector3 ArrangePos;
 		Vector3 ArrangeScale;

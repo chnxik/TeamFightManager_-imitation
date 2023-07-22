@@ -14,6 +14,7 @@ namespace ssz
 		, mPosition(Vector3::Zero)
 		, mRotation(Vector3::Zero)
 		, mScale(Vector3::One)
+		, mDir(eDir::Right)
 		, mWorldPosition(Vector3::Zero)
 		, mWorldRotation(Vector3::Zero)
 		, mWorldScale(Vector3::One)
@@ -40,7 +41,7 @@ namespace ssz
 		{
 			switch (mType)
 			{
-			case ssz::Transform::Multiply:
+			case ssz::Transform::eTransType::Multiply:
 			{
 				mWorld = Matrix::Identity;
 
@@ -66,7 +67,7 @@ namespace ssz
 				mWorldRotation = mRotation + mParent->mWorldRotation; // Rotation은 합으로 계산
 			}
 				break;
-			case ssz::Transform::AddAll:
+			case ssz::Transform::eTransType::AddAll:
 			{
 				mWorldPosition = mPosition + mParent->mWorldPosition;
 				mWorldRotation = mRotation + mParent->mWorldRotation;
@@ -91,7 +92,7 @@ namespace ssz
 				mRight = Vector3::TransformNormal(Vector3::Right, rotation);
 			}
 				break;
-			case ssz::Transform::PosAdd:
+			case ssz::Transform::eTransType::PosAdd:
 			{
 				mWorldPosition = mPosition + mParent->mWorldPosition;
 				mWorldRotation = mRotation + mParent->mWorldRotation;
@@ -156,6 +157,7 @@ namespace ssz
 		trCB.mWorld = mWorld;
 		trCB.mView = Camera::GetGpuViewMatrix();
 		trCB.mProjection = Camera::GetGpuProjectionMatrix();
+		trCB.mDir = (float)mDir;
 
 		ConstantBuffer* cb = renderer::constantBuffer[(UINT)eCBType::Transform];
 		cb->SetData(&trCB);

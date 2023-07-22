@@ -20,9 +20,10 @@ namespace renderer
 
 	CBUFFER(TransformCB, CBSLOT_TRANSFORM)
 	{
-		Matrix mWorld;
-		Matrix mView;
-		Matrix mProjection;
+		Matrix	mWorld;
+		Matrix	mView;
+		Matrix	mProjection;
+		float	mDir;
 	};
 
 	CBUFFER(MaskingCB, CBSLOT_MASKING)

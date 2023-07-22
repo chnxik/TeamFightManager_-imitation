@@ -23,12 +23,6 @@
     <ClInclude Include="sszTestScript.h">
       <Filter>Contents\Script\Test</Filter>
     </ClInclude>
-    <ClInclude Include="sszTestScript2.h">
-      <Filter>Contents\Script\Test</Filter>
-    </ClInclude>
-    <ClInclude Include="sszTestScript3.h">
-      <Filter>Contents\Script\Test</Filter>
-    </ClInclude>
     <ClInclude Include="sszMasking.h">
       <Filter>Contents\Script\Masking</Filter>
     </ClInclude>
@@ -104,6 +98,7 @@
     <ClInclude Include="sszIGStadiumScene.h">
       <Filter>Contents\Scene\6. IGStadium</Filter>
     </ClInclude>
+    <ClInclude Include="sszTestBTScript.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="660Engine.cpp" />
@@ -127,12 +122,6 @@
     </ClCompile>
     <ClCompile Include="Load.cpp">
       <Filter>Contents\Load</Filter>
-    </ClCompile>
-    <ClCompile Include="sszTestScript2.cpp">
-      <Filter>Contents\Script\Test</Filter>
-    </ClCompile>
-    <ClCompile Include="sszTestScript3.cpp">
-      <Filter>Contents\Script\Test</Filter>
     </ClCompile>
     <ClCompile Include="sszMasking.cpp">
       <Filter>Contents\Script\Masking</Filter>
@@ -200,6 +189,7 @@
     <ClCompile Include="sszIGStadiumScene.cpp">
       <Filter>Contents\Scene\6. IGStadium</Filter>
     </ClCompile>
+    <ClCompile Include="sszTestBTScript.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Contents">

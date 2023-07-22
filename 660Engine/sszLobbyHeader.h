@@ -9,6 +9,7 @@ namespace ssz
 		LobbyHeader(const std::wstring& key);
 		virtual ~LobbyHeader();
 
+		virtual void Initialize() override;
 	private:
 	};
 }

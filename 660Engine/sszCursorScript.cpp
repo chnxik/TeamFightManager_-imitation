@@ -52,7 +52,6 @@ namespace ssz
 		}
 
 		CursorSize /= 2.f;
-
 	}
 	
 	void CursorScript::LateUpdate()

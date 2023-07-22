@@ -7,6 +7,14 @@ namespace ssz
 		: UIObject(Key)
 		, mBtnComp(nullptr)
 	{
+		
+	}
+
+	ImportantBtn::~ImportantBtn()
+	{
+	}
+	void ImportantBtn::Initialize()
+	{
 		std::wstring MtKey(mUIKey + L"_BtnMt");
 
 #pragma region Meterial Load
@@ -37,9 +45,5 @@ namespace ssz
 			tr->SetTransType(ssz::Transform::eTransType::PosAdd);
 		}
 #pragma endregion
-	}
-
-	ImportantBtn::~ImportantBtn()
-	{
 	}
 }

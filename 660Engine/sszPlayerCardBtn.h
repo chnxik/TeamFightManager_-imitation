@@ -11,25 +11,14 @@ namespace ssz
 		PlayerCardBtn(const std::wstring& key);
 		virtual ~PlayerCardBtn();
 
+		virtual void Initialize() override;
+
 		ButtonUI* GetBtnComponent() { return mBtnComp; }
 		void SetRed();
 		void SetBlue();
 
 	private:
-		enum eTeamColor
-		{
-			Red,
-			Blue
-		};
-
-		enum eBtnState
-		{
-			Idle,
-			On,
-			Down,
-		};
-
 		ButtonUI* mBtnComp;
-		std::shared_ptr<Texture> vecCardTex[2][3];
+		std::shared_ptr<Texture> vecCardTex[(UINT)eTeamColor::End][(UINT)ButtonUI::eBtnState::End];
 	};
 }

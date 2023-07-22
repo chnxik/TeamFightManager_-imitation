@@ -130,6 +130,9 @@
     <Filter Include="GameObject\Component\Animator">
       <UniqueIdentifier>{49a6fee5-1e1b-446a-a97f-f1f23ba65886}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Common\BehaviorTree">
+      <UniqueIdentifier>{704ef367-8f16-4017-bde5-fe6c0a780049}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h">
@@ -243,6 +246,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)sszAnimation.h">
       <Filter>Resource\Animation</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszBehaviorTree.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)sszMath.cpp">
@@ -341,6 +345,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)sszAnimation.cpp">
       <Filter>Resource\Animation</Filter>
     </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszBehaviorTree.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)sszMath.inl">

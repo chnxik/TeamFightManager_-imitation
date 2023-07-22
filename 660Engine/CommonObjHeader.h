@@ -5,6 +5,7 @@
 // Engine
 #include "sszInput.h"
 #include "sszTime.h"
+#include "sszBehaviorTree.h"
 
 // Component
 #include "sszCamera.h"
@@ -15,6 +16,7 @@
 
 // Object Func
 #include "sszObject.h"
+using namespace ssz::object;
 
 // UI Component
 #include "sszUIComponent.h"

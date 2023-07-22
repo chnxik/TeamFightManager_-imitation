@@ -10,5 +10,3 @@
 #include "sszArrangementScript.h"
 
 #include "sszTestScript.h"
-#include "sszTestScript2.h"
-#include "sszTestScript3.h"

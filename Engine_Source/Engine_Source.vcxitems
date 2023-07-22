@@ -18,6 +18,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)sszAnimation.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sszAnimator.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sszApplication.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszBehaviorTree.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sszButtonUI.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sszCamera.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sszCollider2D.h" />
@@ -56,6 +57,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)sszAnimation.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sszAnimator.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sszApplication.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszBehaviorTree.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sszButtonUI.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sszCamera.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sszCollider2D.cpp" />

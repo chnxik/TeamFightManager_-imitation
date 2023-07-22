@@ -9,8 +9,8 @@ namespace ssz
         BattleHeader(const std::wstring& key);
         virtual ~BattleHeader();
 
+        virtual void Initialize() override;
 
     private:
-
     };
 }

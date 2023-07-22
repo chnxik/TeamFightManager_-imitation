@@ -9,6 +9,15 @@ namespace ssz
 	LobbyHeader::LobbyHeader(const std::wstring& key)
 		: UIObject(key)
 	{
+		
+	}
+
+	LobbyHeader::~LobbyHeader()
+	{
+	}
+
+	void LobbyHeader::Initialize()
+	{
 		std::wstring MtKey(mUIKey + L"_HeaderMt");
 
 #pragma region Meterial Load
@@ -42,7 +51,7 @@ namespace ssz
 		{
 			HeaderSlot* DateSlot = ssz::object::InstantiateUI<HeaderSlot>(Vector3(416.f, 0.f, 1.002f), this, L"DateSlot");
 			DateSlot->AddComponent<PanelUI>();
-			HeaderSlot* GoldSlot = ssz::object::InstantiateUI<HeaderSlot>(Vector3(775.f, 0.f, 1.002f), this, L"DateSlot");
+			HeaderSlot* GoldSlot = ssz::object::InstantiateUI<HeaderSlot>(Vector3(775.f, 0.f, 1.002f), this, L"GlodSlot");
 			GoldSlot->AddComponent<PanelUI>();
 
 			UIObject* CalendarIcon = ssz::object::InstantiateUI<UIObject>(Vector3(-133.f, 0.f, 1.001f), Vector3(36.f, 36.f, 1.f), DateSlot, L"CalendarIcon");
@@ -53,9 +62,5 @@ namespace ssz
 			GoldIcon->GetComponent<Transform>()->SetTransType(ssz::Transform::eTransType::PosAdd);
 		}
 #pragma endregion
-	}
-
-	LobbyHeader::~LobbyHeader()
-	{
 	}
 }

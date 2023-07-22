@@ -6,25 +6,15 @@ namespace ssz
 	class LineUpTeamTitle : public UIObject
 	{
 	public:
-		enum eCampType
-		{
-			Player,
-			Enemy,
-		};
-
-		enum eColorType
-		{
-			Red,
-			Blue
-		};
-
 		LineUpTeamTitle(const std::wstring & key);
 		virtual ~LineUpTeamTitle();
 
-		void SetTitleType(eCampType eCamp, eColorType eColor);
+		virtual void Initialize() override;
+
+		void SetTitleType(eCampType eCamp, eTeamColor eColor);
 
 	private:
-		std::shared_ptr<Texture> TitleTex[2][2];
+		std::shared_ptr<Texture> TitleTex[(UINT)eCampType::End][(UINT)eTeamColor::End];
 	};
 
 }

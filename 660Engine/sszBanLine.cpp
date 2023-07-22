@@ -6,6 +6,13 @@ namespace ssz
 	BanLine::BanLine(const std::wstring& key)
 		: UIObject(key)
 	{
+	}
+
+	BanLine::~BanLine()
+	{
+	}
+	void BanLine::Initialize()
+	{
 		std::wstring MtKey(mUIKey + L"_LineMt");
 
 #pragma region Meterial Load
@@ -34,9 +41,5 @@ namespace ssz
 		{
 		}
 #pragma endregion
-	}
-
-	BanLine::~BanLine()
-	{
 	}
 }

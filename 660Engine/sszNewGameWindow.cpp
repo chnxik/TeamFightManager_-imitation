@@ -6,6 +6,15 @@ namespace ssz
 	NewGameWindow::NewGameWindow(const std::wstring& key)
 		: UIObject(key)
 	{
+		
+	}
+
+	NewGameWindow::~NewGameWindow()
+	{
+	}
+
+	void NewGameWindow::Initialize()
+	{
 		std::wstring MtKey(mUIKey + L"_WindowMt");
 
 #pragma region Meterial Load
@@ -29,10 +38,6 @@ namespace ssz
 			tr->SetScale(Vector3(1350.f, 786.f, 1.f));
 		}
 #pragma endregion
-	}
-
-	NewGameWindow::~NewGameWindow()
-	{
 	}
 
 }

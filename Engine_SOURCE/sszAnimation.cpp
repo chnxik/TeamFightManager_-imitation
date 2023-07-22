@@ -56,7 +56,7 @@ namespace ssz
 
 		float width = (float)atlas->GetWidth();
 		float height = (float)atlas->GetHeight();
-		float ratio = 32.f;
+		Vector2 ratio = size;
 
 		for (size_t i = 0; i < columnLength; i++)
 		{
@@ -66,7 +66,7 @@ namespace ssz
 			sprite.size.x = size.x / width;
 			sprite.size.y = size.y / height;
 			sprite.offset = offset;
-			sprite.atlasSize = Vector2(ratio / width, ratio / height);
+			sprite.atlasSize = Vector2(ratio.x / width, ratio.y / height);
 			sprite.duration = duration;
 
 			mSprites.push_back(sprite);

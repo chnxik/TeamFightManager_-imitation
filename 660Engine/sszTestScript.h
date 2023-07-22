@@ -3,6 +3,9 @@
 
 namespace ssz
 {
+	class Transform;
+	class Animator;
+
 	class TestScript : public Script
 	{
 	public:
@@ -12,15 +15,10 @@ namespace ssz
 		virtual void Initialize() override;
 		virtual void Update() override;
 
-		void SetDefault();
+		void Complete();
 
 	private:
-		Vector3 OffsetPos;
-		Vector3 OffsetScale;
-		Vector3 OffsetRotation;
-
-		float fradius;
-		float fradiusx;
-		float fradiusy;
+		Transform* tr;
+		Animator* anim;
 	};
 }

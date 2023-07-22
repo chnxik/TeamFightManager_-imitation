@@ -11,7 +11,7 @@ namespace ssz
 		DefaultBtn(const std::wstring& Key);
 		virtual ~DefaultBtn();
 
-		virtual void Initialize();
+		virtual void Initialize() override;
 		virtual void Update();
 		virtual void LateUpdate();
 		virtual void Render();

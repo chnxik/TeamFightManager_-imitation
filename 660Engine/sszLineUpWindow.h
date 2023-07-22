@@ -10,8 +10,10 @@ namespace ssz
         LineUpWindow(const std::wstring& key);
         virtual ~LineUpWindow();
 
-        void SetPlayerTeamTitle(ssz::LineUpTeamTitle::eColorType eColor);
-        void SetEnemyTeamTitle(ssz::LineUpTeamTitle::eColorType eColor);
+        virtual void Initialize() override;
+
+        void SetPlayerTeamTitle(eTeamColor eColor);
+        void SetEnemyTeamTitle(eTeamColor eColor);
 
     private:
         LineUpTeamTitle* PlayerTeamTitle;

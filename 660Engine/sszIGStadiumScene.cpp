@@ -44,15 +44,14 @@ namespace ssz
 			IG_StadiumSky->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"IGStadiumSkyMt");
 
 			// 오브젝트 배치용 스크립트
-			ArrangementScript* ArScript = IG_Stadium->AddComponent<ArrangementScript>();
-			ArScript->SetDefault();
+			IG_Stadium->AddComponent<ArrangementScript>();
 		}
 
 		// MouseCursor
 		{
 			GameObject* Cursor = Instantiate<GameObject>(Vector3(0.f, 0.f, 0.01f), Vector3(32.f, 32.f, 1.f), eLayerType::Cursor);
 			Cursor->SetName(L"Cursor");
-			Cursor->AddComponent<CursorScript>()->Initialize();
+			Cursor->AddComponent<CursorScript>();
 		}
 
 		// Main Camera

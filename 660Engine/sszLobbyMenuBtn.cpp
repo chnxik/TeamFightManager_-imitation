@@ -7,6 +7,14 @@ namespace ssz
 		: UIObject(Key)
 		, mBtnComp(nullptr)
 	{
+		
+	}
+
+	LobbyMenuBtn::~LobbyMenuBtn()
+	{
+	}
+	void LobbyMenuBtn::Initialize()
+	{
 		std::wstring MtKey(mUIKey + L"_BtnMt");
 
 #pragma region Meterial Load
@@ -36,9 +44,5 @@ namespace ssz
 			GetComponent<Transform>()->SetScale(Vector3(230, 62.f, 1.f));
 		}
 #pragma endregion
-	}
-
-	LobbyMenuBtn::~LobbyMenuBtn()
-	{
 	}
 }

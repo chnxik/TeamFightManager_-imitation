@@ -38,7 +38,7 @@ namespace ssz
         virtual void LateUpdate();
         virtual void Render();
 
-        Animation* Create(const std::wstring& name
+        void Create(const std::wstring& name
             , std::shared_ptr<graphics::Texture> atlas
             , Vector2 leftTop
             , Vector2 size
@@ -46,9 +46,22 @@ namespace ssz
             , Vector2 offset = Vector2::Zero
             , float duration = 0.f);
 
+        void Create(const std::wstring& name
+            , const std::wstring& atlaskey
+            , Vector2 leftTop
+            , Vector2 size
+            , UINT columnLength
+            , Vector2 offset = Vector2::Zero
+            , float duration = 0.f);
+
         Animation* FindAnimation(const std::wstring& name);
+        Events* FindEvents(const std::wstring& name);
         void PlayAnimation(const std::wstring& name, bool loop);
         virtual void Binds();
+
+        std::function<void()>& StartEvent(const std::wstring key);
+        std::function<void()>& CompleteEvent(const std::wstring key);
+        std::function<void()>& EndEvent(const std::wstring key);
 
     private:
         std::map<std::wstring, Animation*> mAnimations;

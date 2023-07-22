@@ -49,6 +49,8 @@ namespace ssz::object
 			Scene* scene = SceneManager::GetActiveScene();
 			scene->AddGameObject(layer, gameObj);
 
+			gameObj->Initialize();
+
 			return gameObj;
 		}
 
@@ -61,6 +63,8 @@ namespace ssz::object
 
 			Scene* scene = SceneManager::GetActiveScene();
 			scene->AddGameObject(layer, gameObj);
+
+			gameObj->Initialize();
 
 			return gameObj;
 		}
@@ -75,6 +79,8 @@ namespace ssz::object
 
 			Scene* scene = SceneManager::GetActiveScene();
 			scene->AddGameObject(layer, gameObj);
+
+			gameObj->Initialize();
 
 			return gameObj;
 		}
@@ -91,6 +97,8 @@ namespace ssz::object
 			Scene* scene = SceneManager::GetActiveScene();
 			scene->AddGameObject(layer, gameObj);
 
+			gameObj->Initialize();
+
 			return gameObj;
 		}
 #pragma endregion
@@ -104,6 +112,8 @@ namespace ssz::object
 
 			Scene* scene = SceneManager::GetActiveScene();
 			scene->AddGameObject(layer, gameObj);
+
+			gameObj->Initialize();
 
 			return gameObj;
 		}
@@ -119,6 +129,8 @@ namespace ssz::object
 
 			Scene* scene = SceneManager::GetActiveScene();
 			scene->AddGameObject(layer, gameObj);
+
+			gameObj->Initialize();
 
 
 			return gameObj;
@@ -137,6 +149,8 @@ namespace ssz::object
 			Scene* scene = SceneManager::GetActiveScene();
 			scene->AddGameObject(layer, gameObj);
 
+			gameObj->Initialize();
+
 			return gameObj;
 		}
 
@@ -154,6 +168,8 @@ namespace ssz::object
 			Scene* scene = SceneManager::GetActiveScene();
 			scene->AddGameObject(layer, gameObj);
 
+			gameObj->Initialize();
+
 			return gameObj;
 		}
 #pragma endregion
@@ -169,6 +185,8 @@ namespace ssz::object
 			// UIObject 부모자식 설정
 			Panel->AddChildUI(gameObj);
 			gameObj->SetState(pParentUI->GetState());
+
+			gameObj->Initialize();
 
 			return gameObj;
 		}
@@ -189,6 +207,9 @@ namespace ssz::object
 			Transform* tr = gameObj->GetComponent<Transform>();
 			
 			tr->SetPosition(pos);
+
+			gameObj->Initialize();
+
 			return gameObj;
 		}
 
@@ -208,6 +229,8 @@ namespace ssz::object
 
 			tr->SetPosition(pos);
 			tr->SetScale(scale);
+
+			gameObj->Initialize();
 
 			return gameObj;
 		}
@@ -229,6 +252,8 @@ namespace ssz::object
 			tr->SetPosition(pos);
 			tr->SetRotation(rotate);
 			tr->SetScale(scale);
+
+			gameObj->Initialize();
 
 			return gameObj;
 		}

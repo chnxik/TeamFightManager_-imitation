@@ -99,7 +99,7 @@ namespace ssz
 		{
 			GameObject* Cursor = Instantiate<GameObject>(Vector3(0.f, 0.f, 0.01f), Vector3(32.f, 32.f, 1.f), eLayerType::Cursor);
 			Cursor->SetName(L"Cursor");
-			Cursor->AddComponent<CursorScript>()->Initialize();
+			Cursor->AddComponent<CursorScript>();
 		}
 
 		// Main Camera

@@ -7,19 +7,10 @@ namespace ssz
     class BanPickStat : public UIObject
     {
     public:
-        enum eStatType
-        {
-            ATK,
-            DEF,
-            APD,
-            HP,
-            RNG,
-            SPD,
-            END
-        };
-
         BanPickStat(const std::wstring& key);
         virtual ~BanPickStat();
+
+        virtual void Initialize() override;
 
         void SetSlot(eStatType eType);
 

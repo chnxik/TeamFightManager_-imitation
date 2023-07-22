@@ -11,6 +11,8 @@ namespace ssz
         BanpickClassTap(const std::wstring& Key);
         virtual ~BanpickClassTap();
 
+        virtual void Initialize() override;
+
         ButtonUI* GetBtnComponent() { return mBtnComp; }
 
     private:

@@ -133,6 +133,12 @@
     <Filter Include="Common\BehaviorTree">
       <UniqueIdentifier>{704ef367-8f16-4017-bde5-fe6c0a780049}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Common\BehaviorTree\Node">
+      <UniqueIdentifier>{745d89c6-92c5-4b31-ac87-7fa0667dcc06}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common\BehaviorTree\Blackboard">
+      <UniqueIdentifier>{d2994bfb-5f2e-453a-8a4e-11dff899a0fb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h">
@@ -246,7 +252,12 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)sszAnimation.h">
       <Filter>Resource\Animation</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)sszBehaviorTree.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszBehaviorTree.h">
+      <Filter>Common\BehaviorTree\Node</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszBlackboard.h">
+      <Filter>Common\BehaviorTree\Blackboard</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)sszMath.cpp">
@@ -345,7 +356,12 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)sszAnimation.cpp">
       <Filter>Resource\Animation</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)sszBehaviorTree.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszBehaviorTree.cpp">
+      <Filter>Common\BehaviorTree\Node</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszBlackboard.cpp">
+      <Filter>Common\BehaviorTree\Blackboard</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)sszMath.inl">

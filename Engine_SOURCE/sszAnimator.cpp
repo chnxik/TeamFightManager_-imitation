@@ -9,6 +9,7 @@ namespace ssz
 		: Component(eComponentType::Animator)
 		, mActiveAnimation(nullptr)
 		, mbLoop(false)
+		, mbComplete(false)
 	{
 	}
 
@@ -36,14 +37,25 @@ namespace ssz
 		if (mActiveAnimation == nullptr)
 			return;
 
-		if (mActiveAnimation->IsComplete() && mbLoop)
+		if (mActiveAnimation->IsComplete())
 		{
-			Events* events
-				= FindEvents(mActiveAnimation->GetKey());
-			if (events)
-				events->complateEvent();
+			if (!mbComplete)
+			{
+				Events* events
+					= FindEvents(mActiveAnimation->GetKey());
 
-			mActiveAnimation->Reset();
+				if (events)
+				{
+					mbComplete = true;
+					events->complateEvent();
+				}
+			}
+			
+			if (mbLoop)
+			{
+				mActiveAnimation->Reset();
+				mbComplete = false;
+			}
 		}
 
 		mActiveAnimation->Update();
@@ -148,6 +160,7 @@ namespace ssz
 			events->startEvent();
 
 		mbLoop = loop;
+		mbComplete = false;
 		mActiveAnimation->Reset();
 	}
 	

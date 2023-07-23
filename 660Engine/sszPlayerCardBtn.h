@@ -1,7 +1,6 @@
 #pragma once
 #include "sszUIObject.h"
-#include "sszButtonUI.h"
-#include "sszTexture.h"
+#include "CommonObjHeader.h"
 
 namespace ssz
 {

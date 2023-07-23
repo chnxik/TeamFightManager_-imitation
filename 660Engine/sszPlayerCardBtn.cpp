@@ -16,6 +16,7 @@ namespace ssz
 	PlayerCardBtn::~PlayerCardBtn()
 	{
 	}
+
 	void PlayerCardBtn::Initialize()
 	{
 		std::wstring MtKey(mUIKey + L"_BtnMt");

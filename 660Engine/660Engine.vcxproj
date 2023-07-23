@@ -175,6 +175,7 @@
     <ClInclude Include="sszBanPickStat.h" />
     <ClInclude Include="sszBattleHeader.h" />
     <ClInclude Include="sszCameraScript.h" />
+    <ClInclude Include="sszChamp.h" />
     <ClInclude Include="sszCursorScript.h" />
     <ClInclude Include="sszDefaultBtn.h" />
     <ClInclude Include="sszHeaderSlot.h" />
@@ -192,7 +193,6 @@
     <ClInclude Include="sszProceedBtn.h" />
     <ClInclude Include="sszStadiumScene.h" />
     <ClInclude Include="sszStatIcon.h" />
-    <ClInclude Include="sszTestBTScript.h" />
     <ClInclude Include="sszTestScene.h" />
     <ClInclude Include="sszTestScript.h" />
     <ClInclude Include="sszTitleScene.h" />
@@ -209,6 +209,7 @@
     <ClCompile Include="sszBanPickStat.cpp" />
     <ClCompile Include="sszBattleHeader.cpp" />
     <ClCompile Include="sszCameraScript.cpp" />
+    <ClCompile Include="sszChamp.cpp" />
     <ClCompile Include="sszCursorScript.cpp" />
     <ClCompile Include="sszDefaultBtn.cpp" />
     <ClCompile Include="sszHeaderSlot.cpp" />
@@ -227,7 +228,6 @@
     <ClCompile Include="sszStadiumScene.cpp" />
     <ClCompile Include="sszStatIcon.cpp" />
     <ClCompile Include="sszTestBt.cpp" />
-    <ClCompile Include="sszTestBTScript.cpp" />
     <ClCompile Include="sszTestScene.cpp" />
     <ClCompile Include="sszTestScript.cpp" />
     <ClCompile Include="sszTitleScene.cpp" />

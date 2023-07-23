@@ -1,20 +1,20 @@
 #include "sszBehaviorTree.h"
 
-namespace ssz
+namespace ssz::AI
 {
-	CompositeNode::CompositeNode()
+	BT::BT()
 	{
 	}
-	
-	CompositeNode::~CompositeNode()
+
+	BT::~BT()
 	{
-		for (BT* child : getChild())
+		for (BT* child : mChild)
 		{
 			delete child;
 			child = nullptr;
 		}
 	}
-	
+
 	bool Selector::Run()
 	{
 		for (BT* child : getChild())

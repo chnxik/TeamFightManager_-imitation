@@ -1,6 +1,7 @@
 #pragma once
 #include "sszTestScript.h"
 #include "CommonObjHeader.h"
+#include "sszSceneManager.h"
 
 namespace ssz
 {
@@ -12,18 +13,104 @@ namespace ssz
 	public:
 		CheckStop(Animator* pAnim) : Anim(pAnim) {}
 
+
 		virtual bool Run() override
 		{
+			//
+			int* Testint = Blackboard::FindData<int>(L"Testint");
+			int Test2 = *Testint;
+			*Testint = 700;
+
+
+			//
+			Scene* CurScene = SceneManager::GetActiveScene();
+
+			GameObject* Cursor = CurScene->GetLayer(eLayerType::Cursor).GetGameObjects().front();
+
+			Vector3 CsrPos = Cursor->GetComponent<Transform>()->GetWorldPosition();
+			Transform* Ownertr = Anim->GetOwner()->GetComponent<Transform>();
+			Vector3 OwnerPos = Ownertr->GetWorldPosition();
+
+			float dist = sqrt(
+				(CsrPos.x - OwnerPos.x) * (CsrPos.x - OwnerPos.x) +
+				(CsrPos.y - OwnerPos.y) * (CsrPos.y - OwnerPos.y));
+
 			if (Input::GetKey(eKeyCode::SPACE))
 			{
-				if (!(Anim->GetCurAnimation() == L"archer_idle"))
+				if (!(Anim->GetCurAnimationKey() == L"archer_idle"))
 					Anim->PlayAnimation(L"archer_idle", true);
 
 				return true;
 			}
+			
+			if (300.f < dist && dist < 500.f)
+			{
+				if (0 <= (CsrPos.x - OwnerPos.x))
+				{
+					if (Ownertr->IsLeft())
+						Ownertr->SetRight();
+				}
+				else
+				{
+					if (Ownertr->IsRight())
+						Ownertr->SetLeft();
+				}
 
-			if (!(Anim->GetCurAnimation() == L"archer_move"))
+				if (!(Anim->GetCurAnimationKey() == L"archer_skill"))
+				{
+					Anim->PlayAnimation(L"archer_skill", true);
+				}
+
+				return true;
+			}
+
+			if (50.f < dist && dist < 300.f)
+			{
+				if (0 <= (CsrPos.x - OwnerPos.x))
+				{
+					if (Ownertr->IsLeft())
+						Ownertr->SetRight();
+				}
+				else
+				{
+					if (Ownertr->IsRight())
+						Ownertr->SetLeft();
+				}
+
+				if (!(Anim->GetCurAnimationKey() == L"archer_attack"))
+				{
+					Anim->PlayAnimation(L"archer_attack", true);
+				}
+
+				return true;
+			}
+
+			if (dist < 50.f)
+			{
+				if (0 <= (CsrPos.x - OwnerPos.x))
+				{
+					if (Ownertr->IsLeft())
+						Ownertr->SetRight();
+				}
+				else
+				{
+					if (Ownertr->IsRight())
+						Ownertr->SetLeft();
+				}
+
+				if (!(Anim->GetCurAnimationKey() == L"archer_dead"))
+				{
+					Anim->PlayAnimation(L"archer_dead", false);
+					
+				}
+
+				return true;
+			}
+
+			if (!(Anim->GetCurAnimationKey() == L"archer_move"))
 				Anim->PlayAnimation(L"archer_move", true);
+
+
 
 			return false;
 		}

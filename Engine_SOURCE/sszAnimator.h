@@ -63,7 +63,8 @@ namespace ssz
         std::function<void()>& CompleteEvent(const std::wstring key);
         std::function<void()>& EndEvent(const std::wstring key);
 
-        const std::wstring& GetCurAnimation() const {return mActiveAnimation->GetKey(); }
+        const std::wstring& GetCurAnimationKey() const {return mActiveAnimation->GetKey(); }
+        const Animation* GetCurAnimation() const { return mActiveAnimation; }
 
     private:
         std::map<std::wstring, Animation*> mAnimations;
@@ -71,5 +72,6 @@ namespace ssz
         Animation* mActiveAnimation;
 
         bool mbLoop;
+        bool mbComplete;
     };
 }

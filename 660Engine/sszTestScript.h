@@ -9,6 +9,11 @@ namespace ssz
 	class TestScript : public Script
 	{
 	public:
+		struct Testst
+		{
+			int a;
+		};
+
 		TestScript();
 		virtual ~TestScript();
 
@@ -16,7 +21,7 @@ namespace ssz
 		virtual void Update() override;
 
 	private:
-		Sequence* root;
+		AI::Sequence* root;
 		Transform* tr;
 		Animator* anim;
 	};

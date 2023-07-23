@@ -31,3 +31,10 @@ enum eStatType
     SPD,
     END
 };
+
+enum eClass
+{
+    Archer,
+    SwordMan,
+    End,
+};

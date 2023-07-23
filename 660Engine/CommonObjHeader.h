@@ -5,7 +5,14 @@
 // Engine
 #include "sszInput.h"
 #include "sszTime.h"
+
+// GameObject
+#include "sszGameObject.h"
+
+// AI
 #include "sszBehaviorTree.h"
+#include "sszBlackboard.h"
+using namespace ssz::AI;
 
 // Component
 #include "sszCamera.h"

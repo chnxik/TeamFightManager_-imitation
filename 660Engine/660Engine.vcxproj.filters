@@ -98,7 +98,9 @@
     <ClInclude Include="sszIGStadiumScene.h">
       <Filter>Contents\Scene\6. IGStadium</Filter>
     </ClInclude>
-    <ClInclude Include="sszTestBTScript.h" />
+    <ClInclude Include="sszChamp.h">
+      <Filter>Contents\Object\GameObject\Champ\Base</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="660Engine.cpp" />
@@ -189,9 +191,11 @@
     <ClCompile Include="sszIGStadiumScene.cpp">
       <Filter>Contents\Scene\6. IGStadium</Filter>
     </ClCompile>
-    <ClCompile Include="sszTestBTScript.cpp" />
     <ClCompile Include="sszTestBt.cpp">
       <Filter>Contents\Script\Test</Filter>
+    </ClCompile>
+    <ClCompile Include="sszChamp.cpp">
+      <Filter>Contents\Object\GameObject\Champ\Base</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -329,6 +333,27 @@
     </Filter>
     <Filter Include="Contents\Object\UI\Button\BanpickClassTap">
       <UniqueIdentifier>{839e1af5-6092-41ff-851a-5cb45ed6e7dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Script\Champ">
+      <UniqueIdentifier>{1525570d-7c7b-4cb3-9372-4a76bf3584e8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Script\Champ\Archer">
+      <UniqueIdentifier>{2d33b6fa-2c9e-4fbb-8c2e-4bd483f670e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Script\Champ\Swordman">
+      <UniqueIdentifier>{c709809c-5dd1-415d-9e7b-f12a6e75d744}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\GameObject\Champ">
+      <UniqueIdentifier>{3076d426-20aa-4855-9ba1-ea2001fbdab9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\GameObject\Champ\Archer">
+      <UniqueIdentifier>{dcfc9fed-9b2c-4ad6-8f94-9b5586d1ab59}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\GameObject\Champ\Swordman">
+      <UniqueIdentifier>{17186b01-6d65-419a-98ad-509b72626a43}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\GameObject\Champ\Base">
+      <UniqueIdentifier>{fd751b6e-e6d1-4b34-9d53-c31c850fef90}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

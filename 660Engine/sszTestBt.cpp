@@ -37,8 +37,7 @@ namespace ssz
 
 			if (Input::GetKey(eKeyCode::SPACE))
 			{
-				if (!(Anim->GetCurAnimationKey() == L"archer_idle"))
-					Anim->PlayAnimation(L"archer_idle", true);
+				Anim->PlayAnimation(L"archer_idle", true);
 
 				return true;
 			}
@@ -56,10 +55,7 @@ namespace ssz
 						Ownertr->SetLeft();
 				}
 
-				if (!(Anim->GetCurAnimationKey() == L"archer_skill"))
-				{
-					Anim->PlayAnimation(L"archer_skill", true);
-				}
+				Anim->PlayAnimation(L"archer_skill", true);
 
 				return true;
 			}
@@ -77,10 +73,7 @@ namespace ssz
 						Ownertr->SetLeft();
 				}
 
-				if (!(Anim->GetCurAnimationKey() == L"archer_attack"))
-				{
-					Anim->PlayAnimation(L"archer_attack", true);
-				}
+				Anim->PlayAnimation(L"archer_attack", true);
 
 				return true;
 			}
@@ -98,17 +91,12 @@ namespace ssz
 						Ownertr->SetLeft();
 				}
 
-				if (!(Anim->GetCurAnimationKey() == L"archer_dead"))
-				{
-					Anim->PlayAnimation(L"archer_dead", false);
-					
-				}
+				Anim->PlayAnimation(L"archer_dead", false);
 
 				return true;
 			}
 
-			if (!(Anim->GetCurAnimationKey() == L"archer_move"))
-				Anim->PlayAnimation(L"archer_move", true);
+			Anim->PlayAnimation(L"archer_move", true);
 
 
 

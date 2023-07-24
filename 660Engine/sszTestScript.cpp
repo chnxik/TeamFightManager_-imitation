@@ -71,8 +71,6 @@ namespace ssz
 
 	void TestScript::Update()
 	{
-		while (!root->Run())
-		{
-		}
+		root->Run();
 	}
 }

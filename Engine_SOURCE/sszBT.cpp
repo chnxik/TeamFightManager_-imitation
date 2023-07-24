@@ -1,5 +1,5 @@
-#include "sszBehaviorTree.h"
-#include "sszBlackboard.h"
+#include "sszBT.h"
+#include "sszAIBB.h"
 
 namespace ssz::AI
 {

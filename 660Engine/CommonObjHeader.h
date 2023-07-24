@@ -3,15 +3,17 @@
 #include "GameEnums.h"
 
 // Engine
+#include "sszSceneManager.h"
 #include "sszInput.h"
 #include "sszTime.h"
+#include "sszScene.h"
 
 // GameObject
 #include "sszGameObject.h"
 
 // AI
-#include "sszBehaviorTree.h"
-#include "sszBlackboard.h"
+#include "sszBT.h"
+#include "sszAIBB.h"
 using namespace ssz::AI;
 
 // Component

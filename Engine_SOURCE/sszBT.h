@@ -19,6 +19,8 @@ namespace ssz::AI
 		INVALID		// 유효하지 않음
 	};
 
+	// ============================ 베이스 ==============================
+
 	class BT // Base 노드
 	{
 	public:
@@ -36,6 +38,8 @@ namespace ssz::AI
 		std::shared_ptr<AIBB> mAIBB;
 	};
 
+	// ============================ Root Node ==============================
+
 	class Root : public BT // 뿌리 노드
 	{
 	public:
@@ -51,6 +55,17 @@ namespace ssz::AI
 	private:
 		BT* mChild;
 	};
+
+	// ============================= Condition Node ===================================
+	class Condition : public BT // 컨디션 판단 노드
+	{
+	public:
+		Condition(std::shared_ptr<AIBB> pAIBB) : BT(pAIBB) {}
+
+		virtual eNodeStatus Run() = 0;
+	};
+
+	// ========================================== Composite Node =================================
 
 	class CompositeNode : public BT // 복합노드
 	{
@@ -74,5 +89,15 @@ namespace ssz::AI
 	{
 	public:
 		virtual eNodeStatus Run() override;
+	};
+
+	// =========================================== Leaf Node ======================================
+
+	class Action : public BT	// 행동 실행 노드
+	{
+	public:
+		Action(std::shared_ptr<AIBB> pAIBB) : BT(pAIBB) {}
+
+		virtual eNodeStatus Run() = 0;
 	};
 }

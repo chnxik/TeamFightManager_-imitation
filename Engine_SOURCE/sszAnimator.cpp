@@ -141,17 +141,12 @@ namespace ssz
 	{
 		Animation* prevAnimation = mActiveAnimation;
 
+		Events* events;
 		if (prevAnimation != nullptr)
 		{
 			if (mActiveAnimation->GetKey() == name
 				&& mbLoop == loop) // 현재 재생중인 Animation을 중복으로 재생시켰을 경우 동작 안함
 				return;
-		}
-		
-
-		Events* events;
-		if (prevAnimation != nullptr)
-		{
 
 			events = FindEvents(prevAnimation->GetKey());
 			if (events)

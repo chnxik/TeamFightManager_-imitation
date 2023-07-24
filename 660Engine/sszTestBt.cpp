@@ -7,28 +7,20 @@ namespace ssz
 {
 	class CheckStop : public BT
 	{
-	private:
-		Animator* Anim;
-
 	public:
-		CheckStop(Animator* pAnim) : Anim(pAnim) {}
+		CheckStop(std::shared_ptr<AIBB> pAIBB) : BT(pAIBB) {}
 
-
-		virtual bool Run() override
+		virtual eNodeStatus Run() override
 		{
-			//
-			int* Testint = Blackboard::FindData<int>(L"Testint");
-			int Test2 = *Testint;
-			*Testint = 700;
-
-
-			//
 			Scene* CurScene = SceneManager::GetActiveScene();
 
 			GameObject* Cursor = CurScene->GetLayer(eLayerType::Cursor).GetGameObjects().front();
 
 			Vector3 CsrPos = Cursor->GetComponent<Transform>()->GetWorldPosition();
-			Transform* Ownertr = Anim->GetOwner()->GetComponent<Transform>();
+
+			Transform* Ownertr = mAIBB->FindData<GameObject>(L"Champ_archer")->GetComponent<Transform>();
+			Animator* Anim = mAIBB->FindData<GameObject>(L"Champ_archer")->GetComponent<Animator>();
+
 			Vector3 OwnerPos = Ownertr->GetWorldPosition();
 
 			float dist = sqrt(
@@ -39,7 +31,7 @@ namespace ssz
 			{
 				Anim->PlayAnimation(L"archer_idle", true);
 
-				return true;
+				return mNodeStatus;
 			}
 			
 			if (300.f < dist && dist < 500.f)
@@ -57,7 +49,7 @@ namespace ssz
 
 				Anim->PlayAnimation(L"archer_skill", true);
 
-				return true;
+				return SetStatus(NS_SUCCESS);
 			}
 
 			if (50.f < dist && dist < 300.f)
@@ -75,7 +67,7 @@ namespace ssz
 
 				Anim->PlayAnimation(L"archer_attack", true);
 
-				return true;
+				return SetStatus(NS_SUCCESS);
 			}
 
 			if (dist < 50.f)
@@ -93,62 +85,55 @@ namespace ssz
 
 				Anim->PlayAnimation(L"archer_dead", false);
 
-				return true;
+				return SetStatus(NS_SUCCESS);
 			}
 
 			Anim->PlayAnimation(L"archer_move", true);
 
-
-
-			return false;
+			return 	SetStatus(NS_FAILURE);
 		}
 	};
 
 	class CheckLeft : public BT // sequence
 	{
-	private:
-		Transform* mtr;
-
 	public:
-		CheckLeft(Transform* tr) : mtr(tr) {}
+		CheckLeft(std::shared_ptr<AIBB> pAIBB) : BT(pAIBB) {}
 
+		Transform* mtr = mAIBB->FindData<GameObject>(L"Champ_archer")->GetComponent<Transform>();
 
-		virtual bool Run() override
+		virtual eNodeStatus Run() override
 		{
 			if (mtr->IsLeft())
-				return true;
+				return SetStatus(NS_SUCCESS);
 			else
-				return false;
+				return SetStatus(NS_FAILURE);
 		}
 	};
 
 	class CheckRight : public BT // sequence
 	{
-	private:
-		Transform* mtr;
-
 	public:
-		CheckRight(Transform* tr) : mtr(tr) {}
+		CheckRight(std::shared_ptr<AIBB> pAIBB) : BT(pAIBB) {}
+		
+		Transform* mtr = mAIBB->FindData<GameObject>(L"Champ_archer")->GetComponent<Transform>();
 
-
-		virtual bool Run() override
+		virtual eNodeStatus Run() override
 		{
 			if (mtr->IsRight())
-				return true;
+				return SetStatus(NS_SUCCESS);
 			else
-				return false;
+				return SetStatus(NS_FAILURE);
 		}
 	};
 
 	class CheckLeftDist : public BT
 	{
-	private:
-		Transform* mtr;
-
 	public:
-		CheckLeftDist(Transform* tr) : mtr(tr) {}
+		CheckLeftDist(std::shared_ptr<AIBB> pAIBB) : BT(pAIBB) {}
 
-		virtual bool Run() override
+		Transform* mtr = mAIBB->FindData<GameObject>(L"Champ_archer")->GetComponent<Transform>();
+
+		virtual eNodeStatus Run() override
 		{
 			Vector3 pos = mtr->GetPosition();
 
@@ -164,19 +149,18 @@ namespace ssz
 				mtr->SetPosition(pos);
 			}
 
-			return true;
+			return SetStatus(NS_SUCCESS);
 		}
 	};
 
 	class CheckRightDist : public BT
 	{
-	private:
-		Transform* mtr;
-
 	public:
-		CheckRightDist(Transform* tr) : mtr(tr) {}
+		CheckRightDist(std::shared_ptr<AIBB> pAIBB) : BT(pAIBB) {}
+		Transform* mtr = mAIBB->FindData<GameObject>(L"Champ_archer")->GetComponent<Transform>();
 
-		virtual bool Run() override
+
+		virtual eNodeStatus Run() override
 		{
 			Vector3 pos = mtr->GetPosition();
 
@@ -191,7 +175,7 @@ namespace ssz
 				mtr->SetPosition(pos);
 			}
 
-			return true;
+			return SetStatus(NS_SUCCESS);
 		}
 	};
 }

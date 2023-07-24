@@ -3,53 +3,63 @@
 
 namespace ssz::AI
 {
-	class Blackboard
+	class BT;
+	class AIBB
 	{
 	public:
+		AIBB();
+		~AIBB();
+
 		template <typename T>
-		static bool CreateData(const std::wstring& key) // 신규 데이터 메모리 생성
+		bool CreateData(const std::wstring& key) // 신규 데이터 메모리 생성
 		{
 			T* Data = new T();
 
 			std::map<std::wstring, void*>::iterator iter
-				= mData.find(key);
+				= mCreatedData.find(key);
 
-			if (iter != mData.end())
+			if (iter != mCreatedData.end())
 				return false;
 
-			mData.insert(std::make_pair(key, Data));
+			mCreatedData.insert(std::make_pair(key, Data));
 
 			return true;
 		}
 
 		template <typename T>
-		static bool AddData(const std::wstring& key, T* data)
+		bool AddData(const std::wstring& key, T* data)
 		{
 			std::map<std::wstring, void*>::iterator iter
-				= mData.find(key);
+				= mAddedData.find(key);
 
-			if (iter != mData.end())
+			if (iter != mAddedData.end())
 				return false; // 추가하려는 key가 있을 경우 return
 
-			mData.insert(std::make_pair(key, data));
+			mAddedData.insert(std::make_pair(key, data));
 			return true;
 		}
 		
 		template <typename T>
-		static T* FindData(const std::wstring& key)
+		T* FindData(const std::wstring& key)
 		{
 			std::map<std::wstring, void*>::iterator iter
-				= mData.find(key);
+				= mAddedData.find(key);
 
-			if (iter == mData.end())
-				return nullptr;
-			
-			return	(T*)(iter->second);
+			if (iter != mAddedData.end())
+				return	(T*)(iter->second);
+
+			iter = mCreatedData.find(key);
+
+			if (iter != mCreatedData.end())
+				return (T*)(iter->second);
+
+			return nullptr;
 		}
 		
 
 	private:
-		static std::map<std::wstring, void*> mData;
-
+		std::map<std::wstring, void*> mAddedData;
+		std::map<std::wstring, void*> mCreatedData;
+		BT* mRunningBT;
 	};
 }

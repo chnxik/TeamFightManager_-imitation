@@ -1,41 +1,72 @@
 #include "sszBehaviorTree.h"
+#include "sszBlackboard.h"
 
 namespace ssz::AI
 {
-	BT::BT()
+	BT::~BT()
 	{
 	}
 
-	BT::~BT()
+	Root::~Root()
 	{
-		for (BT* child : mChild)
+		if (mChild)
+		{
+			delete mChild;
+			mChild = nullptr;
+		}
+	}
+
+	CompositeNode::~CompositeNode()
+	{
+		for (BT* child : mChilds)
 		{
 			delete child;
 			child = nullptr;
 		}
 	}
 
-	bool Selector::Run()
+	eNodeStatus Selector::Run()
 	{
-		for (BT* child : getChild())
+		for (BT* child : GetChilds())
 		{
-			if (child->Run())
+			if (child->Run() == NS_SUCCESS)
 			{
-				return true;
+				return SetStatus(NS_SUCCESS);
+			}
+			else if (child->Run() == NS_RUNNING)
+			{
+				return SetStatus(NS_RUNNING);
 			}
 		}
-		return false;
+
+		return SetStatus(NS_FAILURE);
 	}
 	
-	bool Sequence::Run()
+	eNodeStatus Sequence::Run()
 	{
-		for (BT* child : getChild())
+		for (BT* child : GetChilds())
 		{
-			if (!child->Run())
+			if (child->Run() == NS_FAILURE)
 			{
-				return false;
+				return SetStatus(NS_FAILURE);
+			}
+			else if (child->Run() == NS_RUNNING)
+			{
+				return SetStatus(NS_RUNNING);;
 			}
 		}
-		return true;
+		
+		return SetStatus(NS_FAILURE);
 	}
+	
+	eNodeStatus Root::Run()
+	{
+		if (mChild == nullptr)
+		{
+			return SetStatus(NS_INVALID);
+		}
+		
+		return mChild->Run();
+	}
+	
 }

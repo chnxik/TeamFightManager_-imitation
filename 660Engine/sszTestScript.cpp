@@ -3,6 +3,7 @@
 
 // BT
 #include "sszTestBT.cpp"
+#include "sszBlackboard.h"
 
 namespace ssz
 {
@@ -39,33 +40,36 @@ namespace ssz
 
 		// Behavior Tree Setting
 		{
-			bool IsSuccess = Blackboard::CreateData<int>(L"Testint");
+			std::shared_ptr<AIBB> TestAIBB = std::make_shared<AIBB>();
+			TestAIBB->CreateData<int>(L"TestInt");
+			TestAIBB->AddData<GameObject>(L"Champ_archer", GetOwner());
 
-			int* Testint = Blackboard::FindData<int>(L"Testint");
-			*Testint = 158;
+			int* TestInt = TestAIBB->FindData<int>(L"TestInt");
+			*TestInt = 158;
 
-			root = new Sequence;
+			root = new Root(TestAIBB);
+
 			Selector* Move = new Selector;
 			Sequence* LeftMove = new Sequence;
 			Sequence* RightMove = new Sequence;
 		
-			CheckStop* IsStop = new CheckStop(anim);
-			CheckLeft* mCheckLeft = new CheckLeft(tr);
-			CheckRight* mCheckRight = new CheckRight(tr);
-			CheckLeftDist* mCheckLDist = new CheckLeftDist(tr);
-			CheckRightDist* mCheckRDist = new CheckRightDist(tr);
+			CheckStop* IsStop = new CheckStop(TestAIBB);
+			CheckLeft* mCheckLeft = new CheckLeft(TestAIBB);
+			CheckRight* mCheckRight = new CheckRight(TestAIBB);
+			CheckLeftDist* mCheckLDist = new CheckLeftDist(TestAIBB);
+			CheckRightDist* mCheckRDist = new CheckRightDist(TestAIBB);
 		
-			root->addChild(Move);
+			root->AddChild(Move);
 		
-			Move->addChild(IsStop);
-			Move->addChild(LeftMove);
-			Move->addChild(RightMove);
+			Move->AddChild(IsStop);
+			Move->AddChild(LeftMove);
+			Move->AddChild(RightMove);
 		
-			LeftMove->addChild(mCheckLeft);
-			LeftMove->addChild(mCheckLDist);
+			LeftMove->AddChild(mCheckLeft);
+			LeftMove->AddChild(mCheckLDist);
 		
-			RightMove->addChild(mCheckRight);
-			RightMove->addChild(mCheckRDist);
+			RightMove->AddChild(mCheckRight);
+			RightMove->AddChild(mCheckRDist);
 		}
 	}
 

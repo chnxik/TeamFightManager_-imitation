@@ -21,7 +21,7 @@ namespace ssz
 		virtual void Update() override;
 
 	private:
-		AI::Root* root;
+		AI::Root_Node* root;
 		Transform* tr;
 		Animator* anim;
 	};

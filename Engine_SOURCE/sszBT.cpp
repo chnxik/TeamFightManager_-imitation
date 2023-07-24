@@ -7,7 +7,7 @@ namespace ssz::AI
 	{
 	}
 
-	Root::~Root()
+	Root_Node::~Root_Node()
 	{
 		if (mChild)
 		{
@@ -16,7 +16,7 @@ namespace ssz::AI
 		}
 	}
 
-	CompositeNode::~CompositeNode()
+	Composite_Node::~Composite_Node()
 	{
 		for (BT* child : mChilds)
 		{
@@ -25,7 +25,7 @@ namespace ssz::AI
 		}
 	}
 
-	eNodeStatus Selector::Run()
+	eNodeStatus Selector_Node::Run()
 	{
 		for (BT* child : GetChilds())
 		{
@@ -33,16 +33,12 @@ namespace ssz::AI
 			{
 				return SetStatus(NS_SUCCESS);
 			}
-			else if (child->Run() == NS_RUNNING)
-			{
-				return SetStatus(NS_RUNNING);
-			}
 		}
 
 		return SetStatus(NS_FAILURE);
 	}
 	
-	eNodeStatus Sequence::Run()
+	eNodeStatus Sequence_Node::Run()
 	{
 		for (BT* child : GetChilds())
 		{
@@ -50,16 +46,12 @@ namespace ssz::AI
 			{
 				return SetStatus(NS_FAILURE);
 			}
-			else if (child->Run() == NS_RUNNING)
-			{
-				return SetStatus(NS_RUNNING);;
-			}
 		}
 		
-		return SetStatus(NS_FAILURE);
+		return SetStatus(NS_SUCCESS);
 	}
 	
-	eNodeStatus Root::Run()
+	eNodeStatus Root_Node::Run()
 	{
 		if (mChild == nullptr)
 		{

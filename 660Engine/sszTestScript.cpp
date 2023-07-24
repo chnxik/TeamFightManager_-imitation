@@ -41,110 +41,71 @@ namespace ssz
 		// Behavior Tree Setting
 		{
 			// Set AIBB
-			std::shared_ptr<AIBB> TestAIBB = std::make_shared<AIBB>();
-			TestAIBB->CreateData<int>(L"TestInt");
-			TestAIBB->AddData<GameObject>(L"Champ_archer", GetOwner());
+			std::shared_ptr<AIBB> TestAIBB = std::make_shared<AIBB>();	// TestBT용 AI BlackBoard 생성
+			TestAIBB->AddData<GameObject>(L"Champ_archer", GetOwner()); // 참조 Object 추가
 
-			GameObject* pCursor = SceneManager::GetActiveScene()->GetLayer(eLayerType::Cursor).GetGameObjects().front();
-			TestAIBB->AddData<GameObject>(L"Cursor", pCursor);
+			GameObject* pCsr = SceneManager::GetActiveScene()->GetLayer(eLayerType::Cursor).GetGameObjects().front();
+			TestAIBB->AddData<GameObject>(L"Cursor", pCsr);
 
 			// Set BT
-			root = new Root(TestAIBB);
-
-			Selector* BS = new Selector;
-			Sequence* seqStop = new Sequence;
-			Sequence* seqAttack = new Sequence;
-			Sequence* seqMove = new Sequence;
-
-			CheckStop* stopcheck = new CheckStop(TestAIBB);
-			PlayIdleAnim* PlayIdle = new PlayIdleAnim(TestAIBB);
-
-			DetectedCursor100* DetectCsr = new DetectedCursor100(TestAIBB);
-			Selector* CheckAttackDir = new Selector;
-
-			Sequence* seqAttackLeft = new Sequence;
-			Sequence* seqAttackRight = new Sequence;
-
-			CheckCsrifLeft* CheckCsrLeft = new CheckCsrifLeft(TestAIBB);
-			CheckCsrifRight* CheckCsrRight = new CheckCsrifRight(TestAIBB);
-
-			CheckLeft* IsAttackLeft = new CheckLeft(TestAIBB);
-			CheckRight* IsAttackRight = new CheckRight(TestAIBB);
-
-			TurnLeft* ActTurnLeft = new TurnLeft(TestAIBB);
-			TurnRight* ActTurnRight = new TurnRight(TestAIBB);
-
-			PlayAttackAnim* AttackMotion = new PlayAttackAnim(TestAIBB);
-			PlayMoveAnim* MoveMotion = new PlayMoveAnim(TestAIBB);
-
-			Selector* CheckMoveDir = new Selector;
-			Sequence* seqMoveLeft = new Sequence;
-			Sequence* seqMoveRight = new Sequence;
-
-			CheckLeft* IsMoveLeft = new CheckLeft(TestAIBB);
-			CheckRight* IsMoveRight = new CheckRight(TestAIBB);
-
-			Selector* Sel_MoveLeftDir = new Selector;
-			Selector* Sel_MoveRightDir = new Selector;
-
-			Sequence* seqCheckLeftArea = new Sequence;
-			Sequence* seqCheckRightArea = new Sequence;
-
-			CheckLeftDist* seqCheckLeftDist = new CheckLeftDist(TestAIBB);
-			CheckRightDist* seqCheckRightDist = new CheckRightDist(TestAIBB);
-
-			MoveLeft* ActMoveLeft = new MoveLeft(TestAIBB);
-			MoveRight* ActMoveRight = new MoveRight(TestAIBB);
-
-			root->AddChild(BS);
-
-			BS->AddChild(seqStop);
-			BS->AddChild(seqAttack);
-			BS->AddChild(seqMove);
-
-			seqStop->AddChild(stopcheck);
-			seqStop->AddChild(PlayIdle);
-
-			seqAttack->AddChild(DetectCsr);
-			seqAttack->AddChild(CheckAttackDir);
-			seqAttack->AddChild(AttackMotion);
-
-			CheckAttackDir->AddChild(seqAttackLeft);
-			CheckAttackDir->AddChild(seqAttackRight);
+			root = new Root_Node(TestAIBB);
 			
-			seqAttackLeft->AddChild(CheckCsrLeft);
-			seqAttackLeft->AddChild(IsAttackLeft);
-			seqAttackLeft->AddChild(ActTurnLeft);
+			Selector_Node* ArcherBT = new Selector_Node();
+			root->AddChild(ArcherBT); // 최상위 셀렉터 노드
 
-			seqAttackRight->AddChild(CheckCsrRight);
-			seqAttackRight->AddChild(IsAttackRight);
-			seqAttackRight->AddChild(ActTurnRight);
+			Sequence_Node* Seq_Stop = ArcherBT->AddChild<Sequence_Node>(); // 정지 판단 시퀀스
+			Sequence_Node* Seq_Attack = ArcherBT->AddChild<Sequence_Node>(); // 공격 판단 시퀀스
+			Sequence_Node* Seq_Move = ArcherBT->AddChild<Sequence_Node>(); // 이동 판단 시퀀스
 
-			seqMove->AddChild(CheckMoveDir);
-			CheckMoveDir->AddChild(seqMoveLeft);
-			CheckMoveDir->AddChild(seqMoveRight);
+			// 정지 판단 시퀀스
+			Seq_Stop->AddChild<Con_IsStopBtnPush>(TestAIBB); // 정지 버튼 입력 판단
+			Seq_Stop->AddChild<Act_PlayAnim_Idle>(TestAIBB); // Idle Animation 재생
 
-			seqMoveLeft->AddChild(IsMoveLeft);
-			seqMoveLeft->AddChild(seqCheckLeftArea);
+			// 공격 판단 시퀀스
+			Seq_Attack->AddChild<Con_DetectCsr_100px>(TestAIBB);
+			Seq_Attack->AddChild<Act_PlayAnim_Attack>(TestAIBB);
+			Selector_Node* Sel_CheckAttackDir = Seq_Attack->AddChild<Selector_Node>();
 
-			seqCheckLeftArea->AddChild(seqCheckLeftDist);
-			seqCheckLeftArea->AddChild(ActTurnRight);
-			seqCheckLeftArea->AddChild(ActMoveRight);
-			seqCheckLeftArea->AddChild(MoveMotion);
+			Sequence_Node* Seq_AttackLeft = Sel_CheckAttackDir->AddChild<Sequence_Node>();
+			Sequence_Node* Seq_AttackRight = Sel_CheckAttackDir->AddChild<Sequence_Node>();
+			
+			Seq_AttackLeft->AddChild<Con_CsrOntheLeft>(TestAIBB);
+			Seq_AttackLeft->AddChild<Con_IsRight>(TestAIBB);
+			Seq_AttackLeft->AddChild<Act_TurnLeft>(TestAIBB);
 
-			seqMoveLeft->AddChild(ActMoveLeft);
-			seqMoveLeft->AddChild(MoveMotion);
+			Seq_AttackRight->AddChild<Con_CsrOntheRight>(TestAIBB);
+			Seq_AttackRight->AddChild<Con_IsLeft>(TestAIBB);
+			Seq_AttackRight->AddChild<Act_TurnRight>(TestAIBB);
 
-			seqMoveRight->AddChild(IsMoveRight);
-			seqMoveRight->AddChild(seqCheckRightArea);
+			// 이동 판단 시퀀스
+			Selector_Node* Sel_CheckMoveDir= Seq_Move->AddChild<Selector_Node>();
+			Sequence_Node* Seq_CheckMoveLeft = Sel_CheckMoveDir->AddChild<Sequence_Node>();
+			Sequence_Node* Seq_CheckMoveRight = Sel_CheckMoveDir->AddChild<Sequence_Node>();
 
-			seqCheckRightArea->AddChild(seqCheckRightDist);
-			seqCheckRightArea->AddChild(ActTurnLeft);
-			seqCheckRightArea->AddChild(ActMoveLeft);
-			seqCheckRightArea->AddChild(MoveMotion);
+			// 왼쪽 방향 시퀀스
+			Seq_CheckMoveLeft->AddChild<Con_IsLeft>(TestAIBB);
+			Selector_Node* Sel_TurnLeft_ForMove = Seq_CheckMoveLeft->AddChild<Selector_Node>();
+			Seq_CheckMoveLeft->AddChild<Act_PlayAnim_Move>(TestAIBB);
 
-			seqMoveRight->AddChild(ActMoveRight);
-			seqMoveRight->AddChild(MoveMotion);
+			Sequence_Node* Seq_CheckOverArea_Left = Sel_TurnLeft_ForMove->AddChild<Sequence_Node>();
+			Sel_TurnLeft_ForMove->AddChild<Act_MoveLeft>(TestAIBB);
+
+			Seq_CheckOverArea_Left->AddChild<Con_IsOver_LeftArea>(TestAIBB);
+			Seq_CheckOverArea_Left->AddChild<Act_TurnRight>(TestAIBB);
+			Seq_CheckOverArea_Left->AddChild<Act_MoveRight>(TestAIBB);
+
+
+			// 오른쪽 방향 시퀀스
+			Seq_CheckMoveRight->AddChild<Con_IsRight>(TestAIBB);
+			Selector_Node* Sel_TurnRight_ForMove = Seq_CheckMoveRight->AddChild<Selector_Node>();
+			Seq_CheckMoveRight->AddChild<Act_PlayAnim_Move>(TestAIBB);
+
+			Sequence_Node* Seq_CheckOverArea_Right = Sel_TurnRight_ForMove->AddChild<Sequence_Node>();
+			Sel_TurnRight_ForMove->AddChild<Act_MoveRight>(TestAIBB);
+
+			Seq_CheckOverArea_Right->AddChild<Con_IsOver_RightArea>(TestAIBB);
+			Seq_CheckOverArea_Right->AddChild<Act_TurnLeft>(TestAIBB);
+			Seq_CheckOverArea_Right->AddChild<Act_MoveLeft>(TestAIBB);
 		}
 	}
 
@@ -152,6 +113,6 @@ namespace ssz
 	{
 		while (root->Run() == NS_FAILURE)
 		{
-		}
+		};
 	}
 }

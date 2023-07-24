@@ -40,16 +40,29 @@ namespace ssz::AI
 
 	// ============================ Root Node ==============================
 
-	class Root : public BT // 뿌리 노드
+	class Root_Node : public BT // 뿌리 노드
 	{
 	public:
-		virtual ~Root();
+		virtual ~Root_Node();
 
-		Root(std::shared_ptr<AIBB> pAIBB) : BT(pAIBB), mChild(nullptr) {}
+		Root_Node(std::shared_ptr<AIBB> pAIBB) : BT(pAIBB), mChild(nullptr) {}
 
 		const BT* GetChild() const { return mChild; }
 		void AddChild(BT* child) { mChild = child; }
+		
+		template<typename T>
+		T* AddChild()
+		{
+			T* NewNode = new T();
 
+			mChild = dynamic_cast<BT*>(NewNode);
+
+			if (mChild == nullptr)
+				return nullptr;
+			
+			return NewNode;
+		}
+		
 		virtual eNodeStatus Run();
 
 	private:
@@ -57,35 +70,65 @@ namespace ssz::AI
 	};
 
 	// ============================= Condition Node ===================================
-	class Condition : public BT // 컨디션 판단 노드
+	class Condition_Node : public BT // 컨디션 판단 노드
 	{
 	public:
-		Condition(std::shared_ptr<AIBB> pAIBB) : BT(pAIBB) {}
+		Condition_Node(std::shared_ptr<AIBB> pAIBB) : BT(pAIBB) {}
 
 		virtual eNodeStatus Run() = 0;
 	};
 
 	// ========================================== Composite Node =================================
 
-	class CompositeNode : public BT // 복합노드
+	class Composite_Node : public BT // 복합노드
 	{
 	public:
-		virtual ~CompositeNode();
+		virtual ~Composite_Node();
 
 		const list<BT*>& GetChilds() const { return mChilds; }
-		void AddChild(BT* child) { mChilds.emplace_back(child); }
+		// void AddChild(BT* child) { mChilds.emplace_back(child); }
+
+		template <typename T>
+		T* AddChild()
+		{
+			T* NewNode = new T();
+
+			BT* childNode = dynamic_cast<BT*>(NewNode);
+
+			if (childNode == nullptr)
+				return nullptr;
+
+			mChilds.emplace_back(NewNode);
+
+			return NewNode;
+		}
+
+		template <typename T>
+		T* AddChild(std::shared_ptr<AIBB> pAIBB)
+		{
+			T* NewNode = new T(pAIBB);
+
+			BT* childNode = dynamic_cast<BT*>(NewNode);
+
+			if (childNode == nullptr)
+				return nullptr;
+
+			mChilds.emplace_back(NewNode);
+
+			return NewNode;
+		}
 
 	private:
 		list<BT*> mChilds;
 	};
 
-	class Selector : public CompositeNode // OR 개념 노드
+	class Selector_Node : public Composite_Node // OR 개념 노드
 	{
 	public:
 		virtual eNodeStatus Run() override;
 	};
 
-	class Sequence : public CompositeNode // AND 개념 노드
+	class Sequence_Node : public Composite_Node // AND 개념 노드
 	{
 	public:
 		virtual eNodeStatus Run() override;
@@ -93,10 +136,10 @@ namespace ssz::AI
 
 	// =========================================== Leaf Node ======================================
 
-	class Action : public BT	// 행동 실행 노드
+	class Action_Node : public BT	// 행동 실행 노드
 	{
 	public:
-		Action(std::shared_ptr<AIBB> pAIBB) : BT(pAIBB) {}
+		Action_Node(std::shared_ptr<AIBB> pAIBB) : BT(pAIBB) {}
 
 		virtual eNodeStatus Run() = 0;
 	};

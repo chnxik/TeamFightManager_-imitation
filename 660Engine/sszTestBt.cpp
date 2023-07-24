@@ -4,10 +4,11 @@
 
 namespace ssz
 {
-	class CheckStop : public Condition // 정지 컨디션
+	// Condition Node
+	class Con_IsStopBtnPush : public Condition_Node // 정지 컨디션
 	{
 	public:
-		CheckStop(std::shared_ptr<AIBB> pAIBB) : Condition(pAIBB) {}
+		Con_IsStopBtnPush(std::shared_ptr<AIBB> pAIBB) : Condition_Node(pAIBB) {}
 
 		virtual eNodeStatus Run() override
 		{
@@ -19,11 +20,10 @@ namespace ssz
 			return SetStatus(NS_FAILURE);
 		}
 	};
-
-	class DetectedCursor100 : public Condition // 커서 탐지 컨디션
+	class Con_DetectCsr_100px : public Condition_Node // 커서 탐지 컨디션
 	{
 	public:
-		DetectedCursor100(std::shared_ptr<AIBB> pAIBB) : Condition(pAIBB) {}
+		Con_DetectCsr_100px(std::shared_ptr<AIBB> pAIBB) : Condition_Node(pAIBB) {}
 
 		virtual eNodeStatus Run() override
 		{
@@ -39,18 +39,13 @@ namespace ssz
 				return SetStatus(NS_SUCCESS);
 			}
 
-			//Anim->PlayAnimation(L"archer_move", true);
-
 			return 	SetStatus(NS_FAILURE);
 		}
 	};
-
-	
-
-	class CheckLeft : public Condition // 왼쪽방향 컨디션
+	class Con_IsLeft : public Condition_Node // 왼쪽방향 컨디션
 	{
 	public:
-		CheckLeft(std::shared_ptr<AIBB> pAIBB) : Condition(pAIBB) {}
+		Con_IsLeft(std::shared_ptr<AIBB> pAIBB) : Condition_Node(pAIBB) {}
 
 		Transform* mtr = mAIBB->FindData<GameObject>(L"Champ_archer")->GetComponent<Transform>();
 
@@ -62,11 +57,10 @@ namespace ssz
 				return SetStatus(NS_FAILURE);
 		}
 	};
-
-	class CheckRight : public Condition // 오른쪽 방향 컨디션
+	class Con_IsRight : public Condition_Node // 오른쪽 방향 컨디션
 	{
 	public:
-		CheckRight(std::shared_ptr<AIBB> pAIBB) : Condition(pAIBB) {}
+		Con_IsRight(std::shared_ptr<AIBB> pAIBB) : Condition_Node(pAIBB) {}
 		
 		Transform* mtr = mAIBB->FindData<GameObject>(L"Champ_archer")->GetComponent<Transform>();
 
@@ -78,45 +72,42 @@ namespace ssz
 				return SetStatus(NS_FAILURE);
 		}
 	};
-
-	class CheckCsrifLeft : public Condition
+	class Con_CsrOntheLeft : public Condition_Node
 	{
 	public:
-		CheckCsrifLeft(std::shared_ptr<AIBB> pAIBB) : Condition(pAIBB) {}
+		Con_CsrOntheLeft(std::shared_ptr<AIBB> pAIBB) : Condition_Node(pAIBB) {}
 
 		Vector3 CsrPos = mAIBB->FindData<GameObject>(L"Cursor")->GetComponent<Transform>()->GetWorldPosition();
 		Vector3 OwnerPos = mAIBB->FindData<GameObject>(L"Champ_archer")->GetComponent<Transform>()->GetWorldPosition();
 
 		virtual eNodeStatus Run() override
 		{
-			if (CsrPos.x - OwnerPos.x >= 0)
+			if (CsrPos.x <= OwnerPos.x)
 				return SetStatus(NS_SUCCESS);
 
 			return SetStatus(NS_FAILURE);
 		}
 	};
-
-	class CheckCsrifRight : public Condition
+	class Con_CsrOntheRight : public Condition_Node
 	{
 	public:
-		CheckCsrifRight(std::shared_ptr<AIBB> pAIBB) : Condition(pAIBB) {}
+		Con_CsrOntheRight(std::shared_ptr<AIBB> pAIBB) : Condition_Node(pAIBB) {}
 
 		Vector3 CsrPos = mAIBB->FindData<GameObject>(L"Cursor")->GetComponent<Transform>()->GetWorldPosition();
 		Vector3 OwnerPos = mAIBB->FindData<GameObject>(L"Champ_archer")->GetComponent<Transform>()->GetWorldPosition();
 
 		virtual eNodeStatus Run() override
 		{
-			if (CsrPos.x - OwnerPos.x <= 0)
+			if (CsrPos.x > OwnerPos.x)
 				return SetStatus(NS_SUCCESS);
 
 			return SetStatus(NS_FAILURE);
 		}
 	};
-
-	class CheckLeftDist : public Condition
+	class Con_IsOver_LeftArea : public Condition_Node
 	{
 	public:
-		CheckLeftDist(std::shared_ptr<AIBB> pAIBB) : Condition(pAIBB) {}
+		Con_IsOver_LeftArea(std::shared_ptr<AIBB> pAIBB) : Condition_Node(pAIBB) {}
 
 		Transform* mtr = mAIBB->FindData<GameObject>(L"Champ_archer")->GetComponent<Transform>();
 
@@ -125,16 +116,17 @@ namespace ssz
 			Vector3 pos = mtr->GetPosition();
 
 			if (-100.f > pos.x)
+			{
 				return SetStatus(NS_SUCCESS);
+			}
 
 			return SetStatus(NS_FAILURE);
 		}
 	};
-
-	class CheckRightDist : public Condition
+	class Con_IsOver_RightArea : public Condition_Node
 	{
 	public:
-		CheckRightDist(std::shared_ptr<AIBB> pAIBB) : Condition(pAIBB) {}
+		Con_IsOver_RightArea(std::shared_ptr<AIBB> pAIBB) : Condition_Node(pAIBB) {}
 		Transform* mtr = mAIBB->FindData<GameObject>(L"Champ_archer")->GetComponent<Transform>();
 
 
@@ -143,16 +135,19 @@ namespace ssz
 			Vector3 pos = mtr->GetPosition();
 
 			if (100.f < pos.x)
+			{
 				return SetStatus(NS_SUCCESS);
+			}
 			
 			return SetStatus(NS_FAILURE);
 		}
 	};
-
-	class TurnLeft : public Action
+	
+	// Action Node
+	class Act_TurnLeft : public Action_Node
 	{
 	public:
-		TurnLeft(std::shared_ptr<AIBB> pAIBB) : Action(pAIBB) {}
+		Act_TurnLeft(std::shared_ptr<AIBB> pAIBB) : Action_Node(pAIBB) {}
 		Transform* mtr = mAIBB->FindData<GameObject>(L"Champ_archer")->GetComponent<Transform>();
 
 		virtual eNodeStatus Run() override
@@ -161,11 +156,10 @@ namespace ssz
 			return SetStatus(NS_SUCCESS);
 		}
 	};
-
-	class TurnRight : public Action
+	class Act_TurnRight : public Action_Node
 	{
 	public:
-		TurnRight(std::shared_ptr<AIBB> pAIBB) : Action(pAIBB) {}
+		Act_TurnRight(std::shared_ptr<AIBB> pAIBB) : Action_Node(pAIBB) {}
 		Transform* mtr = mAIBB->FindData<GameObject>(L"Champ_archer")->GetComponent<Transform>();
 
 		virtual eNodeStatus Run() override
@@ -174,11 +168,10 @@ namespace ssz
 			return SetStatus(NS_SUCCESS);
 		}
 	};
-
-	class MoveLeft : public Action
+	class Act_MoveLeft : public Action_Node
 	{
 	public:
-		MoveLeft(std::shared_ptr<AIBB> pAIBB) : Action(pAIBB) {}
+		Act_MoveLeft(std::shared_ptr<AIBB> pAIBB) : Action_Node(pAIBB) {}
 		Transform* mtr = mAIBB->FindData<GameObject>(L"Champ_archer")->GetComponent<Transform>();
 		Vector3 pos = mtr->GetPosition();
 
@@ -190,11 +183,10 @@ namespace ssz
 			return SetStatus(NS_SUCCESS);
 		}
 	};
-
-	class MoveRight : public Action
+	class Act_MoveRight : public Action_Node
 	{
 	public:
-		MoveRight(std::shared_ptr<AIBB> pAIBB) : Action(pAIBB) {}
+		Act_MoveRight(std::shared_ptr<AIBB> pAIBB) : Action_Node(pAIBB) {}
 		Transform* mtr = mAIBB->FindData<GameObject>(L"Champ_archer")->GetComponent<Transform>();
 		Vector3 pos = mtr->GetPosition();
 
@@ -206,11 +198,10 @@ namespace ssz
 			return SetStatus(NS_SUCCESS);
 		}
 	};
-
-	class PlayIdleAnim : public Action
+	class Act_PlayAnim_Idle : public Action_Node
 	{
 	public:
-		PlayIdleAnim(std::shared_ptr<AIBB> pAIBB) : Action(pAIBB) {}
+		Act_PlayAnim_Idle(std::shared_ptr<AIBB> pAIBB) : Action_Node(pAIBB) {}
 		Animator* anim = mAIBB->FindData<GameObject>(L"Champ_archer")->GetComponent<Animator>();
 
 		virtual eNodeStatus Run() override
@@ -219,11 +210,10 @@ namespace ssz
 			return SetStatus(NS_SUCCESS);
 		}
 	};
-
-	class PlayMoveAnim : public Action
+	class Act_PlayAnim_Move : public Action_Node
 	{
 	public:
-		PlayMoveAnim(std::shared_ptr<AIBB> pAIBB) : Action(pAIBB) {}
+		Act_PlayAnim_Move(std::shared_ptr<AIBB> pAIBB) : Action_Node(pAIBB) {}
 		Animator* anim = mAIBB->FindData<GameObject>(L"Champ_archer")->GetComponent<Animator>();
 
 		virtual eNodeStatus Run() override
@@ -232,11 +222,10 @@ namespace ssz
 			return SetStatus(NS_SUCCESS);
 		}
 	};
-
-	class PlayAttackAnim : public Action
+	class Act_PlayAnim_Attack : public Action_Node
 	{
 	public:
-		PlayAttackAnim(std::shared_ptr<AIBB> pAIBB) : Action(pAIBB) {}
+		Act_PlayAnim_Attack(std::shared_ptr<AIBB> pAIBB) : Action_Node(pAIBB) {}
 		Animator* anim = mAIBB->FindData<GameObject>(L"Champ_archer")->GetComponent<Animator>();
 
 		virtual eNodeStatus Run() override

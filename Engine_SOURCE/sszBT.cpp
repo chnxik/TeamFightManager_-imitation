@@ -7,6 +7,16 @@ namespace ssz::AI
 	{
 	}
 
+
+	Decoreate_Node::~Decoreate_Node()
+	{
+		if (mChild)
+		{
+			delete mChild;
+			mChild = nullptr;
+		}
+	}
+
 	Root_Node::~Root_Node()
 	{
 		if (mChild)
@@ -31,11 +41,11 @@ namespace ssz::AI
 		{
 			if (child->Run() == NS_SUCCESS)
 			{
-				return SetStatus(NS_SUCCESS);
+				return NS_SUCCESS;
 			}
 		}
 
-		return SetStatus(NS_FAILURE);
+		return NS_FAILURE;
 	}
 	
 	eNodeStatus Sequence_Node::Run()
@@ -44,21 +54,20 @@ namespace ssz::AI
 		{
 			if (child->Run() == NS_FAILURE)
 			{
-				return SetStatus(NS_FAILURE);
+				return NS_FAILURE;
 			}
 		}
 		
-		return SetStatus(NS_SUCCESS);
+		return NS_SUCCESS;
 	}
 	
 	eNodeStatus Root_Node::Run()
 	{
 		if (mChild == nullptr)
 		{
-			return SetStatus(NS_INVALID);
+			return NS_INVALID;
 		}
 		
 		return mChild->Run();
 	}
-	
 }

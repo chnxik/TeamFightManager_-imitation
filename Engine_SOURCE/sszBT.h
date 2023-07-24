@@ -24,18 +24,52 @@ namespace ssz::AI
 	class BT // Base ³ëµå
 	{
 	public:
-		BT() : mNodeStatus(NS_INVALID), mAIBB(nullptr) {}
-		BT(std::shared_ptr<AIBB> pAIBB) : mNodeStatus(NS_INVALID), mAIBB(pAIBB) {}
+		BT() : mAIBB(nullptr) {}
+		BT(std::shared_ptr<AIBB> pAIBB) : mAIBB(pAIBB) {}
 		virtual ~BT();
 
 		virtual eNodeStatus Run() = 0;
 
-		eNodeStatus SetStatus(eNodeStatus eNS) { mNodeStatus = eNS; return mNodeStatus; }
-		eNodeStatus GetStatus() { return mNodeStatus; }
-
 	protected:
-		eNodeStatus mNodeStatus;
 		std::shared_ptr<AIBB> mAIBB;
+	};
+
+	// ============================ Decorate Node =========================
+	class Decoreate_Node : public BT
+	{
+	public:
+		virtual ~Decoreate_Node();
+
+		BT* GetChild() { return mChild; }
+
+		template<typename T>
+		T* AddChild()
+		{
+			T* NewNode = new T();
+
+			mChild = dynamic_cast<BT*>(NewNode);
+
+			if (mChild == nullptr)
+				return nullptr;
+
+			return NewNode;
+		}
+
+		virtual eNodeStatus Run() = 0;
+
+	private :
+		BT* mChild;
+	};
+
+	class AllSuccess_Node : public Decoreate_Node
+	{
+	public:
+		virtual eNodeStatus Run()
+		{
+			GetChild()->Run();
+
+			return NS_SUCCESS;
+		}
 	};
 
 	// ============================ Root Node ==============================
@@ -47,8 +81,7 @@ namespace ssz::AI
 
 		Root_Node(std::shared_ptr<AIBB> pAIBB) : BT(pAIBB), mChild(nullptr) {}
 
-		const BT* GetChild() const { return mChild; }
-		void AddChild(BT* child) { mChild = child; }
+		BT* GetChild() { return mChild; }
 		
 		template<typename T>
 		T* AddChild()

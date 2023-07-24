@@ -30,11 +30,11 @@ namespace ssz
 			tr = GetOwner()->GetComponent<Transform>();
 			anim = GetOwner()->GetComponent<Animator>();
 
-			anim->Create(L"archer_idle", L"archer_sprite", Vector2(0.f, 0.f), Vector2(64.f, 64.f), 4, Vector2(0.f, 0.f), 7.f);
-			anim->Create(L"archer_move", L"archer_sprite", Vector2(0.f, 64.f), Vector2(64.f, 64.f), 8, Vector2(0.f, 0.f), 7.f);
-			anim->Create(L"archer_attack", L"archer_sprite", Vector2(0.f, 128.f), Vector2(64.f, 64.f), 7, Vector2(0.f, 0.f), 7.f);
-			anim->Create(L"archer_dead", L"archer_sprite", Vector2(0.f, 192.f), Vector2(64.f, 64.f), 9, Vector2(0.f, 0.f), 7.f);
-			anim->Create(L"archer_skill", L"archer_sprite", Vector2(0.f, 256.f), Vector2(64.f, 64.f), 17, Vector2(0.f, 0.f), 7.f);
+			anim->Create(L"archer_idle", L"archer_sprite", Vector2(0.f, 0.f), Vector2(64.f, 64.f), 4, Vector2(0.f, 0.f), 6.f);
+			anim->Create(L"archer_move", L"archer_sprite", Vector2(0.f, 64.f), Vector2(64.f, 64.f), 8, Vector2(0.f, 0.f), 8.f);
+			anim->Create(L"archer_attack", L"archer_sprite", Vector2(0.f, 128.f), Vector2(64.f, 64.f), 7, Vector2(0.f, 0.f), 8.f);
+			anim->Create(L"archer_dead", L"archer_sprite", Vector2(0.f, 192.f), Vector2(64.f, 64.f), 9, Vector2(0.f, 0.f), 8.f);
+			anim->Create(L"archer_skill", L"archer_sprite", Vector2(0.f, 256.f), Vector2(64.f, 64.f), 17, Vector2(0.f, 0.f), 8.f);
 			anim->PlayAnimation(L"archer_idle", true);
 		}
 
@@ -50,21 +50,27 @@ namespace ssz
 			// Set BT
 			root = new Root_Node(TestAIBB);
 			
-			Selector_Node* ArcherBT = new Selector_Node();
-			root->AddChild(ArcherBT); // 최상위 셀렉터 노드
+			Selector_Node* ArcherBT = root->AddChild<Selector_Node>(); // 최상위 셀렉터 노드
 
+			Sequence_Node* Seq_Dead = ArcherBT->AddChild<Sequence_Node>(); // 사망 판단 시퀀스
 			Sequence_Node* Seq_Stop = ArcherBT->AddChild<Sequence_Node>(); // 정지 판단 시퀀스
 			Sequence_Node* Seq_Attack = ArcherBT->AddChild<Sequence_Node>(); // 공격 판단 시퀀스
 			Sequence_Node* Seq_Move = ArcherBT->AddChild<Sequence_Node>(); // 이동 판단 시퀀스
 
+			// 사망 판단 시퀀스
+			Seq_Dead->AddChild<Con_DetectCsr_50px>(TestAIBB); // 정지 버튼 입력 판단
+			Seq_Dead->AddChild<Act_PlayAnim_Dead>(TestAIBB); // Idle Animation 재생
+			
 			// 정지 판단 시퀀스
 			Seq_Stop->AddChild<Con_IsStopBtnPush>(TestAIBB); // 정지 버튼 입력 판단
 			Seq_Stop->AddChild<Act_PlayAnim_Idle>(TestAIBB); // Idle Animation 재생
 
+
 			// 공격 판단 시퀀스
-			Seq_Attack->AddChild<Con_DetectCsr_100px>(TestAIBB);
+			Seq_Attack->AddChild<Con_DetectCsr_300px>(TestAIBB);
 			Seq_Attack->AddChild<Act_PlayAnim_Attack>(TestAIBB);
-			Selector_Node* Sel_CheckAttackDir = Seq_Attack->AddChild<Selector_Node>();
+			AllSuccess_Node* Dec_CheckAttackDir_Success = Seq_Attack->AddChild<AllSuccess_Node>();
+			Selector_Node* Sel_CheckAttackDir = Dec_CheckAttackDir_Success->AddChild<Selector_Node>();
 
 			Sequence_Node* Seq_AttackLeft = Sel_CheckAttackDir->AddChild<Sequence_Node>();
 			Sequence_Node* Seq_AttackRight = Sel_CheckAttackDir->AddChild<Sequence_Node>();

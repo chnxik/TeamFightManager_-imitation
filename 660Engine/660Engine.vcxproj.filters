@@ -101,6 +101,12 @@
     <ClInclude Include="sszChamp.h">
       <Filter>Contents\Object\GameObject\Champ\Base</Filter>
     </ClInclude>
+    <ClInclude Include="sszObj_IG_Stadium.h">
+      <Filter>Contents\Object\GameObject\BackGround\IG_Stadium</Filter>
+    </ClInclude>
+    <ClInclude Include="sszObj_Waterfall.h">
+      <Filter>Contents\Object\GameObject\BackGround\Waterfall</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="660Engine.cpp" />
@@ -196,6 +202,12 @@
     </ClCompile>
     <ClCompile Include="sszChamp.cpp">
       <Filter>Contents\Object\GameObject\Champ\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="sszObj_IG_Stadium.cpp">
+      <Filter>Contents\Object\GameObject\BackGround\IG_Stadium</Filter>
+    </ClCompile>
+    <ClCompile Include="sszObj_Waterfall.cpp">
+      <Filter>Contents\Object\GameObject\BackGround\Waterfall</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -354,6 +366,12 @@
     </Filter>
     <Filter Include="Contents\Object\GameObject\Champ\Base">
       <UniqueIdentifier>{fd751b6e-e6d1-4b34-9d53-c31c850fef90}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\GameObject\BackGround\Waterfall">
+      <UniqueIdentifier>{a636a76e-2070-4fc4-b46b-dc016c1dae57}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\GameObject\BackGround\IG_Stadium">
+      <UniqueIdentifier>{c03ef563-1425-4ab9-9b04-269778118e52}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

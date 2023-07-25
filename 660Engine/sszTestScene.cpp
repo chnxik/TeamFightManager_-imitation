@@ -2,6 +2,7 @@
 #include "CommonHeader.h"
 
 #include "sszBattleHeader.h"
+#include "sszObj_IG_Stadium.h"
 
 namespace ssz
 {
@@ -37,9 +38,7 @@ namespace ssz
 			BattleHeader* BattleHeaderBg = InstantiateUI<BattleHeader>(Vector3(0.0f, 478.5f, 1.019f), eLayerType::UI, L"BattleHeaderBg");
 
 			// IG Stadium
-			GameObject* IG_Stadium = Instantiate<GameObject>(Vector3(0.0f, -139.0f, 1.021f), Vector3(2293.f, 1498.f, 1.f), eLayerType::BackGround);
-			IG_Stadium->SetName(L"IG_Stadium");
-			IG_Stadium->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"IGStadiumMt");
+			IG_Stadium* Stadium = Instantiate<IG_Stadium>(Vector3(0.0f, -139.0f, 1.021f), Vector3(2293.f, 1498.f, 1.f), eLayerType::BackGround);
 
 			// IG StadiumSky
 			GameObject* IG_StadiumSky = Instantiate<GameObject>(Vector3(0.0f, -53.0f, 1.022f), Vector3(2144.f, 1429.f, 1.f), eLayerType::BackGround);

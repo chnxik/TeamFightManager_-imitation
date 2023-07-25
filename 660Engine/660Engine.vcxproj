@@ -180,6 +180,7 @@
     <ClInclude Include="sszDefaultBtn.h" />
     <ClInclude Include="sszHeaderSlot.h" />
     <ClInclude Include="sszIGStadiumScene.h" />
+    <ClInclude Include="sszObj_IG_Stadium.h" />
     <ClInclude Include="sszImportantBtn.h" />
     <ClInclude Include="sszLineUpTeamTitle.h" />
     <ClInclude Include="sszLineUpWindow.h" />
@@ -197,6 +198,7 @@
     <ClInclude Include="sszTestScript.h" />
     <ClInclude Include="sszTitleScene.h" />
     <ClInclude Include="CommonObjHeader.h" />
+    <ClInclude Include="sszObj_Waterfall.h" />
     <ClInclude Include="sszWeeklyEventBtn.h" />
   </ItemGroup>
   <ItemGroup>
@@ -214,6 +216,7 @@
     <ClCompile Include="sszDefaultBtn.cpp" />
     <ClCompile Include="sszHeaderSlot.cpp" />
     <ClCompile Include="sszIGStadiumScene.cpp" />
+    <ClCompile Include="sszObj_IG_Stadium.cpp" />
     <ClCompile Include="sszImportantBtn.cpp" />
     <ClCompile Include="sszLineUpTeamTitle.cpp" />
     <ClCompile Include="sszLineUpWindow.cpp" />
@@ -231,6 +234,7 @@
     <ClCompile Include="sszTestScene.cpp" />
     <ClCompile Include="sszTestScript.cpp" />
     <ClCompile Include="sszTitleScene.cpp" />
+    <ClCompile Include="sszObj_Waterfall.cpp" />
     <ClCompile Include="sszWeeklyEventBtn.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

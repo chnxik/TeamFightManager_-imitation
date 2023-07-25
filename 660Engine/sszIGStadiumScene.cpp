@@ -1,6 +1,8 @@
 #include "sszIGStadiumScene.h"
 #include "CommonHeader.h"
 
+#include "sszObj_IG_Stadium.h"
+
 #include "sszBattleHeader.h"
 #include "sszPlayerCardSlot.h"
 
@@ -34,17 +36,12 @@ namespace ssz
 			InstantiateUI<PlayerCardSlot>(Vector3(-843.f, 69.f, 1.02f), eLayerType::UI, L"BluePlayerCard_2")->SetBlue();
 
 			// IG Stadium
-			GameObject* IG_Stadium = Instantiate<GameObject>(Vector3(0.0f, -139.0f, 1.021f), Vector3(2293.f, 1498.f, 1.f), eLayerType::BackGround);
-			IG_Stadium->SetName(L"IG_Stadium");
-			IG_Stadium->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"IGStadiumMt");
+			IG_Stadium* Stadium = Instantiate<IG_Stadium>(Vector3(0.0f, -139.0f, 1.021f), Vector3(2293.f, 1498.f, 1.f), eLayerType::BackGroundObj);
 
 			// IG StadiumSky
 			GameObject* IG_StadiumSky = Instantiate<GameObject>(Vector3(0.0f, -53.0f, 1.022f), Vector3(2144.f, 1429.f, 1.f), eLayerType::BackGround);
 			IG_StadiumSky->SetName(L"IG_StadiumSky");
 			IG_StadiumSky->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"IGStadiumSkyMt");
-
-			// 오브젝트 배치용 스크립트
-			IG_Stadium->AddComponent<ArrangementScript>();
 		}
 
 		// MouseCursor

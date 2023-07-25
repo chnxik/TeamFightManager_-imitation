@@ -7,6 +7,13 @@ namespace ssz::AI
 	{
 	}
 
+	Root_Node::Root_Node(std::shared_ptr<AIBB> pAIBB)
+		: mChild(nullptr), mCurRunningNode(nullptr)
+	{
+		SetAIBB(pAIBB);
+		mAIBB->RegistRunningNode(&mCurRunningNode);
+	}
+
 	Root_Node::~Root_Node()
 	{
 		if (mChild)
@@ -18,12 +25,19 @@ namespace ssz::AI
 
 	eNodeStatus Root_Node::Run()
 	{
-		if (mChild == nullptr)
+		if (mCurRunningNode != nullptr)
 		{
-			return NS_INVALID;
-		}
+			if (mCurRunningNode->Run() == NS_RUNNING)
+				return NS_RUNNING;
 
-		return mChild->Run();
+			mCurRunningNode = nullptr;
+			
+			return NS_SUCCESS;
+		}
+		else if (mChild != nullptr)
+			return mChild->Run();
+
+		return NS_INVALID;
 	}
 
 	Decorate_Node::~Decorate_Node()
@@ -35,7 +49,6 @@ namespace ssz::AI
 		}
 	}
 	
-
 	Composite_Node::~Composite_Node()
 	{
 		for (BT* child : mChilds)
@@ -49,9 +62,15 @@ namespace ssz::AI
 	{
 		for (BT* child : GetChilds())
 		{
-			if (child->Run() == NS_SUCCESS)
-			{
+			eNodeStatus eStatus = child->Run();
+			
+			if (eStatus == NS_SUCCESS)
 				return NS_SUCCESS;
+			
+			if (eStatus == NS_RUNNING)
+			{
+				mAIBB->SetRunningNode(child);
+				return NS_RUNNING;
 			}
 		}
 
@@ -62,16 +81,22 @@ namespace ssz::AI
 	{
 		for (BT* child : GetChilds())
 		{
-			if (child->Run() == NS_FAILURE)
-			{
+			eNodeStatus eStatus = child->Run();
+
+			if (eStatus == NS_FAILURE)
 				return NS_FAILURE;
+
+			if (eStatus == NS_RUNNING)
+			{
+				mAIBB->SetRunningNode(child);
+				return NS_RUNNING;
 			}
 		}
 		
 		return NS_SUCCESS;
 	}
 	
-	eNodeStatus RdSelector_Node::Run()
+	eNodeStatus RandSelector_Node::Run()
 	{
 		std::random_device rd;
 		std::mt19937 gen(rd());
@@ -79,15 +104,21 @@ namespace ssz::AI
 		vector<BT*> vecNode;
 
 		for (BT* child : GetChilds())
-			vecNode.push_back(child);
+			vecNode.emplace_back(child);
 
 		std::shuffle(vecNode.begin(), vecNode.end(), gen);
 
 		for (BT* child : vecNode)
 		{
-			if (child->Run() == NS_SUCCESS)
-			{
+			eNodeStatus eStatus = child->Run();
+
+			if (eStatus == NS_SUCCESS)
 				return NS_SUCCESS;
+
+			if (eStatus == NS_RUNNING)
+			{
+				mAIBB->SetRunningNode(child);
+				return NS_RUNNING;
 			}
 		}
 

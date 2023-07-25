@@ -25,10 +25,12 @@ namespace ssz::AI
 	{
 	public:
 		BT() : mAIBB(nullptr) {}
-		BT(std::shared_ptr<AIBB> pAIBB) : mAIBB(pAIBB) {}
 		virtual ~BT();
 
 		virtual eNodeStatus Run() = 0;
+
+		void SetAIBB(std::shared_ptr<AIBB> pAIBB) { mAIBB = pAIBB; }
+		std::shared_ptr<AIBB> GetAIBB() { return mAIBB; }
 
 	protected:
 		std::shared_ptr<AIBB> mAIBB;
@@ -39,9 +41,8 @@ namespace ssz::AI
 	class Root_Node : public BT // 뿌리 노드
 	{
 	public:
+		Root_Node(std::shared_ptr<AIBB> pAIBB);
 		virtual ~Root_Node();
-		Root_Node() : mChild(nullptr) {};
-		Root_Node(std::shared_ptr<AIBB> pAIBB) : BT(pAIBB), mChild(nullptr) {}
 
 		BT* GetChild() { return mChild; }
 
@@ -55,6 +56,8 @@ namespace ssz::AI
 			if (mChild == nullptr)
 				return nullptr;
 
+			mChild->SetAIBB(mAIBB);
+
 			return NewNode;
 		}
 
@@ -62,6 +65,7 @@ namespace ssz::AI
 
 	private:
 		BT* mChild;
+		BT* mCurRunningNode;
 	};
 
 	// ============================ Decorate Node =========================
@@ -82,6 +86,8 @@ namespace ssz::AI
 			if (mChild == nullptr)
 				return nullptr;
 
+			mChild->SetAIBB(mAIBB);
+
 			return NewNode;
 		}
 
@@ -92,7 +98,7 @@ namespace ssz::AI
 	};
 
 	// 반드시 성공을 반환
-	class AllSuccess_Node : public Decorate_Node
+	class Succeeder_Node : public Decorate_Node
 	{
 	public:
 		virtual eNodeStatus Run()
@@ -104,26 +110,13 @@ namespace ssz::AI
 	};
 
 	// 성공을 반환할 때 까지 반복
-	class Until_Node : public Decorate_Node
+	class Repeat_Until_Node : public Decorate_Node
 	{
 	public:
 		virtual eNodeStatus Run()
 		{
-			while (GetChild()->Run() != NS_SUCCESS)
-			{
-			}
+			while (GetChild()->Run() != NS_SUCCESS) {}
 		}
-	};
-
-	
-
-	// ============================= Condition Node ===================================
-	class Condition_Node : public BT // 컨디션 판단 노드
-	{
-	public:
-		Condition_Node(std::shared_ptr<AIBB> pAIBB) : BT(pAIBB) {}
-
-		virtual eNodeStatus Run() = 0;
 	};
 
 	// ========================================== Composite Node =================================
@@ -146,20 +139,7 @@ namespace ssz::AI
 			if (childNode == nullptr)
 				return nullptr;
 
-			mChilds.emplace_back(childNode);
-
-			return NewNode;
-		}
-
-		template <typename T>
-		T* AddChild(std::shared_ptr<AIBB> pAIBB)
-		{
-			T* NewNode = new T(pAIBB);
-
-			BT* childNode = dynamic_cast<BT*>(NewNode);
-
-			if (childNode == nullptr)
-				return nullptr;
+			childNode->SetAIBB(mAIBB);
 
 			mChilds.emplace_back(childNode);
 
@@ -181,9 +161,8 @@ namespace ssz::AI
 	public:
 		virtual eNodeStatus Run() override;
 	};
-
 		
-	class RdSelector_Node : public Composite_Node // 매 실행마다 자식노드의 순서를 셔플 (무작위)
+	class RandSelector_Node : public Composite_Node // 매 실행마다 자식노드의 순서를 셔플 (무작위)
 	{
 	public:
 		virtual eNodeStatus Run() override;
@@ -191,11 +170,18 @@ namespace ssz::AI
 
 	// =========================================== Leaf Node ======================================
 
+	// ============================= Condition Node ===================================
+	class Condition_Node : public BT // 컨디션 판단 노드
+	{
+	public:
+		virtual eNodeStatus Run() = 0;
+	};
+
+
+	// ============================= Action Node =====================================
 	class Action_Node : public BT	// 행동 실행 노드
 	{
 	public:
-		Action_Node(std::shared_ptr<AIBB> pAIBB) : BT(pAIBB) {}
-
 		virtual eNodeStatus Run() = 0;
 	};
 }

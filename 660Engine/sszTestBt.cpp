@@ -4,53 +4,10 @@
 
 namespace ssz
 {
-	// Random Selector Test Node
-	class Node_A : public Action_Node
-	{
-	public:
-		Node_A(std::shared_ptr<AIBB> pAIBB) : Action_Node(pAIBB) {}
-
-		virtual eNodeStatus Run() override
-		{
-			int a = 0;
-
-			return NS_FAILURE;
-		}
-	};
-
-	class Node_B : public Action_Node
-	{
-	public:
-		Node_B(std::shared_ptr<AIBB> pAIBB) : Action_Node(pAIBB) {}
-
-		virtual eNodeStatus Run() override
-		{
-			int b = 0;
-
-			return NS_FAILURE;
-		}
-	};
-
-	class Node_C : public Action_Node
-	{
-	public:
-		Node_C(std::shared_ptr<AIBB> pAIBB) : Action_Node(pAIBB) {}
-
-		virtual eNodeStatus Run() override
-		{
-			int c = 0;
-
-			return NS_FAILURE;
-		}
-	};
-
-
 	// Condition Node
 	class Con_IsStopBtnPush : public Condition_Node // 정지 컨디션
 	{
 	public:
-		Con_IsStopBtnPush(std::shared_ptr<AIBB> pAIBB) : Condition_Node(pAIBB) {}
-
 		virtual eNodeStatus Run() override
 		{
 			if (Input::GetKey(eKeyCode::SPACE))
@@ -64,8 +21,6 @@ namespace ssz
 	class Con_CollisionCsr : public Condition_Node // 커서 탐지 컨디션
 	{
 	public:
-		Con_CollisionCsr(std::shared_ptr<AIBB> pAIBB) : Condition_Node(pAIBB) {}
-
 		virtual eNodeStatus Run() override
 		{
 			Collider2D* CsrCol = mAIBB->FindData<GameObject>(L"Cursor")->GetComponent<Collider2D>();
@@ -82,8 +37,6 @@ namespace ssz
 	class Con_DetectCsr_300px : public Condition_Node // 커서 탐지 컨디션
 	{
 	public:
-		Con_DetectCsr_300px(std::shared_ptr<AIBB> pAIBB) : Condition_Node(pAIBB) {}
-
 		virtual eNodeStatus Run() override
 		{
 			Vector3 CsrPos = mAIBB->FindData<GameObject>(L"Cursor")->GetComponent<Collider2D>()->GetColliderPos();
@@ -104,9 +57,6 @@ namespace ssz
 	class Con_IsLeft : public Condition_Node // 왼쪽방향 컨디션
 	{
 	public:
-		Con_IsLeft(std::shared_ptr<AIBB> pAIBB) : Condition_Node(pAIBB) {}
-
-
 		virtual eNodeStatus Run() override
 		{
 			Transform* mtr = mAIBB->FindData<GameObject>(L"Champ_archer")->GetComponent<Transform>();
@@ -120,9 +70,6 @@ namespace ssz
 	class Con_IsRight : public Condition_Node // 오른쪽 방향 컨디션
 	{
 	public:
-		Con_IsRight(std::shared_ptr<AIBB> pAIBB) : Condition_Node(pAIBB) {}
-		
-
 		virtual eNodeStatus Run() override
 		{
 			Transform* mtr = mAIBB->FindData<GameObject>(L"Champ_archer")->GetComponent<Transform>();
@@ -136,9 +83,6 @@ namespace ssz
 	class Con_CsrOntheLeft : public Condition_Node
 	{
 	public:
-		Con_CsrOntheLeft(std::shared_ptr<AIBB> pAIBB) : Condition_Node(pAIBB) {}
-
-
 		virtual eNodeStatus Run() override
 		{
 			Vector3 CsrPos = mAIBB->FindData<GameObject>(L"Cursor")->GetComponent<Collider2D>()->GetColliderPos();
@@ -153,9 +97,6 @@ namespace ssz
 	class Con_CsrOntheRight : public Condition_Node
 	{
 	public:
-		Con_CsrOntheRight(std::shared_ptr<AIBB> pAIBB) : Condition_Node(pAIBB) {}
-
-
 		virtual eNodeStatus Run() override
 		{
 			Vector3 CsrPos = mAIBB->FindData<GameObject>(L"Cursor")->GetComponent<Collider2D>()->GetColliderPos();
@@ -170,9 +111,6 @@ namespace ssz
 	class Con_IsOver_LeftArea : public Condition_Node
 	{
 	public:
-		Con_IsOver_LeftArea(std::shared_ptr<AIBB> pAIBB) : Condition_Node(pAIBB) {}
-
-
 		virtual eNodeStatus Run() override
 		{
 			Transform* mtr = mAIBB->FindData<GameObject>(L"Champ_archer")->GetComponent<Transform>();
@@ -190,9 +128,6 @@ namespace ssz
 	class Con_IsOver_RightArea : public Condition_Node
 	{
 	public:
-		Con_IsOver_RightArea(std::shared_ptr<AIBB> pAIBB) : Condition_Node(pAIBB) {}
-
-
 		virtual eNodeStatus Run() override
 		{
 			Transform* mtr = mAIBB->FindData<GameObject>(L"Champ_archer")->GetComponent<Transform>();
@@ -212,8 +147,6 @@ namespace ssz
 	class Act_TurnLeft : public Action_Node
 	{
 	public:
-		Act_TurnLeft(std::shared_ptr<AIBB> pAIBB) : Action_Node(pAIBB) {}
-
 		virtual eNodeStatus Run() override
 		{
 			Transform* mtr = mAIBB->FindData<GameObject>(L"Champ_archer")->GetComponent<Transform>();
@@ -225,8 +158,6 @@ namespace ssz
 	class Act_TurnRight : public Action_Node
 	{
 	public:
-		Act_TurnRight(std::shared_ptr<AIBB> pAIBB) : Action_Node(pAIBB) {}
-
 		virtual eNodeStatus Run() override
 		{
 			Transform* mtr = mAIBB->FindData<GameObject>(L"Champ_archer")->GetComponent<Transform>();
@@ -238,8 +169,6 @@ namespace ssz
 	class Act_MoveLeft : public Action_Node
 	{
 	public:
-		Act_MoveLeft(std::shared_ptr<AIBB> pAIBB) : Action_Node(pAIBB) {}
-
 		virtual eNodeStatus Run() override
 		{
 			Transform* mtr = mAIBB->FindData<GameObject>(L"Champ_archer")->GetComponent<Transform>();
@@ -254,8 +183,6 @@ namespace ssz
 	class Act_MoveRight : public Action_Node
 	{
 	public:
-		Act_MoveRight(std::shared_ptr<AIBB> pAIBB) : Action_Node(pAIBB) {}
-
 		virtual eNodeStatus Run() override
 		{
 			Transform* mtr = mAIBB->FindData<GameObject>(L"Champ_archer")->GetComponent<Transform>();
@@ -270,8 +197,6 @@ namespace ssz
 	class Act_PlayAnim_Idle : public Action_Node
 	{
 	public:
-		Act_PlayAnim_Idle(std::shared_ptr<AIBB> pAIBB) : Action_Node(pAIBB) {}
-
 		virtual eNodeStatus Run() override
 		{
 			Animator* anim = mAIBB->FindData<GameObject>(L"Champ_archer")->GetComponent<Animator>();
@@ -283,8 +208,6 @@ namespace ssz
 	class Act_PlayAnim_Move : public Action_Node
 	{
 	public:
-		Act_PlayAnim_Move(std::shared_ptr<AIBB> pAIBB) : Action_Node(pAIBB) {}
-
 		virtual eNodeStatus Run() override
 		{
 			Animator* anim = mAIBB->FindData<GameObject>(L"Champ_archer")->GetComponent<Animator>();
@@ -296,8 +219,6 @@ namespace ssz
 	class Act_PlayAnim_Attack : public Action_Node
 	{
 	public:
-		Act_PlayAnim_Attack(std::shared_ptr<AIBB> pAIBB) : Action_Node(pAIBB) {}
-
 		virtual eNodeStatus Run() override
 		{
 			Animator* anim = mAIBB->FindData<GameObject>(L"Champ_archer")->GetComponent<Animator>();
@@ -309,14 +230,28 @@ namespace ssz
 	class Act_PlayAnim_Dead : public Action_Node
 	{
 	public:
-		Act_PlayAnim_Dead(std::shared_ptr<AIBB> pAIBB) : Action_Node(pAIBB) {}
-
 		virtual eNodeStatus Run() override
 		{
 			Animator* anim = mAIBB->FindData<GameObject>(L"Champ_archer")->GetComponent<Animator>();
 
 			anim->PlayAnimation(L"archer_dead", false);
 			return NS_SUCCESS;
+		}
+	};
+
+	class Act_TestRunning : public Action_Node
+	{
+	public:
+		virtual eNodeStatus Run() override
+		{
+			static int repeat = 0;
+
+			repeat++;
+
+			if (repeat < 2)
+				return NS_RUNNING;
+			else
+				return NS_SUCCESS;
 		}
 	};
 }

@@ -3,7 +3,7 @@
 namespace ssz::AI
 {
 	AIBB::AIBB()
-		: mRunningBT(nullptr)
+		: mCurRunningBT(nullptr)
 	{
 	}
 
@@ -14,12 +14,6 @@ namespace ssz::AI
 		{
 			delete iter->second;
 			iter = mCreatedData.erase(iter);
-		}
-
-		if (mRunningBT)
-		{
-			delete mRunningBT;
-			mRunningBT = nullptr;
 		}
 	}
 

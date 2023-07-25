@@ -60,11 +60,13 @@ namespace ssz::AI
 		}
 
 		void ClearAllData();
-		
+
+		void RegistRunningNode(BT** ppRunningNode) { mCurRunningBT = ppRunningNode; } // AIBB에 Root_Node의 RunningNode 포인터 주소 등록
+		void SetRunningNode(BT* pNode) { (*mCurRunningBT) = pNode; } // 등록된 RunningNode 포인터(Root_Node RunningNode)에 Running Node 등록
 
 	private:
 		std::map<std::wstring, void*> mAddedData;
 		std::map<std::wstring, void*> mCreatedData;
-		BT* mRunningBT;
+		BT** mCurRunningBT;
 	};
 }

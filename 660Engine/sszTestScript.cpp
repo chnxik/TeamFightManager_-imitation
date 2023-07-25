@@ -43,6 +43,17 @@ namespace ssz
 			// Set AIBB
 			std::shared_ptr<AIBB> TestAIBB = std::make_shared<AIBB>();	// TestBT용 AI BlackBoard 생성
 			TestAIBB->AddData<GameObject>(L"Champ_archer", GetOwner()); // 참조 Object 추가
+			
+			root = new Root_Node();
+
+			RdSelector_Node* RandomTest = root->AddChild<RdSelector_Node>();
+
+			RandomTest->AddChild<Node_A>(TestAIBB);
+			RandomTest->AddChild<Node_B>(TestAIBB);
+			RandomTest->AddChild<Node_C>(TestAIBB);
+
+			/*
+			
 
 			GameObject* pCsr = SceneManager::GetActiveScene()->GetLayer(eLayerType::Cursor).GetGameObjects().front();
 			TestAIBB->AddData<GameObject>(L"Cursor", pCsr);
@@ -112,6 +123,8 @@ namespace ssz
 			Seq_CheckOverArea_Right->AddChild<Con_IsOver_RightArea>(TestAIBB);
 			Seq_CheckOverArea_Right->AddChild<Act_TurnLeft>(TestAIBB);
 			Seq_CheckOverArea_Right->AddChild<Act_MoveLeft>(TestAIBB);
+
+			*/
 		}
 	}
 

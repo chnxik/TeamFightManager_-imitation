@@ -4,6 +4,47 @@
 
 namespace ssz
 {
+	// Random Selector Test Node
+	class Node_A : public Action_Node
+	{
+	public:
+		Node_A(std::shared_ptr<AIBB> pAIBB) : Action_Node(pAIBB) {}
+
+		virtual eNodeStatus Run() override
+		{
+			int a = 0;
+
+			return NS_FAILURE;
+		}
+	};
+
+	class Node_B : public Action_Node
+	{
+	public:
+		Node_B(std::shared_ptr<AIBB> pAIBB) : Action_Node(pAIBB) {}
+
+		virtual eNodeStatus Run() override
+		{
+			int b = 0;
+
+			return NS_FAILURE;
+		}
+	};
+
+	class Node_C : public Action_Node
+	{
+	public:
+		Node_C(std::shared_ptr<AIBB> pAIBB) : Action_Node(pAIBB) {}
+
+		virtual eNodeStatus Run() override
+		{
+			int c = 0;
+
+			return NS_FAILURE;
+		}
+	};
+
+
 	// Condition Node
 	class Con_IsStopBtnPush : public Condition_Node // 정지 컨디션
 	{

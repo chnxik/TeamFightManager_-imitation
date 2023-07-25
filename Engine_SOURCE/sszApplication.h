@@ -36,5 +36,6 @@ namespace ssz
 		HWND mHwnd;
 		UINT mWidth;
 		UINT mHeight;
+
 	};
 }

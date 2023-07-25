@@ -58,6 +58,8 @@ namespace ssz::AI
 
 			return nullptr;
 		}
+
+		void ClearAllData();
 		
 
 	private:

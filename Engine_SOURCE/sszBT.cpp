@@ -7,16 +7,6 @@ namespace ssz::AI
 	{
 	}
 
-
-	Decoreate_Node::~Decoreate_Node()
-	{
-		if (mChild)
-		{
-			delete mChild;
-			mChild = nullptr;
-		}
-	}
-
 	Root_Node::~Root_Node()
 	{
 		if (mChild)
@@ -25,6 +15,26 @@ namespace ssz::AI
 			mChild = nullptr;
 		}
 	}
+
+	eNodeStatus Root_Node::Run()
+	{
+		if (mChild == nullptr)
+		{
+			return NS_INVALID;
+		}
+
+		return mChild->Run();
+	}
+
+	Decorate_Node::~Decorate_Node()
+	{
+		if (mChild)
+		{
+			delete mChild;
+			mChild = nullptr;
+		}
+	}
+	
 
 	Composite_Node::~Composite_Node()
 	{
@@ -61,13 +71,26 @@ namespace ssz::AI
 		return NS_SUCCESS;
 	}
 	
-	eNodeStatus Root_Node::Run()
+	eNodeStatus RdSelector_Node::Run()
 	{
-		if (mChild == nullptr)
+		std::random_device rd;
+		std::mt19937 gen(rd());
+
+		vector<BT*> vecNode;
+
+		for (BT* child : GetChilds())
+			vecNode.push_back(child);
+
+		std::shuffle(vecNode.begin(), vecNode.end(), gen);
+
+		for (BT* child : vecNode)
 		{
-			return NS_INVALID;
+			if (child->Run() == NS_SUCCESS)
+			{
+				return NS_SUCCESS;
+			}
 		}
-		
-		return mChild->Run();
+
+		return NS_FAILURE;
 	}
 }

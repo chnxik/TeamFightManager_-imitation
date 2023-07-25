@@ -17,8 +17,6 @@ namespace ssz
 
 	void TestScene::Initialize()
 	{
-
-
 		// MouseCursor
 		{
 			GameObject* Cursor = Instantiate<GameObject>(Vector3(0.f, 0.f, 0.01f), Vector3(32.f, 32.f, 1.f), eLayerType::Cursor);
@@ -51,8 +49,6 @@ namespace ssz
 
 		// Player
 		{
-			
-
 			GameObject* TestObj = Instantiate<GameObject>(Vector3(0.f, 0.f, 1.01f), Vector3(128.f, 128.f, 1.f), eLayerType::Player);
 			Animator* AniComp = TestObj->AddComponent<Animator>();
 			
@@ -61,9 +57,6 @@ namespace ssz
 			TestCol->SetOffsetSize(Vector3(-32.f, -32.f, 0.f));
 			
 			TestObj->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"archer_spriteMt");
-
-
-			
 		}
 
 #pragma endregion
@@ -88,6 +81,7 @@ namespace ssz
 	}
 	void TestScene::OnEnter()
 	{
+		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Cursor, true);
 	}
 	void TestScene::OnExit()
 	{

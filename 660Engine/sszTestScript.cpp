@@ -58,7 +58,7 @@ namespace ssz
 			Sequence_Node* Seq_Move = ArcherBT->AddChild<Sequence_Node>(); // 이동 판단 시퀀스
 
 			// 사망 판단 시퀀스
-			Seq_Dead->AddChild<Con_DetectCsr_50px>(TestAIBB); // 정지 버튼 입력 판단
+			Seq_Dead->AddChild<Con_CollisionCsr>(TestAIBB); // 정지 버튼 입력 판단
 			Seq_Dead->AddChild<Act_PlayAnim_Dead>(TestAIBB); // Idle Animation 재생
 			
 			// 정지 판단 시퀀스

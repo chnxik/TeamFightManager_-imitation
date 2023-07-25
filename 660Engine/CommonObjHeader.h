@@ -4,6 +4,7 @@
 
 // Engine
 #include "sszSceneManager.h"
+#include "sszCollisionManager.h"
 #include "sszInput.h"
 #include "sszTime.h"
 #include "sszScene.h"

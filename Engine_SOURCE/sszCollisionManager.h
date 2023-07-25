@@ -29,6 +29,8 @@ namespace ssz
 		static bool CircleIntersect(Collider2D* left, Collider2D* right);
 		static bool MixIntersect(Collider2D* Rect, Collider2D* Circle);
 
+		const static bool IsCollision(Collider2D* left, Collider2D* right);
+
 		static void SetLayer(eLayerType left, eLayerType right, bool enable);
 		static void Clear();
 

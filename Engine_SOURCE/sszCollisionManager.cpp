@@ -343,6 +343,20 @@ namespace ssz
 		return true;
 	}
 
+	const bool CollisionManager::IsCollision(Collider2D* left, Collider2D* right)
+	{
+		ColliderID ID = {};
+		ID.left = left->GetColliderID();
+		ID.right = right->GetColliderID();
+
+		// 충돌 정보를 가져온다
+		std::map<UINT64, bool>::iterator iter = mCollisionMap.find(ID.id);
+		if (mCollisionMap.end() == iter) // 충돌정보가 없다
+			return false;
+
+		return iter->second;
+	}
+
 	void CollisionManager::SetLayer(eLayerType left, eLayerType right, bool enable)
 	{
 		UINT iRow = (UINT)left;

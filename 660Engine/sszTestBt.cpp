@@ -20,21 +20,17 @@ namespace ssz
 			return NS_FAILURE;
 		}
 	};
-	class Con_DetectCsr_50px : public Condition_Node // 커서 탐지 컨디션
+	class Con_CollisionCsr : public Condition_Node // 커서 탐지 컨디션
 	{
 	public:
-		Con_DetectCsr_50px(std::shared_ptr<AIBB> pAIBB) : Condition_Node(pAIBB) {}
+		Con_CollisionCsr(std::shared_ptr<AIBB> pAIBB) : Condition_Node(pAIBB) {}
 
 		virtual eNodeStatus Run() override
 		{
-			Vector3 CsrPos = mAIBB->FindData<GameObject>(L"Cursor")->GetComponent<Transform>()->GetWorldPosition();
-			Vector3 OwnerPos = mAIBB->FindData<GameObject>(L"Champ_archer")->GetComponent<Transform>()->GetWorldPosition();
+			Collider2D* CsrCol = mAIBB->FindData<GameObject>(L"Cursor")->GetComponent<Collider2D>();
+			Collider2D* OwnerCol = mAIBB->FindData<GameObject>(L"Champ_archer")->GetComponent<Collider2D>();
 
-			float dist = sqrt(
-				(CsrPos.x - OwnerPos.x) * (CsrPos.x - OwnerPos.x) +
-				(CsrPos.y - OwnerPos.y) * (CsrPos.y - OwnerPos.y));
-
-			if (dist < 50.f)
+			if (CollisionManager::IsCollision(OwnerCol,CsrCol))
 			{
 				return NS_SUCCESS;
 			}

@@ -12,10 +12,16 @@ namespace ssz
             virtual ~ProceedBtn();
 
             virtual void Initialize() override;
+            virtual void Update() override;
+
+            void MarkAnimation();
 
             ButtonUI* GetBtnComponent() { return mBtnComp; }
 
         private:
             ButtonUI* mBtnComp;
+            UIObject* ProceedBtnArrowMark;
+
+            float mDefalutMarkPos_x;
 	};
 }

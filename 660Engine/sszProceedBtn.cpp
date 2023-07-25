@@ -6,6 +6,8 @@ namespace ssz
 	ProceedBtn::ProceedBtn(const std::wstring& Key)
 		: UIObject(Key)
 		, mBtnComp(nullptr)
+		, ProceedBtnArrowMark(nullptr)
+		, mDefalutMarkPos_x(80.f)
 	{
 	}
 
@@ -54,10 +56,43 @@ namespace ssz
 			// Add MarkTex
 			float BtnPosz = GetComponent<Transform>()->GetPosition().y;
 
-			UIObject* ProceedBtnArrowMark = ssz::object::InstantiateUI<UIObject>(Vector3(80.f, 0.f, BtnPosz - 0.0001f), Vector3(170.f, 120.f, 1.f), this, L"ProceedArrowMark");
+			ProceedBtnArrowMark = ssz::object::InstantiateUI<UIObject>(Vector3(mDefalutMarkPos_x, 0.f, BtnPosz - 0.0001f), Vector3(170.f, 120.f, 1.f), this, L"ProceedArrowMark");
 			ProceedBtnArrowMark->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"ProceedBtnArrowMarkMt");
 			ProceedBtnArrowMark->GetComponent<Transform>()->SetTransType(ssz::Transform::eTransType::PosAdd);
 		}
 #pragma endregion
+	}
+
+	void ProceedBtn::Update()
+	{
+		if (mBtnComp->GetBtnState() == ButtonUI::eBtnState::On ||
+			mBtnComp->GetBtnState() == ButtonUI::eBtnState::Down)
+		{
+			MarkAnimation();
+		}
+		else
+		{
+			Transform* Tr = ProceedBtnArrowMark->GetComponent<Transform>();
+			Vector3 Pos = Tr->GetPosition();
+			Pos.x = mDefalutMarkPos_x;
+			Tr->SetPosition(Pos);
+		}
+
+		GameObject::Update();
+	}
+	void ProceedBtn::MarkAnimation()
+	{
+		Transform* Tr = ProceedBtnArrowMark->GetComponent<Transform>();
+		Vector3 Pos = Tr->GetPosition();
+
+		float fForce = (mDefalutMarkPos_x - Pos.x) + 1;
+
+		Pos.x += fForce * 4.f * (float)Time::DeltaTime();
+
+		// 0부터 80 까지
+		if (mDefalutMarkPos_x < Pos.x)
+			Pos.x = 40.f;
+
+		Tr->SetPosition(Pos);
 	}
 }

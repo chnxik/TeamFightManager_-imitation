@@ -23,6 +23,7 @@ namespace ssz::graphics
 		bool CreateRasterizerState(const D3D11_RASTERIZER_DESC* pRasterizerDesc, ID3D11RasterizerState** ppRasterizerState);
 		bool CreateDepthStencilState(const D3D11_DEPTH_STENCIL_DESC* pDepthStencilDesc, ID3D11DepthStencilState** ppDepthStencilState);
 		bool CreateBlendState(const D3D11_BLEND_DESC* pBlendStateDesc, ID3D11BlendState** ppBlendState);
+		bool CreateShaderResourceView(ID3D11Resource* pResource, const D3D11_SHADER_RESOURCE_VIEW_DESC* pDesc, ID3D11ShaderResourceView** ppSRView);
 
 
 		void BindInputLayout(ID3D11InputLayout* pInputLayout);
@@ -36,6 +37,7 @@ namespace ssz::graphics
 		void SetConstantBuffer(ID3D11Buffer* buffer, void* data, UINT size); // 상수버퍼에 데이터 설정
 		void BindConstantBuffer(eShaderStage stage, eCBType type, ID3D11Buffer* buffer);
 		void BindConstantBuffers(eShaderStage stage, eCBType type, ID3D11Buffer* buffer);
+		void BindBuffer(ID3D11Buffer* buffer, void* data, UINT size);
 		void BindShaderResource(eShaderStage stage, UINT startSlot, ID3D11ShaderResourceView** ppSRV);
 		void BindSampler(eShaderStage stage, UINT startSlot, ID3D11SamplerState** ppSamplers);
 		void BindViewPort(D3D11_VIEWPORT* viewPort); // 뷰포트 바인드 함수

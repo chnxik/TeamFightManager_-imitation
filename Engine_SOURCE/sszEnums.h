@@ -11,6 +11,7 @@ namespace ssz::enums
 		Particle,
 		MeshRenderer,
 		Animator,
+		Light,
 		Script,
 		UI,
 		Camera,
@@ -25,6 +26,7 @@ namespace ssz::enums
 		PlayerProjectile,
 		Enemy,
 		EnemyProjectile,
+		Light,
 		UI,
 		Cursor,
 		Camera,
@@ -48,5 +50,13 @@ namespace ssz::enums
 		Sphere,
 		Cube,
 		End,
+	};
+
+	enum class eLightType
+	{
+		Directional,
+		Point,
+		Spot,
+		End
 	};
 }

@@ -139,6 +139,12 @@
     <Filter Include="Common\BehaviorTree\AIBB">
       <UniqueIdentifier>{d2994bfb-5f2e-453a-8a4e-11dff899a0fb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GameObject\Component\Light">
+      <UniqueIdentifier>{7dd6f2da-9550-48db-9cac-3b992b5dce76}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\StructuredBuffer">
+      <UniqueIdentifier>{d2be9608-6e1c-40cc-8ff1-86b6be9aac6e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h">
@@ -258,6 +264,12 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)sszAIBB.h">
       <Filter>Common\BehaviorTree\AIBB</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszLight.h">
+      <Filter>GameObject\Component\Light</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszStructuredBuffer.h">
+      <Filter>Graphics\StructuredBuffer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)sszMath.cpp">
@@ -361,6 +373,12 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)sszAIBB.cpp">
       <Filter>Common\BehaviorTree\AIBB</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszLight.cpp">
+      <Filter>GameObject\Component\Light</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszStructuredBuffer.cpp">
+      <Filter>Graphics\StructuredBuffer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -33,6 +33,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)sszGraphics.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sszInput.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sszLayer.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszLight.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sszMaterial.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sszMath.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sszEngine.h" />
@@ -47,6 +48,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)sszSceneManager.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sszScript.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sszShader.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszStructuredBuffer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sszTexture.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sszTime.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sszTransform.h" />
@@ -71,6 +73,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)sszGraphicDevice_Dx11.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sszInput.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sszLayer.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszLight.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sszMaterial.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sszMath.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sszMesh.cpp" />
@@ -83,6 +86,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)sszSceneManager.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sszScript.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sszShader.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszStructuredBuffer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sszTexture.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sszTime.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sszTransform.cpp" />

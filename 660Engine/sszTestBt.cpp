@@ -45,8 +45,8 @@ namespace ssz
 
 		virtual eNodeStatus Run() override
 		{
-			Vector3 CsrPos = mAIBB->FindData<GameObject>(L"Cursor")->GetComponent<Transform>()->GetWorldPosition();
-			Vector3 OwnerPos = mAIBB->FindData<GameObject>(L"Champ_archer")->GetComponent<Transform>()->GetWorldPosition();
+			Vector3 CsrPos = mAIBB->FindData<GameObject>(L"Cursor")->GetComponent<Collider2D>()->GetColliderPos();
+			Vector3 OwnerPos = mAIBB->FindData<GameObject>(L"Champ_archer")->GetComponent<Collider2D>()->GetColliderPos();
 
 			float dist = sqrt(
 				(CsrPos.x - OwnerPos.x) * (CsrPos.x - OwnerPos.x) +
@@ -100,8 +100,8 @@ namespace ssz
 
 		virtual eNodeStatus Run() override
 		{
-			Vector3 CsrPos = mAIBB->FindData<GameObject>(L"Cursor")->GetComponent<Transform>()->GetWorldPosition();
-			Vector3 OwnerPos = mAIBB->FindData<GameObject>(L"Champ_archer")->GetComponent<Transform>()->GetWorldPosition();
+			Vector3 CsrPos = mAIBB->FindData<GameObject>(L"Cursor")->GetComponent<Collider2D>()->GetColliderPos();
+			Vector3 OwnerPos = mAIBB->FindData<GameObject>(L"Champ_archer")->GetComponent<Collider2D>()->GetColliderPos();
 			
 			if (CsrPos.x <= OwnerPos.x)
 				return NS_SUCCESS;
@@ -117,8 +117,8 @@ namespace ssz
 
 		virtual eNodeStatus Run() override
 		{
-			Vector3 CsrPos = mAIBB->FindData<GameObject>(L"Cursor")->GetComponent<Transform>()->GetWorldPosition();
-			Vector3 OwnerPos = mAIBB->FindData<GameObject>(L"Champ_archer")->GetComponent<Transform>()->GetWorldPosition();
+			Vector3 CsrPos = mAIBB->FindData<GameObject>(L"Cursor")->GetComponent<Collider2D>()->GetColliderPos();
+			Vector3 OwnerPos = mAIBB->FindData<GameObject>(L"Champ_archer")->GetComponent<Collider2D>()->GetColliderPos();
 
 			if (CsrPos.x > OwnerPos.x)
 				return NS_SUCCESS;

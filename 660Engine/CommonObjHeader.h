@@ -23,6 +23,7 @@ using namespace ssz::AI;
 #include "sszMeshRenderer.h"
 #include "sszCollider2D.h"
 #include "sszAnimator.h"
+#include "sszLight.h"
 
 // Object Func
 #include "sszObject.h"

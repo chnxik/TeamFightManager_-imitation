@@ -20,6 +20,9 @@ namespace ssz::graphics
 		mSize = size;
 		mStride = stride;
 
+		desc.ByteWidth = mSize * stride;
+		desc.StructureByteStride = mSize;
+
 		desc.Usage = D3D11_USAGE::D3D11_USAGE_DYNAMIC;
 		desc.CPUAccessFlags = D3D11_CPU_ACCESS_FLAG::D3D11_CPU_ACCESS_WRITE;
 		desc.BindFlags = D3D11_BIND_FLAG::D3D11_BIND_SHADER_RESOURCE;
@@ -33,7 +36,7 @@ namespace ssz::graphics
 		srvDesc.ViewDimension = D3D_SRV_DIMENSION::D3D_SRV_DIMENSION_BUFFEREX;
 
 		if (!GetDevice()->CreateShaderResourceView(buffer.Get(), &srvDesc, mSRV.GetAddressOf()))
-		return false;
+			return false;
 
 		return true;
 	}

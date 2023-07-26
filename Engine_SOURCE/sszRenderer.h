@@ -5,6 +5,7 @@
 #include "sszShader.h"
 #include "sszConstantBuffer.h"
 #include "sszCamera.h"
+#include "sszLight.h"
 
 using namespace ssz::math;
 using namespace ssz::graphics;
@@ -54,12 +55,15 @@ namespace renderer
 	extern Microsoft::WRL::ComPtr<ID3D11DepthStencilState> depthStencilStates[];
 	extern Microsoft::WRL::ComPtr<ID3D11BlendState> blendStates[];
 
+	extern std::vector<ssz::Light*> lights;
 	extern std::vector<ssz::Camera*> cameras;
 	extern std::vector<DebugMesh> debugMeshs;
 
 	void Initialize();
 	void Render();
 	void Release();
+	
+	void BindLights();
 	void CameraClear();
 
 	void PushDebugMeshAttribute(DebugMesh& mesh);

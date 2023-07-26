@@ -2,19 +2,29 @@
 #include "sszResources.h"
 #include "sszTexture.h"
 #include "sszMaterial.h"
+#include "sszStructuredBuffer.h"
 
 namespace renderer
 {
 	using namespace ssz;
 	using namespace ssz::graphics;
 
+	// CB
 	ssz::graphics::ConstantBuffer* constantBuffer[(UINT)eCBType::END] = {};
+	
+	// Sampler
 	Microsoft::WRL::ComPtr<ID3D11SamplerState> samplerState[(UINT)eSamplerType::END] = {};
 	
+	// RS, DS, BS
 	Microsoft::WRL::ComPtr<ID3D11RasterizerState> rasterizerStates[(UINT)eRSType::END] = {};
 	Microsoft::WRL::ComPtr<ID3D11DepthStencilState> depthStencilStates[(UINT)eDSType::END] = {};
 	Microsoft::WRL::ComPtr<ID3D11BlendState> blendStates[(UINT)eBSType::END] = {};
 
+	// Light
+	std::vector<Light*> lights = {};
+	StructuredBuffer* lightsBuffer = nullptr;
+
+	// camera
 	std::vector<ssz::Camera*> cameras = {};
 	std::vector<DebugMesh> debugMeshs = {};
 
@@ -276,6 +286,10 @@ namespace renderer
 
 		constantBuffer[(UINT)eCBType::Animator] = new ConstantBuffer(eCBType::Animator);
 		constantBuffer[(UINT)eCBType::Animator]->Create(sizeof(AnimatorCB));
+
+		// light Structured Buffer
+		lightsBuffer = new StructuredBuffer();
+		lightsBuffer->Create(sizeof(LightAttribute), 2, eSRVType::None);
 	}
 
 	void LoadShader()
@@ -327,6 +341,8 @@ namespace renderer
 
 	void Render()
 	{
+		BindLights();
+
 		for (Camera* cam : cameras)
 		{
 			if (cam == nullptr)
@@ -334,6 +350,22 @@ namespace renderer
 			
 			cam->Render();
 		}
+
+		lights.clear(); // 라이트는 디버그 오브젝트에서 보일 필요가 없기때문에 엔진 렌더 이후 바로 클리어해주어도 괜찮음.
+	}
+
+	void BindLights()
+	{
+		std::vector<LightAttribute> lightsAttributes = {};
+		for (Light* light : lights)
+		{
+			LightAttribute attribute = light->GetAttribute();
+			lightsAttributes.push_back(attribute);
+		}
+
+		lightsBuffer->SetData(lightsAttributes.data(), (UINT)lightsAttributes.size());
+		lightsBuffer->Bind(eShaderStage::VS, 13);
+		lightsBuffer->Bind(eShaderStage::PS, 13);
 	}
 
 	void CameraClear()

@@ -145,6 +145,9 @@
     <Filter Include="Graphics\StructuredBuffer">
       <UniqueIdentifier>{d2be9608-6e1c-40cc-8ff1-86b6be9aac6e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource\File">
+      <UniqueIdentifier>{941e2560-75d0-4ce0-af44-d18680688d6b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h">
@@ -270,6 +273,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)sszStructuredBuffer.h">
       <Filter>Graphics\StructuredBuffer</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszFile.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)sszMath.cpp">
@@ -380,6 +384,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)sszStructuredBuffer.cpp">
       <Filter>Graphics\StructuredBuffer</Filter>
     </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszFile.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)sszMath.inl">

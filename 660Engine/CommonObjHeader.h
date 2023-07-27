@@ -39,3 +39,4 @@ using namespace ssz::object;
 #include "sszMesh.h"
 #include "sszTexture.h"
 #include "sszAnimation.h"
+#include "sszFile.h"

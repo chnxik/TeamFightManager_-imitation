@@ -57,18 +57,6 @@ namespace ssz
 			
 			TestObj->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"archer_spriteMt");
 		}
-
-		// Lights
-		{
-			GameObject* light = new GameObject();
-			light->SetName(L"Light");
-			AddGameObject(eLayerType::Light, light);
-
-			Light* lightComp = light->AddComponent<Light>();
-			lightComp->SetType(eLightType::Directional);
-			lightComp->SetColor(Vector4(1.0f, 0.f, 1.0f, 1.0f));
-		}
-
 #pragma endregion
 	}
 

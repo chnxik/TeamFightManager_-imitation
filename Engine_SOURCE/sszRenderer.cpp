@@ -383,6 +383,12 @@ namespace renderer
 			delete buff;
 			buff = nullptr;
 		}
+
+		if (lightsBuffer != nullptr)
+		{
+			delete lightsBuffer;
+			lightsBuffer = nullptr;
+		}
 	}
 	void PushDebugMeshAttribute(DebugMesh& mesh)
 	{

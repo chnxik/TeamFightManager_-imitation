@@ -40,6 +40,7 @@ namespace ssz::enums
 		Material,
 		Mesh,
 		Animation,
+		File,
 		End,
 	};
 

@@ -1,6 +1,6 @@
 #include "Load.h"
 
-#include "sszSceneManager.h"
+#include "CommonHeader.h"
 
 // Scenes
 #include "sszTitleScene.h"
@@ -25,5 +25,22 @@ namespace ssz
 		SceneManager::CreateScene<TestScene>(L"TestScene");
 
 		SceneManager::LoadScene(L"TestScene");
+	}
+	void LoadFile()
+	{
+		std::shared_ptr<File> TestFile = Resources::Load<File>(L"TestFile", L"..\\Resources\\Data\\GameData\\Test.csv");
+		// TestFile->DeleteLine();
+		wstring szbuff;
+		int b = 0;
+	
+		while (true)
+		{
+			TestFile->SetData(szbuff, L',');
+			TestFile->SetData(b, L',');
+			TestFile->SetData(b, L'\n');
+			
+			if (TestFile->IsEOF())
+				break;
+		}
 	}
 }

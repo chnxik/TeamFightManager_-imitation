@@ -16,6 +16,10 @@
 #include <limits> //부동 소수점 표현 및 반올림과 관련된 클래스 템플릿 numeric_limits 및 두 개의 열거형을 정의합니다.
 #include <memory> //메모리 관련된 라이브러리
 #include <filesystem> // 파일입출력 편하게 도와주는 라이브러리
+
+#include <fstream>
+#include <sstream>
+
 #include <random> // 랜덤
 #include <iterator>
 #include <wrl.h>

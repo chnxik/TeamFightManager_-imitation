@@ -8,4 +8,5 @@
 namespace ssz
 {
 	void InitializeScenes();
+	void LoadFile();
 }

@@ -48,7 +48,7 @@ namespace renderer
 		Vector2 atlasSize;
 	};
 	
-	extern ssz::graphics::ConstantBuffer* constantBuffer[(UINT)eCBType::END];
+	extern ConstantBuffer* constantBuffer[(UINT)eCBType::END];
 
 	extern Microsoft::WRL::ComPtr<ID3D11SamplerState> samplerState[];
 	extern Microsoft::WRL::ComPtr<ID3D11RasterizerState> rasterizerStates[];

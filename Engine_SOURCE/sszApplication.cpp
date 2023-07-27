@@ -41,6 +41,7 @@ namespace ssz
 
 		renderer::Initialize();
 		ssz::InitializeScenes();
+		ssz::LoadFile();
 	}
 
 	void Application::Update()

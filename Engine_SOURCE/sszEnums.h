@@ -40,7 +40,8 @@ namespace ssz::enums
 		Material,
 		Mesh,
 		Animation,
-		File,
+		ComputeShader,
+		File, // 삭제예정
 		End,
 	};
 

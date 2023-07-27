@@ -25,6 +25,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)sszCollider2D.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sszCollisionManager.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sszComponent.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszComputeShader.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sszConstantBuffer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sszEntity.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sszEnums.h" />
@@ -68,6 +69,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)sszCollider2D.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sszCollisionManager.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sszComponent.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszComputeShader.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sszConstantBuffer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sszEntity.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sszFile.cpp" />

@@ -26,19 +26,4 @@ namespace ssz
 
 		SceneManager::LoadScene(L"TestScene");
 	}
-	void LoadFile()
-	{
-		std::shared_ptr<File> TestFile = Resources::Load<File>(L"TestFile", L"..\\Resources\\Data\\GameData\\Test.csv");
-		// TestFile->DeleteLine();
-		wstring szbuff;
-		int b = 0;
-	
-		while (true)
-		{
-			TestFile->SetData(szbuff, L',');
-			TestFile->SetData(b, L',');
-			if(TestFile->SetData(b, L'\n') == S_FALSE)
-				break;
-		}
-	}
 }

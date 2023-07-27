@@ -1,6 +1,7 @@
 #pragma once
 #include "sszEngine.h"
 #include "sszGraphics.h"
+#include "sszTexture.h"
 
 namespace ssz::graphics
 {
@@ -11,19 +12,29 @@ namespace ssz::graphics
 		~GraphicDevice_Dx11();
 
 		bool CreateSwapChain(const DXGI_SWAP_CHAIN_DESC* desc, HWND hWnd); // 스왑체인 생성
-		bool CreateTexture(const D3D11_TEXTURE2D_DESC* desc, void* data); // 텍스쳐 생성 함수
+		bool CreateTexture2D(const D3D11_TEXTURE2D_DESC* desc, void* data, ID3D11Texture2D** ppTexture2D); // 텍스쳐 생성 함수
 		
+		// InputLayout
 		bool CreateInputLayout(const D3D11_INPUT_ELEMENT_DESC* pInputElementDesc, UINT NumElements, ID3DBlob* byteCode, ID3D11InputLayout** ppInputLayout);
 		bool CreateBuffer(ID3D11Buffer** buffer, D3D11_BUFFER_DESC* desc, D3D11_SUBRESOURCE_DATA* data); // 정점버퍼 생성
 
+		// Shader
 		bool CompileFromfile(const std::wstring& fileName, const std::string& funcName, const std::string& version, ID3DBlob** ppCode);	  // 쉐이더코드 컴파일 함수
 		bool CreateVertexShader(const void* pShaderBytecode, SIZE_T BytecodeLength, ID3D11VertexShader** ppVertexShader);	// 버텍스 쉐이더 생성 함수
 		bool CreatePixelShader(const void* pShaderBytecode, SIZE_T BytecodeLength, ID3D11PixelShader** ppPixelShader); // 픽셀쉐이더 생성 함수
+		bool CreateComputeShader(const void* pShaderBytecode, SIZE_T BytecodeLength, ID3D11ComputeShader** ppComputeShader); // 컴퓨트 셰이더 생성 함수
+
+		// State
 		bool CreateSamplerState(const D3D11_SAMPLER_DESC* pSamplerDesc, ID3D11SamplerState** ppSamplerState);
 		bool CreateRasterizerState(const D3D11_RASTERIZER_DESC* pRasterizerDesc, ID3D11RasterizerState** ppRasterizerState);
 		bool CreateDepthStencilState(const D3D11_DEPTH_STENCIL_DESC* pDepthStencilDesc, ID3D11DepthStencilState** ppDepthStencilState);
 		bool CreateBlendState(const D3D11_BLEND_DESC* pBlendStateDesc, ID3D11BlendState** ppBlendState);
+		
+		// View
 		bool CreateShaderResourceView(ID3D11Resource* pResource, const D3D11_SHADER_RESOURCE_VIEW_DESC* pDesc, ID3D11ShaderResourceView** ppSRView);
+		bool CreateDepthStencilView(ID3D11Resource* pResource, const D3D11_DEPTH_STENCIL_VIEW_DESC* pDesc, ID3D11DepthStencilView** ppDSView);
+		bool CreateRenderTargetView(ID3D11Resource* pResource, const D3D11_RENDER_TARGET_VIEW_DESC* pDesc, ID3D11RenderTargetView** ppRTView);
+		bool CreateUnorderedAccessView(ID3D11Resource* pResource, const D3D11_UNORDERED_ACCESS_VIEW_DESC* pDesc, ID3D11UnorderedAccessView** ppUAView);
 
 
 		void BindInputLayout(ID3D11InputLayout* pInputLayout);
@@ -60,17 +71,8 @@ namespace ssz::graphics
 		// 이 객체를 이용하여 명령을 내린다.
 		Microsoft::WRL::ComPtr<ID3D11DeviceContext> mContext;
 
-		// 최종적으로 그려질 텍스쳐(도화지)
-		Microsoft::WRL::ComPtr<ID3D11Texture2D> mRenderTarget;
-
-		// 렌더타겟에 직접 접근하지 않고 렌더타겟뷰를 통해서 접근한다.
-		Microsoft::WRL::ComPtr<ID3D11RenderTargetView> mRenderTargetView;
-
-		// 깊이 버퍼
-		Microsoft::WRL::ComPtr<ID3D11Texture2D> mDepthStencilBuffer;
-
-		// 깊이버퍼에 접근할 수 있는 뷰
-		Microsoft::WRL::ComPtr<ID3D11DepthStencilView> mDepthStencilView;
+		std::shared_ptr<ssz::graphics::Texture> mRenderTarget;
+		std::shared_ptr<ssz::graphics::Texture> mDepthStencil;
 
 		// 더블버퍼링 작업을 진행해주는 swapChain
 		Microsoft::WRL::ComPtr<IDXGISwapChain> mSwapChain;

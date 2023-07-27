@@ -10,8 +10,11 @@ namespace ssz
         ~File();
 
         HRESULT Load(const std::wstring& path);
-        std::wifstream& GetFile() { return mFile; }
-        void FileClose();
+        void CloseLoadFile();
+        void CloseSaveFile();
+
+        HRESULT OpenSaveFile(const std::wstring& path);
+        HRESULT OpenLoadFile(const std::wstring& path);
 
         HRESULT DeleteLine();
         HRESULT SetData(std::wstring& dest, wchar_t Delim);
@@ -21,6 +24,7 @@ namespace ssz
         bool IsEOF();
         
     private:
-        std::wifstream mFile;
+        std::wifstream mLoadFile;
+        std::wofstream mSaveFile;
     };
 }

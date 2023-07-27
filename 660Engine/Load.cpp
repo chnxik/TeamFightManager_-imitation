@@ -37,9 +37,7 @@ namespace ssz
 		{
 			TestFile->SetData(szbuff, L',');
 			TestFile->SetData(b, L',');
-			TestFile->SetData(b, L'\n');
-			
-			if (TestFile->IsEOF())
+			if(TestFile->SetData(b, L'\n') == S_FALSE)
 				break;
 		}
 	}

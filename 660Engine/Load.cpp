@@ -25,5 +25,6 @@ namespace ssz
 		SceneManager::CreateScene<TestScene>(L"TestScene");
 
 		SceneManager::LoadScene(L"TestScene");
+
 	}
 }

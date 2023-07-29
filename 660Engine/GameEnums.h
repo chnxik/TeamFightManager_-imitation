@@ -1,40 +1,51 @@
 #pragma once
 
-enum class eSlotState
+namespace ssz
 {
-    Idle,
-    Selected,
-    End
-};
+    enum class eSlotState
+    {
+        Idle,
+        Selected,
+        End
+    };
 
-enum class eTeamColor
-{
-	Red,
-	Blue,
-	End,
-};
+    enum class eTeamColor
+    {
+        Red,
+        Blue,
+        End,
+    };
 
-enum class eCampType
-{
-	Player,
-	Enemy,
-	End,
-};
+    enum class eCampType
+    {
+        Player,
+        Enemy,
+        End,
+    };
 
-enum eStatType
-{
-    ATK,
-    DEF,
-    APD,
-    HP,
-    RNG,
-    SPD,
-    END
-};
+    enum class eStatType
+    {
+        ATK,
+        DEF,
+        APD,
+        HP,
+        RNG,
+        SPD,
+        END
+    };
 
-enum eClass
-{
-    Archer,
-    SwordMan,
-    End,
-};
+    enum class eChamp
+    {
+        Archer
+    };
+
+    enum class eChampType
+    {
+        FIGHTER,    // 전사
+        MARKSMAN,   // 원거리 딜러
+        MAGE,       // 마법사
+        CONTROLLER, // 서포터
+        SLAYER,     // 암살자
+        NONE,
+    };
+}

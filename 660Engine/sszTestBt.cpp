@@ -1,5 +1,4 @@
 #pragma once
-#include "sszTestScript.h"
 #include "CommonObjHeader.h"
 
 namespace ssz

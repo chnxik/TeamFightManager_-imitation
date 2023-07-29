@@ -4,5 +4,4 @@
 // Script
 #include "sszCursorScript.h"
 #include "sszArrangementScript.h"
-
-#include "sszTestScript.h"
+#include "ChampList.h"

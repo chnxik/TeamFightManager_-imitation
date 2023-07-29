@@ -48,14 +48,7 @@ namespace ssz
 
 		// Player
 		{
-			GameObject* TestObj = Instantiate<GameObject>(Vector3(0.f, 0.f, 1.01f), Vector3(128.f, 128.f, 1.f), eLayerType::Player);
-			Animator* AniComp = TestObj->AddComponent<Animator>();
-			
-			TestObj->AddComponent<TestScript>();
-			Collider2D* TestCol = TestObj->AddComponent<Collider2D>();
-			TestCol->SetOffsetSize(Vector3(-32.f, -32.f, 0.f));
-			
-			TestObj->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"archer_spriteMt");
+			Champ_Archer* TestObj = Instantiate<Champ_Archer>(Vector3(0.f, 0.f, 1.01f), Vector3(128.f, 128.f, 1.f), eLayerType::Player);
 		}
 #pragma endregion
 	}

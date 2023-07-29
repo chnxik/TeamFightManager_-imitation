@@ -151,6 +151,9 @@
     <Filter Include="Graphics\ComputeShader">
       <UniqueIdentifier>{9fa16760-0500-4e92-9895-7fb0ae8f4441}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Manager\FileMgr">
+      <UniqueIdentifier>{a7ec78de-9e0e-450b-b6b3-e6442e3c7e16}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h">
@@ -276,9 +279,11 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)sszStructuredBuffer.h">
       <Filter>Graphics\StructuredBuffer</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)sszFile.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sszComputeShader.h">
       <Filter>Graphics\ComputeShader</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszFileManager.h">
+      <Filter>Manager\FileMgr</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -390,9 +395,11 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)sszStructuredBuffer.cpp">
       <Filter>Graphics\StructuredBuffer</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)sszFile.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sszComputeShader.cpp">
       <Filter>Graphics\ComputeShader</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszFileManager.cpp">
+      <Filter>Manager\FileMgr</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

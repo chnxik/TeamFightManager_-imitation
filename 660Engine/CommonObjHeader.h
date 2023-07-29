@@ -5,6 +5,7 @@
 // Engine
 #include "sszSceneManager.h"
 #include "sszCollisionManager.h"
+#include "sszFileManager.h"
 #include "sszInput.h"
 #include "sszTime.h"
 #include "sszScene.h"
@@ -39,4 +40,3 @@ using namespace ssz::object;
 #include "sszMesh.h"
 #include "sszTexture.h"
 #include "sszAnimation.h"
-#include "sszFile.h"

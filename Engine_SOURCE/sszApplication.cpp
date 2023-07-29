@@ -6,6 +6,7 @@
 #include "sszRenderer.h"
 #include "sszSceneManager.h"
 #include "sszCollisionManager.h"
+#include "sszFileManager.h"
 #include "sszUIManager.h"
 
 #include "..\660Engine\Load.h"
@@ -82,6 +83,7 @@ namespace ssz
 	{
 		renderer::Release();
 		SceneManager::Release();
+		FileManager::Release();
 	}
 
 	void Application::SetWindow(HWND hwnd, UINT width, UINT height)

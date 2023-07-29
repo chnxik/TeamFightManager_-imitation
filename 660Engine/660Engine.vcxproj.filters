@@ -6,25 +6,22 @@
       <Filter>Contents\Load</Filter>
     </ClInclude>
     <ClInclude Include="sszCameraScript.h">
-      <Filter>Contents\Script\Camera</Filter>
+      <Filter>Contents\CommonScript\Camera</Filter>
     </ClInclude>
     <ClInclude Include="sszArrangementScript.h">
-      <Filter>Contents\Script\Arrangement</Filter>
+      <Filter>Contents\CommonScript\Arrangement</Filter>
     </ClInclude>
     <ClInclude Include="sszTitleScene.h">
       <Filter>Contents\Scene\1. Title</Filter>
     </ClInclude>
     <ClInclude Include="sszCursorScript.h">
-      <Filter>Contents\Script\CursorScript</Filter>
+      <Filter>Contents\CommonScript\CursorScript</Filter>
     </ClInclude>
     <ClInclude Include="sszTestScene.h">
       <Filter>Contents\Scene\0. TestScene</Filter>
     </ClInclude>
-    <ClInclude Include="sszTestScript.h">
-      <Filter>Contents\Script\Test</Filter>
-    </ClInclude>
     <ClInclude Include="sszMasking.h">
-      <Filter>Contents\Script\Masking</Filter>
+      <Filter>Contents\CommonScript\Masking</Filter>
     </ClInclude>
     <ClInclude Include="CommonHeader.h">
       <Filter>Common</Filter>
@@ -99,7 +96,7 @@
       <Filter>Contents\Scene\6. IGStadium</Filter>
     </ClInclude>
     <ClInclude Include="sszChamp.h">
-      <Filter>Contents\Object\GameObject\Champ\Base</Filter>
+      <Filter>Contents\Object\Champ\Base</Filter>
     </ClInclude>
     <ClInclude Include="sszObj_IG_Stadium.h">
       <Filter>Contents\Object\GameObject\BackGround\IG_Stadium</Filter>
@@ -107,32 +104,38 @@
     <ClInclude Include="sszObj_Waterfall.h">
       <Filter>Contents\Object\GameObject\BackGround\Waterfall</Filter>
     </ClInclude>
+    <ClInclude Include="sszChamp_Archer.h">
+      <Filter>Contents\Object\Champ\Archer</Filter>
+    </ClInclude>
+    <ClInclude Include="sszScript_Archer.h">
+      <Filter>Contents\Object\Champ\Archer\Script</Filter>
+    </ClInclude>
+    <ClInclude Include="ChampList.h">
+      <Filter>Common</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="660Engine.cpp" />
     <ClCompile Include="sszCameraScript.cpp">
-      <Filter>Contents\Script\Camera</Filter>
+      <Filter>Contents\CommonScript\Camera</Filter>
     </ClCompile>
     <ClCompile Include="sszArrangementScript.cpp">
-      <Filter>Contents\Script\Arrangement</Filter>
+      <Filter>Contents\CommonScript\Arrangement</Filter>
     </ClCompile>
     <ClCompile Include="sszTitleScene.cpp">
       <Filter>Contents\Scene\1. Title</Filter>
     </ClCompile>
     <ClCompile Include="sszCursorScript.cpp">
-      <Filter>Contents\Script\CursorScript</Filter>
+      <Filter>Contents\CommonScript\CursorScript</Filter>
     </ClCompile>
     <ClCompile Include="sszTestScene.cpp">
       <Filter>Contents\Scene\0. TestScene</Filter>
-    </ClCompile>
-    <ClCompile Include="sszTestScript.cpp">
-      <Filter>Contents\Script\Test</Filter>
     </ClCompile>
     <ClCompile Include="Load.cpp">
       <Filter>Contents\Load</Filter>
     </ClCompile>
     <ClCompile Include="sszMasking.cpp">
-      <Filter>Contents\Script\Masking</Filter>
+      <Filter>Contents\CommonScript\Masking</Filter>
     </ClCompile>
     <ClCompile Include="sszDefaultBtn.cpp">
       <Filter>Contents\Object\UI\Button\DefaultBtn</Filter>
@@ -197,17 +200,23 @@
     <ClCompile Include="sszIGStadiumScene.cpp">
       <Filter>Contents\Scene\6. IGStadium</Filter>
     </ClCompile>
-    <ClCompile Include="sszTestBt.cpp">
-      <Filter>Contents\Script\Test</Filter>
-    </ClCompile>
     <ClCompile Include="sszChamp.cpp">
-      <Filter>Contents\Object\GameObject\Champ\Base</Filter>
+      <Filter>Contents\Object\Champ\Base</Filter>
     </ClCompile>
     <ClCompile Include="sszObj_IG_Stadium.cpp">
       <Filter>Contents\Object\GameObject\BackGround\IG_Stadium</Filter>
     </ClCompile>
     <ClCompile Include="sszObj_Waterfall.cpp">
       <Filter>Contents\Object\GameObject\BackGround\Waterfall</Filter>
+    </ClCompile>
+    <ClCompile Include="sszChamp_Archer.cpp">
+      <Filter>Contents\Object\Champ\Archer</Filter>
+    </ClCompile>
+    <ClCompile Include="sszScript_Archer.cpp">
+      <Filter>Contents\Object\Champ\Archer\Script</Filter>
+    </ClCompile>
+    <ClCompile Include="sszTestBt.cpp">
+      <Filter>Contents\Object\Champ\Archer\Script</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -219,24 +228,6 @@
     </Filter>
     <Filter Include="Contents\Scene">
       <UniqueIdentifier>{b7ad5cba-665c-4e9a-b881-4a85724f2793}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Script">
-      <UniqueIdentifier>{c8ed79e1-3e5e-4b74-b9b3-887ec0621126}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Script\Camera">
-      <UniqueIdentifier>{b8d5be9b-621b-4cbc-8a47-e3e782c95e0c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Script\Arrangement">
-      <UniqueIdentifier>{5ae5190e-3062-45e8-9c9e-fdcbcd1e86f8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Script\CursorScript">
-      <UniqueIdentifier>{45209c28-2268-47ff-b33f-39693f0f9eca}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Script\Test">
-      <UniqueIdentifier>{a688f2ac-cc77-4504-bd0d-b6bd5fadd9a4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Script\Masking">
-      <UniqueIdentifier>{470eae73-8547-43b4-a211-e5cd3ad79448}</UniqueIdentifier>
     </Filter>
     <Filter Include="Common">
       <UniqueIdentifier>{35f42c5c-3c5e-4748-b50a-15d7a7f511a2}</UniqueIdentifier>
@@ -346,32 +337,41 @@
     <Filter Include="Contents\Object\UI\Button\BanpickClassTap">
       <UniqueIdentifier>{839e1af5-6092-41ff-851a-5cb45ed6e7dd}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Contents\Script\Champ">
-      <UniqueIdentifier>{1525570d-7c7b-4cb3-9372-4a76bf3584e8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Script\Champ\Archer">
-      <UniqueIdentifier>{2d33b6fa-2c9e-4fbb-8c2e-4bd483f670e7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Script\Champ\Swordman">
-      <UniqueIdentifier>{c709809c-5dd1-415d-9e7b-f12a6e75d744}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Object\GameObject\Champ">
-      <UniqueIdentifier>{3076d426-20aa-4855-9ba1-ea2001fbdab9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Object\GameObject\Champ\Archer">
-      <UniqueIdentifier>{dcfc9fed-9b2c-4ad6-8f94-9b5586d1ab59}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Object\GameObject\Champ\Swordman">
-      <UniqueIdentifier>{17186b01-6d65-419a-98ad-509b72626a43}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Object\GameObject\Champ\Base">
-      <UniqueIdentifier>{fd751b6e-e6d1-4b34-9d53-c31c850fef90}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Contents\Object\GameObject\BackGround\Waterfall">
       <UniqueIdentifier>{a636a76e-2070-4fc4-b46b-dc016c1dae57}</UniqueIdentifier>
     </Filter>
     <Filter Include="Contents\Object\GameObject\BackGround\IG_Stadium">
       <UniqueIdentifier>{c03ef563-1425-4ab9-9b04-269778118e52}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\Champ">
+      <UniqueIdentifier>{3076d426-20aa-4855-9ba1-ea2001fbdab9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\Champ\Archer">
+      <UniqueIdentifier>{dcfc9fed-9b2c-4ad6-8f94-9b5586d1ab59}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\Champ\Swordman">
+      <UniqueIdentifier>{17186b01-6d65-419a-98ad-509b72626a43}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\Champ\Base">
+      <UniqueIdentifier>{fd751b6e-e6d1-4b34-9d53-c31c850fef90}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\CommonScript">
+      <UniqueIdentifier>{c8ed79e1-3e5e-4b74-b9b3-887ec0621126}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\CommonScript\Camera">
+      <UniqueIdentifier>{b8d5be9b-621b-4cbc-8a47-e3e782c95e0c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\CommonScript\Arrangement">
+      <UniqueIdentifier>{5ae5190e-3062-45e8-9c9e-fdcbcd1e86f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\CommonScript\CursorScript">
+      <UniqueIdentifier>{45209c28-2268-47ff-b33f-39693f0f9eca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\CommonScript\Masking">
+      <UniqueIdentifier>{470eae73-8547-43b4-a211-e5cd3ad79448}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\Champ\Archer\Script">
+      <UniqueIdentifier>{6de9e3be-42c2-40b9-bb67-15d3f0502a1b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

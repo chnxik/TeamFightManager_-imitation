@@ -43,6 +43,6 @@ namespace ssz
 	}
 	void StatIcon::SetIcon(eStatType eType)
 	{
-		GetComponent<MeshRenderer>()->GetMaterial()->SetTexture(mStatIconTex[eType]);
+		GetComponent<MeshRenderer>()->GetMaterial()->SetTexture(mStatIconTex[(UINT)eType]);
 	}
 }

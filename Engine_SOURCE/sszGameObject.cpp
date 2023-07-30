@@ -8,6 +8,7 @@ namespace ssz
 
 	GameObject::GameObject()
 		: mState(eState::Active)
+		, mLayerType(eLayerType::End)
 	{
 		AddComponent<Transform>();
 	}

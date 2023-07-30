@@ -16,6 +16,12 @@ namespace ssz
 
         virtual void SetAnimator();
 
+        virtual void Play_Idle();
+        virtual void Play_Move();
+        virtual void Play_Attack();
+        virtual void Play_Dead();
+        virtual void Play_Skill1();
+
         virtual void Attack();
         virtual void Dead();
 

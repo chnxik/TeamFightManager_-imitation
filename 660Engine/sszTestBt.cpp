@@ -17,13 +17,15 @@ namespace ssz
 			return NS_FAILURE;
 		}
 	};
-	class Con_CollisionCsr : public Condition_Node // 커서 탐지 컨디션
+	class Con_CollisionCsr : public Condition_Node // 커서 충돌 컨디션
 	{
 	public:
 		virtual eNodeStatus Run() override
 		{
+			wstring* ChampName = mAIBB->FindData<wstring>(CHAMPKEY);
+
 			Collider2D* CsrCol = mAIBB->FindData<GameObject>(L"Cursor")->GetComponent<Collider2D>();
-			Collider2D* OwnerCol = mAIBB->FindData<GameObject>(L"Champ_archer")->GetComponent<Collider2D>();
+			Collider2D* OwnerCol = mAIBB->FindData<GameObject>(*ChampName)->GetComponent<Collider2D>();
 
 			if (CollisionManager::IsCollision(OwnerCol,CsrCol))
 			{
@@ -33,19 +35,49 @@ namespace ssz
 			return 	NS_FAILURE;
 		}
 	};
-	class Con_DetectCsr_300px : public Condition_Node // 커서 탐지 컨디션
+
+	class Con_CollisionOtehrChamp : public Condition_Node // 다른 챔프 충돌 컨디션
 	{
 	public:
 		virtual eNodeStatus Run() override
 		{
-			Vector3 CsrPos = mAIBB->FindData<GameObject>(L"Cursor")->GetComponent<Collider2D>()->GetColliderPos();
-			Vector3 OwnerPos = mAIBB->FindData<GameObject>(L"Champ_archer")->GetComponent<Collider2D>()->GetColliderPos();
+			wstring* ChampName = mAIBB->FindData<wstring>(CHAMPKEY);
+
+			Champ* Owner = mAIBB->FindData<Champ>(*ChampName);
+
+			Collider2D* OwnerCol = Owner->GetComponent<Collider2D>();
+			Collider2D* TargetCol = nullptr;
+
+			Champ* Target = Owner->GetEnemys().begin()->second;
+			TargetCol = Target->GetComponent<Collider2D>();
+
+			if (CollisionManager::IsCollision(OwnerCol, TargetCol))
+				return NS_FAILURE;
+			else if (CollisionManager::IsCollision(TargetCol, OwnerCol))
+				return NS_SUCCESS;
+
+
+			return NS_FAILURE;
+		}
+	};
+
+	class Con_DetectChamp : public Condition_Node // 커서 탐지 컨디션
+	{
+	public:
+		virtual eNodeStatus Run() override
+		{
+			wstring* ChampName = mAIBB->FindData<wstring>(CHAMPKEY);
+
+			Champ* Owner = mAIBB->FindData<Champ>(*ChampName);
+
+			Vector3 TargetPos = Owner->GetEnemys().begin()->second->GetComponent<Collider2D>()->GetColliderPos();
+			Vector3 OwnerPos = Owner->GetComponent<Collider2D>()->GetColliderPos();
 
 			float dist = sqrt(
-				(CsrPos.x - OwnerPos.x) * (CsrPos.x - OwnerPos.x) +
-				(CsrPos.y - OwnerPos.y) * (CsrPos.y - OwnerPos.y));
+				(TargetPos.x - OwnerPos.x) * (TargetPos.x - OwnerPos.x) +
+				(TargetPos.y - OwnerPos.y) * (TargetPos.y - OwnerPos.y));
 
-			if (dist < 300.f)
+			if (dist < 200.f && 90.f < dist)
 			{
 				return NS_SUCCESS;
 			}
@@ -58,7 +90,9 @@ namespace ssz
 	public:
 		virtual eNodeStatus Run() override
 		{
-			Transform* mtr = mAIBB->FindData<GameObject>(L"Champ_archer")->GetComponent<Transform>();
+			wstring* ChampName = mAIBB->FindData<wstring>(CHAMPKEY);
+
+			Transform* mtr = mAIBB->FindData<GameObject>(*ChampName)->GetComponent<Transform>();
 
 			if (mtr->IsLeft())
 				return NS_SUCCESS;
@@ -71,7 +105,9 @@ namespace ssz
 	public:
 		virtual eNodeStatus Run() override
 		{
-			Transform* mtr = mAIBB->FindData<GameObject>(L"Champ_archer")->GetComponent<Transform>();
+			wstring* ChampName = mAIBB->FindData<wstring>(CHAMPKEY);
+
+			Transform* mtr = mAIBB->FindData<GameObject>(*ChampName)->GetComponent<Transform>();
 
 			if (mtr->IsRight())
 				return NS_SUCCESS;
@@ -79,29 +115,35 @@ namespace ssz
 				return NS_FAILURE;
 		}
 	};
-	class Con_CsrOntheLeft : public Condition_Node
+	class Con_OntheLeft : public Condition_Node
 	{
 	public:
 		virtual eNodeStatus Run() override
 		{
-			Vector3 CsrPos = mAIBB->FindData<GameObject>(L"Cursor")->GetComponent<Collider2D>()->GetColliderPos();
-			Vector3 OwnerPos = mAIBB->FindData<GameObject>(L"Champ_archer")->GetComponent<Collider2D>()->GetColliderPos();
-			
-			if (CsrPos.x <= OwnerPos.x)
+			wstring* ChampName = mAIBB->FindData<wstring>(CHAMPKEY);
+
+			Champ* Owner = mAIBB->FindData<Champ>(*ChampName);
+			Vector3 OwnerPos = Owner->GetComponent<Collider2D>()->GetColliderPos();
+			Vector3 TargetPos = Owner->GetEnemys().begin()->second->GetComponent<Collider2D>()->GetColliderPos();
+
+			if (TargetPos.x <= OwnerPos.x)
 				return NS_SUCCESS;
 
 			return NS_FAILURE;
 		}
 	};
-	class Con_CsrOntheRight : public Condition_Node
+	class Con_OntheRight : public Condition_Node
 	{
 	public:
 		virtual eNodeStatus Run() override
 		{
-			Vector3 CsrPos = mAIBB->FindData<GameObject>(L"Cursor")->GetComponent<Collider2D>()->GetColliderPos();
-			Vector3 OwnerPos = mAIBB->FindData<GameObject>(L"Champ_archer")->GetComponent<Collider2D>()->GetColliderPos();
+			wstring* ChampName = mAIBB->FindData<wstring>(CHAMPKEY);
 
-			if (CsrPos.x > OwnerPos.x)
+			Champ* Owner = mAIBB->FindData<Champ>(*ChampName);
+			Vector3 OwnerPos = Owner->GetComponent<Collider2D>()->GetColliderPos();
+			Vector3 TargetPos = Owner->GetEnemys().begin()->second->GetComponent<Collider2D>()->GetColliderPos();
+
+			if (TargetPos.x > OwnerPos.x)
 				return NS_SUCCESS;
 
 			return NS_FAILURE;
@@ -112,11 +154,15 @@ namespace ssz
 	public:
 		virtual eNodeStatus Run() override
 		{
-			Transform* mtr = mAIBB->FindData<GameObject>(L"Champ_archer")->GetComponent<Transform>();
+			wstring* ChampName = mAIBB->FindData<wstring>(CHAMPKEY);
+
+			Transform* mtr = mAIBB->FindData<GameObject>(*ChampName)->GetComponent<Transform>();
+			
+			int* CenterPos = mAIBB->FindData<int>(L"CenterPos");
 
 			Vector3 pos = mtr->GetPosition();
 
-			if (-100.f > pos.x)
+			if (*CenterPos - 100.f > pos.x)
 			{
 				return NS_SUCCESS;
 			}
@@ -129,11 +175,15 @@ namespace ssz
 	public:
 		virtual eNodeStatus Run() override
 		{
-			Transform* mtr = mAIBB->FindData<GameObject>(L"Champ_archer")->GetComponent<Transform>();
+			wstring* ChampName = mAIBB->FindData<wstring>(CHAMPKEY);
 
+			Transform* mtr = mAIBB->FindData<GameObject>(*ChampName)->GetComponent<Transform>();
+			
+			int* CenterPos = mAIBB->FindData<int>(L"CenterPos");
+			
 			Vector3 pos = mtr->GetPosition();
 
-			if (100.f < pos.x)
+			if (*CenterPos + 100.f < pos.x)
 			{
 				return NS_SUCCESS;
 			}
@@ -148,7 +198,9 @@ namespace ssz
 	public:
 		virtual eNodeStatus Run() override
 		{
-			Transform* mtr = mAIBB->FindData<GameObject>(L"Champ_archer")->GetComponent<Transform>();
+			wstring* ChampName = mAIBB->FindData<wstring>(CHAMPKEY);
+
+			Transform* mtr = mAIBB->FindData<GameObject>(*ChampName)->GetComponent<Transform>();
 
 			mtr->SetLeft();
 			return NS_SUCCESS;
@@ -159,7 +211,9 @@ namespace ssz
 	public:
 		virtual eNodeStatus Run() override
 		{
-			Transform* mtr = mAIBB->FindData<GameObject>(L"Champ_archer")->GetComponent<Transform>();
+			wstring* ChampName = mAIBB->FindData<wstring>(CHAMPKEY);
+
+			Transform* mtr = mAIBB->FindData<GameObject>(*ChampName)->GetComponent<Transform>();
 
 			mtr->SetRight();
 			return NS_SUCCESS;
@@ -170,10 +224,18 @@ namespace ssz
 	public:
 		virtual eNodeStatus Run() override
 		{
-			Transform* mtr = mAIBB->FindData<GameObject>(L"Champ_archer")->GetComponent<Transform>();
+			wstring* ChampName = mAIBB->FindData<wstring>(CHAMPKEY);
+
+			GameObject* Owner = mAIBB->FindData<GameObject>(*ChampName);
+
+			Transform* mtr = mAIBB->FindData<GameObject>(*ChampName)->GetComponent<Transform>();
 			Vector3 pos = mtr->GetPosition();
 
-			pos.x -= 100.f * (float)Time::DeltaTime();
+			if (Owner->GetLayerType() == eLayerType::Player)
+				pos.x -= 150.f * (float)Time::DeltaTime();
+			else if (Owner->GetLayerType() == eLayerType::Enemy)
+				pos.x -= 80.f * (float)Time::DeltaTime();
+
 			mtr->SetPosition(pos);
 
 			return NS_SUCCESS;
@@ -184,10 +246,18 @@ namespace ssz
 	public:
 		virtual eNodeStatus Run() override
 		{
-			Transform* mtr = mAIBB->FindData<GameObject>(L"Champ_archer")->GetComponent<Transform>();
+			wstring* ChampName = mAIBB->FindData<wstring>(CHAMPKEY);
+
+			GameObject* Owner = mAIBB->FindData<GameObject>(*ChampName);
+
+			Transform* mtr = mAIBB->FindData<GameObject>(*ChampName)->GetComponent<Transform>();
 			Vector3 pos = mtr->GetPosition();
 
-			pos.x += 100.f * (float)Time::DeltaTime();
+			if (Owner->GetLayerType() == eLayerType::Player)
+				pos.x += 150.f * (float)Time::DeltaTime();
+			else if (Owner->GetLayerType() == eLayerType::Enemy)
+				pos.x += 80.f * (float)Time::DeltaTime();
+
 			mtr->SetPosition(pos);
 
 			return NS_SUCCESS;
@@ -198,9 +268,11 @@ namespace ssz
 	public:
 		virtual eNodeStatus Run() override
 		{
-			Animator* anim = mAIBB->FindData<GameObject>(L"Champ_archer")->GetComponent<Animator>();
+			wstring* ChampName = mAIBB->FindData<wstring>(CHAMPKEY);
 
-			anim->PlayAnimation(L"archer_idle", true);
+			Champ* mChamp = mAIBB->FindData<Champ>(*ChampName);
+
+			mChamp->Play_Idle();
 			return NS_SUCCESS;
 		}
 	};
@@ -209,9 +281,11 @@ namespace ssz
 	public:
 		virtual eNodeStatus Run() override
 		{
-			Animator* anim = mAIBB->FindData<GameObject>(L"Champ_archer")->GetComponent<Animator>();
+			wstring* ChampName = mAIBB->FindData<wstring>(CHAMPKEY);
 
-			anim->PlayAnimation(L"archer_move", true);
+			Champ* mChamp = mAIBB->FindData<Champ>(*ChampName);
+
+			mChamp->Play_Move();
 			return NS_SUCCESS;
 		}
 	};
@@ -220,10 +294,19 @@ namespace ssz
 	public:
 		virtual eNodeStatus Run() override
 		{
-			Animator* anim = mAIBB->FindData<GameObject>(L"Champ_archer")->GetComponent<Animator>();
+			wstring* ChampName = mAIBB->FindData<wstring>(CHAMPKEY);
 
-			anim->PlayAnimation(L"archer_attack", true);
-			return NS_SUCCESS;
+			Champ* mChamp = mAIBB->FindData<Champ>(*ChampName);
+
+			mChamp->Play_Attack();
+
+			if (mChamp->GetComponent<Animator>()->IsComplete())
+			{
+				mChamp->Play_Idle();
+				return NS_SUCCESS;
+			}
+
+			return NS_RUNNING;
 		}
 	};
 	class Act_PlayAnim_Dead : public Action_Node
@@ -231,10 +314,19 @@ namespace ssz
 	public:
 		virtual eNodeStatus Run() override
 		{
-			Animator* anim = mAIBB->FindData<GameObject>(L"Champ_archer")->GetComponent<Animator>();
+			wstring* ChampName = mAIBB->FindData<wstring>(CHAMPKEY);
 
-			anim->PlayAnimation(L"archer_dead", false);
-			return NS_SUCCESS;
+			Champ* mChamp = mAIBB->FindData<Champ>(*ChampName);
+			
+			mChamp->Play_Dead();
+
+			if (mChamp->GetComponent<Animator>()->IsComplete())
+			{
+				mChamp->Play_Idle();
+				return NS_SUCCESS;
+			}
+
+			return NS_RUNNING;
 		}
 	};
 

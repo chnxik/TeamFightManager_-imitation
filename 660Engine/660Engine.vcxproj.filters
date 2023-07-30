@@ -113,6 +113,15 @@
     <ClInclude Include="ChampList.h">
       <Filter>Common</Filter>
     </ClInclude>
+    <ClInclude Include="sszChamp_Knight.h">
+      <Filter>Contents\Object\Champ\Knight</Filter>
+    </ClInclude>
+    <ClInclude Include="sszScript_Knight.h">
+      <Filter>Contents\Object\Champ\Knight\Script</Filter>
+    </ClInclude>
+    <ClInclude Include="CommonDefine.h">
+      <Filter>Common</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="660Engine.cpp" />
@@ -215,8 +224,17 @@
     <ClCompile Include="sszScript_Archer.cpp">
       <Filter>Contents\Object\Champ\Archer\Script</Filter>
     </ClCompile>
+    <ClCompile Include="sszChamp_Knight.cpp">
+      <Filter>Contents\Object\Champ\Knight</Filter>
+    </ClCompile>
+    <ClCompile Include="sszScript_Knight.cpp">
+      <Filter>Contents\Object\Champ\Knight\Script</Filter>
+    </ClCompile>
     <ClCompile Include="sszTestBt.cpp">
-      <Filter>Contents\Object\Champ\Archer\Script</Filter>
+      <Filter>Contents\Object\Champ\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="sszCommonBT.cpp">
+      <Filter>Contents\Object\Champ\Base</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -349,9 +367,6 @@
     <Filter Include="Contents\Object\Champ\Archer">
       <UniqueIdentifier>{dcfc9fed-9b2c-4ad6-8f94-9b5586d1ab59}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Contents\Object\Champ\Swordman">
-      <UniqueIdentifier>{17186b01-6d65-419a-98ad-509b72626a43}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Contents\Object\Champ\Base">
       <UniqueIdentifier>{fd751b6e-e6d1-4b34-9d53-c31c850fef90}</UniqueIdentifier>
     </Filter>
@@ -372,6 +387,12 @@
     </Filter>
     <Filter Include="Contents\Object\Champ\Archer\Script">
       <UniqueIdentifier>{6de9e3be-42c2-40b9-bb67-15d3f0502a1b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\Champ\Knight">
+      <UniqueIdentifier>{17186b01-6d65-419a-98ad-509b72626a43}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\Champ\Knight\Script">
+      <UniqueIdentifier>{2f7e03f7-c6cc-4bd7-b5c6-dbbc679d04c1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

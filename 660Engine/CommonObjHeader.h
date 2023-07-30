@@ -1,6 +1,7 @@
 #pragma once
 // pch
 #include "GameEnums.h"
+#include "CommonDefine.h"
 
 // Engine
 #include "sszSceneManager.h"
@@ -12,6 +13,7 @@
 
 // GameObject
 #include "sszGameObject.h"
+#include "sszChamp.h"
 
 // AI
 #include "sszBT.h"

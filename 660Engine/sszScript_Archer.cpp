@@ -9,21 +9,30 @@
 namespace ssz
 {
 	Script_Archer::Script_Archer()
+		: mRoot(nullptr)
 	{
 	}
 
 	Script_Archer::~Script_Archer()
 	{
+		delete mRoot;
 	}
 
 	void Script_Archer::Initialize()
 	{
+	
+
 		std::shared_ptr<AIBB> ArcherAIBB = std::make_shared<AIBB>();
 
-		ArcherAIBB->AddData<Champ_Archer>(L"Champ_archer", (Champ_Archer*)GetOwner());
+		ArcherAIBB->AddData<std::wstring>(CHAMPKEY, &GetName());
+
+		ArcherAIBB->AddData<GameObject>(GetName(), GetOwner());
 
 		GameObject* pCsr = SceneManager::GetActiveScene()->GetLayer(eLayerType::Cursor).GetGameObjects().front();
 		ArcherAIBB->AddData<GameObject>(L"Cursor", pCsr);
+
+		int* CenterPos = ArcherAIBB->CreateData<int>(L"CenterPos");
+		*CenterPos = -100;
 
 		// Set BT
 		mRoot = new Root_Node(ArcherAIBB);
@@ -33,7 +42,7 @@ namespace ssz
 
 		Sequence_Node* Seq_Dead = ArcherBT->AddChild<Sequence_Node>(); // 사망 판단 시퀀스
 		Sequence_Node* Seq_Stop = ArcherBT->AddChild<Sequence_Node>(); // 정지 판단 시퀀스
-		Sequence_Node* Seq_Attack = ArcherBT->AddChild<Sequence_Node>(); // 공격 판단 시퀀스
+		Selector_Node* Sel_AttackOrBack = ArcherBT->AddChild<Selector_Node>(); // 공격 판단 시퀀스
 		Sequence_Node* Seq_Move = ArcherBT->AddChild<Sequence_Node>(); // 이동 판단 시퀀스
 
 		// 사망 판단 시퀀스
@@ -46,21 +55,14 @@ namespace ssz
 
 
 		// 공격 판단 시퀀스
-		Seq_Attack->AddChild<Con_DetectCsr_300px>();
+		Sequence_Node* Seq_Attack = Sel_AttackOrBack->AddChild<Sequence_Node>();
+
+		Seq_Attack->AddChild<Con_DetectChamp>();
+		Seq_Attack->AddChild<Con_OntheRight>();
+		Seq_Attack->AddChild<Con_IsRight>();
 		Seq_Attack->AddChild<Act_PlayAnim_Attack>();
-		Succeeder_Node* Dec_CheckAttackDir_Success = Seq_Attack->AddChild<Succeeder_Node>();
-		Selector_Node* Sel_CheckAttackDir = Dec_CheckAttackDir_Success->AddChild<Selector_Node>();
 
-		Sequence_Node* Seq_AttackLeft = Sel_CheckAttackDir->AddChild<Sequence_Node>();
-		Sequence_Node* Seq_AttackRight = Sel_CheckAttackDir->AddChild<Sequence_Node>();
-
-		Seq_AttackLeft->AddChild<Con_CsrOntheLeft>();
-		Seq_AttackLeft->AddChild<Con_IsRight>();
-		Seq_AttackLeft->AddChild<Act_TurnLeft>();
-
-		Seq_AttackRight->AddChild<Con_CsrOntheRight>();
-		Seq_AttackRight->AddChild<Con_IsLeft>();
-		Seq_AttackRight->AddChild<Act_TurnRight>();
+		
 
 		// 이동 판단 시퀀스
 		Selector_Node* Sel_CheckMoveDir = Seq_Move->AddChild<Selector_Node>();

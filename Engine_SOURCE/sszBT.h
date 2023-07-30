@@ -72,6 +72,7 @@ namespace ssz::AI
 	class Decorate_Node : public BT
 	{
 	public:
+		Decorate_Node() : mChild(nullptr) {}
 		virtual ~Decorate_Node();
 
 		BT* GetChild() { return mChild; }

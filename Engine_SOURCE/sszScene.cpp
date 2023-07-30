@@ -59,6 +59,7 @@ namespace ssz
 	void Scene::AddGameObject(eLayerType type, GameObject* gameObj)
 	{
 		mLayers[(int)type].AddGameObject(gameObj);
+		gameObj->SetLayerType(type);
 	}
 	void Scene::ChangeScene(const std::wstring& SceneName)
 	{

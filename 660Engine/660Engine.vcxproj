@@ -164,6 +164,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="CommonDefine.h" />
     <ClInclude Include="CommonHeader.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="GameEnums.h" />
@@ -177,6 +178,7 @@
     <ClInclude Include="sszCameraScript.h" />
     <ClInclude Include="sszChamp.h" />
     <ClInclude Include="sszChamp_Archer.h" />
+    <ClInclude Include="sszChamp_Knight.h" />
     <ClInclude Include="sszCursorScript.h" />
     <ClInclude Include="sszDefaultBtn.h" />
     <ClInclude Include="sszHeaderSlot.h" />
@@ -194,6 +196,7 @@
     <ClInclude Include="sszPlayerCardSlot.h" />
     <ClInclude Include="sszProceedBtn.h" />
     <ClInclude Include="sszScript_Archer.h" />
+    <ClInclude Include="sszScript_Knight.h" />
     <ClInclude Include="sszStadiumScene.h" />
     <ClInclude Include="sszStatIcon.h" />
     <ClInclude Include="sszTestScene.h" />
@@ -215,6 +218,8 @@
     <ClCompile Include="sszCameraScript.cpp" />
     <ClCompile Include="sszChamp.cpp" />
     <ClCompile Include="sszChamp_Archer.cpp" />
+    <ClCompile Include="sszChamp_Knight.cpp" />
+    <ClCompile Include="sszCommonBT.cpp" />
     <ClCompile Include="sszCursorScript.cpp" />
     <ClCompile Include="sszDefaultBtn.cpp" />
     <ClCompile Include="sszHeaderSlot.cpp" />
@@ -232,6 +237,7 @@
     <ClCompile Include="sszPlayerCardSlot.cpp" />
     <ClCompile Include="sszProceedBtn.cpp" />
     <ClCompile Include="sszScript_Archer.cpp" />
+    <ClCompile Include="sszScript_Knight.cpp" />
     <ClCompile Include="sszStadiumScene.cpp" />
     <ClCompile Include="sszStatIcon.cpp" />
     <ClCompile Include="sszTestBt.cpp" />

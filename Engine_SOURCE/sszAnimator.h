@@ -66,6 +66,8 @@ namespace ssz
         const std::wstring& GetCurAnimationKey() const {return mActiveAnimation->GetKey(); }
         const Animation* GetCurAnimation() const { return mActiveAnimation; }
 
+        bool IsComplete() { return mActiveAnimation->IsComplete(); }
+
     private:
         std::map<std::wstring, Animation*> mAnimations;
         std::map<std::wstring, Events*> mEvents;

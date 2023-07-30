@@ -48,7 +48,11 @@ namespace ssz
 
 		// Player
 		{
-			Champ_Archer* TestObj = Instantiate<Champ_Archer>(Vector3(0.f, 0.f, 1.01f), Vector3(128.f, 128.f, 1.f), eLayerType::Player);
+			Champ_Archer* TestObj = Instantiate<Champ_Archer>(Vector3(-100.f, 0.f, 1.01f), eLayerType::Player);
+			Champ_Knight* TestObj2 = Instantiate<Champ_Knight>(Vector3(0.f, 0.f, 1.01f), eLayerType::Enemy);
+
+			TestObj->RegistEnemy(L"Champ_Knight", TestObj2);
+			TestObj2->RegistEnemy(L"Champ_Archer", TestObj);
 		}
 #pragma endregion
 	}
@@ -73,6 +77,8 @@ namespace ssz
 	void TestScene::OnEnter()
 	{
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Cursor, true);
+		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Enemy, true);
+		CollisionManager::SetLayer(eLayerType::Enemy, eLayerType::Cursor, true);
 	}
 	void TestScene::OnExit()
 	{

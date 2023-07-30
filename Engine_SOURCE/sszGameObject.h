@@ -107,9 +107,13 @@ namespace ssz
 		eState GetState() { return mState; }
 		void SetParent(GameObject* parent);
 
+		void SetLayerType(eLayerType eType) { mLayerType = eType; }
+		eLayerType GetLayerType() { return mLayerType; }
+
 	private:
 		eState mState;
 		std::vector<Component*> mComponents;
 		std::vector<Script*> mScripts;
+		eLayerType mLayerType;
 	};
 }

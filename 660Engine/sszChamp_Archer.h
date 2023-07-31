@@ -3,6 +3,8 @@
 
 namespace ssz
 {
+    class ColObj; // 공격 에어리어
+
     class Champ_Archer : public Champ
     {
     public:
@@ -22,11 +24,8 @@ namespace ssz
         virtual void Play_Dead();
         virtual void Play_Skill1();
 
-        virtual void Attack();
-        virtual void Dead();
-
     private:
-
+        ColObj* mATKArea;
     };
 
 }

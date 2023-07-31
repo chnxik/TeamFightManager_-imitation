@@ -27,6 +27,9 @@ namespace ssz
 		double differnceFrequency = (double)(mCurFrequency.QuadPart - mPrevFrequency.QuadPart);
 
 		mDeltaTime = differnceFrequency / mCpuFrequency.QuadPart;
+
+		if (1.f < mDeltaTime)
+			mDeltaTime = 1.f; // DT ¹æ¾î 1ÃÊ
 		
 		mPrevFrequency.QuadPart = mCurFrequency.QuadPart;
 	}

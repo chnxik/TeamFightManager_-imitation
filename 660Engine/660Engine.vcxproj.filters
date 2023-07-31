@@ -105,22 +105,25 @@
       <Filter>Contents\Object\GameObject\BackGround\Waterfall</Filter>
     </ClInclude>
     <ClInclude Include="sszChamp_Archer.h">
-      <Filter>Contents\Object\Champ\Archer</Filter>
+      <Filter>Contents\Object\Champ\C_Archer</Filter>
     </ClInclude>
     <ClInclude Include="sszScript_Archer.h">
-      <Filter>Contents\Object\Champ\Archer\Script</Filter>
+      <Filter>Contents\Object\Champ\C_Archer\Script</Filter>
     </ClInclude>
     <ClInclude Include="ChampList.h">
       <Filter>Common</Filter>
     </ClInclude>
     <ClInclude Include="sszChamp_Knight.h">
-      <Filter>Contents\Object\Champ\Knight</Filter>
+      <Filter>Contents\Object\Champ\C_Knight</Filter>
     </ClInclude>
     <ClInclude Include="sszScript_Knight.h">
-      <Filter>Contents\Object\Champ\Knight\Script</Filter>
+      <Filter>Contents\Object\Champ\C_Knight\Script</Filter>
     </ClInclude>
     <ClInclude Include="CommonDefine.h">
       <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="sszColObj.h">
+      <Filter>Contents\Object\Champ\Base</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -219,21 +222,24 @@
       <Filter>Contents\Object\GameObject\BackGround\Waterfall</Filter>
     </ClCompile>
     <ClCompile Include="sszChamp_Archer.cpp">
-      <Filter>Contents\Object\Champ\Archer</Filter>
+      <Filter>Contents\Object\Champ\C_Archer</Filter>
     </ClCompile>
     <ClCompile Include="sszScript_Archer.cpp">
-      <Filter>Contents\Object\Champ\Archer\Script</Filter>
+      <Filter>Contents\Object\Champ\C_Archer\Script</Filter>
     </ClCompile>
     <ClCompile Include="sszChamp_Knight.cpp">
-      <Filter>Contents\Object\Champ\Knight</Filter>
+      <Filter>Contents\Object\Champ\C_Knight</Filter>
     </ClCompile>
     <ClCompile Include="sszScript_Knight.cpp">
-      <Filter>Contents\Object\Champ\Knight\Script</Filter>
-    </ClCompile>
-    <ClCompile Include="sszTestBt.cpp">
-      <Filter>Contents\Object\Champ\Base</Filter>
+      <Filter>Contents\Object\Champ\C_Knight\Script</Filter>
     </ClCompile>
     <ClCompile Include="sszCommonBT.cpp">
+      <Filter>Contents\Object\Champ\CommonBT</Filter>
+    </ClCompile>
+    <ClCompile Include="sszTestBt.cpp">
+      <Filter>Contents\Object\Champ\CommonBT</Filter>
+    </ClCompile>
+    <ClCompile Include="sszColObj.cpp">
       <Filter>Contents\Object\Champ\Base</Filter>
     </ClCompile>
   </ItemGroup>
@@ -364,9 +370,6 @@
     <Filter Include="Contents\Object\Champ">
       <UniqueIdentifier>{3076d426-20aa-4855-9ba1-ea2001fbdab9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Contents\Object\Champ\Archer">
-      <UniqueIdentifier>{dcfc9fed-9b2c-4ad6-8f94-9b5586d1ab59}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Contents\Object\Champ\Base">
       <UniqueIdentifier>{fd751b6e-e6d1-4b34-9d53-c31c850fef90}</UniqueIdentifier>
     </Filter>
@@ -385,14 +388,26 @@
     <Filter Include="Contents\CommonScript\Masking">
       <UniqueIdentifier>{470eae73-8547-43b4-a211-e5cd3ad79448}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Contents\Object\Champ\Archer\Script">
-      <UniqueIdentifier>{6de9e3be-42c2-40b9-bb67-15d3f0502a1b}</UniqueIdentifier>
+    <Filter Include="Contents\Object\Champ\CommonBT">
+      <UniqueIdentifier>{bbc66e23-ba30-492c-8318-1ebdae8bbda0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Contents\Object\Champ\Knight">
+    <Filter Include="Contents\Object\Champ\C_Knight">
       <UniqueIdentifier>{17186b01-6d65-419a-98ad-509b72626a43}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Contents\Object\Champ\Knight\Script">
+    <Filter Include="Contents\Object\Champ\C_Knight\Script">
       <UniqueIdentifier>{2f7e03f7-c6cc-4bd7-b5c6-dbbc679d04c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\Champ\C_Archer">
+      <UniqueIdentifier>{dcfc9fed-9b2c-4ad6-8f94-9b5586d1ab59}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\Champ\C_Archer\Script">
+      <UniqueIdentifier>{6de9e3be-42c2-40b9-bb67-15d3f0502a1b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\Champ\C_Knight\ColObj">
+      <UniqueIdentifier>{71fac19f-33da-4d86-8622-0e81d9e6118f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\Champ\C_Archer\ColObj">
+      <UniqueIdentifier>{75bfe74f-4d41-41e7-88ce-1092bc13dd11}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

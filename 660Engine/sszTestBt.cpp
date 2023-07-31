@@ -45,15 +45,13 @@ namespace ssz
 
 			Champ* Owner = mAIBB->FindData<Champ>(*ChampName);
 
-			Collider2D* OwnerCol = Owner->GetComponent<Collider2D>();
+			Collider2D* OwnerCol = Owner->FindColObjsCol(L"AttackArea");
 			Collider2D* TargetCol = nullptr;
 
 			Champ* Target = Owner->GetEnemys().begin()->second;
 			TargetCol = Target->GetComponent<Collider2D>();
 
-			if (CollisionManager::IsCollision(OwnerCol, TargetCol))
-				return NS_FAILURE;
-			else if (CollisionManager::IsCollision(TargetCol, OwnerCol))
+			if (CollisionManager::IsCollision(TargetCol, OwnerCol))
 				return NS_SUCCESS;
 
 
@@ -61,7 +59,7 @@ namespace ssz
 		}
 	};
 
-	class Con_DetectChamp : public Condition_Node // 커서 탐지 컨디션
+	class Con_MustBack : public Condition_Node // 커서 탐지 컨디션
 	{
 	public:
 		virtual eNodeStatus Run() override
@@ -77,10 +75,10 @@ namespace ssz
 				(TargetPos.x - OwnerPos.x) * (TargetPos.x - OwnerPos.x) +
 				(TargetPos.y - OwnerPos.y) * (TargetPos.y - OwnerPos.y));
 
-			if (dist < 200.f && 90.f < dist)
-			{
+			float MinArea = (float)Owner->GetChampInfo().RNG * 0.9f;
+
+			if (dist > MinArea)
 				return NS_SUCCESS;
-			}
 
 			return 	NS_FAILURE;
 		}
@@ -321,10 +319,7 @@ namespace ssz
 			mChamp->Play_Dead();
 
 			if (mChamp->GetComponent<Animator>()->IsComplete())
-			{
-				mChamp->Play_Idle();
 				return NS_SUCCESS;
-			}
 
 			return NS_RUNNING;
 		}

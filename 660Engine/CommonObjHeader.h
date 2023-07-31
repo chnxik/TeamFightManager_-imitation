@@ -12,8 +12,9 @@
 #include "sszScene.h"
 
 // GameObject
-#include "sszGameObject.h"
-#include "sszChamp.h"
+#include "sszGameObject.h"	// 게임 오브젝트
+#include "sszChamp.h"		// 챔피언 오브젝트
+#include "sszColObj.h"		// 콜라이더용 오브젝트
 
 // AI
 #include "sszBT.h"

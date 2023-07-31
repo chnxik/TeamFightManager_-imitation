@@ -77,8 +77,9 @@ namespace ssz
 	void TestScene::OnEnter()
 	{
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Cursor, true);
-		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Enemy, true);
 		CollisionManager::SetLayer(eLayerType::Enemy, eLayerType::Cursor, true);
+		CollisionManager::SetLayer(eLayerType::Player, eLayerType::EnemyInteraction, true);
+		CollisionManager::SetLayer(eLayerType::Enemy, eLayerType::PlayerInteraction, true);
 	}
 	void TestScene::OnExit()
 	{

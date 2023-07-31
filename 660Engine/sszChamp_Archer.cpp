@@ -6,6 +6,7 @@
 namespace ssz
 {
 	Champ_Archer::Champ_Archer()
+		: mATKArea(nullptr)
 	{
 	}
 
@@ -21,10 +22,28 @@ namespace ssz
 
 		GetComponent<Transform>()->SetScale(Vector3(128.f, 128.f, 1.f)); // 64 size
 		
+		// Champ Collider
 		Vector3 ColScale = -GetComponent<Transform>()->GetScale() + Vector3(64.f, 74.f, 1.f);
 
-		AddComponent<Collider2D>()->SetOffsetSize(ColScale);
-		GetComponent<Collider2D>()->SetOffsetPos(Vector3(0.f, 10.f, 0.f));
+		Collider2D* Col = AddComponent<Collider2D>();
+		Col->SetOffsetSize(ColScale);
+		Col->SetOffsetPos(Vector3(0.f, 10.f, 0.f));
+		
+
+		// Create Champ Col Obj
+		mATKArea = CreateColObj(L"AttackArea");
+
+		Transform* AtkColTr = mATKArea->GetComponent<Transform>();
+		AtkColTr->SetParent(GetComponent<Transform>()); // 부모를 따라다니는 ColObj
+		Collider2D* AttackArea = mATKArea->GetComponent<Collider2D>();
+		AttackArea->SetType(eColliderType::Circle);
+
+		float Rng = GetChampInfo().RNG * 2.f;
+		ColScale = -GetComponent<Transform>()->GetScale() + Vector3(Rng, Rng, 1.f);
+		AttackArea->SetOffsetSize(ColScale);
+
+		AttackArea->SetOffsetPos(Vector3(0.f, 10.f, 0.f));
+		
 		
 		AddComponent<MeshRenderer>();
 		AddComponent<Animator>();
@@ -94,13 +113,5 @@ namespace ssz
 	void Champ_Archer::Play_Skill1()
 	{
 		GetComponent<Animator>()->PlayAnimation(L"archer_skill", true);
-	}
-
-	void Champ_Archer::Attack()
-	{
-	}
-	
-	void Champ_Archer::Dead()
-	{
 	}
 }

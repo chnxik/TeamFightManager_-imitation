@@ -24,9 +24,7 @@ namespace ssz
 
 		float OnwerDepth = GetComponent<Transform>()->GetPosition().z;
 		Waterfall* Waterfall_R = Instantiate<Waterfall>(Vector3(0.1012f, -0.3197f, OnwerDepth + 0.0001f), Vector3(0.035f, 0.222f, 1.f), eLayerType::BackGroundObj);
-		Waterfall_R->AddComponent<Collider2D>();
 		Waterfall* Waterfall_L = Instantiate<Waterfall>(Vector3(-0.1012f, -0.3197f, OnwerDepth + 0.0001f), Vector3(0.035f, 0.222f, 1.f), eLayerType::BackGroundObj);
-		Waterfall_L->AddComponent<Collider2D>();
 
 		// Transform ¿¬°á
 		Transform* StadiumTr = GetComponent<Transform>();

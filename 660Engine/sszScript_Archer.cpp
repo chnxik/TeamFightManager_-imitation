@@ -57,7 +57,8 @@ namespace ssz
 		// 공격 판단 시퀀스
 		Sequence_Node* Seq_Attack = Sel_AttackOrBack->AddChild<Sequence_Node>();
 
-		Seq_Attack->AddChild<Con_DetectChamp>();
+		Seq_Attack->AddChild<Con_CollisionOtehrChamp>();
+		Seq_Attack->AddChild<Con_MustBack>();
 		Seq_Attack->AddChild<Con_OntheRight>();
 		Seq_Attack->AddChild<Con_IsRight>();
 		Seq_Attack->AddChild<Act_PlayAnim_Attack>();

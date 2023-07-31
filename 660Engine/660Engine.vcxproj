@@ -179,6 +179,7 @@
     <ClInclude Include="sszChamp.h" />
     <ClInclude Include="sszChamp_Archer.h" />
     <ClInclude Include="sszChamp_Knight.h" />
+    <ClInclude Include="sszColObj.h" />
     <ClInclude Include="sszCursorScript.h" />
     <ClInclude Include="sszDefaultBtn.h" />
     <ClInclude Include="sszHeaderSlot.h" />
@@ -219,6 +220,7 @@
     <ClCompile Include="sszChamp.cpp" />
     <ClCompile Include="sszChamp_Archer.cpp" />
     <ClCompile Include="sszChamp_Knight.cpp" />
+    <ClCompile Include="sszColObj.cpp" />
     <ClCompile Include="sszCommonBT.cpp" />
     <ClCompile Include="sszCursorScript.cpp" />
     <ClCompile Include="sszDefaultBtn.cpp" />

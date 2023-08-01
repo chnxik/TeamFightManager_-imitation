@@ -125,7 +125,12 @@
     <ClInclude Include="sszColObj.h">
       <Filter>Contents\Object\Champ\Base</Filter>
     </ClInclude>
-    <ClInclude Include="sszBattleManager.h" />
+    <ClInclude Include="sszBattleManager.h">
+      <Filter>Contents\Manager\BattleManager</Filter>
+    </ClInclude>
+    <ClInclude Include="sszDataManager.h" />
+    <ClInclude Include="sszPilot.h" />
+    <ClInclude Include="sszTeam.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="660Engine.cpp" />
@@ -243,7 +248,12 @@
     <ClCompile Include="sszColObj.cpp">
       <Filter>Contents\Object\Champ\Base</Filter>
     </ClCompile>
-    <ClCompile Include="sszBattleManager.cpp" />
+    <ClCompile Include="sszBattleManager.cpp">
+      <Filter>Contents\Manager\BattleManager</Filter>
+    </ClCompile>
+    <ClCompile Include="sszDataManager.cpp" />
+    <ClCompile Include="sszPilot.cpp" />
+    <ClCompile Include="sszTeam.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Contents">
@@ -416,6 +426,12 @@
     </Filter>
     <Filter Include="Contents\Manager\BattleManager">
       <UniqueIdentifier>{545ab839-5d36-44e9-af78-62f40def0ccb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Manager\DataManager">
+      <UniqueIdentifier>{3601c501-0d69-470b-826f-e855add5d8e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\Pilot">
+      <UniqueIdentifier>{0479a2d5-1936-4f26-bbc5-ea90836b91bd}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -182,6 +182,7 @@
     <ClInclude Include="sszChamp_Knight.h" />
     <ClInclude Include="sszColObj.h" />
     <ClInclude Include="sszCursorScript.h" />
+    <ClInclude Include="sszDataManager.h" />
     <ClInclude Include="sszDefaultBtn.h" />
     <ClInclude Include="sszHeaderSlot.h" />
     <ClInclude Include="sszIGStadiumScene.h" />
@@ -194,6 +195,7 @@
     <ClInclude Include="sszMainLobbyScene.h" />
     <ClInclude Include="sszMasking.h" />
     <ClInclude Include="sszNewGameWindow.h" />
+    <ClInclude Include="sszPilot.h" />
     <ClInclude Include="sszPlayerCardBtn.h" />
     <ClInclude Include="sszPlayerCardSlot.h" />
     <ClInclude Include="sszProceedBtn.h" />
@@ -201,6 +203,7 @@
     <ClInclude Include="sszScript_Knight.h" />
     <ClInclude Include="sszStadiumScene.h" />
     <ClInclude Include="sszStatIcon.h" />
+    <ClInclude Include="sszTeam.h" />
     <ClInclude Include="sszTestScene.h" />
     <ClInclude Include="sszTitleScene.h" />
     <ClInclude Include="CommonObjHeader.h" />
@@ -225,6 +228,7 @@
     <ClCompile Include="sszColObj.cpp" />
     <ClCompile Include="sszCommonBT.cpp" />
     <ClCompile Include="sszCursorScript.cpp" />
+    <ClCompile Include="sszDataManager.cpp" />
     <ClCompile Include="sszDefaultBtn.cpp" />
     <ClCompile Include="sszHeaderSlot.cpp" />
     <ClCompile Include="sszIGStadiumScene.cpp" />
@@ -237,6 +241,7 @@
     <ClCompile Include="sszMainLobbyScene.cpp" />
     <ClCompile Include="sszMasking.cpp" />
     <ClCompile Include="sszNewGameWindow.cpp" />
+    <ClCompile Include="sszPilot.cpp" />
     <ClCompile Include="sszPlayerCardBtn.cpp" />
     <ClCompile Include="sszPlayerCardSlot.cpp" />
     <ClCompile Include="sszProceedBtn.cpp" />
@@ -244,6 +249,7 @@
     <ClCompile Include="sszScript_Knight.cpp" />
     <ClCompile Include="sszStadiumScene.cpp" />
     <ClCompile Include="sszStatIcon.cpp" />
+    <ClCompile Include="sszTeam.cpp" />
     <ClCompile Include="sszTestBt.cpp" />
     <ClCompile Include="sszTestScene.cpp" />
     <ClCompile Include="sszTitleScene.cpp" />

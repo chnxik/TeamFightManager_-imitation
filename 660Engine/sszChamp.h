@@ -24,7 +24,15 @@ namespace ssz
             // 챔피언 기본 정보.
             DefaultInfo ChampInfo;
             
-            // 게임 정보
+            // [게임 정보]
+            // 선수 정보
+            // 선수 이름
+            // 선수 특성
+            // 선수 컨디션
+            // 선수 능력치
+            // 선수 주력 챔피언 능력치
+
+            // 챔피언 정보
             int HP = 0;             // 현재 체력
             float COOLTIME = 0.f;   // 스킬1 쿨타임
             bool bULTIMATE = false; // 궁극기 사용 여부
@@ -62,7 +70,7 @@ namespace ssz
         void SetChampInfo(eChampType Type, UINT atk, float apd, UINT rng, UINT def, UINT hp, UINT spd);
         
         IGStatus* GetIGStatus() { return &mIGInfo; }
-        void InitIGInfo(UINT ATKpt, UINT DEFpt);
+        void InitIGInfo(UINT ATKpt, UINT DEFpt); // Player 클래스를 인자로 받는다.
 
 
         // 아군 챔피언 관리

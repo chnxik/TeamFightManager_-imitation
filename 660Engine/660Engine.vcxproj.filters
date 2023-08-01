@@ -125,6 +125,7 @@
     <ClInclude Include="sszColObj.h">
       <Filter>Contents\Object\Champ\Base</Filter>
     </ClInclude>
+    <ClInclude Include="sszBattleManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="660Engine.cpp" />
@@ -242,6 +243,7 @@
     <ClCompile Include="sszColObj.cpp">
       <Filter>Contents\Object\Champ\Base</Filter>
     </ClCompile>
+    <ClCompile Include="sszBattleManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Contents">
@@ -408,6 +410,12 @@
     </Filter>
     <Filter Include="Contents\Object\Champ\C_Archer\ColObj">
       <UniqueIdentifier>{75bfe74f-4d41-41e7-88ce-1092bc13dd11}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Manager">
+      <UniqueIdentifier>{73a1c229-8c83-4a88-b1b0-5645825b1d43}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Manager\BattleManager">
+      <UniqueIdentifier>{545ab839-5d36-44e9-af78-62f40def0ccb}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

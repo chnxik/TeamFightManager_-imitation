@@ -16,9 +16,10 @@ namespace ssz
 	
 	void Champ_Knight::Initialize()
 	{
-		SetName(L"Champ_Knight");
+		SetName(KNIGHT);
 
 		SetChampInfo(eChampType::FIGHTER, 21, 0.67f, 37, 60, 200, 5);
+		InitIGInfo(0, 0);
 
 		GetComponent<Transform>()->SetScale(Vector3(170.f, 170.f, 1.f)); // 96 size
 

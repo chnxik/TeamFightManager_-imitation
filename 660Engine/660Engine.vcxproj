@@ -175,6 +175,7 @@
     <ClInclude Include="sszBanPickScene.h" />
     <ClInclude Include="sszBanPickStat.h" />
     <ClInclude Include="sszBattleHeader.h" />
+    <ClInclude Include="sszBattleManager.h" />
     <ClInclude Include="sszCameraScript.h" />
     <ClInclude Include="sszChamp.h" />
     <ClInclude Include="sszChamp_Archer.h" />
@@ -216,6 +217,7 @@
     <ClCompile Include="sszBanPickScene.cpp" />
     <ClCompile Include="sszBanPickStat.cpp" />
     <ClCompile Include="sszBattleHeader.cpp" />
+    <ClCompile Include="sszBattleManager.cpp" />
     <ClCompile Include="sszCameraScript.cpp" />
     <ClCompile Include="sszChamp.cpp" />
     <ClCompile Include="sszChamp_Archer.cpp" />

@@ -3,6 +3,9 @@
 #include "GameEnums.h"
 #include "CommonDefine.h"
 
+// GamaManger
+#include "sszBattleManager.h"
+
 // Engine
 #include "sszSceneManager.h"
 #include "sszCollisionManager.h"

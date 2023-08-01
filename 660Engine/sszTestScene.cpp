@@ -51,8 +51,8 @@ namespace ssz
 			Champ_Archer* TestObj = Instantiate<Champ_Archer>(Vector3(-100.f, 0.f, 1.01f), eLayerType::Player);
 			Champ_Knight* TestObj2 = Instantiate<Champ_Knight>(Vector3(0.f, 0.f, 1.01f), eLayerType::Enemy);
 
-			TestObj->RegistEnemy(L"Champ_Knight", TestObj2);
-			TestObj2->RegistEnemy(L"Champ_Archer", TestObj);
+			TestObj->RegistEnemy(TestObj2);
+			TestObj2->RegistEnemy(TestObj);
 		}
 #pragma endregion
 	}

@@ -48,7 +48,7 @@ namespace ssz
 			Collider2D* OwnerCol = Owner->FindColObjsCol(L"AttackArea");
 			Collider2D* TargetCol = nullptr;
 
-			Champ* Target = Owner->GetEnemys().begin()->second;
+			Champ* Target = Owner->GetEnemys()[0];
 			TargetCol = Target->GetComponent<Collider2D>();
 
 			if (CollisionManager::IsCollision(TargetCol, OwnerCol))
@@ -68,7 +68,7 @@ namespace ssz
 
 			Champ* Owner = mAIBB->FindData<Champ>(*ChampName);
 
-			Vector3 TargetPos = Owner->GetEnemys().begin()->second->GetComponent<Collider2D>()->GetColliderPos();
+			Vector3 TargetPos = Owner->GetEnemys()[0]->GetComponent<Collider2D>()->GetColliderPos();
 			Vector3 OwnerPos = Owner->GetComponent<Collider2D>()->GetColliderPos();
 
 			float dist = sqrt(
@@ -122,7 +122,7 @@ namespace ssz
 
 			Champ* Owner = mAIBB->FindData<Champ>(*ChampName);
 			Vector3 OwnerPos = Owner->GetComponent<Collider2D>()->GetColliderPos();
-			Vector3 TargetPos = Owner->GetEnemys().begin()->second->GetComponent<Collider2D>()->GetColliderPos();
+			Vector3 TargetPos = Owner->GetEnemys()[0]->GetComponent<Collider2D>()->GetColliderPos();
 
 			if (TargetPos.x <= OwnerPos.x)
 				return NS_SUCCESS;
@@ -139,7 +139,7 @@ namespace ssz
 
 			Champ* Owner = mAIBB->FindData<Champ>(*ChampName);
 			Vector3 OwnerPos = Owner->GetComponent<Collider2D>()->GetColliderPos();
-			Vector3 TargetPos = Owner->GetEnemys().begin()->second->GetComponent<Collider2D>()->GetColliderPos();
+			Vector3 TargetPos = Owner->GetEnemys()[0]->GetComponent<Collider2D>()->GetColliderPos();
 
 			if (TargetPos.x > OwnerPos.x)
 				return NS_SUCCESS;

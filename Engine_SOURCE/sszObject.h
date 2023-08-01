@@ -24,7 +24,7 @@ namespace ssz::object
 	using namespace ssz::graphics;
 
 	// 활성오브젝트 판단
-	static __forceinline bool IsValid(GameObject*& pTarget)
+	static __forceinline bool IsValid(GameObject* pTarget)
 	{
 		if (nullptr == pTarget)
 		{

@@ -4,7 +4,9 @@
 namespace ssz
 {
 	Champ::Champ()
-		: mDefaultInfo{} // 챔프 정보
+		: mFriendly{}
+		, mDefaultInfo{} // 챔프 정보
+		, mTargetEnemy(nullptr)
 	{
 
 	}
@@ -25,22 +27,26 @@ namespace ssz
 		mDefaultInfo.APD = apd;
 		mDefaultInfo.RNG = rng;
 		mDefaultInfo.DEF = def;
-		mDefaultInfo.HP = hp;
+		mDefaultInfo.MAXHP = hp;
 		mDefaultInfo.SPD = spd;
 	}
 
-	void Champ::SetIGStatus(UINT ATKpt, UINT DEFpt)
+	void Champ::InitIGInfo(UINT ATKpt, UINT DEFpt)
 	{
-		mIGStatus.ATK =	mDefaultInfo.ATK + ATKpt;           // 공격력
-		mIGStatus.APD = mDefaultInfo.APD;        // 공격속도
-		mIGStatus.RNG = mDefaultInfo.RNG;           // 사거리
-		mIGStatus.DEF = mDefaultInfo.DEF + DEFpt;           // 방어력
-		mIGStatus.MAXHP = mDefaultInfo.HP;         // 최대 체력
-		mIGStatus.SPD = mDefaultInfo.SPD;           // 이동속도
+		mIGInfo.ChampInfo = mDefaultInfo;
+		mIGInfo.ChampInfo.ATK = mDefaultInfo.ATK + ATKpt;           // 공격력
+		mIGInfo.ChampInfo.DEF = mDefaultInfo.DEF + DEFpt;           // 방어력
 
-		mIGStatus.HP = mIGStatus.MAXHP;             // 현재 체력
-		mIGStatus.COOLTIME = 0.f;   // 스킬1 쿨타임
-		mIGStatus.bULTIMATE = false; // 궁극기 사용 여부
+		mIGInfo.HP = mIGInfo.ChampInfo.MAXHP;             // 현재 체력
+		mIGInfo.COOLTIME = 0.f;   // 스킬1 쿨타임
+		mIGInfo.bULTIMATE = false; // 궁극기 사용 여부
+
+		mIGInfo.TotalDeal = 0;
+		mIGInfo.TotalDamaged = 0;
+		mIGInfo.TotalHeal = 0;
+		mIGInfo.KILLPOINT = 0;
+		mIGInfo.DEATHPOINT = 0;
+		mIGInfo.ASSISTPOINT = 0;
 	}
 
 	ColObj* Champ::CreateColObj(const std::wstring& key)
@@ -75,26 +81,5 @@ namespace ssz
 			return iter->second->GetComponent<Collider2D>();
 
 		return nullptr;
-	}
-	
-	void Champ::RegistEnemy(const std::wstring& key, Champ* pChamp)
-	{
-		std::map<std::wstring, Champ*>::iterator iter
-			= mEnemyTeam.find(key);
-
-		if (iter != mEnemyTeam.end())
-			return;
-
-		mEnemyTeam.insert(std::make_pair(key, pChamp));
-	}
-
-	Champ* Champ::GetEnemy(const std::wstring& key)
-	{
-		std::map<std::wstring, Champ*>::iterator iter
-			= mEnemyTeam.find(key);
-		if (iter != mEnemyTeam.end())
-			return nullptr;
-
-		return iter->second;
 	}
 }

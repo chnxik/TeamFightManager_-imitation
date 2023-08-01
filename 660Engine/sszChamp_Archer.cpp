@@ -16,9 +16,10 @@ namespace ssz
 
 	void Champ_Archer::Initialize()
 	{
-		SetName(L"Champ_Archer");
+		SetName(ARCHER);
 
 		SetChampInfo(eChampType::MARKSMAN, 42, 0.67f, 120, 5, 100, 3); // 챔피언 기본정보입력
+		InitIGInfo(0, 0); // 인게임정보 세팅
 
 		GetComponent<Transform>()->SetScale(Vector3(128.f, 128.f, 1.f)); // 64 size
 		

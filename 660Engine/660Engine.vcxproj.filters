@@ -128,9 +128,21 @@
     <ClInclude Include="sszBattleManager.h">
       <Filter>Contents\Manager\BattleManager</Filter>
     </ClInclude>
-    <ClInclude Include="sszDataManager.h" />
-    <ClInclude Include="sszPilot.h" />
-    <ClInclude Include="sszTeam.h" />
+    <ClInclude Include="sszPilot.h">
+      <Filter>Contents\Object\Pilot</Filter>
+    </ClInclude>
+    <ClInclude Include="sszTeam.h">
+      <Filter>Contents\Object\Team</Filter>
+    </ClInclude>
+    <ClInclude Include="sszDataManager.h">
+      <Filter>Contents\Manager\DataManager</Filter>
+    </ClInclude>
+    <ClInclude Include="sszMainCamera.h">
+      <Filter>Contents\Object\Essential\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="sszCursor.h">
+      <Filter>Contents\Object\Essential\Cursor</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="660Engine.cpp" />
@@ -251,9 +263,21 @@
     <ClCompile Include="sszBattleManager.cpp">
       <Filter>Contents\Manager\BattleManager</Filter>
     </ClCompile>
-    <ClCompile Include="sszDataManager.cpp" />
-    <ClCompile Include="sszPilot.cpp" />
-    <ClCompile Include="sszTeam.cpp" />
+    <ClCompile Include="sszPilot.cpp">
+      <Filter>Contents\Object\Pilot</Filter>
+    </ClCompile>
+    <ClCompile Include="sszTeam.cpp">
+      <Filter>Contents\Object\Team</Filter>
+    </ClCompile>
+    <ClCompile Include="sszDataManager.cpp">
+      <Filter>Contents\Manager\DataManager</Filter>
+    </ClCompile>
+    <ClCompile Include="sszMainCamera.cpp">
+      <Filter>Contents\Object\Essential\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="sszCursor.cpp">
+      <Filter>Contents\Object\Essential\Cursor</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Contents">
@@ -432,6 +456,18 @@
     </Filter>
     <Filter Include="Contents\Object\Pilot">
       <UniqueIdentifier>{0479a2d5-1936-4f26-bbc5-ea90836b91bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\Team">
+      <UniqueIdentifier>{4a534969-6c42-46fa-a37f-5de228062521}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\Essential">
+      <UniqueIdentifier>{9acff74c-0eaa-4744-9cd6-07b812d64827}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\Essential\Camera">
+      <UniqueIdentifier>{e7ec4a7d-7ff8-485a-b20a-4b2e3601bb7f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\Essential\Cursor">
+      <UniqueIdentifier>{7a29f64f-bb3c-4a02-947d-d939c0bef5e3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

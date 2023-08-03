@@ -28,8 +28,11 @@ namespace ssz
     {
         for (auto iter : mScenes)
         {
-            delete iter.second;
-            iter.second = nullptr;
+            if (iter.second != nullptr)
+            {
+                delete iter.second;
+                iter.second = nullptr;
+            }
         }
     }
 

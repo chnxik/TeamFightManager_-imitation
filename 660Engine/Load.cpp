@@ -15,6 +15,8 @@ namespace ssz
 {
 	void InitializeScenes()
 	{
+		InitEssentialObj();
+
 		SceneManager::CreateScene<TitleScene>(L"TitleScene");
 		// SceneManager::CreateScene<PrlgScene>(L"PrlgScene");
 		SceneManager::CreateScene<MainLobbyScene>(L"MainLobbyScene");
@@ -25,6 +27,13 @@ namespace ssz
 		SceneManager::CreateScene<TestScene>(L"TestScene");
 
 		SceneManager::LoadScene(L"TestScene");
-
+	}
+	void InitEssentialObj()
+	{
+		// 메인 카메라
+		MainCamera::Initialize();
+		
+		// 커서
+		Cursor::Initialize();
 	}
 }

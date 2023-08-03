@@ -26,8 +26,7 @@ namespace ssz
 
 		KnightAIBB->AddData<GameObject>(GetName(), GetOwner());
 
-		GameObject* pCsr = SceneManager::GetActiveScene()->GetLayer(eLayerType::Cursor).GetGameObjects().front();
-		KnightAIBB->AddData<GameObject>(L"Cursor", pCsr);
+		KnightAIBB->AddData<GameObject>(L"Cursor", Cursor::GetCursor());
 		
 		int* CenterPos = KnightAIBB->CreateData<int>(L"CenterPos");
 		*CenterPos = 100;

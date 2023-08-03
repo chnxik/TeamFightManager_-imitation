@@ -28,8 +28,7 @@ namespace ssz
 
 		ArcherAIBB->AddData<GameObject>(GetName(), GetOwner());
 
-		GameObject* pCsr = SceneManager::GetActiveScene()->GetLayer(eLayerType::Cursor).GetGameObjects().front();
-		ArcherAIBB->AddData<GameObject>(L"Cursor", pCsr);
+		ArcherAIBB->AddData<GameObject>(L"Cursor", Cursor::GetCursor());
 
 		int* CenterPos = ArcherAIBB->CreateData<int>(L"CenterPos");
 		*CenterPos = -100;

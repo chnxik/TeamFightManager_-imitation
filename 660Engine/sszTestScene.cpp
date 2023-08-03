@@ -20,16 +20,16 @@ namespace ssz
 	{
 		// MouseCursor
 		{
-			GameObject* Cursor = Instantiate<GameObject>(Vector3(0.f, 0.f, 0.01f), Vector3(32.f, 32.f, 1.f), eLayerType::Cursor);
-			Cursor->SetName(L"Cursor");
-			Cursor->AddComponent<CursorScript>();
+			// GameObject* Cursor = Instantiate<GameObject>(Vector3(0.f, 0.f, 0.01f), Vector3(32.f, 32.f, 1.f), eLayerType::Cursor);
+			// Cursor->SetName(L"Cursor");
+			// Cursor->AddComponent<CursorScript>();
 		}
 
 		// Main Camera
 		{
-			GameObject* camera = Instantiate<GameObject>(Vector3(0.0f, 0.0f, -10.f), eLayerType::Camera);
-			camera->SetName(L"MainCamera");
-			Camera* cameraComp = camera->AddComponent<Camera>();
+			// GameObject* camera = Instantiate<GameObject>(Vector3(0.0f, 0.0f, -10.f), eLayerType::Camera);
+			// camera->SetName(L"MainCamera");
+			// Camera* cameraComp = camera->AddComponent<Camera>();
 		}
 
 		// ¹è°æ
@@ -76,6 +76,9 @@ namespace ssz
 	}
 	void TestScene::OnEnter()
 	{
+		Cursor::RegistCursor(this);
+		MainCamera::RegistCamera(this);
+
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Cursor, true);
 		CollisionManager::SetLayer(eLayerType::Enemy, eLayerType::Cursor, true);
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::EnemyInteraction, true);
@@ -84,5 +87,8 @@ namespace ssz
 	void TestScene::OnExit()
 	{
 		CollisionManager::Clear();
+
+		Erase(eLayerType::Cursor);
+		Erase(eLayerType::Camera);
 	}
 }

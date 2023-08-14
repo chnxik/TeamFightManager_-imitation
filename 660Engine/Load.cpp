@@ -14,10 +14,16 @@ namespace ssz
 {
 	void InitializeGame()
 	{
+		TGM::Initialize();
+
 		SceneManager::CreateScene<TitleScene>(L"TitleScene");
 		SceneManager::CreateScene<TestScene>(L"TestScene");
 		
 		SceneManager::LoadScene(L"TestScene");
 
+	}
+	void ContentsRelease()
+	{
+		TGM::Release();
 	}
 }

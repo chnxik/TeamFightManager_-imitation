@@ -5,8 +5,6 @@
 
 namespace ssz 
 {
-	GameObject* Cursor::mCursor = nullptr;
-
 	Cursor::Cursor()
 	{
 	}

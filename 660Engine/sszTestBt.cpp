@@ -45,7 +45,7 @@ namespace ssz
 
 			Champ* Owner = mAIBB->FindData<Champ>(*ChampName);
 
-			Collider2D* OwnerCol = Owner->FindColObjsCol(L"AttackArea");
+			Collider2D* OwnerCol = Owner->GetColObjsCol(eColObjType::ATKAREA);
 			Collider2D* TargetCol = nullptr;
 
 			Champ* Target = Owner->GetEnemys()[0];

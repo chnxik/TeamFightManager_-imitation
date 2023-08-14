@@ -1,10 +1,10 @@
 #pragma once
-#include "sszScript.h"
+#include "sszChamp_Script.h"
 #include "CommonObjHeader.h"
 
 namespace ssz
 {
-	class Script_Archer : public Script
+	class Script_Archer : public Champ_Script
 	{
 	public:
 		Script_Archer();
@@ -13,7 +13,19 @@ namespace ssz
 		virtual void Initialize() override;
 		virtual void Update() override;
 
-	private:
-		Root_Node* mRoot;
+		virtual void InitChampInfo();   // 챔프 정보 설정
+		virtual void InitChampAnim();   // 챔프 애니메이션 설정
+		virtual void InitColObj();      // 챔프 콜라이더오브젝트 설정
+		virtual void InitBT();          // 챔프 AI 설정
+
+		virtual void Dead();
+
+		virtual void Play_Idle();
+		virtual void Play_Move();
+		virtual void Play_Attack();
+		virtual void Play_Dead();
+		virtual void Play_Skill1();
+		virtual void Play_Skill2();
+
 	};
 }

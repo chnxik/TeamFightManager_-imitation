@@ -15,6 +15,9 @@ namespace ssz
 		virtual void LateUpdate();
 		virtual void Render();
 		virtual void Destory();
+		virtual void SetLayerType(eLayerType eType) { mType = eType; }
+
+		virtual void clear();
 
 		void AddGameObject(GameObject* gameObj);
 		const std::vector<GameObject*> GetGameObjects()
@@ -23,6 +26,7 @@ namespace ssz
 		}
 
 	private:
+		eLayerType mType;
 		std::vector<GameObject*> mGameObjects;
 		std::vector<GameObject*> mGarbageObjects;
 	};

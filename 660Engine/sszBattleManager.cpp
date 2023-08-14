@@ -4,7 +4,7 @@
 
 namespace ssz
 {
-    bool BattleManager::Battle(Champ* pAttacker, Champ* pTarget, UINT iDamage)
+    bool BattleManager::Battle(Champ* pAttacker, Champ* pTarget, unsigned int iDamage)
     {
         if (pTarget->IsPaused()) // Paused상태인지 확인, false면 Battle이 정상적으로 이루어지지 않음
             return false;
@@ -28,7 +28,7 @@ namespace ssz
         return true;
     }
 
-    bool BattleManager::Damage(Champ* pAttacker, Champ* pTarget, UINT iDamage)
+    bool BattleManager::Damage(Champ* pAttacker, Champ* pTarget, unsigned int iDamage)
     {
         Champ::IGStatus* TargetStat = pTarget->GetIGStatus();
         UINT FinalDamage = iDamage - TargetStat->ChampInfo.DEF;

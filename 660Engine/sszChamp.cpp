@@ -1,23 +1,91 @@
 #include "sszChamp.h"
 #include "CommonObjHeader.h"
 
+#include "sszChamp_Script.h"
+
 namespace ssz
 {
 	Champ::Champ()
 		: mFriendly{}
+		, mPilot(nullptr)
 		, mDefaultInfo{} // Ã¨ÇÁ Á¤º¸
 		, mTargetEnemy(nullptr)
+		, mColObjs{}
+		, mChampScript(nullptr)
 	{
 
 	}
 
 	Champ::~Champ()
 	{
+		for (ColObj* object : mColObjs)
+		{
+			if (object != nullptr)
+			{
+				delete object;
+				object = nullptr;
+			}
+		}
+	}
 
+	void Champ::Initialize()
+	{
+	}
+
+	void Champ::Update()
+	{
+		GameObject::Update();
+	}
+
+	void Champ::LateUpdate()
+	{
+		GameObject::LateUpdate();
+	}
+
+	void Champ::Render()
+	{
+		GameObject::Render();
 	}
 
 	void Champ::Dead()
 	{
+	}
+
+	void Champ::Play_Idle()
+	{
+		mChampScript->Play_Idle();
+	}
+
+	void Champ::Play_Move()
+	{
+		mChampScript->Play_Move();
+	}
+
+	void Champ::Play_Attack()
+	{
+		mChampScript->Play_Attack();
+	}
+
+	void Champ::Play_Dead()
+	{
+		mChampScript->Play_Dead();
+	}
+
+
+	void Champ::Play_Skill1()
+	{
+		mChampScript->Play_Skill1();
+	}
+
+
+	void Champ::Play_Skill2()
+	{
+		mChampScript->Play_Skill2();
+	}
+
+	void Champ::SetChampScript(Champ_Script* script)
+	{
+		mChampScript = script;
 	}
 
 	void Champ::SetChampInfo(eChampType Type, UINT atk, float apd, UINT rng, UINT def, UINT hp, UINT spd)
@@ -49,37 +117,52 @@ namespace ssz
 		mIGInfo.ASSISTPOINT = 0;
 	}
 
-	ColObj* Champ::CreateColObj(const std::wstring& key)
+	void Champ::ResetInfo()
 	{
-		ColObj* NewObj = nullptr;
+		mFriendly.clear();
+		mPilot = nullptr;
+		mTargetEnemy = nullptr;
+		InitIGInfo(0, 0);
+	}
+
+	ColObj* Champ::CreateColObj(eColObjType Type)
+	{
+		if (mColObjs[(UINT)Type] != nullptr)
+			return mColObjs[(UINT)Type];
+
+		mColObjs[(UINT)Type] = Instantiate<ColObj>();
+		mColObjs[(UINT)Type]->AddComponent<Collider2D>();
+
+		return mColObjs[(UINT)Type];
+	}
+
+	void Champ::ColObjSetLayer(eColObjType Type)
+	{
+		if (mColObjs[(UINT)Type] == nullptr)
+			assert(nullptr);
+
 		switch (GetLayerType())
 		{
 		case ssz::enums::eLayerType::Player:
-			NewObj = Instantiate<ColObj>(eLayerType::PlayerInteraction);
-			break;
-		case ssz::enums::eLayerType::Enemy:
-			NewObj = Instantiate<ColObj>(eLayerType::EnemyInteraction);
+		{
+			mColObjs[(UINT)Type]->SetLayerType(eLayerType::PlayerInteraction);
+			SceneManager::GetActiveScene()->AddGameObject(eLayerType::PlayerInteraction, mColObjs[(UINT)Type]);
 			break;
 		}
-
-		if (NewObj == nullptr)
-			return nullptr;
-
-		NewObj->SetName(key);
-		NewObj->AddComponent<Collider2D>();
-		mColObjs.insert(std::make_pair(key, NewObj));
-
-		return NewObj;
+		case ssz::enums::eLayerType::Enemy:
+		{
+			mColObjs[(UINT)Type]->SetLayerType(eLayerType::EnemyInteraction);
+			SceneManager::GetActiveScene()->AddGameObject(eLayerType::EnemyInteraction, mColObjs[(UINT)Type]);
+			break;
+		}
+		}
 	}
 
-	Collider2D* Champ::FindColObjsCol(const std::wstring& key)
+	Collider2D* Champ::GetColObjsCol(eColObjType Type)
 	{
-		std::map<std::wstring, ColObj*>::iterator iter
-			= mColObjs.find(key);
+		if (mColObjs[(UINT)Type] == nullptr)
+			return nullptr;
 
-		if (iter != mColObjs.end())
-			return iter->second->GetComponent<Collider2D>();
-
-		return nullptr;
+		return mColObjs[(UINT)Type]->GetComponent<Collider2D>();
 	}
 }

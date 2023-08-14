@@ -1,7 +1,6 @@
 #include "sszScript_Knight.h"
-#include "sszChamp_Knight.h"
 
-#include "CommonObjHeader.h"
+#include "sszTGM.h"
 
 // Test
 #include "sszTestBT.cpp"
@@ -9,39 +8,114 @@
 namespace ssz
 {
 	Script_Knight::Script_Knight()
-		: mRoot(nullptr)
 	{
 	}
 
 	Script_Knight::~Script_Knight()
 	{
-		delete mRoot;
 	}
 
 	void Script_Knight::Initialize()
 	{
-		std::shared_ptr<AIBB> KnightAIBB = std::make_shared<AIBB>();
+		InitChampInfo();
+		InitChampAnim();
+		InitColObj();
+		InitBT();
+	}
 
-		KnightAIBB->AddData<std::wstring>(CHAMPKEY, &GetName());
+	void Script_Knight::Update()
+	{
+		GetRootNode()->Run();
+	}
 
-		KnightAIBB->AddData<GameObject>(GetName(), GetOwner());
+	void Script_Knight::InitChampInfo()
+	{
+		Champ* Owner = (Champ*)GetOwner();
 
-		GameObject* pCsr = SceneManager::GetActiveScene()->GetLayer(eLayerType::Cursor).GetGameObjects().front();
-		KnightAIBB->AddData<GameObject>(L"Cursor", pCsr);
+		Owner->SetName(KNIGHT);
+
+		Owner->SetChampInfo(eChampType::FIGHTER, 21, 0.67f, 37, 60, 200, 5);
+		Owner->InitIGInfo(0, 0);
+
+		Owner->GetComponent<Transform>()->SetScale(Vector3(170.f, 170.f, 1.f)); // 96 size
+	}
+
+	void Script_Knight::InitChampAnim()
+	{
+		Champ* Owner = (Champ*)GetOwner();
+
+		Owner->AddComponent<MeshRenderer>();
+		Owner->AddComponent<Animator>();
+
+		// Load Atlas
+		std::shared_ptr<Texture> atlas = Resources::Load<Texture>(L"knight_sprite", L"..\\Resources\\useResource\\ChampSprite\\knight\\knight_sprite\\knight.png");
+
+		// Set MeshRenderer
+		LoadMaterial(L"knight_spriteMt", L"AnimationShader", L"knight_sprite", eRenderingMode::Transparent);
+		Owner->GetComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"knight_spriteMt");
+
+		//SetAnimator
+		Animator* anim = Owner->GetComponent<Animator>();
+
+		Vector2 FrmSize(96.f, 96.f);
+
+		anim->Create(L"knight_idle", L"knight_sprite", Vector2(0.f, 0.f), FrmSize, 5, Vector2(0.f, 0.f), 6.f);
+		anim->Create(L"knight_move", L"knight_sprite", Vector2(0.f, FrmSize.y * 1), FrmSize, 8, Vector2(0.f, 0.f), 8.f);
+		anim->Create(L"knight_attack", L"knight_sprite", Vector2(0.f, FrmSize.y * 2), FrmSize, 7, Vector2(0.f, 0.f), 8.f);
+		anim->Create(L"knight_dead", L"knight_sprite", Vector2(0.f, FrmSize.y * 3), FrmSize, 9, Vector2(0.f, 0.f), 8.f);
+		anim->Create(L"knight_skill1", L"knight_sprite", Vector2(0.f, FrmSize.y * 4), FrmSize, 7, Vector2(0.f, 0.f), 8.f);
+		anim->Create(L"knight_skill2", L"knight_sprite", Vector2(0.f, FrmSize.y * 5), FrmSize, 7, Vector2(0.f, 0.f), 8.f);
 		
-		int* CenterPos = KnightAIBB->CreateData<int>(L"CenterPos");
+		Play_Idle();
+	}
+
+	void Script_Knight::InitColObj()
+	{
+		Champ* Owner = (Champ*)GetOwner();
+
+		// Champ Collider
+		Vector3 ColScale = -Owner->GetComponent<Transform>()->GetScale() + Vector3(64.f, 74.f, 1.f);
+
+		Collider2D* Col = Owner->AddComponent<Collider2D>();
+		Col->SetOffsetSize(ColScale);
+		Col->SetOffsetPos(Vector3(0.f, 10.f, 0.f));
+
+		ColObj* ATKCOL = Owner->CreateColObj(eColObjType::ATKAREA);
+
+		Transform* AtkColTr = ATKCOL->GetComponent<Transform>();
+		AtkColTr->SetParent(Owner->GetComponent<Transform>()); // 부모를 따라다니는 ColObj
+		Collider2D* AttackArea = ATKCOL->GetComponent<Collider2D>();
+		AttackArea->SetType(eColliderType::Circle);
+
+		float Rng = Owner->GetChampInfo().RNG * 2.f;
+		ColScale = -Owner->GetComponent<Transform>()->GetScale() + Vector3(Rng, Rng, 1.f);
+		AttackArea->SetOffsetSize(ColScale);
+
+		AttackArea->SetOffsetPos(Vector3(0.f, 10.f, 0.f));
+	}
+
+	void Script_Knight::InitBT()
+	{
+		std::shared_ptr<AIBB> ptrAIBB = std::make_shared<AIBB>();
+
+		ptrAIBB->AddData<std::wstring>(CHAMPKEY, &GetName());
+
+		ptrAIBB->AddData<GameObject>(GetName(), GetOwner());
+
+		GameObject* pCsr = TGM::GetCursor();
+		ptrAIBB->AddData<GameObject>(L"Cursor", pCsr);
+
+		int* CenterPos = ptrAIBB->CreateData<int>(L"CenterPos");
 		*CenterPos = 100;
 
 		// Set BT
-		mRoot = new Root_Node(KnightAIBB);
-
-		Selector_Node* KnightBT = mRoot->AddChild<Selector_Node>(); // 최상위 셀렉터 노드
+		Selector_Node* ChampBT = CreateRootNode(ptrAIBB)->AddChild<Selector_Node>(); // 최상위 셀렉터 노드
 
 
-		Sequence_Node* Seq_Dead = KnightBT->AddChild<Sequence_Node>(); // 사망 판단 시퀀스
-		Sequence_Node* Seq_Stop = KnightBT->AddChild<Sequence_Node>(); // 정지 판단 시퀀스
-		Sequence_Node* Seq_Attack = KnightBT->AddChild<Sequence_Node>(); // 공격 판단 시퀀스
-		Sequence_Node* Seq_Move = KnightBT->AddChild<Sequence_Node>(); // 이동 판단 시퀀스
+		Sequence_Node* Seq_Dead = ChampBT->AddChild<Sequence_Node>(); // 사망 판단 시퀀스
+		Sequence_Node* Seq_Stop = ChampBT->AddChild<Sequence_Node>(); // 정지 판단 시퀀스
+		Sequence_Node* Seq_Attack = ChampBT->AddChild<Sequence_Node>(); // 공격 판단 시퀀스
+		Sequence_Node* Seq_Move = ChampBT->AddChild<Sequence_Node>(); // 이동 판단 시퀀스
 
 		// 사망 판단 시퀀스
 		Seq_Dead->AddChild<Con_CollisionCsr>(); // 정지 버튼 입력 판단
@@ -100,9 +174,38 @@ namespace ssz
 		Seq_CheckOverArea_Right->AddChild<Act_MoveLeft>();
 	}
 
-	void Script_Knight::Update()
+	void Script_Knight::Dead()
 	{
-		mRoot->Run();
+	}
+
+	void Script_Knight::Play_Idle()
+	{
+		GetOwner()->GetComponent<Animator>()->PlayAnimation(L"knight_idle", true);
+	}
+
+	void Script_Knight::Play_Move()
+	{
+		GetOwner()->GetComponent<Animator>()->PlayAnimation(L"knight_move", true);
+	}
+
+	void Script_Knight::Play_Attack()
+	{
+		GetOwner()->GetComponent<Animator>()->PlayAnimation(L"knight_attack", false);
+	}
+
+	void Script_Knight::Play_Dead()
+	{
+		GetOwner()->GetComponent<Animator>()->PlayAnimation(L"knight_dead", false);
+	}
+
+	void Script_Knight::Play_Skill1()
+	{
+		GetOwner()->GetComponent<Animator>()->PlayAnimation(L"knight_skill1", true);
+	}
+
+	void Script_Knight::Play_Skill2()
+	{
+		GetOwner()->GetComponent<Animator>()->PlayAnimation(L"knight_skill2", true);
 	}
 
 }

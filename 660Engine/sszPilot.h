@@ -3,11 +3,11 @@
 
 namespace ssz
 {
-    class Champ;
-
     class Pilot : public GameObject
     {
     public:
+        Pilot();
+        virtual ~Pilot();
 
     private:
         // 소속 팀 : Team Class로 가진다.

@@ -1,4 +1,5 @@
 #pragma once
+
 #ifdef _DEBUG
 #pragma comment(lib, "..\\x64\\Debug\\660Engine.lib")
 #else
@@ -7,5 +8,6 @@
 
 namespace ssz
 {
-	void InitializeScenes();
+	void InitializeGame();
+	void ContentsRelease();
 }

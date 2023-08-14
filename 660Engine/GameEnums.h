@@ -36,7 +36,8 @@ namespace ssz
 
     enum class eChamp
     {
-        Archer
+        Archer,
+        Knight
     };
 
     enum class eChampType
@@ -47,5 +48,12 @@ namespace ssz
         CONTROLLER, // 서포터
         SLAYER,     // 암살자
         NONE,
+    };
+
+    enum class eColObjType
+    {
+        ATKAREA,
+        SKILL1,
+        END
     };
 }

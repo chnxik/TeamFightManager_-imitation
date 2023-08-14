@@ -6,6 +6,13 @@ namespace ssz
 	Scene::Scene()
 	{
 		mLayers.resize((int)ssz::enums::eLayerType::End);
+
+		int i = 0;
+
+		for (Layer& layer : mLayers)
+		{
+			layer.SetLayerType((eLayerType)i++);
+		}
 	}
 
 	Scene::~Scene()
@@ -46,6 +53,14 @@ namespace ssz
 		{
 			layer.Destory();
 		}
+	}
+
+	void Scene::Clear(eLayerType type)
+	{
+		if (type == eLayerType::Cursor)
+			int a = 0;
+
+		mLayers[(UINT)type].clear();
 	}
 
 	void Scene::OnEnter()

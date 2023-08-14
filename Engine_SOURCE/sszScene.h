@@ -16,6 +16,8 @@ namespace ssz
 		virtual void Render();
 		virtual void Destroy();
 
+		virtual void Clear(eLayerType type);
+
 		virtual void OnEnter();
 		virtual void OnExit();
 

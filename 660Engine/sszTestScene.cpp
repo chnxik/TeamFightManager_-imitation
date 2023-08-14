@@ -20,9 +20,7 @@ namespace ssz
 	{
 		// MouseCursor
 		{
-			GameObject* Cursor = Instantiate<GameObject>(Vector3(0.f, 0.f, 0.01f), Vector3(32.f, 32.f, 1.f), eLayerType::Cursor);
-			Cursor->SetName(L"Cursor");
-			Cursor->AddComponent<CursorScript>();
+			
 		}
 
 		// Main Camera
@@ -44,15 +42,6 @@ namespace ssz
 			GameObject* IG_StadiumSky = Instantiate<GameObject>(Vector3(0.0f, -53.0f, 1.022f), Vector3(2144.f, 1429.f, 1.f), eLayerType::BackGround);
 			IG_StadiumSky->SetName(L"IG_StadiumSky");
 			IG_StadiumSky->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"IGStadiumSkyMt");
-		}
-
-		// Player
-		{
-			Champ_Archer* TestObj = Instantiate<Champ_Archer>(Vector3(-100.f, 0.f, 1.01f), eLayerType::Player);
-			Champ_Knight* TestObj2 = Instantiate<Champ_Knight>(Vector3(0.f, 0.f, 1.01f), eLayerType::Enemy);
-
-			TestObj->RegistEnemy(TestObj2);
-			TestObj2->RegistEnemy(TestObj);
 		}
 #pragma endregion
 	}
@@ -76,6 +65,17 @@ namespace ssz
 	}
 	void TestScene::OnEnter()
 	{
+		// Player
+		{
+			Champ* archer = TGM::AddChampScene(eLayerType::Player, ARCHER, Vector3(-100.f, 50.f, 1.0f));
+			Champ* knight = TGM::AddChampScene(eLayerType::Enemy, KNIGHT, Vector3(100.f, -50.f, 1.0f));
+
+			archer->RegistEnemy(knight);
+			knight->RegistEnemy(archer);
+		}
+
+		AddGameObject(eLayerType::Cursor, TGM::GetCursor());
+
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Cursor, true);
 		CollisionManager::SetLayer(eLayerType::Enemy, eLayerType::Cursor, true);
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::EnemyInteraction, true);
@@ -84,5 +84,6 @@ namespace ssz
 	void TestScene::OnExit()
 	{
 		CollisionManager::Clear();
+		TGM::SceneClear();
 	}
 }

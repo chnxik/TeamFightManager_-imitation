@@ -42,6 +42,40 @@ namespace ssz::object
 	
 #pragma region GameObject Instantiate
 		template <typename T>
+		static __forceinline T* Instantiate()
+		{
+			T* gameObj = new T();
+			gameObj->Initialize();
+
+			return gameObj;
+		}
+
+		template <typename T>
+		static __forceinline T* Instantiate(Vector3 pos)
+		{
+			T* gameObj = new T();
+			Transform* tr = gameObj->GetComponent<Transform>();
+			tr->SetPosition(pos);
+
+			gameObj->Initialize();
+
+			return gameObj;
+		}
+
+		template <typename T>
+		static __forceinline T* Instantiate(Vector3 pos, Vector3 scale)
+		{
+			T* gameObj = new T();
+			Transform* tr = gameObj->GetComponent<Transform>();
+			tr->SetPosition(pos);
+			tr->SetScale(scale);
+
+			gameObj->Initialize();
+
+			return gameObj;
+		}
+
+		template <typename T>
 		static __forceinline T* Instantiate(enums::eLayerType layer)
 		{
 			T* gameObj = new T();

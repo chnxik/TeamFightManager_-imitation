@@ -26,6 +26,8 @@ namespace ssz
 
     void SceneManager::Release()
     {
+        mActiveScene->OnExit();
+
         for (auto iter : mScenes)
         {
             delete iter.second;

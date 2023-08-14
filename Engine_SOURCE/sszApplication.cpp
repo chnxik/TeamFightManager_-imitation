@@ -41,7 +41,7 @@ namespace ssz
 		Input::Initialize();
 
 		renderer::Initialize();
-		ssz::InitializeScenes();
+		ssz::InitializeGame();
 	}
 
 	void Application::Update()
@@ -84,6 +84,8 @@ namespace ssz
 		renderer::Release();
 		SceneManager::Release();
 		FileManager::Release();
+		
+		ContentsRelease();
 	}
 
 	void Application::SetWindow(HWND hwnd, UINT width, UINT height)

@@ -3,7 +3,7 @@
   <ItemGroup>
     <ClInclude Include="framework.h" />
     <ClInclude Include="Load.h">
-      <Filter>Contents\Load</Filter>
+      <Filter>Load</Filter>
     </ClInclude>
     <ClInclude Include="sszCameraScript.h">
       <Filter>Contents\CommonScript\Camera</Filter>
@@ -30,107 +30,107 @@
       <Filter>Common</Filter>
     </ClInclude>
     <ClInclude Include="sszDefaultBtn.h">
-      <Filter>Contents\Object\UI\Button\DefaultBtn</Filter>
+      <Filter>Contents\UI\Button\DefaultBtn</Filter>
     </ClInclude>
     <ClInclude Include="sszImportantBtn.h">
-      <Filter>Contents\Object\UI\Button\InportantBtn</Filter>
-    </ClInclude>
-    <ClInclude Include="sszMainLobbyScene.h">
-      <Filter>Contents\Scene\3. MainLobby</Filter>
+      <Filter>Contents\UI\Button\InportantBtn</Filter>
     </ClInclude>
     <ClInclude Include="sszLobbyMenuBtn.h">
-      <Filter>Contents\Object\UI\Button\LobbyMenuBtn</Filter>
+      <Filter>Contents\UI\Button\LobbyMenuBtn</Filter>
     </ClInclude>
     <ClInclude Include="sszProceedBtn.h">
-      <Filter>Contents\Object\UI\Button\ProceedBtn</Filter>
+      <Filter>Contents\UI\Button\ProceedBtn</Filter>
     </ClInclude>
     <ClInclude Include="sszWeeklyEventBtn.h">
-      <Filter>Contents\Object\UI\Button\WeeklyEventBtn</Filter>
+      <Filter>Contents\UI\Button\WeeklyEventBtn</Filter>
     </ClInclude>
     <ClInclude Include="sszLobbyHeader.h">
-      <Filter>Contents\Object\UI\HeaderUI\Lobby</Filter>
+      <Filter>Contents\UI\HeaderUI\Lobby</Filter>
     </ClInclude>
     <ClInclude Include="sszHeaderSlot.h">
-      <Filter>Contents\Object\UI\Slot\LobbyHeaderSlot</Filter>
+      <Filter>Contents\UI\Slot\LobbyHeaderSlot</Filter>
     </ClInclude>
     <ClInclude Include="sszNewGameWindow.h">
-      <Filter>Contents\Object\UI\Window\NewGame</Filter>
-    </ClInclude>
-    <ClInclude Include="sszStadiumScene.h">
-      <Filter>Contents\Scene\4. Stadium</Filter>
+      <Filter>Contents\UI\Window\NewGame</Filter>
     </ClInclude>
     <ClInclude Include="sszLineUpWindow.h">
-      <Filter>Contents\Object\UI\Window\LineUp</Filter>
+      <Filter>Contents\UI\Window\LineUp</Filter>
     </ClInclude>
     <ClInclude Include="sszLineUpTeamTitle.h">
-      <Filter>Contents\Object\UI\Slot\LineUpTeamTitle</Filter>
+      <Filter>Contents\UI\Slot\LineUpTeamTitle</Filter>
     </ClInclude>
     <ClInclude Include="sszPlayerCardBtn.h">
-      <Filter>Contents\Object\UI\Button\PlayerCardBtn</Filter>
+      <Filter>Contents\UI\Button\PlayerCardBtn</Filter>
     </ClInclude>
     <ClInclude Include="sszPlayerCardSlot.h">
-      <Filter>Contents\Object\UI\Slot\PlayerCard</Filter>
+      <Filter>Contents\UI\Slot\PlayerCard</Filter>
     </ClInclude>
     <ClInclude Include="sszBattleHeader.h">
-      <Filter>Contents\Object\UI\HeaderUI\Battle</Filter>
+      <Filter>Contents\UI\HeaderUI\Battle</Filter>
     </ClInclude>
     <ClInclude Include="sszBanPickStat.h">
-      <Filter>Contents\Object\UI\Slot\BanpickStat</Filter>
-    </ClInclude>
-    <ClInclude Include="sszBanPickScene.h">
-      <Filter>Contents\Scene\5. Banpick</Filter>
+      <Filter>Contents\UI\Slot\BanpickStat</Filter>
     </ClInclude>
     <ClInclude Include="sszBanLine.h">
-      <Filter>Contents\Object\UI\Line\BanLine</Filter>
+      <Filter>Contents\UI\Line\BanLine</Filter>
     </ClInclude>
     <ClInclude Include="sszStatIcon.h">
-      <Filter>Contents\Object\UI\Icon\StatIcon</Filter>
+      <Filter>Contents\UI\Icon\StatIcon</Filter>
     </ClInclude>
     <ClInclude Include="GameEnums.h">
       <Filter>Common</Filter>
     </ClInclude>
     <ClInclude Include="sszBanpickClassTap.h">
-      <Filter>Contents\Object\UI\Button\BanpickClassTap</Filter>
-    </ClInclude>
-    <ClInclude Include="sszIGStadiumScene.h">
-      <Filter>Contents\Scene\6. IGStadium</Filter>
+      <Filter>Contents\UI\Button\BanpickClassTap</Filter>
     </ClInclude>
     <ClInclude Include="sszChamp.h">
-      <Filter>Contents\Object\Champ\Base</Filter>
+      <Filter>Contents\Object\GameUnit\Champ\Base</Filter>
     </ClInclude>
     <ClInclude Include="sszObj_IG_Stadium.h">
-      <Filter>Contents\Object\GameObject\BackGround\IG_Stadium</Filter>
+      <Filter>Contents\Object\BackGround\BackGround\IG_Stadium</Filter>
     </ClInclude>
     <ClInclude Include="sszObj_Waterfall.h">
-      <Filter>Contents\Object\GameObject\BackGround\Waterfall</Filter>
-    </ClInclude>
-    <ClInclude Include="sszChamp_Archer.h">
-      <Filter>Contents\Object\Champ\C_Archer</Filter>
-    </ClInclude>
-    <ClInclude Include="sszScript_Archer.h">
-      <Filter>Contents\Object\Champ\C_Archer\Script</Filter>
-    </ClInclude>
-    <ClInclude Include="ChampList.h">
-      <Filter>Common</Filter>
-    </ClInclude>
-    <ClInclude Include="sszChamp_Knight.h">
-      <Filter>Contents\Object\Champ\C_Knight</Filter>
-    </ClInclude>
-    <ClInclude Include="sszScript_Knight.h">
-      <Filter>Contents\Object\Champ\C_Knight\Script</Filter>
+      <Filter>Contents\Object\BackGround\BackGround\Waterfall</Filter>
     </ClInclude>
     <ClInclude Include="CommonDefine.h">
       <Filter>Common</Filter>
     </ClInclude>
     <ClInclude Include="sszColObj.h">
-      <Filter>Contents\Object\Champ\Base</Filter>
+      <Filter>Contents\Object\GameUnit\Champ\Base</Filter>
     </ClInclude>
     <ClInclude Include="sszBattleManager.h">
       <Filter>Contents\Manager\BattleManager</Filter>
     </ClInclude>
-    <ClInclude Include="sszDataManager.h" />
-    <ClInclude Include="sszPilot.h" />
-    <ClInclude Include="sszTeam.h" />
+    <ClInclude Include="sszTeam.h">
+      <Filter>Contents\Object\GameUnit\Team</Filter>
+    </ClInclude>
+    <ClInclude Include="sszPilotList.h">
+      <Filter>Contents\Manager\DataManager\PilotList</Filter>
+    </ClInclude>
+    <ClInclude Include="sszTeamList.h">
+      <Filter>Contents\Manager\DataManager\TeamList</Filter>
+    </ClInclude>
+    <ClInclude Include="sszChampList.h">
+      <Filter>Contents\Manager\DataManager\ChampList</Filter>
+    </ClInclude>
+    <ClInclude Include="sszTGM.h">
+      <Filter>Contents\Manager\DataManager\TotalGameManager</Filter>
+    </ClInclude>
+    <ClInclude Include="sszPilot.h">
+      <Filter>Contents\Object\GameUnit\Pilot</Filter>
+    </ClInclude>
+    <ClInclude Include="sszCursor.h">
+      <Filter>Contents\UI\Cursor</Filter>
+    </ClInclude>
+    <ClInclude Include="sszChamp_Script.h">
+      <Filter>Contents\Object\GameUnit\Champ\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="sszScript_Archer.h">
+      <Filter>Contents\Object\GameUnit\Champ\Archer</Filter>
+    </ClInclude>
+    <ClInclude Include="sszScript_Knight.h">
+      <Filter>Contents\Object\GameUnit\Champ\Knight</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="660Engine.cpp" />
@@ -150,117 +150,117 @@
       <Filter>Contents\Scene\0. TestScene</Filter>
     </ClCompile>
     <ClCompile Include="Load.cpp">
-      <Filter>Contents\Load</Filter>
+      <Filter>Load</Filter>
     </ClCompile>
     <ClCompile Include="sszMasking.cpp">
       <Filter>Contents\CommonScript\Masking</Filter>
     </ClCompile>
     <ClCompile Include="sszDefaultBtn.cpp">
-      <Filter>Contents\Object\UI\Button\DefaultBtn</Filter>
+      <Filter>Contents\UI\Button\DefaultBtn</Filter>
     </ClCompile>
     <ClCompile Include="sszImportantBtn.cpp">
-      <Filter>Contents\Object\UI\Button\InportantBtn</Filter>
-    </ClCompile>
-    <ClCompile Include="sszMainLobbyScene.cpp">
-      <Filter>Contents\Scene\3. MainLobby</Filter>
+      <Filter>Contents\UI\Button\InportantBtn</Filter>
     </ClCompile>
     <ClCompile Include="sszLobbyMenuBtn.cpp">
-      <Filter>Contents\Object\UI\Button\LobbyMenuBtn</Filter>
+      <Filter>Contents\UI\Button\LobbyMenuBtn</Filter>
     </ClCompile>
     <ClCompile Include="sszProceedBtn.cpp">
-      <Filter>Contents\Object\UI\Button\ProceedBtn</Filter>
+      <Filter>Contents\UI\Button\ProceedBtn</Filter>
     </ClCompile>
     <ClCompile Include="sszWeeklyEventBtn.cpp">
-      <Filter>Contents\Object\UI\Button\WeeklyEventBtn</Filter>
+      <Filter>Contents\UI\Button\WeeklyEventBtn</Filter>
     </ClCompile>
     <ClCompile Include="sszLobbyHeader.cpp">
-      <Filter>Contents\Object\UI\HeaderUI\Lobby</Filter>
+      <Filter>Contents\UI\HeaderUI\Lobby</Filter>
     </ClCompile>
     <ClCompile Include="sszHeaderSlot.cpp">
-      <Filter>Contents\Object\UI\Slot\LobbyHeaderSlot</Filter>
+      <Filter>Contents\UI\Slot\LobbyHeaderSlot</Filter>
     </ClCompile>
     <ClCompile Include="sszNewGameWindow.cpp">
-      <Filter>Contents\Object\UI\Window\NewGame</Filter>
-    </ClCompile>
-    <ClCompile Include="sszStadiumScene.cpp">
-      <Filter>Contents\Scene\4. Stadium</Filter>
+      <Filter>Contents\UI\Window\NewGame</Filter>
     </ClCompile>
     <ClCompile Include="sszLineUpWindow.cpp">
-      <Filter>Contents\Object\UI\Window\LineUp</Filter>
+      <Filter>Contents\UI\Window\LineUp</Filter>
     </ClCompile>
     <ClCompile Include="sszLineUpTeamTitle.cpp">
-      <Filter>Contents\Object\UI\Slot\LineUpTeamTitle</Filter>
+      <Filter>Contents\UI\Slot\LineUpTeamTitle</Filter>
     </ClCompile>
     <ClCompile Include="sszPlayerCardBtn.cpp">
-      <Filter>Contents\Object\UI\Button\PlayerCardBtn</Filter>
+      <Filter>Contents\UI\Button\PlayerCardBtn</Filter>
     </ClCompile>
     <ClCompile Include="sszPlayerCardSlot.cpp">
-      <Filter>Contents\Object\UI\Slot\PlayerCard</Filter>
+      <Filter>Contents\UI\Slot\PlayerCard</Filter>
     </ClCompile>
     <ClCompile Include="sszBattleHeader.cpp">
-      <Filter>Contents\Object\UI\HeaderUI\Battle</Filter>
+      <Filter>Contents\UI\HeaderUI\Battle</Filter>
     </ClCompile>
     <ClCompile Include="sszBanPickStat.cpp">
-      <Filter>Contents\Object\UI\Slot\BanpickStat</Filter>
-    </ClCompile>
-    <ClCompile Include="sszBanPickScene.cpp">
-      <Filter>Contents\Scene\5. Banpick</Filter>
+      <Filter>Contents\UI\Slot\BanpickStat</Filter>
     </ClCompile>
     <ClCompile Include="sszBanLine.cpp">
-      <Filter>Contents\Object\UI\Line\BanLine</Filter>
+      <Filter>Contents\UI\Line\BanLine</Filter>
     </ClCompile>
     <ClCompile Include="sszStatIcon.cpp">
-      <Filter>Contents\Object\UI\Icon\StatIcon</Filter>
+      <Filter>Contents\UI\Icon\StatIcon</Filter>
     </ClCompile>
     <ClCompile Include="sszBanpickClassTap.cpp">
-      <Filter>Contents\Object\UI\Button\BanpickClassTap</Filter>
-    </ClCompile>
-    <ClCompile Include="sszIGStadiumScene.cpp">
-      <Filter>Contents\Scene\6. IGStadium</Filter>
+      <Filter>Contents\UI\Button\BanpickClassTap</Filter>
     </ClCompile>
     <ClCompile Include="sszChamp.cpp">
-      <Filter>Contents\Object\Champ\Base</Filter>
+      <Filter>Contents\Object\GameUnit\Champ\Base</Filter>
     </ClCompile>
     <ClCompile Include="sszObj_IG_Stadium.cpp">
-      <Filter>Contents\Object\GameObject\BackGround\IG_Stadium</Filter>
+      <Filter>Contents\Object\BackGround\BackGround\IG_Stadium</Filter>
     </ClCompile>
     <ClCompile Include="sszObj_Waterfall.cpp">
-      <Filter>Contents\Object\GameObject\BackGround\Waterfall</Filter>
-    </ClCompile>
-    <ClCompile Include="sszChamp_Archer.cpp">
-      <Filter>Contents\Object\Champ\C_Archer</Filter>
-    </ClCompile>
-    <ClCompile Include="sszScript_Archer.cpp">
-      <Filter>Contents\Object\Champ\C_Archer\Script</Filter>
-    </ClCompile>
-    <ClCompile Include="sszChamp_Knight.cpp">
-      <Filter>Contents\Object\Champ\C_Knight</Filter>
-    </ClCompile>
-    <ClCompile Include="sszScript_Knight.cpp">
-      <Filter>Contents\Object\Champ\C_Knight\Script</Filter>
+      <Filter>Contents\Object\BackGround\BackGround\Waterfall</Filter>
     </ClCompile>
     <ClCompile Include="sszCommonBT.cpp">
-      <Filter>Contents\Object\Champ\CommonBT</Filter>
+      <Filter>Contents\Object\GameUnit\Champ\CommonBT</Filter>
     </ClCompile>
     <ClCompile Include="sszTestBt.cpp">
-      <Filter>Contents\Object\Champ\CommonBT</Filter>
+      <Filter>Contents\Object\GameUnit\Champ\CommonBT</Filter>
     </ClCompile>
     <ClCompile Include="sszColObj.cpp">
-      <Filter>Contents\Object\Champ\Base</Filter>
+      <Filter>Contents\Object\GameUnit\Champ\Base</Filter>
     </ClCompile>
     <ClCompile Include="sszBattleManager.cpp">
       <Filter>Contents\Manager\BattleManager</Filter>
     </ClCompile>
-    <ClCompile Include="sszDataManager.cpp" />
-    <ClCompile Include="sszPilot.cpp" />
-    <ClCompile Include="sszTeam.cpp" />
+    <ClCompile Include="sszTeam.cpp">
+      <Filter>Contents\Object\GameUnit\Team</Filter>
+    </ClCompile>
+    <ClCompile Include="sszPilotList.cpp">
+      <Filter>Contents\Manager\DataManager\PilotList</Filter>
+    </ClCompile>
+    <ClCompile Include="sszTeamList.cpp">
+      <Filter>Contents\Manager\DataManager\TeamList</Filter>
+    </ClCompile>
+    <ClCompile Include="sszChampList.cpp">
+      <Filter>Contents\Manager\DataManager\ChampList</Filter>
+    </ClCompile>
+    <ClCompile Include="sszTGM.cpp">
+      <Filter>Contents\Manager\DataManager\TotalGameManager</Filter>
+    </ClCompile>
+    <ClCompile Include="sszPilot.cpp">
+      <Filter>Contents\Object\GameUnit\Pilot</Filter>
+    </ClCompile>
+    <ClCompile Include="sszCursor.cpp">
+      <Filter>Contents\UI\Cursor</Filter>
+    </ClCompile>
+    <ClCompile Include="sszChamp_Script.cpp">
+      <Filter>Contents\Object\GameUnit\Champ\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="sszScript_Archer.cpp">
+      <Filter>Contents\Object\GameUnit\Champ\Archer</Filter>
+    </ClCompile>
+    <ClCompile Include="sszScript_Knight.cpp">
+      <Filter>Contents\Object\GameUnit\Champ\Knight</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Contents">
       <UniqueIdentifier>{b8655c56-a3c2-406d-871d-d73f4d0ea2b8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Load">
-      <UniqueIdentifier>{57d2f4aa-3152-4ae1-8282-a3ba908a4ae2}</UniqueIdentifier>
     </Filter>
     <Filter Include="Contents\Scene">
       <UniqueIdentifier>{b7ad5cba-665c-4e9a-b881-4a85724f2793}</UniqueIdentifier>
@@ -273,9 +273,6 @@
     </Filter>
     <Filter Include="Contents\Scene\1. Title">
       <UniqueIdentifier>{9a216870-610a-4d23-a309-e1ab936e847b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Scene\2. Prlg">
-      <UniqueIdentifier>{46c32d6a-9e33-4f3b-9d31-1d46a507cc7c}</UniqueIdentifier>
     </Filter>
     <Filter Include="Contents\Scene\3. MainLobby">
       <UniqueIdentifier>{68106073-b93c-49ad-ba42-3fcba360800f}</UniqueIdentifier>
@@ -292,99 +289,6 @@
     <Filter Include="Contents\Object">
       <UniqueIdentifier>{593de4cf-0d47-4de9-a2ba-315be2b7512c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Contents\Object\UI">
-      <UniqueIdentifier>{9c43af0a-c0b8-4d13-9c4c-f926ca438d8b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Object\GameObject">
-      <UniqueIdentifier>{65edb0b7-1aca-40e8-b544-096bdd12c655}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Object\GameObject\BackGround">
-      <UniqueIdentifier>{0b13dca3-a679-46e9-9142-2aa00b8a562e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Object\UI\Button">
-      <UniqueIdentifier>{43a2ca78-96e8-4858-b07e-eff7607330fa}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Object\UI\Button\DefaultBtn">
-      <UniqueIdentifier>{c6c6b886-6d39-4477-a55f-5923165d5492}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Object\UI\Button\InportantBtn">
-      <UniqueIdentifier>{15d426a2-86ee-4fff-ade7-4f4729be0a91}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Object\UI\Button\ProceedBtn">
-      <UniqueIdentifier>{ccd890c4-159b-4f81-b7aa-e0e1e66e1081}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Object\UI\Button\LobbyMenuBtn">
-      <UniqueIdentifier>{accba350-7e76-43a7-81b1-f6f759a112b7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Object\UI\Button\WeeklyEventBtn">
-      <UniqueIdentifier>{d2badf14-905e-4d07-b0fe-9455ae8db1e0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Object\UI\HeaderUI">
-      <UniqueIdentifier>{26b70876-1997-4ddb-9a3e-6c93d13527fc}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Object\UI\HeaderUI\Lobby">
-      <UniqueIdentifier>{b11e3a25-a8da-4046-855c-66030a0138d9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Object\UI\HeaderUI\Battle">
-      <UniqueIdentifier>{7f74714d-9a2b-465a-b5f1-c9e07da73fc3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Object\UI\Window">
-      <UniqueIdentifier>{e94a1987-8685-4206-8a67-0dcbb218e5a0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Object\UI\Window\NewGame">
-      <UniqueIdentifier>{7fca46c7-b174-495d-a603-f3b3391984b3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Object\UI\Slot">
-      <UniqueIdentifier>{8531973f-65d5-4c51-88c1-ebadddac8702}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Object\UI\Slot\LobbyHeaderSlot">
-      <UniqueIdentifier>{34c676f2-7337-46fa-8790-603d1191c06c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Object\UI\Logo">
-      <UniqueIdentifier>{9986c204-273f-4809-ba00-d0f6d2be6a6a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Object\UI\Window\LineUp">
-      <UniqueIdentifier>{f192984a-af85-44fe-bf3c-9323235e63f4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Object\UI\Slot\LineUpTeamTitle">
-      <UniqueIdentifier>{ce5c10d8-531e-44fb-95b5-cd1c2fdbb7fd}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Object\UI\Button\PlayerCardBtn">
-      <UniqueIdentifier>{68afe796-c894-4e47-9e43-039bd2d71f2c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Object\UI\Slot\PlayerCard">
-      <UniqueIdentifier>{79620b10-abe6-49c4-b321-ac155d5b51e7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Object\UI\Slot\BanpickStat">
-      <UniqueIdentifier>{ea18be57-baa9-43e4-977f-917a372d3645}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Object\UI\Line">
-      <UniqueIdentifier>{11fb3c8e-3e00-4816-9464-43056c020689}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Object\UI\Line\BanLine">
-      <UniqueIdentifier>{6c000f15-52ab-4820-b0b2-769fb841b94d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Object\UI\Icon">
-      <UniqueIdentifier>{b4cc266c-c3c2-4f65-91fc-5df7011e617e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Object\UI\Icon\StatIcon">
-      <UniqueIdentifier>{43303aef-9b44-4487-8215-f752573726bd}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Object\UI\Button\BanpickClassTap">
-      <UniqueIdentifier>{839e1af5-6092-41ff-851a-5cb45ed6e7dd}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Object\GameObject\BackGround\Waterfall">
-      <UniqueIdentifier>{a636a76e-2070-4fc4-b46b-dc016c1dae57}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Object\GameObject\BackGround\IG_Stadium">
-      <UniqueIdentifier>{c03ef563-1425-4ab9-9b04-269778118e52}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Object\Champ">
-      <UniqueIdentifier>{3076d426-20aa-4855-9ba1-ea2001fbdab9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Object\Champ\Base">
-      <UniqueIdentifier>{fd751b6e-e6d1-4b34-9d53-c31c850fef90}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Contents\CommonScript">
       <UniqueIdentifier>{c8ed79e1-3e5e-4b74-b9b3-887ec0621126}</UniqueIdentifier>
     </Filter>
@@ -400,26 +304,110 @@
     <Filter Include="Contents\CommonScript\Masking">
       <UniqueIdentifier>{470eae73-8547-43b4-a211-e5cd3ad79448}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Contents\Object\Champ\CommonBT">
+    <Filter Include="Contents\UI">
+      <UniqueIdentifier>{9c43af0a-c0b8-4d13-9c4c-f926ca438d8b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\UI\Button">
+      <UniqueIdentifier>{43a2ca78-96e8-4858-b07e-eff7607330fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\UI\Button\DefaultBtn">
+      <UniqueIdentifier>{c6c6b886-6d39-4477-a55f-5923165d5492}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\UI\Button\InportantBtn">
+      <UniqueIdentifier>{15d426a2-86ee-4fff-ade7-4f4729be0a91}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\UI\Button\ProceedBtn">
+      <UniqueIdentifier>{ccd890c4-159b-4f81-b7aa-e0e1e66e1081}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\UI\Button\LobbyMenuBtn">
+      <UniqueIdentifier>{accba350-7e76-43a7-81b1-f6f759a112b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\UI\Button\WeeklyEventBtn">
+      <UniqueIdentifier>{d2badf14-905e-4d07-b0fe-9455ae8db1e0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\UI\Button\PlayerCardBtn">
+      <UniqueIdentifier>{68afe796-c894-4e47-9e43-039bd2d71f2c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\UI\Button\BanpickClassTap">
+      <UniqueIdentifier>{839e1af5-6092-41ff-851a-5cb45ed6e7dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\UI\HeaderUI">
+      <UniqueIdentifier>{26b70876-1997-4ddb-9a3e-6c93d13527fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\UI\HeaderUI\Lobby">
+      <UniqueIdentifier>{b11e3a25-a8da-4046-855c-66030a0138d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\UI\HeaderUI\Battle">
+      <UniqueIdentifier>{7f74714d-9a2b-465a-b5f1-c9e07da73fc3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\UI\Window">
+      <UniqueIdentifier>{e94a1987-8685-4206-8a67-0dcbb218e5a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\UI\Window\NewGame">
+      <UniqueIdentifier>{7fca46c7-b174-495d-a603-f3b3391984b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\UI\Window\LineUp">
+      <UniqueIdentifier>{f192984a-af85-44fe-bf3c-9323235e63f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\UI\Slot">
+      <UniqueIdentifier>{8531973f-65d5-4c51-88c1-ebadddac8702}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\UI\Slot\LobbyHeaderSlot">
+      <UniqueIdentifier>{34c676f2-7337-46fa-8790-603d1191c06c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\UI\Slot\LineUpTeamTitle">
+      <UniqueIdentifier>{ce5c10d8-531e-44fb-95b5-cd1c2fdbb7fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\UI\Slot\PlayerCard">
+      <UniqueIdentifier>{79620b10-abe6-49c4-b321-ac155d5b51e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\UI\Slot\BanpickStat">
+      <UniqueIdentifier>{ea18be57-baa9-43e4-977f-917a372d3645}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\UI\Logo">
+      <UniqueIdentifier>{9986c204-273f-4809-ba00-d0f6d2be6a6a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\UI\Line">
+      <UniqueIdentifier>{11fb3c8e-3e00-4816-9464-43056c020689}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\UI\Line\BanLine">
+      <UniqueIdentifier>{6c000f15-52ab-4820-b0b2-769fb841b94d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\UI\Icon">
+      <UniqueIdentifier>{b4cc266c-c3c2-4f65-91fc-5df7011e617e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\UI\Icon\StatIcon">
+      <UniqueIdentifier>{43303aef-9b44-4487-8215-f752573726bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\GameUnit">
+      <UniqueIdentifier>{1090842e-04c0-4447-b41d-a8eb4966e27b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\GameUnit\Pilot">
+      <UniqueIdentifier>{0479a2d5-1936-4f26-bbc5-ea90836b91bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\GameUnit\Team">
+      <UniqueIdentifier>{34ee40ad-d110-4f0e-bde0-6d97ec10ce70}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\GameUnit\Champ">
+      <UniqueIdentifier>{3076d426-20aa-4855-9ba1-ea2001fbdab9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\GameUnit\Champ\Base">
+      <UniqueIdentifier>{fd751b6e-e6d1-4b34-9d53-c31c850fef90}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\GameUnit\Champ\CommonBT">
       <UniqueIdentifier>{bbc66e23-ba30-492c-8318-1ebdae8bbda0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Contents\Object\Champ\C_Knight">
-      <UniqueIdentifier>{17186b01-6d65-419a-98ad-509b72626a43}</UniqueIdentifier>
+    <Filter Include="Contents\Object\BackGround">
+      <UniqueIdentifier>{65edb0b7-1aca-40e8-b544-096bdd12c655}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Contents\Object\Champ\C_Knight\Script">
-      <UniqueIdentifier>{2f7e03f7-c6cc-4bd7-b5c6-dbbc679d04c1}</UniqueIdentifier>
+    <Filter Include="Contents\Object\BackGround\BackGround">
+      <UniqueIdentifier>{0b13dca3-a679-46e9-9142-2aa00b8a562e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Contents\Object\Champ\C_Archer">
-      <UniqueIdentifier>{dcfc9fed-9b2c-4ad6-8f94-9b5586d1ab59}</UniqueIdentifier>
+    <Filter Include="Contents\Object\BackGround\BackGround\Waterfall">
+      <UniqueIdentifier>{a636a76e-2070-4fc4-b46b-dc016c1dae57}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Contents\Object\Champ\C_Archer\Script">
-      <UniqueIdentifier>{6de9e3be-42c2-40b9-bb67-15d3f0502a1b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Object\Champ\C_Knight\ColObj">
-      <UniqueIdentifier>{71fac19f-33da-4d86-8622-0e81d9e6118f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Object\Champ\C_Archer\ColObj">
-      <UniqueIdentifier>{75bfe74f-4d41-41e7-88ce-1092bc13dd11}</UniqueIdentifier>
+    <Filter Include="Contents\Object\BackGround\BackGround\IG_Stadium">
+      <UniqueIdentifier>{c03ef563-1425-4ab9-9b04-269778118e52}</UniqueIdentifier>
     </Filter>
     <Filter Include="Contents\Manager">
       <UniqueIdentifier>{73a1c229-8c83-4a88-b1b0-5645825b1d43}</UniqueIdentifier>
@@ -430,8 +418,29 @@
     <Filter Include="Contents\Manager\DataManager">
       <UniqueIdentifier>{3601c501-0d69-470b-826f-e855add5d8e9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Contents\Object\Pilot">
-      <UniqueIdentifier>{0479a2d5-1936-4f26-bbc5-ea90836b91bd}</UniqueIdentifier>
+    <Filter Include="Contents\Manager\DataManager\ChampList">
+      <UniqueIdentifier>{0524ba27-c99f-4675-85ac-31e2fafbd923}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Manager\DataManager\PilotList">
+      <UniqueIdentifier>{27e3bc9a-3888-40c1-93c9-fc0495118ddb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Manager\DataManager\TeamList">
+      <UniqueIdentifier>{2f8e073f-6ce0-4662-99fe-a69c56f88fae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Manager\DataManager\TotalGameManager">
+      <UniqueIdentifier>{2889f92b-b85f-49d9-9ebd-c33760a653a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\UI\Cursor">
+      <UniqueIdentifier>{9e7d735f-66a7-4b32-a0f8-1f6c1b7a9636}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Load">
+      <UniqueIdentifier>{57d2f4aa-3152-4ae1-8282-a3ba908a4ae2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\GameUnit\Champ\Knight">
+      <UniqueIdentifier>{17186b01-6d65-419a-98ad-509b72626a43}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\GameUnit\Champ\Archer">
+      <UniqueIdentifier>{dcfc9fed-9b2c-4ad6-8f94-9b5586d1ab59}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

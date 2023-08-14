@@ -1,5 +1,7 @@
 #pragma once
 #include "sszUIObject.h"
+#include "GameEnums.h"
+#include "sszTexture.h"
 
 namespace ssz
 {
@@ -15,6 +17,6 @@ namespace ssz
         void SetIcon(eStatType eType);
 
     private:
-        std::shared_ptr<Texture> mStatIconTex[(UINT)eStatType::END];
+        std::shared_ptr<graphics::Texture> mStatIconTex[(UINT)eStatType::END];
 	};
 }

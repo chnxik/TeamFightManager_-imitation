@@ -19,8 +19,21 @@ namespace ssz
 	TitleScene::~TitleScene()
 	{
 	}
+
 	void TitleScene::Initialize()
 	{
+		// MouseCursor
+		{
+			
+		}
+
+		// Main Camera
+		{
+			GameObject* camera = Instantiate<GameObject>(Vector3(0.0f, 0.0f, -10.f), eLayerType::Camera);
+			camera->SetName(L"MainCamera");
+			Camera* cameraComp = camera->AddComponent<Camera>();
+		}
+
 		{
 			Resources::Load<Texture>(L"TitleBg", L"..\\Resources\\useResource\\Title\\teamfight_manager_title_bg.png");
 			Resources::Load<Texture>(L"IGStadiumSkyTex", L"..\\Resources\\useResource\\stadium\\ingame\\stadium_sky_bg.png");
@@ -60,19 +73,7 @@ namespace ssz
 			NewGameUICloseBtn->GetBtnComponent()->SetDelegate(NewGameUI, (DELEGATE)&GameObject::SetPaused);
 		}
 
-		// MouseCursor
-		{
-			GameObject* Cursor = Instantiate<GameObject>(Vector3(0.f, 0.f, 0.01f), Vector3(32.f, 32.f, 1.f), eLayerType::Cursor);
-			Cursor->SetName(L"Cursor");
-			Cursor->AddComponent<CursorScript>();
-		}
-
-		// Main Camera
-		{
-			GameObject* camera = Instantiate<GameObject>(Vector3(0.0f, 0.0f, -10.f), eLayerType::Camera);
-			camera->SetName(L"MainCamera");
-			Camera* cameraComp = camera->AddComponent<Camera>();
-		}
+		
 #pragma endregion
 	}
 	void TitleScene::Update()
@@ -99,11 +100,15 @@ namespace ssz
 
 	void TitleScene::OnEnter()
 	{
+		AddGameObject(eLayerType::Cursor, TGM::GetCursor());
+
 		CollisionManager::SetLayer(eLayerType::UI, eLayerType::Cursor, true);
 	}
 
 	void TitleScene::OnExit()
 	{
 		CollisionManager::Clear();
+		Clear(eLayerType::Cursor);
+
 	}
 }

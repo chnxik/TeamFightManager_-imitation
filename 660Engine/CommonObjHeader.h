@@ -5,7 +5,6 @@
 
 // GamaManger
 #include "sszBattleManager.h"
-
 // Engine
 #include "sszSceneManager.h"
 #include "sszCollisionManager.h"
@@ -16,8 +15,11 @@
 
 // GameObject
 #include "sszGameObject.h"	// 게임 오브젝트
+
 #include "sszChamp.h"		// 챔피언 오브젝트
 #include "sszColObj.h"		// 콜라이더용 오브젝트
+#include "sszPilot.h"
+#include "sszTeam.h"
 
 // AI
 #include "sszBT.h"

@@ -1,7 +1,6 @@
 #pragma once
 #include "CommonObjHeader.h"
+#include "sszTGM.h"
 
 // Script
-#include "sszCursorScript.h"
 #include "sszArrangementScript.h"
-#include "ChampList.h"

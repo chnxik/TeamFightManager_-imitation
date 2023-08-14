@@ -1,10 +1,12 @@
 #pragma once
 #include "sszGameObject.h"
-#include "CommonObjHeader.h"
 
 namespace ssz
 {
     class ColObj;
+    class Pilot;
+    class Champ_Script;
+    
     class Champ : public GameObject
     {
     public:
@@ -44,35 +46,41 @@ namespace ssz
             UINT KILLPOINT = 0;     // Kill
             UINT DEATHPOINT = 0;    // Death
             UINT ASSISTPOINT = 0;   // Assist
-
         };
 
         Champ();
         virtual ~Champ();
 
-        virtual void Initialize() {};
-        virtual void Update() {};
-        virtual void LateUpdate() {};
-        virtual void Render() {};
+        virtual void Initialize();
+        virtual void Update();
+        virtual void LateUpdate();
+        virtual void Render();
 
         virtual void Dead();
 
-        virtual void Play_Idle() {};
-        virtual void Play_Move() {};
-        virtual void Play_Attack() {};
-        virtual void Play_Dead() {};
-        virtual void Play_Skill1() {};
-        virtual void Play_Skill2() {};
+        virtual void Play_Idle();
+        virtual void Play_Move();
+        virtual void Play_Attack();
+        virtual void Play_Dead();
+        virtual void Play_Skill1();
+        virtual void Play_Skill2();
+
+        void SetChampScript(Champ_Script* script);
 
         // 챔피언 정보 관리
-        const DefaultInfo& GetChampInfo() { return mDefaultInfo; }
-        void SetChampInfo(DefaultInfo src) { mDefaultInfo = src; }
-        void SetChampInfo(eChampType Type, UINT atk, float apd, UINT rng, UINT def, UINT hp, UINT spd);
+        const DefaultInfo& GetChampInfo() { return mDefaultInfo; } // 챔피언 기본 정보
+        void SetChampInfo(DefaultInfo src) { mDefaultInfo = src; } // 챔피언 기본 정보
+        void SetChampInfo(eChampType Type, UINT atk, float apd, UINT rng, UINT def, UINT hp, UINT spd); // 챔피언 기본 정보
         
-        IGStatus* GetIGStatus() { return &mIGInfo; }
+        IGStatus* GetIGStatus() { return &mIGInfo; } // 경기 사용 챔피언 정보
         void InitIGInfo(UINT ATKpt, UINT DEFpt); // Player 클래스를 인자로 받는다.
 
+        void ResetInfo();
 
+        // Pilot 정보
+        void RegistPilot(Pilot* pPilot) { mPilot = pPilot; }
+        const Pilot* GetPilot() { return mPilot; }
+        
         // 아군 챔피언 관리
         void RegistFriendly(Champ* pChamp) { mFriendly.emplace_back(pChamp); }
         std::vector<Champ*> GetFriendly() { return mFriendly; }
@@ -88,17 +96,22 @@ namespace ssz
         Champ* GetTargetEnemy() { return mTargetEnemy; }
         
         // ColObj 관리
-        ColObj* CreateColObj(const std::wstring& key);
-        Collider2D* FindColObjsCol(const std::wstring& key);
+        ColObj* CreateColObj(eColObjType Type);
+        void ColObjSetLayer(eColObjType Type);
+        Collider2D* GetColObjsCol(eColObjType Type);
 
     private:
-        DefaultInfo mDefaultInfo;
-        IGStatus    mIGInfo;
+        DefaultInfo mDefaultInfo;       // 챔피언 기본 정보
+        IGStatus    mIGInfo;            // 챔피언 경기 정보
 
-        std::vector<Champ*> mFriendly;
-        std::vector<Champ*> mEnemys;
-        Champ* mTargetEnemy;
+        Pilot*      mPilot;// 파일럿 포인터
 
-        std::map<std::wstring, ColObj*>mColObjs;
+        std::vector<Champ*> mFriendly;  // 아군 챔피언 리스트
+        std::vector<Champ*> mEnemys;    // 적 챔피언 리스트
+        
+        Champ* mTargetEnemy;            // 공격 타겟
+
+        ColObj* mColObjs[(UINT)eColObjType::END];    // 공격,스킬 판정용 콜라이더 오브젝트
+        Champ_Script* mChampScript;
     };
 }

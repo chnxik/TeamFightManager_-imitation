@@ -146,10 +146,16 @@ namespace ssz
 	}
 	void MainLobbyScene::OnEnter()
 	{
+		Cursor::RegistCursor(this);
+		MainCamera::RegistCamera(this);
+
 		CollisionManager::SetLayer(eLayerType::UI, eLayerType::Cursor, true);
 	}
 	void MainLobbyScene::OnExit()
 	{
 		CollisionManager::Clear();
+
+		Erase(eLayerType::Cursor);
+		Erase(eLayerType::Camera);
 	}
 }

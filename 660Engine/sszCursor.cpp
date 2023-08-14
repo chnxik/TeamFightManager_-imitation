@@ -1,9 +1,11 @@
 #include "sszCursor.h"
+#include "CommonObjHeader.h"
 
 #include "sszCursorScript.h"
 
-namespace ssz
+namespace ssz 
 {
+	GameObject* Cursor::mCursor = nullptr;
 
 	Cursor::Cursor()
 	{
@@ -23,17 +25,17 @@ namespace ssz
 
 		AddComponent<CursorScript>();
 	}
-	
+
 	void Cursor::Update()
 	{
 		GameObject::Update();
 	}
-	
+
 	void Cursor::LateUpdate()
 	{
 		GameObject::LateUpdate();
 	}
-	
+
 	void Cursor::Render()
 	{
 		GameObject::Render();

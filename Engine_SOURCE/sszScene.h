@@ -15,6 +15,7 @@ namespace ssz
 		virtual void LateUpdate();
 		virtual void Render();
 		virtual void Destroy();
+		virtual void Erase(eLayerType type);
 
 		virtual void Clear(eLayerType type);
 

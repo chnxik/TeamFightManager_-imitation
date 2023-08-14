@@ -184,6 +184,7 @@
     <ClInclude Include="sszCursorScript.h" />
     <ClInclude Include="sszDefaultBtn.h" />
     <ClInclude Include="sszHeaderSlot.h" />
+    <ClInclude Include="sszIGStadiumScene.h" />
     <ClInclude Include="sszObj_IG_Stadium.h" />
     <ClInclude Include="sszImportantBtn.h" />
     <ClInclude Include="sszLineUpTeamTitle.h" />
@@ -228,6 +229,7 @@
     <ClCompile Include="sszCursorScript.cpp" />
     <ClCompile Include="sszDefaultBtn.cpp" />
     <ClCompile Include="sszHeaderSlot.cpp" />
+    <ClCompile Include="sszIGStadiumScene.cpp" />
     <ClCompile Include="sszObj_IG_Stadium.cpp" />
     <ClCompile Include="sszImportantBtn.cpp" />
     <ClCompile Include="sszLineUpTeamTitle.cpp" />

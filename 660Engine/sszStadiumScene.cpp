@@ -137,10 +137,16 @@ namespace ssz
 	}
 	void StadiumScene::OnEnter()
 	{
+		Cursor::RegistCursor(this);
+		MainCamera::RegistCamera(this);
+
 		CollisionManager::SetLayer(eLayerType::UI, eLayerType::Cursor, true);
 	}
 	void StadiumScene::OnExit()
 	{
 		CollisionManager::Clear();
+
+		Erase(eLayerType::Cursor);
+		Erase(eLayerType::Camera);
 	}
 }

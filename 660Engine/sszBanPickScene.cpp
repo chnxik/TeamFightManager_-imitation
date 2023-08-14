@@ -97,10 +97,16 @@ namespace ssz
 	}
 	void BanPickScene::OnEnter()
 	{
+		Cursor::RegistCursor(this);
+		MainCamera::RegistCamera(this);
+
 		CollisionManager::SetLayer(eLayerType::UI, eLayerType::Cursor, true);
 	}
 	void BanPickScene::OnExit()
 	{
 		CollisionManager::Clear();
+
+		Erase(eLayerType::Cursor);
+		Erase(eLayerType::Camera);
 	}
 }

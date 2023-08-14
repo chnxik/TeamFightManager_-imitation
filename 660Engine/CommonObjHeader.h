@@ -3,6 +3,10 @@
 #include "GameEnums.h"
 #include "CommonDefine.h"
 
+// Essential
+#include "sszCursor.h"
+#include "sszMainCamera.h"
+
 // GamaManger
 #include "sszBattleManager.h"
 // Engine

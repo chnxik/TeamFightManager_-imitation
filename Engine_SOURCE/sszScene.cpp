@@ -63,6 +63,11 @@ namespace ssz
 		mLayers[(UINT)type].clear();
 	}
 
+	void Scene::Erase(eLayerType type)
+	{
+		mLayers[(int)type].Erase();
+	}
+
 	void Scene::OnEnter()
 	{
 	}

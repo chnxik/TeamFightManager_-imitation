@@ -25,9 +25,9 @@ namespace ssz
 
 		// Main Camera
 		{
-			GameObject* camera = Instantiate<GameObject>(Vector3(0.0f, 0.0f, -10.f), eLayerType::Camera);
-			camera->SetName(L"MainCamera");
-			Camera* cameraComp = camera->AddComponent<Camera>();
+			// GameObject* camera = Instantiate<GameObject>(Vector3(0.0f, 0.0f, -10.f), eLayerType::Camera);
+			// camera->SetName(L"MainCamera");
+			// Camera* cameraComp = camera->AddComponent<Camera>();
 		}
 
 		// ¹è°æ

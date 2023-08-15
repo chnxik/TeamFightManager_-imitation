@@ -19,13 +19,5 @@ namespace ssz
 		virtual void InitBT();          // Ã¨ÇÁ AI ¼³Á¤
 
 		virtual void Dead();
-
-		virtual void Play_Idle();
-		virtual void Play_Move();
-		virtual void Play_Attack();
-		virtual void Play_Dead();
-		virtual void Play_Skill1();
-		virtual void Play_Skill2();
-
 	};
 }

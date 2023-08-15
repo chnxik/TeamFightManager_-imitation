@@ -1,5 +1,6 @@
 #pragma once
 #include "CommonObjHeader.h"
+#include "sszBattleManager.h"
 
 namespace ssz
 {
@@ -17,6 +18,26 @@ namespace ssz
 			return NS_FAILURE;
 		}
 	};
+
+	class Con_IsDead : public Condition_Node // 사망여부
+	{
+	public:
+		virtual eNodeStatus Run() override
+		{
+			wstring* ChampName = mAIBB->FindData<wstring>(CHAMPKEY);
+
+			Champ* Owner = mAIBB->FindData<Champ>(*ChampName);
+
+			Animator* Anim = Owner->GetComponent<Animator>();
+			if (Anim->GetCurAnimationKey() == Owner->GetAnimKey(Champ::eAnimType::DEAD))
+			{
+				return NS_SUCCESS;
+			}
+
+			return NS_FAILURE;
+		}
+	};
+
 	class Con_CollisionCsr : public Condition_Node // 커서 충돌 컨디션
 	{
 	public:
@@ -52,7 +73,10 @@ namespace ssz
 			TargetCol = Target->GetComponent<Collider2D>();
 
 			if (CollisionManager::IsCollision(TargetCol, OwnerCol))
+			{
+				Owner->SetTargetEnemy(Target);
 				return NS_SUCCESS;
+			}
 
 
 			return NS_FAILURE;
@@ -261,6 +285,7 @@ namespace ssz
 			return NS_SUCCESS;
 		}
 	};
+
 	class Act_PlayAnim_Idle : public Action_Node
 	{
 	public:
@@ -274,6 +299,7 @@ namespace ssz
 			return NS_SUCCESS;
 		}
 	};
+
 	class Act_PlayAnim_Move : public Action_Node
 	{
 	public:

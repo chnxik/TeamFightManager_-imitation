@@ -7,6 +7,12 @@ namespace ssz
 	class Collider2D : public Component
 	{
 	public:
+		enum class eColState
+		{
+			Active,
+			Paused
+		};
+
 		enum eAxis
 		{
 			Right,
@@ -49,6 +55,10 @@ namespace ssz
 
 		int GetOverlapCnt() { return mOverlapCnt; }
 
+		bool IsPaused() { return mColState == eColState::Paused; }
+		void ColliderActive() { mColState = eColState::Active; }
+		void ColliderPaused() { mColState = eColState::Paused; }
+
 	private:
 		static UINT mColliderNumber;
 		UINT mColliderID;
@@ -65,5 +75,7 @@ namespace ssz
 		Vector3 Axis[eAxis::End];
 
 		int mOverlapCnt;
+
+		eColState mColState;
 	};
 }

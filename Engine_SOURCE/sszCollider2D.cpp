@@ -19,6 +19,7 @@ namespace ssz
 		, mFinalPos(Vector3::Zero)
 		, mFinalRotation(Vector3::Zero)
 		, Axis{}
+		, mColState(eColState::Active)
 	{
 	}
 

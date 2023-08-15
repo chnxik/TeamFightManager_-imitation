@@ -1,6 +1,8 @@
 #include "sszTestScene.h"
 #include "CommonHeader.h"
 
+#include "sszBattleManager.h"
+
 #include "sszBattleHeader.h"
 #include "sszObj_IG_Stadium.h"
 
@@ -48,6 +50,8 @@ namespace ssz
 	void TestScene::LateUpdate()
 	{
 		Scene::LateUpdate();
+
+		BattleManager::Update();
 
 		if (Input::GetKeyDown(eKeyCode::ENTER))
 		{

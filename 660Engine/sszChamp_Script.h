@@ -20,13 +20,6 @@ namespace ssz
 
         virtual void Dead() = 0;
 
-        virtual void Play_Idle() = 0;
-        virtual void Play_Move() = 0;
-        virtual void Play_Attack() = 0;
-        virtual void Play_Dead() = 0;
-        virtual void Play_Skill1() = 0;
-        virtual void Play_Skill2() = 0;
-
     private:
         Root_Node* mRoot;
 

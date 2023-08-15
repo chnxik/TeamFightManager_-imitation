@@ -78,13 +78,13 @@ namespace ssz
         }
     }
 
-    void UIObject::SetDead()
+    void UIObject::RegistRespawnPool()
     {
-        GameObject::SetDead();
+        GameObject::RegistRespawnPool();
 
         for (size_t i = 0; i < mChildUI.size(); ++i)
         {
-            mChildUI[i]->SetDead();
+            mChildUI[i]->RegistRespawnPool();
         }
     }
 

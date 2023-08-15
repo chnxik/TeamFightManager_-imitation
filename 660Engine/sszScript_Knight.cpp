@@ -34,7 +34,7 @@ namespace ssz
 
 		Owner->SetName(KNIGHT);
 
-		Owner->SetChampInfo(eChampType::FIGHTER, 21, 0.67f, 37, 60, 200, 5);
+		Owner->SetChampInfo(eChampType::FIGHTER, 21, 0.67f, 37, 10, 200, 5);
 		Owner->InitIGInfo(0, 0);
 
 		Owner->GetComponent<Transform>()->SetScale(Vector3(170.f, 170.f, 1.f)); // 96 size
@@ -65,8 +65,18 @@ namespace ssz
 		anim->Create(L"knight_dead", L"knight_sprite", Vector2(0.f, FrmSize.y * 3), FrmSize, 9, Vector2(0.f, 0.f), 8.f);
 		anim->Create(L"knight_skill1", L"knight_sprite", Vector2(0.f, FrmSize.y * 4), FrmSize, 7, Vector2(0.f, 0.f), 8.f);
 		anim->Create(L"knight_skill2", L"knight_sprite", Vector2(0.f, FrmSize.y * 5), FrmSize, 7, Vector2(0.f, 0.f), 8.f);
+
+		Owner->SetAnimKey(Champ::eAnimType::IDLE, L"knight_idle");
+		Owner->SetAnimKey(Champ::eAnimType::MOVE, L"knight_move");
+		Owner->SetAnimKey(Champ::eAnimType::ATTACK, L"knight_attack");
+		Owner->SetAnimKey(Champ::eAnimType::DEAD, L"knight_dead");
+		Owner->SetAnimKey(Champ::eAnimType::SKILL1, L"knight_skill1");
+		Owner->SetAnimKey(Champ::eAnimType::SKILL2, L"knight_skill2");
 		
-		Play_Idle();
+		anim->StartEvent(Owner->GetAnimKey(Champ::eAnimType::ATTACK)) = std::bind(&Champ::Battle, Owner);
+		anim->CompleteEvent(Owner->GetAnimKey(Champ::eAnimType::DEAD)) = std::bind(&BattleManager::RegistRespawnPool, Owner);
+
+		Owner->Play_Idle();
 	}
 
 	void Script_Knight::InitColObj()
@@ -110,7 +120,7 @@ namespace ssz
 
 		// Set BT
 		Selector_Node* ChampBT = CreateRootNode(ptrAIBB)->AddChild<Selector_Node>(); // 최상위 셀렉터 노드
-
+		
 
 		Sequence_Node* Seq_Dead = ChampBT->AddChild<Sequence_Node>(); // 사망 판단 시퀀스
 		Sequence_Node* Seq_Stop = ChampBT->AddChild<Sequence_Node>(); // 정지 판단 시퀀스
@@ -118,8 +128,9 @@ namespace ssz
 		Sequence_Node* Seq_Move = ChampBT->AddChild<Sequence_Node>(); // 이동 판단 시퀀스
 
 		// 사망 판단 시퀀스
-		Seq_Dead->AddChild<Con_CollisionCsr>(); // 정지 버튼 입력 판단
-		Seq_Dead->AddChild<Act_PlayAnim_Dead>(); // Idle Animation 재생
+		//Seq_Dead->AddChild<Con_CollisionCsr>(); // 정지 버튼 입력 판단
+		Seq_Dead->AddChild<Con_IsDead>();
+		//Seq_Dead->AddChild<Act_PlayAnim_Dead>(); // Idle Animation 재생
 
 		// 정지 판단 시퀀스
 		Seq_Stop->AddChild<Con_IsStopBtnPush>(); // 정지 버튼 입력 판단
@@ -176,36 +187,6 @@ namespace ssz
 
 	void Script_Knight::Dead()
 	{
-	}
-
-	void Script_Knight::Play_Idle()
-	{
-		GetOwner()->GetComponent<Animator>()->PlayAnimation(L"knight_idle", true);
-	}
-
-	void Script_Knight::Play_Move()
-	{
-		GetOwner()->GetComponent<Animator>()->PlayAnimation(L"knight_move", true);
-	}
-
-	void Script_Knight::Play_Attack()
-	{
-		GetOwner()->GetComponent<Animator>()->PlayAnimation(L"knight_attack", false);
-	}
-
-	void Script_Knight::Play_Dead()
-	{
-		GetOwner()->GetComponent<Animator>()->PlayAnimation(L"knight_dead", false);
-	}
-
-	void Script_Knight::Play_Skill1()
-	{
-		GetOwner()->GetComponent<Animator>()->PlayAnimation(L"knight_skill1", true);
-	}
-
-	void Script_Knight::Play_Skill2()
-	{
-		GetOwner()->GetComponent<Animator>()->PlayAnimation(L"knight_skill2", true);
 	}
 
 }

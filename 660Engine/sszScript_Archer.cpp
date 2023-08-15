@@ -1,7 +1,5 @@
 #include "sszScript_Archer.h"
-
 #include "sszTGM.h"
-
 // Test
 #include "sszTestBT.cpp"
 
@@ -58,13 +56,24 @@ namespace ssz
 
 		Vector2 FrmSize(64.f, 64.f);
 
+
 		anim->Create(L"archer_idle", L"archer_sprite", Vector2(0.f, 0.f), FrmSize, 4, Vector2(0.f, 0.f), 6.f);
 		anim->Create(L"archer_move", L"archer_sprite", Vector2(0.f, FrmSize.y * 1), FrmSize, 8, Vector2(0.f, 0.f), 8.f);
 		anim->Create(L"archer_attack", L"archer_sprite", Vector2(0.f, FrmSize.y * 2), FrmSize, 7, Vector2(0.f, 0.f), 8.f);
 		anim->Create(L"archer_dead", L"archer_sprite", Vector2(0.f, FrmSize.y * 3), FrmSize, 9, Vector2(0.f, 0.f), 8.f);
 		anim->Create(L"archer_skill", L"archer_sprite", Vector2(0.f, FrmSize.y * 4), FrmSize, 17, Vector2(0.f, 0.f), 8.f);
 		
-		Play_Idle();
+
+		Owner->SetAnimKey(Champ::eAnimType::IDLE,L"archer_idle");
+		Owner->SetAnimKey(Champ::eAnimType::MOVE,L"archer_move");
+		Owner->SetAnimKey(Champ::eAnimType::ATTACK,L"archer_attack");
+		Owner->SetAnimKey(Champ::eAnimType::DEAD,L"archer_dead");
+		Owner->SetAnimKey(Champ::eAnimType::SKILL1,L"archer_skill");
+		
+		anim->StartEvent(Owner->GetAnimKey(Champ::eAnimType::ATTACK)) = std::bind(&Champ::Battle, Owner);
+		anim->CompleteEvent(Owner->GetAnimKey(Champ::eAnimType::DEAD)) = std::bind(&BattleManager::RegistRespawnPool, Owner);
+		
+		Owner->Play_Idle();
 	}
 
 	void Script_Archer::InitColObj()
@@ -115,8 +124,9 @@ namespace ssz
 		Sequence_Node* Seq_Move = ChampBT->AddChild<Sequence_Node>(); // 이동 판단 시퀀스
 
 		// 사망 판단 시퀀스
-		Seq_Dead->AddChild<Con_CollisionCsr>(); // Csr 충돌 판단
-		Seq_Dead->AddChild<Act_PlayAnim_Dead>(); // Idle Animation 재생
+		// Seq_Dead->AddChild<Con_CollisionCsr>(); // Csr 충돌 판단
+		Seq_Dead->AddChild<Con_IsDead>();
+		// Seq_Dead->AddChild<Act_PlayAnim_Dead>(); // Idle Animation 재생
 
 		// 정지 판단 시퀀스
 		Seq_Stop->AddChild<Con_IsStopBtnPush>(); // 정지 버튼 입력 판단
@@ -130,7 +140,9 @@ namespace ssz
 		Seq_Attack->AddChild<Con_MustBack>();
 		Seq_Attack->AddChild<Con_OntheRight>();
 		Seq_Attack->AddChild<Con_IsRight>();
-		Seq_Attack->AddChild<Act_PlayAnim_Attack>();
+
+		Sequence_Node* Seq_AttackAnim = Seq_Attack->AddChild<Sequence_Node>();
+		Seq_AttackAnim->AddChild<Act_PlayAnim_Attack>();
 
 		// 이동 판단 시퀀스
 		Selector_Node* Sel_CheckMoveDir = Seq_Move->AddChild<Selector_Node>();
@@ -164,35 +176,6 @@ namespace ssz
 	}
 
 	void Script_Archer::Dead()
-	{
-	}
-	
-	void Script_Archer::Play_Idle()
-	{
-		GetOwner()->GetComponent<Animator>()->PlayAnimation(L"archer_idle", true);
-	}
-	
-	void Script_Archer::Play_Move()
-	{
-		GetOwner()->GetComponent<Animator>()->PlayAnimation(L"archer_move", true);
-	}
-	
-	void Script_Archer::Play_Attack()
-	{
-		GetOwner()->GetComponent<Animator>()->PlayAnimation(L"archer_attack", false);
-	}
-	
-	void Script_Archer::Play_Dead()
-	{
-		GetOwner()->GetComponent<Animator>()->PlayAnimation(L"archer_dead", false);
-	}
-	
-	void Script_Archer::Play_Skill1()
-	{
-		GetOwner()->GetComponent<Animator>()->PlayAnimation(L"archer_skill", true);
-	}
-	
-	void Script_Archer::Play_Skill2()
 	{
 	}
 }

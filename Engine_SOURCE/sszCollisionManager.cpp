@@ -69,9 +69,10 @@ namespace ssz
 				if (lefts[LeftIdx] == rights[RightIdx]) // 충돌검사 대상이 자기 자신인 경우
 					continue;
 
-				bool bDead = lefts[LeftIdx]->IsDead() || rights[RightIdx]->IsDead(); // 검사 대상 객채중 한 객체가 Dead상태이다.
+				// bool bDead = lefts[LeftIdx]->IsDead() || rights[RightIdx]->IsDead(); // 검사 대상 객채중 한 객체가 Dead상태이다.
+				bool bUnValued = lefts[LeftIdx]->IsUnValued() || rights[RightIdx]->IsUnValued(); // 검사 대상 객채중 한 객체가 Dead상태이다.
 
-				ColliderCollision(leftCol, rightCol, bDead); // 충돌검사 로직
+				ColliderCollision(leftCol, rightCol, bUnValued); // 충돌검사 로직
 			}
 		}
 	}
@@ -110,14 +111,15 @@ namespace ssz
 				if (UICol == nullptr)
 					continue;
 
-				bool bDead = pUI->IsDead() || vecCursor[0]->IsDead();
+				// bool bDead = pUI->IsDead() || vecCursor[0]->IsDead();
+				bool bUnValued = pUI->IsUnValued() || vecCursor[0]->IsUnValued();
 
-				ColliderCollision(UICol, CursorCol, bDead); // 충돌검사 로직
+				ColliderCollision(UICol, CursorCol, bUnValued); // 충돌검사 로직
 			}
 		}
 	}
 
-	void CollisionManager::ColliderCollision(Collider2D* left, Collider2D* right, bool bDead)
+	void CollisionManager::ColliderCollision(Collider2D* left, Collider2D* right, bool bUnValued)
 	{
 		// 두 충돌체의 ID 확인
 		ColliderID ID = {};
@@ -135,6 +137,8 @@ namespace ssz
 		eColliderType LeftColType = left->GetType();
 		eColliderType RightColType = right->GetType();
 		bool bCollision = false;
+
+		bool bPaused = left->IsPaused() || right->IsPaused();
 
 		// Type별 충돌검사
 
@@ -162,7 +166,7 @@ namespace ssz
 		{
 			if (iter->second) // 충돌정보 있음
 			{
-				if (bDead) // 검사대상이 Dead 이므로 충돌체 벗어남.
+				if (bUnValued || bPaused) // 비활성화 상태
 				{
 					left->OnCollisionExit(right);
 					right->OnCollisionExit(left);
@@ -177,7 +181,7 @@ namespace ssz
 
 			else // 충돌정보 없음
 			{
-				if (!bDead) // 검사대상이 Dead가 아님.
+				if (!bUnValued && !bPaused) // 검사대상이 활상화 상태임
 				{
 					//최초 충돌
 					left->OnCollisionEnter(right);
@@ -196,7 +200,7 @@ namespace ssz
 				iter->second = false; // 충돌정보 갱신
 			}
 
-			if (bDead) // 검사 대상이 Dead 상태
+			if (bUnValued) // 비활성화 상태
 			{
 				mCollisionMap.erase(iter); // 이 객체간 충돌정보를 삭제
 			}

@@ -10,6 +10,17 @@ namespace ssz
     class Champ : public GameObject
     {
     public:
+        enum class eAnimType
+        {
+            IDLE,
+            MOVE,
+            ATTACK,
+            DEAD,
+            SKILL1,
+            SKILL2,
+            END
+        };
+
         struct DefaultInfo // 챔피언 기본 정보
         {
             eChampType ChampType = eChampType::NONE; // 챔피언 타입
@@ -35,9 +46,10 @@ namespace ssz
             // 선수 주력 챔피언 능력치
 
             // 챔피언 정보
-            int HP = 0;             // 현재 체력
-            float COOLTIME = 0.f;   // 스킬1 쿨타임
-            bool bULTIMATE = false; // 궁극기 사용 여부
+            int HP = 0;              // 현재 체력
+            float COOLTIME = 0.f;    // 스킬1 쿨타임
+            bool bULTIMATE = false;  // 궁극기 사용 여부
+            float RespawnTime = 0.f; // 리스폰시간
 
             // 게임 통계
             UINT TotalDeal = 0;     // 준 피해량
@@ -58,12 +70,12 @@ namespace ssz
 
         virtual void Dead();
 
-        virtual void Play_Idle();
-        virtual void Play_Move();
-        virtual void Play_Attack();
-        virtual void Play_Dead();
-        virtual void Play_Skill1();
-        virtual void Play_Skill2();
+        void Play_Idle();
+        void Play_Move();
+        void Play_Attack();
+        void Play_Dead();
+        void Play_Skill1();
+        void Play_Skill2();
 
         void SetChampScript(Champ_Script* script);
 
@@ -94,11 +106,19 @@ namespace ssz
         // 타겟 지정
         void SetTargetEnemy(Champ* pTarget) { mTargetEnemy = pTarget; }
         Champ* GetTargetEnemy() { return mTargetEnemy; }
+
+        void Battle();
         
         // ColObj 관리
         ColObj* CreateColObj(eColObjType Type);
         void ColObjSetLayer(eColObjType Type);
         Collider2D* GetColObjsCol(eColObjType Type);
+
+        virtual void SetState(eState state);
+
+        // Animation Key
+        void SetAnimKey(eAnimType eType, const std::wstring& key) { vecAnimKey[(UINT)eType] = key; }
+        const std::wstring& GetAnimKey(eAnimType eType) { return vecAnimKey[(UINT)eType]; }
 
     private:
         DefaultInfo mDefaultInfo;       // 챔피언 기본 정보
@@ -113,5 +133,7 @@ namespace ssz
 
         ColObj* mColObjs[(UINT)eColObjType::END];    // 공격,스킬 판정용 콜라이더 오브젝트
         Champ_Script* mChampScript;
+
+        std::wstring vecAnimKey[(UINT)eAnimType::END];
     };
 }

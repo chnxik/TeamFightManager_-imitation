@@ -16,7 +16,7 @@ namespace ssz
 		virtual void Render();
 
 		virtual void SetState(eState state);
-		virtual void SetDead();
+		virtual void RegistRespawnPool();
 		virtual void SetActive();
 		virtual void SetPaused();
 

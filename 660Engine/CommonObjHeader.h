@@ -7,8 +7,6 @@
 #include "sszCursor.h"
 #include "sszMainCamera.h"
 
-// GamaManger
-#include "sszBattleManager.h"
 // Engine
 #include "sszSceneManager.h"
 #include "sszCollisionManager.h"

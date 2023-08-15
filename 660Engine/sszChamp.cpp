@@ -1,6 +1,7 @@
 #include "sszChamp.h"
 #include "CommonObjHeader.h"
 
+#include "sszBattleManager.h"
 #include "sszChamp_Script.h"
 
 namespace ssz
@@ -12,6 +13,7 @@ namespace ssz
 		, mTargetEnemy(nullptr)
 		, mColObjs{}
 		, mChampScript(nullptr)
+		, vecAnimKey{}
 	{
 
 	}
@@ -49,38 +51,44 @@ namespace ssz
 
 	void Champ::Dead()
 	{
+		Play_Dead();
+		
+		Collider2D* Col = GetComponent<Collider2D>();
+		
+		if(!Col->IsPaused())
+			Col->ColliderPaused();
 	}
 
 	void Champ::Play_Idle()
 	{
-		mChampScript->Play_Idle();
+		GetComponent<Animator>()->PlayAnimation(vecAnimKey[(UINT)eAnimType::IDLE], true);
 	}
 
 	void Champ::Play_Move()
 	{
-		mChampScript->Play_Move();
+		GetComponent<Animator>()->PlayAnimation(vecAnimKey[(UINT)eAnimType::MOVE], true);
 	}
 
 	void Champ::Play_Attack()
 	{
-		mChampScript->Play_Attack();
+		GetComponent<Animator>()->PlayAnimation(vecAnimKey[(UINT)eAnimType::ATTACK], false);
 	}
 
 	void Champ::Play_Dead()
 	{
-		mChampScript->Play_Dead();
+		GetComponent<Animator>()->PlayAnimation(vecAnimKey[(UINT)eAnimType::DEAD], false);
 	}
 
 
 	void Champ::Play_Skill1()
 	{
-		mChampScript->Play_Skill1();
+		GetComponent<Animator>()->PlayAnimation(vecAnimKey[(UINT)eAnimType::SKILL1], true);
 	}
 
 
 	void Champ::Play_Skill2()
 	{
-		mChampScript->Play_Skill2();
+		GetComponent<Animator>()->PlayAnimation(vecAnimKey[(UINT)eAnimType::SKILL2], true);
 	}
 
 	void Champ::SetChampScript(Champ_Script* script)
@@ -122,7 +130,13 @@ namespace ssz
 		mFriendly.clear();
 		mPilot = nullptr;
 		mTargetEnemy = nullptr;
-		InitIGInfo(0, 0);
+		InitIGInfo(0, 0); //
+	}
+
+	void Champ::Battle()
+	{
+		if(mTargetEnemy != nullptr)
+			BattleManager::Battle(this, mTargetEnemy, mIGInfo.ChampInfo.ATK);
 	}
 
 	ColObj* Champ::CreateColObj(eColObjType Type)
@@ -164,5 +178,15 @@ namespace ssz
 			return nullptr;
 
 		return mColObjs[(UINT)Type]->GetComponent<Collider2D>();
+	}
+	void Champ::SetState(eState state)
+	{
+		GameObject::SetState(state);
+
+		for (ColObj* object : mColObjs)
+		{
+			if (object != nullptr)
+				object->SetState(state);
+		}
 	}
 }

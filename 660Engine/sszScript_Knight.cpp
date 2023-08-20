@@ -19,6 +19,7 @@ namespace ssz
 	{
 		InitChampInfo();
 		InitChampAnim();
+		InitAudio();
 		InitColObj();
 		InitBT();
 	}
@@ -73,7 +74,7 @@ namespace ssz
 		Owner->SetAnimKey(Champ::eAnimType::SKILL1, L"knight_skill1");
 		Owner->SetAnimKey(Champ::eAnimType::SKILL2, L"knight_skill2");
 		
-		anim->StartEvent(Owner->GetAnimKey(Champ::eAnimType::ATTACK)) = std::bind(&Champ::Battle, Owner);
+		anim->CompleteEvent(Owner->GetAnimKey(Champ::eAnimType::ATTACK)) = std::bind(&Champ::Battle, Owner);
 		anim->CompleteEvent(Owner->GetAnimKey(Champ::eAnimType::DEAD)) = std::bind(&BattleManager::RegistRespawnPool, Owner);
 
 		Owner->Play_Idle();
@@ -102,6 +103,11 @@ namespace ssz
 		AttackArea->SetOffsetSize(ColScale);
 
 		AttackArea->SetOffsetPos(Vector3(0.f, 10.f, 0.f));
+	}
+
+	void Script_Knight::InitAudio()
+	{
+		Champ* Owner = (Champ*)GetOwner();
 	}
 
 	void Script_Knight::InitBT()

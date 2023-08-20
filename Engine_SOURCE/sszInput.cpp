@@ -97,7 +97,7 @@ namespace ssz
 	Vector3 Input::UnProjectMousePos(Vector2 WinMousePos)
 	{
 		Vector3 ReturnMousePos(WinMousePos.x, WinMousePos.y, 0.f);
-
+		
 		RECT rect = {};
 		GetClientRect(application.GetHwnd(), &rect);
 		float width = (float)(rect.right - rect.left);

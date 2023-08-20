@@ -11,8 +11,11 @@ namespace ssz::enums
 		Particle,
 		MeshRenderer,
 		Animator,
-		Light,
 		Script,
+		Light,
+		Text,
+		AudioListener,
+		AudioSource,
 		UI,
 		Camera,
 		End,
@@ -29,6 +32,7 @@ namespace ssz::enums
 		Light,
 		UI,
 		Cursor,
+		SoundSource,
 		Camera,
 		End = 16,
 	};
@@ -41,7 +45,7 @@ namespace ssz::enums
 		Mesh,
 		Animation,
 		ComputeShader,
-		File, // 삭제예정
+		AudioClip,
 		End,
 	};
 

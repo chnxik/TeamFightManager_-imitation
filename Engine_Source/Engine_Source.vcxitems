@@ -51,12 +51,18 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)sszScript.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sszShader.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sszStructuredBuffer.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszText.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sszTexture.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sszTime.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sszTransform.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sszUIComponent.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sszUIManager.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sszUIObject.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszAudioClip.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszFmod.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszAudioListener.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszAudioSource.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszFontWrapper.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)sszAnimation.cpp" />
@@ -91,12 +97,18 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)sszScript.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sszShader.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sszStructuredBuffer.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszText.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sszTexture.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sszTime.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sszTransform.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sszUIComponent.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sszUIManager.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sszUIObject.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszAudioClip.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszFmod.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszAudioListener.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszAudioSource.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszFontWrapper.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)sszMath.inl" />

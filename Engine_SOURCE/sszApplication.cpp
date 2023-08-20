@@ -2,6 +2,8 @@
 
 #include "sszInput.h"
 #include "sszTime.h"
+#include "sszFmod.h"
+#include "sszFontWrapper.h"
 
 #include "sszRenderer.h"
 #include "sszSceneManager.h"
@@ -39,6 +41,8 @@ namespace ssz
 	{
 		Time::Initiailize();
 		Input::Initialize();
+		Fmod::Initialize();
+		FontWrapper::Initialize();
 
 		renderer::Initialize();
 		ssz::InitializeGame();
@@ -84,6 +88,8 @@ namespace ssz
 		renderer::Release();
 		SceneManager::Release();
 		FileManager::Release();
+		Fmod::Release();
+		FontWrapper::Release();
 		
 		ContentsRelease();
 	}

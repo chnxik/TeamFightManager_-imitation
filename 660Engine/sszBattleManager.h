@@ -5,6 +5,17 @@ namespace ssz
 	class BattleManager
 	{
 	public:
+		enum class eInteractionType
+		{
+			Damage
+		};
+
+		struct InteractionEvt
+		{
+
+		};
+
+	public:
 		static bool Battle(Champ* pAttacker, Champ* pTarget, unsigned int iDamage); // 전투 함수
 
 

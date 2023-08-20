@@ -1,6 +1,9 @@
 #include "sszArrangementScript.h"
 
 #include "sszMath.h"
+#include "sszTGM.h"
+
+#include "sszCollisionManager.h"
 
 #include "sszApplication.h"
 
@@ -47,10 +50,10 @@ namespace ssz
 		// Position
 		if (Input::GetKey(eKeyCode::A))
 		{
-			if (Input::GetKey(eKeyCode::UP))	{ ArrangePos.y += 0.1f * (float)Time::DeltaTime(); }
-			if (Input::GetKey(eKeyCode::DOWN))	{ ArrangePos.y -= 0.1f * (float)Time::DeltaTime(); }
-			if (Input::GetKey(eKeyCode::LEFT))	{ ArrangePos.x -= 0.1f * (float)Time::DeltaTime(); }
-			if (Input::GetKey(eKeyCode::RIGHT))	{ ArrangePos.x += 0.1f * (float)Time::DeltaTime(); }
+			if (Input::GetKey(eKeyCode::UP))	{ ArrangePos.y += 10.f * (float)Time::DeltaTime(); }
+			if (Input::GetKey(eKeyCode::DOWN))	{ ArrangePos.y -= 10.f * (float)Time::DeltaTime(); }
+			if (Input::GetKey(eKeyCode::LEFT))	{ ArrangePos.x -= 10.f * (float)Time::DeltaTime(); }
+			if (Input::GetKey(eKeyCode::RIGHT))	{ ArrangePos.x += 10.f * (float)Time::DeltaTime(); }
 		}
 		
 		// Scale
@@ -68,6 +71,30 @@ namespace ssz
 			if (Input::GetKey(eKeyCode::DOWN))	{ fradiusy -= 1.f * (float)Time::DeltaTime(); }
 			if (Input::GetKey(eKeyCode::LEFT))	{ fradiusx -= 1.f * (float)Time::DeltaTime(); }
 			if (Input::GetKey(eKeyCode::RIGHT)) { fradiusx += 1.f * (float)Time::DeltaTime(); }
+		}
+
+		else if (ssz::Input::GetKey(eKeyCode::F))
+		{
+			if (Input::GetKeyDown(eKeyCode::UP)) { ArrangePos.z += 1.f; }
+			if (Input::GetKeyDown(eKeyCode::DOWN)) { ArrangePos.z -= 1.f; }
+		}
+
+
+		if (CollisionManager::IsCollision(GetOwner()->GetComponent<Collider2D>(), TGM::GetCursor()->GetComponent<Collider2D>()) && Input::GetKey(eKeyCode::LBUTTON))
+		{
+			Vector3 CurPos = Input::GetMousePos4DX();
+
+			Vector2 amount = mPrevMousePos - Vector2(CurPos.x, CurPos.y);
+
+			ArrangePos.x -= amount.x;
+			ArrangePos.y -= amount.y;
+
+			mPrevMousePos = Vector2(CurPos.x, CurPos.y);
+		}
+		else
+		{
+			Vector3 CurPos = Input::GetMousePos4DX();
+			mPrevMousePos = Vector2(CurPos.x, CurPos.y);
 		}
 
 		if (OwnerUI !=nullptr && OwnerUI->IsLbtnDown())

@@ -41,6 +41,7 @@ namespace ssz
 		{
 			if (!mbComplete)
 			{
+
 				Events* events
 					= FindEvents(mActiveAnimation->GetKey());
 

@@ -145,14 +145,29 @@
     <Filter Include="Graphics\StructuredBuffer">
       <UniqueIdentifier>{d2be9608-6e1c-40cc-8ff1-86b6be9aac6e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Resource\File">
-      <UniqueIdentifier>{941e2560-75d0-4ce0-af44-d18680688d6b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Graphics\ComputeShader">
       <UniqueIdentifier>{9fa16760-0500-4e92-9895-7fb0ae8f4441}</UniqueIdentifier>
     </Filter>
     <Filter Include="Manager\FileMgr">
       <UniqueIdentifier>{a7ec78de-9e0e-450b-b6b3-e6442e3c7e16}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource\AudioClip">
+      <UniqueIdentifier>{8eac69ca-4ef1-45e1-b575-f5750edb834e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common\Fmod">
+      <UniqueIdentifier>{aa5cd081-050a-4603-9c68-441a5cd5d4de}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject\Component\AudioListener">
+      <UniqueIdentifier>{5fd76076-d966-42f3-be1d-16c0e945aca0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject\Component\AudioSource">
+      <UniqueIdentifier>{06970b2b-2d0c-465b-adae-fe925661af70}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common\Font">
+      <UniqueIdentifier>{93f0bdc3-c9e6-42e4-acb8-55b47af8e377}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject\Component\Text">
+      <UniqueIdentifier>{bb9b66ba-bdac-4919-97d3-e56eaf0977a5}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -285,6 +300,24 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)sszFileManager.h">
       <Filter>Manager\FileMgr</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszAudioClip.h">
+      <Filter>Resource\AudioClip</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszFmod.h">
+      <Filter>Common\Fmod</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszAudioListener.h">
+      <Filter>GameObject\Component\AudioListener</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszAudioSource.h">
+      <Filter>GameObject\Component\AudioSource</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszFontWrapper.h">
+      <Filter>Common\Font</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszText.h">
+      <Filter>GameObject\Component\Text</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)sszMath.cpp">
@@ -400,6 +433,24 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)sszFileManager.cpp">
       <Filter>Manager\FileMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszAudioClip.cpp">
+      <Filter>Resource\AudioClip</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszFmod.cpp">
+      <Filter>Common\Fmod</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszAudioListener.cpp">
+      <Filter>GameObject\Component\AudioListener</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszAudioSource.cpp">
+      <Filter>GameObject\Component\AudioSource</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszFontWrapper.cpp">
+      <Filter>Common\Font</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszText.cpp">
+      <Filter>GameObject\Component\Text</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -2,6 +2,8 @@
 #include "Editor_Window.h"
 
 #include "..\Engine_SOURCE\sszApplication.h"
+#include <vld.h>
+
 #include "guiEditor.h"
 
 #ifdef _DEBUG
@@ -36,9 +38,9 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     UNREFERENCED_PARAMETER(lpCmdLine);
 
     // 메모리릭(누수) 찾기
-    _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
-    //_CrtSetBreakAlloc(6361);
-    _CrtDumpMemoryLeaks();
+    // _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+    // _CrtSetBreakAlloc(217);
+    // _CrtDumpMemoryLeaks();
 
     SetProcessDPIAware();
 

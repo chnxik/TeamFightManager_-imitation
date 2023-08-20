@@ -7,6 +7,7 @@
 #include "sszTransform.h"
 #include "sszMeshRenderer.h"
 #include "sszRenderer.h"
+#include "sszText.h"
 
 #include "sszGameObject.h"
 #include "sszUIObject.h"
@@ -90,12 +91,12 @@ namespace ssz
 		// View Rotation Matrix
 		Vector3 up = tr->Up();
 		Vector3 right = tr->Right();
-		Vector3 Forward = tr->Forward();
+		Vector3 Foward = tr->Foward();
 
 		Matrix viewRotate;
-		viewRotate._11 = right.x;	viewRotate._12 = up.x;	viewRotate._13 = Forward.x;
-		viewRotate._21 = right.y;	viewRotate._22 = up.y;	viewRotate._23 = Forward.y;
-		viewRotate._31 = right.z;	viewRotate._32 = up.z;	viewRotate._33 = Forward.z;
+		viewRotate._11 = right.x;	viewRotate._12 = up.x;	viewRotate._13 = Foward.x;
+		viewRotate._21 = right.y;	viewRotate._22 = up.y;	viewRotate._23 = Foward.y;
+		viewRotate._31 = right.z;	viewRotate._32 = up.z;	viewRotate._33 = Foward.z;
 		mView *= viewRotate;
 
 		return true;
@@ -189,7 +190,17 @@ namespace ssz
 			MeshRenderer* mr
 				= obj->GetComponent<MeshRenderer>();
 			if (mr == nullptr)
+			{
+				// 렌더러 컴포넌트가 없으나 Text 컴포넌트가 있는경우
+				Text* tx = obj->GetComponent<Text>();
+
+				if (tx == nullptr) // Text 컴포넌트도 없는경우
+					continue;
+
+				mTransparentGameObjects.push_back(obj);
 				continue;
+			}
+			
 
 			std::shared_ptr<Material> mt = mr->GetMaterial();
 			eRenderingMode mode = mt->GetRenderingMode();
@@ -230,7 +241,16 @@ namespace ssz
 			MeshRenderer* mr
 				= pUI->GetComponent<MeshRenderer>();
 			if (mr == nullptr)
+			{
+				// 렌더러 컴포넌트가 없으나 Text 컴포넌트가 있는경우
+				Text* tx = pUI->GetComponent<Text>();
+
+				if (tx == nullptr) // Text 컴포넌트도 없는경우
+					continue;
+
+				mTransparentGameObjects.push_back((GameObject*)pUI);
 				continue;
+			}
 
 			std::shared_ptr<Material> mt = mr->GetMaterial();
 			eRenderingMode mode = mt->GetRenderingMode();

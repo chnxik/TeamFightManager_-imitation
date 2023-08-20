@@ -442,9 +442,6 @@
     <Filter Include="Contents\Object\GameUnit\Champ\Archer">
       <UniqueIdentifier>{dcfc9fed-9b2c-4ad6-8f94-9b5586d1ab59}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Contents\Object\Team">
-      <UniqueIdentifier>{4a534969-6c42-46fa-a37f-5de228062521}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Contents\Object\Essential">
       <UniqueIdentifier>{9acff74c-0eaa-4744-9cd6-07b812d64827}</UniqueIdentifier>
     </Filter>

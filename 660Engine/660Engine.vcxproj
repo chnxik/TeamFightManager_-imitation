@@ -75,6 +75,14 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>c:\program files (x86)\visual leak detector\include;$(IncludePath)</IncludePath>
+    <LibraryPath>c:\program files (x86)\visual leak detector\lib\win64;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>c:\program files (x86)\visual leak detector\include;$(IncludePath)</IncludePath>
+    <LibraryPath>c:\program files (x86)\visual leak detector\lib\win64;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -94,6 +102,14 @@
       </SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <PostBuildEvent>
+      <Command>xcopy /R /Y "$(SolutionDir)dll\fmod.dll" "$(SolutionDir)x64\Debug"
+xcopy /R /Y "$(SolutionDir)dll\fmodL.dll" "$(SolutionDir)x64\Debug"
+xcopy /R /Y "$(SolutionDir)dll\fmodstudio.dll" "$(SolutionDir)x64\Debug"
+xcopy /R /Y "$(SolutionDir)dll\fmodstudioL.dll" "$(SolutionDir)x64\Debug"
+xcopy /R /Y "$(SolutionDir)dll\FW1FontWrapper.dll" "$(SolutionDir)x64\Debug"
+xcopy /R /Y "$(SolutionDir)dll\FW1FontWrapperL.dll" "$(SolutionDir)x64\Debug"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -118,6 +134,14 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <PostBuildEvent>
+      <Command>xcopy /R /Y "$(SolutionDir)dll\fmod.dll" "$(SolutionDir)x64\Debug"
+xcopy /R /Y "$(SolutionDir)dll\fmodL.dll" "$(SolutionDir)x64\Debug"
+xcopy /R /Y "$(SolutionDir)dll\fmodstudio.dll" "$(SolutionDir)x64\Debug"
+xcopy /R /Y "$(SolutionDir)dll\fmodstudioL.dll" "$(SolutionDir)x64\Debug"
+xcopy /R /Y "$(SolutionDir)dll\FW1FontWrapper.dll" "$(SolutionDir)x64\Debug"
+xcopy /R /Y "$(SolutionDir)dll\FW1FontWrapperL.dll" "$(SolutionDir)x64\Debug"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -138,6 +162,14 @@
       </SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <PostBuildEvent>
+      <Command>xcopy /R /Y "$(SolutionDir)dll\fmod.dll" "$(SolutionDir)x64\Debug"
+xcopy /R /Y "$(SolutionDir)dll\fmodL.dll" "$(SolutionDir)x64\Debug"
+xcopy /R /Y "$(SolutionDir)dll\fmodstudio.dll" "$(SolutionDir)x64\Debug"
+xcopy /R /Y "$(SolutionDir)dll\fmodstudioL.dll" "$(SolutionDir)x64\Debug"
+xcopy /R /Y "$(SolutionDir)dll\FW1FontWrapper.dll" "$(SolutionDir)x64\Debug"
+xcopy /R /Y "$(SolutionDir)dll\FW1FontWrapperL.dll" "$(SolutionDir)x64\Debug"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -162,6 +194,14 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <PostBuildEvent>
+      <Command>xcopy /R /Y "$(SolutionDir)dll\fmod.dll" "$(SolutionDir)x64\Debug"
+xcopy /R /Y "$(SolutionDir)dll\fmodL.dll" "$(SolutionDir)x64\Debug"
+xcopy /R /Y "$(SolutionDir)dll\fmodstudio.dll" "$(SolutionDir)x64\Debug"
+xcopy /R /Y "$(SolutionDir)dll\fmodstudioL.dll" "$(SolutionDir)x64\Debug"
+xcopy /R /Y "$(SolutionDir)dll\FW1FontWrapper.dll" "$(SolutionDir)x64\Debug"
+xcopy /R /Y "$(SolutionDir)dll\FW1FontWrapperL.dll" "$(SolutionDir)x64\Debug"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="CommonDefine.h" />

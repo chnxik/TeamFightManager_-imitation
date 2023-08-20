@@ -22,9 +22,12 @@ namespace ssz
 	{
 		// Main Camera
 		{
-			GameObject* camera = Instantiate<GameObject>(Vector3(0.0f, 0.0f, -10.f), eLayerType::Camera);
+			GameObject* camera = Instantiate<GameObject>(Vector3(0.0f, 0.0f, 0.0f), eLayerType::Camera);
 			camera->SetName(L"MainCamera");
 			Camera* cameraComp = camera->AddComponent<Camera>();
+
+			GameObject* Sound = Instantiate<GameObject>(Vector3(0.0f, 0.0f, -1.0f), eLayerType::Light);
+			Sound->AddComponent<AudioListener>();
 		}
 
 		// ¹è°æ
@@ -39,6 +42,19 @@ namespace ssz
 			GameObject* IG_StadiumSky = Instantiate<GameObject>(Vector3(0.0f, -53.0f, 1.022f), Vector3(2144.f, 1429.f, 1.f), eLayerType::BackGround);
 			IG_StadiumSky->SetName(L"IG_StadiumSky");
 			IG_StadiumSky->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"IGStadiumSkyMt");
+
+			GameObject* BgmPlayer = Instantiate<GameObject>(Vector3(0.f, 0.f, 0.f), eLayerType::Light);
+			AudioSource* as = BgmPlayer->AddComponent<AudioSource>();
+			as->SetClip(Resources::Load<AudioClip>(L"TestBgm", L"..\\Resources\\useResource\\Audio\\0.mp3"));
+			as->Play();
+
+			GameObject* TestText = Instantiate<GameObject>(Vector3(0.f, 0.f, 0.f), Vector3(200.f,200.f,1.f), eLayerType::BackGroundObj);
+			TestText->AddComponent<ArrangementScript>();
+			TestText->AddComponent<Collider2D>();
+			Text* tx = TestText->AddComponent<Text>();
+			tx->SetString(L"Test");
+			tx->SetFontSize(100.f);
+			tx->SetFontColor(255, 0, 255, 255);
 		}
 #pragma endregion
 	}
@@ -46,6 +62,7 @@ namespace ssz
 	void TestScene::Update()
 	{
 		Scene::Update();
+
 	}
 	void TestScene::LateUpdate()
 	{
@@ -55,12 +72,13 @@ namespace ssz
 
 		if (Input::GetKeyDown(eKeyCode::ENTER))
 		{
-			SceneManager::LoadScene(L"TitleScene");
+			// SceneManager::LoadScene(L"TitleScene");
 		}
 	}
 	void TestScene::Render()
 	{
 		Scene::Render();
+		
 	}
 	void TestScene::OnEnter()
 	{
@@ -79,6 +97,7 @@ namespace ssz
 		CollisionManager::SetLayer(eLayerType::Enemy, eLayerType::Cursor, true);
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::EnemyInteraction, true);
 		CollisionManager::SetLayer(eLayerType::Enemy, eLayerType::PlayerInteraction, true);
+		CollisionManager::SetLayer(eLayerType::BackGroundObj, eLayerType::Cursor, true);
 	}
 	void TestScene::OnExit()
 	{

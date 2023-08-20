@@ -13,7 +13,7 @@ namespace ssz
 		: Component(eComponentType::Tranform)
 		, mPosition(Vector3::Zero)
 		, mRotation(Vector3::Zero)
-		, mScale(Vector3::One)
+		, mFontSize(Vector3::One)
 		, mDir(eDir::Right)
 		, mWorldPosition(Vector3::Zero)
 		, mWorldRotation(Vector3::Zero)
@@ -45,7 +45,7 @@ namespace ssz
 			{
 				mWorld = Matrix::Identity;
 
-				Matrix scale = Matrix::CreateScale(mScale);
+				Matrix scale = Matrix::CreateScale(mFontSize);
 
 				Matrix rotation;
 				rotation = Matrix::CreateRotationX(mRotation.x);
@@ -58,7 +58,7 @@ namespace ssz
 				mWorld = scale * rotation * position;
 
 				mUp = Vector3::TransformNormal(Vector3::Up, rotation);
-				mForward = Vector3::TransformNormal(Vector3::Forward, rotation);
+				mFoward = Vector3::TransformNormal(Vector3::Foward, rotation);
 				mRight = Vector3::TransformNormal(Vector3::Right, rotation);
 
 				mWorld *= mParent->mWorld;
@@ -71,7 +71,7 @@ namespace ssz
 			{
 				mWorldPosition = mPosition + mParent->mWorldPosition;
 				mWorldRotation = mRotation + mParent->mWorldRotation;
-				mWorldScale = mScale + mParent->mWorldScale;
+				mWorldScale = mFontSize + mParent->mWorldScale;
 
 				mWorld = Matrix::Identity;
 
@@ -88,7 +88,7 @@ namespace ssz
 				mWorld = scale * rotation * position;
 
 				mUp = Vector3::TransformNormal(Vector3::Up, rotation);
-				mForward = Vector3::TransformNormal(Vector3::Forward, rotation);
+				mFoward = Vector3::TransformNormal(Vector3::Foward, rotation);
 				mRight = Vector3::TransformNormal(Vector3::Right, rotation);
 			}
 				break;
@@ -96,7 +96,7 @@ namespace ssz
 			{
 				mWorldPosition = mPosition + mParent->mWorldPosition;
 				mWorldRotation = mRotation + mParent->mWorldRotation;
-				mWorldScale = mScale;
+				mWorldScale = mFontSize;
 
 				mWorld = Matrix::Identity;
 
@@ -113,7 +113,7 @@ namespace ssz
 				mWorld = scale * rotation * position;
 
 				mUp = Vector3::TransformNormal(Vector3::Up, rotation);
-				mForward = Vector3::TransformNormal(Vector3::Forward, rotation);
+				mFoward = Vector3::TransformNormal(Vector3::Foward, rotation);
 				mRight = Vector3::TransformNormal(Vector3::Right, rotation);
 			}
 				break;
@@ -125,7 +125,7 @@ namespace ssz
 		{
 			mWorld = Matrix::Identity;
 
-			Matrix scale = Matrix::CreateScale(mScale);
+			Matrix scale = Matrix::CreateScale(mFontSize);
 
 			Matrix rotation;
 			rotation = Matrix::CreateRotationX(mRotation.x);
@@ -138,12 +138,12 @@ namespace ssz
 			mWorld = scale * rotation * position;
 
 			mUp = Vector3::TransformNormal(Vector3::Up, rotation);
-			mForward = Vector3::TransformNormal(Vector3::Forward, rotation);
+			mFoward = Vector3::TransformNormal(Vector3::Foward, rotation);
 			mRight = Vector3::TransformNormal(Vector3::Right, rotation);
 
 			mWorldPosition = mPosition;
 			mWorldRotation = mRotation;
-			mWorldScale = mScale;
+			mWorldScale = mFontSize;
 		}
 	}
 

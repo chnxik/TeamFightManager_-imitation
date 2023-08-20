@@ -17,6 +17,7 @@ namespace ssz
 	{
 		InitChampInfo();
 		InitChampAnim();
+		InitAudio();
 		InitColObj();
 		InitBT();
 	}
@@ -24,6 +25,10 @@ namespace ssz
 	void Script_Archer::Update()
 	{
 		GetRootNode()->Run();
+
+		if (Input::GetKeyDown(eKeyCode::ENTER))
+		{
+		}
 	}
 
 	void Script_Archer::InitChampInfo()
@@ -70,7 +75,7 @@ namespace ssz
 		Owner->SetAnimKey(Champ::eAnimType::DEAD,L"archer_dead");
 		Owner->SetAnimKey(Champ::eAnimType::SKILL1,L"archer_skill");
 		
-		anim->StartEvent(Owner->GetAnimKey(Champ::eAnimType::ATTACK)) = std::bind(&Champ::Battle, Owner);
+		anim->EndEvent(Owner->GetAnimKey(Champ::eAnimType::ATTACK)) = std::bind(&Champ::Battle, Owner);
 		anim->CompleteEvent(Owner->GetAnimKey(Champ::eAnimType::DEAD)) = std::bind(&BattleManager::RegistRespawnPool, Owner);
 		
 		Owner->Play_Idle();
@@ -98,6 +103,11 @@ namespace ssz
 		AttackArea->SetOffsetSize(ColScale);
 
 		AttackArea->SetOffsetPos(Vector3(0.f, 10.f, 0.f));
+	}
+
+	void Script_Archer::InitAudio()
+	{
+		Champ* Owner = (Champ*)GetOwner();
 	}
 
 	void Script_Archer::InitBT()

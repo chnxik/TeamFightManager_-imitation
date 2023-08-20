@@ -62,6 +62,7 @@ namespace ssz::graphics
 		void Present();
 
 		ID3D11Device* GetID3D11Device() { return mDevice.Get(); }
+		ID3D11DeviceContext* GetID3D11DeviceContext() { return mContext.Get(); }
 
 	private:
 		// 실제 그래픽카드 하드웨어 객체

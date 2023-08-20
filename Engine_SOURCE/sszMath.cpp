@@ -33,7 +33,7 @@ namespace ssz::math
 	const Vector3 Vector3::Down = { 0.f, -1.f, 0.f };
 	const Vector3 Vector3::Right = { 1.f, 0.f, 0.f };
 	const Vector3 Vector3::Left = { -1.f, 0.f, 0.f };
-	const Vector3 Vector3::Forward = { 0.f, 0.f, 1.f };
+	const Vector3 Vector3::Foward = { 0.f, 0.f, 1.f };
 	const Vector3 Vector3::Backward = { 0.f, 0.f, -1.f };
 
 	const Vector4 ssz::math::Vector4::Zero = { 0.f, 0.f, 0.f, 0.f };
@@ -123,7 +123,7 @@ namespace ssz::math
 	void Quaternion::LookRotation(const Vector3& forward, const Vector3& up, Quaternion& result) noexcept
 	{
 		Quaternion q1;
-		FromToRotation(Vector3::Forward, forward, q1);
+		FromToRotation(Vector3::Foward, forward, q1);
 
 		const XMVECTOR C = XMVector3Cross(forward, up);
 		if (XMVector3NearEqual(XMVector3LengthSq(C), g_XMZero, g_XMEpsilon))

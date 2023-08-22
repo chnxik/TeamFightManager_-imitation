@@ -325,10 +325,7 @@ namespace ssz
 			mChamp->Play_Attack();
 
 			if (mChamp->GetComponent<Animator>()->IsComplete())
-			{
-				mChamp->Play_Idle();
 				return NS_SUCCESS;
-			}
 
 			return NS_RUNNING;
 		}

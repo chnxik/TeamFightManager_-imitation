@@ -75,7 +75,7 @@ namespace ssz
 		Owner->SetAnimKey(Champ::eAnimType::DEAD,L"archer_dead");
 		Owner->SetAnimKey(Champ::eAnimType::SKILL1,L"archer_skill");
 		
-		anim->EndEvent(Owner->GetAnimKey(Champ::eAnimType::ATTACK)) = std::bind(&Champ::Battle, Owner);
+		anim->CompleteEvent(Owner->GetAnimKey(Champ::eAnimType::ATTACK)) = std::bind(&Champ::Battle, Owner);
 		anim->CompleteEvent(Owner->GetAnimKey(Champ::eAnimType::DEAD)) = std::bind(&BattleManager::RegistRespawnPool, Owner);
 		
 		Owner->Play_Idle();
@@ -153,6 +153,7 @@ namespace ssz
 
 		Sequence_Node* Seq_AttackAnim = Seq_Attack->AddChild<Sequence_Node>();
 		Seq_AttackAnim->AddChild<Act_PlayAnim_Attack>();
+		Seq_AttackAnim->AddChild<Act_PlayAnim_Idle>();
 
 		// 이동 판단 시퀀스
 		Selector_Node* Sel_CheckMoveDir = Seq_Move->AddChild<Selector_Node>();

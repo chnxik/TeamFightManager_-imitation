@@ -2,6 +2,8 @@
 #include "CommonObjHeader.h"
 #include "sszBattleManager.h"
 
+#include "sszLog.h"
+
 namespace ssz
 {
 	// Condition Node
@@ -83,7 +85,7 @@ namespace ssz
 		}
 	};
 
-	class Con_MustBack : public Condition_Node // 커서 탐지 컨디션
+	class Con_MustBack : public Condition_Node
 	{
 	public:
 		virtual eNodeStatus Run() override
@@ -296,6 +298,7 @@ namespace ssz
 			Champ* mChamp = mAIBB->FindData<Champ>(*ChampName);
 
 			mChamp->Play_Idle();
+			
 			return NS_SUCCESS;
 		}
 	};
@@ -322,8 +325,8 @@ namespace ssz
 
 			Champ* mChamp = mAIBB->FindData<Champ>(*ChampName);
 
-			mChamp->Play_Attack();
-
+			if (mChamp->GetComponent<Animator>()->GetCurAnimationKey() != mChamp->GetAnimKey(Champ::eAnimType::ATTACK))
+				mChamp->Play_Attack();
 			if (mChamp->GetComponent<Animator>()->IsComplete())
 				return NS_SUCCESS;
 

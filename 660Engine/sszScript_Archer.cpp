@@ -25,10 +25,6 @@ namespace ssz
 	void Script_Archer::Update()
 	{
 		GetRootNode()->Run();
-
-		if (Input::GetKeyDown(eKeyCode::ENTER))
-		{
-		}
 	}
 
 	void Script_Archer::InitChampInfo()
@@ -114,9 +110,9 @@ namespace ssz
 	{
 		std::shared_ptr<AIBB> ptrAIBB = std::make_shared<AIBB>();
 
-		ptrAIBB->AddData<std::wstring>(CHAMPKEY, &GetName());
+		ptrAIBB->AddData<std::wstring>(CHAMPKEY, &(GetOwner()->GetName()));
 
-		ptrAIBB->AddData<GameObject>(GetName(), GetOwner());
+		ptrAIBB->AddData<GameObject>(GetOwner()->GetName(), GetOwner());
 
 		GameObject* pCsr = TGM::GetCursor();
 		ptrAIBB->AddData<GameObject>(L"Cursor", pCsr);

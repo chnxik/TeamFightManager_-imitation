@@ -70,7 +70,7 @@ namespace ssz::AI
 			if (eStatus == NS_RUNNING)
 			{
 				mAIBB->SetRunningNode(child);
-				return NS_RUNNING;
+				return NS_SUCCESS;
 			}
 		}
 
@@ -89,7 +89,7 @@ namespace ssz::AI
 			if (eStatus == NS_RUNNING)
 			{
 				mAIBB->SetRunningNode(child);
-				return NS_RUNNING;
+				return NS_SUCCESS;
 			}
 		}
 		

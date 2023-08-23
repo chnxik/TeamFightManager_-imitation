@@ -3,7 +3,6 @@
 
 #include "sszBattleManager.h"
 #include "sszChamp_Script.h"
-#include "sszLog.h"
 
 namespace ssz
 {
@@ -33,11 +32,6 @@ namespace ssz
 
 	void Champ::Initialize()
 	{
-		Text* tx = AddComponent<Text>();
-
-		tx->SetOffsetPos(Vector3(20.f, -50.f, -0.1f));
-		tx->SetFontSize(40.f);
-		tx->SetFontColor(255, 255, 255, 255);
 	}
 
 	void Champ::Update()
@@ -48,7 +42,6 @@ namespace ssz
 	void Champ::LateUpdate()
 	{
 		GameObject::LateUpdate();
-		GetComponent<Text>()->SetString(std::to_wstring(mIGInfo.HP));
 	}
 
 	void Champ::Render()
@@ -64,10 +57,6 @@ namespace ssz
 		
 		if(!Col->IsPaused())
 			Col->ColliderPaused();
-
-		std::wstring szbuffer;
-		szbuffer = GetName() + L" »ç¸Á";
-		Log::AddLog(szbuffer);
 	}
 
 	void Champ::Play_Idle()

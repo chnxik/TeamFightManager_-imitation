@@ -4,4 +4,3 @@
 
 // Script
 #include "sszArrangementScript.h"
-#include "sszLog.h"

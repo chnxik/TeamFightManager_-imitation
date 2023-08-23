@@ -131,9 +131,6 @@
     <ClInclude Include="sszScript_Knight.h">
       <Filter>Contents\Object\GameUnit\Champ\Knight</Filter>
     </ClInclude>
-    <ClInclude Include="sszLog.h">
-      <Filter>Contents\Manager\Log</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="660Engine.cpp" />
@@ -259,9 +256,6 @@
     </ClCompile>
     <ClCompile Include="sszScript_Knight.cpp">
       <Filter>Contents\Object\GameUnit\Champ\Knight</Filter>
-    </ClCompile>
-    <ClCompile Include="sszLog.cpp">
-      <Filter>Contents\Manager\Log</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -456,9 +450,6 @@
     </Filter>
     <Filter Include="Contents\Object\Essential\Cursor">
       <UniqueIdentifier>{7a29f64f-bb3c-4a02-947d-d939c0bef5e3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Manager\Log">
-      <UniqueIdentifier>{4a2291d4-9c95-43c3-ab44-a898331fb030}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

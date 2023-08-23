@@ -328,7 +328,10 @@ namespace ssz
 			if (mChamp->GetComponent<Animator>()->GetCurAnimationKey() != mChamp->GetAnimKey(Champ::eAnimType::ATTACK))
 				mChamp->Play_Attack();
 			if (mChamp->GetComponent<Animator>()->IsComplete())
+			{
+				mChamp->Play_Idle();
 				return NS_SUCCESS;
+			}
 
 			return NS_RUNNING;
 		}

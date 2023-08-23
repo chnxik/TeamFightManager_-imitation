@@ -5,13 +5,23 @@ namespace ssz
 	class BattleManager
 	{
 	public:
+		enum class eInteractionType
+		{
+			Damage
+		};
+
+		struct InteractionEvt
+		{
+
+		};
+
+	public:
 		static bool Battle(Champ* pAttacker, Champ* pTarget, unsigned int iDamage); // 전투 함수
 
 
 	public: // 리스폰
 		static void RespawnClear();
 		static void Update();
-		static void LateUpdate();
 
 		static void RegistRespawnPool(Champ* Target);
 		static void RespawnChamp(Champ* Target);

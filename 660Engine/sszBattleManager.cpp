@@ -1,6 +1,7 @@
 #pragma once
 #include "sszBattleManager.h"
 #include "CommonObjHeader.h"
+#include "sszLog.h"
 
 #define RESPAWNTIME 3.0f
 
@@ -61,6 +62,10 @@ namespace ssz
         }
     }
 
+    void BattleManager::LateUpdate()
+    {
+    }
+
     void BattleManager::RegistRespawnPool(Champ* Target)
     {
         if (Target->IsActive())
@@ -79,6 +84,10 @@ namespace ssz
         Target->ResetInfo();
         Target->GetComponent<Collider2D>()->ColliderActive();
         Target->Play_Idle();
+
+        std::wstring szbuffer;
+        szbuffer = Target->GetName() + L" 리스폰";
+        Log::AddLog(szbuffer);
     }
 
     bool BattleManager::Damage(Champ* pAttacker, Champ* pTarget, unsigned int iDamage)
@@ -90,6 +99,11 @@ namespace ssz
             FinalDamage = 1; // 방어력보다 공격력이 같거나 낮을 경우 최소데미지인 1로 고정한다.
 
         TargetStat->HP -= FinalDamage;
+
+        // 로그용
+        std::wstring szbuffer;
+        szbuffer = pAttacker->GetName() + L" 공격, 데미지 : " + std::to_wstring(iDamage);
+        Log::AddLog(szbuffer);
 
         // print Damage() 데미지 출력 함수 호출
         // Target의 Transform에 접근해 좌표를 받고 해당 좌표에서 데미지 UI를 출력

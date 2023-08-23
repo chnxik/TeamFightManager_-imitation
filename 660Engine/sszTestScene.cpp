@@ -67,18 +67,18 @@ namespace ssz
 	void TestScene::LateUpdate()
 	{
 		Scene::LateUpdate();
-
 		BattleManager::Update();
+
 
 		if (Input::GetKeyDown(eKeyCode::ENTER))
 		{
+			Log::Clear();
 			// SceneManager::LoadScene(L"TitleScene");
 		}
 	}
 	void TestScene::Render()
 	{
 		Scene::Render();
-		
 	}
 	void TestScene::OnEnter()
 	{

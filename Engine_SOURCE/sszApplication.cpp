@@ -12,6 +12,7 @@
 #include "sszUIManager.h"
 
 #include "..\660Engine\Load.h"
+#include "..\660Engine\sszLog.h"
 
 namespace ssz
 {
@@ -70,6 +71,7 @@ namespace ssz
 		graphicDevice->UpdateViewPort();
 
 		renderer::Render();
+		Log::Render();
 	}
 
 	void Application::Destory()

@@ -114,9 +114,9 @@ namespace ssz
 	{
 		std::shared_ptr<AIBB> ptrAIBB = std::make_shared<AIBB>();
 
-		ptrAIBB->AddData<std::wstring>(CHAMPKEY, &(GetOwner()->GetName()));
+		ptrAIBB->AddData<std::wstring>(CHAMPKEY, &GetName());
 
-		ptrAIBB->AddData<GameObject>(GetOwner()->GetName(), GetOwner());
+		ptrAIBB->AddData<GameObject>(GetName(), GetOwner());
 
 		GameObject* pCsr = TGM::GetCursor();
 		ptrAIBB->AddData<GameObject>(L"Cursor", pCsr);
@@ -145,24 +145,20 @@ namespace ssz
 
 		// 공격 판단 시퀀스
 		Seq_Attack->AddChild<Con_CollisionOtehrChamp>();
+		Seq_Attack->AddChild<Act_PlayAnim_Attack>();
 		Succeeder_Node* Dec_CheckAttackDir_Success = Seq_Attack->AddChild<Succeeder_Node>();
 		Selector_Node* Sel_CheckAttackDir = Dec_CheckAttackDir_Success->AddChild<Selector_Node>();
 
 		Sequence_Node* Seq_AttackLeft = Sel_CheckAttackDir->AddChild<Sequence_Node>();
 		Sequence_Node* Seq_AttackRight = Sel_CheckAttackDir->AddChild<Sequence_Node>();
-		
 
 		Seq_AttackLeft->AddChild<Con_OntheLeft>();
 		Seq_AttackLeft->AddChild<Con_IsRight>();
 		Seq_AttackLeft->AddChild<Act_TurnLeft>();
-		Seq_AttackLeft->AddChild<Act_PlayAnim_Attack>();
-		Seq_AttackLeft->AddChild<Act_PlayAnim_Idle>();
 
 		Seq_AttackRight->AddChild<Con_OntheRight>();
 		Seq_AttackRight->AddChild<Con_IsLeft>();
 		Seq_AttackRight->AddChild<Act_TurnRight>();
-		Seq_AttackRight->AddChild<Act_PlayAnim_Attack>();
-		Seq_AttackLeft->AddChild<Act_PlayAnim_Idle>();
 
 		// 이동 판단 시퀀스
 		Selector_Node* Sel_CheckMoveDir = Seq_Move->AddChild<Selector_Node>();

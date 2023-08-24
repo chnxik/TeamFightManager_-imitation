@@ -1,3 +1,4 @@
+#pragma once
 #include "sszChamp.h"
 #include "CommonObjHeader.h"
 
@@ -10,7 +11,8 @@ namespace ssz
 	Champ::Champ()
 		: mFriendly{}
 		, mPilot(nullptr)
-		, mDefaultInfo{} // 챔프 정보
+		, mChampInfo{} // 챔프 정보
+		, mTargetFriendly(nullptr)
 		, mTargetEnemy(nullptr)
 		, mColObjs{}
 		, mChampScript(nullptr)
@@ -48,7 +50,7 @@ namespace ssz
 	void Champ::LateUpdate()
 	{
 		GameObject::LateUpdate();
-		GetComponent<Text>()->SetString(std::to_wstring(mIGInfo.HP));
+		GetComponent<Text>()->SetString(std::to_wstring(mChampStatus.HP));
 	}
 
 	void Champ::Render()
@@ -93,13 +95,13 @@ namespace ssz
 
 	void Champ::Play_Skill1()
 	{
-		GetComponent<Animator>()->PlayAnimation(vecAnimKey[(UINT)eAnimType::SKILL1], true);
+		GetComponent<Animator>()->PlayAnimation(vecAnimKey[(UINT)eAnimType::SKILL], true);
 	}
 
 
 	void Champ::Play_Skill2()
 	{
-		GetComponent<Animator>()->PlayAnimation(vecAnimKey[(UINT)eAnimType::SKILL2], true);
+		GetComponent<Animator>()->PlayAnimation(vecAnimKey[(UINT)eAnimType::ULTIMATE], true);
 	}
 
 	void Champ::SetChampScript(Champ_Script* script)
@@ -109,45 +111,53 @@ namespace ssz
 
 	void Champ::SetChampInfo(eChampType Type, UINT atk, float apd, UINT rng, UINT def, UINT hp, UINT spd)
 	{
-		mDefaultInfo.ChampType = Type;
-		mDefaultInfo.ATK = atk;
-		mDefaultInfo.APD = apd;
-		mDefaultInfo.RNG = rng;
-		mDefaultInfo.DEF = def;
-		mDefaultInfo.MAXHP = hp;
-		mDefaultInfo.SPD = spd;
+		mChampInfo.ChampType = Type;
+		mChampInfo.ATK = atk;
+		mChampInfo.APD = apd;
+		mChampInfo.RNG = rng;
+		mChampInfo.DEF = def;
+		mChampInfo.MAXHP = hp;
+		mChampInfo.SPD = spd;
 	}
 
-	void Champ::InitIGInfo(UINT ATKpt, UINT DEFpt)
+	void Champ::InitChampStatus(UINT ATKpt, UINT DEFpt)
 	{
-		mIGInfo.ChampInfo = mDefaultInfo;
-		mIGInfo.ChampInfo.ATK = mDefaultInfo.ATK + ATKpt;           // 공격력
-		mIGInfo.ChampInfo.DEF = mDefaultInfo.DEF + DEFpt;           // 방어력
+		mChampStatus.ChampInfo = mChampInfo;
+		mChampStatus.ChampInfo.ATK = mChampInfo.ATK + ATKpt;    // 공격력
+		mChampStatus.ChampInfo.DEF = mChampInfo.DEF + DEFpt;    // 방어력
 
-		mIGInfo.HP = mIGInfo.ChampInfo.MAXHP;             // 현재 체력
-		mIGInfo.COOLTIME = 0.f;   // 스킬1 쿨타임
-		mIGInfo.bULTIMATE = false; // 궁극기 사용 여부
+		mChampStatus.HP = mChampStatus.ChampInfo.MAXHP;         // 현재 체력
+		mChampStatus.CoolTime_Attack = 0.f;						// 공격 쿨타임
+		mChampStatus.CoolTime_Skill = 0.f;						// 스킬 쿨타임
 
-		mIGInfo.TotalDeal = 0;
-		mIGInfo.TotalDamaged = 0;
-		mIGInfo.TotalHeal = 0;
-		mIGInfo.KILLPOINT = 0;
-		mIGInfo.DEATHPOINT = 0;
-		mIGInfo.ASSISTPOINT = 0;
+		mChampStatus.UltimateUseTime = 60.f;					// 궁극기 사용 시점
+		mChampStatus.bULTIMATE = false;							// 궁극기 사용 여부
+
+		mChampStatus.RespawnTime = 0.f;
+
+		mChampStatus.TotalDeal = 0;
+		mChampStatus.TotalDamaged = 0;
+		mChampStatus.TotalHeal = 0;
+		mChampStatus.KILLPOINT = 0;
+		mChampStatus.DEATHPOINT = 0;
+		mChampStatus.ASSISTPOINT = 0;
 	}
 
 	void Champ::ResetInfo()
 	{
-		mFriendly.clear();
 		mPilot = nullptr;
+
+		mFriendly.clear();
+		mEnemys.clear();
 		mTargetEnemy = nullptr;
-		InitIGInfo(0, 0); //
+		mTargetFriendly = nullptr;
+
+		InitChampStatus(0, 0);
 	}
 
-	void Champ::Battle()
+	void Champ::ATTACK()
 	{
-		if(mTargetEnemy != nullptr)
-			BattleManager::Battle(this, mTargetEnemy, mIGInfo.ChampInfo.ATK);
+		BattleManager::ATTACK(this, mTargetEnemy, mChampStatus.ChampInfo.ATK);
 	}
 
 	ColObj* Champ::CreateColObj(eColObjType Type)

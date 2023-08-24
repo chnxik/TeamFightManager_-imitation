@@ -52,8 +52,9 @@ namespace ssz
 
     enum class eColObjType
     {
-        ATKAREA,
-        SKILL1,
+        RANGE,
+        SKILL,
+        ULTIMATE,
         END
     };
 }

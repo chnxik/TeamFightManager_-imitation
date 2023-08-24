@@ -16,12 +16,12 @@ namespace ssz
             MOVE,
             ATTACK,
             DEAD,
-            SKILL1,
-            SKILL2,
+            SKILL,
+            ULTIMATE,
             END
         };
 
-        struct DefaultInfo // 챔피언 기본 정보
+        struct tChampInfo // 챔피언 기본 정보
         {
             eChampType ChampType = eChampType::NONE; // 챔피언 타입
             UINT ATK = 0; // 공격력
@@ -32,10 +32,10 @@ namespace ssz
             UINT SPD = 0; // 이동속도
         };
 
-        struct IGStatus // 인게임 정보
+        struct tChampStatus // 인게임 정보
         {
             // 챔피언 기본 정보.
-            DefaultInfo ChampInfo;
+            tChampInfo ChampInfo;
             
             // [게임 정보]
             // 선수 정보
@@ -46,10 +46,12 @@ namespace ssz
             // 선수 주력 챔피언 능력치
 
             // 챔피언 정보
-            int HP = 0;              // 현재 체력
-            float COOLTIME = 0.f;    // 스킬1 쿨타임
-            bool bULTIMATE = false;  // 궁극기 사용 여부
-            float RespawnTime = 0.f; // 리스폰시간
+            int HP = 0;                     // 현재 체력
+            float CoolTime_Attack = 0.f;    // 공격 쿨타임
+            float CoolTime_Skill = 0.f;     // 스킬 쿨타임
+            float UltimateUseTime = 60.f;    // 궁극기 사용 시점
+            bool bULTIMATE = false;         // 궁극기 사용 여부
+            float RespawnTime = 0.f;        // 리스폰시간
 
             // 게임 통계
             UINT TotalDeal = 0;     // 준 피해량
@@ -74,18 +76,18 @@ namespace ssz
         void Play_Move();
         void Play_Attack();
         void Play_Dead();
-        void Play_Skill1();
-        void Play_Skill2();
+        void Play_Skill();
+        void Play_Ultimate();
 
         void SetChampScript(Champ_Script* script);
 
         // 챔피언 정보 관리
-        const DefaultInfo& GetChampInfo() { return mDefaultInfo; } // 챔피언 기본 정보
-        void SetChampInfo(DefaultInfo src) { mDefaultInfo = src; } // 챔피언 기본 정보
+        const tChampInfo& GetChampInfo() { return mChampInfo; } // 챔피언 기본 정보
+        void SetChampInfo(tChampInfo src) { mChampInfo = src; } // 챔피언 기본 정보
         void SetChampInfo(eChampType Type, UINT atk, float apd, UINT rng, UINT def, UINT hp, UINT spd); // 챔피언 기본 정보
         
-        IGStatus* GetIGStatus() { return &mIGInfo; } // 경기 사용 챔피언 정보
-        void InitIGInfo(UINT ATKpt, UINT DEFpt); // Player 클래스를 인자로 받는다.
+        tChampStatus* GetChampStatus() { return &mChampStatus; } // 경기 사용 챔피언 정보
+        void InitChampStatus(UINT ATKpt, UINT DEFpt); // Player 클래스를 인자로 받는다.
 
         void ResetInfo();
 
@@ -104,10 +106,12 @@ namespace ssz
         void ClearEnemys() { mEnemys.clear(); }
 
         // 타겟 지정
-        void SetTargetEnemy(Champ* pTarget) { mTargetEnemy = pTarget; }
-        Champ* GetTargetEnemy() { return mTargetEnemy; }
+        void SetTarget_Enemy(Champ* pTarget) { mTargetEnemy = pTarget; }
+        Champ* GetTarget_Enemy() { return mTargetEnemy; }
+        void SetTarget_Friendly(Champ* pTarget) { mTargetFriendly = pTarget; }
+        Champ* GetTarget_Friendly() { return mTargetFriendly; }
 
-        void Battle();
+        void ATTACK();
         
         // ColObj 관리
         ColObj* CreateColObj(eColObjType Type);
@@ -121,15 +125,16 @@ namespace ssz
         const std::wstring& GetAnimKey(eAnimType eType) { return vecAnimKey[(UINT)eType]; }
 
     private:
-        DefaultInfo mDefaultInfo;       // 챔피언 기본 정보
-        IGStatus    mIGInfo;            // 챔피언 경기 정보
+        tChampInfo      mChampInfo;       // 챔피언 기본 정보
+        tChampStatus    mChampStatus;            // 챔피언 경기 정보
 
         Pilot*      mPilot;// 파일럿 포인터
 
-        std::vector<Champ*> mFriendly;  // 아군 챔피언 리스트
         std::vector<Champ*> mEnemys;    // 적 챔피언 리스트
+        std::vector<Champ*> mFriendly;  // 아군 챔피언 리스트
         
         Champ* mTargetEnemy;            // 공격 타겟
+        Champ* mTargetFriendly;         // 아군 타겟
 
         ColObj* mColObjs[(UINT)eColObjType::END];    // 공격,스킬 판정용 콜라이더 오브젝트
         Champ_Script* mChampScript;

@@ -36,7 +36,7 @@ namespace ssz
 		Owner->SetName(KNIGHT);
 
 		Owner->SetChampInfo(eChampType::FIGHTER, 21, 0.67f, 37, 10, 200, 5);
-		Owner->InitIGInfo(0, 0);
+		Owner->InitChampStatus(0, 0);
 
 		Owner->GetComponent<Transform>()->SetScale(Vector3(170.f, 170.f, 1.f)); // 96 size
 	}
@@ -71,10 +71,10 @@ namespace ssz
 		Owner->SetAnimKey(Champ::eAnimType::MOVE, L"knight_move");
 		Owner->SetAnimKey(Champ::eAnimType::ATTACK, L"knight_attack");
 		Owner->SetAnimKey(Champ::eAnimType::DEAD, L"knight_dead");
-		Owner->SetAnimKey(Champ::eAnimType::SKILL1, L"knight_skill1");
-		Owner->SetAnimKey(Champ::eAnimType::SKILL2, L"knight_skill2");
+		Owner->SetAnimKey(Champ::eAnimType::SKILL, L"knight_skill1");
+		Owner->SetAnimKey(Champ::eAnimType::ULTIMATE, L"knight_skill2");
 		
-		anim->CompleteEvent(Owner->GetAnimKey(Champ::eAnimType::ATTACK)) = std::bind(&Champ::Battle, Owner);
+		anim->CompleteEvent(Owner->GetAnimKey(Champ::eAnimType::ATTACK)) = std::bind(&Champ::ATTACK, Owner);
 		anim->CompleteEvent(Owner->GetAnimKey(Champ::eAnimType::DEAD)) = std::bind(&BattleManager::RegistRespawnPool, Owner);
 
 		Owner->Play_Idle();
@@ -91,7 +91,7 @@ namespace ssz
 		Col->SetOffsetSize(ColScale);
 		Col->SetOffsetPos(Vector3(0.f, 10.f, 0.f));
 
-		ColObj* ATKCOL = Owner->CreateColObj(eColObjType::ATKAREA);
+		ColObj* ATKCOL = Owner->CreateColObj(eColObjType::RANGE);
 
 		Transform* AtkColTr = ATKCOL->GetComponent<Transform>();
 		AtkColTr->SetParent(Owner->GetComponent<Transform>()); // 부모를 따라다니는 ColObj

@@ -68,7 +68,7 @@ namespace ssz
 
 			Champ* Owner = mAIBB->FindData<Champ>(*ChampName);
 
-			Collider2D* OwnerCol = Owner->GetColObjsCol(eColObjType::ATKAREA);
+			Collider2D* OwnerCol = Owner->GetColObjsCol(eColObjType::RANGE);
 			Collider2D* TargetCol = nullptr;
 
 			Champ* Target = Owner->GetEnemys()[0];
@@ -76,7 +76,7 @@ namespace ssz
 
 			if (CollisionManager::IsCollision(TargetCol, OwnerCol))
 			{
-				Owner->SetTargetEnemy(Target);
+				Owner->SetTarget_Enemy(Target);
 				return NS_SUCCESS;
 			}
 

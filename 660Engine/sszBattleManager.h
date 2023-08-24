@@ -5,7 +5,7 @@ namespace ssz
 	class BattleManager
 	{
 	public:
-		static bool Battle(Champ* pAttacker, Champ* pTarget, unsigned int iDamage); // 전투 함수
+		static bool ATTACK(Champ* pAttacker, Champ* pTarget, unsigned int iDamage); // 전투 함수
 
 
 	public: // 리스폰

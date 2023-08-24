@@ -9,7 +9,7 @@ namespace ssz
 {
     std::list<Champ*> BattleManager::mRespawn;
 
-    bool BattleManager::Battle(Champ* pAttacker, Champ* pTarget, unsigned int iDamage)
+    bool BattleManager::ATTACK(Champ* pAttacker, Champ* pTarget, unsigned int iDamage)
     {
         if (pTarget->IsPaused()) // Paused상태인지 확인, false면 Battle이 정상적으로 이루어지지 않음
             return false;
@@ -18,7 +18,7 @@ namespace ssz
         {
             // Target은 사망판정
             pTarget->Dead();
-            pAttacker->SetTargetEnemy(nullptr);
+            pAttacker->SetTarget_Enemy(nullptr);
             // RegistRespawnPool(pTarget); // 오브젝트 Dead가 아닌 개념상 Dead로 실제는 Pasued 상태로 전환해 Tick이 돌지 않도록한다.
             
             // 통계 기록
@@ -48,9 +48,9 @@ namespace ssz
 
         while (iter != mRespawn.end())
         {
-            (*iter)->GetIGStatus()->RespawnTime += (float)Time::DeltaTime();
+            (*iter)->GetChampStatus()->RespawnTime += (float)Time::DeltaTime();
             
-            if ((*iter)->GetIGStatus()->RespawnTime > RESPAWNTIME)
+            if ((*iter)->GetChampStatus()->RespawnTime > RESPAWNTIME)
             {
                 RespawnChamp((*iter));
                 iter = mRespawn.erase(iter);
@@ -71,7 +71,7 @@ namespace ssz
         if (Target->IsActive())
             Target->SetState(GameObject::eState::Paused);
 
-        Target->GetIGStatus()->RespawnTime = 0.f;
+        Target->GetChampStatus()->RespawnTime = 0.f;
         
         mRespawn.push_back(Target);
     }
@@ -92,7 +92,7 @@ namespace ssz
 
     bool BattleManager::Damage(Champ* pAttacker, Champ* pTarget, unsigned int iDamage)
     {
-        Champ::IGStatus* TargetStat = pTarget->GetIGStatus();
+        Champ::tChampStatus* TargetStat = pTarget->GetChampStatus();
         int FinalDamage = iDamage - TargetStat->ChampInfo.DEF;
         
         if (FinalDamage <= 0)

@@ -66,7 +66,7 @@ namespace ssz
 	{
 		Champ* champ = GetChamp(ChampKey);
 		SceneManager::GetActiveScene()->AddGameObject(eType, champ);
-		champ->ColObjSetLayer(eColObjType::ATKAREA);
+		champ->ColObjSetLayer(eColObjType::RANGE);
 		champ->GetComponent<Transform>()->SetPosition(Pos);
 
 		return champ;

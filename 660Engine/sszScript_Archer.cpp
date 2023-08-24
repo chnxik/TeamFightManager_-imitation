@@ -33,7 +33,7 @@ namespace ssz
 		
 		Owner->SetName(ARCHER); // 챔프 이름 입력
 		Owner->SetChampInfo(eChampType::MARKSMAN, 42, 0.67f, 120, 5, 100, 3); // 챔피언 정보 입력
-		Owner->InitIGInfo(0, 0);	// 인게임 정보 세팅
+		Owner->InitChampStatus(0, 0);	// 인게임 정보 세팅
 
 		Owner->GetComponent<Transform>()->SetScale(Vector3(128.f, 128.f, 1.f)); // 64 size
 	}
@@ -69,9 +69,9 @@ namespace ssz
 		Owner->SetAnimKey(Champ::eAnimType::MOVE,L"archer_move");
 		Owner->SetAnimKey(Champ::eAnimType::ATTACK,L"archer_attack");
 		Owner->SetAnimKey(Champ::eAnimType::DEAD,L"archer_dead");
-		Owner->SetAnimKey(Champ::eAnimType::SKILL1,L"archer_skill");
+		Owner->SetAnimKey(Champ::eAnimType::SKILL,L"archer_skill");
 		
-		anim->CompleteEvent(Owner->GetAnimKey(Champ::eAnimType::ATTACK)) = std::bind(&Champ::Battle, Owner);
+		anim->CompleteEvent(Owner->GetAnimKey(Champ::eAnimType::ATTACK)) = std::bind(&Champ::ATTACK, Owner);
 		anim->CompleteEvent(Owner->GetAnimKey(Champ::eAnimType::DEAD)) = std::bind(&BattleManager::RegistRespawnPool, Owner);
 		
 		Owner->Play_Idle();
@@ -87,7 +87,7 @@ namespace ssz
 		Col->SetOffsetSize(ColScale);
 		Col->SetOffsetPos(Vector3(0.f, 10.f, 0.f));
 
-		ColObj* ATKCOL = Owner->CreateColObj(eColObjType::ATKAREA);
+		ColObj* ATKCOL = Owner->CreateColObj(eColObjType::RANGE);
 
 		Transform* AtkColTr = ATKCOL->GetComponent<Transform>();
 		AtkColTr->SetParent(Owner->GetComponent<Transform>()); // 부모를 따라다니는 ColObj

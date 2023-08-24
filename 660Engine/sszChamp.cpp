@@ -93,13 +93,13 @@ namespace ssz
 	}
 
 
-	void Champ::Play_Skill1()
+	void Champ::Play_Skill()
 	{
 		GetComponent<Animator>()->PlayAnimation(vecAnimKey[(UINT)eAnimType::SKILL], true);
 	}
 
 
-	void Champ::Play_Skill2()
+	void Champ::Play_Ultimate()
 	{
 		GetComponent<Animator>()->PlayAnimation(vecAnimKey[(UINT)eAnimType::ULTIMATE], true);
 	}

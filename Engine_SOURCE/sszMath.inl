@@ -1,3 +1,4 @@
+#include "sszMath.h"
 //-------------------------------------------------------------------------------------
 // SimpleMath.inl -- Simplified C++ Math wrapper for DirectXMath
 //
@@ -984,6 +985,11 @@ inline void Vector3::Clamp(const Vector3& vmin, const Vector3& vmax, Vector3& re
     const XMVECTOR v3 = XMLoadFloat3(&vmax);
     const XMVECTOR X = XMVectorClamp(v1, v2, v3);
     XMStoreFloat3(&result, X);
+}
+
+inline Vector2 ssz::math::Vector3::V3toV2() const noexcept
+{
+    return Vector2(this->x,this->y);
 }
 
 //------------------------------------------------------------------------------

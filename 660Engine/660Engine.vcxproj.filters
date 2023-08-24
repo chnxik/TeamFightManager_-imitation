@@ -221,9 +221,6 @@
     <ClCompile Include="sszCommonBT.cpp">
       <Filter>Contents\Object\GameUnit\Champ\CommonBT</Filter>
     </ClCompile>
-    <ClCompile Include="sszTestBt.cpp">
-      <Filter>Contents\Object\GameUnit\Champ\CommonBT</Filter>
-    </ClCompile>
     <ClCompile Include="sszColObj.cpp">
       <Filter>Contents\Object\GameUnit\Champ\Base</Filter>
     </ClCompile>

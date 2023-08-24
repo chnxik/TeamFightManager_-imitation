@@ -262,6 +262,8 @@ namespace ssz::math
         void Clamp(const Vector3& vmin, const Vector3& vmax) noexcept;
         void Clamp(const Vector3& vmin, const Vector3& vmax, Vector3& result) const noexcept;
 
+        Vector2 V3toV2() const noexcept;
+
         // Static functions
         static float Distance(const Vector3& v1, const Vector3& v2) noexcept;
         static float DistanceSquared(const Vector3& v1, const Vector3& v2) noexcept;

@@ -43,18 +43,10 @@ namespace ssz
 			IG_StadiumSky->SetName(L"IG_StadiumSky");
 			IG_StadiumSky->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"IGStadiumSkyMt");
 
-			GameObject* BgmPlayer = Instantiate<GameObject>(Vector3(0.f, 0.f, 0.f), eLayerType::Light);
-			AudioSource* as = BgmPlayer->AddComponent<AudioSource>();
-			as->SetClip(Resources::Load<AudioClip>(L"TestBgm", L"..\\Resources\\useResource\\Audio\\0.mp3"));
-			as->Play();
-
-			GameObject* TestText = Instantiate<GameObject>(Vector3(0.f, 0.f, 0.f), Vector3(200.f,200.f,1.f), eLayerType::BackGroundObj);
-			TestText->AddComponent<ArrangementScript>();
-			TestText->AddComponent<Collider2D>();
-			Text* tx = TestText->AddComponent<Text>();
-			tx->SetString(L"Test");
-			tx->SetFontSize(100.f);
-			tx->SetFontColor(255, 0, 255, 255);
+			// GameObject* BgmPlayer = Instantiate<GameObject>(Vector3(0.f, 0.f, 0.f), eLayerType::Light);
+			// AudioSource* as = BgmPlayer->AddComponent<AudioSource>();
+			// as->SetClip(Resources::Load<AudioClip>(L"TestBgm", L"..\\Resources\\useResource\\Audio\\0.mp3"));
+			// as->Play();
 		}
 #pragma endregion
 	}

@@ -3,6 +3,7 @@
 
 namespace ssz::AI
 {
+
 	class BT;
 	class AIBB
 	{

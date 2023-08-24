@@ -288,7 +288,6 @@ xcopy /R /Y "$(SolutionDir)dll\FW1FontWrapperL.dll" "$(SolutionDir)x64\Debug"</
     <ClCompile Include="sszStatIcon.cpp" />
     <ClCompile Include="sszTeam.cpp" />
     <ClCompile Include="sszTeamList.cpp" />
-    <ClCompile Include="sszTestBt.cpp" />
     <ClCompile Include="sszTestScene.cpp" />
     <ClCompile Include="sszTGM.cpp" />
     <ClCompile Include="sszTitleScene.cpp" />

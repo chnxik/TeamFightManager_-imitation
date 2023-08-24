@@ -6,6 +6,8 @@
 #define NS_RUNNING ssz::AI::eNodeStatus::RUNNING
 #define NS_INVALID ssz::AI::eNodeStatus::INVALID
 
+#define FINDBBDATA(T,key) ssz::AI::BT::mAIBB->FindData<T>(key);
+
 namespace ssz::AI
 {
 	class AIBB;

@@ -30,8 +30,7 @@ namespace ssz
             mRoot = new Root_Node(pAIBB);
             return mRoot;
         }
-
+        std::shared_ptr<AIBB> InstantiateAIBB();
         Root_Node* GetRootNode() { return mRoot; }
-
     };
 }

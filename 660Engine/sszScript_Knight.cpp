@@ -1,9 +1,7 @@
 #include "sszScript_Knight.h"
 
-#include "sszTGM.h"
-
 // Test
-#include "sszTestBT.cpp"
+#include "sszCommonBT.cpp"
 
 namespace ssz
 {
@@ -112,21 +110,13 @@ namespace ssz
 
 	void Script_Knight::InitBT()
 	{
-		std::shared_ptr<AIBB> ptrAIBB = std::make_shared<AIBB>();
+		std::shared_ptr<AIBB> BB = InstantiateAIBB();
 
-		ptrAIBB->AddData<std::wstring>(CHAMPKEY, &(GetOwner()->GetName()));
-
-		ptrAIBB->AddData<GameObject>(GetOwner()->GetName(), GetOwner());
-
-		GameObject* pCsr = TGM::GetCursor();
-		ptrAIBB->AddData<GameObject>(L"Cursor", pCsr);
-
-		int* CenterPos = ptrAIBB->CreateData<int>(L"CenterPos");
+		int* CenterPos = BB->CreateData<int>(L"CenterPos");
 		*CenterPos = 100;
 
 		// Set BT
-		Selector_Node* ChampBT = CreateRootNode(ptrAIBB)->AddChild<Selector_Node>(); // 최상위 셀렉터 노드
-		
+		Selector_Node* ChampBT = CreateRootNode(BB)->AddChild<Selector_Node>(); // 최상위 셀렉터 노드
 
 		Sequence_Node* Seq_Dead = ChampBT->AddChild<Sequence_Node>(); // 사망 판단 시퀀스
 		Sequence_Node* Seq_Stop = ChampBT->AddChild<Sequence_Node>(); // 정지 판단 시퀀스

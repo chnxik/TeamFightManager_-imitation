@@ -10,7 +10,7 @@ namespace ssz
     class Champ : public GameObject
     {
     public:
-        enum class eAnimType
+        enum class eActiveType
         {
             IDLE,
             MOVE,
@@ -47,8 +47,8 @@ namespace ssz
 
             // 챔피언 정보
             int HP = 0;                     // 현재 체력
-            float CoolTime_Attack = 0.f;    // 공격 쿨타임
-            float CoolTime_Skill = 0.f;     // 스킬 쿨타임
+            float accTime_Skill = 0.f;      // 현재 스킬 쿨타임
+            float CoolTime_Skill = 0.f;     // 스킬 필요 쿨타임
             float UltimateUseTime = 60.f;    // 궁극기 사용 시점
             bool bULTIMATE = false;         // 궁극기 사용 여부
             float RespawnTime = 0.f;        // 리스폰시간
@@ -90,6 +90,7 @@ namespace ssz
         void InitChampStatus(UINT ATKpt, UINT DEFpt); // Player 클래스를 인자로 받는다.
 
         void ResetInfo();
+        void RespawnInfo();
 
         // Pilot 정보
         void RegistPilot(Pilot* pPilot) { mPilot = pPilot; }
@@ -121,8 +122,8 @@ namespace ssz
         virtual void SetState(eState state);
 
         // Animation Key
-        void SetAnimKey(eAnimType eType, const std::wstring& key) { vecAnimKey[(UINT)eType] = key; }
-        const std::wstring& GetAnimKey(eAnimType eType) { return vecAnimKey[(UINT)eType]; }
+        void SetAnimKey(eActiveType eType, const std::wstring& key) { vecAnimKey[(UINT)eType] = key; }
+        const std::wstring& GetAnimKey(eActiveType eType) { return vecAnimKey[(UINT)eType]; }
 
     private:
         tChampInfo      mChampInfo;       // 챔피언 기본 정보
@@ -139,6 +140,6 @@ namespace ssz
         ColObj* mColObjs[(UINT)eColObjType::END];    // 공격,스킬 판정용 콜라이더 오브젝트
         Champ_Script* mChampScript;
 
-        std::wstring vecAnimKey[(UINT)eAnimType::END];
+        std::wstring vecAnimKey[(UINT)eActiveType::END];
     };
 }

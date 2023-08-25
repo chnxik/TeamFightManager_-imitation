@@ -31,7 +31,7 @@ namespace ssz
 			Champ* Owner = mAIBB->FindData<Champ>(*ChampName);
 
 			Animator* Anim = Owner->GetComponent<Animator>();
-			if (Anim->GetCurAnimationKey() == Owner->GetAnimKey(Champ::eAnimType::DEAD))
+			if (Anim->GetCurAnimationKey() == Owner->GetAnimKey(Champ::eActiveType::DEAD))
 			{
 				return NS_SUCCESS;
 			}
@@ -223,7 +223,7 @@ namespace ssz
 		virtual eNodeStatus Run() override
 		{
 			wstring* ChampName = FINDBBDATA(wstring,CHAMPKEY);
-			GameObject* Owner = FINDBBDATA(GameObject,*ChampName);
+			Champ* Owner = FINDBBDATA(Champ,*ChampName);
 
 			Transform* tr = Owner->GetComponent<Transform>();
 			
@@ -244,8 +244,8 @@ namespace ssz
 	public:
 		virtual eNodeStatus Run() override
 		{
-			wstring* ChampName = mAIBB->FindData<wstring>(CHAMPKEY);
-			GameObject* Owner = mAIBB->FindData<GameObject>(*ChampName);
+			wstring* ChampName = FINDBBDATA(wstring, CHAMPKEY);
+			Champ* Owner = FINDBBDATA(Champ, *ChampName);
 
 			Transform* mtr = mAIBB->FindData<GameObject>(*ChampName)->GetComponent<Transform>();
 			Vector3 pos = mtr->GetPosition();
@@ -260,95 +260,259 @@ namespace ssz
 			return NS_SUCCESS;
 		}
 	};
-
-	class Act_PlayAnim_Idle : public Action_Node
-	{
-	public:
-		virtual eNodeStatus Run() override
-		{
-			wstring* ChampName = mAIBB->FindData<wstring>(CHAMPKEY);
-
-			Champ* mChamp = mAIBB->FindData<Champ>(*ChampName);
-
-			mChamp->Play_Idle();
-
-			return NS_SUCCESS;
-		}
-	};
-
-	class Act_PlayAnim_Move : public Action_Node
-	{
-	public:
-		virtual eNodeStatus Run() override
-		{
-			wstring* ChampName = mAIBB->FindData<wstring>(CHAMPKEY);
-
-			Champ* mChamp = mAIBB->FindData<Champ>(*ChampName);
-
-			mChamp->Play_Move();
-			return NS_SUCCESS;
-		}
-	};
-	class Act_PlayAnim_Attack : public Action_Node
-	{
-	public:
-		virtual eNodeStatus Run() override
-		{
-			wstring* ChampName = mAIBB->FindData<wstring>(CHAMPKEY);
-
-			Champ* mChamp = mAIBB->FindData<Champ>(*ChampName);
-
-			if (mChamp->GetComponent<Animator>()->GetCurAnimationKey() != mChamp->GetAnimKey(Champ::eAnimType::ATTACK))
-				mChamp->Play_Attack();
-			if (mChamp->GetComponent<Animator>()->IsComplete())
-				return NS_SUCCESS;
-
-			return NS_RUNNING;
-		}
-	};
-	class Act_PlayAnim_Dead : public Action_Node
-	{
-	public:
-		virtual eNodeStatus Run() override
-		{
-			wstring* ChampName = mAIBB->FindData<wstring>(CHAMPKEY);
-
-			Champ* mChamp = mAIBB->FindData<Champ>(*ChampName);
-
-			mChamp->Play_Dead();
-
-			if (mChamp->GetComponent<Animator>()->IsComplete())
-				return NS_SUCCESS;
-
-			return NS_RUNNING;
-		}
-	};
 #pragma endregion
 
 	// ================
 	// [Condition Node]
 	// ================
-#pragma region
+#pragma region Target Check
+	class Con_SerchTarget_Enemy_HPMIN : public Condition_Node
+	{
+	public:
+		virtual eNodeStatus Run() override
+		{
+			wstring* ChampName = FINDBBDATA(wstring, CHAMPKEY);
+			Champ* Owner = FINDBBDATA(Champ, *ChampName);
+			Champ* Target = Owner->GetTarget_Enemy();
+
+			for (Champ* pChamp : Owner->GetEnemys())
+			{
+				if (pChamp != nullptr &&
+					pChamp->IsActive())
+				{
+					if (Target == nullptr)
+					{
+						Target = pChamp;
+					}
+					else if (pChamp->GetChampStatus()->HP <
+						Target->GetChampStatus()->HP)
+					{
+						Target = pChamp;
+					}
+				}
+			}
+
+			if (Target == nullptr)
+				return NS_FAILURE;
+
+			return NS_SUCCESS;
+		}
+	};
+	class Con_SerchTarget_Enemy_ChampType : public Condition_Node
+	{
+	public:
+		Con_SerchTarget_Enemy_ChampType(eChampType type) : mChampType(type) {}
+
+		virtual eNodeStatus Run() override
+		{
+			wstring* ChampName = FINDBBDATA(wstring, CHAMPKEY);
+			Champ* Owner = FINDBBDATA(Champ, *ChampName);
+			Champ* Target = Owner->GetTarget_Enemy();
+
+			for (Champ* pChamp : Owner->GetEnemys())
+			{
+				if (pChamp != nullptr &&
+					pChamp->IsActive())
+				{
+					if (Target == nullptr)
+					{
+						Target = pChamp;
+					}
+					else if (pChamp->GetChampInfo().ChampType == mChampType)
+					{
+						Target = pChamp;
+					}
+				}
+			}
+
+			if (Target == nullptr)
+				return NS_FAILURE;
+
+			return NS_SUCCESS;
+		}
+
+	private:
+		eChampType mChampType;
+	};
+	class Con_SerchTarget_Enemy_Near : public Condition_Node
+	{
+	private:
+		Champ* NearChamp(Champ* Owner, Champ* A, Champ* B)
+		{
+			Vector2 OwnerPos = Owner->GetComponent<Transform>()->GetWorldPosition().V3toV2();
+			Vector2 APos = A->GetComponent<Transform>()->GetWorldPosition().V3toV2();
+			Vector2 BPos = B->GetComponent<Transform>()->GetWorldPosition().V3toV2();
+
+			float Adist = Vector2::Distance(OwnerPos, APos);
+			float Bdist = Vector2::Distance(OwnerPos, BPos);
+
+			if (Adist > Bdist)
+				return B;
+
+			else
+				return A;
+		}
+
+	public:
+		virtual eNodeStatus Run() override
+		{
+			wstring* ChampName = FINDBBDATA(wstring, CHAMPKEY);
+			Champ* Owner = FINDBBDATA(Champ, *ChampName);
+			Champ* Target = Owner->GetTarget_Enemy();
+
+			for (Champ* pChamp : Owner->GetEnemys())
+			{
+				if (pChamp != nullptr &&
+					pChamp->IsActive())
+				{
+					if (Target == nullptr)
+					{
+						Target = pChamp;
+						continue;
+					}
+
+					Target = NearChamp(Owner, Target, pChamp);
+				}
+			}
+
+			if (Target == nullptr)
+				return NS_FAILURE;
+
+			return NS_SUCCESS;
+		}
+	};
+	class Con_SerchTarget_Friendly_HPMIN : public Condition_Node
+	{
+	public:
+		virtual eNodeStatus Run() override
+		{
+			wstring* ChampName = FINDBBDATA(wstring, CHAMPKEY);
+			Champ* Owner = FINDBBDATA(Champ, *ChampName);
+			Champ* Target = Owner->GetTarget_Friendly();
+
+			for (Champ* pChamp : Owner->GetFriendly())
+			{
+				if (pChamp != nullptr &&
+					pChamp->IsActive())
+				{
+					if (Target == nullptr)
+					{
+						Target = pChamp;
+					}
+					else if (pChamp->GetChampStatus()->HP <
+						Target->GetChampStatus()->HP)
+					{
+						Target = pChamp;
+					}
+				}
+			}
+
+			if (Target == nullptr)
+				return NS_FAILURE;
+
+			return NS_SUCCESS;
+		}
+	};
 #pragma endregion
 
-#pragma region
+#pragma region Active Check
+	class Con_CheckActive_Skill : public Condition_Node
+	{
+	public:
+		virtual eNodeStatus Run() override
+		{
+			wstring* ChampName = FINDBBDATA(wstring, CHAMPKEY);
+			Champ* Owner = FINDBBDATA(Champ, *ChampName);
+
+			// 쿨타임 사용가능한 시간인지.
+			return NS_SUCCESS;
+		}
+	};
+
+	class Con_CheckActive_Ultimate : public Condition_Node
+	{
+	public:
+		virtual eNodeStatus Run() override
+		{
+			wstring* ChampName = FINDBBDATA(wstring, CHAMPKEY);
+			Champ* Owner = FINDBBDATA(Champ, *ChampName);
+
+			// 현재 경기시간이 궁극기사용가능시간을 넘었는지
+			return NS_SUCCESS;
+		}
+	};
+
+	// 공격, 스킬, 궁극기 사거리 판단 Contition
 #pragma endregion
 
 	// =============
 	// [Action Node]
 	// =============
 
+#pragma region Set Move Point
+	// 카이팅 무빙
+	class Act_SetMovePoint_Kiting: public Action_Node
+	{
+	public:
+		virtual eNodeStatus Run() override
+		{
+			wstring* ChampName = FINDBBDATA(wstring, CHAMPKEY);
+			Champ* Owner = FINDBBDATA(Champ, *ChampName);
+
+			Champ* Target = Owner->GetTarget_Enemy(); // 타겟 위치
+
+			// 일반적인 카이팅 : 타겟 위치의 정 반대 방향으로 이동
+			Vector2 OwnerPos = Owner->GetComponent<Transform>()->GetWorldPosition().V3toV2();
+			Vector2 TargetPos = Target->GetComponent<Transform>()->GetWorldPosition().V3toV2();
+
+			Vector2* MovePoint = FINDBBDATA(Vector2, MOVEPOINT);
+
+			
+			
+
+
+			return NS_SUCCESS;
+		}
+	};
+	// 타겟 방향 무빙
+	class Act_SetMovePoint_Target : public Action_Node
+	{
+	public:
+		virtual eNodeStatus Run() override
+		{
+			wstring* ChampName = FINDBBDATA(wstring, CHAMPKEY);
+			Champ* Owner = FINDBBDATA(Champ, *ChampName);
+
+			return NS_SUCCESS;
+		}
+	};
+	// 무작위 무빙
+	class Act_SetMovePoint_Random : public Action_Node
+	{
+	public:
+		virtual eNodeStatus Run() override
+		{
+			wstring* ChampName = FINDBBDATA(wstring, CHAMPKEY);
+			Champ* Owner = FINDBBDATA(Champ, *ChampName);
+
+			return NS_SUCCESS;
+		}
+	};
+#pragma endregion
+
 #pragma region Transform Action
+	// 강제 이동
+	// 어택 이동
 	class Act_TurnLeft : public Action_Node
 	{
 	public:
 		virtual eNodeStatus Run() override
 		{
-			wstring* ChampName = mAIBB->FindData<wstring>(CHAMPKEY);
+			wstring* ChampName = FINDBBDATA(wstring, CHAMPKEY);
+			Champ* Owner = FINDBBDATA(Champ, *ChampName);
 
-			Transform* mtr = mAIBB->FindData<GameObject>(*ChampName)->GetComponent<Transform>();
-
-			mtr->SetLeft();
+			Transform* tr = Owner->GetComponent<Transform>();
+			tr->SetLeft();
 			return NS_SUCCESS;
 		}
 	};
@@ -357,16 +521,124 @@ namespace ssz
 	public:
 		virtual eNodeStatus Run() override
 		{
-			wstring* ChampName = mAIBB->FindData<wstring>(CHAMPKEY);
+			wstring* ChampName = FINDBBDATA(wstring, CHAMPKEY);
+			Champ* Owner = FINDBBDATA(Champ, *ChampName);
 
-			Transform* mtr = mAIBB->FindData<GameObject>(*ChampName)->GetComponent<Transform>();
-
-			mtr->SetRight();
+			Transform* tr = Owner->GetComponent<Transform>();
+			tr->SetRight();
 			return NS_SUCCESS;
 		}
 	};
 #pragma endregion
 
-#pragma region
+#pragma region Animation
+	// Idle
+	class Act_PlayAnim_Idle : public Action_Node
+	{
+	public:
+		virtual eNodeStatus Run() override
+		{
+			wstring* ChampName = FINDBBDATA(wstring, CHAMPKEY);
+			Champ* Owner = FINDBBDATA(Champ, *ChampName);
+
+			if (Owner->GetComponent<Animator>()->GetCurAnimationKey() !=
+				Owner->GetAnimKey(Champ::eActiveType::IDLE))
+				Owner->Play_Idle();
+
+			return NS_SUCCESS;
+		}
+	};
+	// Move
+	class Act_PlayAnim_Move : public Action_Node
+	{
+	public:
+		virtual eNodeStatus Run() override
+		{
+			wstring* ChampName = FINDBBDATA(wstring, CHAMPKEY);
+			Champ* Owner = FINDBBDATA(Champ, *ChampName);
+
+			if (Owner->GetComponent<Animator>()->GetCurAnimationKey() !=
+				Owner->GetAnimKey(Champ::eActiveType::MOVE))
+				Owner->Play_Move();
+
+			return NS_SUCCESS;
+		}
+	};
+	// Attack
+	class Act_PlayAnim_Attack : public Action_Node
+	{
+	public:
+		virtual eNodeStatus Run() override
+		{
+			wstring* ChampName = FINDBBDATA(wstring, CHAMPKEY);
+			Champ* Owner = FINDBBDATA(Champ, *ChampName);
+
+			if (Owner->GetComponent<Animator>()->GetCurAnimationKey() !=
+				Owner->GetAnimKey(Champ::eActiveType::ATTACK))
+				Owner->Play_Attack();
+
+			else if (Owner->GetComponent<Animator>()->IsComplete())
+				return NS_SUCCESS;
+
+			return NS_RUNNING;
+		}
+	};
+	// Skill
+	class Act_PlayAnim_Skill : public Action_Node
+	{
+	public:
+		virtual eNodeStatus Run() override
+		{
+			wstring* ChampName = FINDBBDATA(wstring, CHAMPKEY);
+			Champ* Owner = FINDBBDATA(Champ, *ChampName);
+
+			if (Owner->GetComponent<Animator>()->GetCurAnimationKey() !=
+				Owner->GetAnimKey(Champ::eActiveType::SKILL))
+				Owner->Play_Skill();
+
+			else if (Owner->GetComponent<Animator>()->IsComplete())
+				return NS_SUCCESS;
+
+			return NS_RUNNING;
+		}
+	};
+	// Ultimate
+	class Act_PlayAnim_Ultimate : public Action_Node
+	{
+	public:
+		virtual eNodeStatus Run() override
+		{
+			wstring* ChampName = FINDBBDATA(wstring, CHAMPKEY);
+			Champ* Owner = FINDBBDATA(Champ, *ChampName);
+
+			if (Owner->GetComponent<Animator>()->GetCurAnimationKey() !=
+				Owner->GetAnimKey(Champ::eActiveType::ULTIMATE))
+				Owner->Play_Ultimate();
+
+			else if (Owner->GetComponent<Animator>()->IsComplete())
+				return NS_SUCCESS;
+
+			return NS_RUNNING;
+		}
+	};
+	// Dead
+	class Act_PlayAnim_Dead : public Action_Node
+	{
+	public:
+		virtual eNodeStatus Run() override
+		{
+			wstring* ChampName = FINDBBDATA(wstring, CHAMPKEY);
+			Champ* Owner = FINDBBDATA(Champ, *ChampName);
+
+			if (Owner->GetComponent<Animator>()->GetCurAnimationKey() !=
+				Owner->GetAnimKey(Champ::eActiveType::DEAD))
+				Owner->Play_Dead();
+
+			if (Owner->GetComponent<Animator>()->IsComplete())
+				return NS_SUCCESS;
+
+			return NS_RUNNING;
+		}
+	};
 #pragma endregion
 }

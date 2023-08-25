@@ -65,14 +65,14 @@ namespace ssz
 		anim->Create(L"archer_skill", L"archer_sprite", Vector2(0.f, FrmSize.y * 4), FrmSize, 17, Vector2(0.f, 0.f), 8.f);
 		
 
-		Owner->SetAnimKey(Champ::eAnimType::IDLE,L"archer_idle");
-		Owner->SetAnimKey(Champ::eAnimType::MOVE,L"archer_move");
-		Owner->SetAnimKey(Champ::eAnimType::ATTACK,L"archer_attack");
-		Owner->SetAnimKey(Champ::eAnimType::DEAD,L"archer_dead");
-		Owner->SetAnimKey(Champ::eAnimType::SKILL,L"archer_skill");
+		Owner->SetAnimKey(Champ::eActiveType::IDLE,L"archer_idle");
+		Owner->SetAnimKey(Champ::eActiveType::MOVE,L"archer_move");
+		Owner->SetAnimKey(Champ::eActiveType::ATTACK,L"archer_attack");
+		Owner->SetAnimKey(Champ::eActiveType::DEAD,L"archer_dead");
+		Owner->SetAnimKey(Champ::eActiveType::SKILL,L"archer_skill");
 		
-		anim->CompleteEvent(Owner->GetAnimKey(Champ::eAnimType::ATTACK)) = std::bind(&Champ::ATTACK, Owner);
-		anim->CompleteEvent(Owner->GetAnimKey(Champ::eAnimType::DEAD)) = std::bind(&BattleManager::RegistRespawnPool, Owner);
+		anim->CompleteEvent(Owner->GetAnimKey(Champ::eActiveType::ATTACK)) = std::bind(&Champ::ATTACK, Owner);
+		anim->CompleteEvent(Owner->GetAnimKey(Champ::eActiveType::DEAD)) = std::bind(&BattleManager::RegistRespawnPool, Owner);
 		
 		Owner->Play_Idle();
 	}

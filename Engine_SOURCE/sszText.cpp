@@ -19,6 +19,7 @@ namespace ssz
 		, mFontSize(100.f)
 		, mFontColor(0)
 	{
+		mFontColor = FONT_RGBA(255, 255, 255, 255);
 	}
 
 	Text::~Text()

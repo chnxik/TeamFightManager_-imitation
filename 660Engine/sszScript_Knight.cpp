@@ -65,15 +65,15 @@ namespace ssz
 		anim->Create(L"knight_skill1", L"knight_sprite", Vector2(0.f, FrmSize.y * 4), FrmSize, 7, Vector2(0.f, 0.f), 8.f);
 		anim->Create(L"knight_skill2", L"knight_sprite", Vector2(0.f, FrmSize.y * 5), FrmSize, 7, Vector2(0.f, 0.f), 8.f);
 
-		Owner->SetAnimKey(Champ::eAnimType::IDLE, L"knight_idle");
-		Owner->SetAnimKey(Champ::eAnimType::MOVE, L"knight_move");
-		Owner->SetAnimKey(Champ::eAnimType::ATTACK, L"knight_attack");
-		Owner->SetAnimKey(Champ::eAnimType::DEAD, L"knight_dead");
-		Owner->SetAnimKey(Champ::eAnimType::SKILL, L"knight_skill1");
-		Owner->SetAnimKey(Champ::eAnimType::ULTIMATE, L"knight_skill2");
+		Owner->SetAnimKey(Champ::eActiveType::IDLE, L"knight_idle");
+		Owner->SetAnimKey(Champ::eActiveType::MOVE, L"knight_move");
+		Owner->SetAnimKey(Champ::eActiveType::ATTACK, L"knight_attack");
+		Owner->SetAnimKey(Champ::eActiveType::DEAD, L"knight_dead");
+		Owner->SetAnimKey(Champ::eActiveType::SKILL, L"knight_skill1");
+		Owner->SetAnimKey(Champ::eActiveType::ULTIMATE, L"knight_skill2");
 		
-		anim->CompleteEvent(Owner->GetAnimKey(Champ::eAnimType::ATTACK)) = std::bind(&Champ::ATTACK, Owner);
-		anim->CompleteEvent(Owner->GetAnimKey(Champ::eAnimType::DEAD)) = std::bind(&BattleManager::RegistRespawnPool, Owner);
+		anim->CompleteEvent(Owner->GetAnimKey(Champ::eActiveType::ATTACK)) = std::bind(&Champ::ATTACK, Owner);
+		anim->CompleteEvent(Owner->GetAnimKey(Champ::eActiveType::DEAD)) = std::bind(&BattleManager::RegistRespawnPool, Owner);
 
 		Owner->Play_Idle();
 	}

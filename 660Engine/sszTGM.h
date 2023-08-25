@@ -14,7 +14,21 @@ namespace ssz
 		static void Initialize();
 		static void Release();
 
+		// 공용 오브젝트
 		static GameObject* GetCursor() { return (GameObject*)mCursor; }
+		static const RECT& GetStadiumSize() { return mStadiumSize; }
+		static Vector3 GetStaidumPos()
+		{
+			return Vector3(
+				(float)(mStadiumSize.left + (mStadiumSize.right - mStadiumSize.left) / 2.f), 
+				(float)(mStadiumSize.bottom + (mStadiumSize.top - mStadiumSize.bottom / 2.f)), 0.f);
+		}
+		static Vector3 GetStadiumScale() 
+		{
+			return Vector3(
+				(float)(mStadiumSize.right - mStadiumSize.left), 
+				(float)(mStadiumSize.bottom - mStadiumSize.top), 0.f);
+		}
 
 		static Team* GetTeam(const std::wstring& key);
 		static Pilot* GetPilot(const std::wstring& key);
@@ -30,6 +44,8 @@ namespace ssz
 		static Champ* AddChampScene(eLayerType eType, const std::wstring& ChampKey,Vector3 Pos);
 
 	private:
+		static const RECT mStadiumSize;
+
 		static Cursor* mCursor;
 
 		static TeamList* gTeamList;

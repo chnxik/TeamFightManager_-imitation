@@ -44,12 +44,23 @@ namespace ssz
 
 	void Champ::Update()
 	{
+		if (mChampStatus.accTime_Skill < mChampStatus.CoolTime_Skill)
+		{
+			mChampStatus.accTime_Skill += (float)Time::DeltaTime();
+		}
+
 		GameObject::Update();
 	}
 
 	void Champ::LateUpdate()
 	{
+		if (mTargetEnemy != nullptr && !(mTargetEnemy->IsActive()))
+			mTargetEnemy = nullptr;
+		if (mTargetFriendly != nullptr && !(mTargetFriendly->IsActive()))
+			mTargetFriendly = nullptr;
+
 		GameObject::LateUpdate();
+
 		GetComponent<Text>()->SetString(std::to_wstring(mChampStatus.HP));
 	}
 
@@ -74,34 +85,35 @@ namespace ssz
 
 	void Champ::Play_Idle()
 	{
-		GetComponent<Animator>()->PlayAnimation(vecAnimKey[(UINT)eAnimType::IDLE], true);
+		GetComponent<Animator>()->PlayAnimation(vecAnimKey[(UINT)eActiveType::IDLE], true);
 	}
 
 	void Champ::Play_Move()
 	{
-		GetComponent<Animator>()->PlayAnimation(vecAnimKey[(UINT)eAnimType::MOVE], true);
+		GetComponent<Animator>()->PlayAnimation(vecAnimKey[(UINT)eActiveType::MOVE], true);
 	}
 
 	void Champ::Play_Attack()
 	{
-		GetComponent<Animator>()->PlayAnimation(vecAnimKey[(UINT)eAnimType::ATTACK], false);
+		GetComponent<Animator>()->PlayAnimation(vecAnimKey[(UINT)eActiveType::ATTACK], false);
 	}
 
 	void Champ::Play_Dead()
 	{
-		GetComponent<Animator>()->PlayAnimation(vecAnimKey[(UINT)eAnimType::DEAD], false);
+		GetComponent<Animator>()->PlayAnimation(vecAnimKey[(UINT)eActiveType::DEAD], false);
 	}
 
 
 	void Champ::Play_Skill()
 	{
-		GetComponent<Animator>()->PlayAnimation(vecAnimKey[(UINT)eAnimType::SKILL], true);
+		
+		GetComponent<Animator>()->PlayAnimation(vecAnimKey[(UINT)eActiveType::SKILL], true);
 	}
 
 
 	void Champ::Play_Ultimate()
 	{
-		GetComponent<Animator>()->PlayAnimation(vecAnimKey[(UINT)eAnimType::ULTIMATE], true);
+		GetComponent<Animator>()->PlayAnimation(vecAnimKey[(UINT)eActiveType::ULTIMATE], true);
 	}
 
 	void Champ::SetChampScript(Champ_Script* script)
@@ -127,7 +139,7 @@ namespace ssz
 		mChampStatus.ChampInfo.DEF = mChampInfo.DEF + DEFpt;    // 방어력
 
 		mChampStatus.HP = mChampStatus.ChampInfo.MAXHP;         // 현재 체력
-		mChampStatus.CoolTime_Attack = 0.f;						// 공격 쿨타임
+		mChampStatus.accTime_Skill = 0.f;						// 공격 쿨타임
 		mChampStatus.CoolTime_Skill = 0.f;						// 스킬 쿨타임
 
 		mChampStatus.UltimateUseTime = 60.f;					// 궁극기 사용 시점
@@ -153,6 +165,18 @@ namespace ssz
 		mTargetFriendly = nullptr;
 
 		InitChampStatus(0, 0);
+	}
+
+	void Champ::RespawnInfo()
+	{
+		mTargetEnemy = nullptr;
+		mTargetFriendly = nullptr;
+
+		mChampStatus.HP = mChampStatus.ChampInfo.MAXHP;         // 현재 체력
+		mChampStatus.accTime_Skill = 0.f;						// 공격 쿨타임
+		mChampStatus.CoolTime_Skill = 0.f;						// 스킬 쿨타임
+
+		mChampStatus.RespawnTime = 0.f;
 	}
 
 	void Champ::ATTACK()

@@ -81,7 +81,7 @@ namespace ssz
         if (Target->IsPaused())
             Target->SetState(GameObject::eState::Active);
 
-        Target->ResetInfo();
+        Target->RespawnInfo();
         Target->GetComponent<Collider2D>()->ColliderActive();
         Target->Play_Idle();
 

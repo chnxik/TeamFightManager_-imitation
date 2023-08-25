@@ -7,6 +7,8 @@
 
 namespace ssz
 {
+	const RECT	TGM::mStadiumSize{ -570, 126, 570, -460 }; // Left, Top, Right, Bottme
+
 	TeamList* TGM::gTeamList = nullptr;
 	PilotList* TGM::gPilotList = nullptr;
 	ChampList* TGM::gChampList = nullptr;

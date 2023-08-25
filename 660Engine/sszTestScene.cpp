@@ -43,10 +43,8 @@ namespace ssz
 			IG_StadiumSky->SetName(L"IG_StadiumSky");
 			IG_StadiumSky->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"IGStadiumSkyMt");
 
-			// GameObject* BgmPlayer = Instantiate<GameObject>(Vector3(0.f, 0.f, 0.f), eLayerType::Light);
-			// AudioSource* as = BgmPlayer->AddComponent<AudioSource>();
-			// as->SetClip(Resources::Load<AudioClip>(L"TestBgm", L"..\\Resources\\useResource\\Audio\\0.mp3"));
-			// as->Play();
+			GameObject* StadiumArea = Instantiate<GameObject>(TGM::GetStaidumPos(), TGM::GetStadiumScale(), eLayerType::BackGroundObj);
+			StadiumArea->AddComponent<Collider2D>();
 		}
 #pragma endregion
 	}
@@ -54,13 +52,11 @@ namespace ssz
 	void TestScene::Update()
 	{
 		Scene::Update();
-
 	}
 	void TestScene::LateUpdate()
 	{
 		Scene::LateUpdate();
 		BattleManager::Update();
-
 
 		if (Input::GetKeyDown(eKeyCode::ENTER))
 		{

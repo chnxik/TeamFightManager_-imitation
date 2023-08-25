@@ -23,6 +23,7 @@ namespace ssz
 	public:
 		static bool Initialize();
 		static void DrawFont(const wchar_t* str, float x, float y, float size, UINT rgb);
+		static void DrawFont(const wchar_t* str, const wchar_t* font, float x, float y, float size, UINT rgb);
 		static void Release();
 
 

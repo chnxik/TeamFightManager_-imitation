@@ -10,6 +10,7 @@ namespace ssz
         virtual ~BattleHeader();
 
         virtual void Initialize() override;
+        virtual void Update() override;
 
     private:
     };

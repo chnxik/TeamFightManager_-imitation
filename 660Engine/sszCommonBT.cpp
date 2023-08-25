@@ -424,8 +424,13 @@ namespace ssz
 			wstring* ChampName = FINDBBDATA(wstring, CHAMPKEY);
 			Champ* Owner = FINDBBDATA(Champ, *ChampName);
 
+			Champ::tChampStatus* status = Owner->GetChampStatus();
+
 			// 쿨타임 사용가능한 시간인지.
-			return NS_SUCCESS;
+			if (status->CoolTime_Skill <= status->accTime_Skill)
+				return NS_SUCCESS;
+
+			return NS_FAILURE;
 		}
 	};
 

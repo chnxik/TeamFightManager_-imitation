@@ -70,6 +70,9 @@ namespace ssz
 	}
 	void TestScene::OnEnter()
 	{
+		Log::Clear();
+		TGM::SetGameTime(60.f);
+
 		// Player
 		{
 			Champ* archer = TGM::AddChampScene(eLayerType::Player, ARCHER, Vector3(-100.f, 0.f, 1.0f));

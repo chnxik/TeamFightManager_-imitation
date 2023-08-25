@@ -33,6 +33,22 @@ namespace ssz
 		);
 	}
 
+	void FontWrapper::DrawFont(const wchar_t* str, const wchar_t* font, float x, float y, float size, UINT rgb)
+	{
+		//RGB();
+		ID3D11DeviceContext* pContext = graphics::GetDevice()->GetID3D11DeviceContext();
+		mFontWrapper->DrawString(
+			pContext,
+			str, // String
+			font, // font
+			size,// Font size
+			x,// X position
+			y,// Y position
+			rgb,// Text color, 0xAaBbGgRr
+			FW1_RESTORESTATE      // Flags (for example FW1_RESTORESTATE to keep context states unchanged)
+		);
+	}
+
 	void FontWrapper::Release()
 	{
 		mFW1Factory->Release();

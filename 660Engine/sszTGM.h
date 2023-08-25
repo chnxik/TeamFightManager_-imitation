@@ -30,6 +30,10 @@ namespace ssz
 				(float)(mStadiumSize.bottom - mStadiumSize.top), 0.f);
 		}
 
+		// 게임 정보
+		static void	SetGameTime(float time) { mGameTime = time; }
+		static float& GetGameTime() { return mGameTime; }
+
 		static Team* GetTeam(const std::wstring& key);
 		static Pilot* GetPilot(const std::wstring& key);
 		static Champ* GetChamp(const std::wstring& key);
@@ -45,6 +49,7 @@ namespace ssz
 
 	private:
 		static const RECT mStadiumSize;
+		static float mGameTime;
 
 		static Cursor* mCursor;
 

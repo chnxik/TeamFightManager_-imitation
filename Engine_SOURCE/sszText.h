@@ -16,6 +16,8 @@ namespace ssz
 		virtual void LateUpdate() override;
 		virtual void Render() override;
 
+		void SetFont(const std::wstring& font) { mFont = font; }
+
 		void SetFontSize(float Size) { mFontSize = Size; }
 		float GetFontSize() { return mFontSize; }
 
@@ -31,6 +33,7 @@ namespace ssz
 		virtual void SetOwner(GameObject* owner) { mOwner = owner; }
 
 	private:
+		std::wstring mFont;
 		std::wstring mString;
 		Vector3 mFontPos;
 		Vector3 mOffsetPos;

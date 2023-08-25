@@ -13,6 +13,7 @@ namespace ssz
 {
 	Text::Text()
 		: Component(eComponentType::Text)
+		, mFont{}
 		, mString{}
 		, mFontPos{}
 		, mOffsetPos{}
@@ -28,6 +29,7 @@ namespace ssz
 
 	void Text::Initialize()
 	{
+		SetFont(L"Silver");
 	}
 
 	void Text::Update()
@@ -48,14 +50,14 @@ namespace ssz
 		float height = (float)(rect.bottom - rect.top);
 		
 		mFontPos.x += width / 2.f + mOffsetPos.x;
-		mFontPos.y += height / 2.f + mOffsetPos.y;
+		mFontPos.y += height / 2.f - mOffsetPos.y;
 	}
 
 	void Text::Render()
 	{
 		if (mString.size() != 0)
 		{
-			FontWrapper::DrawFont(mString.c_str(), mFontPos.x, mFontPos.y, mFontSize, mFontColor);
+			FontWrapper::DrawFont(mString.c_str(), mFont.c_str(), mFontPos.x, mFontPos.y, mFontSize, mFontColor);
 		}
 	}
 

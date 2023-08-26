@@ -27,7 +27,7 @@ namespace ssz
 		{
 			return Vector3(
 				(float)(mStadiumSize.right - mStadiumSize.left), 
-				(float)(mStadiumSize.bottom - mStadiumSize.top), 0.f);
+				(float)(mStadiumSize.top - mStadiumSize.bottom), 0.f);
 		}
 
 		// 게임 정보

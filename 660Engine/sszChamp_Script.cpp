@@ -20,6 +20,18 @@ namespace ssz
 	void Champ_Script::Update()
 	{
 	}
+
+	void Champ_Script::LateUpdate()
+	{
+		// y값에 따라 z값 변경
+		Transform* tr = GetOwner()->GetComponent<Transform>();
+		Vector3 ChampPos = tr->GetPosition();
+		ChampPos.z = (ChampPos.y - TGM::GetStadiumSize().bottom) / TGM::GetStadiumScale().y;
+		ChampPos.z *= 0.0001f;
+		ChampPos.z += 1.2f; // 경기장 z값
+		
+		tr->SetPosition(ChampPos);
+	}
 	
 	std::shared_ptr<AIBB> Champ_Script::InstantiateAIBB()
 	{

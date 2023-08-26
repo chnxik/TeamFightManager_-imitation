@@ -37,7 +37,7 @@ namespace ssz
 	{
 		Text* tx = AddComponent<Text>();
 
-		tx->SetOffsetPos(Vector3(20.f, 50.f, -0.1f));
+		tx->SetOffsetPos(Vector3(20.f, 50.f, 0.f));
 		tx->SetFontSize(40.f);
 		tx->SetFontColor(255, 255, 255, 255);
 	}

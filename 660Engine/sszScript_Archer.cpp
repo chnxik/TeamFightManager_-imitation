@@ -137,81 +137,12 @@ namespace ssz
 		Sequence_Node* Seq_Move = ChampBT->AddChild<Sequence_Node>();
 		Selector_Node* Sel_MovePoint = Seq_Move->AddChild<Selector_Node>(); // 2-3-1 이동지점 갱신 판단
 		Sel_MovePoint->AddChild<Con_IsArrive>();			// 2-3-1-1 목표지점 도착 판단
-		Sel_MovePoint->AddChild<Act_SetMovePoint_Random>();	// 2-3-1-2 랜덤 이동 지점
+		// Sel_MovePoint->AddChild<Act_SetMovePoint_Kiting>();	// 2-3-1-2 카이팅 이동 지점
+		Sel_MovePoint->AddChild<Act_SetMovePoint_Random>();	// 2-3-1-3 랜덤 이동 지점
 
 		Seq_Move->AddChild<Act_SetDir_MovePoint>();		// 2-3-2-1 이동방향으로 방향전환
 		Seq_Move->AddChild<Act_Move_Default>();			// 2-3-2-2 이동방향으로 이동
 		Seq_Move->AddChild<Act_PlayAnim_Move>();		// 2-3-2-3 이동애니메이션 재생
-
-
-#pragma region Test BT 1
-		// Set BT
-		
-		/*
-		int* CenterPos = BB->CreateData<int>(L"CenterPos");
-		*CenterPos = -100;
-		
-		Selector_Node* ChampBT = CreateRootNode(BB)->AddChild<Selector_Node>(); // 최상위 셀렉터 노드
-
-
-		Sequence_Node* Seq_Dead = ChampBT->AddChild<Sequence_Node>(); // 사망 판단 시퀀스
-		Sequence_Node* Seq_Stop = ChampBT->AddChild<Sequence_Node>(); // 정지 판단 시퀀스
-		Selector_Node* Sel_AttackOrBack = ChampBT->AddChild<Selector_Node>(); // 공격 판단 시퀀스
-		Sequence_Node* Seq_Move = ChampBT->AddChild<Sequence_Node>(); // 이동 판단 시퀀스
-
-		// 사망 판단 시퀀스
-		// Seq_Dead->AddChild<Con_CollisionCsr>(); // Csr 충돌 판단
-		Seq_Dead->AddChild<Con_IsAlive>();
-		// Seq_Dead->AddChild<Act_PlayAnim_Dead>(); // Idle Animation 재생
-
-		// 정지 판단 시퀀스
-		Seq_Stop->AddChild<Con_IsStopBtnPush>(); // 정지 버튼 입력 판단
-		Seq_Stop->AddChild<Act_PlayAnim_Idle>(); // Idle Animation 재생
-
-
-		// 공격 판단 시퀀스
-		Sequence_Node* Seq_Attack = Sel_AttackOrBack->AddChild<Sequence_Node>();
-
-		Seq_Attack->AddChild<Con_CollisionOtehrChamp>();
-		Seq_Attack->AddChild<Con_MustBack>();
-		Seq_Attack->AddChild<Con_OntheRight>();
-		Seq_Attack->AddChild<Con_IsRight>();
-
-		Sequence_Node* Seq_AttackAnim = Seq_Attack->AddChild<Sequence_Node>();
-		Seq_AttackAnim->AddChild<Act_PlayAnim_Attack>();
-		Seq_AttackAnim->AddChild<Act_PlayAnim_Idle>();
-
-		// 이동 판단 시퀀스
-		Selector_Node* Sel_CheckMoveDir = Seq_Move->AddChild<Selector_Node>();
-		Sequence_Node* Seq_CheckMoveLeft = Sel_CheckMoveDir->AddChild<Sequence_Node>();
-		Sequence_Node* Seq_CheckMoveRight = Sel_CheckMoveDir->AddChild<Sequence_Node>();
-
-		// 왼쪽 방향 시퀀스
-		Seq_CheckMoveLeft->AddChild<Con_IsLeft>();
-		Selector_Node* Sel_TurnLeft_ForMove = Seq_CheckMoveLeft->AddChild<Selector_Node>();
-		Seq_CheckMoveLeft->AddChild<Act_PlayAnim_Move>();
-
-		Sequence_Node* Seq_CheckOverArea_Left = Sel_TurnLeft_ForMove->AddChild<Sequence_Node>();
-		Sel_TurnLeft_ForMove->AddChild<Act_MoveLeft>();
-
-		Seq_CheckOverArea_Left->AddChild<Con_IsOver_LeftArea>();
-		Seq_CheckOverArea_Left->AddChild<Act_TurnRight>();
-		Seq_CheckOverArea_Left->AddChild<Act_MoveRight>();
-
-
-		// 오른쪽 방향 시퀀스
-		Seq_CheckMoveRight->AddChild<Con_IsRight>();
-		Selector_Node* Sel_TurnRight_ForMove = Seq_CheckMoveRight->AddChild<Selector_Node>();
-		Seq_CheckMoveRight->AddChild<Act_PlayAnim_Move>();
-
-		Sequence_Node* Seq_CheckOverArea_Right = Sel_TurnRight_ForMove->AddChild<Sequence_Node>();
-		Sel_TurnRight_ForMove->AddChild<Act_MoveRight>();
-
-		Seq_CheckOverArea_Right->AddChild<Con_IsOver_RightArea>();
-		Seq_CheckOverArea_Right->AddChild<Act_TurnLeft>();
-		Seq_CheckOverArea_Right->AddChild<Act_MoveLeft>();
-		*/
-#pragma endregion
 	}
 
 	void Script_Archer::Dead()

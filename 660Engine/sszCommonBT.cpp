@@ -6,69 +6,6 @@
 
 namespace ssz
 {
-#pragma region Test BT
-	// Condition Node
-	class Con_IsStopBtnPush : public Condition_Node // 정지 컨디션
-	{
-	public:
-		virtual eNodeStatus Run() override
-		{
-			if (Input::GetKey(eKeyCode::SPACE))
-			{
-				return NS_SUCCESS;
-			}
-
-			return NS_FAILURE;
-		}
-	};
-
-	
-
-	class Con_CollisionCsr : public Condition_Node // 커서 충돌 컨디션
-	{
-	public:
-		virtual eNodeStatus Run() override
-		{
-			wstring* ChampName = mAIBB->FindData<wstring>(CHAMPKEY);
-
-			Collider2D* CsrCol = mAIBB->FindData<GameObject>(L"Cursor")->GetComponent<Collider2D>();
-			Collider2D* OwnerCol = mAIBB->FindData<GameObject>(*ChampName)->GetComponent<Collider2D>();
-
-			if (CollisionManager::IsCollision(OwnerCol, CsrCol))
-			{
-				return NS_SUCCESS;
-			}
-
-			return 	NS_FAILURE;
-		}
-	};
-
-	class Con_CollisionOtehrChamp : public Condition_Node // 다른 챔프 충돌 컨디션
-	{
-	public:
-		virtual eNodeStatus Run() override
-		{
-			wstring* ChampName = mAIBB->FindData<wstring>(CHAMPKEY);
-
-			Champ* Owner = mAIBB->FindData<Champ>(*ChampName);
-
-			Collider2D* OwnerCol = Owner->GetColObjsCol(eColObjType::RANGE);
-			Collider2D* TargetCol = nullptr;
-
-			Champ* Target = Owner->GetEnemys()[0];
-			TargetCol = Target->GetComponent<Collider2D>();
-
-			if (CollisionManager::IsCollision(TargetCol, OwnerCol))
-			{
-				Owner->SetTarget_Enemy(Target);
-				return NS_SUCCESS;
-			}
-
-
-			return NS_FAILURE;
-		}
-	};
-
 	class Con_MustBack : public Condition_Node
 	{
 	public:
@@ -93,158 +30,6 @@ namespace ssz
 			return 	NS_FAILURE;
 		}
 	};
-	class Con_IsLeft : public Condition_Node // 왼쪽방향 컨디션
-	{
-	public:
-		virtual eNodeStatus Run() override
-		{
-			wstring* ChampName = mAIBB->FindData<wstring>(CHAMPKEY);
-
-			Transform* mtr = mAIBB->FindData<GameObject>(*ChampName)->GetComponent<Transform>();
-
-			if (mtr->IsLeft())
-				return NS_SUCCESS;
-			else
-				return NS_FAILURE;
-		}
-	};
-	class Con_IsRight : public Condition_Node // 오른쪽 방향 컨디션
-	{
-	public:
-		virtual eNodeStatus Run() override
-		{
-			wstring* ChampName = mAIBB->FindData<wstring>(CHAMPKEY);
-
-			Transform* mtr = mAIBB->FindData<GameObject>(*ChampName)->GetComponent<Transform>();
-
-			if (mtr->IsRight())
-				return NS_SUCCESS;
-			else
-				return NS_FAILURE;
-		}
-	};
-	class Con_OntheLeft : public Condition_Node
-	{
-	public:
-		virtual eNodeStatus Run() override
-		{
-			wstring* ChampName = mAIBB->FindData<wstring>(CHAMPKEY);
-
-			Champ* Owner = mAIBB->FindData<Champ>(*ChampName);
-			Vector3 OwnerPos = Owner->GetComponent<Collider2D>()->GetColliderPos();
-			Vector3 TargetPos = Owner->GetEnemys()[0]->GetComponent<Collider2D>()->GetColliderPos();
-
-			if (TargetPos.x <= OwnerPos.x)
-				return NS_SUCCESS;
-
-			return NS_FAILURE;
-		}
-	};
-	class Con_OntheRight : public Condition_Node
-	{
-	public:
-		virtual eNodeStatus Run() override
-		{
-			wstring* ChampName = mAIBB->FindData<wstring>(CHAMPKEY);
-
-			Champ* Owner = mAIBB->FindData<Champ>(*ChampName);
-			Vector3 OwnerPos = Owner->GetComponent<Collider2D>()->GetColliderPos();
-			Vector3 TargetPos = Owner->GetEnemys()[0]->GetComponent<Collider2D>()->GetColliderPos();
-
-			if (TargetPos.x > OwnerPos.x)
-				return NS_SUCCESS;
-
-			return NS_FAILURE;
-		}
-	};
-	class Con_IsOver_LeftArea : public Condition_Node
-	{
-	public:
-		virtual eNodeStatus Run() override
-		{
-			wstring* ChampName = mAIBB->FindData<wstring>(CHAMPKEY);
-
-			Transform* mtr = mAIBB->FindData<GameObject>(*ChampName)->GetComponent<Transform>();
-
-			int* CenterPos = mAIBB->FindData<int>(L"CenterPos");
-
-			Vector3 pos = mtr->GetPosition();
-
-			if (*CenterPos - 100.f > pos.x)
-			{
-				return NS_SUCCESS;
-			}
-
-			return NS_FAILURE;
-		}
-	};
-	class Con_IsOver_RightArea : public Condition_Node
-	{
-	public:
-		virtual eNodeStatus Run() override
-		{
-			wstring* ChampName = mAIBB->FindData<wstring>(CHAMPKEY);
-
-			Transform* mtr = mAIBB->FindData<GameObject>(*ChampName)->GetComponent<Transform>();
-
-			int* CenterPos = mAIBB->FindData<int>(L"CenterPos");
-
-			Vector3 pos = mtr->GetPosition();
-
-			if (*CenterPos + 100.f < pos.x)
-			{
-				return NS_SUCCESS;
-			}
-
-			return NS_FAILURE;
-		}
-	};
-
-	// Action Node
-	class Act_MoveLeft : public Action_Node
-	{
-	public:
-		virtual eNodeStatus Run() override
-		{
-			wstring* ChampName = FINDBBDATA(wstring,CHAMPKEY);
-			Champ* Owner = FINDBBDATA(Champ,*ChampName);
-
-			Transform* tr = Owner->GetComponent<Transform>();
-			
-			Vector3 pos = tr->GetPosition();
-
-			if (Owner->GetLayerType() == eLayerType::Player)
-				pos.x -= 150.f * (float)Time::DeltaTime();
-			else if (Owner->GetLayerType() == eLayerType::Enemy)
-				pos.x -= 80.f * (float)Time::DeltaTime();
-
-			tr->SetPosition(pos);
-
-			return NS_SUCCESS;
-		}
-	};
-	class Act_MoveRight : public Action_Node
-	{
-	public:
-		virtual eNodeStatus Run() override
-		{
-			wstring* ChampName = FINDBBDATA(wstring, CHAMPKEY);
-			Champ* Owner = FINDBBDATA(Champ, *ChampName);
-
-			Transform* mtr = mAIBB->FindData<GameObject>(*ChampName)->GetComponent<Transform>();
-			Vector3 pos = mtr->GetPosition();
-
-			if (Owner->GetLayerType() == eLayerType::Player)
-				pos.x += 150.f * (float)Time::DeltaTime();
-			else if (Owner->GetLayerType() == eLayerType::Enemy)
-				pos.x += 80.f * (float)Time::DeltaTime();
-
-			mtr->SetPosition(pos);
-
-			return NS_SUCCESS;
-		}
-	};
-#pragma endregion
 
 	// ================
 	// [Condition Node]
@@ -504,15 +289,23 @@ namespace ssz
 			Champ* Owner = FINDBBDATA(Champ, *ChampName);
 			Champ* Target = Owner->GetTarget_Enemy();
 
+			Collider2D* OwnerCol = Owner->GetColObjsCol(eColObjType::RANGE);
+			Collider2D* TargetCol = Target->GetComponent<Collider2D>();
+
+			// 충돌체를 활용한 판단
+			if (CollisionManager::IsCollision(TargetCol, OwnerCol))
+				return NS_SUCCESS;
+
+			/*	pos를 활용한 거리 계산 시
 			Champ::tChampStatus* status = Owner->GetChampStatus();
 
 			Vector2 OwnerPos = Owner->GetComponent<Transform>()->GetWorldPosition().V3toV2();
 			Vector2 TargetPos = Target->GetComponent<Transform>()->GetWorldPosition().V3toV2();
-			
-			float dist = Vector2::Distance(OwnerPos, TargetPos);
 
+			float dist = Vector2::Distance(OwnerPos, TargetPos);
 			if ((status->ChampInfo.RNG * 2.f) >= dist)	// 사거리 안이다.
 				return NS_SUCCESS;
+			*/
 
 			return NS_FAILURE;
 		}
@@ -538,6 +331,9 @@ namespace ssz
 			Champ* Owner = FINDBBDATA(Champ, *ChampName);
 
 			Champ* Target = Owner->GetTarget_Enemy(); // 타겟 위치
+
+			if (Target == nullptr)
+				return NS_FAILURE;
 
 			// 일반적인 카이팅 : 타겟 위치의 정 반대 방향으로 이동
 			Vector2 OwnerPos = Owner->GetComponent<Transform>()->GetWorldPosition().V3toV2();
@@ -581,7 +377,7 @@ namespace ssz
 			
 			*MovePoint = Vector2((float)rand(), (float)rand());;	// 랜덤방향
 			(*MovePoint).Normalize();				// 정규화하여 방향 얻기
-			*MovePoint *= ((float)(rand() % 90) + 10.f);	// 10 ~ 100px 사이의 랜덤한 거리
+			*MovePoint *= ((float)(rand() % 100) + 10.f);	// 10 ~ 100px 사이의 랜덤한 거리
 
 			RECT stadiumSize = TGM::GetStadiumSize();
 
@@ -618,8 +414,8 @@ namespace ssz
 			Vector2 dir = (*MovePoint) - OwnerPos.V3toV2();
 			dir.Normalize(); // 정규화하여 방향 얻기
 			
-			OwnerPos.x += (dir.x * info.SPD * 10.f * (float)Time::DeltaTime());
-			OwnerPos.y += (dir.y * info.SPD * 10.f * (float)Time::DeltaTime());
+			OwnerPos.x += (dir.x * info.SPD * 20.f * (float)Time::DeltaTime());
+			OwnerPos.y += (dir.y * info.SPD * 20.f * (float)Time::DeltaTime());
 
 			tr->SetPosition(OwnerPos);
 

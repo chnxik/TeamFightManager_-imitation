@@ -6,30 +6,7 @@
 
 namespace ssz
 {
-	class Con_MustBack : public Condition_Node
-	{
-	public:
-		virtual eNodeStatus Run() override
-		{
-			wstring* ChampName = mAIBB->FindData<wstring>(CHAMPKEY);
 
-			Champ* Owner = mAIBB->FindData<Champ>(*ChampName);
-
-			Vector3 TargetPos = Owner->GetEnemys()[0]->GetComponent<Collider2D>()->GetColliderPos();
-			Vector3 OwnerPos = Owner->GetComponent<Collider2D>()->GetColliderPos();
-
-			float dist = sqrt(
-				(TargetPos.x - OwnerPos.x) * (TargetPos.x - OwnerPos.x) +
-				(TargetPos.y - OwnerPos.y) * (TargetPos.y - OwnerPos.y));
-
-			float MinArea = (float)Owner->GetChampInfo().RNG * 0.9f;
-
-			if (dist > MinArea)
-				return NS_SUCCESS;
-
-			return 	NS_FAILURE;
-		}
-	};
 
 	// ================
 	// [Condition Node]
@@ -196,27 +173,48 @@ namespace ssz
 		}
 	};
 #pragma endregion
-#pragma region Transform Check 위치 판단
-	class Con_IsArrive: public Condition_Node // MovePoint 도착 여부
+#pragma region Trasnfrom Condition 위치 판단
+	// 목표 지점 도착 판단
+	class Con_IsArrive : public Condition_Node // MovePoint 도착 여부
 	{
 	public:
 		virtual eNodeStatus Run() override
 		{
 			wstring* ChampName = FINDBBDATA(wstring, CHAMPKEY);
 			Champ* Owner = FINDBBDATA(Champ, *ChampName);
-			
+
 			Transform* tr = Owner->GetComponent<Transform>();
 			Vector2* MovePoint = FINDBBDATA(Vector2, MOVEPOINT);
 
 			if (Vector2::Distance(tr->GetWorldPosition().V3toV2(), (*MovePoint))
-				< 5.f)
+				< 1.f)
 				return NS_FAILURE; // 도착해서 새로운 이동지점을 확인해야함.
 
 			return NS_SUCCESS;	// 도착하지 않음
 		}
 	};
-#pragma endregion
-#pragma region Trasnfrom Condition 위치 판단
+	// 거리 후퇴 판단
+	class Con_Retreat_Dist : public Condition_Node
+	{
+	public:
+		virtual eNodeStatus Run() override
+		{
+			wstring* ChampName = FINDBBDATA(wstring, CHAMPKEY);
+			Champ* Owner = FINDBBDATA(Champ, *ChampName);
+			Champ* Target = Owner->GetTarget_Enemy();
+
+			Vector2 OwnerPos = Owner->GetComponent<Transform>()->GetWorldPosition().V3toV2();
+			Vector2 TargetPos = Target->GetComponent<Collider2D>()->GetColliderPos().V3toV2();
+
+			float dist = Vector2::Distance(OwnerPos, TargetPos);
+			float MinArea = (float)Target->GetChampInfo().RNG;	// 적 챔피언 사정거리
+
+			if (dist > MinArea)
+				return NS_SUCCESS;
+
+			return 	NS_FAILURE;
+		}
+	};
 #pragma endregion
 #pragma region Status Condition 상태 판단
 	// 사망판단 : DeadAnimation확인
@@ -338,9 +336,26 @@ namespace ssz
 	// =============
 
 #pragma region Set Move Point 이동 포인트 지정
-	// 카이팅 무빙 제작중
+	// 카이팅 무빙
 	class Act_SetMovePoint_Kiting : public Action_Node
 	{
+	private:
+		float RandomDtoR(float degree)
+		{
+			float value = (float)(rand() % 30) - 15;	// 30도 범위
+
+			value = degree + value;
+
+			if (value <= -180.f)
+				value = 180.f + (180.f + value);
+			else if (value >= 180)
+				value = -180.f + (-180.f + value);
+
+			value *= _Pi / 180.f;
+			
+			return value;
+		}
+
 	public:
 		virtual eNodeStatus Run() override
 		{
@@ -358,9 +373,17 @@ namespace ssz
 
 			Vector2* MovePoint = FINDBBDATA(Vector2, MOVEPOINT);
 
-			*MovePoint = TargetPos - OwnerPos;	// Target 에서 Owner 방향
-			(*MovePoint).Normalize();			// 정규화하여 방향 얻기
-			*MovePoint *= (float)(Owner->GetChampInfo().RNG) * 2.f;	// Owner의 사거리지점으로 지정
+			// 얻고싶은 위치
+			// 타겟위치에서 오너 근방의 사거리 거리만큼의 랜덤한 위치
+
+			Vector2 vPos = OwnerPos - TargetPos;									// Target 에서 Owner 방향
+			float fDegree = atan2(vPos.y, vPos.x) * 180 / _Pi;		// radian 값
+			fDegree = RandomDtoR(fDegree);
+			float range = (float)Owner->GetChampInfo().RNG;
+			vPos.x = TargetPos.x + cos(fDegree) * range;
+			vPos.y = TargetPos.y + sin(fDegree) * range;
+			
+			*MovePoint = vPos;
 
 			RECT stadiumSize = TGM::GetStadiumSize();
 
@@ -389,9 +412,10 @@ namespace ssz
 			Champ* Owner = FINDBBDATA(Champ, *ChampName);
 
 			Champ* Target = Owner->GetTarget_Enemy(); // 타겟 위치
-
+			
 			Vector2* MovePoint = FINDBBDATA(Vector2, MOVEPOINT);
 			
+
 			*MovePoint = Vector2((float)rand(), (float)rand());;	// 랜덤방향
 			(*MovePoint).Normalize();				// 정규화하여 방향 얻기
 			*MovePoint *= ((float)(rand() % 100) + 10.f);	// 10 ~ 100px 사이의 랜덤한 거리
@@ -428,8 +452,17 @@ namespace ssz
 			Vector3 OwnerPos = tr->GetPosition();
 
 			Vector2* MovePoint = FINDBBDATA(Vector2, MOVEPOINT);
+
+			// if (Vector2::Distance(OwnerPos.V3toV2(), *MovePoint) < 5.f)
+			// 	return NS_SUCCESS;	// 새로운 이동지점이 5픽셀 이내면 이동하지 않는다
+
 			Vector2 dir = (*MovePoint) - OwnerPos.V3toV2();
 			dir.Normalize(); // 정규화하여 방향 얻기
+
+			if (dir.x < 0)
+				tr->SetLeft();
+			else
+				tr->SetRight();
 			
 			OwnerPos.x += (dir.x * info.SPD * 20.f * (float)Time::DeltaTime());
 			OwnerPos.y += (dir.y * info.SPD * 20.f * (float)Time::DeltaTime());
@@ -479,34 +512,6 @@ namespace ssz
 			else
 				Ownertr->SetLeft();
 
-			return NS_SUCCESS;
-		}
-	};
-
-	// 지울것
-	class Act_TurnLeft : public Action_Node
-	{
-	public:
-		virtual eNodeStatus Run() override
-		{
-			wstring* ChampName = FINDBBDATA(wstring, CHAMPKEY);
-			Champ* Owner = FINDBBDATA(Champ, *ChampName);
-
-			Transform* tr = Owner->GetComponent<Transform>();
-			tr->SetLeft();
-			return NS_SUCCESS;
-		}
-	};
-	class Act_TurnRight : public Action_Node
-	{
-	public:
-		virtual eNodeStatus Run() override
-		{
-			wstring* ChampName = FINDBBDATA(wstring, CHAMPKEY);
-			Champ* Owner = FINDBBDATA(Champ, *ChampName);
-
-			Transform* tr = Owner->GetComponent<Transform>();
-			tr->SetRight();
 			return NS_SUCCESS;
 		}
 	};

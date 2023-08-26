@@ -75,8 +75,8 @@ namespace ssz
 
 		// Player
 		{
-			Champ* archer = TGM::AddChampScene(eLayerType::Player, ARCHER, Vector3(-100.f, 0.f, 1.0f));
-			Champ* knight = TGM::AddChampScene(eLayerType::Enemy, KNIGHT, Vector3(100.f, 0.f, 1.0f));
+			Champ* archer = TGM::AddChampScene(eLayerType::Player, ARCHER, Vector3(-100.f, -200.f, 1.0f));
+			Champ* knight = TGM::AddChampScene(eLayerType::Enemy, KNIGHT, Vector3(100.f, -250.f, 1.0f));
 
 			archer->RegistEnemy(knight);
 			knight->RegistEnemy(archer);

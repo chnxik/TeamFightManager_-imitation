@@ -32,7 +32,7 @@ namespace ssz
 		Champ* Owner = (Champ*)GetOwner();
 		
 		Owner->SetName(ARCHER); // 챔프 이름 입력
-		Owner->SetChampInfo(eChampType::MARKSMAN, 42, 0.37f, 120, 5, 100, 3); // 챔피언 정보 입력
+		Owner->SetChampInfo(eChampType::MARKSMAN, 42, 0.67f, 120, 5, 100, 3); // 챔피언 정보 입력
 		Owner->InitChampStatus(0, 0);	// 인게임 정보 세팅
 
 		Owner->GetComponent<Transform>()->SetScale(Vector3(128.f, 128.f, 1.f)); // 64 size
@@ -120,6 +120,7 @@ namespace ssz
 		// [2-2] 상호작용(공격,스킬,궁극기) 판단 시퀀스
 		Sequence_Node* Seq_Active = ChampBT->AddChild<Sequence_Node>();
 		Seq_Active->AddChild<Con_SerchTarget_Enemy_Near>();	// 2-2-1 타겟 지정 여부 (거리)
+		Seq_Active->AddChild<Con_Retreat_Dist>();			// 2-2-2 카이팅 판단 ( 적사정거리 안에 있는지 )
 		
 		Selector_Node* Sel_SelectActive = Seq_Active->AddChild<Selector_Node>(); // 2-2-2 Active 방식 선택
 		// Sequence_Node* Seq_Active_Ultimate = Sel_SelectActive->AddChild<Sequence_Node>(); // 2-2-2-1 궁극기
@@ -138,10 +139,10 @@ namespace ssz
 		Sequence_Node* Seq_Move = ChampBT->AddChild<Sequence_Node>();
 		Selector_Node* Sel_MovePoint = Seq_Move->AddChild<Selector_Node>(); // 2-3-1 이동지점 갱신 판단
 		Sel_MovePoint->AddChild<Con_IsArrive>();			// 2-3-1-1 목표지점 도착 판단
-		// Sel_MovePoint->AddChild<Act_SetMovePoint_Kiting>();	// 2-3-1-2 카이팅 이동 지점
+		Sel_MovePoint->AddChild<Act_SetMovePoint_Kiting>();	// 2-3-1-2 카이팅 이동 지점
 		Sel_MovePoint->AddChild<Act_SetMovePoint_Random>();	// 2-3-1-3 랜덤 이동 지점
 
-		Seq_Move->AddChild<Act_SetDir_MovePoint>();		// 2-3-2-1 이동방향으로 방향전환
+		// Seq_Move->AddChild<Act_SetDir_MovePoint>();		// 2-3-2-1 이동방향으로 방향전환
 		Seq_Move->AddChild<Act_Move_Default>();			// 2-3-2-2 이동방향으로 이동
 		Seq_Move->AddChild<Act_PlayAnim_Move>();		// 2-3-2-3 이동애니메이션 재생
 	}

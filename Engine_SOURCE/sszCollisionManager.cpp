@@ -126,9 +126,6 @@ namespace ssz
 		ID.left = left->GetColliderID();
 		ID.right = right->GetColliderID();
 
-		if (ID.left == 2 && ID.right == 5)
-			int a = 0;
-
 		// 충돌 정보를 가져온다
 		std::map<UINT64, bool>::iterator iter = mCollisionMap.find(ID.id);
 		if (mCollisionMap.end() == iter) // 충돌정보가 없다

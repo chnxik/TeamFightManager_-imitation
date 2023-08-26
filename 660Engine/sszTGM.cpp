@@ -42,6 +42,8 @@ namespace ssz
 		delete gPilotList;
 		delete gTeamList;
 
+		delete mMainCamera;
+
 		delete mCursor;
 	}
 

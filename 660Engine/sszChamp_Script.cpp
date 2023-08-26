@@ -43,4 +43,10 @@ namespace ssz
 
 		return BB;
 	}
+	void Champ_Script::ResetAIBB()
+	{
+		std::shared_ptr<AIBB> BB = mRoot->GetAIBB();
+		BB->SetRunningNode(nullptr);
+		*(BB->FindData<Vector2>(MOVEPOINT)) = Vector2(0,0);
+	}
 }

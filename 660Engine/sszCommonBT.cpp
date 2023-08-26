@@ -229,7 +229,7 @@ namespace ssz
 			Champ* Owner = FINDBBDATA(Champ, *ChampName);
 
 			if (Owner->IsChampDead())
-				return NS_SUCCESS;
+				return NS_RUNNING;	// 사망 애니메이션 재생중
 
 			return NS_FAILURE;
 		}
@@ -237,6 +237,23 @@ namespace ssz
 	// 디버프 판단 : 에어본, 스턴
 #pragma endregion
 #pragma region Active Check	상호작용 가능 체크
+	class Con_CheckActive_Attack_CoolTime : public Condition_Node
+	{
+	public:
+		virtual eNodeStatus Run() override
+		{
+			wstring* ChampName = FINDBBDATA(wstring, CHAMPKEY);
+			Champ* Owner = FINDBBDATA(Champ, *ChampName);
+
+			Champ::tChampStatus* status = Owner->GetChampStatus();
+
+			// 쿨타임 사용가능한 시간인지.
+			if (status->accTime_Attack >= 1.f)
+				return NS_SUCCESS;
+
+			return NS_FAILURE;
+		}
+	};
 	class Con_CheckActive_Skill_CoolTime : public Condition_Node
 	{
 	public:

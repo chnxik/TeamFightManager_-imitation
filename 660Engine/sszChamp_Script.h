@@ -20,6 +20,7 @@ namespace ssz
         virtual void InitAudio() = 0;
         virtual void InitBT() = 0;          // Ã¨ÇÁ AI ¼³Á¤
 
+        virtual void ResetAIBB();
         virtual void Dead() = 0;
 
     private:

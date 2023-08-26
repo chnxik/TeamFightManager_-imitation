@@ -50,7 +50,7 @@ namespace ssz
         {
             (*iter)->GetChampStatus()->RespawnTime += (float)Time::DeltaTime();
             
-            if ((*iter)->GetChampStatus()->RespawnTime > RESPAWNTIME)
+            if ((*iter)->GetChampStatus()->RespawnTime >= RESPAWNTIME)
             {
                 RespawnChamp((*iter));
                 iter = mRespawn.erase(iter);
@@ -74,6 +74,10 @@ namespace ssz
         Target->GetChampStatus()->RespawnTime = 0.f;
         
         mRespawn.push_back(Target);
+
+        std::wstring szbuffer;
+        szbuffer = Target->GetName() + L" RespawnPool µî·Ï";
+        Log::AddLog(szbuffer);
     }
 
     void BattleManager::RespawnChamp(Champ* Target)

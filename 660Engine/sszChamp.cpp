@@ -37,7 +37,7 @@ namespace ssz
 	{
 		Text* tx = AddComponent<Text>();
 
-		tx->SetOffsetPos(Vector3(20.f, 50.f, 0.f));
+		tx->SetOffsetPos(Vector3(40.f, 50.f, 0.f));
 		tx->SetFontSize(40.f);
 		tx->SetFontColor(255, 255, 255, 255);
 	}
@@ -45,9 +45,10 @@ namespace ssz
 	void Champ::Update()
 	{
 		if (mChampStatus.accTime_Skill < mChampStatus.CoolTime_Skill)
-		{
 			mChampStatus.accTime_Skill += (float)Time::DeltaTime();
-		}
+
+		if (mChampStatus.accTime_Attack < 1.f)
+			mChampStatus.accTime_Attack += mChampInfo.APD * (float)Time::DeltaTime();
 
 		GameObject::Update();
 	}
@@ -61,7 +62,11 @@ namespace ssz
 
 		GameObject::LateUpdate();
 
-		GetComponent<Text>()->SetString(std::to_wstring(mChampStatus.HP));
+		wstring info = std::to_wstring(mChampStatus.HP);
+		info += L"\n";
+		info += std::to_wstring(mChampStatus.accTime_Attack).substr(0,3);
+		
+		GetComponent<Text>()->SetString(info);
 	}
 
 	void Champ::Render()
@@ -72,7 +77,7 @@ namespace ssz
 	void Champ::Dead()
 	{
 		Play_Dead();
-		
+		GetComponent<Champ_Script>()->ResetAIBB();
 		Collider2D* Col = GetComponent<Collider2D>();
 		
 		if(!Col->IsPaused())
@@ -107,7 +112,6 @@ namespace ssz
 	{
 		GetComponent<Animator>()->PlayAnimation(vecAnimKey[(UINT)eActiveType::DEAD], false);
 	}
-
 
 	void Champ::Play_Skill()
 	{
@@ -178,7 +182,8 @@ namespace ssz
 		mTargetFriendly = nullptr;
 
 		mChampStatus.HP = mChampStatus.ChampInfo.MAXHP;         // 현재 체력
-		mChampStatus.accTime_Skill = 0.f;						// 공격 쿨타임
+		mChampStatus.accTime_Attack = 1.f;						// 공격 쿨타임
+		mChampStatus.accTime_Skill = 0.f;						// 현재 스킬 쿨타임
 		mChampStatus.CoolTime_Skill = 0.f;						// 스킬 쿨타임
 
 		mChampStatus.RespawnTime = 0.f;
@@ -186,8 +191,11 @@ namespace ssz
 
 	void Champ::ATTACK()
 	{
-		if(mTargetEnemy != nullptr)
+		if (mTargetEnemy != nullptr)
+		{
 			BattleManager::ATTACK(this, mTargetEnemy, mChampStatus.ChampInfo.ATK);
+			mChampStatus.accTime_Attack = 0.f;
+		}
 	}
 
 	ColObj* Champ::CreateColObj(eColObjType Type)

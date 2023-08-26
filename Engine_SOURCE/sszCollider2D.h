@@ -56,8 +56,8 @@ namespace ssz
 		int GetOverlapCnt() { return mOverlapCnt; }
 
 		bool IsPaused() { return mColState == eColState::Paused; }
-		void ColliderActive() { mColState = eColState::Active; }
-		void ColliderPaused() { mColState = eColState::Paused; }
+		void ColliderActive();
+		void ColliderPaused();
 
 	private:
 		static UINT mColliderNumber;

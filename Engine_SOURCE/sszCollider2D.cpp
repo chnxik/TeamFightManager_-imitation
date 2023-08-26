@@ -1,6 +1,9 @@
+#pragma once
 #include "sszCollider2D.h"
 #include "sszGameObject.h"
 #include "sszRenderer.h"
+
+#include "..\660Engine\sszLog.h"
 
 namespace ssz
 {
@@ -114,5 +117,15 @@ namespace ssz
 			abs(TargetAxisUp.Dot(MainAxis) * (mFinalScale.y) / 2.f);
 
 		return res;
+	}
+	void Collider2D::ColliderActive()
+	{
+		mColState = eColState::Active;
+		Log::AddLog(GetOwner()->GetName() + L"Col활성화");
+	}
+	void Collider2D::ColliderPaused()
+	{
+		mColState = eColState::Paused;
+		Log::AddLog(GetOwner()->GetName() + L"Col비활성화");
 	}
 }

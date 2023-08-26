@@ -47,6 +47,7 @@ namespace ssz
 
             // 챔피언 정보
             int HP = 0;                     // 현재 체력
+            float accTime_Attack = 0.f;     // 현재 공격 쿨타임
             float accTime_Skill = 0.f;      // 현재 스킬 쿨타임
             float CoolTime_Skill = 0.f;     // 스킬 필요 쿨타임
             float UltimateUseTime = 60.f;    // 궁극기 사용 시점

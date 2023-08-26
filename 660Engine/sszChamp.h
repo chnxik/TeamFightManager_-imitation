@@ -71,6 +71,7 @@ namespace ssz
         virtual void Render();
 
         virtual void Dead();
+        virtual bool IsChampDead();
 
         void Play_Idle();
         void Play_Move();

@@ -83,6 +83,11 @@ namespace ssz
 		Log::AddLog(szbuffer);
 	}
 
+	bool Champ::IsChampDead()
+	{
+		return GetComponent<Animator>()->GetCurAnimationKey() == GetAnimKey(Champ::eActiveType::DEAD);
+	}
+
 	void Champ::Play_Idle()
 	{
 		GetComponent<Animator>()->PlayAnimation(vecAnimKey[(UINT)eActiveType::IDLE], true);
@@ -181,7 +186,8 @@ namespace ssz
 
 	void Champ::ATTACK()
 	{
-		BattleManager::ATTACK(this, mTargetEnemy, mChampStatus.ChampInfo.ATK);
+		if(mTargetEnemy != nullptr)
+			BattleManager::ATTACK(this, mTargetEnemy, mChampStatus.ChampInfo.ATK);
 	}
 
 	ColObj* Champ::CreateColObj(eColObjType Type)

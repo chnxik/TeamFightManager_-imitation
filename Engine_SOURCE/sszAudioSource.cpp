@@ -2,6 +2,7 @@
 #include "sszAudioClip.h"
 #include "sszTransform.h"
 #include "sszGameObject.h"
+#include "sszResources.h"
 
 namespace ssz
 {
@@ -31,7 +32,8 @@ namespace ssz
 		Vector3 pos = tr->GetPosition();
 		Vector3 foward = tr->Foward();
 
-		mAudioClip->Set3DAttributes(pos, foward);
+		if(mAudioClip != nullptr)
+			mAudioClip->Set3DAttributes(pos, foward);
 	}
 
 	void AudioSource::Render()
@@ -49,5 +51,9 @@ namespace ssz
 	void AudioSource::SetLoop(bool loop)
 	{
 		mAudioClip->SetLoop(loop);
+	}
+	void AudioSource::SetClip(const std::wstring& key)
+	{
+		mAudioClip = Resources::Find<AudioClip>(key);
 	}
 }

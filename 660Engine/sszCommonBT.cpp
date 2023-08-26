@@ -351,7 +351,7 @@ namespace ssz
 			else if (value >= 180)
 				value = -180.f + (-180.f + value);
 
-			value *= _Pi / 180.f;
+			value *= (float)_Pi / 180.f;
 			
 			return value;
 		}
@@ -377,7 +377,7 @@ namespace ssz
 			// 타겟위치에서 오너 근방의 사거리 거리만큼의 랜덤한 위치
 
 			Vector2 vPos = OwnerPos - TargetPos;									// Target 에서 Owner 방향
-			float fDegree = atan2(vPos.y, vPos.x) * 180 / _Pi;		// radian 값
+			float fDegree = atan2(vPos.y, vPos.x) * 180.f / (float)_Pi;		// radian 값
 			fDegree = RandomDtoR(fDegree);
 			float range = (float)Owner->GetChampInfo().RNG;
 			vPos.x = TargetPos.x + cos(fDegree) * range;

@@ -106,6 +106,10 @@ namespace ssz
 	void Script_Knight::InitAudio()
 	{
 		Champ* Owner = (Champ*)GetOwner();
+		AudioSource* As = Owner->AddComponent<AudioSource>();
+		Resources::Load<AudioClip>(L"knight_attack", L"..\\Resources\\useResource\\Audio\\Sword_Woosh_1.wav");
+		Resources::Load<AudioClip>(L"knight_dead", L"..\\Resources\\useResource\\Audio\\Body_Drop.wav");
+
 	}
 
 	void Script_Knight::InitBT()

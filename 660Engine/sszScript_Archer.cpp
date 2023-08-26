@@ -104,6 +104,9 @@ namespace ssz
 	void Script_Archer::InitAudio()
 	{
 		Champ* Owner = (Champ*)GetOwner();
+		AudioSource* As = Owner->AddComponent<AudioSource>();
+		Resources::Load<AudioClip>(L"archer_attack", L"..\\Resources\\useResource\\Audio\\Bow_fast.wav");
+		Resources::Load<AudioClip>(L"archer_dead", L"..\\Resources\\useResource\\Audio\\Body_Drop.wav");
 	}
 
 	void Script_Archer::InitBT()

@@ -16,6 +16,7 @@ namespace ssz
 
 		// 공용 오브젝트
 		static GameObject* GetCursor() { return (GameObject*)mCursor; }
+		static GameObject* GetCamera() { return (GameObject*)mMainCamera; }
 		static const RECT& GetStadiumSize() { return mStadiumSize; }
 		static Vector3 GetStaidumPos()
 		{
@@ -52,6 +53,7 @@ namespace ssz
 		static float mGameTime;
 
 		static Cursor* mCursor;
+		static GameObject* mMainCamera;
 
 		static TeamList* gTeamList;
 		static PilotList* gPilotList;

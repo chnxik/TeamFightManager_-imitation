@@ -20,16 +20,6 @@ namespace ssz
 
 	void TestScene::Initialize()
 	{
-		// Main Camera
-		{
-			GameObject* camera = Instantiate<GameObject>(Vector3(0.0f, 0.0f, 0.0f), eLayerType::Camera);
-			camera->SetName(L"MainCamera");
-			Camera* cameraComp = camera->AddComponent<Camera>();
-
-			GameObject* Sound = Instantiate<GameObject>(Vector3(0.0f, 0.0f, -1.0f), eLayerType::Light);
-			Sound->AddComponent<AudioListener>();
-		}
-
 		// ¹è°æ
 		{
 			// Battle Header
@@ -83,6 +73,7 @@ namespace ssz
 		}
 
 		AddGameObject(eLayerType::Cursor, TGM::GetCursor());
+		AddGameObject(eLayerType::Camera, TGM::GetCamera());
 
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Cursor, true);
 		CollisionManager::SetLayer(eLayerType::Enemy, eLayerType::Cursor, true);

@@ -5,9 +5,6 @@
     <ClInclude Include="Load.h">
       <Filter>Load</Filter>
     </ClInclude>
-    <ClInclude Include="sszCameraScript.h">
-      <Filter>Contents\CommonScript\Camera</Filter>
-    </ClInclude>
     <ClInclude Include="sszArrangementScript.h">
       <Filter>Contents\CommonScript\Arrangement</Filter>
     </ClInclude>
@@ -137,9 +134,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="660Engine.cpp" />
-    <ClCompile Include="sszCameraScript.cpp">
-      <Filter>Contents\CommonScript\Camera</Filter>
-    </ClCompile>
     <ClCompile Include="sszArrangementScript.cpp">
       <Filter>Contents\CommonScript\Arrangement</Filter>
     </ClCompile>

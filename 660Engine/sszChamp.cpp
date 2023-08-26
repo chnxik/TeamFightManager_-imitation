@@ -106,11 +106,17 @@ namespace ssz
 	void Champ::Play_Attack()
 	{
 		GetComponent<Animator>()->PlayAnimation(vecAnimKey[(UINT)eActiveType::ATTACK], false);
+		AudioSource* as = GetComponent<AudioSource>();
+		as->SetClip(vecAnimKey[(UINT)eActiveType::ATTACK]);
+		as->Play();
 	}
 
 	void Champ::Play_Dead()
 	{
 		GetComponent<Animator>()->PlayAnimation(vecAnimKey[(UINT)eActiveType::DEAD], false);
+		AudioSource* as = GetComponent<AudioSource>();
+		as->SetClip(vecAnimKey[(UINT)eActiveType::DEAD]);
+		as->Play();
 	}
 
 	void Champ::Play_Skill()

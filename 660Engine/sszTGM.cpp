@@ -15,10 +15,16 @@ namespace ssz
 	ChampList* TGM::gChampList = nullptr;
 
 	Cursor* TGM::mCursor = nullptr;
+	GameObject* TGM::mMainCamera = nullptr;
 
 	void TGM::Initialize()
 	{
-		mCursor = new Cursor(); 
+		mCursor = new Cursor();
+
+		mMainCamera = Instantiate<GameObject>();
+		mMainCamera->SetName(L"MainCamera");
+		mMainCamera->AddComponent<Camera>();
+		mMainCamera->AddComponent<AudioListener>();
 
 		gChampList = new ChampList();
 		gPilotList = new PilotList();
@@ -59,6 +65,7 @@ namespace ssz
 		Scene* ActiveScene = SceneManager::GetActiveScene();
 		
 		ActiveScene->Clear(eLayerType::Cursor);
+		ActiveScene->Clear(eLayerType::Camera);
 		ActiveScene->Clear(eLayerType::Player);
 		ActiveScene->Clear(eLayerType::PlayerInteraction);
 		ActiveScene->Clear(eLayerType::Enemy);

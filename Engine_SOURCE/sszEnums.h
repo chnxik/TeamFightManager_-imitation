@@ -31,6 +31,7 @@ namespace ssz::enums
 		EnemyInteraction,
 		Light,
 		UI,
+		Effect,
 		Cursor,
 		SoundSource,
 		Camera,

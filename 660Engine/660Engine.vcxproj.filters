@@ -131,6 +131,9 @@
     <ClInclude Include="sszLog.h">
       <Filter>Contents\Manager\Log</Filter>
     </ClInclude>
+    <ClInclude Include="sszShadow.h">
+      <Filter>Contents\Object\GameUnit\common\Shadow</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="660Engine.cpp" />
@@ -253,6 +256,9 @@
     </ClCompile>
     <ClCompile Include="sszLog.cpp">
       <Filter>Contents\Manager\Log</Filter>
+    </ClCompile>
+    <ClCompile Include="sszShadow.cpp">
+      <Filter>Contents\Object\GameUnit\common\Shadow</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -450,6 +456,15 @@
     </Filter>
     <Filter Include="Contents\Object\Common\Cursor">
       <UniqueIdentifier>{7a29f64f-bb3c-4a02-947d-d939c0bef5e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\GameUnit\common">
+      <UniqueIdentifier>{fe54ab8c-c350-4b81-84f4-11f326c5e273}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\GameUnit\common\Spawnefc">
+      <UniqueIdentifier>{c34e6271-df4c-4192-b71b-f4834600f67c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\GameUnit\common\Shadow">
+      <UniqueIdentifier>{4e84c6ae-8190-4742-8c94-75c45df61a52}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

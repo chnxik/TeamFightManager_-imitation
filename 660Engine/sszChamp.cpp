@@ -3,6 +3,8 @@
 #include "CommonObjHeader.h"
 
 #include "sszBattleManager.h"
+
+#include "sszShadow.h"
 #include "sszChamp_Script.h"
 #include "sszLog.h"
 
@@ -15,6 +17,7 @@ namespace ssz
 		, mTargetFriendly(nullptr)
 		, mTargetEnemy(nullptr)
 		, mColObjs{}
+		, mShadow(nullptr)
 		, mChampScript(nullptr)
 		, vecAnimKey{}
 	{
@@ -31,6 +34,9 @@ namespace ssz
 				object = nullptr;
 			}
 		}
+
+		delete mShadow;
+		mShadow = nullptr;
 	}
 
 	void Champ::Initialize()
@@ -40,6 +46,11 @@ namespace ssz
 		tx->SetOffsetPos(Vector3(40.f, 50.f, 0.f));
 		tx->SetFontSize(40.f);
 		tx->SetFontColor(255, 255, 255, 255);
+
+		// Shadow
+		mShadow = new Shadow();
+		mShadow->Initialize();
+		mShadow->RegistChamp(this);
 	}
 
 	void Champ::Update()
@@ -51,6 +62,7 @@ namespace ssz
 			mChampStatus.accTime_Attack += mChampInfo.APD * (float)Time::DeltaTime();
 
 		GameObject::Update();
+		mShadow->Update();
 	}
 
 	void Champ::LateUpdate()
@@ -61,6 +73,8 @@ namespace ssz
 			mTargetFriendly = nullptr;
 
 		GameObject::LateUpdate();
+		mShadow->LateUpdate();
+
 
 		wstring info = std::to_wstring(mChampStatus.HP);
 		info += L"\n";
@@ -72,6 +86,7 @@ namespace ssz
 	void Champ::Render()
 	{
 		GameObject::Render();
+		mShadow->Render();
 	}
 
 	void Champ::Dead()

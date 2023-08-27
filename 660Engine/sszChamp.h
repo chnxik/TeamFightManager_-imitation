@@ -6,6 +6,7 @@ namespace ssz
     class ColObj;
     class Pilot;
     class Champ_Script;
+    class Shadow;
     
     class Champ : public GameObject
     {
@@ -140,6 +141,8 @@ namespace ssz
         Champ* mTargetFriendly;         // 아군 타겟
 
         ColObj* mColObjs[(UINT)eColObjType::END];    // 공격,스킬 판정용 콜라이더 오브젝트
+        Shadow* mShadow;    // 그림자오브젝트
+
         Champ_Script* mChampScript;
 
         std::wstring vecAnimKey[(UINT)eActiveType::END];

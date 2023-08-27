@@ -32,7 +32,7 @@ namespace ssz
 		Champ* Owner = (Champ*)GetOwner();
 		
 		Owner->SetName(ARCHER); // 챔프 이름 입력
-		Owner->SetChampInfo(eChampType::MARKSMAN, 42, 0.67f, 120, 5, 100, 3); // 챔피언 정보 입력
+		Owner->SetChampInfo(eChampType::MARKSMAN, 42, 0.67f, 120, 5, 100, 5); // 챔피언 정보 입력
 		Owner->InitChampStatus(0, 0);	// 인게임 정보 세팅
 
 		Owner->GetComponent<Transform>()->SetScale(Vector3(128.f, 128.f, 1.f)); // 64 size
@@ -80,11 +80,12 @@ namespace ssz
 	{
 		Champ* Owner = (Champ*)GetOwner();
 
-		Vector3 ColScale = -Owner->GetComponent<Transform>()->GetScale() + Vector3(64.f, 74.f, 1.f);
+		// 피격 Collider Set
+		Vector3 ColScale = -Owner->GetComponent<Transform>()->GetScale() + Vector3(34.f, 44.f, 1.f);
 
 		Collider2D* Col = Owner->AddComponent<Collider2D>();
 		Col->SetOffsetSize(ColScale);
-		Col->SetOffsetPos(Vector3(0.f, 10.f, 0.f));
+		Col->SetOffsetPos(Vector3(0.f, 5.f, 0.f));
 
 		ColObj* ATKCOL = Owner->CreateColObj(eColObjType::RANGE);
 

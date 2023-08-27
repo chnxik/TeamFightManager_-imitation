@@ -33,7 +33,7 @@ namespace ssz
 
 		Owner->SetName(KNIGHT);
 
-		Owner->SetChampInfo(eChampType::FIGHTER, 21, 0.67f, 37, 10, 200, 5);
+		Owner->SetChampInfo(eChampType::FIGHTER, 21, 0.67f, 37, 10, 200, 2);
 		Owner->InitChampStatus(0, 0);
 
 		Owner->GetComponent<Transform>()->SetScale(Vector3(170.f, 170.f, 1.f)); // 96 size
@@ -82,12 +82,12 @@ namespace ssz
 	{
 		Champ* Owner = (Champ*)GetOwner();
 
-		// Champ Collider
-		Vector3 ColScale = -Owner->GetComponent<Transform>()->GetScale() + Vector3(64.f, 74.f, 1.f);
+		// ÇÇ°Ý Collider Set
+		Vector3 ColScale = -Owner->GetComponent<Transform>()->GetScale() + Vector3(34.f, 44.f, 1.f);
 
 		Collider2D* Col = Owner->AddComponent<Collider2D>();
 		Col->SetOffsetSize(ColScale);
-		Col->SetOffsetPos(Vector3(0.f, 10.f, 0.f));
+		Col->SetOffsetPos(Vector3(0.f, 5.f, 0.f));
 
 		ColObj* ATKCOL = Owner->CreateColObj(eColObjType::RANGE);
 
@@ -99,7 +99,6 @@ namespace ssz
 		float Rng = Owner->GetChampInfo().RNG * 2.f;
 		ColScale = -Owner->GetComponent<Transform>()->GetScale() + Vector3(Rng, Rng, 1.f);
 		AttackArea->SetOffsetSize(ColScale);
-
 		AttackArea->SetOffsetPos(Vector3(0.f, 10.f, 0.f));
 	}
 

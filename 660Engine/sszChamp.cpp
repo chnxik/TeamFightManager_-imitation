@@ -47,6 +47,7 @@ namespace ssz
 
 	void Champ::Initialize()
 	{
+		// test¿ë ÀÓ½Ã 
 		Text* tx = AddComponent<Text>();
 
 		tx->SetOffsetPos(Vector3(40.f, 50.f, 0.f));

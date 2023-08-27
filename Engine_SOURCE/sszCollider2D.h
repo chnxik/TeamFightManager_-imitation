@@ -38,6 +38,9 @@ namespace ssz
 		void SetOffsetSize(Vector3 size) { mOffsetScale = size; }
 		void SetOffsetPos(Vector3 pos) { mOffsetPosition = pos; }
 
+		Vector3 GetOffsetSize() { return mOffsetScale; }
+		Vector3 GetOffsetPos() { return mOffsetPosition; }
+
 		Vector3 GetColliderScale() { return mFinalScale; }
 		Vector3 GetColliderPos() { return mFinalPos; }
 		Vector3 GetColliderRotation() { return mFinalRotation; }

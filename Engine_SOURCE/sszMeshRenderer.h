@@ -15,6 +15,7 @@ namespace ssz
 		virtual void Update() override;
 		virtual void LateUpdate() override;
 		virtual void Render() override;
+		void Render(Component* comp);
 
 		void SetMesh(std::shared_ptr<Mesh> mesh) { mMesh = mesh; }
 		void SetMaterial(std::shared_ptr<Material> material) { mMaterial = material; }

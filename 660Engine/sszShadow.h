@@ -14,8 +14,5 @@ namespace ssz
 		virtual void Initialize() override;
 
 		void RegistChamp(Champ* owner);
-
-    private:
-
     };
 }

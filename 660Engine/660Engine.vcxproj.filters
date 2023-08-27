@@ -134,6 +134,9 @@
     <ClInclude Include="sszShadow.h">
       <Filter>Contents\Object\GameUnit\common\Shadow</Filter>
     </ClInclude>
+    <ClInclude Include="sszSpawnEfc.h">
+      <Filter>Contents\Object\GameUnit\common\Spawnefc</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="660Engine.cpp" />
@@ -259,6 +262,9 @@
     </ClCompile>
     <ClCompile Include="sszShadow.cpp">
       <Filter>Contents\Object\GameUnit\common\Shadow</Filter>
+    </ClCompile>
+    <ClCompile Include="sszSpawnEfc.cpp">
+      <Filter>Contents\Object\GameUnit\common\Spawnefc</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

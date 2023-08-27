@@ -6,6 +6,8 @@
 #include "sszBattleHeader.h"
 #include "sszObj_IG_Stadium.h"
 
+#include "sszSpawnEfc.h"
+
 namespace ssz
 {
 	using namespace object;

@@ -43,7 +43,6 @@ namespace ssz
 		Champ* Owner = (Champ*)GetOwner();
 
 		Owner->AddComponent<MeshRenderer>();
-		Owner->AddComponent<Animator>();
 
 		// Load Atals
 		std::shared_ptr<Texture> atlas = Resources::Load<Texture>(L"archer_sprite", L"..\\Resources\\useResource\\ChampSprite\\archer\\archer_sprite\\archer.png");
@@ -53,7 +52,7 @@ namespace ssz
 		Owner->GetComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"archer_spriteMt");
 
 		// SetAnimator
-		Animator* anim = Owner->GetComponent<Animator>();
+		Animator* anim = Owner->AddComponent<Animator>();
 
 		Vector2 FrmSize(64.f, 64.f);
 

@@ -7,6 +7,7 @@ namespace ssz
     class Pilot;
     class Champ_Script;
     class Shadow;
+    class SpawnEfc;
     
     class Champ : public GameObject
     {
@@ -122,6 +123,8 @@ namespace ssz
         void ColObjSetLayer(eColObjType Type);
         Collider2D* GetColObjsCol(eColObjType Type);
 
+        SpawnEfc* GetEfc() { return mSpawnEfc; }
+
         virtual void SetState(eState state);
 
         // Animation Key
@@ -142,6 +145,8 @@ namespace ssz
 
         ColObj* mColObjs[(UINT)eColObjType::END];    // 공격,스킬 판정용 콜라이더 오브젝트
         Shadow* mShadow;    // 그림자오브젝트
+        SpawnEfc* mSpawnEfc; // 스폰이펙트
+
 
         Champ_Script* mChampScript;
 

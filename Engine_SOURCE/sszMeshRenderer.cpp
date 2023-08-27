@@ -43,6 +43,18 @@ namespace ssz
 
 		mMaterial->Clear();
 	}
+	
+	void MeshRenderer::Render(Component* comp)
+	{
+		comp->Binds();
+
+		mMesh->BindBuffer();
+		mMaterial->Binds();
+		mMesh->Render();
+
+		mMaterial->Clear();
+	}
+
 	void MeshRenderer::SetMeshRenderer(const std::wstring MeshKey, const std::wstring MaterialKey)
 	{
 		mMesh = ssz::Resources::Find<Mesh>(MeshKey);

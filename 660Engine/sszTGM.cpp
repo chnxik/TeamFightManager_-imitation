@@ -68,6 +68,7 @@ namespace ssz
 		
 		ActiveScene->Clear(eLayerType::Cursor);
 		ActiveScene->Clear(eLayerType::Camera);
+		ActiveScene->Clear(eLayerType::Effect);
 		ActiveScene->Clear(eLayerType::Player);
 		ActiveScene->Clear(eLayerType::PlayerInteraction);
 		ActiveScene->Clear(eLayerType::Enemy);

@@ -3,6 +3,8 @@
 #include "CommonObjHeader.h"
 #include "sszLog.h"
 
+#include "sszSpawnEfc.h"
+
 #define RESPAWNTIME 3.0f
 
 namespace ssz
@@ -48,15 +50,28 @@ namespace ssz
 
         while (iter != mRespawn.end())
         {
-            (*iter)->GetChampStatus()->RespawnTime += (float)Time::DeltaTime();
+            float* rtime = &((*iter)->GetChampStatus()->RespawnTime);
+            *rtime += (float)Time::DeltaTime();
             
-            if ((*iter)->GetChampStatus()->RespawnTime >= RESPAWNTIME)
+
+            if (*rtime >= RESPAWNTIME)
             {
-                RespawnChamp((*iter));
+                SpawnChamp((*iter));
                 iter = mRespawn.erase(iter);
             }
+
+
             else
             {
+                SpawnEfc* efc = (*iter)->GetEfc();
+
+                if (*rtime >= RESPAWNTIME - 0.3f
+                    && !efc->IsPlay())
+                {
+                    Vector3 pos = (*iter)->GetComponent<Transform>()->GetPosition();
+                    efc->Play(pos);
+                }
+
                 iter++;
             }
         }
@@ -74,23 +89,19 @@ namespace ssz
         Target->GetChampStatus()->RespawnTime = 0.f;
         
         mRespawn.push_back(Target);
-
-        std::wstring szbuffer;
-        szbuffer = Target->GetName() + L" RespawnPool 등록";
-        Log::AddLog(szbuffer);
     }
 
-    void BattleManager::RespawnChamp(Champ* Target)
+    void BattleManager::SpawnChamp(Champ* Target)
     {
         if (Target->IsPaused())
             Target->SetState(GameObject::eState::Active);
-
+        Target->GetEfc()->reset();
         Target->RespawnInfo();
         Target->GetComponent<Collider2D>()->ColliderActive();
         Target->Play_Idle();
 
         std::wstring szbuffer;
-        szbuffer = Target->GetName() + L" 리스폰";
+        szbuffer = Target->GetName() + L" 스폰";
         Log::AddLog(szbuffer);
     }
 

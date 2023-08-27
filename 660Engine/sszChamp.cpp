@@ -5,6 +5,8 @@
 #include "sszBattleManager.h"
 
 #include "sszShadow.h"
+#include "sszSpawnEfc.h"
+
 #include "sszChamp_Script.h"
 #include "sszLog.h"
 
@@ -18,6 +20,7 @@ namespace ssz
 		, mTargetEnemy(nullptr)
 		, mColObjs{}
 		, mShadow(nullptr)
+		, mSpawnEfc(nullptr)
 		, mChampScript(nullptr)
 		, vecAnimKey{}
 	{
@@ -37,6 +40,9 @@ namespace ssz
 
 		delete mShadow;
 		mShadow = nullptr;
+
+		delete mSpawnEfc;
+		mSpawnEfc = nullptr;
 	}
 
 	void Champ::Initialize()
@@ -51,6 +57,9 @@ namespace ssz
 		mShadow = new Shadow();
 		mShadow->Initialize();
 		mShadow->RegistChamp(this);
+
+		mSpawnEfc = new SpawnEfc();
+		mSpawnEfc->Initialize();
 	}
 
 	void Champ::Update()
@@ -85,8 +94,8 @@ namespace ssz
 
 	void Champ::Render()
 	{
-		GameObject::Render();
 		mShadow->Render();
+		GameObject::Render();
 	}
 
 	void Champ::Dead()
@@ -234,6 +243,8 @@ namespace ssz
 	{
 		if (mColObjs[(UINT)Type] == nullptr)
 			assert(nullptr);
+
+		mSpawnEfc->SetLayer();
 
 		switch (GetLayerType())
 		{

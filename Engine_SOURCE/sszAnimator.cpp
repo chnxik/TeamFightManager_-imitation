@@ -37,14 +37,8 @@ namespace ssz
 		if (mActiveAnimation == nullptr)
 			return;
 
-		if (mActiveAnimation->GetKey() == L"archer_attack")
-		{
-			int a = 0;
-		}
-			
 		if (mActiveAnimation->IsComplete())
 		{
-
 			if (!mbComplete)
 			{
 

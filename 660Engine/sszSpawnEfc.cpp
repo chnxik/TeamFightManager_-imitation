@@ -40,9 +40,9 @@ namespace ssz
 		mFront->AddComponent<Animator>();
 		mBack->AddComponent<Animator>();
 
-		mFront->GetComponent<Animator>()->Create(L"Spawn_Front", L"Spawn_Sprite", Vector2(0.f, 0.f), Vector2(64.f, 64.f), 11, Vector2(0.f, 0.f), 9.f);
+		mFront->GetComponent<Animator>()->Create(L"Spawn_Front", L"Spawn_Sprite", Vector2(0.f, 0.f), Vector2(64.f, 64.f), 11, Vector2(0.f, 0.f), 11.f);
 		mFront->GetComponent<Animator>()->CompleteEvent(L"Spawn_Front") = std::bind(&GameObject::SetPaused, mFront);
-		mBack->GetComponent<Animator>()->Create(L"Spawn_Back", L"Spawn_Sprite", Vector2(0.f, 64.f), Vector2(64.f, 64.f), 11, Vector2(0.f, 0.f), 9.f);
+		mBack->GetComponent<Animator>()->Create(L"Spawn_Back", L"Spawn_Sprite", Vector2(0.f, 64.f), Vector2(64.f, 64.f), 11, Vector2(0.f, 0.f), 11.f);
 		mBack->GetComponent<Animator>()->CompleteEvent(L"Spawn_Back") = std::bind(&GameObject::SetPaused, mBack);
 	}
 
@@ -54,8 +54,8 @@ namespace ssz
 
 	void SpawnEfc::Play(Vector3 vPos)
 	{
-		mFront->GetComponent<Transform>()->SetPosition(Vector3(vPos.x, vPos.y, vPos.z - 0.00001f));
-		mBack->GetComponent<Transform>()->SetPosition(Vector3(vPos.x, vPos.y, vPos.z + 0.00001f));
+		mFront->GetComponent<Transform>()->SetPosition(Vector3(vPos.x, vPos.y + 10.f, vPos.z - 0.00001f));
+		mBack->GetComponent<Transform>()->SetPosition(Vector3(vPos.x, vPos.y + 10.f, vPos.z + 0.00001f));
 
 		mFront->GetComponent<Animator>()->PlayAnimation(L"Spawn_Front", false);
 		mBack->GetComponent<Animator>()->PlayAnimation(L"Spawn_Back", false);

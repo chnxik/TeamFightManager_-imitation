@@ -342,16 +342,18 @@ namespace ssz
 	private:
 		float RandomDtoR(float degree)
 		{
-			float value = (float)(rand() % 30) - 15;	// 30도 범위
+			float value = (float)(rand() % 45) - 15;	// 60도 범위
+
+			value *= (float)_Pi / 180.f;
 
 			value = degree + value;
 
-			if (value <= -180.f)
-				value = 180.f + (180.f + value);
-			else if (value >= 180)
-				value = -180.f + (-180.f + value);
+			// if (value <= -180.f)
+			// 	value = 180.f + (180.f + value);
+			// else if (value >= 180)
+			// 	value = -180.f + (-180.f + value);
 
-			value *= (float)_Pi / 180.f;
+			// value *= (float)_Pi / 180.f;
 			
 			return value;
 		}
@@ -377,7 +379,7 @@ namespace ssz
 			// 타겟위치에서 오너 근방의 사거리 거리만큼의 랜덤한 위치
 
 			Vector2 vPos = OwnerPos - TargetPos;									// Target 에서 Owner 방향
-			float fDegree = atan2(vPos.y, vPos.x) * 180.f / (float)_Pi;		// radian 값
+			float fDegree = atan2(vPos.y, vPos.x); // * 180.f / (float)_Pi;		// radian 값
 			fDegree = RandomDtoR(fDegree);
 			float range = (float)Owner->GetChampInfo().RNG;
 			vPos.x = TargetPos.x + cos(fDegree) * range;
@@ -418,7 +420,7 @@ namespace ssz
 
 			*MovePoint = Vector2((float)rand(), (float)rand());;	// 랜덤방향
 			(*MovePoint).Normalize();				// 정규화하여 방향 얻기
-			*MovePoint *= ((float)(rand() % 100) + 10.f);	// 10 ~ 100px 사이의 랜덤한 거리
+			*MovePoint *= ((float)(rand() % 100) + 50.f);	// 50 ~ 150px 사이의 랜덤한 거리
 
 			RECT stadiumSize = TGM::GetStadiumSize();
 

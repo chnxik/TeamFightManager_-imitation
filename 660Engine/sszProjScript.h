@@ -14,7 +14,7 @@ namespace ssz
 
 		void SetProjInfo(Champ* Src, Champ* Dest, UINT Dmg);
 
-		virtual void OnCollisionEnter(Collider2D* other);
+		virtual void OnCollisionStay(Collider2D* other);
 
 	private:
 		Vector3 vSrcPos;

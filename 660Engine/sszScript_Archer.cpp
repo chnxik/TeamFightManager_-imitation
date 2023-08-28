@@ -160,7 +160,7 @@ namespace ssz
 
 		if (Owner->GetTarget_Enemy() != nullptr)
 		{
-			TGM::GetProjectile()->Shoot(Owner, Owner->GetTarget_Enemy(), Vector3(50.f, 20.f, 1.f), L"archer_arrowMt", Owner->GetChampInfo().ATK);
+			TGM::GetProjectile()->Shoot(Owner, Owner->GetTarget_Enemy(), Vector3(40.f, 15.f, 1.f), L"archer_arrowMt", Owner->GetChampInfo().ATK);
 			Owner->GetChampStatus()->accTime_Attack = 0.f;
 		}
 	}

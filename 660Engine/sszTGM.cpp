@@ -33,7 +33,7 @@ namespace ssz
 		gPilotList = new PilotList();
 		gTeamList = new TeamList();
 
-		for (int i = 0; i < 10; ++i)
+		for (int i = 0; i < 1; ++i)
 		{
 			Projectile* newproj = new Projectile();
 			newproj->Initialize();
@@ -85,12 +85,15 @@ namespace ssz
 	{
 		Projectile* Proj = nullptr;
 
-		for (Projectile* tmp : vProjectilePool)
+		while (Proj == nullptr)
 		{
-			if (tmp->IsProjCanUse())
+			for (Projectile* tmp : vProjectilePool)
 			{
-				Proj = tmp;
-				break;
+				if (tmp->IsProjCanUse())
+				{
+					Proj = tmp;
+					break;
+				}
 			}
 		}
 

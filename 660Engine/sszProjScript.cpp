@@ -31,8 +31,8 @@ namespace ssz
 		Transform* Ownertr = GetOwner()->GetComponent<Transform>();
 		
 		Vector3 vPos = Ownertr->GetPosition();
-		vPos.x += vDir.x * 300.f * (float)Time::DeltaTime();
-		vPos.y += vDir.y * 300.f * (float)Time::DeltaTime();
+		vPos.x += vDir.x * 500.f * (float)Time::DeltaTime();
+		vPos.y += vDir.y * 500.f * (float)Time::DeltaTime();
 
 		Ownertr->SetPosition(vPos);
 		
@@ -58,17 +58,19 @@ namespace ssz
 		vDestPos = mDest->GetComponent<Transform>()->GetPosition();
 
 		vDir = vDestPos - vSrcPos;
-		vDir.z = 0.f;
 		vDir.Normalize();
 
+		float fradian = atan2(vDir.y, vDir.x);
+
+		Vector3 test(0.f, 0.f, fradian);
+		Ownertr->SetRotation(test);
 		Ownertr->SetPosition(vSrcPos);
-		Ownertr->SetRotation(vDir);
 		
 		mDmg = Dmg;
 		fLifeTime = 0.f;
 	}
 
-	void ProjScript::OnCollisionEnter(Collider2D* other)
+	void ProjScript::OnCollisionStay(Collider2D* other)
 	{
 		Collider2D* DestCol = mDest->GetComponent<Collider2D>();
 		if (other == DestCol)

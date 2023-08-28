@@ -24,6 +24,6 @@ namespace ssz
 	{
 		iLogCnt = 0;
 		mLogStr.clear();
-		mLogStr = L"로그 테스트";
+		mLogStr = L"테스트 로그";
 	}
 }

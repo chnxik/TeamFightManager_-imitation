@@ -281,6 +281,9 @@
     <ClCompile Include="sszArcherBT.cpp">
       <Filter>Contents\Object\GameUnit\Champ\Archer</Filter>
     </ClCompile>
+    <ClCompile Include="sszKnightBT.cpp">
+      <Filter>Contents\Object\GameUnit\Champ\Knight</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Contents">

@@ -22,6 +22,7 @@ namespace ssz
         virtual void InitBT() = 0;          // Ã¨ÇÁ AI ¼³Á¤
 
         virtual void Attack();
+        virtual void AttackComplete();
         virtual void Skill() {};
         virtual void Ultimate() {};
 

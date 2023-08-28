@@ -32,7 +32,7 @@ namespace ssz
 		Champ* Owner = (Champ*)GetOwner();
 		
 		Owner->SetName(ARCHER); // 챔프 이름 입력
-		Owner->SetChampInfo(eChampType::MARKSMAN, 42, 0.67f, 120, 5, 100, 5); // 챔피언 정보 입력
+		Owner->SetChampInfo(eChampType::MARKSMAN, 42, 0.67f, 120, 5, 100, 4); // 챔피언 정보 입력
 		Owner->InitChampStatus(0, 0);	// 인게임 정보 세팅
 
 		Owner->GetChampStatus()->CoolTime_Skill = 3.0f;
@@ -77,6 +77,7 @@ namespace ssz
 		Owner->SetAnimKey(Champ::eActiveType::SKILL,L"archer_skill");
 		
 		anim->StartEvent(Owner->GetAnimKey(Champ::eActiveType::ATTACK)) = std::bind(&Script_Archer::Attack, this);
+		anim->CompleteEvent(Owner->GetAnimKey(Champ::eActiveType::ATTACK)) = std::bind(&Script_Archer::AttackComplete, this);
 		anim->StartEvent(Owner->GetAnimKey(Champ::eActiveType::SKILL)) = std::bind(&Script_Archer::Skill, this);
 		anim->CompleteEvent(Owner->GetAnimKey(Champ::eActiveType::DEAD)) = std::bind(&BattleManager::RegistRespawnPool, Owner);
 		
@@ -174,7 +175,6 @@ namespace ssz
 		{
 			TGM::GetProjectile()->Shoot(Owner, Owner->GetTarget_Enemy(), Vector3(40.f, 20.f, 1.f), L"archer_arrowMt", Owner->GetChampInfo().ATK);
 		}
-		Owner->GetChampStatus()->accTime_Attack = 0.f;
 	}
 
 	void Script_Archer::Skill()
@@ -185,6 +185,7 @@ namespace ssz
 		{
 			TGM::GetProjectile()->Shoot(Owner, Owner->GetTarget_Enemy(), Vector3(40.f, 20.f, 1.f), L"archer_arrowMt", Owner->GetChampInfo().ATK);
 		}
+
 		Owner->GetChampStatus()->accTime_Skill = 0.f;
 	}
 

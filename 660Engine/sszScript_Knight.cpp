@@ -1,7 +1,7 @@
 #include "sszScript_Knight.h"
 
 // Test
-#include "sszCommonBT.cpp"
+#include "sszKnightBT.cpp"
 
 namespace ssz
 {
@@ -33,7 +33,7 @@ namespace ssz
 
 		Owner->SetName(KNIGHT);
 
-		Owner->SetChampInfo(eChampType::FIGHTER, 21, 0.67f, 37, 10, 200, 4);
+		Owner->SetChampInfo(eChampType::FIGHTER, 21, 0.67f, 37, 10, 200, 5);
 		Owner->InitChampStatus(0, 0);
 
 		Owner->GetComponent<Transform>()->SetScale(Vector3(170.f, 170.f, 1.f)); // 96 size
@@ -72,7 +72,7 @@ namespace ssz
 		Owner->SetAnimKey(Champ::eActiveType::SKILL, L"knight_skill1");
 		Owner->SetAnimKey(Champ::eActiveType::ULTIMATE, L"knight_skill2");
 		
-		anim->CompleteEvent(Owner->GetAnimKey(Champ::eActiveType::ATTACK)) = std::bind(&Script_Knight::Attack, this);
+		anim->CompleteEvent(Owner->GetAnimKey(Champ::eActiveType::ATTACK)) = std::bind(&Champ_Script::AttackComplete, this);
 		anim->CompleteEvent(Owner->GetAnimKey(Champ::eActiveType::DEAD)) = std::bind(&BattleManager::RegistRespawnPool, Owner);
 
 		Owner->Play_Idle();
@@ -136,7 +136,7 @@ namespace ssz
 		Seq_Active_Attack->AddChild<Act_SetDir_Target>(); // 2-2-2-3-2 타겟방향으로 방향전환
 
 		Sequence_Node* Seq_AttackAnim = Seq_Active_Attack->AddChild<Sequence_Node>(); // 2-2-2-3-3 공격 애니메이션
-		Seq_AttackAnim->AddChild<Act_PlayAnim_Attack>();	// 2-2-2-3-3-1 공격 애니메이션 반복재생
+		Seq_AttackAnim->AddChild<Act_Attack_Knight>();	// 2-2-2-3-3-1 공격 애니메이션 반복재생
 		Seq_AttackAnim->AddChild<Act_PlayAnim_Idle>();		// 2-2-2-3-3-2 공격애니메이션 종료시 Idle로 초기화
 
 		// [2-3] 이동 판단 시퀀스

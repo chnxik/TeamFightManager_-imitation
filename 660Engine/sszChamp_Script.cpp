@@ -79,8 +79,14 @@ namespace ssz
 		if (Owner->GetTarget_Enemy() != nullptr)
 		{
 			BattleManager::ATTACK(Owner, Owner->GetTarget_Enemy(), Owner->GetChampInfo().ATK);
-			Owner->GetChampStatus()->accTime_Attack = 0.f;
 		}
+		
+	}
+
+	void Champ_Script::AttackComplete()
+	{
+		Champ* Owner = (Champ*)GetOwner();
+		Owner->GetChampStatus()->accTime_Attack = 0.f;
 	}
 
 	void Champ_Script::ResetAIBB()

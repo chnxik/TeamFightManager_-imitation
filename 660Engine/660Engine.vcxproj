@@ -272,6 +272,7 @@ xcopy /R /Y "$(SolutionDir)dll\FW1FontWrapperL.dll" "$(SolutionDir)x64\Debug"</
     <ClCompile Include="sszCursorScript.cpp" />
     <ClCompile Include="sszDefaultBtn.cpp" />
     <ClCompile Include="sszHeaderSlot.cpp" />
+    <ClCompile Include="sszKnightBT.cpp" />
     <ClCompile Include="sszLog.cpp" />
     <ClCompile Include="sszObj_IG_Stadium.cpp" />
     <ClCompile Include="sszImportantBtn.cpp" />

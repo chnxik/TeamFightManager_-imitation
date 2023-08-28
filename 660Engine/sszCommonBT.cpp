@@ -186,12 +186,29 @@ namespace ssz
 			Transform* tr = Owner->GetComponent<Transform>();
 			Vector2* MovePoint = FINDBBDATA(Vector2, MOVEPOINT);
 
+			// if (Owner->GetTarget_Enemy() != nullptr)
+			//	return NS_FAILURE;	// 타겟 적이 있으면 새로운이동지점확인
+
+			fUpdateTime += (float)Time::DeltaTime();
+
+			if (0.2f < fUpdateTime)	// 일정 시간마다 새로운 이동지점 갱신
+			{
+				fUpdateTime = 0.f;
+				return NS_FAILURE;
+			}
+
 			if (Vector2::Distance(tr->GetWorldPosition().V3toV2(), (*MovePoint))
 				< 5.f)
+			{
+				fUpdateTime = 0.f;
 				return NS_FAILURE; // 도착해서 새로운 이동지점을 확인해야함.
+			}
 
 			return NS_SUCCESS;	// 도착하지 않음
 		}
+
+	private:
+		float fUpdateTime;
 	};
 	// 거리 후퇴 판단
 	class Con_Retreat_Dist : public Condition_Node
@@ -340,7 +357,7 @@ namespace ssz
 	private:
 		float RandomDtoR(float degree)
 		{
-			float value = (float)(rand() % 40) - 20;	// 20도 범위 넓이
+			float value = (float)(rand() % 30) - 15;	// 30도 범위 넓이
 
 			value *= (float)_Pi / 180.f;
 

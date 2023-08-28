@@ -15,7 +15,7 @@ namespace gui
     std::vector<EditorObject*> Editor::mEditorObjects = {};
     std::vector<DebugObject*> Editor::mDebugObjects = {};
 
-    bool Editor::bDebugOn = true;
+    bool Editor::bDebugOn = false;
 
     void Editor::Initialize()
     {

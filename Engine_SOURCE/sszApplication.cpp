@@ -40,6 +40,8 @@ namespace ssz
 
 	void Application::Initialize()
 	{
+		srand((unsigned int)time(NULL));
+
 		Time::Initiailize();
 		Input::Initialize();
 		Fmod::Initialize();

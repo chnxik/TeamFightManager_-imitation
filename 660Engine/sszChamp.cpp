@@ -100,6 +100,9 @@ namespace ssz
 	{
 		mShadow->Render();
 		GameObject::Render();
+		
+		// Damage Efc Clear
+		mChampScript->DamageCBClear();
 	}
 
 	void Champ::Dead()

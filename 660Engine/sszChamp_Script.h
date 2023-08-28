@@ -15,6 +15,8 @@ namespace ssz
         virtual void LateUpdate() override;
         virtual void Binds() override;
 
+        virtual void DamageCBClear();
+
         virtual void InitChampInfo() = 0;   // 챔프 정보 설정
         virtual void InitChampAnim() = 0;   // 챔프 애니메이션 설정
         virtual void InitColObj() = 0;      // 챔프 콜라이더오브젝트 설정

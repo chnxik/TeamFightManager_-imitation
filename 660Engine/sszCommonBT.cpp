@@ -357,7 +357,7 @@ namespace ssz
 	private:
 		float RandomDtoR(float degree)
 		{
-			float value = (float)(rand() % 30) - 15;	// 30도 범위 넓이
+			float value = (float)(rand() % 40) - 20;	// 30도 범위 넓이
 
 			value *= (float)_Pi / 180.f;
 

@@ -49,9 +49,6 @@ namespace ssz
 		// AnimationCB
 		renderer::ChampCB data = {};
 
-		if (1.0f <= fDamageRatio)
-			int a = 0;
-
 		data.DamagedTime = fDamageRatio;
 		
 		ConstantBuffer* cb = renderer::constantBuffer[(UINT)eCBType::Champ];
@@ -59,6 +56,23 @@ namespace ssz
 
 		cb->Bind(eShaderStage::VS);
 		cb->Bind(eShaderStage::PS);
+	}
+
+	void Champ_Script::DamageCBClear()
+	{
+		// AnimationCB
+		if (0.f < fDamageRatio)
+		{
+			renderer::ChampCB data = {};
+
+			data.DamagedTime = 0.f;
+
+			ConstantBuffer* cb = renderer::constantBuffer[(UINT)eCBType::Champ];
+			cb->SetData(&data);
+
+			cb->Bind(eShaderStage::VS);
+			cb->Bind(eShaderStage::PS);
+		}
 	}
 	
 	std::shared_ptr<AIBB> Champ_Script::InstantiateAIBB()

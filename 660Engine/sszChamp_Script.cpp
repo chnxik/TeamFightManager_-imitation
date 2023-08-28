@@ -7,6 +7,7 @@ namespace ssz
 {
 	Champ_Script::Champ_Script()
 		: mRoot(nullptr)
+		, fDamageRatio(0.f)
 	{
 	}
 
@@ -31,8 +32,33 @@ namespace ssz
 		ChampPos.z = (ChampPos.y - TGM::GetStadiumSize().bottom) / TGM::GetStadiumScale().y;
 		ChampPos.z *= 0.0001f;
 		ChampPos.z += 1.2f; // 경기장 z값
+
+		if (0.f < fDamageRatio)
+		{
+			fDamageRatio -= 3.f * (float)Time::DeltaTime();
+
+			if (fDamageRatio < 0.f)
+				fDamageRatio = 0.f;
+		}
 		
 		tr->SetPosition(ChampPos);
+	}
+
+	void Champ_Script::Binds()
+	{
+		// AnimationCB
+		renderer::ChampCB data = {};
+
+		if (1.0f <= fDamageRatio)
+			int a = 0;
+
+		data.DamagedTime = fDamageRatio;
+		
+		ConstantBuffer* cb = renderer::constantBuffer[(UINT)eCBType::Champ];
+		cb->SetData(&data);
+
+		cb->Bind(eShaderStage::VS);
+		cb->Bind(eShaderStage::PS);
 	}
 	
 	std::shared_ptr<AIBB> Champ_Script::InstantiateAIBB()

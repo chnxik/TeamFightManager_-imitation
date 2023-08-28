@@ -37,6 +37,11 @@ namespace ssz
 			Comp->Binds();
 		}
 
+		for (Script* Script : GetOwner()->GetScripts())
+		{
+			Script->Binds();
+		}
+
 		mMesh->BindBuffer();
 		mMaterial->Binds();
 		mMesh->Render();

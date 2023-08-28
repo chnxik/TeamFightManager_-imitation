@@ -28,5 +28,17 @@ float4 main(VSOut In) : SV_Target
     
     color = atlasTexture.Sample(PointSampler, UV);
     
+    if (DamagedTime == 0)
+    {
+        return color;
+    };
+    
+    // Champ Damaged effect
+    float4 DamageColor = 1.f - color;
+    
+    color.x += DamageColor * DamagedTime;
+    color.y += DamageColor * DamagedTime;
+    color.z += DamageColor * DamagedTime;
+    
     return color;
 }

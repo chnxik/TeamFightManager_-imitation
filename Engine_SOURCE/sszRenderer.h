@@ -47,6 +47,11 @@ namespace renderer
 		Vector2 spriteOffset;
 		Vector2 atlasSize;
 	};
+
+	CBUFFER(ChampCB, CBSLOT_CHAMP)
+	{
+		float DamagedTime;
+	};
 	
 	extern ConstantBuffer* constantBuffer[(UINT)eCBType::END];
 

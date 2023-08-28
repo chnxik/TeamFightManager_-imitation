@@ -13,6 +13,7 @@ namespace ssz
         virtual void Initialize() override;
         virtual void Update() override;
         virtual void LateUpdate() override;
+        virtual void Binds() override;
 
         virtual void InitChampInfo() = 0;   // 챔프 정보 설정
         virtual void InitChampAnim() = 0;   // 챔프 애니메이션 설정
@@ -27,8 +28,11 @@ namespace ssz
         virtual void ResetAIBB();
         virtual void Dead() = 0;
 
+        virtual void Damaged() { fDamageRatio = 1.f; }
+
     private:
         Root_Node* mRoot;
+        float fDamageRatio;
 
     protected:
         Root_Node* CreateRootNode(std::shared_ptr<AIBB> pAIBB)

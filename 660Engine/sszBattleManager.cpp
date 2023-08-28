@@ -3,6 +3,7 @@
 #include "CommonObjHeader.h"
 #include "sszLog.h"
 
+#include "sszChamp_Script.h"
 #include "sszSpawnEfc.h"
 
 #define RESPAWNTIME 3.0f
@@ -120,6 +121,8 @@ namespace ssz
         std::wstring szbuffer;
         szbuffer = pAttacker->GetName() + L" 공격, 데미지 : " + std::to_wstring(iDamage);
         Log::AddLog(szbuffer);
+
+        pTarget->GetChampScript()->Damaged();
 
         // print Damage() 데미지 출력 함수 호출
         // Target의 Transform에 접근해 좌표를 받고 해당 좌표에서 데미지 UI를 출력

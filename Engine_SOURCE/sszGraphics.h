@@ -17,7 +17,9 @@
 #define CBSLOT_MASKING				1
 #define CBSLOT_OVERLAPCNT			2
 #define CBSLOT_ANIMATION2D			3
-//#define CBSLOT_PARTICLE			4
+#define CBSLOT_CHAMP				4
+// #define CBSLOT_PARTICLE				9
+
 
 namespace ssz::graphics
 {
@@ -38,6 +40,7 @@ namespace ssz::graphics
 		Masking,
 		Collider,
 		Animator,
+		Champ,
 		Material,
 		END,
 	};

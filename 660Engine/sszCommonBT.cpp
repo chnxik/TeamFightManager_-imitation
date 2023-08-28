@@ -187,7 +187,7 @@ namespace ssz
 			Vector2* MovePoint = FINDBBDATA(Vector2, MOVEPOINT);
 
 			if (Vector2::Distance(tr->GetWorldPosition().V3toV2(), (*MovePoint))
-				< 1.f)
+				< 5.f)
 				return NS_FAILURE; // 도착해서 새로운 이동지점을 확인해야함.
 
 			return NS_SUCCESS;	// 도착하지 않음
@@ -266,8 +266,6 @@ namespace ssz
 			if (status->CoolTime_Skill <= status->accTime_Skill)
 				return NS_SUCCESS;
 
-			// 
-
 			return NS_FAILURE;
 		}
 	};
@@ -342,7 +340,7 @@ namespace ssz
 	private:
 		float RandomDtoR(float degree)
 		{
-			float value = (float)(rand() % 45) - 15;	// 60도 범위
+			float value = (float)(rand() % 40) - 20;	// 20도 범위 넓이
 
 			value *= (float)_Pi / 180.f;
 
@@ -403,7 +401,6 @@ namespace ssz
 			return NS_SUCCESS;
 		}
 	};
-	
 	// 무작위 무빙
 	class Act_SetMovePoint_Random : public Action_Node
 	{
@@ -474,8 +471,6 @@ namespace ssz
 			return NS_SUCCESS;
 		}
 	};
-	// 강제 이동
-
 	// 방향전환
 	class Act_SetDir_Target : public Action_Node
 	{
@@ -565,7 +560,13 @@ namespace ssz
 				Owner->Play_Attack();
 
 			else if (Owner->GetComponent<Animator>()->IsComplete())
+			{
+
+				Vector2* MovePoint = FINDBBDATA(Vector2, MOVEPOINT);
+				*MovePoint = Owner->GetComponent<Transform>()->GetPosition().V3toV2();	// 스킬 종료 후 MOVEPOINT 초기화
+
 				return NS_SUCCESS;
+			}
 
 			return NS_RUNNING;
 		}

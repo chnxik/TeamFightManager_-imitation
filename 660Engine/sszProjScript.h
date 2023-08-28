@@ -3,6 +3,8 @@
 
 namespace ssz
 {
+	class Champ;
+
     class ProjScript : public Script
     {
 	public:

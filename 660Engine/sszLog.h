@@ -9,9 +9,10 @@ namespace ssz
 		static void Render();
 		static void Clear();
 
-	private:
+		static int GetLogCnt() { return iLogCnt; }
 
 	private:
 		static std::wstring mLogStr;
+		static int iLogCnt;
 	};
 }

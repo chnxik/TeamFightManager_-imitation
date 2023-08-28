@@ -84,6 +84,7 @@ namespace ssz
         void Play_Ultimate();
 
         void SetChampScript(Champ_Script* script);
+        Champ_Script* GetChampScript() { return mChampScript; }
 
         // 챔피언 정보 관리
         const tChampInfo& GetChampInfo() { return mChampInfo; } // 챔피언 기본 정보

@@ -1,7 +1,7 @@
 #include "sszScript_Archer.h"
 
 // Test
-#include "sszCommonBT.cpp"
+#include "sszArcherBT.cpp"
 
 namespace ssz
 {
@@ -35,6 +35,8 @@ namespace ssz
 		Owner->SetChampInfo(eChampType::MARKSMAN, 42, 0.67f, 120, 5, 100, 5); // 챔피언 정보 입력
 		Owner->InitChampStatus(0, 0);	// 인게임 정보 세팅
 
+		Owner->GetChampStatus()->CoolTime_Skill = 3.0f;
+
 		Owner->GetComponent<Transform>()->SetScale(Vector3(128.f, 128.f, 1.f)); // 64 size
 	}
 
@@ -61,11 +63,11 @@ namespace ssz
 		Vector2 FrmSize(64.f, 64.f);
 
 
-		anim->Create(L"archer_idle", L"archer_sprite", Vector2(0.f, 0.f), FrmSize, 4, Vector2(0.f, 0.f), 9.f);
-		anim->Create(L"archer_move", L"archer_sprite", Vector2(0.f, FrmSize.y * 1), FrmSize, 8, Vector2(0.f, 0.f), 9.f);
-		anim->Create(L"archer_attack", L"archer_sprite", Vector2(0.f, FrmSize.y * 2), FrmSize, 7, Vector2(0.f, 0.f), 9.f);
-		anim->Create(L"archer_dead", L"archer_sprite", Vector2(0.f, FrmSize.y * 3), FrmSize, 9, Vector2(0.f, 0.f), 9.f);
-		anim->Create(L"archer_skill", L"archer_sprite", Vector2(0.f, FrmSize.y * 4), FrmSize, 17, Vector2(0.f, 0.f), 9.f);
+		anim->Create(L"archer_idle", L"archer_sprite", Vector2(0.f, 0.f), FrmSize, 4, Vector2(0.f, 0.f), 10.f);
+		anim->Create(L"archer_move", L"archer_sprite", Vector2(0.f, FrmSize.y * 1), FrmSize, 8, Vector2(0.f, 0.f), 10.f);
+		anim->Create(L"archer_attack", L"archer_sprite", Vector2(0.f, FrmSize.y * 2), FrmSize, 7, Vector2(0.f, 0.f), 10.f);
+		anim->Create(L"archer_dead", L"archer_sprite", Vector2(0.f, FrmSize.y * 3), FrmSize, 9, Vector2(0.f, 0.f), 10.f);
+		anim->Create(L"archer_skill", L"archer_sprite", Vector2(0.f, FrmSize.y * 4), FrmSize, 17, Vector2(0.f, 0.f), 24.f);
 		
 
 		Owner->SetAnimKey(Champ::eActiveType::IDLE,L"archer_idle");
@@ -75,6 +77,7 @@ namespace ssz
 		Owner->SetAnimKey(Champ::eActiveType::SKILL,L"archer_skill");
 		
 		anim->StartEvent(Owner->GetAnimKey(Champ::eActiveType::ATTACK)) = std::bind(&Script_Archer::Attack, this);
+		anim->StartEvent(Owner->GetAnimKey(Champ::eActiveType::SKILL)) = std::bind(&Script_Archer::Skill, this);
 		anim->CompleteEvent(Owner->GetAnimKey(Champ::eActiveType::DEAD)) = std::bind(&BattleManager::RegistRespawnPool, Owner);
 		
 		Owner->Play_Idle();
@@ -85,11 +88,11 @@ namespace ssz
 		Champ* Owner = (Champ*)GetOwner();
 
 		// 피격 Collider Set
-		Vector3 ColScale = -Owner->GetComponent<Transform>()->GetScale() + Vector3(34.f, 44.f, 1.f);
+		Vector3 ColScale = -Owner->GetComponent<Transform>()->GetScale() + Vector3(15.f, 15.f, 1.f);
 
 		Collider2D* Col = Owner->AddComponent<Collider2D>();
 		Col->SetOffsetSize(ColScale);
-		Col->SetOffsetPos(Vector3(0.f, 5.f, 0.f));
+		Col->SetOffsetPos(Vector3(0.f, 0.f, 0.f));
 
 		ColObj* ATKCOL = Owner->CreateColObj(eColObjType::RANGE);
 
@@ -98,7 +101,7 @@ namespace ssz
 		Collider2D* AttackArea = ATKCOL->GetComponent<Collider2D>();
 		AttackArea->SetType(eColliderType::Circle);
 
-		float Rng = Owner->GetChampInfo().RNG * 2.f;
+		float Rng = Owner->GetChampInfo().RNG * 2.5f;
 		ColScale = -Owner->GetComponent<Transform>()->GetScale() + Vector3(Rng, Rng, 1.f);
 		AttackArea->SetOffsetSize(ColScale);
 
@@ -110,6 +113,7 @@ namespace ssz
 		Champ* Owner = (Champ*)GetOwner();
 		AudioSource* As = Owner->AddComponent<AudioSource>();
 		Resources::Load<AudioClip>(L"archer_attack", L"..\\Resources\\useResource\\Audio\\Bow_fast.wav");
+		Resources::Load<AudioClip>(L"archer_skill", L"..\\Resources\\useResource\\Audio\\Bow_fast.wav");
 		Resources::Load<AudioClip>(L"archer_dead", L"..\\Resources\\useResource\\Audio\\Body_Drop.wav");
 	}
 
@@ -131,8 +135,16 @@ namespace ssz
 		
 		Selector_Node* Sel_SelectActive = Seq_Active->AddChild<Selector_Node>(); // 2-2-2 Active 방식 선택
 		// Sequence_Node* Seq_Active_Ultimate = Sel_SelectActive->AddChild<Sequence_Node>(); // 2-2-2-1 궁극기
-		// Sequence_Node* Seq_Active_Skill = Sel_SelectActive->AddChild<Sequence_Node>(); // 2-2-2-2 스킬
-		
+		Sequence_Node* Seq_Active_Skill = Sel_SelectActive->AddChild<Sequence_Node>(); // 2-2-2-2 스킬
+		Seq_Active_Skill->AddChild<Con_CheckActive_Skill_CoolTime>();	// 2-2-2-2-1 기본공격 대기시간 판단
+		Seq_Active_Skill->AddChild<Con_CheckRagne_Attack>();	// 2-2-2-2-2 스킬 사거리 판단
+		Seq_Active_Skill->AddChild<Act_SetDir_Target>(); // 2-2-2-2-3 타겟방향으로 방향전환
+
+		Sequence_Node* Seq_SkillAnim= Seq_Active_Skill->AddChild<Sequence_Node>(); // 2-2-2-2-3 공격 애니메이션
+		Seq_SkillAnim->AddChild<Act_Skill_Archer>();	// 2-2-2-2-3-1 공격 애니메이션 반복재생
+		Seq_SkillAnim->AddChild<Act_PlayAnim_Idle>();	// 2-2-2-2-3-2 공격애니메이션 종료시 Idle로 초기화
+
+
 		Sequence_Node* Seq_Active_Attack = Sel_SelectActive->AddChild<Sequence_Node>(); // 2-2-2-3 기본공격
 		Seq_Active_Attack->AddChild<Con_CheckActive_Attack_CoolTime>();	// 2-2-2-3-1 기본공격 대기시간 판단
 		Seq_Active_Attack->AddChild<Con_CheckRagne_Attack>();	// 2-2-2-3-1 기본공격 사거리 판단
@@ -160,9 +172,20 @@ namespace ssz
 
 		if (Owner->GetTarget_Enemy() != nullptr)
 		{
-			TGM::GetProjectile()->Shoot(Owner, Owner->GetTarget_Enemy(), Vector3(40.f, 15.f, 1.f), L"archer_arrowMt", Owner->GetChampInfo().ATK);
-			Owner->GetChampStatus()->accTime_Attack = 0.f;
+			TGM::GetProjectile()->Shoot(Owner, Owner->GetTarget_Enemy(), Vector3(40.f, 20.f, 1.f), L"archer_arrowMt", Owner->GetChampInfo().ATK);
 		}
+		Owner->GetChampStatus()->accTime_Attack = 0.f;
+	}
+
+	void Script_Archer::Skill()
+	{
+		Champ* Owner = (Champ*)GetOwner();
+
+		if (Owner->GetTarget_Enemy() != nullptr)
+		{
+			TGM::GetProjectile()->Shoot(Owner, Owner->GetTarget_Enemy(), Vector3(40.f, 20.f, 1.f), L"archer_arrowMt", Owner->GetChampInfo().ATK);
+		}
+		Owner->GetChampStatus()->accTime_Skill = 0.f;
 	}
 
 	void Script_Archer::Dead()

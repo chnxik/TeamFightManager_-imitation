@@ -99,6 +99,7 @@ namespace ssz
         Target->RespawnInfo();
         Target->GetComponent<Collider2D>()->ColliderActive();
         Target->Play_Idle();
+        
 
         std::wstring szbuffer;
         szbuffer = Target->GetName() + L" ½ºÆù";

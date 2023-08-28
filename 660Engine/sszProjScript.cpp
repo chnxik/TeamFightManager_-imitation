@@ -4,6 +4,7 @@
 
 #include "sszBattleManager.h"
 #include "sszProjectile.h"
+#include "sszTGM.h"
 
 namespace ssz
 {
@@ -36,8 +37,12 @@ namespace ssz
 
 		Ownertr->SetPosition(vPos);
 		
-		fLifeTime += (float)Time::DeltaTime();
-		if (2.f < fLifeTime)
+		RECT stadiumSize = TGM::GetStadiumSize();
+		
+		if (vPos.x <= stadiumSize.left ||
+			vPos.x >= stadiumSize.right ||
+			vPos.y >= stadiumSize.top ||
+			vPos.y <= stadiumSize.bottom)
 		{
 			Projectile* Owner = (Projectile*)GetOwner();
 

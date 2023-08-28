@@ -20,6 +20,8 @@ namespace ssz
 		virtual void InitBT();          // Ã¨ÇÁ AI ¼³Á¤
 
 		virtual void Attack();
+		virtual void Skill();
+
 
 		virtual void Dead();
 	};

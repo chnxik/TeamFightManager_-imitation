@@ -256,6 +256,7 @@ xcopy /R /Y "$(SolutionDir)dll\FW1FontWrapperL.dll" "$(SolutionDir)x64\Debug"</
   <ItemGroup>
     <ClCompile Include="660Engine.cpp" />
     <ClCompile Include="Load.cpp" />
+    <ClCompile Include="sszArcherBT.cpp" />
     <ClCompile Include="sszArrangementScript.cpp" />
     <ClCompile Include="sszBanLine.cpp" />
     <ClCompile Include="sszBanpickClassTap.cpp" />

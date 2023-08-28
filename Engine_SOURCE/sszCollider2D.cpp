@@ -121,11 +121,9 @@ namespace ssz
 	void Collider2D::ColliderActive()
 	{
 		mColState = eColState::Active;
-		Log::AddLog(GetOwner()->GetName() + L"Col활성화");
 	}
 	void Collider2D::ColliderPaused()
 	{
 		mColState = eColState::Paused;
-		Log::AddLog(GetOwner()->GetName() + L"Col비활성화");
 	}
 }

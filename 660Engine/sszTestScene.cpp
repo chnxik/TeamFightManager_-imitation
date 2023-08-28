@@ -50,6 +50,9 @@ namespace ssz
 		Scene::LateUpdate();
 		BattleManager::Update();
 
+		if (25 <= Log::GetLogCnt())
+			Log::Clear();
+
 		if (Input::GetKeyDown(eKeyCode::ENTER))
 		{
 			Log::Clear();

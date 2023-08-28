@@ -23,7 +23,7 @@ namespace ssz
 		{
 			return Vector3(
 				(float)(mStadiumSize.left + (mStadiumSize.right - mStadiumSize.left) / 2.f), 
-				(float)(mStadiumSize.bottom + (mStadiumSize.top - mStadiumSize.bottom / 2.f)), 0.f);
+				(float)(mStadiumSize.bottom + (mStadiumSize.top - mStadiumSize.bottom) / 2.f), 0.f);
 		}
 		static Vector3 GetStadiumScale() 
 		{

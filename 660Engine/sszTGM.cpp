@@ -8,7 +8,7 @@
 
 namespace ssz
 {
-	const RECT	TGM::mStadiumSize{ -570, 126, 570, -460 }; // Left, Top, Right, Bottme
+	const RECT	TGM::mStadiumSize{ -570, 190, 570, -396 }; // Left, Top, Right, Bottme
 	float TGM::mGameTime = 0.f;
 
 	TeamList* TGM::gTeamList = nullptr;
@@ -33,7 +33,7 @@ namespace ssz
 		gPilotList = new PilotList();
 		gTeamList = new TeamList();
 
-		for (int i = 0; i < 1; ++i)
+		for (int i = 0; i < 20; ++i)
 		{
 			Projectile* newproj = new Projectile();
 			newproj->Initialize();

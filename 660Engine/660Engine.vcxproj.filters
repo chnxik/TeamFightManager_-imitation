@@ -278,6 +278,9 @@
     <ClCompile Include="sszProjScript.cpp">
       <Filter>Contents\Object\GameUnit\common\Projectile</Filter>
     </ClCompile>
+    <ClCompile Include="sszArcherBT.cpp">
+      <Filter>Contents\Object\GameUnit\Champ\Archer</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Contents">

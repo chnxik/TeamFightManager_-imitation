@@ -4,6 +4,7 @@
 namespace ssz
 {
 	std::wstring Log::mLogStr;
+	int Log::iLogCnt = 0;
 
 	void Log::AddLog(const std::wstring& string)
 	{
@@ -11,6 +12,7 @@ namespace ssz
 			mLogStr += L"\n";
 
 		mLogStr += string;
+		iLogCnt++;
 	}
 
 	void Log::Render()
@@ -20,6 +22,7 @@ namespace ssz
 
 	void Log::Clear()
 	{
+		iLogCnt = 0;
 		mLogStr.clear();
 		mLogStr = L"로그 테스트";
 	}

@@ -51,7 +51,7 @@ namespace ssz
 		Text* tx = AddComponent<Text>();
 
 		tx->SetOffsetPos(Vector3(40.f, 50.f, 0.f));
-		tx->SetFontSize(40.f);
+		tx->SetFontSize(20.f);
 		tx->SetFontColor(255, 255, 255, 255);
 
 		// Shadow
@@ -86,9 +86,12 @@ namespace ssz
 		mShadow->LateUpdate();
 
 
-		wstring info = std::to_wstring(mChampStatus.HP);
-		info += L"\n";
+		wstring info = L"HP : ";
+		info += std::to_wstring(mChampStatus.HP);
+		info += L"\nAtk : ";
 		info += std::to_wstring(mChampStatus.accTime_Attack).substr(0,3);
+		info += L"\nSkill : ";
+		info += std::to_wstring(mChampStatus.accTime_Skill).substr(0,3);
 		
 		GetComponent<Text>()->SetString(info);
 	}
@@ -107,7 +110,7 @@ namespace ssz
 		
 		if(!Col->IsPaused())
 			Col->ColliderPaused();
-
+		
 		std::wstring szbuffer;
 		szbuffer = GetName() + L" 사망";
 		Log::AddLog(szbuffer);
@@ -146,8 +149,10 @@ namespace ssz
 
 	void Champ::Play_Skill()
 	{
-		
 		GetComponent<Animator>()->PlayAnimation(vecAnimKey[(UINT)eActiveType::SKILL], true);
+		AudioSource* as = GetComponent<AudioSource>();
+		as->SetClip(vecAnimKey[(UINT)eActiveType::ATTACK]);
+		as->Play();
 	}
 
 
@@ -215,7 +220,6 @@ namespace ssz
 		mChampStatus.HP = mChampStatus.ChampInfo.MAXHP;         // 현재 체력
 		mChampStatus.accTime_Attack = 1.f;						// 공격 쿨타임
 		mChampStatus.accTime_Skill = 0.f;						// 현재 스킬 쿨타임
-		mChampStatus.CoolTime_Skill = 0.f;						// 스킬 쿨타임
 
 		mChampStatus.RespawnTime = 0.f;
 	}

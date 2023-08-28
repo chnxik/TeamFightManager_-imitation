@@ -4,6 +4,7 @@
 #include "sszPilotList.h"
 #include "sszTeamList.h"
 #include "sszCursor.h"
+#include "sszProjectile.h"
 
 namespace ssz
 {
@@ -17,6 +18,8 @@ namespace ssz
 	Cursor* TGM::mCursor = nullptr;
 	GameObject* TGM::mMainCamera = nullptr;
 
+	vector<Projectile*> TGM::vProjectilePool;
+
 	void TGM::Initialize()
 	{
 		mCursor = new Cursor();
@@ -29,6 +32,13 @@ namespace ssz
 		gChampList = new ChampList();
 		gPilotList = new PilotList();
 		gTeamList = new TeamList();
+
+		for (int i = 0; i < 10; ++i)
+		{
+			Projectile* newproj = new Projectile();
+			newproj->Initialize();
+			vProjectilePool.push_back(newproj);
+		}
 
 		mCursor->Initialize();
 		gChampList->Initialize();
@@ -45,6 +55,15 @@ namespace ssz
 		delete mMainCamera;
 
 		delete mCursor;
+
+		for (Projectile* gameObj : vProjectilePool)
+		{
+			if (gameObj == nullptr)
+				continue;
+
+			delete gameObj;
+			gameObj = nullptr;
+		}
 	}
 
 	Team* TGM::GetTeam(const std::wstring& key)
@@ -60,6 +79,22 @@ namespace ssz
 	Champ* TGM::GetChamp(const std::wstring& key)
 	{
 		return gChampList->GetChamp(key);
+	}
+
+	Projectile* TGM::GetProjectile()
+	{
+		Projectile* Proj = nullptr;
+
+		for (Projectile* tmp : vProjectilePool)
+		{
+			if (tmp->IsProjCanUse())
+			{
+				Proj = tmp;
+				break;
+			}
+		}
+
+		return Proj;
 	}
 
 	void TGM::SceneClear()

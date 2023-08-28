@@ -96,6 +96,22 @@ namespace ssz
 		}
 	}
 
+	void Layer::EraseGameObject(GameObject* gameObj)
+	{
+		std::vector<GameObject*>::iterator iter = mGameObjects.begin();
+
+		while (iter != mGameObjects.end())
+		{
+			if ((*iter) == gameObj)
+			{
+				mGameObjects.erase(iter);
+				break;
+			}
+
+			iter++;
+		}
+	}
+
 	void Layer::AddGameObject(GameObject* gameObj)
 	{
 		mGameObjects.push_back(gameObj);

@@ -72,7 +72,7 @@ namespace ssz
 		Owner->SetAnimKey(Champ::eActiveType::SKILL, L"knight_skill1");
 		Owner->SetAnimKey(Champ::eActiveType::ULTIMATE, L"knight_skill2");
 		
-		anim->CompleteEvent(Owner->GetAnimKey(Champ::eActiveType::ATTACK)) = std::bind(&Champ::ATTACK, Owner);
+		anim->CompleteEvent(Owner->GetAnimKey(Champ::eActiveType::ATTACK)) = std::bind(&Script_Knight::Attack, this);
 		anim->CompleteEvent(Owner->GetAnimKey(Champ::eActiveType::DEAD)) = std::bind(&BattleManager::RegistRespawnPool, Owner);
 
 		Owner->Play_Idle();

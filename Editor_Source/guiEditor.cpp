@@ -6,12 +6,16 @@
 #include "..\Engine_SOURCE\sszMaterial.h"
 #include "..\Engine_SOURCE\sszRenderer.h"
 
+#include "..\Engine_SOURCE\sszInput.h"
+
 namespace gui
 {
     using namespace ssz::enums;
     std::vector<Widget*> Editor::mWidgets = {};
     std::vector<EditorObject*> Editor::mEditorObjects = {};
     std::vector<DebugObject*> Editor::mDebugObjects = {};
+
+    bool Editor::bDebugOn = true;
 
     void Editor::Initialize()
     {
@@ -32,6 +36,14 @@ namespace gui
 
     void Editor::Update()
     {
+        if (ssz::Input::GetKeyDown(ssz::eKeyCode::F1))
+        {
+            if(bDebugOn)
+                bDebugOn = false;
+            else
+                bDebugOn = true;
+        }
+
         for (EditorObject* obj : mEditorObjects)
         {
             obj->Update();
@@ -48,14 +60,17 @@ namespace gui
 
     void Editor::Render()
     {
-        for (EditorObject* obj : mEditorObjects)
+        if (bDebugOn)
         {
-            obj->Render();
-        }
+            for (EditorObject* obj : mEditorObjects)
+            {
+                obj->Render();
+            }
 
-        for (const ssz::graphics::DebugMesh& mesh : renderer::debugMeshs)
-        {
-            DebugRender(mesh);
+            for (const ssz::graphics::DebugMesh& mesh : renderer::debugMeshs)
+            {
+                DebugRender(mesh);
+            }
         }
         renderer::debugMeshs.clear();
     }

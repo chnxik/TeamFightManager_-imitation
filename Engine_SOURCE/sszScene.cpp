@@ -57,15 +57,12 @@ namespace ssz
 
 	void Scene::Clear(eLayerType type)
 	{
-		if (type == eLayerType::Cursor)
-			int a = 0;
-
 		mLayers[(UINT)type].clear();
 	}
 
-	void Scene::Erase(eLayerType type)
+	void Scene::Erase(eLayerType type, GameObject* obj)
 	{
-		// mLayers[(int)type].Erase();
+		mLayers[(UINT)type].EraseGameObject(obj);
 	}
 
 	void Scene::OnEnter()

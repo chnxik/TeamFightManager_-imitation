@@ -23,6 +23,7 @@
 #include "sszColObj.h"		// 콜라이더용 오브젝트
 #include "sszPilot.h"
 #include "sszTeam.h"
+#include "sszProjectile.h"
 
 // AI
 #include "sszBT.h"

@@ -44,6 +44,10 @@ namespace ssz
 
 		Owner->AddComponent<MeshRenderer>();
 
+		// Projectile Set
+		Resources::Load<Texture>(L"archer_arrow", L"..\\Resources\\useResource\\ChampSprite\\archer\\effect\\arrow.png");
+		LoadMaterial(L"archer_arrowMt", L"SpriteShader", L"archer_arrow", eRenderingMode::Transparent);
+
 		// Load Atals
 		std::shared_ptr<Texture> atlas = Resources::Load<Texture>(L"archer_sprite", L"..\\Resources\\useResource\\ChampSprite\\archer\\archer_sprite\\archer.png");
 
@@ -70,7 +74,7 @@ namespace ssz
 		Owner->SetAnimKey(Champ::eActiveType::DEAD,L"archer_dead");
 		Owner->SetAnimKey(Champ::eActiveType::SKILL,L"archer_skill");
 		
-		anim->CompleteEvent(Owner->GetAnimKey(Champ::eActiveType::ATTACK)) = std::bind(&Champ::ATTACK, Owner);
+		anim->StartEvent(Owner->GetAnimKey(Champ::eActiveType::ATTACK)) = std::bind(&Script_Archer::Attack, this);
 		anim->CompleteEvent(Owner->GetAnimKey(Champ::eActiveType::DEAD)) = std::bind(&BattleManager::RegistRespawnPool, Owner);
 		
 		Owner->Play_Idle();
@@ -148,6 +152,17 @@ namespace ssz
 		// Seq_Move->AddChild<Act_SetDir_MovePoint>();		// 2-3-2-1 이동방향으로 방향전환
 		Seq_Move->AddChild<Act_Move_Default>();			// 2-3-2-2 이동방향으로 이동
 		Seq_Move->AddChild<Act_PlayAnim_Move>();		// 2-3-2-3 이동애니메이션 재생
+	}
+
+	void Script_Archer::Attack()
+	{
+		Champ* Owner = (Champ*)GetOwner();
+
+		if (Owner->GetTarget_Enemy() != nullptr)
+		{
+			TGM::GetProjectile()->Shoot(Owner, Owner->GetTarget_Enemy(), Vector3(50.f, 20.f, 1.f), L"archer_arrowMt", Owner->GetChampInfo().ATK);
+			Owner->GetChampStatus()->accTime_Attack = 0.f;
+		}
 	}
 
 	void Script_Archer::Dead()

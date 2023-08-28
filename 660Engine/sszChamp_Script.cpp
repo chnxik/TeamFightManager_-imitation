@@ -1,6 +1,8 @@
 #include "sszChamp_Script.h"
 #include "sszTGM.h"
 
+#include "sszBattleManager.h"
+
 namespace ssz
 {
 	Champ_Script::Champ_Script()
@@ -43,6 +45,18 @@ namespace ssz
 
 		return BB;
 	}
+	
+	void Champ_Script::Attack()
+	{
+		Champ* Owner = (Champ*)GetOwner();
+
+		if (Owner->GetTarget_Enemy() != nullptr)
+		{
+			BattleManager::ATTACK(Owner, Owner->GetTarget_Enemy(), Owner->GetChampInfo().ATK);
+			Owner->GetChampStatus()->accTime_Attack = 0.f;
+		}
+	}
+
 	void Champ_Script::ResetAIBB()
 	{
 		std::shared_ptr<AIBB> BB = mRoot->GetAIBB();

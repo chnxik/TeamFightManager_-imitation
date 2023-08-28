@@ -19,6 +19,7 @@ namespace ssz
 
 		virtual void clear();
 
+		void EraseGameObject(GameObject* gameObj);
 		void AddGameObject(GameObject* gameObj);
 		const std::vector<GameObject*> GetGameObjects()
 		{

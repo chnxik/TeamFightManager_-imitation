@@ -137,6 +137,12 @@
     <ClInclude Include="sszSpawnEfc.h">
       <Filter>Contents\Object\GameUnit\common\Spawnefc</Filter>
     </ClInclude>
+    <ClInclude Include="sszProjectile.h">
+      <Filter>Contents\Object\GameUnit\common\Projectile</Filter>
+    </ClInclude>
+    <ClInclude Include="sszProjScript.h">
+      <Filter>Contents\Object\GameUnit\common\Projectile</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="660Engine.cpp" />
@@ -265,6 +271,12 @@
     </ClCompile>
     <ClCompile Include="sszSpawnEfc.cpp">
       <Filter>Contents\Object\GameUnit\common\Spawnefc</Filter>
+    </ClCompile>
+    <ClCompile Include="sszProjectile.cpp">
+      <Filter>Contents\Object\GameUnit\common\Projectile</Filter>
+    </ClCompile>
+    <ClCompile Include="sszProjScript.cpp">
+      <Filter>Contents\Object\GameUnit\common\Projectile</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -471,6 +483,9 @@
     </Filter>
     <Filter Include="Contents\Object\GameUnit\common\Shadow">
       <UniqueIdentifier>{4e84c6ae-8190-4742-8c94-75c45df61a52}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\GameUnit\common\Projectile">
+      <UniqueIdentifier>{85b49577-ba79-4e98-83ec-25369b3ef4d2}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

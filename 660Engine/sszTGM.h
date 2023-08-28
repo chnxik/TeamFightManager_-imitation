@@ -7,6 +7,7 @@ namespace ssz
 	class PilotList;
 	class ChampList;
 	class Cursor;
+	class Projectile;
 
 	class TGM
 	{
@@ -43,6 +44,9 @@ namespace ssz
 		static PilotList* GetPilotList() { return gPilotList; }		// 파일럿 리스트
 		static ChampList* GetChampList() { return gChampList; }		// 챔프 리스트
 
+		// 발사체
+		static Projectile* GetProjectile();
+
 		// 씬 관리
 		static void SceneClear(); // Scene Exit 호출
 
@@ -58,5 +62,7 @@ namespace ssz
 		static TeamList* gTeamList;
 		static PilotList* gPilotList;
 		static ChampList* gChampList;
+
+		static vector<Projectile*>	vProjectilePool;
 	};
 }

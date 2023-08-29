@@ -73,6 +73,15 @@ namespace ssz
 			delete gameObj;
 			gameObj = nullptr;
 		}
+		
+		for (Effect* gameObj : vEffectPool)
+		{
+			if (gameObj == nullptr)
+				continue;
+
+			delete gameObj;
+			gameObj = nullptr;
+		}
 	}
 
 	Team* TGM::GetTeam(const std::wstring& key)

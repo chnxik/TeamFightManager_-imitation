@@ -2,7 +2,7 @@
 #include "Editor_Window.h"
 
 #include "..\Engine_SOURCE\sszApplication.h"
-#include <vld.h>
+// #include <vld.h> // vld 설치 되어있는 경우 추가
 
 #include "guiEditor.h"
 

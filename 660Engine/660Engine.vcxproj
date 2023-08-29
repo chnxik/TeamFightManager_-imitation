@@ -108,7 +108,8 @@
 xcopy /R /Y "$(SolutionDir)dll\fmodstudio.dll" "$(SolutionDir)x64\Debug"
 xcopy /R /Y "$(SolutionDir)dll\fmodstudioL.dll" "$(SolutionDir)x64\Debug"
 xcopy /R /Y "$(SolutionDir)dll\FW1FontWrapper.dll" "$(SolutionDir)x64\Debug"
-xcopy /R /Y "$(SolutionDir)dll\FW1FontWrapperL.dll" "$(SolutionDir)x64\Debug"</Command>
+xcopy /R /Y "$(SolutionDir)dll\FW1FontWrapperL.dll" "$(SolutionDir)x64\Debug"
+xcopy /R /Y "$(SolutionDir)dll\vld_x64.dll" "$(SolutionDir)x64\Debug"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -168,7 +169,8 @@ xcopy /R /Y "$(SolutionDir)dll\FW1FontWrapperL.dll" "$(SolutionDir)x64\Debug"</
 xcopy /R /Y "$(SolutionDir)dll\fmodstudio.dll" "$(SolutionDir)x64\Debug"
 xcopy /R /Y "$(SolutionDir)dll\fmodstudioL.dll" "$(SolutionDir)x64\Debug"
 xcopy /R /Y "$(SolutionDir)dll\FW1FontWrapper.dll" "$(SolutionDir)x64\Debug"
-xcopy /R /Y "$(SolutionDir)dll\FW1FontWrapperL.dll" "$(SolutionDir)x64\Debug"</Command>
+xcopy /R /Y "$(SolutionDir)dll\FW1FontWrapperL.dll" "$(SolutionDir)x64\Debug"
+xcopy /R /Y "$(SolutionDir)dll\vld_x64.dll" "$(SolutionDir)x64\Debug"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">

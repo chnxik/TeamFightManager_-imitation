@@ -29,6 +29,21 @@ namespace ssz
 	
 	void ProjScript::LateUpdate()
 	{
+		if (0.5f < fLifeTime)
+		{
+			Projectile* Owner = (Projectile*)GetOwner();
+
+			Owner->SetPaused();
+			Owner->bCanUse = true;
+			SceneManager::GetActiveScene()->Erase(Owner->GetLayerType(), Owner);
+		}
+		
+		if (0.f < fLifeTime)
+		{
+			fLifeTime += (float)Time::DeltaTime();
+			return;
+		}
+
 		Transform* Ownertr = GetOwner()->GetComponent<Transform>();
 		
 		Vector3 vPos = Ownertr->GetPosition();
@@ -80,12 +95,10 @@ namespace ssz
 		Collider2D* DestCol = mDest->GetComponent<Collider2D>();
 		if (other == DestCol)
 		{
-			BattleManager::ATTACK(mSrc, mDest, mDmg);
-			Projectile* Owner = (Projectile*)GetOwner();
+			if (0.f == fLifeTime)
+				BattleManager::ATTACK(mSrc, mDest, mDmg);
 
-			Owner->SetPaused();
-			Owner->bCanUse = true;
-			SceneManager::GetActiveScene()->Erase(Owner->GetLayerType(), Owner);
+			fLifeTime += (float)Time::DeltaTime();
 		}
 	}
 

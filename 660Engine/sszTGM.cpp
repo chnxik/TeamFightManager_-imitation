@@ -33,7 +33,7 @@ namespace ssz
 		gPilotList = new PilotList();
 		gTeamList = new TeamList();
 
-		for (int i = 0; i < 20; ++i)
+		for (int i = 0; i < 100; ++i)
 		{
 			Projectile* newproj = new Projectile();
 			newproj->Initialize();

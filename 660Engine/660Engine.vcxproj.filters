@@ -325,9 +325,6 @@
     <Filter Include="Contents\CommonScript">
       <UniqueIdentifier>{c8ed79e1-3e5e-4b74-b9b3-887ec0621126}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Contents\CommonScript\Camera">
-      <UniqueIdentifier>{b8d5be9b-621b-4cbc-8a47-e3e782c95e0c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Contents\CommonScript\Arrangement">
       <UniqueIdentifier>{5ae5190e-3062-45e8-9c9e-fdcbcd1e86f8}</UniqueIdentifier>
     </Filter>
@@ -477,15 +474,6 @@
     </Filter>
     <Filter Include="Contents\Manager\Log">
       <UniqueIdentifier>{4a2291d4-9c95-43c3-ab44-a898331fb030}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Object\Common">
-      <UniqueIdentifier>{9acff74c-0eaa-4744-9cd6-07b812d64827}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Object\Common\Camera">
-      <UniqueIdentifier>{e7ec4a7d-7ff8-485a-b20a-4b2e3601bb7f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Object\Common\Cursor">
-      <UniqueIdentifier>{7a29f64f-bb3c-4a02-947d-d939c0bef5e3}</UniqueIdentifier>
     </Filter>
     <Filter Include="Contents\Object\GameUnit\common">
       <UniqueIdentifier>{fe54ab8c-c350-4b81-84f4-11f326c5e273}</UniqueIdentifier>

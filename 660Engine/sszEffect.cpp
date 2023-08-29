@@ -25,6 +25,10 @@ namespace ssz
 		AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", mtkey);
 		Animator* Anim = AddComponent<Animator>();
 
+		// Audio Init
+		AudioSource* As = AddComponent<AudioSource>();
+		Resources::Load<AudioClip>(L"knight_skill", L"..\\Resources\\useResource\\Audio\\Buff2.wav");
+
 		// Effect Anim Init
 
 		Resources::Load<Texture>(L"knight_skill_efc", L"..\\Resources\\useResource\\ChampSprite\\knight\\effect\\Knight_Skill_effect.png");
@@ -42,6 +46,9 @@ namespace ssz
 		tr->SetScale(Scale);
 
 		GetComponent<Animator>()->PlayAnimation(animkey, false);
+		AudioSource* As = GetComponent<AudioSource>();
+		As->SetClip(animkey);
+		As->Play();
 
 		SceneManager::GetActiveScene()->AddGameObject(eLayerType::Effect, this);
 		SetActive();

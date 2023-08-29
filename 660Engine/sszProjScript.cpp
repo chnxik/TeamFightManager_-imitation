@@ -95,10 +95,14 @@ namespace ssz
 		Collider2D* DestCol = mDest->GetComponent<Collider2D>();
 		if (other == DestCol)
 		{
-			if (0.f == fLifeTime)
-				BattleManager::ATTACK(mSrc, mDest, mDmg);
+			Transform* Ownertr = GetOwner()->GetComponent<Transform>();
+			Ownertr->SetPosition(other->GetOwner()->GetComponent<Transform>()->GetPosition());
 
-			fLifeTime += (float)Time::DeltaTime();
+			if (0.f == fLifeTime)
+			{
+				BattleManager::ATTACK(mSrc, mDest, mDmg);
+				fLifeTime += (float)Time::DeltaTime();
+			}
 		}
 	}
 

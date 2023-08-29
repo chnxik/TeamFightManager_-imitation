@@ -24,6 +24,7 @@
 #include "sszPilot.h"
 #include "sszTeam.h"
 #include "sszProjectile.h"
+#include "sszEffect.h"
 
 // AI
 #include "sszBT.h"

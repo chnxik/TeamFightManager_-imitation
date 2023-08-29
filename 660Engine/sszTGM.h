@@ -8,6 +8,7 @@ namespace ssz
 	class ChampList;
 	class Cursor;
 	class Projectile;
+	class Effect;
 
 	class TGM
 	{
@@ -47,6 +48,9 @@ namespace ssz
 		// 발사체
 		static Projectile* GetProjectile();
 
+		// 이펙트
+		static Effect* GetEffectObj();
+
 		// 씬 관리
 		static void SceneClear(); // Scene Exit 호출
 
@@ -64,5 +68,6 @@ namespace ssz
 		static ChampList* gChampList;
 
 		static vector<Projectile*>	vProjectilePool;
+		static vector<Effect*>		vEffectPool;
 	};
 }

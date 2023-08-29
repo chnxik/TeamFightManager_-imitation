@@ -19,6 +19,8 @@ namespace ssz
 		virtual void InitAudio();
 		virtual void InitBT();          // Ã¨ÇÁ AI ¼³Á¤
 
+		virtual void Skill();
+
 		virtual void Dead();
 	};
 }

@@ -143,6 +143,9 @@
     <ClInclude Include="sszProjScript.h">
       <Filter>Contents\Object\GameUnit\common\Projectile</Filter>
     </ClInclude>
+    <ClInclude Include="sszEffect.h">
+      <Filter>Contents\Object\GameUnit\common\Effect</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="660Engine.cpp" />
@@ -283,6 +286,9 @@
     </ClCompile>
     <ClCompile Include="sszKnightBT.cpp">
       <Filter>Contents\Object\GameUnit\Champ\Knight</Filter>
+    </ClCompile>
+    <ClCompile Include="sszEffect.cpp">
+      <Filter>Contents\Object\GameUnit\common\Effect</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -492,6 +498,9 @@
     </Filter>
     <Filter Include="Contents\Object\GameUnit\common\Projectile">
       <UniqueIdentifier>{85b49577-ba79-4e98-83ec-25369b3ef4d2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\GameUnit\common\Effect">
+      <UniqueIdentifier>{ce61556b-68e1-492f-b26b-7ff1d4f7efed}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

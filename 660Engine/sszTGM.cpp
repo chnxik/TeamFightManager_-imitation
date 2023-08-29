@@ -5,6 +5,7 @@
 #include "sszTeamList.h"
 #include "sszCursor.h"
 #include "sszProjectile.h"
+#include "sszEffect.h"
 
 namespace ssz
 {
@@ -19,6 +20,7 @@ namespace ssz
 	GameObject* TGM::mMainCamera = nullptr;
 
 	vector<Projectile*> TGM::vProjectilePool;
+	vector<Effect*> TGM::vEffectPool;
 
 	void TGM::Initialize()
 	{
@@ -38,6 +40,13 @@ namespace ssz
 			Projectile* newproj = new Projectile();
 			newproj->Initialize();
 			vProjectilePool.push_back(newproj);
+		}
+
+		for (int i = 0; i < 3; ++i)
+		{
+			Effect* neweffect = new Effect();
+			neweffect->Initialize();
+			vEffectPool.push_back(neweffect);
 		}
 
 		mCursor->Initialize();
@@ -98,6 +107,25 @@ namespace ssz
 		}
 
 		return Proj;
+	}
+
+	Effect* TGM::GetEffectObj()
+	{
+		Effect* Eff = nullptr;
+
+		while (Eff == nullptr)
+		{
+			for (Effect* tmp : vEffectPool)
+			{
+				if (!(tmp->IsPlay()))
+				{
+					Eff = tmp;
+					break;
+				}
+			}
+		}
+
+		return Eff;
 	}
 
 	void TGM::SceneClear()

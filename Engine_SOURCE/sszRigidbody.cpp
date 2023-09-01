@@ -10,12 +10,12 @@ namespace ssz
 		: Component(eComponentType::Rigidbody)
 		, mForce{}
 		, mVelocity{}
-		, mMass(0.f)
-		, mFriction(0.f)
-		, mFrictionScale(0.f)
-		, mVelocityLimit(0.f)
-		, mGravityLimit(0.f)
-		, mGravityAccel(0.f)
+		, mMass(1.f)
+		, mFriction(1000.f)
+		, mFrictionScale(1.f)
+		, mVelocityLimit(300.f)
+		, mGravityLimit(800.f)
+		, mGravityAccel(2000.f)
 		, mTransform(nullptr)
 	{
 	}
@@ -58,7 +58,7 @@ namespace ssz
 
 		// 중력 가속도
 		Vector2 vGravityAccel = Vector2(0.f, mGravityAccel);
-		mVelocity += vGravityAccel * DT;
+		mVelocity -= vGravityAccel * DT;
 
 		Vector3 vPos = mTransform->GetPosition();
 

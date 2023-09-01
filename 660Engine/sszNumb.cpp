@@ -48,6 +48,8 @@ namespace ssz
 		Transform* tr = GetComponent<Transform>();
 		tr->SetScale(Vector3(0.f, 25.f, 0.f));
 
+		Rigidbody* rb = AddComponent<Rigidbody>();
+
 		NumbInit();
 		mMr = AddComponent<MeshRenderer>();
 		mMr->SetMeshRenderer(L"RectMesh", DMGNUMB_0);
@@ -56,14 +58,23 @@ namespace ssz
 	void Numb::Update()
 	{
 		testratio += DT;
-		InsertNumber(eDmgTextType::HEAL,((int)testratio) % 10);
+		// InsertNumber(eDmgTextType::HEAL,((int)testratio) % 10);
 
+		if (testratio > 0.4f)
+		{
+			Transform* tr = GetComponent<Transform>();
+			tr->SetPosition(Vector3(0.f,0.f,0.f));
+			InsertNumber(eDmgTextType::HEAL, ((int)testratio) % 10);
+			testratio = 0.f;
+		}
 		GameObject::Update();
 	}
 
 	void Numb::InsertNumber(eDmgTextType type, UINT numb)
 	{
 		Transform* tr = GetComponent<Transform>();
+		Vector3 vPos = tr->GetPosition();
+
 		Vector3 vScale = tr->GetScale();
 		vScale.x = vScale.y * (31.f/48.f);
 		
@@ -84,6 +95,10 @@ namespace ssz
 			vScale.x = vScale.y * (35.f / 48.f);
 
 		tr->SetScale(vScale);
+
+
+		Rigidbody* rb = GetComponent<Rigidbody>();
+		rb->SetVelocity(Vector2(40.f, 150.f));
 	}
 	
 	void Numb::NumbInit()

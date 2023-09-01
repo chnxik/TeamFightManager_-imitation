@@ -34,6 +34,7 @@ using namespace ssz::AI;
 // Component
 #include "sszCamera.h"
 #include "sszTransform.h"
+#include "sszRigidbody.h"
 #include "sszMeshRenderer.h"
 #include "sszCollider2D.h"
 #include "sszAnimator.h"

@@ -46,6 +46,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)sszRenderer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sszResource.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sszResources.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszRigidbody.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sszScene.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sszSceneManager.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sszScript.h" />
@@ -92,6 +93,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)sszRenderer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sszResource.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sszResources.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszRigidbody.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sszScene.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sszSceneManager.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sszScript.cpp" />

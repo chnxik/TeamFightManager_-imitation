@@ -26,7 +26,8 @@
 /// <summary>Describes overrides for how an FW1 operation is performed.</summary>
 /// <remarks>These flags can be used for any FW1 methods that take a flags parameter. Not all flags have any meaning for all methods however.
 /// Consult the documentation page for a particular method for information on what flags are valid.</remarks>
-enum FW1_TEXT_FLAG {
+enum 
+{
 	/// <summary>Text is left-aligned. This is the default.</summary>
 	FW1_LEFT = 0x0,
 	

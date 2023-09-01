@@ -57,4 +57,11 @@ namespace ssz
         ULTIMATE,
         END
     };
+
+    enum class eDmgTextType
+    {
+        DAMAGE,
+        HEAL,
+        END,
+    };
 }

@@ -26,7 +26,7 @@ namespace ssz
 		static void DrawFont(const wchar_t* str, const wchar_t* font, float x, float y, float size, UINT rgb);
 		static void Release();
 
-
+		
 	private:
 		static IFW1Factory* mFW1Factory;
 		static IFW1FontWrapper* mFontWrapper;

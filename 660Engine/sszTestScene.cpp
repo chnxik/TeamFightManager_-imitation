@@ -6,7 +6,9 @@
 #include "sszBattleHeader.h"
 #include "sszObj_IG_Stadium.h"
 
-#include "sszSpawnEfc.h"
+// #include "sszSpawnEfc.h"
+
+#include "sszNumb.h"
 
 namespace ssz
 {
@@ -85,6 +87,9 @@ namespace ssz
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::EnemyInteraction, true);
 		CollisionManager::SetLayer(eLayerType::Enemy, eLayerType::PlayerInteraction, true);
 		CollisionManager::SetLayer(eLayerType::BackGroundObj, eLayerType::Cursor, true);
+
+		Numb* test = Instantiate<Numb>(Vector3(0.f, 0.f, 0.f), eLayerType::BackGroundObj);
+		test->InsertNumber(eDmgTextType::DAMAGE, 0);
 	}
 	void TestScene::OnExit()
 	{

@@ -169,6 +169,9 @@
     <Filter Include="GameObject\Component\Text">
       <UniqueIdentifier>{bb9b66ba-bdac-4919-97d3-e56eaf0977a5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GameObject\Component\Rigidbody">
+      <UniqueIdentifier>{ee0891c8-53f2-49df-a3ea-a5c5612f17db}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h">
@@ -318,6 +321,9 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)sszText.h">
       <Filter>GameObject\Component\Text</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszRigidbody.h">
+      <Filter>GameObject\Component\Rigidbody</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)sszMath.cpp">
@@ -451,6 +457,9 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)sszText.cpp">
       <Filter>GameObject\Component\Text</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszRigidbody.cpp">
+      <Filter>GameObject\Component\Rigidbody</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -146,6 +146,9 @@
     <ClInclude Include="sszEffect.h">
       <Filter>Contents\Object\GameUnit\common\Effect</Filter>
     </ClInclude>
+    <ClInclude Include="sszNumb.h">
+      <Filter>Contents\Object\GameUnit\common\Numb</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="660Engine.cpp" />
@@ -289,6 +292,9 @@
     </ClCompile>
     <ClCompile Include="sszEffect.cpp">
       <Filter>Contents\Object\GameUnit\common\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="sszNumb.cpp">
+      <Filter>Contents\Object\GameUnit\common\Numb</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -489,6 +495,9 @@
     </Filter>
     <Filter Include="Contents\Object\GameUnit\common\Effect">
       <UniqueIdentifier>{ce61556b-68e1-492f-b26b-7ff1d4f7efed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\GameUnit\common\Numb">
+      <UniqueIdentifier>{704c3161-45f3-4ebd-85d3-64e549462039}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

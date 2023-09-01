@@ -1,4 +1,5 @@
 #pragma once
+#include "sszEngine.h"
 
 namespace ssz
 {

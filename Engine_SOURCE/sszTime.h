@@ -1,6 +1,8 @@
 #pragma once
 #include "sszEngine.h"
 
+#define DT (float)ssz::Time::DeltaTime();
+
 namespace ssz
 {
 	class Time

@@ -60,6 +60,14 @@ namespace ssz
 		mMaterial->Clear();
 	}
 
+	void MeshRenderer::SetMaterial(const std::wstring& key)
+	{
+		std::shared_ptr<Material> NewMaterial = Resources::Find<Material>(key);
+		assert(NewMaterial != nullptr);
+
+		mMaterial = NewMaterial;
+	}
+
 	void MeshRenderer::SetMeshRenderer(const std::wstring MeshKey, const std::wstring MaterialKey)
 	{
 		mMesh = ssz::Resources::Find<Mesh>(MeshKey);

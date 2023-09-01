@@ -5,6 +5,7 @@ namespace ssz::enums
 	enum class eComponentType
 	{
 		None,
+		Rigidbody,
 		Tranform,
 		Mesh,
 		Collider2D,
@@ -29,9 +30,9 @@ namespace ssz::enums
 		Enemy,
 		PlayerInteraction,
 		EnemyInteraction,
+		Effect,
 		Light,
 		UI,
-		Effect,
 		Cursor,
 		SoundSource,
 		Camera,

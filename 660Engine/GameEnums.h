@@ -58,7 +58,7 @@ namespace ssz
         END
     };
 
-    enum class eDmgTextType
+    enum class eDmgBoxType
     {
         DAMAGE,
         HEAL,

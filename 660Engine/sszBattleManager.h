@@ -11,6 +11,7 @@ namespace ssz
 
 
 	public: // 리스폰
+		static void Initialize();
 		static void RespawnClear();
 		static void Update();
 		static void LateUpdate();
@@ -20,6 +21,9 @@ namespace ssz
 
 	private:
 		static bool Damage(Champ* pAttacker, Champ* pTarget, unsigned int iDamage); // 데미지 계산 함수, HP가 0으로 떨어지면 Dead를 반환
+		static void DamagePrint(unsigned int Dmg, Champ* pTarget);
+
+		static void DamageFontInit();
 
 	private:
 		static std::list<Champ*> mRespawn;

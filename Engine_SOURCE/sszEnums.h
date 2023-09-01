@@ -31,6 +31,7 @@ namespace ssz::enums
 		PlayerInteraction,
 		EnemyInteraction,
 		Effect,
+		DmgBox,
 		Light,
 		UI,
 		Cursor,

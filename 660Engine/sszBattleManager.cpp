@@ -5,6 +5,7 @@
 
 #include "sszChamp_Script.h"
 #include "sszSpawnEfc.h"
+#include "sszNumb.h"
 
 #define RESPAWNTIME 3.0f
 
@@ -35,6 +36,11 @@ namespace ssz
         }
 
         return true;
+    }
+
+    void BattleManager::Initialize()
+    {
+        DamageFontInit();
     }
 
     void BattleManager::RespawnClear()
@@ -119,13 +125,14 @@ namespace ssz
 
         // 로그용
         std::wstring szbuffer;
-        szbuffer = pAttacker->GetName() + L" 공격, 데미지 : " + std::to_wstring(iDamage);
+        szbuffer = pAttacker->GetName() + L" 공격, 데미지 : " + std::to_wstring(FinalDamage);
         Log::AddLog(szbuffer);
 
         pTarget->GetChampScript()->Damaged();
 
         // print Damage() 데미지 출력 함수 호출
         // Target의 Transform에 접근해 좌표를 받고 해당 좌표에서 데미지 UI를 출력
+        DamagePrint(FinalDamage, pTarget);
 
         // 통계 기록
         // IGStatus에 누적공격데미지, 피격데미지, 회복량, 킬수, 사망수, 어시수 입력
@@ -138,5 +145,64 @@ namespace ssz
         }
         
         return false;
+    }
+    void BattleManager::DamagePrint(unsigned int Dmg, Champ* pTarget)
+    {
+        Transform* TargetTr = pTarget->GetComponent<Transform>();
+        wstring mtkey = L"dmg_" + std::to_wstring(Dmg % 10);
+        // 작업해야함
+        Numb* units = Instantiate<Numb>(Vector3(10.f,30.f,0.f), eLayerType::DmgBox);
+        Transform* unitstr = units->GetComponent<Transform>();
+        unitstr->SetParent(TargetTr);
+        unitstr->SetTransType(Transform::eTransType::PosAdd);
+
+        units->PrintDamageBox(eDmgBoxType::DAMAGE, mtkey);
+
+        // tens
+        // hundreds
+    }
+    void BattleManager::DamageFontInit()
+    {
+        Resources::Load<Texture>(L"dmg_0_tex", L"..\\Resources\\useResource\\numb\\dmg_0.png");
+        Resources::Load<Texture>(L"dmg_1_tex", L"..\\Resources\\useResource\\numb\\dmg_1.png");
+        Resources::Load<Texture>(L"dmg_2_tex", L"..\\Resources\\useResource\\numb\\dmg_2.png");
+        Resources::Load<Texture>(L"dmg_3_tex", L"..\\Resources\\useResource\\numb\\dmg_3.png");
+        Resources::Load<Texture>(L"dmg_4_tex", L"..\\Resources\\useResource\\numb\\dmg_4.png");
+        Resources::Load<Texture>(L"dmg_5_tex", L"..\\Resources\\useResource\\numb\\dmg_5.png");
+        Resources::Load<Texture>(L"dmg_6_tex", L"..\\Resources\\useResource\\numb\\dmg_6.png");
+        Resources::Load<Texture>(L"dmg_7_tex", L"..\\Resources\\useResource\\numb\\dmg_7.png");
+        Resources::Load<Texture>(L"dmg_8_tex", L"..\\Resources\\useResource\\numb\\dmg_8.png");
+        Resources::Load<Texture>(L"dmg_9_tex", L"..\\Resources\\useResource\\numb\\dmg_9.png");
+        Resources::Load<Texture>(L"heal_0_tex", L"..\\Resources\\useResource\\numb\\heal_0.png");
+        Resources::Load<Texture>(L"heal_1_tex", L"..\\Resources\\useResource\\numb\\heal_1.png");
+        Resources::Load<Texture>(L"heal_2_tex", L"..\\Resources\\useResource\\numb\\heal_2.png");
+        Resources::Load<Texture>(L"heal_3_tex", L"..\\Resources\\useResource\\numb\\heal_3.png");
+        Resources::Load<Texture>(L"heal_4_tex", L"..\\Resources\\useResource\\numb\\heal_4.png");
+        Resources::Load<Texture>(L"heal_5_tex", L"..\\Resources\\useResource\\numb\\heal_5.png");
+        Resources::Load<Texture>(L"heal_6_tex", L"..\\Resources\\useResource\\numb\\heal_6.png");
+        Resources::Load<Texture>(L"heal_7_tex", L"..\\Resources\\useResource\\numb\\heal_7.png");
+        Resources::Load<Texture>(L"heal_8_tex", L"..\\Resources\\useResource\\numb\\heal_8.png");
+        Resources::Load<Texture>(L"heal_9_tex", L"..\\Resources\\useResource\\numb\\heal_9.png");
+
+        LoadMaterial(DMGNUMB_0, L"SpriteShader", L"dmg_0_tex", eRenderingMode::Transparent);
+        LoadMaterial(DMGNUMB_1, L"SpriteShader", L"dmg_1_tex", eRenderingMode::Transparent);
+        LoadMaterial(DMGNUMB_2, L"SpriteShader", L"dmg_2_tex", eRenderingMode::Transparent);
+        LoadMaterial(DMGNUMB_3, L"SpriteShader", L"dmg_3_tex", eRenderingMode::Transparent);
+        LoadMaterial(DMGNUMB_4, L"SpriteShader", L"dmg_4_tex", eRenderingMode::Transparent);
+        LoadMaterial(DMGNUMB_5, L"SpriteShader", L"dmg_5_tex", eRenderingMode::Transparent);
+        LoadMaterial(DMGNUMB_6, L"SpriteShader", L"dmg_6_tex", eRenderingMode::Transparent);
+        LoadMaterial(DMGNUMB_7, L"SpriteShader", L"dmg_7_tex", eRenderingMode::Transparent);
+        LoadMaterial(DMGNUMB_8, L"SpriteShader", L"dmg_8_tex", eRenderingMode::Transparent);
+        LoadMaterial(DMGNUMB_9, L"SpriteShader", L"dmg_9_tex", eRenderingMode::Transparent);
+        LoadMaterial(HEALNUMB_0, L"SpriteShader", L"heal_0_tex", eRenderingMode::Transparent);
+        LoadMaterial(HEALNUMB_1, L"SpriteShader", L"heal_1_tex", eRenderingMode::Transparent);
+        LoadMaterial(HEALNUMB_2, L"SpriteShader", L"heal_2_tex", eRenderingMode::Transparent);
+        LoadMaterial(HEALNUMB_3, L"SpriteShader", L"heal_3_tex", eRenderingMode::Transparent);
+        LoadMaterial(HEALNUMB_4, L"SpriteShader", L"heal_4_tex", eRenderingMode::Transparent);
+        LoadMaterial(HEALNUMB_5, L"SpriteShader", L"heal_5_tex", eRenderingMode::Transparent);
+        LoadMaterial(HEALNUMB_6, L"SpriteShader", L"heal_6_tex", eRenderingMode::Transparent);
+        LoadMaterial(HEALNUMB_7, L"SpriteShader", L"heal_7_tex", eRenderingMode::Transparent);
+        LoadMaterial(HEALNUMB_8, L"SpriteShader", L"heal_8_tex", eRenderingMode::Transparent);
+        LoadMaterial(HEALNUMB_9, L"SpriteShader", L"heal_9_tex", eRenderingMode::Transparent);
     }
 }

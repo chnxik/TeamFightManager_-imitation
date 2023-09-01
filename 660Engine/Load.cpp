@@ -15,6 +15,7 @@ namespace ssz
 	void InitializeGame()
 	{
 		TGM::Initialize();
+		BattleManager::Initialize();
 
 		SceneManager::CreateScene<TitleScene>(L"TitleScene");
 		SceneManager::CreateScene<TestScene>(L"TestScene");

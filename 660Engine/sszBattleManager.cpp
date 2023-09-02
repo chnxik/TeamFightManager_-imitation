@@ -148,18 +148,57 @@ namespace ssz
     }
     void BattleManager::DamagePrint(unsigned int Dmg, Champ* pTarget)
     {
+        int iDamage = Dmg;
         Transform* TargetTr = pTarget->GetComponent<Transform>();
-        wstring mtkey = L"dmg_" + std::to_wstring(Dmg % 10);
+        wstring mtkey = L"dmg_";
         // 작업해야함
-        Numb* units = Instantiate<Numb>(Vector3(10.f,30.f,0.f), eLayerType::DmgBox);
+        Vector3 vCenterPos = { 10.f, 30.f, 0.f };
+        wstring DmgStr = std::to_wstring(iDamage);
+        int DmgStrLen = DmgStr.length();
+        
+        Numb* hundreds = nullptr;
+        Numb* tens = nullptr;
+        Numb* units = nullptr;
+
+        float hundwidth = 0.f;
+        float tenswidth = 0.f;
+        float unitswidth = 0.f;
+
+        // 위에서부터 차례대로
+        units = Instantiate<Numb>(vCenterPos, eLayerType::DmgBox);
+        units->PrintDamageBox(eDmgBoxType::DAMAGE, mtkey + std::to_wstring(iDamage % 10));
         Transform* unitstr = units->GetComponent<Transform>();
-        unitstr->SetParent(TargetTr);
-        unitstr->SetTransType(Transform::eTransType::PosAdd);
+        unitswidth = unitstr->GetScale().x / 2.f;
 
-        units->PrintDamageBox(eDmgBoxType::DAMAGE, mtkey);
+        iDamage /= 10;
 
-        // tens
-        // hundreds
+        if (iDamage == 0)
+        {
+            return;
+        }
+
+        tens = Instantiate<Numb>(vCenterPos, eLayerType::DmgBox);
+        tens->PrintDamageBox(eDmgBoxType::DAMAGE, mtkey + std::to_wstring(iDamage % 10));
+        Transform* tenstr = tens->GetComponent<Transform>();
+        tenswidth = tenstr->GetScale().x / 2.f;
+
+        iDamage /= 10;
+
+        if (iDamage == 0)
+        {
+            tenstr->AddPosition(-tenswidth, 0.f, 0.f);
+            unitstr->AddPosition(unitswidth, 0.f, 0.f);
+            return;
+        }
+
+        hundreds = Instantiate<Numb>(vCenterPos, eLayerType::DmgBox);
+        hundreds->PrintDamageBox(eDmgBoxType::DAMAGE, mtkey + std::to_wstring(iDamage / 100));
+        Transform* hundtr = hundreds->GetComponent<Transform>();
+        hundwidth = hundtr->GetScale().x / 2.f;
+
+        hundtr->AddPosition(-(hundwidth + tenswidth), 0.f, 0.f);
+        tenstr->AddPosition(tenswidth, 0.f, 0.f);
+        unitstr->AddPosition(tenswidth, 0.f, 0.f);
     }
     void BattleManager::DamageFontInit()
     {
@@ -184,25 +223,25 @@ namespace ssz
         Resources::Load<Texture>(L"heal_8_tex", L"..\\Resources\\useResource\\numb\\heal_8.png");
         Resources::Load<Texture>(L"heal_9_tex", L"..\\Resources\\useResource\\numb\\heal_9.png");
 
-        LoadMaterial(DMGNUMB_0, L"SpriteShader", L"dmg_0_tex", eRenderingMode::Transparent);
-        LoadMaterial(DMGNUMB_1, L"SpriteShader", L"dmg_1_tex", eRenderingMode::Transparent);
-        LoadMaterial(DMGNUMB_2, L"SpriteShader", L"dmg_2_tex", eRenderingMode::Transparent);
-        LoadMaterial(DMGNUMB_3, L"SpriteShader", L"dmg_3_tex", eRenderingMode::Transparent);
-        LoadMaterial(DMGNUMB_4, L"SpriteShader", L"dmg_4_tex", eRenderingMode::Transparent);
-        LoadMaterial(DMGNUMB_5, L"SpriteShader", L"dmg_5_tex", eRenderingMode::Transparent);
-        LoadMaterial(DMGNUMB_6, L"SpriteShader", L"dmg_6_tex", eRenderingMode::Transparent);
-        LoadMaterial(DMGNUMB_7, L"SpriteShader", L"dmg_7_tex", eRenderingMode::Transparent);
-        LoadMaterial(DMGNUMB_8, L"SpriteShader", L"dmg_8_tex", eRenderingMode::Transparent);
-        LoadMaterial(DMGNUMB_9, L"SpriteShader", L"dmg_9_tex", eRenderingMode::Transparent);
-        LoadMaterial(HEALNUMB_0, L"SpriteShader", L"heal_0_tex", eRenderingMode::Transparent);
-        LoadMaterial(HEALNUMB_1, L"SpriteShader", L"heal_1_tex", eRenderingMode::Transparent);
-        LoadMaterial(HEALNUMB_2, L"SpriteShader", L"heal_2_tex", eRenderingMode::Transparent);
-        LoadMaterial(HEALNUMB_3, L"SpriteShader", L"heal_3_tex", eRenderingMode::Transparent);
-        LoadMaterial(HEALNUMB_4, L"SpriteShader", L"heal_4_tex", eRenderingMode::Transparent);
-        LoadMaterial(HEALNUMB_5, L"SpriteShader", L"heal_5_tex", eRenderingMode::Transparent);
-        LoadMaterial(HEALNUMB_6, L"SpriteShader", L"heal_6_tex", eRenderingMode::Transparent);
-        LoadMaterial(HEALNUMB_7, L"SpriteShader", L"heal_7_tex", eRenderingMode::Transparent);
-        LoadMaterial(HEALNUMB_8, L"SpriteShader", L"heal_8_tex", eRenderingMode::Transparent);
-        LoadMaterial(HEALNUMB_9, L"SpriteShader", L"heal_9_tex", eRenderingMode::Transparent);
+        LoadMaterial(L"dmg_0", L"SpriteShader", L"dmg_0_tex", eRenderingMode::Transparent);
+        LoadMaterial(L"dmg_1", L"SpriteShader", L"dmg_1_tex", eRenderingMode::Transparent);
+        LoadMaterial(L"dmg_2", L"SpriteShader", L"dmg_2_tex", eRenderingMode::Transparent);
+        LoadMaterial(L"dmg_3", L"SpriteShader", L"dmg_3_tex", eRenderingMode::Transparent);
+        LoadMaterial(L"dmg_4", L"SpriteShader", L"dmg_4_tex", eRenderingMode::Transparent);
+        LoadMaterial(L"dmg_5", L"SpriteShader", L"dmg_5_tex", eRenderingMode::Transparent);
+        LoadMaterial(L"dmg_6", L"SpriteShader", L"dmg_6_tex", eRenderingMode::Transparent);
+        LoadMaterial(L"dmg_7", L"SpriteShader", L"dmg_7_tex", eRenderingMode::Transparent);
+        LoadMaterial(L"dmg_8", L"SpriteShader", L"dmg_8_tex", eRenderingMode::Transparent);
+        LoadMaterial(L"dmg_9", L"SpriteShader", L"dmg_9_tex", eRenderingMode::Transparent);
+        LoadMaterial(L"heal_0", L"SpriteShader", L"heal_0_tex", eRenderingMode::Transparent);
+        LoadMaterial(L"heal_1", L"SpriteShader", L"heal_1_tex", eRenderingMode::Transparent);
+        LoadMaterial(L"heal_2", L"SpriteShader", L"heal_2_tex", eRenderingMode::Transparent);
+        LoadMaterial(L"heal_3", L"SpriteShader", L"heal_3_tex", eRenderingMode::Transparent);
+        LoadMaterial(L"heal_4", L"SpriteShader", L"heal_4_tex", eRenderingMode::Transparent);
+        LoadMaterial(L"heal_5", L"SpriteShader", L"heal_5_tex", eRenderingMode::Transparent);
+        LoadMaterial(L"heal_6", L"SpriteShader", L"heal_6_tex", eRenderingMode::Transparent);
+        LoadMaterial(L"heal_7", L"SpriteShader", L"heal_7_tex", eRenderingMode::Transparent);
+        LoadMaterial(L"heal_8", L"SpriteShader", L"heal_8_tex", eRenderingMode::Transparent);
+        LoadMaterial(L"heal_9", L"SpriteShader", L"heal_9_tex", eRenderingMode::Transparent);
     }
 }

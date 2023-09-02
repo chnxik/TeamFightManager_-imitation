@@ -36,6 +36,10 @@ namespace ssz
 		void SetPosition(float x, float y, float z) { mPosition = Vector3(x, y, z); }
 		void SetRotation(float x, float y, float z) { mRotation = Vector3(x, y, z); }
 		void SetScale(float x, float y, float z) { mFontSize = Vector3(x, y, z); }
+
+		void AddPosition(float x, float y, float z) { mPosition += Vector3(x, y, z); }
+		void AddRotation(float x, float y, float z) { mRotation += Vector3(x, y, z); }
+		void AddScale(float x, float y, float z) { mFontSize += Vector3(x, y, z); }
 		
 		Vector3 GetPosition() { return mPosition;}
 		Vector3 GetRotation() { return mRotation;}

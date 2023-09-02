@@ -51,7 +51,7 @@ namespace ssz
 		vScale.x = vScale.y * (31.f/48.f);
 		
 		if (type == eDmgBoxType::DAMAGE)
-			mRb->SetVelocity(Vector2(40.f, 150.f));
+			mRb->SetVelocity(Vector2(40.f, 200.f));
 
 		else if (type == eDmgBoxType::HEAL)
 		{
@@ -60,9 +60,9 @@ namespace ssz
 			mRb->SetVelocity(Vector2(0.f, 20.f));
 		}
 
-		if(numbstr == DMGNUMB_1 || numbstr == HEALNUMB_1)
+		if(numbstr == L"dmg_1" || numbstr == L"heal_1")
 			vScale.x = vScale.y * (18.f / 48.f);
-		else if(numbstr == DMGNUMB_4 || numbstr == HEALNUMB_4)
+		else if(numbstr == L"dmg_4" || numbstr == L"heal_4")
 			vScale.x = vScale.y * (35.f / 48.f);
 
 		tr->SetScale(vScale);

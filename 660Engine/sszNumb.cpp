@@ -25,7 +25,7 @@ namespace ssz
 	{
 		fLifeTime += DT;
 
-		if (0.35f < fLifeTime)
+		if (0.37f < fLifeTime)
 			SetState(eState::Dead);
 
 		GameObject::Update();
@@ -33,7 +33,7 @@ namespace ssz
 	
 	void Numb::Initialize()
 	{
-		GetComponent<Transform>()->SetScale(Vector3(0.f, 25.f, 0.f));
+		GetComponent<Transform>()->SetScale(Vector3(0.f, 20.f, 0.f));
 
 		mRb = AddComponent<Rigidbody>();
 		mMr = AddComponent<MeshRenderer>();

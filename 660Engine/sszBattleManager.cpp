@@ -152,7 +152,8 @@ namespace ssz
         Transform* TargetTr = pTarget->GetComponent<Transform>();
         wstring mtkey = L"dmg_";
 
-        Vector3 vCenterPos = { 20.f, 35.f, 0.f };
+        Vector3 vCenterPos = TargetTr->GetPosition() + Vector3(20.f, 35.f, 0.f);
+        vCenterPos.z = 0.1;
         
         Numb* hundreds = nullptr;
         Numb* tens = nullptr;
@@ -166,8 +167,6 @@ namespace ssz
         units = Instantiate<Numb>(vCenterPos, eLayerType::DmgBox);
         units->PrintDamageBox(eDmgBoxType::DAMAGE, mtkey + std::to_wstring(iDamage % 10));
         Transform* unitstr = units->GetComponent<Transform>();
-        unitstr->SetParent(TargetTr);
-        unitstr->SetTransType(Transform::eTransType::PosAdd);
         unitswidth = unitstr->GetScale().x / 2.f;
 
         iDamage /= 10;
@@ -180,8 +179,6 @@ namespace ssz
         tens = Instantiate<Numb>(vCenterPos, eLayerType::DmgBox);
         tens->PrintDamageBox(eDmgBoxType::DAMAGE, mtkey + std::to_wstring(iDamage % 10));
         Transform* tenstr = tens->GetComponent<Transform>();
-        tenstr->SetParent(TargetTr);
-        tenstr->SetTransType(Transform::eTransType::PosAdd);
         tenswidth = tenstr->GetScale().x / 2.f;
 
         iDamage /= 10;
@@ -196,8 +193,6 @@ namespace ssz
         hundreds = Instantiate<Numb>(vCenterPos, eLayerType::DmgBox);
         hundreds->PrintDamageBox(eDmgBoxType::DAMAGE, mtkey + std::to_wstring(iDamage / 100));
         Transform* hundtr = hundreds->GetComponent<Transform>();
-        hundtr->SetParent(TargetTr);
-        hundtr->SetTransType(Transform::eTransType::PosAdd);
         hundwidth = hundtr->GetScale().x / 2.f;
 
         hundtr->AddPosition(-(hundwidth + tenswidth), 0.f, 0.f);

@@ -20,6 +20,7 @@ namespace ssz
 		, mType(eBtnType::Push)
 		, bActive(true)
 		, bTogle(false)
+		, bPrevMouseOn(false)
 		, mFunc(nullptr)
 		, mInst(nullptr)
 		, mDelegateFunc(nullptr)
@@ -44,6 +45,17 @@ namespace ssz
 			return;
 		
 		bool bMouseOn = GetOwnerUI()->IsMouseOn();
+
+		if (bMouseOn && !bPrevMouseOn)
+		{
+			((UIObject*)GetOwner())->MouseUp();
+			bPrevMouseOn = true;
+		}
+		else if (bPrevMouseOn && !bMouseOn)
+		{
+			((UIObject*)GetOwner())->MouseAway();
+			bPrevMouseOn = false;
+		}
 
 		ChangeBtnTex(mCurState);
 
@@ -172,7 +184,6 @@ namespace ssz
 	void ButtonUI::MouseOn()
 	{
 		bool bLbtnDown = GetOwnerUI()->IsLbtnDown();
-
 
 		switch (mType)
 		{

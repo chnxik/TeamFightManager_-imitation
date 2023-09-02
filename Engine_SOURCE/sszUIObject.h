@@ -35,6 +35,9 @@ namespace ssz
 		virtual void MouseLbtnClicked();
 		virtual void MouseOn();
 
+		virtual void MouseUp() {}
+		virtual void MouseAway() {}
+
 	private:
 		void MouseOnCheck();
 

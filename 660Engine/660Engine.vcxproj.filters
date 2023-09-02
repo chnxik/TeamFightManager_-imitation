@@ -149,6 +149,9 @@
     <ClInclude Include="sszNumb.h">
       <Filter>Contents\Object\GameUnit\common\Numb</Filter>
     </ClInclude>
+    <ClInclude Include="sszTitleMenuBtn.h">
+      <Filter>Contents\UI\Button\TitleMenuBtn</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="660Engine.cpp" />
@@ -295,6 +298,9 @@
     </ClCompile>
     <ClCompile Include="sszNumb.cpp">
       <Filter>Contents\Object\GameUnit\common\Numb</Filter>
+    </ClCompile>
+    <ClCompile Include="sszTitleMenuBtn.cpp">
+      <Filter>Contents\UI\Button\TitleMenuBtn</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -498,6 +504,9 @@
     </Filter>
     <Filter Include="Contents\Object\GameUnit\common\Numb">
       <UniqueIdentifier>{704c3161-45f3-4ebd-85d3-64e549462039}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\UI\Button\TitleMenuBtn">
+      <UniqueIdentifier>{fab5aa88-39ef-4299-833a-ea040ece799e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

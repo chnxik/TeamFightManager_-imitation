@@ -162,7 +162,9 @@ namespace ssz
             if(0 < OverlapCnt)
                 bMouseOn = true;
             else
+            {
                 bMouseOn = false;
+            }
         }
     }
 }

@@ -153,7 +153,7 @@ namespace ssz
         wstring mtkey = L"dmg_";
 
         Vector3 vCenterPos = TargetTr->GetPosition() + Vector3(20.f, 35.f, 0.f);
-        vCenterPos.z = 0.1;
+        vCenterPos.z = 0.1f;
         
         Numb* hundreds = nullptr;
         Numb* tens = nullptr;

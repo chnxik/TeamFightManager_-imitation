@@ -1,5 +1,5 @@
-#include "sszNumb.h"
 #include "CommonObjHeader.h"
+#include "sszNumb.h"
 
 // atlas 350 * 96
 // frame 35 * 48

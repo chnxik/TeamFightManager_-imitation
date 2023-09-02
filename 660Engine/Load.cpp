@@ -18,9 +18,9 @@ namespace ssz
 		BattleManager::Initialize();
 
 		SceneManager::CreateScene<TitleScene>(L"TitleScene");
-		SceneManager::CreateScene<TestScene>(L"TestScene");
+		// SceneManager::CreateScene<TestScene>(L"TestScene");
 		
-		SceneManager::LoadScene(L"TestScene");
+		SceneManager::LoadScene(L"TitleScene");
 
 	}
 	void ContentsRelease()

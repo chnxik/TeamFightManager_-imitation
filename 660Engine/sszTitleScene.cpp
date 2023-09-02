@@ -7,6 +7,8 @@
 #include "sszDefaultBtn.h"
 #include "sszImportantBtn.h"
 
+#include "sszTitleMenuBtn.h"
+
 namespace ssz
 {
 	using namespace object;
@@ -22,18 +24,6 @@ namespace ssz
 
 	void TitleScene::Initialize()
 	{
-		// MouseCursor
-		{
-			
-		}
-
-		// Main Camera
-		{
-			GameObject* camera = Instantiate<GameObject>(Vector3(0.0f, 0.0f, -10.f), eLayerType::Camera);
-			camera->SetName(L"MainCamera");
-			Camera* cameraComp = camera->AddComponent<Camera>();
-		}
-
 		{
 			Resources::Load<Texture>(L"TitleBg", L"..\\Resources\\useResource\\Title\\teamfight_manager_title_bg.png");
 			Resources::Load<Texture>(L"IGStadiumSkyTex", L"..\\Resources\\useResource\\stadium\\ingame\\stadium_sky_bg.png");
@@ -63,6 +53,13 @@ namespace ssz
 
 		// UI
 		{
+			TitleMenuBtn* NewGameBtn = InstantiateUI<TitleMenuBtn>(Vector3(0.f, 10.f, 1.f), Vector3(100.f, 50.f, 1.f), eLayerType::UI, L"TitleNewGameBtn");
+			NewGameBtn->SetNewGameBtn();
+			TitleMenuBtn* LoadBtn = InstantiateUI<TitleMenuBtn>(Vector3(0.f, -90.f, 1.f), Vector3(100.f, 50.f, 1.f), eLayerType::UI, L"TitleLoadBtn");
+			LoadBtn->SetLoadBtn();
+			TitleMenuBtn* ExitBtn = InstantiateUI<TitleMenuBtn>(Vector3(0.f, -190.f, 1.f), Vector3(100.f, 50.f, 1.f), eLayerType::UI, L"TitleExitBtn");
+			ExitBtn->SetExitBtn();
+
 			NewGameUI = InstantiateUI<NewGameWindow>(Vector3(0.f, 50.f, 1.01f), eLayerType::UI, L"NewGameWindow");
 			NewGameUI->SetState(ssz::GameObject::eState::Paused);
 
@@ -101,6 +98,7 @@ namespace ssz
 	void TitleScene::OnEnter()
 	{
 		AddGameObject(eLayerType::Cursor, TGM::GetCursor());
+		AddGameObject(eLayerType::Camera, TGM::GetCamera());
 
 		CollisionManager::SetLayer(eLayerType::UI, eLayerType::Cursor, true);
 	}
@@ -108,7 +106,6 @@ namespace ssz
 	void TitleScene::OnExit()
 	{
 		CollisionManager::Clear();
-		Clear(eLayerType::Cursor);
-
+		TGM::SceneClear();
 	}
 }

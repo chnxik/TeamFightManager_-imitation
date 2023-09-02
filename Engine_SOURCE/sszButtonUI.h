@@ -92,6 +92,8 @@ namespace ssz
 		bool bActive;
 		bool bTogle;
 
+		bool bPrevMouseOn;
+
 		voidFunc mFunc;
 
 		Entity* mInst; // 함수를 호출 할 객체

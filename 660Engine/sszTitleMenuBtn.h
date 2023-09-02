@@ -12,9 +12,9 @@ namespace ssz
         virtual ~TitleMenuBtn();
 
 		virtual void Initialize() override;
-		virtual void Update();
-		virtual void LateUpdate();
-		virtual void Render();
+		virtual void Update() override;
+		virtual void LateUpdate() override;
+		virtual void Render() override;
 
 		void SetNewGameBtn();
 		void SetLoadBtn();
@@ -27,5 +27,9 @@ namespace ssz
 
 	private:
 		ButtonUI* mBtnComp;
+		GameObject* mLeftSwordObj;
+		GameObject* mRightSwordObj;
+
+		float fRatio;
     };
 }

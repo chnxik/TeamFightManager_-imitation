@@ -32,7 +32,7 @@ namespace ssz::enums
 		EnemyInteraction,
 		Effect,
 		DmgBox,
-		Light,
+		ObjectForUI,
 		UI,
 		Cursor,
 		SoundSource,

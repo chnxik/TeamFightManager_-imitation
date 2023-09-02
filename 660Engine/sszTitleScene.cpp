@@ -1,13 +1,20 @@
 #include "sszTitleScene.h"
 #include "CommonHeader.h"
 
+#include "sszApplication.h"
+
+
 #include "sszObj_IG_Stadium.h"
 
+// UI
 #include "sszNewGameWindow.h"
+
+// Btn
 #include "sszDefaultBtn.h"
 #include "sszImportantBtn.h"
-
 #include "sszTitleMenuBtn.h"
+
+extern ssz::Application application;
 
 namespace ssz
 {
@@ -40,33 +47,37 @@ namespace ssz
 			TitleBg->SetName(L"TitleBg");
 			TitleBg->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"TitleBgMt");
 
-			IG_Stadium* Stadium = Instantiate<IG_Stadium>(Vector3(0.0f, -44.0f, 1.121f), Vector3(2235.f, 1460.f, 1.f), eLayerType::BackGroundObj);
+			IG_Stadium* Stadium = Instantiate<IG_Stadium>(Vector3(0.0f, -44.0f, 1.41f), Vector3(2235.f, 1460.f, 1.f), eLayerType::BackGroundObj);
 
-			GameObject* IG_StadiumSky = Instantiate<GameObject>(Vector3(0.0f, -53.0f, 1.122f), Vector3(2144.f, 1429.f, 1.f), eLayerType::BackGround);
+			GameObject* IG_StadiumSky = Instantiate<GameObject>(Vector3(0.0f, -53.0f, 1.42f), Vector3(2144.f, 1429.f, 1.f), eLayerType::BackGround);
 			IG_StadiumSky->SetName(L"IG_StadiumSky");
 			IG_StadiumSky->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"IGStadiumSkyMt");
 
-			GameObject* TitleLogo = Instantiate<GameObject>(Vector3(0.0f, 242.0f, 1.111f), Vector3(738.f, 271.f, 1.f), eLayerType::BackGroundObj);
+			GameObject* TitleLogo = Instantiate<GameObject>(Vector3(0.0f, 242.0f, 1.31f), Vector3(738.f, 271.f, 1.f), eLayerType::BackGroundObj);
 			TitleLogo->SetName(L"TitleLogo");
 			TitleLogo->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"TitleLogoMt");
 		}
 
 		// UI
 		{
-			TitleMenuBtn* NewGameBtn = InstantiateUI<TitleMenuBtn>(Vector3(0.f, 10.f, 1.f), Vector3(100.f, 50.f, 1.f), eLayerType::UI, L"TitleNewGameBtn");
-			NewGameBtn->SetNewGameBtn();
-			TitleMenuBtn* LoadBtn = InstantiateUI<TitleMenuBtn>(Vector3(0.f, -90.f, 1.f), Vector3(100.f, 50.f, 1.f), eLayerType::UI, L"TitleLoadBtn");
-			LoadBtn->SetLoadBtn();
-			TitleMenuBtn* ExitBtn = InstantiateUI<TitleMenuBtn>(Vector3(0.f, -190.f, 1.f), Vector3(100.f, 50.f, 1.f), eLayerType::UI, L"TitleExitBtn");
-			ExitBtn->SetExitBtn();
-
-			NewGameUI = InstantiateUI<NewGameWindow>(Vector3(0.f, 50.f, 1.01f), eLayerType::UI, L"NewGameWindow");
+			NewGameUI = InstantiateUI<NewGameWindow>(Vector3(0.f, 50.f, 1.05f), eLayerType::UI, L"NewGameWindow");
 			NewGameUI->SetState(ssz::GameObject::eState::Paused);
 
-			ImportantBtn* NewGameStartBtn = InstantiateUI<ImportantBtn>(Vector3(-123.f, -335.f, 1.009f), NewGameUI, L"NewGameStartBtn");
+			TitleMenuBtn* NewGameBtn = InstantiateUI<TitleMenuBtn>(Vector3(0.f, 10.f, 1.2f), Vector3(100.f, 50.f, 1.f), eLayerType::UI, L"TitleNewGameBtn");
+			NewGameBtn->SetNewGameBtn();
+			NewGameBtn->GetBtnComponent()->SetDelegate(NewGameUI, (DELEGATE)&GameObject::SetActive);
+			
+			TitleMenuBtn* LoadBtn = InstantiateUI<TitleMenuBtn>(Vector3(0.f, -90.f, 1.2f), Vector3(100.f, 50.f, 1.f), eLayerType::UI, L"TitleLoadBtn");
+			LoadBtn->SetLoadBtn();
+			
+			TitleMenuBtn* ExitBtn = InstantiateUI<TitleMenuBtn>(Vector3(0.f, -190.f, 1.2f), Vector3(100.f, 50.f, 1.f), eLayerType::UI, L"TitleExitBtn");
+			ExitBtn->SetExitBtn();
+			ExitBtn->GetBtnComponent()->SetDelegate(this, (DELEGATE)&TitleScene::ExitProgram);
+
+			ImportantBtn* NewGameStartBtn = InstantiateUI<ImportantBtn>(Vector3(-123.f, -335.f, 1.049f), NewGameUI, L"NewGameStartBtn");
 			NewGameStartBtn->GetBtnComponent()->SetDelegateW(this, (DELEGATEW)&Scene::ChangeScene, L"MainLobbyScene");
 
-			DefaultBtn* NewGameUICloseBtn = InstantiateUI<DefaultBtn>(Vector3(123.f, -335.f, 1.009f), NewGameUI, L"NewGameUICloseBtn");
+			DefaultBtn* NewGameUICloseBtn = InstantiateUI<DefaultBtn>(Vector3(123.f, -335.f, 1.049f), NewGameUI, L"NewGameUICloseBtn");
 			NewGameUICloseBtn->GetBtnComponent()->SetDelegate(NewGameUI, (DELEGATE)&GameObject::SetPaused);
 		}
 
@@ -107,5 +118,10 @@ namespace ssz
 	{
 		CollisionManager::Clear();
 		TGM::SceneClear();
+	}
+
+	void TitleScene::ExitProgram()
+	{
+		SendMessage(application.GetHwnd(), WM_DESTROY, 0, 0);
 	}
 }

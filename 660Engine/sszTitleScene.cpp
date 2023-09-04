@@ -21,7 +21,6 @@ namespace ssz
 	using namespace object;
 
 	TitleScene::TitleScene()
-		: NewGameUI(nullptr)
 	{
 	}
 
@@ -60,9 +59,12 @@ namespace ssz
 
 		// UI
 		{
-			NewGameUI = InstantiateUI<NewGameWindow>(Vector3(0.f, 50.f, 1.05f), eLayerType::UI, L"NewGameWindow");
+			// Window
+			UIObject* NewGameUI = InstantiateUI<NewGameWindow>(Vector3(0.f, 50.f, 1.05f), eLayerType::UI, L"NewGameWindow");
 			NewGameUI->SetState(ssz::GameObject::eState::Paused);
 
+
+			//Btn
 			TitleMenuBtn* NewGameBtn = InstantiateUI<TitleMenuBtn>(Vector3(0.f, 10.f, 1.2f), Vector3(100.f, 50.f, 1.f), eLayerType::UI, L"TitleNewGameBtn");
 			NewGameBtn->SetNewGameBtn();
 			NewGameBtn->GetBtnComponent()->SetDelegate(NewGameUI, (DELEGATE)&GameObject::SetActive);
@@ -87,14 +89,6 @@ namespace ssz
 	void TitleScene::Update()
 	{
 		Scene::Update();
-
-		if (Input::GetKeyDown(eKeyCode::ENTER))
-		{
-			if (NewGameUI->GetState() == GameObject::eState::Paused)
-			{
-				NewGameUI->SetActive();
-			}
-		}
 	}
 	void TitleScene::LateUpdate()
 	{

@@ -22,6 +22,5 @@ namespace ssz
 		void ExitProgram();
 
 	private:
-		UIObject* NewGameUI;
 	};
 }

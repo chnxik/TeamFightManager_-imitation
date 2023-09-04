@@ -21,7 +21,12 @@ HINSTANCE hInst;                                // 현재 인스턴스입니다.
 WCHAR szTitle[MAX_LOADSTRING];                  // 제목 표시줄 텍스트입니다.
 WCHAR szWindowClass[MAX_LOADSTRING];            // 기본 창 클래스 이름입니다.
 
-
+// 한글 입력
+wchar_t    strText[_MAX_FNAME];        // 텍스트를 저장하기 위한 변수
+wchar_t    strCombine[10];             // 조합 중인 문자
+wchar_t    strSpecial[_MAX_FNAME];     // 특수 문자를 위한 변수
+int     mSpecialPos;                // 특수 문자의 위치
+int     nSpecialMax;                // 특수 문자의 최대 개수
 
 // 이 코드 모듈에 포함된 함수의 선언을 전달합니다:
 ATOM                MyRegisterClass(HINSTANCE hInstance);
@@ -159,8 +164,18 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 //  WM_DESTROY  - 종료 메시지를 게시하고 반환합니다.
 //
 //
+
+int GetText(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
+
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
+    // IME 한글 입력
+    if (GetText(hWnd, message, wParam, lParam) == 0)
+    {
+        
+        return 0;
+    }
+
     switch (message)
     {
     case WM_COMMAND:
@@ -216,3 +231,101 @@ INT_PTR CALLBACK About(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
     }
     return (INT_PTR)FALSE;
 }
+
+
+
+int GetText(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
+{
+    int nLen;
+
+    HIMC    m_hIMC = NULL;      // IME 핸들
+
+    switch (msg)
+    {
+    case WM_IME_COMPOSITION:    // 글씨 조합중
+    {
+        // 메세지 처리루틴
+
+        m_hIMC = ImmGetContext(hWnd); // IME 핸들을 얻어온다.
+
+        // HCS_RESULTSTR : 완성된 문자
+        if (lParam & GCS_RESULTSTR)
+        {
+            // ImmGetCompositionString
+            // : 현재 IME에 입력되어 있는 한글코드의 크기 및 내용을 취득
+            if ((nLen = ImmGetCompositionString(m_hIMC, GCS_RESULTSTR, NULL, 0)) > 0)
+            {
+                // 현재 IME의 스트링 길이를 얻는다.
+
+                // strCombine에 조합 중인 문자열을 받아낸다.
+                ImmGetCompositionString(m_hIMC, GCS_RESULTSTR, strCombine, nLen);
+
+                strCombine[nLen] = NULL; // 문자열의 마지막 문자 NULL 처리
+                wcscpy_s(strText + wcslen(strText), nLen, strCombine);  // 전체 내용 뒤에 보여주 후
+
+                // 초기화
+                memset(strCombine, 0, 10);
+
+                // 한 문자가 조합 중에 다음 문자가 들어오면 ..
+            }
+        }
+        // GCS_COMPSTR : 조합중인 문자
+        else if (lParam & GCS_COMPSTR)
+        {
+            // 조합 중인 문자열의 길이를 얻는다.
+            nLen = ImmGetCompositionString(m_hIMC, GCS_COMPSTR, NULL, 0);
+
+            // strCombine에 조합 중인 문자열을 받아낸다.
+            ImmGetCompositionString(m_hIMC, GCS_COMPSTR, strCombine, nLen);
+
+            strCombine[nLen] = NULL; // 문자열의 마지막 문자 NULL 처리
+
+            // 글씨 찍을 때는 strText + strCombine 해서 보여주면 도니다.
+        }
+
+        // 핸들 반환
+        ImmReleaseContext(hWnd, m_hIMC);
+    }
+    return 0;
+    case WM_CHAR:               // 문자 넘어오기 : 영문의 경우 바로 반환, 한글같은 조합문자는 한 글자가 완성되면 반환
+    {
+        /*
+        일반적인 IME의 동작
+        일반적으로 핸들을 상속받아 만든 윈도우는 영어입력을 받으면
+        WM_KEYDOWN 다음에 WM_CHAR_메세지가 발생하지만,
+        한글의 경우 WM_KEYDOWN 다음에 WM_IME_COMPOSITION이 발생하고,
+        한글이 완성되면 WM_CHAR가 2번 발생하게 된다.
+        2번인 이유는, 한글은 2byte 이기 때문에 한번에 전달할 수 없기때문이다.
+        이 때문에 한글 처리는 글자 단위로 해야한다.
+         */
+
+         // 만약 Backspace 라면,
+
+        if (wParam == 8)
+        {
+            // 길이가 0보다 크고, 지울 것이 0보다 작으면 이라는 의미
+            // 본 의도는 오나성형에서 앞글자인지 뒷글자인지 알려주는 함수가 있다.
+            if (wcslen(strText) > 0)
+            {
+                if (wcslen(strText) < 0)
+                {
+                    // 글자 하나를 지운다.
+                    strText[wcslen(strText) - 1] = 0;
+                }
+                // 글자 하나를 지운다.
+                strText[wcslen(strText) - 1] = 0;
+            }
+        }
+        else
+        {
+            nLen = (int)wcslen(strText);
+
+            strText[nLen] = wParam & 0xff;  // 넘어온 문자를 문자열에 넣기
+            strText[nLen] = NULL;
+        }
+    }
+    return 0;
+    }
+
+    return 1;
+};

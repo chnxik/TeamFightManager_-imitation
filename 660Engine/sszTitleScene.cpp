@@ -6,6 +6,8 @@
 
 #include "sszObj_IG_Stadium.h"
 
+#include "sszTestEditBox.h"
+
 // UI
 #include "sszNewGameWindow.h"
 
@@ -55,6 +57,8 @@ namespace ssz
 			GameObject* TitleLogo = Instantiate<GameObject>(Vector3(0.0f, 242.0f, 1.31f), Vector3(738.f, 271.f, 1.f), eLayerType::BackGroundObj);
 			TitleLogo->SetName(L"TitleLogo");
 			TitleLogo->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"TitleLogoMt");
+
+			TestEditBox* TestEdit = Instantiate<TestEditBox>(Vector3(0.f, 0.f, 0.f), Vector3(200.f, 100.f, 1.f), eLayerType::BackGroundObj);
 		}
 
 		// UI

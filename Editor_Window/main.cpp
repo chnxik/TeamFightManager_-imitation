@@ -22,9 +22,9 @@ WCHAR szTitle[MAX_LOADSTRING];                  // 제목 표시줄 텍스트입
 WCHAR szWindowClass[MAX_LOADSTRING];            // 기본 창 클래스 이름입니다.
 
 // 한글 입력
-wchar_t    strText[_MAX_FNAME];        // 텍스트를 저장하기 위한 변수
-wchar_t    strCombine[10];             // 조합 중인 문자
-wchar_t    strSpecial[_MAX_FNAME];     // 특수 문자를 위한 변수
+wchar_t    g_strText[_MAX_FNAME];        // 텍스트를 저장하기 위한 변수
+wchar_t    g_strCombine[10];             // 조합 중인 문자
+wchar_t    g_strSpecial[_MAX_FNAME];     // 특수 문자를 위한 변수
 int     mSpecialPos;                // 특수 문자의 위치
 int     nSpecialMax;                // 특수 문자의 최대 개수
 
@@ -258,13 +258,13 @@ int GetText(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
                 // 현재 IME의 스트링 길이를 얻는다.
 
                 // strCombine에 조합 중인 문자열을 받아낸다.
-                ImmGetCompositionString(m_hIMC, GCS_RESULTSTR, strCombine, nLen);
+                ImmGetCompositionString(m_hIMC, GCS_RESULTSTR, g_strCombine, nLen);
 
-                strCombine[nLen] = NULL; // 문자열의 마지막 문자 NULL 처리
-                wcscpy_s(strText + wcslen(strText), nLen, strCombine);  // 전체 내용 뒤에 보여주 후
+                g_strCombine[nLen] = NULL; // 문자열의 마지막 문자 NULL 처리
+                wcscpy_s(g_strText + wcslen(g_strText), nLen, g_strCombine);  // 전체 내용 뒤에 보여주 후
 
                 // 초기화
-                memset(strCombine, 0, 10);
+                memset(g_strCombine, 0, 10);
 
                 // 한 문자가 조합 중에 다음 문자가 들어오면 ..
             }
@@ -276,9 +276,9 @@ int GetText(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
             nLen = ImmGetCompositionString(m_hIMC, GCS_COMPSTR, NULL, 0);
 
             // strCombine에 조합 중인 문자열을 받아낸다.
-            ImmGetCompositionString(m_hIMC, GCS_COMPSTR, strCombine, nLen);
+            ImmGetCompositionString(m_hIMC, GCS_COMPSTR, g_strCombine, nLen);
 
-            strCombine[nLen] = NULL; // 문자열의 마지막 문자 NULL 처리
+            g_strCombine[nLen] = NULL; // 문자열의 마지막 문자 NULL 처리
 
             // 글씨 찍을 때는 strText + strCombine 해서 보여주면 도니다.
         }
@@ -305,23 +305,23 @@ int GetText(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
         {
             // 길이가 0보다 크고, 지울 것이 0보다 작으면 이라는 의미
             // 본 의도는 오나성형에서 앞글자인지 뒷글자인지 알려주는 함수가 있다.
-            if (wcslen(strText) > 0)
+            if (wcslen(g_strText) > 0)
             {
-                if (wcslen(strText) < 0)
+                if (wcslen(g_strText) < 0)
                 {
                     // 글자 하나를 지운다.
-                    strText[wcslen(strText) - 1] = 0;
+                    g_strText[wcslen(g_strText) - 1] = 0;
                 }
                 // 글자 하나를 지운다.
-                strText[wcslen(strText) - 1] = 0;
+                g_strText[wcslen(g_strText) - 1] = 0;
             }
         }
         else
         {
-            nLen = (int)wcslen(strText);
+            nLen = (int)wcslen(g_strText);
 
-            strText[nLen] = wParam & 0xff;  // 넘어온 문자를 문자열에 넣기
-            strText[nLen] = NULL;
+            g_strText[nLen] = wParam & 0xff;  // 넘어온 문자를 문자열에 넣기
+            g_strText[nLen + 1] = NULL;
         }
     }
     return 0;

@@ -152,6 +152,7 @@
     <ClInclude Include="sszTitleMenuBtn.h">
       <Filter>Contents\UI\Button\TitleMenuBtn</Filter>
     </ClInclude>
+    <ClInclude Include="sszTestEditBox.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="660Engine.cpp" />
@@ -302,6 +303,7 @@
     <ClCompile Include="sszTitleMenuBtn.cpp">
       <Filter>Contents\UI\Button\TitleMenuBtn</Filter>
     </ClCompile>
+    <ClCompile Include="sszTestEditBox.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Contents">

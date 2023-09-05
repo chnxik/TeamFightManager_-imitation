@@ -1,5 +1,6 @@
 #pragma once
 #include "sszUIObject.h"
+#include "sszKBDIcon.h"
 
 namespace ssz
 {
@@ -12,13 +13,13 @@ namespace ssz
 		virtual ~DefaultBtn();
 
 		virtual void Initialize() override;
-		virtual void Update();
-		virtual void LateUpdate();
-		virtual void Render();
 
 		ButtonUI* GetBtnComponent() { return mBtnComp; }
+		void SetKBDIcon(KBDIcon::KEYICON key);
+
 
 	private:
 		ButtonUI* mBtnComp;
+		KBDIcon* mKBDIcon;
     };
 }

@@ -108,6 +108,8 @@ namespace ssz
         }
     }
 
+    
+
     void UIObject::MouseLbtnDown()
     {
         bLbtnDown = true;
@@ -170,29 +172,12 @@ namespace ssz
         }
         */
 
-        // 좌표 확인 방식
-        
-        /*
-        if (vPos.x <= vMousePos.x && vMousePos.x <= vPos.x + vScale.x
-            && vPos.y <= vMousePos.y && vMousePos.y <= vPos.y + vScale.y)
-        {
-            if (!m_bMouseOn)
-                CCsrMgr::GetInst()->AddCsrOnCnt();
-
-            m_bMouseOn = true;
-        }
-        else
-        {
-            if (m_bMouseOn)
-                CCsrMgr::GetInst()->SubCsrOnCnt();
-
-            m_bMouseOn = false;
-        }
-        */
-
         // 사각 원 혼합 충돌 : OBB 응용
         {
             Collider2D* UICol = GetComponent<Collider2D>();
+
+            if (UICol == nullptr)
+                return;
 
             Vector3 UIPos = UICol->GetColliderPos();
             Vector3 UIScale = UICol->GetColliderScale();
@@ -260,6 +245,30 @@ namespace ssz
             }
 
             bMouseOn = true;
+        }
+    }
+
+    void UIObject::UIOpen()
+    {
+        bOpen = true;
+        
+        SetActive();
+        
+        for (size_t i = 0; i < mChildUI.size(); ++i)
+        {
+            mChildUI[i]->UIOpen();
+        }
+    }
+
+    void UIObject::UIClose()
+    {
+        bOpen = false;
+
+        SetPaused();
+
+        for (size_t i = 0; i < mChildUI.size(); ++i)
+        {
+            mChildUI[i]->UIClose();
         }
     }
 }

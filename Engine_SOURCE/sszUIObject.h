@@ -27,8 +27,8 @@ namespace ssz
 		const std::vector<UIObject*>& GetChildUI() { return mChildUI; }
 
 		bool IsUIOpen() { return bOpen; }
-		void UIOpen() { bOpen = true; }
-		void UIClose() { bOpen = false; }
+		void UIOpen();
+		void UIClose();
 
 		virtual void MouseLbtnDown();
 		virtual void MouseLbtnUp();
@@ -50,6 +50,7 @@ namespace ssz
 
 		bool bOpen;
 
+	public:
 		void AddChildUI(UIObject* pChildUI)
 		{
 			pChildUI->mParentUI = this;
@@ -65,6 +66,7 @@ namespace ssz
 			Transform* Parenttr = pParentUI->GetComponent<Transform>();
 			GetComponent<Transform>()->SetParent(Parenttr);
 		}
+
 	protected:
 		const std::wstring mUIKey;
 

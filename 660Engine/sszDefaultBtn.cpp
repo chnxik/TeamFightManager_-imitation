@@ -6,6 +6,7 @@ namespace ssz
 	DefaultBtn::DefaultBtn(const std::wstring& Key)
 		: UIObject(Key)
 		, mBtnComp(nullptr)
+		, mKBDIcon(nullptr)
 	{
 	}
 
@@ -45,16 +46,12 @@ namespace ssz
 		}
 #pragma endregion
 	}
-	void DefaultBtn::Update()
+
+	void DefaultBtn::SetKBDIcon(KBDIcon::KEYICON key)
 	{
-		UIObject::Update();
-	}
-	void DefaultBtn::LateUpdate()
-	{
-		UIObject::LateUpdate();
-	}
-	void DefaultBtn::Render()
-	{
-		UIObject::Render();
+		mKBDIcon = new KBDIcon(L"KeyIcon");
+		mKBDIcon->SetIcon(key);
+
+		AddChildUI((UIObject*)mKBDIcon);
 	}
 }

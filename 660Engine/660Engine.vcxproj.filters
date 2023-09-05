@@ -153,6 +153,7 @@
       <Filter>Contents\UI\Button\TitleMenuBtn</Filter>
     </ClInclude>
     <ClInclude Include="sszTestEditBox.h" />
+    <ClInclude Include="sszKBDIcon.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="660Engine.cpp" />
@@ -304,6 +305,7 @@
       <Filter>Contents\UI\Button\TitleMenuBtn</Filter>
     </ClCompile>
     <ClCompile Include="sszTestEditBox.cpp" />
+    <ClCompile Include="sszKBDIcon.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Contents">
@@ -509,6 +511,9 @@
     </Filter>
     <Filter Include="Contents\UI\Button\WeeklyEventBtn">
       <UniqueIdentifier>{d2badf14-905e-4d07-b0fe-9455ae8db1e0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\UI\Icon\KBDIcon">
+      <UniqueIdentifier>{69a72055-5437-467a-8f7f-eaf226b36353}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

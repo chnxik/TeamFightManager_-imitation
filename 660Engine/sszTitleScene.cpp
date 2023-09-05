@@ -16,6 +16,9 @@
 #include "sszImportantBtn.h"
 #include "sszTitleMenuBtn.h"
 
+// Icon
+#include "sszKBDIcon.h"
+
 extern ssz::Application application;
 
 namespace ssz
@@ -71,7 +74,7 @@ namespace ssz
 			//Btn
 			TitleMenuBtn* NewGameBtn = InstantiateUI<TitleMenuBtn>(Vector3(0.f, 10.f, 1.2f), Vector3(100.f, 50.f, 1.f), eLayerType::UI, L"TitleNewGameBtn");
 			NewGameBtn->SetNewGameBtn();
-			NewGameBtn->GetBtnComponent()->SetDelegate(NewGameUI, (DELEGATE)&GameObject::SetActive);
+			NewGameBtn->GetBtnComponent()->SetDelegate(NewGameUI, (DELEGATE)&UIObject::UIOpen);
 			
 			TitleMenuBtn* LoadBtn = InstantiateUI<TitleMenuBtn>(Vector3(0.f, -90.f, 1.2f), Vector3(100.f, 50.f, 1.f), eLayerType::UI, L"TitleLoadBtn");
 			LoadBtn->SetLoadBtn();
@@ -82,14 +85,20 @@ namespace ssz
 
 			ImportantBtn* NewGameStartBtn = InstantiateUI<ImportantBtn>(Vector3(-123.f, -335.f, 1.049f), NewGameUI, L"NewGameStartBtn");
 			NewGameStartBtn->GetBtnComponent()->SetDelegateW(this, (DELEGATEW)&Scene::ChangeScene, L"MainLobbyScene");
+			NewGameStartBtn->SetKBDIcon(KBDIcon::F);
+
 			Text* StartBtnText = NewGameStartBtn->AddComponent<Text>();
-			StartBtnText->TextInit(L"Galmuri14", Vector3(20.f, 13.f, 0.f), 30, FONT_RGBA(255, 255, 255, 255), FW1_CENTER);
+			StartBtnText->TextInit(L"Galmuri14", Vector3(25.f, 13.f, 0.f), 27, FONT_RGBA(255, 255, 255, 255), FW1_CENTER);
 			StartBtnText->SetString(L"게임 시작");
 
+
+
 			DefaultBtn* NewGameUICloseBtn = InstantiateUI<DefaultBtn>(Vector3(123.f, -335.f, 1.049f), NewGameUI, L"NewGameUICloseBtn");
-			NewGameUICloseBtn->GetBtnComponent()->SetDelegate(NewGameUI, (DELEGATE)&GameObject::SetPaused);
+			NewGameUICloseBtn->GetBtnComponent()->SetDelegate(NewGameUI, (DELEGATE)&UIObject::UIClose);
+			NewGameUICloseBtn->SetKBDIcon(KBDIcon::R);
+
 			Text* CloseBtnText = NewGameUICloseBtn->AddComponent<Text>();
-			CloseBtnText->TextInit(L"Galmuri14", Vector3(20.f, 13.f, 0.f), 30, FONT_RGBA(255, 255, 255, 255), FW1_CENTER);
+			CloseBtnText->TextInit(L"Galmuri14", Vector3(25.f, 13.f, 0.f), 27, FONT_RGBA(255, 255, 255, 255), FW1_CENTER);
 			CloseBtnText->SetString(L"취소");
 		}
 

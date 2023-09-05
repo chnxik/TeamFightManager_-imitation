@@ -226,6 +226,7 @@ xcopy /R /Y "$(SolutionDir)dll\FW1FontWrapperL.dll" "$(SolutionDir)x64\Debug"</
     <ClInclude Include="sszDefaultBtn.h" />
     <ClInclude Include="sszEffect.h" />
     <ClInclude Include="sszHeaderSlot.h" />
+    <ClInclude Include="sszKBDIcon.h" />
     <ClInclude Include="sszLog.h" />
     <ClInclude Include="sszNumb.h" />
     <ClInclude Include="sszObj_IG_Stadium.h" />
@@ -279,6 +280,7 @@ xcopy /R /Y "$(SolutionDir)dll\FW1FontWrapperL.dll" "$(SolutionDir)x64\Debug"</
     <ClCompile Include="sszDefaultBtn.cpp" />
     <ClCompile Include="sszEffect.cpp" />
     <ClCompile Include="sszHeaderSlot.cpp" />
+    <ClCompile Include="sszKBDIcon.cpp" />
     <ClCompile Include="sszKnightBT.cpp" />
     <ClCompile Include="sszLog.cpp" />
     <ClCompile Include="sszNumb.cpp" />

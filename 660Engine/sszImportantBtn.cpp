@@ -6,6 +6,7 @@ namespace ssz
 	ImportantBtn::ImportantBtn(const std::wstring& Key)
 		: UIObject(Key)
 		, mBtnComp(nullptr)
+		, mKBDIcon(nullptr)
 	{
 		
 	}
@@ -45,5 +46,13 @@ namespace ssz
 			tr->SetTransType(ssz::Transform::eTransType::PosAdd);
 		}
 #pragma endregion
+	}
+
+	void ImportantBtn::SetKBDIcon(KBDIcon::KEYICON key)
+	{
+		mKBDIcon = new KBDIcon(L"KeyIcon");
+		mKBDIcon->SetIcon(key);
+
+		AddChildUI((UIObject*)mKBDIcon);
 	}
 }

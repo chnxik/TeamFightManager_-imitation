@@ -143,41 +143,9 @@ namespace ssz
 
 	void UIManager::CloseUI(UIObject* pParentUI)
 	{
-		static std::queue<UIObject*> _Closequeue;
-		_Closequeue.push(pParentUI);
-
-		while (!_Closequeue.empty())
-		{
-			UIObject* pUI = _Closequeue.front();
-			_Closequeue.pop();
-
-			const std::vector<UIObject*>& vecChild = pUI->GetChildUI();
-			for (size_t i = 0; i < vecChild.size(); ++i)
-			{
-				_Closequeue.push(vecChild[i]);
-			}
-
-			pUI->SetPaused();
-		}
 	}
 
 	void UIManager::OpenUI(UIObject* pParentUI)
 	{
-		static std::queue<UIObject*> _Openqueue;
-		_Openqueue.push(pParentUI);
-
-		while (!_Openqueue.empty())
-		{
-			UIObject* pUI = _Openqueue.front();
-			_Openqueue.pop();
-
-			const std::vector<UIObject*>& vecChild = pUI->GetChildUI();
-			for (size_t i = 0; i < vecChild.size(); ++i)
-			{
-				_Openqueue.push(vecChild[i]);
-			}
-
-			pUI->SetActive();
-		}
 	}
 }

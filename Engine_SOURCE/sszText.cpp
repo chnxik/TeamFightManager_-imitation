@@ -19,6 +19,7 @@ namespace ssz
 		, mOffsetPos{}
 		, mFontSize(100.f)
 		, mFontColor(0)
+		, mFlags(0)
 	{
 		mFontColor = FONT_RGBA(255, 255, 255, 255);
 	}
@@ -57,7 +58,7 @@ namespace ssz
 	{
 		if (mString.size() != 0)
 		{
-			FontWrapper::DrawFont(mString.c_str(), mFont.c_str(), mFontPos.x, mFontPos.y, mFontSize, mFontColor);
+			FontWrapper::DrawFont(mString.c_str(), mFont.c_str(), mFontPos.x, mFontPos.y, mFontSize, mFontColor, mFlags);
 		}
 	}
 

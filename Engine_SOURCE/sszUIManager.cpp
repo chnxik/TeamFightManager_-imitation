@@ -24,12 +24,47 @@ namespace ssz
 
 		// UI Layer 가져오기
 		const std::vector<GameObject*>& vecUI = ActiveScene->GetLayer(eLayerType::UI).GetGameObjects();
+		
+		// 열려있는 vecUI중 가장 앞에있는(z값이 낮은) UI를 포커스 UI로 한다.
+		mFocusedUI = nullptr;
+
+		
+		// Focused UI
+		for (int i = (int)vecUI.size() - 1; 0 <= i; --i)
+		{
+			if (((UIObject*)vecUI[i])->IsMouseOn()
+				&& vecUI[i]->IsActive())
+			{
+				if (mFocusedUI == nullptr)
+				{
+					mFocusedUI = (UIObject*)vecUI[i];
+					continue;
+				}
+
+				if (mFocusedUI->IsMouseOn())
+				{
+					float PrevFocusZ = mFocusedUI->GetComponent<Transform>()->GetWorldPosition().z;
+					float NewFocuseZ = vecUI[i]->GetComponent<Transform>()->GetWorldPosition().z;
+
+					if (PrevFocusZ > NewFocuseZ)
+						mFocusedUI = (UIObject*)vecUI[i];
+				}
+				else
+				{
+					mFocusedUI = (UIObject*)vecUI[i];
+				}
+			}
+		}
 
 		for (int i = (int)vecUI.size() - 1; 0 <= i; --i)
 		{
 			mPriorityUI = GetPriorityUI((UIObject*)vecUI[i]); // 현재 UI에 우선순위 UI가 있는지 확인한다.
 
+
 			if (nullptr == mPriorityUI) // 우선순위 UI가 없는 경우 다음 UI 검사를 진행
+				continue;
+
+			if (mFocusedUI != vecUI[i])	// 우선순위 UI가 포커싱된 UI가 아닌경우
 				continue;
 
 			// 마우스온 이벤트 호출
@@ -91,7 +126,7 @@ namespace ssz
 				{
 					pPriorityUI->MouseLbtnUp();
 				}
-
+				
 				// 우선순위 UI로 지정
 				pPriorityUI = pUI;
 			}
@@ -108,9 +143,41 @@ namespace ssz
 
 	void UIManager::CloseUI(UIObject* pParentUI)
 	{
+		static std::queue<UIObject*> _Closequeue;
+		_Closequeue.push(pParentUI);
+
+		while (!_Closequeue.empty())
+		{
+			UIObject* pUI = _Closequeue.front();
+			_Closequeue.pop();
+
+			const std::vector<UIObject*>& vecChild = pUI->GetChildUI();
+			for (size_t i = 0; i < vecChild.size(); ++i)
+			{
+				_Closequeue.push(vecChild[i]);
+			}
+
+			pUI->SetPaused();
+		}
 	}
 
 	void UIManager::OpenUI(UIObject* pParentUI)
 	{
+		static std::queue<UIObject*> _Openqueue;
+		_Openqueue.push(pParentUI);
+
+		while (!_Openqueue.empty())
+		{
+			UIObject* pUI = _Openqueue.front();
+			_Openqueue.pop();
+
+			const std::vector<UIObject*>& vecChild = pUI->GetChildUI();
+			for (size_t i = 0; i < vecChild.size(); ++i)
+			{
+				_Openqueue.push(vecChild[i]);
+			}
+
+			pUI->SetActive();
+		}
 	}
 }

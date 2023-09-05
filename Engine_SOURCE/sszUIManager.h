@@ -9,6 +9,7 @@ namespace ssz
 	{
 	public:
 		static void LateUpdate();
+		static UIObject* GetFocusedUI() { return mFocusedUI; }
 
 		static void CloseUI(UIObject* pParentUI);
 		static void OpenUI(UIObject* pParentUI);

@@ -154,6 +154,8 @@ namespace ssz
 
     void UIObject::MouseOnCheck()
     {
+        // 충돌체 확인 방식
+        /*
         Collider2D* Collider = GetComponent<Collider2D>();
         if (Collider)
         {
@@ -165,6 +167,99 @@ namespace ssz
             {
                 bMouseOn = false;
             }
+        }
+        */
+
+        // 좌표 확인 방식
+        
+        /*
+        if (vPos.x <= vMousePos.x && vMousePos.x <= vPos.x + vScale.x
+            && vPos.y <= vMousePos.y && vMousePos.y <= vPos.y + vScale.y)
+        {
+            if (!m_bMouseOn)
+                CCsrMgr::GetInst()->AddCsrOnCnt();
+
+            m_bMouseOn = true;
+        }
+        else
+        {
+            if (m_bMouseOn)
+                CCsrMgr::GetInst()->SubCsrOnCnt();
+
+            m_bMouseOn = false;
+        }
+        */
+
+        // 사각 원 혼합 충돌 : OBB 응용
+        {
+            Collider2D* UICol = GetComponent<Collider2D>();
+
+            Vector3 UIPos = UICol->GetColliderPos();
+            Vector3 UIScale = UICol->GetColliderScale();
+
+            Vector3 MousePos = Input::GetMousePos4DX();
+            Vector3 MouseScale = Vector3::One;
+
+            Vector3 CenterDir = UIPos - MousePos; // 두 객체의 중심끼리의 거리벡터
+            Vector3 Axis; // 기준 투영축
+            float CenterProjDist; // 투영축 기준으로 두 중심점 사이의 거리 스칼라
+            float r1, r2; // 비교 대상인 두 벡터의 투영길이
+
+
+            //  1. Rect의 right축 투영
+            Axis = UICol->GetAxis(Collider2D::eAxis::Right);
+            CenterProjDist = abs(CenterDir.Dot(Axis));
+
+            r1 = UIScale.x / 2.f;
+            r2 = MouseScale.x / 2.f;
+
+            if (r1 + r2 < CenterProjDist)
+            {
+                bMouseOn = false;
+                return;
+            }
+            
+            // 2. Rect의 up축 투영
+            Axis = UICol->GetAxis(Collider2D::eAxis::Up);
+            CenterProjDist = abs(CenterDir.Dot(Axis));
+
+            r1 = UIScale.y / 2.f;
+            r2 = MouseScale.y / 2.f;
+
+            if (r1 + r2 < CenterProjDist)
+            {
+                bMouseOn = false;
+                return;
+            }
+
+
+            // 3. Circle기준 right축 투영
+            Axis = Vector3::UnitX;
+            CenterProjDist = abs(CenterDir.Dot(Axis));
+
+            r1 = MouseScale.x / 2.f;
+            r2 = UICol->GetLength4OBB(Axis);
+
+            if (r1 + r2 < CenterProjDist)
+            {
+                bMouseOn = false;
+                return;
+            }
+
+            // 4. Circle기준 up축 투영
+            Axis = Vector3::UnitY;
+            CenterProjDist = abs(CenterDir.Dot(Axis));
+
+            r1 = MouseScale.y / 2.f;
+            r2 = UICol->GetLength4OBB(Axis);
+
+            if (r1 + r2 < CenterProjDist)
+            {
+                bMouseOn = false;
+                return;
+            }
+
+            bMouseOn = true;
         }
     }
 }

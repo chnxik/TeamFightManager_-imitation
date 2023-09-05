@@ -82,9 +82,17 @@ namespace ssz
 
 			ImportantBtn* NewGameStartBtn = InstantiateUI<ImportantBtn>(Vector3(-123.f, -335.f, 1.049f), NewGameUI, L"NewGameStartBtn");
 			NewGameStartBtn->GetBtnComponent()->SetDelegateW(this, (DELEGATEW)&Scene::ChangeScene, L"MainLobbyScene");
+			Text* StartBtnText = NewGameStartBtn->AddComponent<Text>();
+			StartBtnText->SetFontSize(30);
+			StartBtnText->SetFlags(FW1_CENTER | FW1_VCENTER);
+			StartBtnText->SetString(L"게임 시작");
 
 			DefaultBtn* NewGameUICloseBtn = InstantiateUI<DefaultBtn>(Vector3(123.f, -335.f, 1.049f), NewGameUI, L"NewGameUICloseBtn");
 			NewGameUICloseBtn->GetBtnComponent()->SetDelegate(NewGameUI, (DELEGATE)&GameObject::SetPaused);
+			Text* CloseBtnText = NewGameUICloseBtn->AddComponent<Text>();
+			CloseBtnText->SetFontSize(30);
+			CloseBtnText->SetFlags(FW1_CENTER | FW1_VCENTER);
+			CloseBtnText->SetString(L"취소");
 		}
 
 		

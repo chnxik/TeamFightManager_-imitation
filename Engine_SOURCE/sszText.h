@@ -27,7 +27,7 @@ namespace ssz
 		void SetFontColor(UINT R, UINT G, UINT B, UINT A);
 
 		void SetString(const std::wstring& str) { mString = str; }
-
+		void SetFlags(UINT flags) { mFlags = flags; }
 
 		GameObject* GetOwner() { return mOwner; }
 		virtual void SetOwner(GameObject* owner) { mOwner = owner; }
@@ -40,5 +40,6 @@ namespace ssz
 
 		float	mFontSize;
 		UINT	mFontColor;
+		UINT	mFlags;
 	};
 }

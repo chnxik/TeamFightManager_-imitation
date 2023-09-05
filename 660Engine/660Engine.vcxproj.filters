@@ -366,9 +366,6 @@
     <Filter Include="Contents\UI\Button\LobbyMenuBtn">
       <UniqueIdentifier>{accba350-7e76-43a7-81b1-f6f759a112b7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Contents\UI\Button\WeeklyEventBtn">
-      <UniqueIdentifier>{d2badf14-905e-4d07-b0fe-9455ae8db1e0}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Contents\UI\Button\PlayerCardBtn">
       <UniqueIdentifier>{68afe796-c894-4e47-9e43-039bd2d71f2c}</UniqueIdentifier>
     </Filter>
@@ -509,6 +506,9 @@
     </Filter>
     <Filter Include="Contents\UI\Button\TitleMenuBtn">
       <UniqueIdentifier>{fab5aa88-39ef-4299-833a-ea040ece799e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\UI\Button\WeeklyEventBtn">
+      <UniqueIdentifier>{d2badf14-905e-4d07-b0fe-9455ae8db1e0}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

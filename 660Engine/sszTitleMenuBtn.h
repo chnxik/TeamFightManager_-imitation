@@ -30,6 +30,9 @@ namespace ssz
 		GameObject* mLeftSwordObj;
 		GameObject* mRightSwordObj;
 
+		Vector3 vOnSize;
+		Vector3 vOffSize;
+
 		float fRatio;
     };
 }

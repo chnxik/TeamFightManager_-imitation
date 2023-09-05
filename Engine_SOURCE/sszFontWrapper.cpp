@@ -29,7 +29,22 @@ namespace ssz
 			x,// X position
 			y,// Y position
 			rgb,// Text color, 0xAaBbGgRr
-			FW1_RESTORESTATE      // Flags (for example FW1_RESTORESTATE to keep context states unchanged)
+			FW1_RESTORESTATE// Flags (for example FW1_RESTORESTATE to keep context states unchanged)
+		);
+	}
+
+	void FontWrapper::DrawFont(const wchar_t* str, float x, float y, float size, UINT rgb, UINT flags)
+	{
+		//RGB();
+		ID3D11DeviceContext* pContext = graphics::GetDevice()->GetID3D11DeviceContext();
+		mFontWrapper->DrawString(
+			pContext,
+			str, // String
+			size,// Font size
+			x,// X position
+			y,// Y position
+			rgb,// Text color, 0xAaBbGgRr
+			FW1_RESTORESTATE | flags    // Flags (for example FW1_RESTORESTATE to keep context states unchanged)
 		);
 	}
 
@@ -46,6 +61,22 @@ namespace ssz
 			y,// Y position
 			rgb,// Text color, 0xAaBbGgRr
 			FW1_RESTORESTATE      // Flags (for example FW1_RESTORESTATE to keep context states unchanged)
+		);
+	}
+
+	void FontWrapper::DrawFont(const wchar_t* str, const wchar_t* font, float x, float y, float size, UINT rgb, UINT flags)
+	{
+		//RGB();
+		ID3D11DeviceContext* pContext = graphics::GetDevice()->GetID3D11DeviceContext();
+		mFontWrapper->DrawString(
+			pContext,
+			str, // String
+			font, // font
+			size,// Font size
+			x,// X position
+			y,// Y position
+			rgb,// Text color, 0xAaBbGgRr
+			FW1_RESTORESTATE | flags     // Flags (for example FW1_RESTORESTATE to keep context states unchanged)
 		);
 	}
 

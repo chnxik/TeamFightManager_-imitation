@@ -9,6 +9,8 @@ namespace ssz
 		, mLeftSwordObj(nullptr)
 		, mRightSwordObj(nullptr)
 		, fRatio(0.f)
+		, vOnSize{}
+		, vOffSize{}
 	{
 	}
 
@@ -95,6 +97,9 @@ namespace ssz
 
 		mRightSwordObj->GetComponent<Transform>()->SetPosition(RightPos);
 		mLeftSwordObj->GetComponent<Transform>()->SetPosition(LeftPos);
+
+		vOnSize = trScale * 1.15f;
+		vOffSize = trScale;
 	}
 	
 	void TitleMenuBtn::SetLoadBtn()
@@ -116,6 +121,9 @@ namespace ssz
 
 		mRightSwordObj->GetComponent<Transform>()->SetPosition(RightPos);
 		mLeftSwordObj->GetComponent<Transform>()->SetPosition(LeftPos);
+
+		vOnSize = trScale * 1.15f;
+		vOffSize = trScale;
 	}
 	
 	void TitleMenuBtn::SetExitBtn()
@@ -138,14 +146,15 @@ namespace ssz
 
 		mRightSwordObj->GetComponent<Transform>()->SetPosition(RightPos);
 		mLeftSwordObj->GetComponent<Transform>()->SetPosition(LeftPos);
+
+		vOnSize = trScale * 1.15f;
+		vOffSize = trScale;
 	}
 	
 	void TitleMenuBtn::MouseUp()
 	{
 		Transform* tr = GetComponent<Transform>();
-		Vector3 vPos = tr->GetScale();
-		vPos *= 0.15f;
-		tr->AddScale(vPos.x, vPos.y, 0);
+		tr->SetScale(vOnSize);
 
 		mRightSwordObj->SetActive();
 		mLeftSwordObj->SetActive();
@@ -157,9 +166,7 @@ namespace ssz
 	void TitleMenuBtn::MouseAway()
 	{
 		Transform* tr = GetComponent<Transform>();
-		Vector3 vPos = tr->GetScale();
-		vPos *= 0.15f;
-		tr->AddScale(-vPos.x, -vPos.y, 0);
+		tr->SetScale(vOffSize);
 
 		mRightSwordObj->SetPaused();
 		mLeftSwordObj->SetPaused();

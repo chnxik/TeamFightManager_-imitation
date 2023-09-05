@@ -1,6 +1,7 @@
 #include "sszCollisionManager.h"
 
 #include "sszSceneManager.h"
+#include "sszUIManager.h"
 
 #include "sszScene.h"
 #include "sszLayer.h"
@@ -113,6 +114,9 @@ namespace ssz
 
 				// bool bDead = pUI->IsDead() || vecCursor[0]->IsDead();
 				bool bUnValued = pUI->IsUnValued() || vecCursor[0]->IsUnValued();
+
+				if (vecUI[i] != UIManager::GetFocusedUI())
+					bUnValued = true;
 
 				ColliderCollision(UICol, CursorCol, bUnValued); // 충돌검사 로직
 			}

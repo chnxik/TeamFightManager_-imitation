@@ -42,7 +42,6 @@ namespace ssz
 		void MouseOnCheck();
 
 	private:
-
 		UIObject* mParentUI;
 		std::vector<UIObject*> mChildUI;
 

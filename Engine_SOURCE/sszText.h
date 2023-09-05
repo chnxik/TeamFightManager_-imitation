@@ -16,6 +16,8 @@ namespace ssz
 		virtual void LateUpdate() override;
 		virtual void Render() override;
 
+		void TextInit(const std::wstring& Font,Vector3 OffsetPos, float FontSize, UINT FontColor, UINT flags);
+
 		void SetFont(const std::wstring& font) { mFont = font; }
 
 		void SetFontSize(float Size) { mFontSize = Size; }

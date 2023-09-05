@@ -62,6 +62,15 @@ namespace ssz
 		}
 	}
 
+	void Text::TextInit(const std::wstring& Font, Vector3 OffsetPos, float FontSize, UINT FontColor, UINT flags)
+	{
+		mFont = Font;
+		mOffsetPos = OffsetPos;
+		mFontSize = FontSize;
+		mFontColor = FontColor;
+		mFlags = flags;
+	}
+
 	void Text::SetFontColor(UINT R, UINT G, UINT B, UINT A)
 	{
 		mFontColor = FONT_RGBA(R, G, B, A);

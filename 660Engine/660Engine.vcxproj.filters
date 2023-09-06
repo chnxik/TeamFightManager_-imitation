@@ -153,7 +153,12 @@
       <Filter>Contents\UI\Button\TitleMenuBtn</Filter>
     </ClInclude>
     <ClInclude Include="sszTestEditBox.h" />
-    <ClInclude Include="sszKBDIcon.h" />
+    <ClInclude Include="sszKBDIcon.h">
+      <Filter>Contents\UI\Icon</Filter>
+    </ClInclude>
+    <ClInclude Include="sszTypeUI.h">
+      <Filter>Contents\UI\TypeUI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="660Engine.cpp" />
@@ -305,7 +310,12 @@
       <Filter>Contents\UI\Button\TitleMenuBtn</Filter>
     </ClCompile>
     <ClCompile Include="sszTestEditBox.cpp" />
-    <ClCompile Include="sszKBDIcon.cpp" />
+    <ClCompile Include="sszKBDIcon.cpp">
+      <Filter>Contents\UI\Icon\KBDIcon</Filter>
+    </ClCompile>
+    <ClCompile Include="sszTypeUI.cpp">
+      <Filter>Contents\UI\TypeUI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Contents">
@@ -514,6 +524,9 @@
     </Filter>
     <Filter Include="Contents\UI\Icon\KBDIcon">
       <UniqueIdentifier>{69a72055-5437-467a-8f7f-eaf226b36353}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\UI\TypeUI">
+      <UniqueIdentifier>{d5f07a6d-d961-435b-9d84-9080a4e1eea7}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

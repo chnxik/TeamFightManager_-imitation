@@ -258,6 +258,7 @@ xcopy /R /Y "$(SolutionDir)dll\FW1FontWrapperL.dll" "$(SolutionDir)x64\Debug"</
     <ClInclude Include="sszTitleScene.h" />
     <ClInclude Include="CommonObjHeader.h" />
     <ClInclude Include="sszObj_Waterfall.h" />
+    <ClInclude Include="sszTypeUI.h" />
     <ClInclude Include="sszWeeklyEventBtn.h" />
   </ItemGroup>
   <ItemGroup>
@@ -312,6 +313,7 @@ xcopy /R /Y "$(SolutionDir)dll\FW1FontWrapperL.dll" "$(SolutionDir)x64\Debug"</
     <ClCompile Include="sszTitleMenuBtn.cpp" />
     <ClCompile Include="sszTitleScene.cpp" />
     <ClCompile Include="sszObj_Waterfall.cpp" />
+    <ClCompile Include="sszTypeUI.cpp" />
     <ClCompile Include="sszWeeklyEventBtn.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

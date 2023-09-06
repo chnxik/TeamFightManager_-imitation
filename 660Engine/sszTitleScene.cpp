@@ -12,8 +12,6 @@
 #include "sszNewGameWindow.h"
 
 // Btn
-#include "sszDefaultBtn.h"
-#include "sszImportantBtn.h"
 #include "sszTitleMenuBtn.h"
 
 // Icon
@@ -60,8 +58,6 @@ namespace ssz
 			GameObject* TitleLogo = Instantiate<GameObject>(Vector3(0.0f, 242.0f, 1.31f), Vector3(738.f, 271.f, 1.f), eLayerType::BackGroundObj);
 			TitleLogo->SetName(L"TitleLogo");
 			TitleLogo->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"TitleLogoMt");
-
-			TestEditBox* TestEdit = Instantiate<TestEditBox>(Vector3(0.f, 0.f, 0.f), Vector3(200.f, 100.f, 1.f), eLayerType::BackGroundObj);
 		}
 
 		// UI
@@ -69,7 +65,6 @@ namespace ssz
 			// Window
 			UIObject* NewGameUI = InstantiateUI<NewGameWindow>(Vector3(0.f, 50.f, 1.05f), eLayerType::UI, L"NewGameWindow");
 			NewGameUI->SetState(ssz::GameObject::eState::Paused);
-
 
 			//Btn
 			TitleMenuBtn* NewGameBtn = InstantiateUI<TitleMenuBtn>(Vector3(0.f, 10.f, 1.2f), Vector3(100.f, 50.f, 1.f), eLayerType::UI, L"TitleNewGameBtn");
@@ -82,27 +77,7 @@ namespace ssz
 			TitleMenuBtn* ExitBtn = InstantiateUI<TitleMenuBtn>(Vector3(0.f, -190.f, 1.2f), Vector3(100.f, 50.f, 1.f), eLayerType::UI, L"TitleExitBtn");
 			ExitBtn->SetExitBtn();
 			ExitBtn->GetBtnComponent()->SetDelegate(this, (DELEGATE)&TitleScene::ExitProgram);
-
-			ImportantBtn* NewGameStartBtn = InstantiateUI<ImportantBtn>(Vector3(-123.f, -335.f, 1.049f), NewGameUI, L"NewGameStartBtn");
-			NewGameStartBtn->GetBtnComponent()->SetDelegateW(this, (DELEGATEW)&Scene::ChangeScene, L"MainLobbyScene");
-			NewGameStartBtn->SetKBDIcon(KBDIcon::F);
-
-			Text* StartBtnText = NewGameStartBtn->AddComponent<Text>();
-			StartBtnText->TextInit(L"Galmuri14", Vector3(25.f, 13.f, 0.f), 27, FONT_RGBA(255, 255, 255, 255), FW1_CENTER);
-			StartBtnText->SetString(L"게임 시작");
-
-
-
-			DefaultBtn* NewGameUICloseBtn = InstantiateUI<DefaultBtn>(Vector3(123.f, -335.f, 1.049f), NewGameUI, L"NewGameUICloseBtn");
-			NewGameUICloseBtn->GetBtnComponent()->SetDelegate(NewGameUI, (DELEGATE)&UIObject::UIClose);
-			NewGameUICloseBtn->SetKBDIcon(KBDIcon::R);
-
-			Text* CloseBtnText = NewGameUICloseBtn->AddComponent<Text>();
-			CloseBtnText->TextInit(L"Galmuri14", Vector3(25.f, 13.f, 0.f), 27, FONT_RGBA(255, 255, 255, 255), FW1_CENTER);
-			CloseBtnText->SetString(L"취소");
 		}
-
-		
 #pragma endregion
 	}
 	void TitleScene::Update()

@@ -55,6 +55,7 @@ namespace ssz
 		void SetBtnType(eBtnType eType) { mType = eType; }
 
 		eBtnState GetBtnState() { return mCurState; }
+		void SetIdle();
 
 		bool ChangeBtnTex(eBtnState eState);
 

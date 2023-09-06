@@ -1,6 +1,11 @@
 #include "sszNewGameWindow.h"
 #include "CommonObjHeader.h"
 
+#include "sszImportantBtn.h"
+#include "sszDefaultBtn.h"
+
+#include "sszTypeUI.h"
+
 namespace ssz
 {
 	NewGameWindow::NewGameWindow(const std::wstring& key)
@@ -55,6 +60,28 @@ namespace ssz
 			CoachName->SetString(L"감독 이름");
 			TeamLogo->SetString(L"팀 로고");
 			CoachTex->SetString(L"감독 외형");
+
+			Scene* ActiveScene = SceneManager::GetActiveScene();
+
+			ImportantBtn* NewGameStartBtn = InstantiateUI<ImportantBtn>(Vector3(-123.f, -335.f, 1.049f), this, L"NewGameStartBtn");
+			NewGameStartBtn->GetBtnComponent()->SetDelegateW(ActiveScene, (DELEGATEW)&Scene::ChangeScene, L"MainLobbyScene");
+			NewGameStartBtn->SetKBDIcon(KBDIcon::F);
+
+			Text* StartBtnText = NewGameStartBtn->AddComponent<Text>();
+			StartBtnText->TextInit(L"Galmuri14", Vector3(25.f, 13.f, 0.f), 27, FONT_RGBA(255, 255, 255, 255), FW1_CENTER);
+			StartBtnText->SetString(L"게임 시작");
+
+			DefaultBtn* NewGameUICloseBtn = InstantiateUI<DefaultBtn>(Vector3(123.f, -335.f, 1.049f), this, L"NewGameUICloseBtn");
+			NewGameUICloseBtn->GetBtnComponent()->SetDelegate(this, (DELEGATE)&UIObject::UIClose);
+			NewGameUICloseBtn->SetKBDIcon(KBDIcon::R);
+
+			Text* CloseBtnText = NewGameUICloseBtn->AddComponent<Text>();
+			CloseBtnText->TextInit(L"Galmuri14", Vector3(25.f, 13.f, 0.f), 27, FONT_RGBA(255, 255, 255, 255), FW1_CENTER);
+			CloseBtnText->SetString(L"취소");
+			
+			float posz = tr->GetPosition().z;
+			TypeUI* TeamNameType = InstantiateUI<TypeUI>(Vector3(-280.f, 125.f, posz), Vector3(500.f, 100.f, 1.f), this, L"TN_TypeUI");
+			TypeUI* CoachType = InstantiateUI<TypeUI>(Vector3(390.f, 125.f, posz), Vector3(500.f, 100.f, 1.f), this, L"CN_TypeUI");
 		}
 #pragma endregion
 	}

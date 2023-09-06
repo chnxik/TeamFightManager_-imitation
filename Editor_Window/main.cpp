@@ -301,10 +301,16 @@ int GetText(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 
          // 만약 Backspace 라면,
 
+        // ENTER 입력
+        if (wParam == 0x0D)
+        {
+            return 0;// 아무 동작하지 않는다.
+        }
+
         if (wParam == 8)
         {
             // 길이가 0보다 크고, 지울 것이 0보다 작으면 이라는 의미
-            // 본 의도는 오나성형에서 앞글자인지 뒷글자인지 알려주는 함수가 있다.
+            // 본 의도는 완성형에서 앞글자인지 뒷글자인지 알려주는 함수가 있다.
             if (wcslen(g_strText) > 0)
             {
                 if (wcslen(g_strText) < 0)

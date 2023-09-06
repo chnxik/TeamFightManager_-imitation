@@ -75,6 +75,12 @@ namespace ssz
 
 	}
 
+	void ButtonUI::SetIdle()
+	{
+		SetBtnState(eBtnState::Idle);
+		bTogle = false;
+	}
+
 	
 	void ButtonUI::SetIdleTex(const std::wstring& TextureKey)
 	{

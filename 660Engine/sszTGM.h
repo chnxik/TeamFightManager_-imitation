@@ -1,5 +1,8 @@
 #pragma once
 #include "CommonObjHeader.h"
+#include "sszTeam.h"
+#include "sszPilot.h"
+#include "sszChamp.h"
 
 namespace ssz
 {
@@ -69,5 +72,18 @@ namespace ssz
 
 		static vector<Projectile*>	vProjectilePool;
 		static vector<Effect*>		vEffectPool;
+		
+		// Player Data
+
+	public:
+		void SetPlayerTeamName(const std::wstring& name);
+
+	private:
+		static Team* gPlayerTeam;
+		// 코치
+
+		static UINT mGold;	// 소지금
+
+		
 	};
 }

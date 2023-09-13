@@ -152,12 +152,17 @@
     <ClInclude Include="sszTitleMenuBtn.h">
       <Filter>Contents\UI\Button\TitleMenuBtn</Filter>
     </ClInclude>
-    <ClInclude Include="sszTestEditBox.h" />
     <ClInclude Include="sszKBDIcon.h">
       <Filter>Contents\UI\Icon</Filter>
     </ClInclude>
     <ClInclude Include="sszTypeUI.h">
       <Filter>Contents\UI\TypeUI</Filter>
+    </ClInclude>
+    <ClInclude Include="sszLogoSelectBtn.h">
+      <Filter>Contents\UI\Button\LogoSelectBtn</Filter>
+    </ClInclude>
+    <ClInclude Include="sszTestEditBox.h">
+      <Filter>Contents\Object\Text</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -309,12 +314,17 @@
     <ClCompile Include="sszTitleMenuBtn.cpp">
       <Filter>Contents\UI\Button\TitleMenuBtn</Filter>
     </ClCompile>
-    <ClCompile Include="sszTestEditBox.cpp" />
     <ClCompile Include="sszKBDIcon.cpp">
       <Filter>Contents\UI\Icon\KBDIcon</Filter>
     </ClCompile>
     <ClCompile Include="sszTypeUI.cpp">
       <Filter>Contents\UI\TypeUI</Filter>
+    </ClCompile>
+    <ClCompile Include="sszLogoSelectBtn.cpp">
+      <Filter>Contents\UI\Button\LogoSelectBtn</Filter>
+    </ClCompile>
+    <ClCompile Include="sszTestEditBox.cpp">
+      <Filter>Contents\Object\Text</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -416,9 +426,6 @@
     </Filter>
     <Filter Include="Contents\UI\Slot\BanpickStat">
       <UniqueIdentifier>{ea18be57-baa9-43e4-977f-917a372d3645}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\UI\Logo">
-      <UniqueIdentifier>{9986c204-273f-4809-ba00-d0f6d2be6a6a}</UniqueIdentifier>
     </Filter>
     <Filter Include="Contents\UI\Line">
       <UniqueIdentifier>{11fb3c8e-3e00-4816-9464-43056c020689}</UniqueIdentifier>
@@ -527,6 +534,12 @@
     </Filter>
     <Filter Include="Contents\UI\TypeUI">
       <UniqueIdentifier>{d5f07a6d-d961-435b-9d84-9080a4e1eea7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\UI\Button\LogoSelectBtn">
+      <UniqueIdentifier>{fc83ba9f-c8ea-4f9a-9eed-dcc8b894d3a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\Text">
+      <UniqueIdentifier>{bbca8ad6-4753-4dee-858c-a1c2a1f5baf0}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

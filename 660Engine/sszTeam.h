@@ -1,16 +1,20 @@
 #pragma once
+#include "CommonObjHeader.h"
 
 namespace ssz
 {
 	class Team
 	{
 	public:
+		Team();
+		virtual ~Team();
+
+		void SetTeamTex(const std::wstring& LogoTexKey);
+		void SetTeamName(const std::wstring& name);
 
 	private:
-		// 팀 로고
-		// 팀 이름
-		// 코치 이름
-		// 소지금
+		std::wstring mTeamLogoTexKey;	// 팀 로고
+		std::wstring mTeamName;					// 팀 이름
 		// 팀 전적
 		
 		// 팀별 챔피언 정보 (챔피언 리스트에서 받아온다)

@@ -1,3 +1,4 @@
+#pragma once
 #include "sszTGM.h"
 
 #include "sszChampList.h"
@@ -21,6 +22,10 @@ namespace ssz
 
 	vector<Projectile*> TGM::vProjectilePool;
 	vector<Effect*> TGM::vEffectPool;
+
+	// player
+	Team* TGM::gPlayerTeam = nullptr;
+	UINT TGM::mGold = 0;
 
 	void TGM::Initialize()
 	{
@@ -158,5 +163,9 @@ namespace ssz
 		champ->GetComponent<Transform>()->SetPosition(Pos);
 
 		return champ;
+	}
+	void TGM::SetPlayerTeamName(const std::wstring& name)
+	{
+		gPlayerTeam->SetTeamName(name);
 	}
 }

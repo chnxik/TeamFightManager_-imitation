@@ -5,6 +5,7 @@
 #include "sszDefaultBtn.h"
 
 #include "sszTypeUI.h"
+#include "sszLogoSelectBtn.h"
 
 namespace ssz
 {
@@ -63,6 +64,8 @@ namespace ssz
 
 			Scene* ActiveScene = SceneManager::GetActiveScene();
 
+			// 게임시작, 취소 버튼
+
 			ImportantBtn* NewGameStartBtn = InstantiateUI<ImportantBtn>(Vector3(-123.f, -335.f, 1.049f), this, L"NewGameStartBtn");
 			NewGameStartBtn->GetBtnComponent()->SetDelegateW(ActiveScene, (DELEGATEW)&Scene::ChangeScene, L"MainLobbyScene");
 			NewGameStartBtn->SetKBDIcon(KBDIcon::F);
@@ -78,10 +81,16 @@ namespace ssz
 			Text* CloseBtnText = NewGameUICloseBtn->AddComponent<Text>();
 			CloseBtnText->TextInit(L"Galmuri14", Vector3(25.f, 13.f, 0.f), 27, FONT_RGBA(255, 255, 255, 255), FW1_CENTER);
 			CloseBtnText->SetString(L"취소");
-			
+		
+			// 팀이름 , 코치이름 입력 버튼
+
 			float posz = tr->GetPosition().z;
 			TypeUI* TeamNameType = InstantiateUI<TypeUI>(Vector3(-280.f, 125.f, posz), Vector3(500.f, 100.f, 1.f), this, L"TN_TypeUI");
 			TypeUI* CoachType = InstantiateUI<TypeUI>(Vector3(390.f, 125.f, posz), Vector3(500.f, 100.f, 1.f), this, L"CN_TypeUI");
+
+			// 로고 선택 버튼
+			LogoSelectBtn* TeamLogoSlot = InstantiateUI<LogoSelectBtn>(Vector3(-585.f, 125.f, posz), Vector3(100.f, 100.f, 1.f), this, L"SelectedTeamLogo");
+
 		}
 #pragma endregion
 	}

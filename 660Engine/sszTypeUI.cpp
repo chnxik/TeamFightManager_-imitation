@@ -33,7 +33,7 @@ namespace ssz
 		ButtonUI* Btn = AddComponent<ButtonUI>();
 		Btn->Initialize();
 		
-		Btn->SetBtnType(ssz::ButtonUI::eBtnType::Selected);
+		Btn->SetBtnType(ssz::ButtonUI::eBtnType::Togle);
 
 		Btn->SetIdleTex(L"TypeBtn_Idle");
 		Btn->SetOnTex(L"TypeBtn_On");

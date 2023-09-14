@@ -9,7 +9,6 @@ typedef void(ssz::Entity::* DELEGATEW)(const std::wstring&);
 
 namespace ssz
 {
-
 	class ButtonUI : public UIComponent
 	{
 	public:
@@ -23,7 +22,7 @@ namespace ssz
 
 		enum class eBtnType
 		{
-			Selected,
+			Togle,
 			Push,
 		};
 
@@ -62,7 +61,7 @@ namespace ssz
 		void SetActive(bool b) { bActive = b; }
 		void SetOwnerMaterial();
 
-		bool SetTogle() 
+		virtual bool SetTogle() 
 		{ 
 			bool before = bTogle;
 
@@ -78,12 +77,14 @@ namespace ssz
 			return before;
 		}
 
+		bool GetTogle() { return bTogle; }
+
 		virtual void MouseLbtnDown() override;
 		virtual void MouseLbtnUp() override;
 		virtual void MouseLbtnClicked() override;
 		virtual void MouseOn() override;
 
-	private:
+	protected:
 		std::shared_ptr<Texture> mBtnTex[(UINT)eBtnState::End];
 		std::shared_ptr<Material> mOwnerMaterial;
 

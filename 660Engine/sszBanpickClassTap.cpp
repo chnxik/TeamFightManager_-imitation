@@ -38,7 +38,7 @@ namespace ssz
 			mBtnComp->SetIdleTex(L"BanpickClassTapBtnIdleTex");
 			mBtnComp->SetOnTex(L"BanpickClassTapBtnOneTex");
 			mBtnComp->SetDownTex(L"BanpickClassTapBtnDownTex");
-			mBtnComp->SetBtnType(ssz::ButtonUI::eBtnType::Selected);
+			mBtnComp->SetBtnType(ssz::ButtonUI::eBtnType::Togle);
 
 			// Set default Size
 			GetComponent<Transform>()->SetScale(Vector3(54, 18.f, 1.f));

@@ -57,8 +57,6 @@ namespace ssz
 			bPrevMouseOn = false;
 		}
 
-		ChangeBtnTex(mCurState);
-
 		if (mCurState == eBtnState::On && !bMouseOn)
 			SetBtnState(eBtnState::Idle);
 
@@ -73,6 +71,7 @@ namespace ssz
 			}
 		}
 
+		ChangeBtnTex(mCurState);
 	}
 
 	void ButtonUI::SetIdle()
@@ -111,7 +110,7 @@ namespace ssz
 	{
 		mBtnTex[(UINT)eBtnState::Down] = Texture;
 	}
-	
+
 	bool ButtonUI::ChangeBtnTex(eBtnState eState)
 	{
 		if (nullptr != mBtnTex[(UINT)eState])
@@ -133,7 +132,7 @@ namespace ssz
 	{
 		switch (mType)
 		{
-		case ssz::ButtonUI::eBtnType::Selected:
+		case ssz::ButtonUI::eBtnType::Togle:
 		{
 			if (SetTogle())
 			{
@@ -155,7 +154,7 @@ namespace ssz
 	{
 		switch (mType)
 		{
-		case ssz::ButtonUI::eBtnType::Selected:
+		case ssz::ButtonUI::eBtnType::Togle:
 			break;
 		case ssz::ButtonUI::eBtnType::Push:
 			mCurState = eBtnState::Idle;
@@ -167,7 +166,7 @@ namespace ssz
 	{
 		switch (mType)
 		{
-		case ssz::ButtonUI::eBtnType::Selected:
+		case ssz::ButtonUI::eBtnType::Togle:
 			break;
 		case ssz::ButtonUI::eBtnType::Push:
 			mCurState = eBtnState::Idle;
@@ -193,7 +192,7 @@ namespace ssz
 
 		switch (mType)
 		{
-		case ssz::ButtonUI::eBtnType::Selected:
+		case ssz::ButtonUI::eBtnType::Togle:
 			if (mCurState == eBtnState::Idle && !bLbtnDown)
 				mCurState = eBtnState::On;
 			break;

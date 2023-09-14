@@ -1,7 +1,7 @@
 #include "sszLogoSelectBtn.h"
 #include "CommonObjHeader.h"
 
-#include "sszArrangementScript.h"
+#include "sszSelectBtnUI.h"
 
 namespace ssz
 {
@@ -29,40 +29,24 @@ namespace ssz
 
 		AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", MtKey);
 
-		ButtonUI* Btn = AddComponent<ButtonUI>();
+		SelectBtnUI* Btn = AddComponent<SelectBtnUI>();
 		Btn->Initialize();
 
 		// 클릭하면 Selected로 변경
 		Btn->SetIdleTex(L"LogoBtn_Idle");
 		Btn->SetOnTex(L"LogoBtn_Idle_Csr");
-		Btn->SetDownTex(L"LogoBtn_Idle_Csr");
+		Btn->SetDownTex(L"LogoBtn_Sel");
+		Btn->SetSelTempTex(L"LogoBtn_Sel_Csr");
 
 		Transform* tr = GetComponent<Transform>();
 		tr->SetTransType(ssz::Transform::eTransType::PosAdd);
 
 		AddComponent<Collider2D>();
-		AddComponent<ArrangementScript>();
 	}
 
-	void LogoSelectBtn::MouseLbtnClicked()
+	void LogoSelectBtn::InitCheckSelected(UIObject** object)
 	{
-		ButtonUI* Btn = GetComponent<ButtonUI>();
-
-		if (bSelected)
-		{
-			Btn->SetIdleTex(L"LogoBtn_Idle");
-			Btn->SetOnTex(L"LogoBtn_Idle_Csr");
-			Btn->SetDownTex(L"LogoBtn_Idle_Csr");
-
-			bSelected = false;
-		}
-		else
-		{
-			Btn->SetIdleTex(L"LogoBtn_Sel");
-			Btn->SetOnTex(L"LogoBtn_Sel_Csr");
-			Btn->SetDownTex(L"LogoBtn_Sel_Csr");
-
-			bSelected = true;
-		}
+		SelectBtnUI* Btn = GetComponent<SelectBtnUI>();
+		Btn->InitCheckSelected(object);
 	}
 }

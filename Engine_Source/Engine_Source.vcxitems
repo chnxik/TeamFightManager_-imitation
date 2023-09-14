@@ -50,6 +50,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)sszScene.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sszSceneManager.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sszScript.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszSelectBtnUI.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sszShader.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sszStructuredBuffer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sszText.h" />
@@ -97,6 +98,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)sszScene.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sszSceneManager.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sszScript.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszSelectBtnUI.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sszShader.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sszStructuredBuffer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)sszText.cpp" />

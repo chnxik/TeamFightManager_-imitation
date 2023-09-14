@@ -1,5 +1,6 @@
 #pragma once
 #include "sszGameObject.h"
+#include "GameEnums.h"
 
 namespace ssz
 {

@@ -172,6 +172,9 @@
     <Filter Include="GameObject\Component\Rigidbody">
       <UniqueIdentifier>{ee0891c8-53f2-49df-a3ea-a5c5612f17db}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GameObject\Component\UI\Button\SelectBtn">
+      <UniqueIdentifier>{0828f7fc-ba19-45e9-9a38-bc6a77ed4681}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h">
@@ -324,6 +327,9 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)sszRigidbody.h">
       <Filter>GameObject\Component\Rigidbody</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)sszSelectBtnUI.h">
+      <Filter>GameObject\Component\UI\Button\SelectBtn</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)sszMath.cpp">
@@ -460,6 +466,9 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)sszRigidbody.cpp">
       <Filter>GameObject\Component\Rigidbody</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)sszSelectBtnUI.cpp">
+      <Filter>GameObject\Component\UI\Button\SelectBtn</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

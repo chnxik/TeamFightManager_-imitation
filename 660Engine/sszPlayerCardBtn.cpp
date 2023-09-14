@@ -43,7 +43,7 @@ namespace ssz
 			mBtnComp = AddComponent<ButtonUI>();
 
 			mBtnComp->Initialize();
-			mBtnComp->SetBtnType(ssz::ButtonUI::eBtnType::Selected);
+			mBtnComp->SetBtnType(ssz::ButtonUI::eBtnType::Togle);
 
 			SetRed();
 

@@ -5,7 +5,7 @@ namespace ssz
     enum class eSlotState
     {
         Idle,
-        Selected,
+        Togle,
         End
     };
 

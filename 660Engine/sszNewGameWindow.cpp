@@ -11,6 +11,7 @@ namespace ssz
 {
 	NewGameWindow::NewGameWindow(const std::wstring& key)
 		: UIObject(key)
+		, mSelectedLogo(nullptr)
 	{
 		
 	}
@@ -88,9 +89,21 @@ namespace ssz
 			TypeUI* TeamNameType = InstantiateUI<TypeUI>(Vector3(-280.f, 125.f, posz), Vector3(500.f, 100.f, 1.f), this, L"TN_TypeUI");
 			TypeUI* CoachType = InstantiateUI<TypeUI>(Vector3(390.f, 125.f, posz), Vector3(500.f, 100.f, 1.f), this, L"CN_TypeUI");
 
-			// 로고 선택 버튼
-			LogoSelectBtn* TeamLogoSlot = InstantiateUI<LogoSelectBtn>(Vector3(-585.f, 125.f, posz), Vector3(100.f, 100.f, 1.f), this, L"SelectedTeamLogo");
+			// 로고 선택 버튼 1 ~ 10
+			Vector3 LogoBtnPos(tr->GetPosition());
 
+			for (int i = 1; i <= 2; ++i)
+			{
+				for (int j = 1; j <= 5; ++j)
+				{
+					wstring BtnName = L"TeamLogoBtn_" + std::to_wstring((i * 5) + j);
+					LogoBtnPos.x = -525.f + ((j - 1) * 110.f);
+					LogoBtnPos.y = -97.f - ((i - 1) * 110.f);
+					
+					LogoSelectBtn* TeamLogoSlot = InstantiateUI<LogoSelectBtn>(LogoBtnPos, Vector3(100.f, 100.f, 1.f), this, BtnName);
+					TeamLogoSlot->InitCheckSelected(&mSelectedLogo);
+				}
+			}
 		}
 #pragma endregion
 	}

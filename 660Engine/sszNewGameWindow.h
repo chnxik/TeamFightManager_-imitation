@@ -13,5 +13,6 @@ namespace ssz
         virtual void Initialize() override;
 
     private:
+        UIObject* mSelectedLogo;
     };
 }

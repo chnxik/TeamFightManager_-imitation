@@ -11,7 +11,8 @@ namespace ssz
         virtual ~LogoSelectBtn();
 
         virtual void Initialize() override;
-        virtual void MouseLbtnClicked() override;
+
+        void InitCheckSelected(UIObject** object);
 
     private:
         GameObject* mTeamIcon;

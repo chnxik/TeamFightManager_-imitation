@@ -38,7 +38,7 @@ namespace ssz
 			mBtnComp->SetIdleTex(L"MainMenuBtnIdleTex");
 			mBtnComp->SetOnTex(L"MainMenuBtnOnTex");
 			mBtnComp->SetDownTex(L"MainMenuBtnDownTex");
-			mBtnComp->SetBtnType(ssz::ButtonUI::eBtnType::Selected);
+			mBtnComp->SetBtnType(ssz::ButtonUI::eBtnType::Togle);
 
 			// Set default Size
 			GetComponent<Transform>()->SetScale(Vector3(230, 62.f, 1.f));

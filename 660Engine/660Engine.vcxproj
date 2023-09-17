@@ -251,6 +251,7 @@ xcopy /R /Y "$(SolutionDir)dll\FW1FontWrapperL.dll" "$(SolutionDir)x64\Debug"</
     <ClInclude Include="sszSpawnEfc.h" />
     <ClInclude Include="sszStatIcon.h" />
     <ClInclude Include="sszTeam.h" />
+    <ClInclude Include="sszTeamIcon.h" />
     <ClInclude Include="sszTeamList.h" />
     <ClInclude Include="sszTestEditBox.h" />
     <ClInclude Include="sszTestScene.h" />
@@ -308,6 +309,7 @@ xcopy /R /Y "$(SolutionDir)dll\FW1FontWrapperL.dll" "$(SolutionDir)x64\Debug"</
     <ClCompile Include="sszSpawnEfc.cpp" />
     <ClCompile Include="sszStatIcon.cpp" />
     <ClCompile Include="sszTeam.cpp" />
+    <ClCompile Include="sszTeamIcon.cpp" />
     <ClCompile Include="sszTeamList.cpp" />
     <ClCompile Include="sszTestEditBox.cpp" />
     <ClCompile Include="sszTestScene.cpp" />

@@ -5,7 +5,7 @@
 
 typedef void(*voidFunc)(void);
 typedef void(ssz::Entity::* DELEGATE)(void); // Entity를 상속받은 모든 클래스의 함수를 호출할 수 있는 함수포인터.
-typedef void(ssz::Entity::* DELEGATEW)(const std::wstring&);
+typedef void(ssz::Entity::* DELEGATEW)(std::wstring);
 
 namespace ssz
 {
@@ -35,7 +35,7 @@ namespace ssz
 
 		void SetvoidFunc(voidFunc pCallBack) { mFunc = pCallBack; }
 		void SetDelegate(Entity* Inst, DELEGATE Func) { mInst = Inst; mDelegateFunc = Func; }
-		void SetDelegateW(Entity* Inst, DELEGATEW Func, const std::wstring& key) 
+		void SetDelegateW(Entity* Inst, DELEGATEW Func,const std::wstring& key) 
 		{
 			mInst = Inst; 
 			mDelegateWFunc = Func; 

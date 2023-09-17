@@ -71,6 +71,8 @@ namespace ssz
 			}
 		}
 
+		
+
 		ChangeBtnTex(mCurState);
 	}
 

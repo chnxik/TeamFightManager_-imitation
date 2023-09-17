@@ -164,6 +164,7 @@
     <ClInclude Include="sszKBDIcon.h">
       <Filter>Contents\UI\Icon\KBDIcon</Filter>
     </ClInclude>
+    <ClInclude Include="sszTeamIcon.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="660Engine.cpp" />
@@ -326,6 +327,7 @@
     <ClCompile Include="sszTestEditBox.cpp">
       <Filter>Contents\Object\Text</Filter>
     </ClCompile>
+    <ClCompile Include="sszTeamIcon.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Contents">

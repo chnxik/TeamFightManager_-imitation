@@ -3,6 +3,7 @@
 #include "CommonObjHeader.h"
 
 #include "sszSelectBtnUI.h"
+#include "sszTeamIcon.h"
 
 namespace ssz
 {
@@ -51,8 +52,12 @@ namespace ssz
 		Btn->InitCheckSelected(object);
 	}
 
-	void LogoSelectBtn::InitTeamLogo(wstring Texkey, UINT idx, Vector3 Pos, UIObject* parent)
+	void LogoSelectBtn::InitTeamLogo(wstring Texkey, UINT idx, Vector3 Pos, UIObject* parent, TeamIcon* Delegate)
 	{
+		mTexkey = Texkey;
+		
+		GetComponent<SelectBtnUI>()->SetDelegateW(Delegate, (DELEGATEW)&TeamIcon::ChangeLogo, Texkey);
+
 		Pos.z -= 0.00001f;
 		
 		wstring objname = L"TeamLogoObj_" + std::to_wstring(idx);

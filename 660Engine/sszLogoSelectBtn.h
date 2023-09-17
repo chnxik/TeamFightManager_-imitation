@@ -3,6 +3,8 @@
 
 namespace ssz
 {
+    class TeamIcon;
+
     class LogoSelectBtn :
         public UIObject
     {
@@ -13,10 +15,14 @@ namespace ssz
         virtual void Initialize() override;
 
         void InitCheckSelected(UIObject** object);
-        void InitTeamLogo(wstring Texkey, UINT idx, Vector3 Pos, UIObject* parent);
+        void InitTeamLogo(wstring Texkey, UINT idx, Vector3 Pos, UIObject* parent, TeamIcon* Delegate);
+
+        const std::wstring& GetTexkey() { return mTexkey; }
 
     private:
         UIObject*   mTeamIcon;
         bool        bSelected;
+
+        wstring mTexkey;
     };
 }

@@ -40,7 +40,7 @@ namespace ssz::graphics
     }
     void Material::SetTexture(const std::wstring texturekey)
     {
-        ssz::Resources::Find<Texture>(texturekey);
+        mTexture = ssz::Resources::Find<Texture>(texturekey);
         assert(mShader != nullptr);
     }
     void Material::SetMaterial(const std::wstring shaderkey, std::shared_ptr<Texture> texture, eRenderingMode renderingmode)

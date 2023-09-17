@@ -7,6 +7,8 @@
 #include "sszTypeUI.h"
 #include "sszLogoSelectBtn.h"
 #include "sszButtonUI.h"
+#include "sszTeamIcon.h"
+#include "sszSelectBtnUI.h"
 
 namespace ssz
 {
@@ -90,6 +92,8 @@ namespace ssz
 			TypeUI* TeamNameType = InstantiateUI<TypeUI>(Vector3(-280.f, 125.f, posz), Vector3(500.f, 100.f, 1.f), this, L"TN_TypeUI");
 			TypeUI* CoachType = InstantiateUI<TypeUI>(Vector3(390.f, 125.f, posz), Vector3(500.f, 100.f, 1.f), this, L"CN_TypeUI");
 
+			TeamIcon* NewTeamIcon = InstantiateUI<TeamIcon>(Vector3(-585.f, 125.f, posz - 0.0001f), Vector3(100.f, 100.f, 1.0f), this, L"SelectedLogo");
+			
 			// 로고 선택 버튼 1 ~ 10
 			Vector3 LogoBtnPos(tr->GetPosition());
 
@@ -98,7 +102,7 @@ namespace ssz
 			Resources::Load<Texture>(L"TeamLogoTex_2", L"..\\Resources\\useResource\\TeamLogo\\anchors.png");
 			Resources::Load<Texture>(L"TeamLogoTex_3", L"..\\Resources\\useResource\\TeamLogo\\giraffes.png");
 			Resources::Load<Texture>(L"TeamLogoTex_4", L"..\\Resources\\useResource\\TeamLogo\\goats.png");
-			Resources::Load<Texture>(L"TeamLogoTex_5", L"..\\Resources\\useResource\\TeamLogo\\gorllas.png");
+			Resources::Load<Texture>(L"TeamLogoTex_5", L"..\\Resources\\useResource\\TeamLogo\\marlins.png");
 			Resources::Load<Texture>(L"TeamLogoTex_6", L"..\\Resources\\useResource\\TeamLogo\\lions.png");
 			Resources::Load<Texture>(L"TeamLogoTex_7", L"..\\Resources\\useResource\\TeamLogo\\squids.png");
 			Resources::Load<Texture>(L"TeamLogoTex_8", L"..\\Resources\\useResource\\TeamLogo\\tigers.png");
@@ -118,7 +122,7 @@ namespace ssz
 					TeamLogoSlot->InitCheckSelected(&mSelectedLogo);
 
 					wstring Texkey = L"TeamLogoTex_" + std::to_wstring(idx);
-					TeamLogoSlot->InitTeamLogo(Texkey, idx, LogoBtnPos, this);
+					TeamLogoSlot->InitTeamLogo(Texkey, idx, LogoBtnPos, this, NewTeamIcon);
 				}
 			}
 		}

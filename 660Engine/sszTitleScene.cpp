@@ -13,6 +13,7 @@
 
 // Btn
 #include "sszTitleMenuBtn.h"
+#include "sszButtonUI.h"
 
 // Icon
 #include "sszKBDIcon.h"

@@ -155,8 +155,8 @@
     <ClInclude Include="sszTypeUI.h">
       <Filter>Contents\UI\TypeUI</Filter>
     </ClInclude>
-    <ClInclude Include="sszLogoSelectBtn.h">
-      <Filter>Contents\UI\Button\LogoSelectBtn</Filter>
+    <ClInclude Include="sszSelectBtn.h">
+      <Filter>Contents\UI\Button\SelectBtn</Filter>
     </ClInclude>
     <ClInclude Include="sszTestEditBox.h">
       <Filter>Contents\Object\Text</Filter>
@@ -164,7 +164,12 @@
     <ClInclude Include="sszKBDIcon.h">
       <Filter>Contents\UI\Icon\KBDIcon</Filter>
     </ClInclude>
-    <ClInclude Include="sszTeamIcon.h" />
+    <ClInclude Include="sszAvatarSlot.h">
+      <Filter>Contents\UI\Slot\AvatarSlot</Filter>
+    </ClInclude>
+    <ClInclude Include="sszTeamIconSlot.h">
+      <Filter>Contents\UI\Slot\TeamIconSlot</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="660Engine.cpp" />
@@ -321,13 +326,18 @@
     <ClCompile Include="sszTypeUI.cpp">
       <Filter>Contents\UI\TypeUI</Filter>
     </ClCompile>
-    <ClCompile Include="sszLogoSelectBtn.cpp">
-      <Filter>Contents\UI\Button\LogoSelectBtn</Filter>
+    <ClCompile Include="sszSelectBtn.cpp">
+      <Filter>Contents\UI\Button\SelectBtn</Filter>
     </ClCompile>
     <ClCompile Include="sszTestEditBox.cpp">
       <Filter>Contents\Object\Text</Filter>
     </ClCompile>
-    <ClCompile Include="sszTeamIcon.cpp" />
+    <ClCompile Include="sszAvatarSlot.cpp">
+      <Filter>Contents\UI\Slot\AvatarSlot</Filter>
+    </ClCompile>
+    <ClCompile Include="sszTeamIconSlot.cpp">
+      <Filter>Contents\UI\Slot\TeamIconSlot</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Contents">
@@ -537,11 +547,17 @@
     <Filter Include="Contents\UI\TypeUI">
       <UniqueIdentifier>{d5f07a6d-d961-435b-9d84-9080a4e1eea7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Contents\UI\Button\LogoSelectBtn">
-      <UniqueIdentifier>{fc83ba9f-c8ea-4f9a-9eed-dcc8b894d3a8}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Contents\Object\Text">
       <UniqueIdentifier>{bbca8ad6-4753-4dee-858c-a1c2a1f5baf0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\UI\Slot\TeamIconSlot">
+      <UniqueIdentifier>{34200438-a25c-4a02-986b-d21ccaf33cff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\UI\Slot\AvatarSlot">
+      <UniqueIdentifier>{79f47787-8cf1-4957-b710-61ea1db7cdae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\UI\Button\SelectBtn">
+      <UniqueIdentifier>{fc83ba9f-c8ea-4f9a-9eed-dcc8b894d3a8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

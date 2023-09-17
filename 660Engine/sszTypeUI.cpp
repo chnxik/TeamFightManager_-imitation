@@ -13,6 +13,7 @@ namespace ssz
 		: UIObject(key)
 		, bTypeMode(false)
 		, bPrevSelected(false)
+		, istrLen(0)
 	{
 	}
 
@@ -44,6 +45,8 @@ namespace ssz
 		Transform* tr = GetComponent<Transform>();
 		tr->SetTransType(ssz::Transform::eTransType::PosAdd);
 		float FontSize = tr->GetScale().y / 2.f;
+		istrLen = (tr->GetScale().x / FontSize) - 1;
+
 		Vector3 OffsetPos = tr->GetScale();
 		OffsetPos.x = -(OffsetPos.x / 2.f) + 20.f;
 		OffsetPos.y = 0.f;
@@ -61,19 +64,23 @@ namespace ssz
 		ButtonUI* Btn =  GetComponent<ButtonUI>();
 		ButtonUI::eBtnState BtnState = Btn->GetBtnState();
 
+		Transform* tr = GetComponent<Transform>();
+		tr->SetTransType(ssz::Transform::eTransType::PosAdd);
+		float FontSize = tr->GetScale().y / 2.f;
+
 		if (BtnState == ButtonUI::eBtnState::Down)
 		{
 			// 최대 한글 10 글자
 
 			bPrevSelected = true;
-			g_strText[9] = 0;
+			g_strText[istrLen] = 0;
 
-			wstring str = g_strText;
-			str += g_strCombine;
+			mStr = g_strText;
+			mStr += g_strCombine;
 		
 			Text* tx = GetComponent<Text>();
 			
-			tx->SetString(str);
+			tx->SetString(mStr);
 
 			if (Input::GetKeyDown(eKeyCode::ENTER))
 			{

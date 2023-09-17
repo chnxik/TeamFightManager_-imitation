@@ -19,6 +19,7 @@ namespace ssz
 
         virtual void MouseLbtnDown() override;
         virtual void MouseLbtnUp() override;
+        virtual void MosueLbtnClicked() {};
 
         void SwitchingSelectTex();
 

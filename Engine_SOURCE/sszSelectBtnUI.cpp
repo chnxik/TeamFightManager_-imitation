@@ -40,6 +40,18 @@ namespace ssz
 		
 		SwitchingSelectTex();
 		mCurState = eBtnState::On;
+
+		if (nullptr != mFunc)
+			mFunc();
+
+		if (mInst && mDelegateFunc)
+		{
+			(mInst->*mDelegateFunc)();
+		}
+		else if (mInst && mDelegateWFunc)
+		{
+			(mInst->*mDelegateWFunc)(mDelegateKey);
+		}
 	}
 	
 	void SelectBtnUI::MouseLbtnUp()

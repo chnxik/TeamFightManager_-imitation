@@ -3,6 +3,8 @@
 
 namespace ssz
 {
+    class TypeUI;
+
     class NewGameWindow :
         public UIObject
     {
@@ -14,8 +16,9 @@ namespace ssz
 
     private:
         UIObject* mSelectedLogo;
+        UIObject* mSelectedHair;
 
-        std::wstring mTeamName;
-        std::wstring mCoachName;
+        TypeUI* mTeamNameType;
+        TypeUI* mCoachType;
     };
 }

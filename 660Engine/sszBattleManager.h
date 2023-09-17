@@ -1,8 +1,10 @@
 #pragma once
+#include "sszEngine.h"
 
 namespace ssz
 {
 	class SpawnEfc;
+	class Champ;
 
 	class BattleManager
 	{

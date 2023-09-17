@@ -5,20 +5,21 @@
 namespace ssz
 {
 	Team::Team()
-		: mTeamName{}
 	{
 	}
 	
 	Team::~Team()
 	{
 	}
-	
-	// ∆¿ ¿Ã∏ß
-	void Team::SetTeamTex(const std::wstring& LogoTexKey)
+
+	void Team::InitTeamInfo(const std::wstring& TeamName, std::shared_ptr<Texture> TeamLogo)
 	{
+		mTeamName = TeamName;
+		mTeamLogo = TeamLogo;
 	}
 
-	void Team::SetTeamName(const std::wstring& name)
+	std::shared_ptr<Texture> Team::GetTeamLogo()
 	{
+		return std::shared_ptr<Texture>();
 	}
 }

@@ -22,6 +22,7 @@ namespace ssz::graphics
 		void SetTexture(const std::wstring texturekey);
 		void SetMaterial(std::shared_ptr<Shader> shader, std::shared_ptr<Texture> texture) { mShader = shader; mTexture = texture;
 		}
+		void SetMaterial(const std::wstring shaderkey, std::shared_ptr<Texture> texture, eRenderingMode renderingmode);
 		void SetMaterial(const std::wstring shaderkey, const std::wstring texturekey, eRenderingMode renderingmode);
 		void SetRenderingMode(eRenderingMode mode) { mMode = mode; }
 		eRenderingMode GetRenderingMode() { return mMode; }

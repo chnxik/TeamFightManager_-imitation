@@ -1,6 +1,8 @@
 #include "sszTypeUI.h"
 #include "CommonObjHeader.h"
 
+#include "sszButtonUI.h"
+
 extern wchar_t g_strText[_MAX_FNAME];        // 텍스트를 저장하기 위한 변수
 extern wchar_t g_strCombine[10];             // 조합 중인 문자
 extern wchar_t g_strSpecial[_MAX_FNAME];     // 특수 문자를 위한 변수namespace ssz

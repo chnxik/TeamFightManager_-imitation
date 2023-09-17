@@ -75,9 +75,6 @@ namespace ssz
 		
 		// Player Data
 
-	public:
-		void SetPlayerTeamName(const std::wstring& name);
-
 	private:
 		static Team* gPlayerTeam;
 		// ÄÚÄ¡

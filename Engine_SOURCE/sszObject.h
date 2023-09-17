@@ -309,6 +309,20 @@ namespace ssz::object
 			return NewMaterial;
 		}
 
+		static __forceinline std::shared_ptr<Material> LoadMaterial(const std::wstring& MaterialKey, const std::wstring& ShaderKey, std::shared_ptr<Texture> Texture, graphics::eRenderingMode type)
+		{
+			std::shared_ptr<Material> NewMaterial = Resources::Find<Material>(MaterialKey);
+
+			if (nullptr == NewMaterial)
+			{
+				NewMaterial = std::make_shared<Material>();
+				NewMaterial->SetMaterial(ShaderKey, Texture, type);
+				Resources::Insert(MaterialKey, NewMaterial);
+			}
+
+			return NewMaterial;
+		}
+
 		static __forceinline std::shared_ptr<Material> LoadMaterial(const std::wstring& MaterialKey, const std::wstring& ShaderKey, graphics::eRenderingMode type)
 		{
 			std::shared_ptr<Material> NewMaterial = Resources::Find<Material>(MaterialKey);

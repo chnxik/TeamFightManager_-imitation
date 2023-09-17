@@ -1,3 +1,4 @@
+#pragma once
 #include "sszLogoSelectBtn.h"
 #include "CommonObjHeader.h"
 
@@ -48,5 +49,22 @@ namespace ssz
 	{
 		SelectBtnUI* Btn = GetComponent<SelectBtnUI>();
 		Btn->InitCheckSelected(object);
+	}
+
+	void LogoSelectBtn::InitTeamLogo(wstring Texkey, UINT idx, Vector3 Pos, UIObject* parent)
+	{
+		Pos.z -= 0.00001f;
+		
+		wstring objname = L"TeamLogoObj_" + std::to_wstring(idx);
+		mTeamIcon = InstantiateUI<UIObject>(Pos, Vector3(100.f, 100.f, 1.f), parent, objname);
+		
+		Transform* TeamIconTr = mTeamIcon->GetComponent<Transform>();
+		TeamIconTr->SetTransType(Transform::eTransType::PosAdd);
+		
+		std::wstring MtKey(objname + L"_Mt");
+		ssz::object::LoadMaterial(MtKey, L"SpriteShader", Texkey, eRenderingMode::Transparent);
+		
+		MeshRenderer* Mr = mTeamIcon->AddComponent<MeshRenderer>();
+		Mr->SetMeshRenderer(L"RectMesh", MtKey);
 	}
 }

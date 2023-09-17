@@ -47,7 +47,6 @@ using namespace ssz::object;
 
 // UI Component
 #include "sszUIComponent.h"
-#include "sszButtonUI.h"
 
 //Resources
 #include "sszResources.h"

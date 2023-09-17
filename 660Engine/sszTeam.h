@@ -9,12 +9,14 @@ namespace ssz
 		Team();
 		virtual ~Team();
 
-		void SetTeamTex(const std::wstring& LogoTexKey);
-		void SetTeamName(const std::wstring& name);
+		void InitTeamInfo(const std::wstring& TeamName, std::shared_ptr<Texture> TeamLogo);
+
+
+		std::shared_ptr<Texture>  GetTeamLogo();
 
 	private:
-		std::wstring mTeamLogoTexKey;	// 팀 로고
 		std::wstring mTeamName;					// 팀 이름
+		std::shared_ptr<Texture> mTeamLogo;		// 팀 아이콘
 		// 팀 전적
 		
 		// 팀별 챔피언 정보 (챔피언 리스트에서 받아온다)

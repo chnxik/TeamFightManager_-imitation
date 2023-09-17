@@ -1,6 +1,8 @@
 #include "sszDefaultBtn.h"
 #include "CommonObjHeader.h"
 
+#include "sszButtonUI.h"
+
 namespace ssz
 {
 	DefaultBtn::DefaultBtn(const std::wstring& Key)

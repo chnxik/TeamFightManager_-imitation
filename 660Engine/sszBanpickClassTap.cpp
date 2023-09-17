@@ -1,6 +1,8 @@
 #include "sszBanpickClassTap.h"
 #include "CommonObjHeader.h"
 
+#include "sszButtonUI.h"
+
 namespace ssz
 {
 	BanpickClassTap::BanpickClassTap(const std::wstring& Key)

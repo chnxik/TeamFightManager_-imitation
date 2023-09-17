@@ -91,7 +91,8 @@ namespace ssz
 
 	Team* TGM::GetTeam(const std::wstring& key)
 	{
-		return gTeamList->GetTeam(key);;
+		// return gTeamList->GetTeam(key);;
+		return nullptr;
 	}
 
 	Pilot* TGM::GetPilot(const std::wstring& key)
@@ -163,9 +164,5 @@ namespace ssz
 		champ->GetComponent<Transform>()->SetPosition(Pos);
 
 		return champ;
-	}
-	void TGM::SetPlayerTeamName(const std::wstring& name)
-	{
-		gPlayerTeam->SetTeamName(name);
 	}
 }

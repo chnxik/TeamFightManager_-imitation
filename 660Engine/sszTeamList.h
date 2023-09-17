@@ -3,6 +3,8 @@
 
 namespace ssz
 {
+	class Team;
+
 	class TeamList
 	{
 	public:
@@ -11,9 +13,7 @@ namespace ssz
 
 		void Initialize();
 
-		Team* GetTeam(const std::wstring& key);
-
 	private:
-		std::map<std::wstring, Team*> mTeamMap;
+		Team* mTeamList[4];
 	};
 }

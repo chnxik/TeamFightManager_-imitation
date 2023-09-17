@@ -14,5 +14,8 @@ namespace ssz
 
     private:
         UIObject* mSelectedLogo;
+
+        std::wstring mTeamName;
+        std::wstring mCoachName;
     };
 }

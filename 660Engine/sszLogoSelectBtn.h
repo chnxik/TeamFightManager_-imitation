@@ -13,9 +13,10 @@ namespace ssz
         virtual void Initialize() override;
 
         void InitCheckSelected(UIObject** object);
+        void InitTeamLogo(wstring Texkey, UINT idx, Vector3 Pos, UIObject* parent);
 
     private:
-        GameObject* mTeamIcon;
+        UIObject*   mTeamIcon;
         bool        bSelected;
     };
 }

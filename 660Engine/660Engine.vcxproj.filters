@@ -152,9 +152,6 @@
     <ClInclude Include="sszTitleMenuBtn.h">
       <Filter>Contents\UI\Button\TitleMenuBtn</Filter>
     </ClInclude>
-    <ClInclude Include="sszKBDIcon.h">
-      <Filter>Contents\UI\Icon</Filter>
-    </ClInclude>
     <ClInclude Include="sszTypeUI.h">
       <Filter>Contents\UI\TypeUI</Filter>
     </ClInclude>
@@ -163,6 +160,9 @@
     </ClInclude>
     <ClInclude Include="sszTestEditBox.h">
       <Filter>Contents\Object\Text</Filter>
+    </ClInclude>
+    <ClInclude Include="sszKBDIcon.h">
+      <Filter>Contents\UI\Icon\KBDIcon</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -1,6 +1,8 @@
 #include "sszTitleMenuBtn.h"
 #include "CommonObjHeader.h"
 
+#include "sszButtonUI.h"
+
 namespace ssz
 {
 	TitleMenuBtn::TitleMenuBtn(const std::wstring& Key)

@@ -43,6 +43,14 @@ namespace ssz::graphics
         ssz::Resources::Find<Texture>(texturekey);
         assert(mShader != nullptr);
     }
+    void Material::SetMaterial(const std::wstring shaderkey, std::shared_ptr<Texture> texture, eRenderingMode renderingmode)
+    {
+        mShader = ssz::Resources::Find<Shader>(shaderkey);
+        assert(mShader != nullptr);
+
+        mTexture = texture;
+        mMode = renderingmode;
+    }
     void Material::SetMaterial(const std::wstring shaderkey, const std::wstring texturekey, eRenderingMode renderingmode)
     {
         mShader = ssz::Resources::Find<Shader>(shaderkey);

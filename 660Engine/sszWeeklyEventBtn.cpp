@@ -1,6 +1,8 @@
 #include "sszWeeklyEventBtn.h"
 #include "CommonObjHeader.h"
 
+#include "sszButtonUI.h"
+
 namespace ssz
 {
 	WeeklyEventBtn::WeeklyEventBtn(const std::wstring& Key)

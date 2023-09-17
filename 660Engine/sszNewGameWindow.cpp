@@ -89,8 +89,8 @@ namespace ssz
 			// 팀이름 , 코치이름 입력 버튼
 
 			float posz = tr->GetPosition().z;
-			TypeUI* TeamNameType = InstantiateUI<TypeUI>(Vector3(-280.f, 125.f, posz), Vector3(500.f, 100.f, 1.f), this, L"TN_TypeUI");
-			TypeUI* CoachType = InstantiateUI<TypeUI>(Vector3(390.f, 125.f, posz), Vector3(500.f, 100.f, 1.f), this, L"CN_TypeUI");
+			TypeUI* TeamNameType = InstantiateUI<TypeUI>(Vector3(-280.f, 125.f, posz), Vector3(500.f, 75.f, 1.f), this, L"TN_TypeUI");
+			TypeUI* CoachType = InstantiateUI<TypeUI>(Vector3(390.f, 125.f, posz), Vector3(500.f, 75.f, 1.f), this, L"CN_TypeUI");
 
 			TeamIcon* NewTeamIcon = InstantiateUI<TeamIcon>(Vector3(-585.f, 125.f, posz - 0.0001f), Vector3(100.f, 100.f, 1.0f), this, L"SelectedLogo");
 			

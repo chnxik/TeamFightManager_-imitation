@@ -221,6 +221,7 @@ xcopy /R /Y "$(SolutionDir)dll\FW1FontWrapperL.dll" "$(SolutionDir)x64\Debug"</
     <ClInclude Include="sszChamp.h" />
     <ClInclude Include="sszChampList.h" />
     <ClInclude Include="sszChamp_Script.h" />
+    <ClInclude Include="sszCloudObj.h" />
     <ClInclude Include="sszColObj.h" />
     <ClInclude Include="sszCursor.h" />
     <ClInclude Include="sszCursorScript.h" />
@@ -279,6 +280,7 @@ xcopy /R /Y "$(SolutionDir)dll\FW1FontWrapperL.dll" "$(SolutionDir)x64\Debug"</
     <ClCompile Include="sszChamp.cpp" />
     <ClCompile Include="sszChampList.cpp" />
     <ClCompile Include="sszChamp_Script.cpp" />
+    <ClCompile Include="sszCloudObj.cpp" />
     <ClCompile Include="sszColObj.cpp" />
     <ClCompile Include="sszCommonBT.cpp" />
     <ClCompile Include="sszCursor.cpp" />

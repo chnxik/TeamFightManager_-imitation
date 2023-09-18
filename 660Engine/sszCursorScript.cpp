@@ -60,6 +60,12 @@ namespace ssz
 			// Get Mouse Pos for DX
 			Vector3 Pos = Input::GetMousePos4DX();
 
+			if (Input::GetKeyDown(eKeyCode::RBUTTON))
+			{
+				int a = 0;
+				Pos;
+			}
+
 			// Cursor Size º¸Á¤
 			Pos.x += CursorSize.x;
 			Pos.y -= CursorSize.y;

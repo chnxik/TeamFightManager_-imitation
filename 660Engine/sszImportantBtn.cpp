@@ -1,6 +1,8 @@
 #include "sszImportantBtn.h"
 #include "CommonObjHeader.h"
 
+#include "sszButtonUI.h"
+
 namespace ssz
 {
 	ImportantBtn::ImportantBtn(const std::wstring& Key)

@@ -173,6 +173,9 @@
     <ClInclude Include="sszMainLobbyScene.h">
       <Filter>Contents\Scene\3. MainLobby</Filter>
     </ClInclude>
+    <ClInclude Include="sszCloudObj.h">
+      <Filter>Contents\Object\BackGround\BackGround\CloudObj</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="660Engine.cpp" />
@@ -343,6 +346,9 @@
     </ClCompile>
     <ClCompile Include="sszMainLobbyScene.cpp">
       <Filter>Contents\Scene\3. MainLobby</Filter>
+    </ClCompile>
+    <ClCompile Include="sszCloudObj.cpp">
+      <Filter>Contents\Object\BackGround\BackGround\CloudObj</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -564,6 +570,9 @@
     </Filter>
     <Filter Include="Contents\UI\Button\SelectBtn">
       <UniqueIdentifier>{fc83ba9f-c8ea-4f9a-9eed-dcc8b894d3a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\BackGround\BackGround\CloudObj">
+      <UniqueIdentifier>{accc1ceb-0390-418e-bf3f-cc2ab5a85f4c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

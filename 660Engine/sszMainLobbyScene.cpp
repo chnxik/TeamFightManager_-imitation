@@ -9,6 +9,8 @@
 #include "sszProceedBtn.h"
 #include "sszWeeklyEventBtn.h"
 
+#include "sszCloudObj.h"
+
 namespace ssz
 {
 	using namespace object;
@@ -16,6 +18,7 @@ namespace ssz
 	MainLobbyScene::MainLobbyScene()
 		: BgSky(nullptr)
 		, mLobbyheader(nullptr)
+		, mCloud{}
 	{
 	}
 
@@ -56,6 +59,13 @@ namespace ssz
 				GameObject* Bg_House = Instantiate<GameObject>(Vector3(0.0f, -28.f, 1.014f), Vector3(668.f, 512.f, 1.f), eLayerType::BackGroundObj);
 				Bg_House->SetName(L"Bg_House");
 				Bg_House->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"Bg_House_Mt");
+
+				int idx = 0;
+				for (CloudObj* obj : mCloud)
+				{
+					obj = Instantiate<CloudObj>(Vector3(0.0f, 0.0f, 1.0145f), Vector3(381.f, 117, 1.f), eLayerType::BackGroundObj);
+					obj->SetMt(idx++);
+				}
 			}
 #pragma endregion
 #pragma region UI
@@ -124,14 +134,32 @@ namespace ssz
 			{
 			case 0:
 				BgSky->GetComponent<MeshRenderer>()->GetMaterial()->SetTexture (Resources::Find<Texture>(L"SkysunsetBgTex"));
+				
+				for (CloudObj* obj : mCloud)
+				{
+					obj->SetDayTime(CloudObj::eDayTime::Sunset);
+				}
+				
 				skyBg++;
 				break;
 			case 1:
 				BgSky->GetComponent<MeshRenderer>()->GetMaterial()->SetTexture(Resources::Find<Texture>(L"SkynightBgTex"));
+				
+				for (CloudObj* obj : mCloud)
+				{
+					obj->SetDayTime(CloudObj::eDayTime::Night);
+				}
+				
 				skyBg++;
 				break;
 			case 2:
 				BgSky->GetComponent<MeshRenderer>()->GetMaterial()->SetTexture(Resources::Find<Texture>(L"SkydayBgTex"));
+				
+				for (CloudObj* obj : mCloud)
+				{
+					obj->SetDayTime(CloudObj::eDayTime::Day);
+				}
+				
 				skyBg = 0;
 				break;
 			}

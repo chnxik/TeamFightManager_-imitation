@@ -82,6 +82,18 @@ namespace ssz
 					LobbyMenuBtn* LeagueMenuBtn = InstantiateUI<LobbyMenuBtn>(MainMenuBtnPos[2], eLayerType::UI, L"LeagueMenuBtn");
 					LobbyMenuBtn* GameMenu = InstantiateUI<LobbyMenuBtn>(MainMenuBtnPos[3], eLayerType::UI, L"GameMenu");
 					LobbyMenuBtn* SystemMenu = InstantiateUI<LobbyMenuBtn>(MainMenuBtnPos[4], eLayerType::UI, L"SystemMenu");
+
+					Resources::Load<Texture>(L"TeamManageMenuTex", L"..\\Resources\\useResource\\Mainlobby\\UI\\icon\\main_button_icon_0.png");
+					Resources::Load<Texture>(L"OperateMenuTex", L"..\\Resources\\useResource\\Mainlobby\\UI\\icon\\main_button_icon_1.png");
+					Resources::Load<Texture>(L"LeagueMenuBtnTex", L"..\\Resources\\useResource\\Mainlobby\\UI\\icon\\main_button_icon_2.png");
+					Resources::Load<Texture>(L"GameMenuTex", L"..\\Resources\\useResource\\Mainlobby\\UI\\icon\\main_button_icon_3.png");
+					Resources::Load<Texture>(L"SystemMenuTex", L"..\\Resources\\useResource\\Mainlobby\\UI\\icon\\main_button_icon_4.png");
+
+					TeamManageMenu->InitBtnIcon(L"TeamManageMenuTex", L"팀 관리");
+					OperateMenu->InitBtnIcon(L"OperateMenuTex", L"운영");
+					LeagueMenuBtn->InitBtnIcon(L"LeagueMenuBtnTex", L"대회");
+					GameMenu->InitBtnIcon(L"GameMenuTex", L"게임");
+					SystemMenu->InitBtnIcon(L"SystemMenuTex", L"시스템");
 				
 					// Proceed Btn
 					ProceedBtn* ProceedMenu = InstantiateUI<ProceedBtn>(Vector3(735.f, -430.f, 1.002f), eLayerType::UI, L"ProceedMenu");

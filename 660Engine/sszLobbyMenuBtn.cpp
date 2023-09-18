@@ -8,6 +8,7 @@ namespace ssz
 	LobbyMenuBtn::LobbyMenuBtn(const std::wstring& Key)
 		: UIObject(Key)
 		, mBtnComp(nullptr)
+		, mBtnIcon(nullptr)
 	{
 		
 	}
@@ -33,6 +34,7 @@ namespace ssz
 		{
 			// Set MeshRenderer
 			AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", MtKey);
+			AddComponent<PanelUI>();
 
 			// Set ButtonUI
 			mBtnComp = AddComponent<ButtonUI>();
@@ -46,5 +48,27 @@ namespace ssz
 			GetComponent<Transform>()->SetScale(Vector3(230, 62.f, 1.f));
 		}
 #pragma endregion
+	}
+
+	void LobbyMenuBtn::InitBtnIcon(std::wstring Texkey, std::wstring MenuName)
+	{
+		Transform* tr = GetComponent<Transform>();
+		Vector3 Pos = tr->GetPosition();
+		Vector3 Scale = tr->GetScale();
+		wstring IconObjkey = GetName() + L"Icon";
+		mBtnIcon = ssz::object::InstantiateUI<UIObject>(Vector3(-Scale.x/2.f + 30.f, 0.f, Pos.z), Vector3(30.f, 30.f, 1.f), this, IconObjkey);
+		IconObjkey += L"_Mt";
+
+		LoadMaterial(IconObjkey, L"SpriteShader", Texkey, eRenderingMode::Transparent);
+		mBtnIcon->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", IconObjkey);
+		
+		Transform* BtnIconTr = mBtnIcon->GetComponent<Transform>();
+		BtnIconTr->SetTransType(ssz::Transform::eTransType::PosAdd);
+		Vector3 IconPos = BtnIconTr->GetPosition();
+		Vector3 IconScale = BtnIconTr->GetScale();
+
+		Text* mMenuName = AddComponent<Text>();
+		mMenuName->TextInit(L"Galmuri14", Vector3(IconPos.x + IconScale.x / 2.f + 5.f, 0.f, 0.f), 20.f, FONT_RGBA(255, 255, 255, 255), FW1_LEFT | FW1_VCENTER);
+		mMenuName->SetString(MenuName);
 	}
 }

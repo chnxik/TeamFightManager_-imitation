@@ -14,8 +14,12 @@ namespace ssz
 		virtual void Initialize() override;
 		virtual void LateUpdate() override;
 
+		void UpdateEnterScene();
+
 	private:
 		HeaderSlot* mDateSlot;
 		HeaderSlot* mGoldSlot;
+		Text* mTeamName;
+		Text* mTeamRecord;
 	};
 }

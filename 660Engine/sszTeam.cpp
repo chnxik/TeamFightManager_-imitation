@@ -12,14 +12,9 @@ namespace ssz
 	{
 	}
 
-	void Team::InitTeamInfo(const std::wstring& TeamName, std::shared_ptr<Texture> TeamLogo)
+	void Team::InitTeamInfo(std::wstring TeamName, std::shared_ptr<Texture> TeamIcon)
 	{
 		mTeamName = TeamName;
-		mTeamLogo = TeamLogo;
-	}
-
-	std::shared_ptr<Texture> Team::GetTeamLogo()
-	{
-		return std::shared_ptr<Texture>();
+		mTeamIcon= TeamIcon;
 	}
 }

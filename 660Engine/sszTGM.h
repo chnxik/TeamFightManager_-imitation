@@ -60,8 +60,7 @@ namespace ssz
 		static Champ* AddChampScene(eLayerType eType, const std::wstring& ChampKey,Vector3 Pos);
 
 		// 플레이어 정보
-		static void SetCoachName(wstring name) { mCoachName = name; }
-		static wstring GetCoachName(wstring name) { return mCoachName; }
+		static Team* GetPlayerTeam() { return gPlayerTeam; }
 
 		static UINT GetPlayerGold() { return mGold; }
 		static UINT GetYear() { return mYear; }
@@ -86,9 +85,6 @@ namespace ssz
 	private:
 		// Player Data
 		static Team* gPlayerTeam;
-		
-		// 코치
-		static wstring mCoachName;
 
 		// 날짜
 		static UINT mYear;

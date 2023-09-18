@@ -12,6 +12,8 @@
 #include "sszTeamIconSlot.h"
 #include "sszAvatarSlot.h"
 
+#include "sszTGM.h"
+
 namespace ssz
 {
 	NewGameWindow::NewGameWindow(const std::wstring& key)
@@ -181,6 +183,10 @@ namespace ssz
 
 	void NewGameWindow::GameStart()
 	{
+		wstring TeamName = mTeamNameType->Getstr();
+		std::shared_ptr TeamIcon = mSelectedLogo->GetComponent<MeshRenderer>()->GetMaterial()->GetTexture();
+		
+		TGM::GetPlayerTeam()->InitTeamInfo(TeamName, TeamIcon);
 		SceneManager::LoadScene(L"MainLobbyScene");
 	}
 

@@ -15,6 +15,7 @@ namespace ssz
 
 	MainLobbyScene::MainLobbyScene()
 		: BgSky(nullptr)
+		, mLobbyheader(nullptr)
 	{
 	}
 
@@ -60,7 +61,7 @@ namespace ssz
 #pragma region UI
 			{
 				// UI_Headerbar
-				LobbyHeader* LobbyheaderBg = InstantiateUI<LobbyHeader>(Vector3(0.0f, 484.5f, 1.015f), eLayerType::UI, L"LobbyheaderBg");
+				mLobbyheader = InstantiateUI<LobbyHeader>(Vector3(0.0f, 484.5f, 1.015f), eLayerType::UI, L"LobbyheaderBg");
 
 #pragma region ButtonUI
 				{
@@ -140,6 +141,8 @@ namespace ssz
 		AddGameObject(eLayerType::Camera, TGM::GetCamera());
 
 		CollisionManager::SetLayer(eLayerType::UI, eLayerType::Cursor, true);
+
+		mLobbyheader->UpdateEnterScene();
 	}
 	void MainLobbyScene::OnExit()
 	{

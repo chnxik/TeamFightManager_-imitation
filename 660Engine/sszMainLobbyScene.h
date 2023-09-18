@@ -4,6 +4,8 @@
 
 namespace ssz
 {
+	class LobbyHeader;
+
 	class MainLobbyScene : public Scene
 	{
 	public:
@@ -20,5 +22,6 @@ namespace ssz
 
 	private:
 		GameObject* BgSky;
+		LobbyHeader* mLobbyheader;
 	};
 }

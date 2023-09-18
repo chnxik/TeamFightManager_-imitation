@@ -26,7 +26,8 @@ namespace ssz
 		Vector3 pos = tr->GetPosition();
 		pos.z -= 0.0001f;
 
-		mTeamIcon = InstantiateUI<UIObject>(pos, Vector3(100.f, 100.f, 1.f), GetParentUI(), IconObjkey);
+		Vector3 Scale = tr->GetScale();
+		mTeamIcon = InstantiateUI<UIObject>(pos, Scale, GetParentUI(), IconObjkey);
 		mTeamIcon->GetComponent<Transform>()->SetTransType(Transform::eTransType::PosAdd);
 
 		ssz::object::LoadMaterial(L"TeamIconMt", L"SpriteShader", eRenderingMode::Transparent);
@@ -36,5 +37,10 @@ namespace ssz
 	void TeamIconSlot::ChangeIcon(std::wstring Texkey)
 	{
 		mTeamIcon->GetComponent<MeshRenderer>()->GetMaterial()->SetTexture(Texkey);
+	}
+
+	void TeamIconSlot::ChangeIcon(std::shared_ptr<Texture> Texture)
+	{
+		mTeamIcon->GetComponent<MeshRenderer>()->GetMaterial()->SetTexture(Texture);
 	}
 }

@@ -25,8 +25,6 @@ namespace ssz
 
 	// player
 	Team* TGM::gPlayerTeam = nullptr;
-
-	std::wstring TGM::mCoachName;
 	
 	UINT TGM::mYear = 2023;
 	UINT TGM::mMonth = 9;
@@ -66,6 +64,8 @@ namespace ssz
 		gChampList->Initialize();
 		gPilotList->Initialize();
 		gTeamList->Initialize();
+
+		gPlayerTeam = new Team();
 	}
 
 	void TGM::Release()
@@ -95,6 +95,8 @@ namespace ssz
 			delete gameObj;
 			gameObj = nullptr;
 		}
+
+		delete gPlayerTeam;
 	}
 
 	Team* TGM::GetTeam(const std::wstring& key)

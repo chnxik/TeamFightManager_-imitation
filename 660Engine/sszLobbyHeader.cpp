@@ -4,6 +4,8 @@
 #include "sszHeaderSlot.h"
 #include "sszTGM.h"
 
+#include "sszTeamIconSlot.h"
+
 
 namespace ssz
 {
@@ -11,6 +13,8 @@ namespace ssz
 		: UIObject(key)
 		, mDateSlot(nullptr)
 		, mGoldSlot(nullptr)
+		, mTeamName(nullptr)
+		, mTeamRecord(nullptr)
 	{
 		
 	}
@@ -65,6 +69,18 @@ namespace ssz
 			UIObject* GoldIcon = ssz::object::InstantiateUI<UIObject>(Vector3(-133.f, 0.f, 1.001f), Vector3(36.f, 36.f, 1.f), mGoldSlot, L"GoldIcon");
 			GoldIcon->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"GoldIconMt");
 			GoldIcon->GetComponent<Transform>()->SetTransType(ssz::Transform::eTransType::PosAdd);
+
+			Team* PlayerTeam = TGM::GetPlayerTeam();
+
+			TeamIconSlot* TeamIcon = ssz::object::InstantiateUI<TeamIconSlot>(Vector3(-880.f, 0.f, 1.002f), Vector3(90.f, 90.f, 1.f), this, L"TeamIconSlot");
+			TeamIcon->ChangeIcon(PlayerTeam->GetTeamIcon());
+
+			mTeamName = AddComponent<Text>();
+			mTeamName->TextInit(L"Galmuri14", Vector3(-825.f, 20.f, 0.f), 35.f, FONT_RGBA(255, 255, 255, 255), FW1_LEFT | FW1_VCENTER);
+			
+			mTeamRecord = AddComponent<Text>();
+			mTeamRecord->TextInit(L"Galmuri14", Vector3(-825.f, -20.f, 0.f), 20.f, FONT_RGBA(255, 255, 255, 255), FW1_LEFT | FW1_VCENTER);
+			mTeamRecord->SetString(L"1À§ 0½Â 0ÆÐ +0");
 		}
 #pragma endregion
 	}
@@ -81,5 +97,13 @@ namespace ssz
 
 		mDateSlot->GetComponent<Text>()->SetString(Date);
 		mGoldSlot->GetComponent<Text>()->SetString(playerGold);
+	}
+
+	void LobbyHeader::UpdateEnterScene()
+	{
+		Team* PlayerTeam = TGM::GetPlayerTeam();
+
+		mTeamName->SetString(PlayerTeam->GetTeamName());
+		mTeamRecord->SetString(L"1À§ 0½Â 0ÆÐ +0");
 	}
 }

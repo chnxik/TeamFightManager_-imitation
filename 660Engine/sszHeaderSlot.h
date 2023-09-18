@@ -11,8 +11,5 @@ namespace ssz
         virtual ~HeaderSlot();
 
         virtual void Initialize() override;
-
-    private:
-
     };
 }

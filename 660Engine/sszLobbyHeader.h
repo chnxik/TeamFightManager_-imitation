@@ -3,6 +3,8 @@
 
 namespace ssz
 {
+	class HeaderSlot;
+
 	class LobbyHeader : public UIObject
 	{
 	public:
@@ -10,6 +12,10 @@ namespace ssz
 		virtual ~LobbyHeader();
 
 		virtual void Initialize() override;
+		virtual void LateUpdate() override;
+
 	private:
+		HeaderSlot* mDateSlot;
+		HeaderSlot* mGoldSlot;
 	};
 }

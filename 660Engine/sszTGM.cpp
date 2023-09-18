@@ -25,7 +25,15 @@ namespace ssz
 
 	// player
 	Team* TGM::gPlayerTeam = nullptr;
-	UINT TGM::mGold = 0;
+
+	std::wstring TGM::mCoachName;
+	
+	UINT TGM::mYear = 2023;
+	UINT TGM::mMonth = 9;
+	UINT TGM::mWeek = 3;
+
+
+	UINT TGM::mGold = 200;
 
 	void TGM::Initialize()
 	{

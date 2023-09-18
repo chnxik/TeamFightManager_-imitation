@@ -2,12 +2,15 @@
 #include "CommonObjHeader.h"
 
 #include "sszHeaderSlot.h"
+#include "sszTGM.h"
 
 
 namespace ssz
 {
 	LobbyHeader::LobbyHeader(const std::wstring& key)
 		: UIObject(key)
+		, mDateSlot(nullptr)
+		, mGoldSlot(nullptr)
 	{
 		
 	}
@@ -49,18 +52,34 @@ namespace ssz
 #pragma endregion
 #pragma region SlotUI Load
 		{
-			HeaderSlot* DateSlot = ssz::object::InstantiateUI<HeaderSlot>(Vector3(416.f, 0.f, 1.002f), this, L"DateSlot");
-			DateSlot->AddComponent<PanelUI>();
-			HeaderSlot* GoldSlot = ssz::object::InstantiateUI<HeaderSlot>(Vector3(775.f, 0.f, 1.002f), this, L"GlodSlot");
-			GoldSlot->AddComponent<PanelUI>();
+			mDateSlot = ssz::object::InstantiateUI<HeaderSlot>(Vector3(416.f, 0.f, 1.002f), this, L"DateSlot");
+			mDateSlot->AddComponent<PanelUI>();
+			
+			mGoldSlot = ssz::object::InstantiateUI<HeaderSlot>(Vector3(775.f, 0.f, 1.002f), this, L"GlodSlot");
+			mGoldSlot->AddComponent<PanelUI>();
 
-			UIObject* CalendarIcon = ssz::object::InstantiateUI<UIObject>(Vector3(-133.f, 0.f, 1.001f), Vector3(36.f, 36.f, 1.f), DateSlot, L"CalendarIcon");
+			UIObject* CalendarIcon = ssz::object::InstantiateUI<UIObject>(Vector3(-133.f, 0.f, 1.001f), Vector3(36.f, 36.f, 1.f), mDateSlot, L"CalendarIcon");
 			CalendarIcon->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"CalendarIconMt");
 			CalendarIcon->GetComponent<Transform>()->SetTransType(ssz::Transform::eTransType::PosAdd);
-			UIObject* GoldIcon = ssz::object::InstantiateUI<UIObject>(Vector3(-133.f, 0.f, 1.001f), Vector3(36.f, 36.f, 1.f), GoldSlot, L"GoldIcon");
+
+			UIObject* GoldIcon = ssz::object::InstantiateUI<UIObject>(Vector3(-133.f, 0.f, 1.001f), Vector3(36.f, 36.f, 1.f), mGoldSlot, L"GoldIcon");
 			GoldIcon->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"GoldIconMt");
 			GoldIcon->GetComponent<Transform>()->SetTransType(ssz::Transform::eTransType::PosAdd);
 		}
 #pragma endregion
+	}
+
+	void LobbyHeader::LateUpdate()
+	{
+		UIObject::LateUpdate();
+
+		wstring playerGold = std::to_wstring(TGM::GetPlayerGold());
+		wstring Date =
+			std::to_wstring(TGM::GetYear()) + L"년 " +
+			std::to_wstring(TGM::GetMonth()) + L"월 " +
+			std::to_wstring(TGM::GetWeek()) + L"주차";
+
+		mDateSlot->GetComponent<Text>()->SetString(Date);
+		mGoldSlot->GetComponent<Text>()->SetString(playerGold);
 	}
 }

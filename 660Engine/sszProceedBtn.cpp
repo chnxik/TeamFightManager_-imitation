@@ -1,6 +1,8 @@
 #include "sszProceedBtn.h"
 #include "CommonObjHeader.h"
 
+#include "sszButtonUI.h"
+
 namespace ssz
 {
 	ProceedBtn::ProceedBtn(const std::wstring& Key)
@@ -54,9 +56,9 @@ namespace ssz
 			AddComponent<PanelUI>();
 
 			// Add MarkTex
-			float BtnPosz = GetComponent<Transform>()->GetPosition().y;
+			float BtnPosz = GetComponent<Transform>()->GetPosition().z;
 
-			ProceedBtnArrowMark = ssz::object::InstantiateUI<UIObject>(Vector3(mDefalutMarkPos_x, 0.f, BtnPosz - 0.0001f), Vector3(170.f, 120.f, 1.f), this, L"ProceedArrowMark");
+			ProceedBtnArrowMark = ssz::object::InstantiateUI<UIObject>(Vector3(mDefalutMarkPos_x, 0.f, BtnPosz - 0.0001f), Vector3(170.f, 120.f, 0.f), this, L"ProceedArrowMark");
 			ProceedBtnArrowMark->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"ProceedBtnArrowMarkMt");
 			ProceedBtnArrowMark->GetComponent<Transform>()->SetTransType(ssz::Transform::eTransType::PosAdd);
 		}

@@ -3,8 +3,8 @@
 #include "CommonHeader.h"
 
 // Scenes
- #include "sszTitleScene.h"
-// #include "sszMainLobbyScene.h"
+#include "sszTitleScene.h"
+#include "sszMainLobbyScene.h"
 // #include "sszStadiumScene.h"
 // #include "sszBanPickScene.h"
 // #include "sszIGStadiumScene.h"
@@ -18,7 +18,7 @@ namespace ssz
 		BattleManager::Initialize();
 
 		SceneManager::CreateScene<TitleScene>(L"TitleScene");
-		// SceneManager::CreateScene<TestScene>(L"TestScene");
+		SceneManager::CreateScene<MainLobbyScene>(L"MainLobbyScene");
 		
 		SceneManager::LoadScene(L"TitleScene");
 

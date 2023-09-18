@@ -3,6 +3,8 @@
 
 #include "sszLobbyHeader.h"
 
+#include "sszButtonUI.h"
+
 #include "sszLobbyMenuBtn.h"
 #include "sszProceedBtn.h"
 #include "sszWeeklyEventBtn.h"
@@ -94,18 +96,6 @@ namespace ssz
 			}
 #pragma endregion
 		}
-
-		// MouseCursor
-		{
-			AddGameObject(eLayerType::Cursor, GameManager::GetCursor());
-		}
-
-		// Main Camera
-		{
-			GameObject* camera = Instantiate<GameObject>(Vector3(0.0f, 0.0f, -10.f), eLayerType::Camera);
-			camera->SetName(L"MainCamera");
-			Camera* cameraComp = camera->AddComponent<Camera>();
-		}
 #pragma endregion
 	}
 
@@ -146,16 +136,14 @@ namespace ssz
 	}
 	void MainLobbyScene::OnEnter()
 	{
-		Cursor::RegistCursor(this);
-		MainCamera::RegistCamera(this);
+		AddGameObject(eLayerType::Cursor, TGM::GetCursor());
+		AddGameObject(eLayerType::Camera, TGM::GetCamera());
 
 		CollisionManager::SetLayer(eLayerType::UI, eLayerType::Cursor, true);
 	}
 	void MainLobbyScene::OnExit()
 	{
 		CollisionManager::Clear();
-
-		Erase(eLayerType::Cursor);
-		Erase(eLayerType::Camera);
+		TGM::SceneClear();
 	}
 }

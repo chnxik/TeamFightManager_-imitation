@@ -45,7 +45,7 @@ namespace ssz
 		Transform* tr = GetComponent<Transform>();
 		tr->SetTransType(ssz::Transform::eTransType::PosAdd);
 		float FontSize = tr->GetScale().y / 2.f;
-		istrLen = (tr->GetScale().x / FontSize) - 1;
+		istrLen = (UINT)((tr->GetScale().x / FontSize) - 1);
 
 		Vector3 OffsetPos = tr->GetScale();
 		OffsetPos.x = -(OffsetPos.x / 2.f) + 20.f;

@@ -71,12 +71,10 @@ namespace ssz
 			TeamLogo->SetString(L"팀 로고");
 			CoachTex->SetString(L"감독 외형");
 
-			Scene* ActiveScene = SceneManager::GetActiveScene();
-
 			// 게임시작, 취소 버튼
 
 			ImportantBtn* NewGameStartBtn = InstantiateUI<ImportantBtn>(Vector3(-123.f, -335.f, 1.049f), this, L"NewGameStartBtn");
-			NewGameStartBtn->GetBtnComponent()->SetDelegateW(ActiveScene, (DELEGATEW)&Scene::ChangeScene, L"MainLobbyScene");
+			NewGameStartBtn->GetBtnComponent()->SetDelegate(this, (DELEGATE)&NewGameWindow::GameStart);
 			NewGameStartBtn->SetKBDIcon(KBDIcon::F);
 
 			Text* StartBtnText = NewGameStartBtn->AddComponent<Text>();
@@ -132,6 +130,7 @@ namespace ssz
 						TeamLogoSlot->GetComponent<SelectBtnUI>()->SetDelegateW(NewTeamIcon, (DELEGATEW)&TeamIconSlot::ChangeIcon, Texkey);
 					}
 				}
+				NewTeamIcon->ChangeIcon(L"TeamLogoTex_1");
 			}
 
 			// 코치 외형 선택 버튼
@@ -174,9 +173,15 @@ namespace ssz
 						AvatarSlot->GetComponent<SelectBtnUI>()->SetDelegateW(NewCoachAvatar, (DELEGATEW)&AvatarSlot::ChangeHair, Texkey);
 					}
 				}
+				NewCoachAvatar->ChangeHair(L"CoachHairTex_1");
 			}
 		}
 #pragma endregion
+	}
+
+	void NewGameWindow::GameStart()
+	{
+		SceneManager::LoadScene(L"MainLobbyScene");
 	}
 
 }

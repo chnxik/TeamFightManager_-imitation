@@ -1,6 +1,8 @@
 #include "sszLobbyMenuBtn.h"
 #include "CommonObjHeader.h"
 
+#include "sszButtonUI.h"
+
 namespace ssz
 {
 	LobbyMenuBtn::LobbyMenuBtn(const std::wstring& Key)

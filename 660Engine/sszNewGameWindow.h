@@ -14,6 +14,8 @@ namespace ssz
 
         virtual void Initialize() override;
 
+        void GameStart();
+
     private:
         UIObject* mSelectedLogo;
         UIObject* mSelectedHair;

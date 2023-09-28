@@ -4,6 +4,8 @@
 
 namespace ssz
 {
+	class ButtonUI;
+
 	class PlayerCardBtn : public UIObject
 	{
 	public:

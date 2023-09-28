@@ -3,6 +3,8 @@
 
 namespace ssz
 {
+	class Text;
+
 	class HeaderSlot;
 
 	class LobbyHeader : public UIObject

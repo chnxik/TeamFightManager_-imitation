@@ -1,6 +1,8 @@
 #include "sszStadiumScene.h"
 #include "CommonHeader.h"
 
+#include "sszButtonUI.h"
+
 #include "sszLineUpWindow.h"
 #include "sszPlayerCardBtn.h"
 #include "sszDefaultBtn.h"
@@ -97,14 +99,6 @@ namespace ssz
 			PlayerChangeIcon->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"PlayerChangeIconMt");
 			PlayerChangeIcon->GetComponent<Transform>()->SetTransType(ssz::Transform::eTransType::PosAdd);
 #pragma endregion
-
-			// 오브젝트 배치용 스크립트
-			// PlayerChangeIcon->AddComponent<ArrangementScript>()->SetDefault();
-		}
-
-		// MouseCursor
-		{
-			GameManager::GetCursor()->SetLayerType(eLayerType::Cursor);
 		}
 
 		// Main Camera
@@ -137,16 +131,14 @@ namespace ssz
 	}
 	void StadiumScene::OnEnter()
 	{
-		Cursor::RegistCursor(this);
-		MainCamera::RegistCamera(this);
+		AddGameObject(eLayerType::Cursor, TGM::GetCursor());
+		AddGameObject(eLayerType::Camera, TGM::GetCamera());
 
 		CollisionManager::SetLayer(eLayerType::UI, eLayerType::Cursor, true);
 	}
 	void StadiumScene::OnExit()
 	{
 		CollisionManager::Clear();
-
-		Erase(eLayerType::Cursor);
-		Erase(eLayerType::Camera);
+		TGM::SceneClear();
 	}
 }

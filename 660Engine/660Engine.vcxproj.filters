@@ -176,6 +176,9 @@
     <ClInclude Include="sszCloudObj.h">
       <Filter>Contents\Object\BackGround\BackGround\CloudObj</Filter>
     </ClInclude>
+    <ClInclude Include="sszStadiumScene.h">
+      <Filter>Contents\Scene\4. Stadium</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="660Engine.cpp" />
@@ -349,6 +352,9 @@
     </ClCompile>
     <ClCompile Include="sszCloudObj.cpp">
       <Filter>Contents\Object\BackGround\BackGround\CloudObj</Filter>
+    </ClCompile>
+    <ClCompile Include="sszStadiumScene.cpp">
+      <Filter>Contents\Scene\4. Stadium</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

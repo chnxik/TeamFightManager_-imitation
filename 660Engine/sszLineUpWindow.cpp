@@ -35,6 +35,7 @@ namespace ssz
 
 			// Set Panel
 			AddComponent<PanelUI>();
+			AddComponent<Collider2D>();
 
 			// Set default Size
 			Transform* tr = GetComponent<Transform>();

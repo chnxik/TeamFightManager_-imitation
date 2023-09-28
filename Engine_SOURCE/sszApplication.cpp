@@ -46,6 +46,7 @@ namespace ssz
 		Input::Initialize();
 		Fmod::Initialize();
 		FontWrapper::Initialize();
+		FileManager::Initialize();
 
 		renderer::Initialize();
 		ssz::InitializeGame();

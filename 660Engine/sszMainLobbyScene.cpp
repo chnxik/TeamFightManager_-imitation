@@ -177,6 +177,25 @@ namespace ssz
 	}
 	void MainLobbyScene::OnEnter()
 	{
+		// Save
+		FileManager::OpenSaveFile(L"SaveFile.sav");
+		
+		wstring TeamName = TGM::GetPlayerTeam()->GetTeamName();
+		
+		FileManager::DataSave(TeamName);
+
+		FileManager::CloseSaveFile();
+
+		FileManager::OpenLoadFile(L"SaveFile.sav");
+		
+		TeamName = {};
+
+		FileManager::DataLoad(TeamName);
+
+		FileManager::CloseLoadFile();
+
+
+
 		AddGameObject(eLayerType::Cursor, TGM::GetCursor());
 		AddGameObject(eLayerType::Camera, TGM::GetCamera());
 

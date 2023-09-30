@@ -44,7 +44,7 @@ namespace ssz
 	void FileManager::Initialize()
 	{
 		std::locale::global(std::locale("Korean"));
-
+		
 		mLoadFile = new std::wifstream();
 		mSaveFile = new std::wofstream();
 	}
@@ -77,18 +77,6 @@ namespace ssz
 	{
 		std::wstring GarbageLine;
 		std::getline(*mLoadFile, GarbageLine);
-
-		return S_OK;
-	}
-	
-	HRESULT FileManager::DataLoad(std::wstring& dest)
-	{
-		wchar_t szbuff[50] = {};
-		mLoadFile->getline(szbuff, 50);
-		std::wstringstream(szbuff) >> dest;
-
-		if (mLoadFile->eof())
-			return S_FALSE;
 
 		return S_OK;
 	}
@@ -128,15 +116,32 @@ namespace ssz
 
 		return S_OK;
 	}
-	
-	HRESULT FileManager::DataSave(std::wstring& source)
+
+	HRESULT FileManager::DataSave(std::wstring source, wchar_t Delim)
 	{
 		// wstring += std::to_wstring(data) + L',';
 		// wstring += std::to_wstring(data) + L'\n';
-		
-		mSaveFile->write(source.c_str(), source.size());
-		
-		
+
+		std::wstring data = {};
+		data = source + Delim;
+		mSaveFile->write(data.c_str(), data.size());
+
+		return E_NOTIMPL;
+	}
+
+	HRESULT FileManager::DataSave(int dest, wchar_t Delim)
+	{
+		std::wstring data = std::to_wstring(dest) + Delim;
+		mSaveFile->write(data.c_str(), data.size());
+
+		return E_NOTIMPL;
+	}
+
+	HRESULT FileManager::DataSave(float dest, wchar_t Delim)
+	{
+		std::wstring data = std::to_wstring(dest) + Delim;
+		mSaveFile->write(data.c_str(), data.size());
+
 		return E_NOTIMPL;
 	}
 }

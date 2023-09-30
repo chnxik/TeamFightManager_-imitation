@@ -4,6 +4,8 @@
 namespace ssz
 {
     class TypeUI;
+    class TeamIconSlot;
+    class AvatarSlot;
 
     class NewGameWindow :
         public UIObject
@@ -19,6 +21,9 @@ namespace ssz
     private:
         UIObject* mSelectedLogo;
         UIObject* mSelectedHair;
+
+        TeamIconSlot* mTeamIconSlot;
+        AvatarSlot* mAvatarSlot;
 
         TypeUI* mTeamNameType;
         TypeUI* mCoachType;

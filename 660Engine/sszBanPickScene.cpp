@@ -65,17 +65,7 @@ namespace ssz
 			// 오브젝트 배치용 스크립트
 		}
 #pragma endregion
-
-		// MouseCursor
-		{
-			GameManager::GetCursor()->SetLayerType(eLayerType::Cursor);
-		}
-		// Main Camera
-		{
-			GameObject* camera = Instantiate<GameObject>(Vector3(0.0f, 0.0f, -10.f), eLayerType::Camera);
-			camera->SetName(L"MainCamera");
-			Camera* cameraComp = camera->AddComponent<Camera>();
-		}
+		
 #pragma endregion
 	}
 	void BanPickScene::Update()
@@ -97,16 +87,15 @@ namespace ssz
 	}
 	void BanPickScene::OnEnter()
 	{
-		Cursor::RegistCursor(this);
-		MainCamera::RegistCamera(this);
+		AddGameObject(eLayerType::Cursor, TGM::GetCursor());
+		AddGameObject(eLayerType::Camera, TGM::GetCamera());
 
 		CollisionManager::SetLayer(eLayerType::UI, eLayerType::Cursor, true);
 	}
 	void BanPickScene::OnExit()
 	{
 		CollisionManager::Clear();
-
-		Erase(eLayerType::Cursor);
-		Erase(eLayerType::Camera);
+		
+		TGM::SceneClear();
 	}
 }

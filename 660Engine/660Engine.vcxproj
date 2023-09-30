@@ -215,11 +215,11 @@ xcopy /R /Y "$(SolutionDir)dll\FW1FontWrapperL.dll" "$(SolutionDir)x64\Debug"</
     <ClInclude Include="sszAvatarSlot.h" />
     <ClInclude Include="sszBanLine.h" />
     <ClInclude Include="sszBanpickClassTap.h" />
+    <ClInclude Include="sszBanPickScene.h" />
     <ClInclude Include="sszBanPickStat.h" />
     <ClInclude Include="sszBattleHeader.h" />
     <ClInclude Include="sszBattleManager.h" />
     <ClInclude Include="sszChamp.h" />
-    <ClInclude Include="sszChampList.h" />
     <ClInclude Include="sszChamp_Script.h" />
     <ClInclude Include="sszCloudObj.h" />
     <ClInclude Include="sszColObj.h" />
@@ -228,6 +228,7 @@ xcopy /R /Y "$(SolutionDir)dll\FW1FontWrapperL.dll" "$(SolutionDir)x64\Debug"</
     <ClInclude Include="sszDefaultBtn.h" />
     <ClInclude Include="sszEffect.h" />
     <ClInclude Include="sszHeaderSlot.h" />
+    <ClInclude Include="sszIGStadiumScene.h" />
     <ClInclude Include="sszKBDIcon.h" />
     <ClInclude Include="sszLog.h" />
     <ClInclude Include="sszMainLobbyScene.h" />
@@ -242,7 +243,6 @@ xcopy /R /Y "$(SolutionDir)dll\FW1FontWrapperL.dll" "$(SolutionDir)x64\Debug"</
     <ClInclude Include="sszMasking.h" />
     <ClInclude Include="sszNewGameWindow.h" />
     <ClInclude Include="sszPilot.h" />
-    <ClInclude Include="sszPilotList.h" />
     <ClInclude Include="sszPlayerCardBtn.h" />
     <ClInclude Include="sszPlayerCardSlot.h" />
     <ClInclude Include="sszProceedBtn.h" />
@@ -256,7 +256,6 @@ xcopy /R /Y "$(SolutionDir)dll\FW1FontWrapperL.dll" "$(SolutionDir)x64\Debug"</
     <ClInclude Include="sszStatIcon.h" />
     <ClInclude Include="sszTeam.h" />
     <ClInclude Include="sszTeamIconSlot.h" />
-    <ClInclude Include="sszTeamList.h" />
     <ClInclude Include="sszTestEditBox.h" />
     <ClInclude Include="sszTestScene.h" />
     <ClInclude Include="sszTGM.h" />
@@ -275,11 +274,11 @@ xcopy /R /Y "$(SolutionDir)dll\FW1FontWrapperL.dll" "$(SolutionDir)x64\Debug"</
     <ClCompile Include="sszAvatarSlot.cpp" />
     <ClCompile Include="sszBanLine.cpp" />
     <ClCompile Include="sszBanpickClassTap.cpp" />
+    <ClCompile Include="sszBanPickScene.cpp" />
     <ClCompile Include="sszBanPickStat.cpp" />
     <ClCompile Include="sszBattleHeader.cpp" />
     <ClCompile Include="sszBattleManager.cpp" />
     <ClCompile Include="sszChamp.cpp" />
-    <ClCompile Include="sszChampList.cpp" />
     <ClCompile Include="sszChamp_Script.cpp" />
     <ClCompile Include="sszCloudObj.cpp" />
     <ClCompile Include="sszColObj.cpp" />
@@ -289,6 +288,7 @@ xcopy /R /Y "$(SolutionDir)dll\FW1FontWrapperL.dll" "$(SolutionDir)x64\Debug"</
     <ClCompile Include="sszDefaultBtn.cpp" />
     <ClCompile Include="sszEffect.cpp" />
     <ClCompile Include="sszHeaderSlot.cpp" />
+    <ClCompile Include="sszIGStadiumScene.cpp" />
     <ClCompile Include="sszKBDIcon.cpp" />
     <ClCompile Include="sszKnightBT.cpp" />
     <ClCompile Include="sszLog.cpp" />
@@ -304,7 +304,6 @@ xcopy /R /Y "$(SolutionDir)dll\FW1FontWrapperL.dll" "$(SolutionDir)x64\Debug"</
     <ClCompile Include="sszMasking.cpp" />
     <ClCompile Include="sszNewGameWindow.cpp" />
     <ClCompile Include="sszPilot.cpp" />
-    <ClCompile Include="sszPilotList.cpp" />
     <ClCompile Include="sszPlayerCardBtn.cpp" />
     <ClCompile Include="sszPlayerCardSlot.cpp" />
     <ClCompile Include="sszProceedBtn.cpp" />
@@ -318,7 +317,6 @@ xcopy /R /Y "$(SolutionDir)dll\FW1FontWrapperL.dll" "$(SolutionDir)x64\Debug"</
     <ClCompile Include="sszStatIcon.cpp" />
     <ClCompile Include="sszTeam.cpp" />
     <ClCompile Include="sszTeamIconSlot.cpp" />
-    <ClCompile Include="sszTeamList.cpp" />
     <ClCompile Include="sszTestEditBox.cpp" />
     <ClCompile Include="sszTestScene.cpp" />
     <ClCompile Include="sszTGM.cpp" />

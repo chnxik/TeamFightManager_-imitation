@@ -1,21 +1,22 @@
 #pragma once
 #include "sszTGM.h"
 
-#include "sszChampList.h"
-#include "sszPilotList.h"
-#include "sszTeamList.h"
 #include "sszCursor.h"
 #include "sszProjectile.h"
 #include "sszEffect.h"
+
+// ChampScript
+#include "sszScript_Archer.h"
+#include "sszScript_Knight.h"
 
 namespace ssz
 {
 	const RECT	TGM::mStadiumSize{ -570, 190, 570, -396 }; // Left, Top, Right, Bottme
 	float TGM::mGameTime = 0.f;
 
-	TeamList* TGM::gTeamList = nullptr;
-	PilotList* TGM::gPilotList = nullptr;
-	ChampList* TGM::gChampList = nullptr;
+	map<std::wstring, Team*> TGM::gTeamList;
+	map<std::wstring, Pilot*> TGM::gPilotList;
+	map<std::wstring, Champ*> TGM::gChampList;
 
 	Cursor* TGM::mCursor = nullptr;
 	GameObject* TGM::mMainCamera = nullptr;
@@ -42,9 +43,9 @@ namespace ssz
 		mMainCamera->AddComponent<Camera>();
 		mMainCamera->AddComponent<AudioListener>();
 
-		gChampList = new ChampList();
-		gPilotList = new PilotList();
-		gTeamList = new TeamList();
+		ChampInitialize(); // Champ 설정
+		// Pilot 설정
+		// Team 설정
 
 		for (int i = 0; i < 100; ++i)
 		{
@@ -61,18 +62,39 @@ namespace ssz
 		}
 
 		mCursor->Initialize();
-		gChampList->Initialize();
-		gPilotList->Initialize();
-		gTeamList->Initialize();
+		
 
 		gPlayerTeam = new Team();
 	}
 
 	void TGM::Release()
 	{
-		delete gChampList;
-		delete gPilotList;
-		delete gTeamList;
+		// ChampList
+		
+		std::map<std::wstring, Champ*>::iterator champiter = gChampList.begin();
+		while (champiter != gChampList.end())
+		{
+			delete champiter->second;
+			champiter = gChampList.erase(champiter);
+		}
+
+		// gPilotList
+
+		std::map<std::wstring, Pilot*>::iterator pilotiter = gPilotList.begin();
+		while (pilotiter != gPilotList.end())
+		{
+			delete pilotiter->second;
+			pilotiter = gPilotList.erase(pilotiter);
+		}
+
+		// gTeamList
+
+		std::map<std::wstring, Team*>::iterator teamiter = gTeamList.begin();
+		while (teamiter != gTeamList.end())
+		{
+			delete teamiter->second;
+			teamiter = gTeamList.erase(teamiter);
+		}
 
 		delete mMainCamera;
 
@@ -99,20 +121,60 @@ namespace ssz
 		delete gPlayerTeam;
 	}
 
+	bool TGM::ChampInitialize()
+	{
+		Champ* Archer = object::Instantiate<Champ>();
+		Archer->SetChampScript(Archer->AddComponent<Script_Archer>());
+		gChampList.insert(make_pair(ARCHER, Archer));
+
+		Champ* Knight = object::Instantiate<Champ>();
+		Knight->SetChampScript(Knight->AddComponent<Script_Knight>());
+		gChampList.insert(make_pair(KNIGHT, Knight));
+
+		return true;
+	}
+
+	bool TGM::PilotInitialize()
+	{
+
+		return true;
+	}
+
+	bool TGM::TeamInitialize()
+	{
+
+		return true;
+	}
+
 	Team* TGM::GetTeam(const std::wstring& key)
 	{
-		// return gTeamList->GetTeam(key);;
+
+		std::map<std::wstring, Team*>::iterator iter = gTeamList.find(key);
+
+		if (iter != gTeamList.end())
+			return iter->second;
+
 		return nullptr;
 	}
 
 	Pilot* TGM::GetPilot(const std::wstring& key)
 	{
-		return gPilotList->GetPilot(key);
+		std::map<std::wstring, Pilot*>::iterator iter = gPilotList.find(key);
+
+		if (iter != gPilotList.end())
+			return iter->second;
+
+		return nullptr;
 	}
 
 	Champ* TGM::GetChamp(const std::wstring& key)
 	{
-		return gChampList->GetChamp(key);
+		std::map<std::wstring, Champ*>::iterator iter = gChampList.find(key);
+
+		if (iter != gChampList.end())
+			return iter->second;
+
+		return nullptr;
 	}
 
 	Projectile* TGM::GetProjectile()
@@ -174,5 +236,44 @@ namespace ssz
 		champ->GetComponent<Transform>()->SetPosition(Pos);
 
 		return champ;
+	}
+	bool TGM::SaveData()
+	{
+		FileManager::OpenSaveFile(L"SaveFile.sav");
+		
+		// 데이터 저장
+		
+		// Player Team 정보
+		FileManager::DataSave(gPlayerTeam->GetTeamName(), L'\n');
+		FileManager::DataSave(gPlayerTeam->GetTeamIconTexKey(), L'\n');
+
+		// 다른 Team 정보
+
+		// 전적 정보
+		FileManager::CloseSaveFile();
+
+		return true;
+	}
+	bool TGM::LoadData()
+	{
+		if (FileManager::OpenLoadFile(L"SaveFile.sav") == S_OK)
+		{
+			// 데이터 불러오기
+			wstring TeamName = {};
+			wstring TeamIconTexKey = {};
+			
+			FileManager::DataLoad(TeamName, L'\n');
+			FileManager::DataLoad(TeamIconTexKey, L'\n');
+
+			gPlayerTeam->SetTeamName(TeamName);
+			gPlayerTeam->SetIconTex(TeamIconTexKey);
+
+			FileManager::CloseLoadFile();
+			return true;
+		}
+
+		assert(nullptr);
+		
+		return false;
 	}
 }

@@ -37,10 +37,6 @@ namespace ssz
 	void TeamIconSlot::ChangeIcon(std::wstring Texkey)
 	{
 		mTeamIcon->GetComponent<MeshRenderer>()->GetMaterial()->SetTexture(Texkey);
-	}
-
-	void TeamIconSlot::ChangeIcon(std::shared_ptr<Texture> Texture)
-	{
-		mTeamIcon->GetComponent<MeshRenderer>()->GetMaterial()->SetTexture(Texture);
+		mTeamIconTexKey = Texkey;
 	}
 }

@@ -3,8 +3,6 @@
 
 namespace ssz
 {
-    class TeamIcon;
-
     class SelectBtn :
         public UIObject
     {

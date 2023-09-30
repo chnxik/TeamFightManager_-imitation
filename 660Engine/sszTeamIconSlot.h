@@ -13,9 +13,10 @@ namespace ssz
         virtual void Initialize() override;
 
         void ChangeIcon(std::wstring Texkey);
-        void ChangeIcon(std::shared_ptr<Texture> Texture);
+        wstring GetIconTexKey() { return mTeamIconTexKey; }
 
     private:
         UIObject* mTeamIcon;
+        wstring mTeamIconTexKey;
     };
 }

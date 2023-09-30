@@ -21,12 +21,13 @@ namespace ssz
 
 		static HRESULT DeleteLine();
 
-		static HRESULT DataLoad(std::wstring& dest);
 		static HRESULT DataLoad(std::wstring& dest, wchar_t Delim);
 		static HRESULT DataLoad(int& dest, wchar_t Delim);
 		static HRESULT DataLoad(float& dest, wchar_t Delim);
 
-		static HRESULT DataSave(std::wstring& source);
+		static HRESULT DataSave(std::wstring source, wchar_t Delim);
+		static HRESULT DataSave(int dest, wchar_t Delim);
+		static HRESULT DataSave(float dest, wchar_t Delim);
 
 	public:
 		static std::wifstream* mLoadFile;

@@ -20,6 +20,8 @@ namespace ssz
 		: UIObject(key)
 		, mSelectedLogo(nullptr)
 		, mSelectedHair(nullptr)
+		, mTeamIconSlot(nullptr)
+		, mAvatarSlot(nullptr)
 		, mTeamNameType(nullptr)
 		, mCoachType(nullptr)
 	{
@@ -99,7 +101,7 @@ namespace ssz
 
 			
 			// 로고 선택 버튼 1 ~ 10
-			TeamIconSlot* NewTeamIcon = InstantiateUI<TeamIconSlot>(Vector3(-585.f, 125.f, posz - 0.0001f), Vector3(100.f, 100.f, 1.0f), this, L"SelectedLogo");
+			mTeamIconSlot = InstantiateUI<TeamIconSlot>(Vector3(-585.f, 125.f, posz - 0.0001f), Vector3(100.f, 100.f, 1.0f), this, L"SelectedLogo");
 			{
 				Vector3 LogoBtnPos(tr->GetPosition());
 
@@ -129,14 +131,14 @@ namespace ssz
 
 						wstring Texkey = L"TeamLogoTex_" + std::to_wstring(idx);
 						TeamLogoSlot->InitItemTex(Texkey, idx, LogoBtnPos, Vector3(100.f, 100.f, 1.f), this);
-						TeamLogoSlot->GetComponent<SelectBtnUI>()->SetDelegateW(NewTeamIcon, (DELEGATEW)&TeamIconSlot::ChangeIcon, Texkey);
+						TeamLogoSlot->GetComponent<SelectBtnUI>()->SetDelegateW(mTeamIconSlot, (DELEGATEW)&TeamIconSlot::ChangeIcon, Texkey);
 					}
 				}
-				NewTeamIcon->ChangeIcon(L"TeamLogoTex_1");
+				mTeamIconSlot->ChangeIcon(L"TeamLogoTex_1");
 			}
 
 			// 코치 외형 선택 버튼
-			AvatarSlot* NewCoachAvatar = InstantiateUI<AvatarSlot>(Vector3(83.f, 125.f, posz - 0.0001f), Vector3(100.f, 100.f, 1.0f), this, L"SelectedAvatar");
+			mAvatarSlot = InstantiateUI<AvatarSlot>(Vector3(83.f, 125.f, posz - 0.0001f), Vector3(100.f, 100.f, 1.0f), this, L"SelectedAvatar");
 
 			{
 				Vector3 LogoBtnPos(tr->GetPosition());
@@ -172,10 +174,10 @@ namespace ssz
 						TexScale *= 3.f;
 
 						AvatarSlot->InitItemTex(Texkey, idx, LogoBtnPos, Vector3(TexScale.x, TexScale.y, 1.f), this);
-						AvatarSlot->GetComponent<SelectBtnUI>()->SetDelegateW(NewCoachAvatar, (DELEGATEW)&AvatarSlot::ChangeHair, Texkey);
+						AvatarSlot->GetComponent<SelectBtnUI>()->SetDelegateW(mAvatarSlot, (DELEGATEW)&AvatarSlot::ChangeHair, Texkey);
 					}
 				}
-				NewCoachAvatar->ChangeHair(L"CoachHairTex_1");
+				mAvatarSlot->ChangeHair(L"CoachHairTex_1");
 			}
 		}
 #pragma endregion
@@ -184,10 +186,12 @@ namespace ssz
 	void NewGameWindow::GameStart()
 	{
 		wstring TeamName = mTeamNameType->Getstr();
-		std::shared_ptr TeamIcon = mSelectedLogo->GetComponent<MeshRenderer>()->GetMaterial()->GetTexture();
+		std::shared_ptr<Texture> TeamIcon = mSelectedLogo->GetComponent<MeshRenderer>()->GetMaterial()->GetTexture();
 		
-		TGM::GetPlayerTeam()->InitTeamInfo(TeamName, TeamIcon);
+		Team* PlayerTeam = TGM::GetPlayerTeam();
+		PlayerTeam->SetTeamName(TeamName);
+		PlayerTeam->SetIconTex(mTeamIconSlot->GetIconTexKey());
+		
 		SceneManager::LoadScene(L"MainLobbyScene");
 	}
-
 }

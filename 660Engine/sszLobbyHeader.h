@@ -4,6 +4,8 @@
 namespace ssz
 {
 	class Text;
+	class HeaderSlot;
+	class TeamIconSlot;
 
 	class HeaderSlot;
 
@@ -21,6 +23,9 @@ namespace ssz
 	private:
 		HeaderSlot* mDateSlot;
 		HeaderSlot* mGoldSlot;
+		
+		TeamIconSlot* mTeamIconSlot;
+
 		Text* mTeamName;
 		Text* mTeamRecord;
 	};

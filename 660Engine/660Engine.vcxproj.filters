@@ -101,15 +101,6 @@
     <ClInclude Include="sszTeam.h">
       <Filter>Contents\Object\GameUnit\Team</Filter>
     </ClInclude>
-    <ClInclude Include="sszPilotList.h">
-      <Filter>Contents\Manager\DataManager\PilotList</Filter>
-    </ClInclude>
-    <ClInclude Include="sszTeamList.h">
-      <Filter>Contents\Manager\DataManager\TeamList</Filter>
-    </ClInclude>
-    <ClInclude Include="sszChampList.h">
-      <Filter>Contents\Manager\DataManager\ChampList</Filter>
-    </ClInclude>
     <ClInclude Include="sszTGM.h">
       <Filter>Contents\Manager\DataManager\TotalGameManager</Filter>
     </ClInclude>
@@ -178,6 +169,12 @@
     </ClInclude>
     <ClInclude Include="sszStadiumScene.h">
       <Filter>Contents\Scene\4. Stadium</Filter>
+    </ClInclude>
+    <ClInclude Include="sszBanPickScene.h">
+      <Filter>Contents\Scene\5. Banpick</Filter>
+    </ClInclude>
+    <ClInclude Include="sszIGStadiumScene.h">
+      <Filter>Contents\Scene\6. IGStadium</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -272,15 +269,6 @@
     <ClCompile Include="sszTeam.cpp">
       <Filter>Contents\Object\GameUnit\Team</Filter>
     </ClCompile>
-    <ClCompile Include="sszPilotList.cpp">
-      <Filter>Contents\Manager\DataManager\PilotList</Filter>
-    </ClCompile>
-    <ClCompile Include="sszTeamList.cpp">
-      <Filter>Contents\Manager\DataManager\TeamList</Filter>
-    </ClCompile>
-    <ClCompile Include="sszChampList.cpp">
-      <Filter>Contents\Manager\DataManager\ChampList</Filter>
-    </ClCompile>
     <ClCompile Include="sszTGM.cpp">
       <Filter>Contents\Manager\DataManager\TotalGameManager</Filter>
     </ClCompile>
@@ -355,6 +343,12 @@
     </ClCompile>
     <ClCompile Include="sszStadiumScene.cpp">
       <Filter>Contents\Scene\4. Stadium</Filter>
+    </ClCompile>
+    <ClCompile Include="sszBanPickScene.cpp">
+      <Filter>Contents\Scene\5. Banpick</Filter>
+    </ClCompile>
+    <ClCompile Include="sszIGStadiumScene.cpp">
+      <Filter>Contents\Scene\6. IGStadium</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -507,15 +501,6 @@
     </Filter>
     <Filter Include="Contents\Manager\DataManager">
       <UniqueIdentifier>{3601c501-0d69-470b-826f-e855add5d8e9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Manager\DataManager\ChampList">
-      <UniqueIdentifier>{0524ba27-c99f-4675-85ac-31e2fafbd923}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Manager\DataManager\PilotList">
-      <UniqueIdentifier>{27e3bc9a-3888-40c1-93c9-fc0495118ddb}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Manager\DataManager\TeamList">
-      <UniqueIdentifier>{2f8e073f-6ce0-4662-99fe-a69c56f88fae}</UniqueIdentifier>
     </Filter>
     <Filter Include="Contents\Manager\DataManager\TotalGameManager">
       <UniqueIdentifier>{2889f92b-b85f-49d9-9ebd-c33760a653a3}</UniqueIdentifier>

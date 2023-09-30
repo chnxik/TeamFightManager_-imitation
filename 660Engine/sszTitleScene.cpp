@@ -74,7 +74,8 @@ namespace ssz
 			
 			TitleMenuBtn* LoadBtn = InstantiateUI<TitleMenuBtn>(Vector3(0.f, -90.f, 1.2f), Vector3(100.f, 50.f, 1.f), eLayerType::UI, L"TitleLoadBtn");
 			LoadBtn->SetLoadBtn();
-			
+			LoadBtn->GetBtnComponent()->SetDelegate(this, (DELEGATE)&TitleScene::GameLoad);
+
 			TitleMenuBtn* ExitBtn = InstantiateUI<TitleMenuBtn>(Vector3(0.f, -190.f, 1.2f), Vector3(100.f, 50.f, 1.f), eLayerType::UI, L"TitleExitBtn");
 			ExitBtn->SetExitBtn();
 			ExitBtn->GetBtnComponent()->SetDelegate(this, (DELEGATE)&TitleScene::ExitProgram);
@@ -107,6 +108,13 @@ namespace ssz
 	{
 		CollisionManager::Clear();
 		TGM::SceneClear();
+	}
+
+	void TitleScene::GameLoad()
+	{
+		TGM::LoadData();
+
+		SceneManager::LoadScene(L"MainLobbyScene");
 	}
 
 	void TitleScene::ExitProgram()

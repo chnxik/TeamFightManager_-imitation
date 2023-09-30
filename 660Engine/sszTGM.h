@@ -40,13 +40,17 @@ namespace ssz
 		static void	SetGameTime(float time) { mGameTime = time; }
 		static float& GetGameTime() { return mGameTime; }
 
+		static bool ChampInitialize();
+		static bool PilotInitialize();
+		static bool TeamInitialize();
+
 		static Team* GetTeam(const std::wstring& key);
 		static Pilot* GetPilot(const std::wstring& key);
 		static Champ* GetChamp(const std::wstring& key);
 
-		static TeamList* GetTeamList() { return gTeamList; }		// 팀 리스트
-		static PilotList* GetPilotList() { return gPilotList; }		// 파일럿 리스트
-		static ChampList* GetChampList() { return gChampList; }		// 챔프 리스트
+		static map<std::wstring, Team*> GetTeamList() { return gTeamList; }		// 팀 리스트
+		static map<std::wstring, Pilot*> GetPilotList() { return gPilotList; }		// 파일럿 리스트
+		static map<std::wstring, Champ*> GetChampList() { return gChampList; }		// 챔프 리스트
 
 		// 발사체
 		static Projectile* GetProjectile();
@@ -67,20 +71,23 @@ namespace ssz
 		static UINT GetMonth() { return mMonth; }
 		static UINT GetWeek() { return mWeek; }
 
+		// 데이터 관리
+		static bool SaveData();
+		static bool LoadData();
+
 	private:
-		static const RECT mStadiumSize;
-		static float mGameTime;
+		static const RECT mStadiumSize;		// 경기장 크기
+		static float mGameTime;				// 경기 시간
 
-		static Cursor* mCursor;
-		static GameObject* mMainCamera;
+		static Cursor* mCursor;				// 커서
+		static GameObject* mMainCamera;		// 카메라
 
-		static TeamList* gTeamList;
-		static PilotList* gPilotList;
-		static ChampList* gChampList;
+		static map<std::wstring,Team*> gTeamList;		// 팀 목록
+		static map<std::wstring,Pilot*> gPilotList;		// 전체 선수 목록
+		static map<std::wstring,Champ*> gChampList;		// 챔피언 목록
 
 		static vector<Projectile*>	vProjectilePool;
 		static vector<Effect*>		vEffectPool;
-		
 
 	private:
 		// Player Data
@@ -92,7 +99,5 @@ namespace ssz
 		static UINT mWeek;
 
 		static UINT mGold;	// 소지금
-
-		
 	};
 }

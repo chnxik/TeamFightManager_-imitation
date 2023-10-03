@@ -1,3 +1,4 @@
+#pragma once
 #include "sszLineUpWindow.h"
 #include "CommonObjHeader.h"
 

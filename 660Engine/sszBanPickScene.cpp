@@ -4,13 +4,19 @@
 #include "sszBattleHeader.h"
 #include "sszBanLine.h"
 #include "sszPlayerCardSlot.h"
-#include "sszBanPickStat.h"
+
+#include "sszBanPickWindow.h"
 
 namespace ssz
 {
 	using namespace object;
 
 	BanPickScene::BanPickScene()
+		: mPhase(eBanPickPhase::SceneIn)
+		, mPlayerSlot{}
+		, mAccTime(0.f)
+		, mBattleHeader(nullptr)
+		, mBanPickWindow(nullptr)
 	{
 	}
 	BanPickScene::~BanPickScene()
@@ -21,10 +27,10 @@ namespace ssz
 #pragma region Make Material for this Scene
 		{
 			// Texture Loading
-			Resources::Load<Texture>(L"BanpickBgTex", L"..\\Resources\\useResource\\BanPick\\banpick_ui_bg.png");
-
+			Resources::Load<Texture>(L"GeneralBgTex", L"..\\Resources\\useResource\\UI\\ui_bg_empty.png");
+			
 			// Make Material
-			LoadMaterial(L"BanpickBgMt", L"SpriteShader", L"BanpickBgTex", eRenderingMode::Transparent);
+			LoadMaterial(L"GeneralBgMt", L"SpriteShader", L"GeneralBgTex", eRenderingMode::Transparent);
 		}
 #pragma endregion
 #pragma region Create Object for this Scene
@@ -32,32 +38,31 @@ namespace ssz
 		// GameObject
 		{
 			// BanpickBg
-			GameObject* BanpickBg = Instantiate<GameObject>(Vector3(0.0f, 0.0f, 1.1f), Vector3(1920.f, 1080.f, 1.f), eLayerType::BackGround);
-			BanpickBg->SetName(L"BanpickBg");
-			BanpickBg->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"BanpickBgMt");
+			GameObject* BanpickBg = Instantiate<GameObject>(Vector3(0.0f, 0.0f, 1.2f), Vector3(1920.f, 1080.f, 1.f), eLayerType::BackGround);
+			BanpickBg->SetName(L"GeneralBg");
+			BanpickBg->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"GeneralBgMt");
 		}
 #pragma endregion
 #pragma region UI
 		{
 			// Battle Header
-			BattleHeader* BattleHeaderBg = InstantiateUI<BattleHeader>(Vector3(0.0f, 478.5f, 1.04f), eLayerType::UI, L"BattleHeaderBg");
+			mBattleHeader = InstantiateUI<BattleHeader>(Vector3(0.0f, 540.f, 1.04f), eLayerType::UI, L"BattleHeaderBg");
 
 			// BanLine
 			BanLine* BanLineUI = InstantiateUI<BanLine>(Vector3(0.f, 353.f, 1.03f), eLayerType::UI, L"BanLine");
 
 			// PlayerCard
-			InstantiateUI<PlayerCardSlot>(Vector3(843.f, 308.f, 1.02f), eLayerType::UI, L"RedPlayerCard_1")->SetRed();
-			InstantiateUI<PlayerCardSlot>(Vector3(843.f, 69.f, 1.02f), eLayerType::UI, L"RedPlayerCard_2")->SetRed();
-			InstantiateUI<PlayerCardSlot>(Vector3(-843.f, 308.f, 1.02f), eLayerType::UI, L"BluePlayerCard_1")->SetBlue();
-			InstantiateUI<PlayerCardSlot>(Vector3(-843.f, 69.f, 1.02f), eLayerType::UI, L"BluePlayerCard_2")->SetBlue();
+			mPlayerSlot[(UINT)eTeamColor::Red][0] = InstantiateUI<PlayerCardSlot>(Vector3(960.f, 308.f, 1.02f), eLayerType::UI, L"RedPlayerCard_1"); 
+			mPlayerSlot[(UINT)eTeamColor::Red][1] = InstantiateUI<PlayerCardSlot>(Vector3(960.f, 70.f, 1.02f), eLayerType::UI, L"RedPlayerCard_2");
+			mPlayerSlot[(UINT)eTeamColor::Blue][0] = InstantiateUI<PlayerCardSlot>(Vector3(-960.f, 308.f, 1.02f), eLayerType::UI, L"BluePlayerCard_1");
+			mPlayerSlot[(UINT)eTeamColor::Blue][1] = InstantiateUI<PlayerCardSlot>(Vector3(-960.f, 70.f, 1.02f), eLayerType::UI, L"BluePlayerCard_2");
 
-			// StatSlot
-			InstantiateUI<BanPickStat>(Vector3(-375.f, -116.f, 1.02f), eLayerType::UI, L"ATKStatSlot")->SetSlot(eStatType::ATK);
-			InstantiateUI<BanPickStat>(Vector3(-215.f, -116.f, 1.02f), eLayerType::UI, L"DEFStatSlot")->SetSlot(eStatType::DEF);
-			InstantiateUI<BanPickStat>(Vector3(-375.f, -185, 1.02f), eLayerType::UI, L"APDStatSlot")->SetSlot(eStatType::APD);
-			InstantiateUI<BanPickStat>(Vector3(-215.f, -185, 1.02f), eLayerType::UI, L"HPStatSlot")->SetSlot(eStatType::HP);
-			InstantiateUI<BanPickStat>(Vector3(-375.f, -254.f, 1.02f), eLayerType::UI, L"RNGStatSlot")->SetSlot(eStatType::RNG);
-			InstantiateUI<BanPickStat>(Vector3(-215.f, -254.f, 1.02f), eLayerType::UI, L"SPDStatSlot")->SetSlot(eStatType::SPD);
+			mPlayerSlot[(UINT)eTeamColor::Red][0]->SetRed();
+			mPlayerSlot[(UINT)eTeamColor::Red][1]->SetRed();
+			mPlayerSlot[(UINT)eTeamColor::Blue][0]->SetBlue();
+			mPlayerSlot[(UINT)eTeamColor::Blue][1]->SetBlue();
+
+			mBanPickWindow = InstantiateUI<BanPickWindow>(Vector3(0.f, -960.f, 1.19f), eLayerType::UI, L"BanPickWindow");
 		
 			// BanpickClassTap
 			// 클래스탭은 Btn 묶음으로 부모객체에서 상태를 받아 선택된 버튼과 나머지 버튼의 크기와 위치가 바뀌도록 한다.
@@ -71,6 +76,86 @@ namespace ssz
 	void BanPickScene::Update()
 	{
 		Scene::Update();
+
+		switch (mPhase)
+		{
+		case ssz::BanPickScene::eBanPickPhase::SceneIn:
+		{
+			mAccTime += (float)Time::DeltaTime();
+
+			Transform* BtHdTr = mBattleHeader->GetComponent<Transform>();
+			Vector3 BtHdPos = BtHdTr->GetPosition();
+
+			// 헤더
+			if (478.5 < BtHdPos.y)
+			{
+				// 처음 위치 - 현재위치
+				float fForce = BtHdPos.y - 478.5;
+				BtHdPos.y -= fForce * 4.f * (float)Time::DeltaTime();
+
+				BtHdTr->SetPosition(BtHdPos);
+			}
+
+			// PlayerSlot
+			Transform* RedSlotTr1 = mPlayerSlot[(UINT)eTeamColor::Red][0]->GetComponent<Transform>();
+			Transform* RedSlotTr2 = mPlayerSlot[(UINT)eTeamColor::Red][1]->GetComponent<Transform>();
+			Transform* BlueSlotTr1 = mPlayerSlot[(UINT)eTeamColor::Blue][0]->GetComponent<Transform>();
+			Transform* BlueSlotTr2 = mPlayerSlot[(UINT)eTeamColor::Blue][1]->GetComponent<Transform>();
+
+			Vector3 RSlotPos1 = RedSlotTr1->GetPosition();
+			Vector3 RSlotPos2 = RedSlotTr2->GetPosition();
+			Vector3 BSlotPos1 = BlueSlotTr1->GetPosition();
+			Vector3 BSlotPos2 = BlueSlotTr2->GetPosition();
+
+			// RSlot
+			if (843.f < RSlotPos1.x)
+			{
+				float fForce = RSlotPos1.x - 843.f;
+				RSlotPos1.x -= fForce * 4.f * (float)Time::DeltaTime();
+				RSlotPos2.x -= fForce * 4.f * (float)Time::DeltaTime();
+
+				RedSlotTr1->SetPosition(RSlotPos1);
+				RedSlotTr2->SetPosition(RSlotPos2);
+			}
+
+			// BSlot
+			if (-843.f > BSlotPos1.x)
+			{
+				float fForce = RSlotPos1.x - 843.f;
+				BSlotPos1.x += fForce * 4.f * (float)Time::DeltaTime();
+				BSlotPos2.x += fForce * 4.f * (float)Time::DeltaTime();
+
+				BlueSlotTr1->SetPosition(BSlotPos1);
+				BlueSlotTr2->SetPosition(BSlotPos2);
+			}
+
+			// BanPick
+			Transform* WindowTr = mBanPickWindow->GetComponent<Transform>();
+			Vector3 WindowPos = WindowTr->GetPosition();
+
+			// 헤더
+			if (0.f > WindowPos.y)
+			{
+				// 처음 위치 - 현재위치
+				float fForce = 0.f - WindowPos.y;
+				WindowPos.y += fForce * 4.f * (float)Time::DeltaTime();
+
+				WindowTr->SetPosition(WindowPos);
+			}
+
+			break;
+		}
+		case ssz::BanPickScene::eBanPickPhase::Ban:
+		{
+			break;
+		}
+		case ssz::BanPickScene::eBanPickPhase::Pick:
+		{
+			break;
+		}
+		default:
+			break;
+		}
 
 		if (Input::GetKeyDown(eKeyCode::ENTER))
 		{
@@ -89,6 +174,8 @@ namespace ssz
 	{
 		AddGameObject(eLayerType::Cursor, TGM::GetCursor());
 		AddGameObject(eLayerType::Camera, TGM::GetCamera());
+
+		mPhase = eBanPickPhase::SceneIn;
 
 		CollisionManager::SetLayer(eLayerType::UI, eLayerType::Cursor, true);
 	}

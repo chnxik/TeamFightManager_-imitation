@@ -1,9 +1,11 @@
+#pragma once
 #include "sszStadiumScene.h"
 #include "CommonHeader.h"
 
 #include "sszButtonUI.h"
 
 #include "sszLineUpWindow.h"
+
 #include "sszPlayerCardBtn.h"
 #include "sszDefaultBtn.h"
 
@@ -13,6 +15,7 @@ namespace ssz
 
 	StadiumScene::StadiumScene()
 		: LineUpWin(nullptr)
+		, faccTime(0.f)
 	{
 	}
 	StadiumScene::~StadiumScene()
@@ -113,22 +116,28 @@ namespace ssz
 	{
 		Scene::Update();
 		
-		if (Input::GetKeyDown(eKeyCode::ENTER))
+		if (LineUpWin->GetState() == GameObject::eState::Paused)
 		{
-			if (LineUpWin->GetState() == GameObject::eState::Paused)
+			faccTime += (float)Time::DeltaTime();
+			
+			if (faccTime > 1.f)
 			{
 				LineUpWin->SetActive();
+				faccTime = 0.f;
 			}
 		}
 	}
+	
 	void StadiumScene::LateUpdate()
 	{
 		Scene::LateUpdate();
 	}
+	
 	void StadiumScene::Render()
 	{
 		Scene::Render();
 	}
+	
 	void StadiumScene::OnEnter()
 	{
 		AddGameObject(eLayerType::Cursor, TGM::GetCursor());
@@ -136,6 +145,7 @@ namespace ssz
 
 		CollisionManager::SetLayer(eLayerType::UI, eLayerType::Cursor, true);
 	}
+	
 	void StadiumScene::OnExit()
 	{
 		CollisionManager::Clear();

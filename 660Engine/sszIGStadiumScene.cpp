@@ -54,6 +54,8 @@ namespace ssz
 		{
 			SceneManager::LoadScene(L"MainLobbyScene");
 		}
+
+		BattleManager::Update();
 	}
 	void IGStadiumScene::LateUpdate()
 	{
@@ -67,6 +69,8 @@ namespace ssz
 			Log::Clear();
 			// SceneManager::LoadScene(L"TitleScene");
 		}
+
+		BattleManager::LateUpdate();
 	}
 	void IGStadiumScene::Render()
 	{

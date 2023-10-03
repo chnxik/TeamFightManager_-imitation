@@ -3,9 +3,20 @@
 
 namespace ssz
 {
+	class PlayerCardSlot;
+	class BanPickWindow;
+	class BattleHeader;
+
 	class BanPickScene : public Scene
 	{
 	public:
+		enum class eBanPickPhase
+		{
+			SceneIn,	// 씬 입장
+			Ban,		// 금지단계
+			Pick,		// 선택단계
+		};
+		
 		BanPickScene();
 		virtual ~BanPickScene();
 
@@ -18,7 +29,12 @@ namespace ssz
 		virtual void OnExit() override;
 
 	private:
+		eBanPickPhase mPhase;
+		BattleHeader* mBattleHeader;
+		PlayerCardSlot* mPlayerSlot[(UINT)eTeamColor::End][2];
+		BanPickWindow* mBanPickWindow;
 
+		float mAccTime;
 	};
 }
 

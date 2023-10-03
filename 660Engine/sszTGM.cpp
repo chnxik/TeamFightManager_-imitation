@@ -42,10 +42,10 @@ namespace ssz
 		mMainCamera->SetName(L"MainCamera");
 		mMainCamera->AddComponent<Camera>();
 		mMainCamera->AddComponent<AudioListener>();
-
+		
 		ChampInitialize(); // Champ 설정
-		// Pilot 설정
-		// Team 설정
+		PilotInitialize(); // Pilot 설정
+		TeamInitialize(); // Team 설정
 
 		for (int i = 0; i < 100; ++i)
 		{
@@ -136,6 +136,7 @@ namespace ssz
 
 	bool TGM::PilotInitialize()
 	{
+		Pilot* NewPilot = object::Instantiate<Pilot>();
 
 		return true;
 	}

@@ -217,6 +217,7 @@ xcopy /R /Y "$(SolutionDir)dll\FW1FontWrapperL.dll" "$(SolutionDir)x64\Debug"</
     <ClInclude Include="sszBanpickClassTap.h" />
     <ClInclude Include="sszBanPickScene.h" />
     <ClInclude Include="sszBanPickStat.h" />
+    <ClInclude Include="sszBanPickWindow.h" />
     <ClInclude Include="sszBattleHeader.h" />
     <ClInclude Include="sszBattleManager.h" />
     <ClInclude Include="sszChamp.h" />
@@ -276,6 +277,7 @@ xcopy /R /Y "$(SolutionDir)dll\FW1FontWrapperL.dll" "$(SolutionDir)x64\Debug"</
     <ClCompile Include="sszBanpickClassTap.cpp" />
     <ClCompile Include="sszBanPickScene.cpp" />
     <ClCompile Include="sszBanPickStat.cpp" />
+    <ClCompile Include="sszBanPickWindow.cpp" />
     <ClCompile Include="sszBattleHeader.cpp" />
     <ClCompile Include="sszBattleManager.cpp" />
     <ClCompile Include="sszChamp.cpp" />

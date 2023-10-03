@@ -1,6 +1,6 @@
 #pragma once
 #include "sszUIObject.h"
-
+#include "GameEnums.h"
 
 namespace ssz
 {
@@ -15,7 +15,7 @@ namespace ssz
 		void SetTitleType(eCampType eCamp, eTeamColor eColor);
 
 	private:
-		std::shared_ptr<Texture> TitleTex[(UINT)eCampType::End][(UINT)eTeamColor::End];
+		std::wstring TitleTex[(UINT)eCampType::End][(UINT)eTeamColor::End];
 	};
 
 }

@@ -1,9 +1,10 @@
 #pragma once
 #include "sszUIObject.h"
-#include "sszLineUpTeamTitle.h"
 
 namespace ssz
 {
+    class LineUpTeamTitle;
+
     class LineUpWindow : public UIObject
     {
     public:

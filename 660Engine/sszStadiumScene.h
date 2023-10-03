@@ -19,5 +19,7 @@ namespace ssz
 
 	private:
 		GameObject* LineUpWin;
+
+		float faccTime;
 	};
 }

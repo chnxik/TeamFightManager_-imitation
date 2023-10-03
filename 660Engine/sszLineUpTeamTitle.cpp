@@ -1,3 +1,4 @@
+#pragma once
 #include "sszLineUpTeamTitle.h"
 #include "CommonObjHeader.h"
 
@@ -20,10 +21,17 @@ namespace ssz
 #pragma region Meterial Load
 		{
 			//	Header
-			TitleTex[(UINT)eCampType::Player][(UINT)eTeamColor::Red] = Resources::Load<Texture>(L"LineUpUI_Red_Left_TTTex", L"..\\Resources\\useResource\\stadium\\UI\\lineup_ui_team_title_bg_3.png");
-			TitleTex[(UINT)eCampType::Enemy][(UINT)eTeamColor::Red] = Resources::Load<Texture>(L"LineUpUI_Red_Right_TTTex", L"..\\Resources\\useResource\\stadium\\UI\\lineup_ui_team_title_bg_2.png");
-			TitleTex[(UINT)eCampType::Player][(UINT)eTeamColor::Blue] = Resources::Load<Texture>(L"LineUpUI_Blue_Left_TTTex", L"..\\Resources\\useResource\\stadium\\UI\\lineup_ui_team_title_bg_0.png");
-			TitleTex[(UINT)eCampType::Enemy][(UINT)eTeamColor::Blue] = Resources::Load<Texture>(L"LineUpUI_Blue_Right_TTTex", L"..\\Resources\\useResource\\stadium\\UI\\lineup_ui_team_title_bg_1.png");
+			
+			Resources::Load<Texture>(L"LineUpUI_Red_Left_TTTex", L"..\\Resources\\useResource\\stadium\\UI\\lineup_ui_team_title_bg_3.png");
+			Resources::Load<Texture>(L"LineUpUI_Red_Right_TTTex", L"..\\Resources\\useResource\\stadium\\UI\\lineup_ui_team_title_bg_2.png");
+			Resources::Load<Texture>(L"LineUpUI_Blue_Left_TTTex", L"..\\Resources\\useResource\\stadium\\UI\\lineup_ui_team_title_bg_0.png");
+			Resources::Load<Texture>(L"LineUpUI_Blue_Right_TTTex", L"..\\Resources\\useResource\\stadium\\UI\\lineup_ui_team_title_bg_1.png");
+			
+			
+			TitleTex[(UINT)eCampType::Player][(UINT)eTeamColor::Red] = L"LineUpUI_Red_Left_TTTex";
+			TitleTex[(UINT)eCampType::Enemy][(UINT)eTeamColor::Red] = L"LineUpUI_Red_Right_TTTex";
+			TitleTex[(UINT)eCampType::Player][(UINT)eTeamColor::Blue] = L"LineUpUI_Blue_Left_TTTex";
+			TitleTex[(UINT)eCampType::Enemy][(UINT)eTeamColor::Blue] = L"LineUpUI_Blue_Right_TTTex";
 
 
 			ssz::object::LoadMaterial(MtKey, L"SpriteShader", L"LineUpUI_Red_Left_TTTex", eRenderingMode::Transparent);
@@ -44,6 +52,7 @@ namespace ssz
 
 	void LineUpTeamTitle::SetTitleType(eCampType eCamp, eTeamColor eColor)
 	{
-		GetComponent<MeshRenderer>()->GetMaterial()->SetTexture(TitleTex[(UINT)eCamp][(UINT)eColor]);
+		std::shared_ptr<Texture> Tex = Resources::Find<Texture>(TitleTex[(UINT)eCamp][(UINT)eColor]);
+		GetComponent<MeshRenderer>()->GetMaterial()->SetTexture(Tex);
 	}
 }

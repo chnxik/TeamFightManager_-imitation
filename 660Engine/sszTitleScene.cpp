@@ -102,6 +102,8 @@ namespace ssz
 		AddGameObject(eLayerType::Camera, TGM::GetCamera());
 
 		CollisionManager::SetLayer(eLayerType::UI, eLayerType::Cursor, true);
+
+		// ¸®¼Â
 	}
 
 	void TitleScene::OnExit()

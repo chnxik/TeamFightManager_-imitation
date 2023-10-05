@@ -18,6 +18,7 @@
 #define CBSLOT_OVERLAPCNT			2
 #define CBSLOT_ANIMATION2D			3
 #define CBSLOT_CHAMP				4
+#define CBSLOT_COLORFX				5
 // #define CBSLOT_PARTICLE				9
 
 
@@ -41,6 +42,7 @@ namespace ssz::graphics
 		Collider,
 		Animator,
 		Champ,
+		ColorFX,
 		Material,
 		END,
 	};

@@ -73,7 +73,6 @@ namespace ssz
 			Team* PlayerTeam = TGM::GetPlayerTeam();
 
 			mTeamIconSlot = ssz::object::InstantiateUI<TeamIconSlot>(Vector3(-880.f, 0.f, 1.002f), Vector3(90.f, 90.f, 1.f), this, L"TeamIconSlot");
-			mTeamIconSlot->ChangeIcon(PlayerTeam->GetTeamIconTexKey());
 
 			mTeamName = AddComponent<Text>();
 			mTeamName->TextInit(L"Galmuri14", Vector3(-825.f, 20.f, 0.f), 35.f, FONT_RGBA(255, 255, 255, 255), FW1_LEFT | FW1_VCENTER);

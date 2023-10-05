@@ -52,6 +52,14 @@ namespace renderer
 	{
 		float DamagedTime;
 	};
+
+	CBUFFER(ColorFXCB, CBSLOT_COLORFX)
+	{
+		float useGray;
+		float useAlpha;
+		float GrayRatio;
+		float AlphaRatio;
+	};
 	
 	extern ConstantBuffer* constantBuffer[(UINT)eCBType::END];
 

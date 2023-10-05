@@ -45,7 +45,6 @@ namespace ssz
 		
 		ChampInitialize(); // Champ 설정
 		PilotInitialize(); // Pilot 설정
-		TeamInitialize(); // Team 설정
 
 		for (int i = 0; i < 100; ++i)
 		{
@@ -136,13 +135,79 @@ namespace ssz
 
 	bool TGM::PilotInitialize()
 	{
-		Pilot* NewPilot = object::Instantiate<Pilot>();
+		if (FileManager::OpenLoadFile(L"PilotName.txt") == S_OK)
+		{
+			// 데이터 불러오기
+			wstring PilotName = {};
 
+			while (FileManager::DataLoad(PilotName, L'\n') == S_OK)
+			{
+				Pilot* NewPilot = new Pilot();
+				NewPilot->SetPilotName(PilotName);
+				gPilotList.insert(std::make_pair(PilotName, NewPilot));
+			}
+
+			FileManager::CloseLoadFile();
+			return true;
+		}
+
+		assert(nullptr);
+
+
+		// 기초 선수데이터 생성
+		
 		return true;
 	}
 
-	bool TGM::TeamInitialize()
+	bool TGM::TeamInitialize(std::vector<Pilot*> pilotlist)
 	{
+		if (0 < gTeamList.size())
+			return false;
+
+		// 플레이어 팀 선수 등록
+		vector<Pilot*>::iterator PilotIter = pilotlist.begin();
+
+		gPlayerTeam->RegistPilot((*PilotIter++));
+		gPlayerTeam->RegistPilot((*PilotIter++));
+
+		// 플레이어 제외 팀 로고 랜덤 생성
+		
+		wstring PlayerTeamTexkey = gPlayerTeam->GetTeamIconTexKey();
+		std::vector<wstring> TeamLogoTex;
+
+		for (int i = 1; i <= 10; ++i)
+		{
+			wstring Texkey = L"TeamLogoTex_" + std::to_wstring(i);
+			
+			if (Texkey == PlayerTeamTexkey)
+				continue;
+
+			TeamLogoTex.emplace_back(Texkey);
+		}
+		
+		// 팀 로고 셔플
+		std::random_device rd;
+		std::mt19937 gen(rd());
+		std::shuffle(TeamLogoTex.begin(), TeamLogoTex.end(), gen);
+		
+		FileManager::OpenLoadFile(L"TeamName.txt");
+		
+		for (int i = 0; i < 7; i++)
+		{
+			Team* NewTeam = new Team;
+			wstring TeamName = {};
+			FileManager::DataLoad(TeamName, L'\n');
+
+			NewTeam->SetIconTex(TeamLogoTex[i]);
+			NewTeam->SetTeamName(TeamName);
+
+			NewTeam->RegistPilot((*PilotIter++));
+			NewTeam->RegistPilot((*PilotIter++));
+
+			gTeamList.insert(std::make_pair(TeamName, NewTeam));
+		}
+
+		FileManager::CloseLoadFile();
 
 		return true;
 	}
@@ -238,15 +303,51 @@ namespace ssz
 
 		return champ;
 	}
+	
 	bool TGM::SaveData()
 	{
 		FileManager::OpenSaveFile(L"SaveFile.sav");
 		
 		// 데이터 저장
+		/* 저장 데이터 순서
+		플레이어 팀 이름
+		플레이어 팀 로고 텍스쳐키
+		전체팀 정보(플레이어 팀 제외)
+		전체 파일럿 정보 (선수이름, 소속팀, 나이, 능력치)
+		
+		*/
 		
 		// Player Team 정보
 		FileManager::DataSave(gPlayerTeam->GetTeamName(), L'\n');
 		FileManager::DataSave(gPlayerTeam->GetTeamIconTexKey(), L'\n');
+
+		// 전체 팀 정보 저장 (플레이어팀 제외)
+		map<std::wstring, Team*>::iterator TeamIter = gTeamList.begin();
+		for (; TeamIter != gTeamList.end(); TeamIter++)
+		{
+			Team* tmp = TeamIter->second;
+			wstring TeamData =
+				tmp->GetTeamName() // 팀 이름
+				+ L',' + tmp->GetTeamIconTexKey(); // 팀 아이콘 텍스쳐
+
+			FileManager::DataSave(TeamData, '\n');
+		}
+
+		// Pilot 정보 저장
+		map<std::wstring, Pilot*>::iterator PilotIter = gPilotList.begin();
+		
+		for (; PilotIter != gPilotList.end(); PilotIter++)
+		{
+			Pilot* tmp = PilotIter->second;
+			wstring PilotData =
+				tmp->GetPilotName() // 파일럿 이름
+				+ L',' + tmp->GetTeamName() // 소속 팀 이름
+				+ L',' + std::to_wstring(tmp->GetPilotAge()) // 파일럿 나이
+				+ L',' + std::to_wstring(tmp->GetPilotATK()) // 파일럿 공격능력치
+				+ L',' + std::to_wstring(tmp->GetPilotDEF()); // 파일럿 방어능력치
+			
+			FileManager::DataSave(PilotData, '\n');
+		}
 
 		// 다른 Team 정보
 
@@ -259,7 +360,7 @@ namespace ssz
 	{
 		if (FileManager::OpenLoadFile(L"SaveFile.sav") == S_OK)
 		{
-			// 데이터 불러오기
+			// 플레이어 데이터 로드
 			wstring TeamName = {};
 			wstring TeamIconTexKey = {};
 			
@@ -268,6 +369,39 @@ namespace ssz
 
 			gPlayerTeam->SetTeamName(TeamName);
 			gPlayerTeam->SetIconTex(TeamIconTexKey);
+
+			// 팀 정보 로드(생성)
+			for (int i = 0; i < 7; i++)
+			{
+				Team* NewTeam = new Team;
+				wstring TeamName = {};
+				wstring TeamIconTexKey = {};
+				FileManager::DataLoad(TeamName, L',');
+				FileManager::DataLoad(TeamIconTexKey, L'\n');
+
+				NewTeam->SetTeamName(TeamName);
+				NewTeam->SetIconTex(TeamIconTexKey);
+			}
+
+			// 전체 선수 데이터 로드
+			for (int i = 0; i < 16; i++)
+			{
+				wstring PilotName = {};
+				wstring HomeTeamName = {};
+				int PilotATK = 0;
+				int PilotDEF = 0;
+				int PilotAge = 0;
+
+				FileManager::DataLoad(PilotName, L',');
+				FileManager::DataLoad(HomeTeamName, L',');
+				FileManager::DataLoad(PilotAge, L',');
+				FileManager::DataLoad(PilotATK, L',');
+				FileManager::DataLoad(PilotDEF, L'\n');
+
+				Pilot* LoadPilot = GetPilot(PilotName);
+				LoadPilot->SetPilotData(PilotATK, PilotDEF, PilotAge);
+				LoadPilot->RegistTeam(GetTeam(HomeTeamName));
+			}
 
 			FileManager::CloseLoadFile();
 			return true;

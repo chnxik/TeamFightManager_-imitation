@@ -9,6 +9,7 @@ namespace ssz
 {
 	SelectBtnUI::SelectBtnUI()
 		: mCheckSelected(nullptr)
+		
 	{
 	}
 
@@ -100,6 +101,4 @@ namespace ssz
 
 		ChangeBtnTex(mCurState);
 	}
-	
-	
 }

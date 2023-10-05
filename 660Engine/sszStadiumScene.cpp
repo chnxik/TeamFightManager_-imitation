@@ -144,11 +144,18 @@ namespace ssz
 		AddGameObject(eLayerType::Camera, TGM::GetCamera());
 
 		CollisionManager::SetLayer(eLayerType::UI, eLayerType::Cursor, true);
+
+		Reset();
 	}
 	
 	void StadiumScene::OnExit()
 	{
 		CollisionManager::Clear();
 		TGM::SceneClear();
+	}
+	void StadiumScene::Reset()
+	{
+		// 첫정보로 되돌림
+		LineUpWin->SetPaused();
 	}
 }

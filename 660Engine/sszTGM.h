@@ -42,7 +42,7 @@ namespace ssz
 
 		static bool ChampInitialize();
 		static bool PilotInitialize();
-		static bool TeamInitialize();
+		static bool TeamInitialize(std::vector<Pilot*> pilotlist);
 
 		static Team* GetTeam(const std::wstring& key);
 		static Pilot* GetPilot(const std::wstring& key);
@@ -82,7 +82,7 @@ namespace ssz
 		static Cursor* mCursor;				// 커서
 		static GameObject* mMainCamera;		// 카메라
 
-		static map<std::wstring,Team*> gTeamList;		// 팀 목록
+		static map<std::wstring,Team*> gTeamList;		// 상대 팀 목록
 		static map<std::wstring,Pilot*> gPilotList;		// 전체 선수 목록
 		static map<std::wstring,Champ*> gChampList;		// 챔피언 목록
 

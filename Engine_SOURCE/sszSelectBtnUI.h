@@ -27,6 +27,8 @@ namespace ssz
         std::shared_ptr<Texture> mSelTempTex;
 
         UIObject** mCheckSelected;
+        
+      
 
     };
 }

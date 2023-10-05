@@ -2,6 +2,8 @@
 #include "sszTeam.h"
 #include "CommonObjHeader.h"
 
+#include "sszPilot.h"
+
 namespace ssz
 {
 	Team::Team()
@@ -26,8 +28,9 @@ namespace ssz
 		mTeamIcon = Resources::Find<Texture>(TexKey);
 		mTeamIconTexKey = TexKey;
 	}
-	void Team::AddPilot(Pilot* pilot)
+	void Team::RegistPilot(Pilot* pilot)
 	{
 		mPilotList.emplace_back(pilot);
+		pilot->RegistTeam(this);
 	}
 }

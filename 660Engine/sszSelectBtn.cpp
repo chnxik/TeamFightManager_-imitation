@@ -45,6 +45,8 @@ namespace ssz
 		AddComponent<Collider2D>();
 	}
 
+	
+
 	void SelectBtn::InitCheckSelected(UIObject** object)
 	{
 		SelectBtnUI* Btn = GetComponent<SelectBtnUI>();

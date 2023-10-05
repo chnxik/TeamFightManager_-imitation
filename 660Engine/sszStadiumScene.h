@@ -17,6 +17,8 @@ namespace ssz
 		virtual void OnEnter() override;
 		virtual void OnExit() override;
 
+		void Reset();
+
 	private:
 		GameObject* LineUpWin;
 

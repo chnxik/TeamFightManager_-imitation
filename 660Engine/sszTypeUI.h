@@ -13,6 +13,7 @@ namespace ssz
 		virtual void Update();
 
 		std::wstring Getstr() { return mStr; }
+		bool IsCurTyping() { return bTypeMode; }
 
 	private:
 		std::wstring mStr;

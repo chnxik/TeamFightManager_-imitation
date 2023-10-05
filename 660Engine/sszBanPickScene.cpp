@@ -90,7 +90,7 @@ namespace ssz
 			if (478.5 < BtHdPos.y)
 			{
 				// 처음 위치 - 현재위치
-				float fForce = BtHdPos.y - 478.5;
+				float fForce = BtHdPos.y - 478.5f;
 				BtHdPos.y -= fForce * 4.f * (float)Time::DeltaTime();
 
 				BtHdTr->SetPosition(BtHdPos);
@@ -133,7 +133,7 @@ namespace ssz
 			Transform* WindowTr = mBanPickWindow->GetComponent<Transform>();
 			Vector3 WindowPos = WindowTr->GetPosition();
 
-			// 헤더
+			// BanPick Window
 			if (0.f > WindowPos.y)
 			{
 				// 처음 위치 - 현재위치
@@ -178,11 +178,27 @@ namespace ssz
 		mPhase = eBanPickPhase::SceneIn;
 
 		CollisionManager::SetLayer(eLayerType::UI, eLayerType::Cursor, true);
+
+		Reset();
 	}
 	void BanPickScene::OnExit()
 	{
 		CollisionManager::Clear();
 		
 		TGM::SceneClear();
+	}
+	void BanPickScene::Reset()
+	{
+		mPhase = ssz::BanPickScene::eBanPickPhase::SceneIn;
+		mAccTime = 0.f;
+
+		// 위치 초기화
+		mBattleHeader->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 540.f, 1.04f));
+		mBanPickWindow->GetComponent<Transform>()->SetPosition(Vector3(0.f, -960.f, 1.19f));
+
+		mPlayerSlot[(UINT)eTeamColor::Red][0]->GetComponent<Transform>()->SetPosition(Vector3(960.f, 308.f, 1.02f));
+		mPlayerSlot[(UINT)eTeamColor::Red][1]->GetComponent<Transform>()->SetPosition(Vector3(960.f, 70.f, 1.02f));
+		mPlayerSlot[(UINT)eTeamColor::Blue][0]->GetComponent<Transform>()->SetPosition(Vector3(-960.f, 308.f, 1.02f));
+		mPlayerSlot[(UINT)eTeamColor::Blue][1]->GetComponent<Transform>()->SetPosition(Vector3(-960.f, 70.f, 1.02f));
 	}
 }

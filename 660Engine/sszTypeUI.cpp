@@ -71,6 +71,7 @@ namespace ssz
 		if (BtnState == ButtonUI::eBtnState::Down)
 		{
 			// 최대 한글 10 글자
+			bTypeMode = true;
 
 			bPrevSelected = true;
 			g_strText[istrLen] = 0;
@@ -82,7 +83,7 @@ namespace ssz
 			
 			tx->SetString(mStr);
 
-			if (Input::GetKeyDown(eKeyCode::ENTER))
+			if (Input::GetKey(eKeyCode::ENTER))
 			{
 				Btn->SetIdle();
 			}
@@ -90,6 +91,7 @@ namespace ssz
 		
 		if (bPrevSelected && BtnState == ButtonUI::eBtnState::Idle)
 		{
+			bTypeMode = false;
 			bPrevSelected = false;
 		
 			g_strText[0] = 0;

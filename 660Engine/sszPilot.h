@@ -16,18 +16,23 @@ namespace ssz
         virtual void LateUpdate();
         virtual void Render();
 
-        virtual void CreatePilot(std::wstring Name, UINT ATK, UINT DEF, UINT AGE);
+        void SetPilotName(std::wstring PilotName) { mPilotName = PilotName; }
+        void SetPilotData(UINT ATK, UINT DEF, UINT AGE);
+        void RegistTeam(Team* _Team);
 
+        std::wstring GetTeamName() { return mTeam->GetTeamName(); }
+        std::wstring GetPilotName() { return mPilotName; }
+        UINT GetPilotATK() { return iPilotATK; }
+        UINT GetPilotDEF() { return iPilotDEF; }
+        UINT GetPilotAge() { return iPilotAge; }
+    
     private:
-        // 소속 팀 : Team Class로 가진다.
+        Team* mTeam;    // 소속 팀 : Team Class로 가진다.
         
         // 캐릭터 헤어 logo (몸체 Animator와 별도로)
         std::wstring mPilotName;    // 이름   : wstring
         UINT iPilotATK; // 공격력 : UINT
         UINT iPilotDEF; // 방어력 : UINt
-        // 컨디션 : enum class
-        
-        // 챔프 숙련도 : struct (구조체로 가진다 : 챔피언Key, 수치, 경험치)
         
         UINT iPilotAge; // 나이   : UINT
         

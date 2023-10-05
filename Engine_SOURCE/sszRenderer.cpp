@@ -290,6 +290,9 @@ namespace renderer
 		constantBuffer[(UINT)eCBType::Champ] = new ConstantBuffer(eCBType::Champ);
 		constantBuffer[(UINT)eCBType::Champ]->Create(sizeof(ChampCB));
 
+		constantBuffer[(UINT)eCBType::ColorFX] = new ConstantBuffer(eCBType::ColorFX);
+		constantBuffer[(UINT)eCBType::ColorFX]->Create(sizeof(ColorFXCB));
+
 		// light Structured Buffer
 		lightsBuffer = new StructuredBuffer();
 		lightsBuffer->Create(sizeof(LightAttribute), 2, eSRVType::None);

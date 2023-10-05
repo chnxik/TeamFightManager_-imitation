@@ -1,10 +1,12 @@
 #include "sszPilot.h"
 #include "CommonObjHeader.h"
+#include "sszTeam.h"
 
 namespace ssz
 {
 	Pilot::Pilot()
-		: iPilotATK(0)
+		: mTeam(nullptr)
+		, iPilotATK(0)
 		, iPilotDEF(0)
 		, iPilotAge(0)
 	{
@@ -30,11 +32,14 @@ namespace ssz
 	{
 	}
 	
-	void Pilot::CreatePilot(std::wstring Name, UINT ATK, UINT DEF, UINT AGE)
+	void Pilot::SetPilotData(UINT ATK, UINT DEF, UINT AGE)
 	{
-		mPilotName = Name;
 		iPilotATK = ATK;
 		iPilotDEF = DEF;
 		iPilotAge = AGE;
+	}
+	void Pilot::RegistTeam(Team* _Team)
+	{
+		mTeam = _Team;
 	}
 }

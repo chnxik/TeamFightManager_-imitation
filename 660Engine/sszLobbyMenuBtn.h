@@ -14,11 +14,19 @@ namespace ssz
 
         virtual void Initialize() override;
 
+        virtual void Render() override;
+
         ButtonUI* GetBtnComponent() { return mBtnComp; }
         void InitBtnIcon(std::wstring Texkey, std::wstring MenuName);
 
     private:
         ButtonUI* mBtnComp;
         UIObject* mBtnIcon;
+
+        bool useGray;
+        bool useAlpha;
+
+        float grayRatio;
+        float AlphaRatio;
     };
 }

@@ -24,6 +24,8 @@ namespace ssz
 		, mAvatarSlot(nullptr)
 		, mTeamNameType(nullptr)
 		, mCoachType(nullptr)
+		, NewGameStartBtn(nullptr)
+		, NewGameUICloseBtn(nullptr)
 	{
 		
 	}
@@ -77,7 +79,7 @@ namespace ssz
 
 			// 게임시작, 취소 버튼
 
-			ImportantBtn* NewGameStartBtn = InstantiateUI<ImportantBtn>(Vector3(-123.f, -335.f, 1.049f), this, L"NewGameStartBtn");
+			NewGameStartBtn = InstantiateUI<ImportantBtn>(Vector3(-123.f, -335.f, 1.049f), this, L"NewGameStartBtn");
 			NewGameStartBtn->GetBtnComponent()->SetDelegate(this, (DELEGATE)&NewGameWindow::GameStart);
 			NewGameStartBtn->SetKBDIcon(KBDIcon::F);
 
@@ -85,7 +87,7 @@ namespace ssz
 			StartBtnText->TextInit(L"Galmuri14", Vector3(25.f, 13.f, 0.f), 27, FONT_RGBA(255, 255, 255, 255), FW1_CENTER);
 			StartBtnText->SetString(L"게임 시작");
 
-			DefaultBtn* NewGameUICloseBtn = InstantiateUI<DefaultBtn>(Vector3(123.f, -335.f, 1.049f), this, L"NewGameUICloseBtn");
+			NewGameUICloseBtn = InstantiateUI<DefaultBtn>(Vector3(123.f, -335.f, 1.049f), this, L"NewGameUICloseBtn");
 			NewGameUICloseBtn->GetBtnComponent()->SetDelegate(this, (DELEGATE)&UIObject::UIClose);
 			NewGameUICloseBtn->SetKBDIcon(KBDIcon::R);
 
@@ -132,9 +134,14 @@ namespace ssz
 						wstring Texkey = L"TeamLogoTex_" + std::to_wstring(idx);
 						TeamLogoSlot->InitItemTex(Texkey, idx, LogoBtnPos, Vector3(100.f, 100.f, 1.f), this);
 						TeamLogoSlot->GetComponent<SelectBtnUI>()->SetDelegateW(mTeamIconSlot, (DELEGATEW)&TeamIconSlot::ChangeIcon, Texkey);
+						
+						if (i == 0 && j == 1)
+						{
+							TeamLogoSlot->MouseLbtnDown();
+							TeamLogoSlot->MouseLbtnClicked();
+						}
 					}
 				}
-				mTeamIconSlot->ChangeIcon(L"TeamLogoTex_1");
 			}
 
 			// 코치 외형 선택 버튼
@@ -175,16 +182,37 @@ namespace ssz
 
 						AvatarSlot->InitItemTex(Texkey, idx, LogoBtnPos, Vector3(TexScale.x, TexScale.y, 1.f), this);
 						AvatarSlot->GetComponent<SelectBtnUI>()->SetDelegateW(mAvatarSlot, (DELEGATEW)&AvatarSlot::ChangeHair, Texkey);
+
+						if (i == 0 && j == 1)
+						{
+							AvatarSlot->MouseLbtnDown();
+							AvatarSlot->MouseLbtnClicked();
+						}
 					}
 				}
-				mAvatarSlot->ChangeHair(L"CoachHairTex_1");
 			}
 		}
 #pragma endregion
 	}
 
+	void NewGameWindow::Update()
+	{
+		UIObject::Update();
+
+		if (mTeamNameType->IsCurTyping() || mCoachType->IsCurTyping())
+			return;
+
+		if (Input::GetKey(eKeyCode::F))
+			NewGameStartBtn->MouseLbtnClicked();
+		
+		else if (Input::GetKey(eKeyCode::R))
+			NewGameUICloseBtn->MouseLbtnClicked();
+
+	}
+
 	void NewGameWindow::GameStart()
 	{
+		// 플레이어 팀 등록
 		wstring TeamName = mTeamNameType->Getstr();
 		std::shared_ptr<Texture> TeamIcon = mSelectedLogo->GetComponent<MeshRenderer>()->GetMaterial()->GetTexture();
 		
@@ -192,6 +220,37 @@ namespace ssz
 		PlayerTeam->SetTeamName(TeamName);
 		PlayerTeam->SetIconTex(mTeamIconSlot->GetIconTexKey());
 		
+		
+
+		// 파일럿 랜덤섞기
+		std::random_device rd;
+		std::mt19937 gen(rd());
+		
+		// 파일럿 생성
+		vector<Pilot*> Pilots;
+
+		map<std::wstring, Pilot*> PilotList = TGM::GetPilotList();
+		map<std::wstring, Pilot*>::iterator PilotIter = PilotList.begin();
+
+		for (; PilotIter != PilotList.end(); PilotIter++)
+		{
+			Pilot* pilot = Pilots.emplace_back(PilotIter->second);
+
+			UINT Age = rand() % 7 + 17;
+			UINT ATK = rand() % 5;
+			UINT DEF = rand() % 5;
+
+			pilot->SetPilotData(ATK, DEF, Age);
+		}
+
+		// 셔플
+		std::shuffle(Pilots.begin(), Pilots.end(), gen);
+		
+		// 전체 팀 초기 생성
+		if (!(TGM::TeamInitialize(Pilots)))
+			assert(nullptr);
+
+
 		SceneManager::LoadScene(L"MainLobbyScene");
 	}
 }

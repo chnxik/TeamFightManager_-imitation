@@ -54,7 +54,6 @@ namespace ssz
 		ConstantBuffer* cb = renderer::constantBuffer[(UINT)eCBType::Champ];
 		cb->SetData(&data);
 
-		cb->Bind(eShaderStage::VS);
 		cb->Bind(eShaderStage::PS);
 	}
 
@@ -70,7 +69,6 @@ namespace ssz
 			ConstantBuffer* cb = renderer::constantBuffer[(UINT)eCBType::Champ];
 			cb->SetData(&data);
 
-			cb->Bind(eShaderStage::VS);
 			cb->Bind(eShaderStage::PS);
 		}
 	}

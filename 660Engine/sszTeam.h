@@ -19,7 +19,9 @@ namespace ssz
 		std::shared_ptr<Texture>  GetTeamIcon() { return mTeamIcon;	}
 		std::wstring GetTeamIconTexKey() { return mTeamIconTexKey; }
 
-		void AddPilot(Pilot* pilot);
+		void RegistPilot(Pilot* pilot);
+
+		std::vector<Pilot*> GetPilotList() { return mPilotList; }
 
 	private:
 		std::wstring mTeamName;					// ∆¿ ¿Ã∏ß

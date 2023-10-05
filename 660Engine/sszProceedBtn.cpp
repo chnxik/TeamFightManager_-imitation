@@ -10,6 +10,7 @@ namespace ssz
 		, mBtnComp(nullptr)
 		, ProceedBtnArrowMark(nullptr)
 		, mDefalutMarkPos_x(80.f)
+		, mKBDIcon(nullptr)
 	{
 	}
 
@@ -96,5 +97,12 @@ namespace ssz
 			Pos.x = 40.f;
 
 		Tr->SetPosition(Pos);
+	}
+	void ProceedBtn::SetKBDIcon(KBDIcon::KEYICON key)
+	{
+		mKBDIcon = new KBDIcon(L"KeyIcon");
+		mKBDIcon->SetIcon(key);
+
+		AddChildUI((UIObject*)mKBDIcon);
 	}
 }

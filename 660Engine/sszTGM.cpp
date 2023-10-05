@@ -171,7 +171,6 @@ namespace ssz
 		gPlayerTeam->RegistPilot((*PilotIter++));
 
 		// 플레이어 제외 팀 로고 랜덤 생성
-		
 		wstring PlayerTeamTexkey = gPlayerTeam->GetTeamIconTexKey();
 		std::vector<wstring> TeamLogoTex;
 
@@ -381,6 +380,8 @@ namespace ssz
 
 				NewTeam->SetTeamName(TeamName);
 				NewTeam->SetIconTex(TeamIconTexKey);
+
+				gTeamList.insert(std::make_pair(TeamName, NewTeam));
 			}
 
 			// 전체 선수 데이터 로드
@@ -400,7 +401,16 @@ namespace ssz
 
 				Pilot* LoadPilot = GetPilot(PilotName);
 				LoadPilot->SetPilotData(PilotATK, PilotDEF, PilotAge);
-				LoadPilot->RegistTeam(GetTeam(HomeTeamName));
+				Team* HomeTeam = GetTeam(HomeTeamName);
+				
+				if (HomeTeam)	// 팀리스트에서 팀을 찾아온다
+				{
+					LoadPilot->RegistTeam(HomeTeam);
+				}
+				else // 없는 경우 플레이어팀.
+				{
+					LoadPilot->RegistTeam(gPlayerTeam);
+				}
 			}
 
 			FileManager::CloseLoadFile();

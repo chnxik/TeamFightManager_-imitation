@@ -7,7 +7,6 @@
 
 #include "sszLobbyMenuBtn.h"
 #include "sszProceedBtn.h"
-#include "sszWeeklyEventBtn.h"
 
 #include "sszCloudObj.h"
 
@@ -78,7 +77,7 @@ namespace ssz
 					Vector3 MainMenuBtnSize(230.f, 70.f, 1.f);
 					Vector3 MainMenuBtnPos[5] = {};
 
-					for (int i = 0; i < 5; ++i)
+					for (int i = 0; i < 4; ++i)
 					{
 						float x = -810.f; // 버튼 첫 시작 x좌표
 						x += (MainMenuBtnSize.x + 33.f) * i;
@@ -88,19 +87,16 @@ namespace ssz
 
 					// Menu Btn
 					LobbyMenuBtn* TeamManageMenu = InstantiateUI<LobbyMenuBtn>(MainMenuBtnPos[0], eLayerType::UI, L"TeamManageMenu");
-					LobbyMenuBtn* OperateMenu = InstantiateUI<LobbyMenuBtn>(MainMenuBtnPos[1], eLayerType::UI, L"OperateMenu");
-					LobbyMenuBtn* LeagueMenuBtn = InstantiateUI<LobbyMenuBtn>(MainMenuBtnPos[2], eLayerType::UI, L"LeagueMenuBtn");
-					LobbyMenuBtn* GameMenu = InstantiateUI<LobbyMenuBtn>(MainMenuBtnPos[3], eLayerType::UI, L"GameMenu");
-					LobbyMenuBtn* SystemMenu = InstantiateUI<LobbyMenuBtn>(MainMenuBtnPos[4], eLayerType::UI, L"SystemMenu");
+					LobbyMenuBtn* LeagueMenuBtn = InstantiateUI<LobbyMenuBtn>(MainMenuBtnPos[1], eLayerType::UI, L"LeagueMenuBtn");
+					LobbyMenuBtn* GameMenu = InstantiateUI<LobbyMenuBtn>(MainMenuBtnPos[2], eLayerType::UI, L"GameMenu");
+					LobbyMenuBtn* SystemMenu = InstantiateUI<LobbyMenuBtn>(MainMenuBtnPos[3], eLayerType::UI, L"SystemMenu");
 
 					Resources::Load<Texture>(L"TeamManageMenuTex", L"..\\Resources\\useResource\\Mainlobby\\UI\\icon\\main_button_icon_0.png");
-					Resources::Load<Texture>(L"OperateMenuTex", L"..\\Resources\\useResource\\Mainlobby\\UI\\icon\\main_button_icon_1.png");
 					Resources::Load<Texture>(L"LeagueMenuBtnTex", L"..\\Resources\\useResource\\Mainlobby\\UI\\icon\\main_button_icon_2.png");
 					Resources::Load<Texture>(L"GameMenuTex", L"..\\Resources\\useResource\\Mainlobby\\UI\\icon\\main_button_icon_3.png");
 					Resources::Load<Texture>(L"SystemMenuTex", L"..\\Resources\\useResource\\Mainlobby\\UI\\icon\\main_button_icon_4.png");
 
 					TeamManageMenu->InitBtnIcon(L"TeamManageMenuTex", L"팀 관리");
-					OperateMenu->InitBtnIcon(L"OperateMenuTex", L"운영");
 					LeagueMenuBtn->InitBtnIcon(L"LeagueMenuBtnTex", L"대회");
 					GameMenu->InitBtnIcon(L"GameMenuTex", L"게임");
 					SystemMenu->InitBtnIcon(L"SystemMenuTex", L"시스템");
@@ -108,9 +104,6 @@ namespace ssz
 					// Proceed Btn
 					ProceedBtn* ProceedMenu = InstantiateUI<ProceedBtn>(Vector3(735.f, -430.f, 1.002f), eLayerType::UI, L"ProceedMenu");
 					ProceedMenu->GetBtnComponent()->SetDelegateW(this, (DELEGATEW)&Scene::ChangeScene, L"StadiumScene");
-	
-					// WeeklyEvent Btn
-					WeeklyEventBtn* WeeklyEventMenu = InstantiateUI<WeeklyEventBtn>(Vector3(735.f, -320.f, 1.002f), eLayerType::UI, L"WeeklyEventMenu");
 				}
 #pragma endregion
 				

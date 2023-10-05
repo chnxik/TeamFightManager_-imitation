@@ -1,5 +1,6 @@
 #pragma once
 #include "sszUIObject.h"
+#include "sszKBDIcon.h"
 
 namespace ssz
 {
@@ -17,10 +18,13 @@ namespace ssz
             void MarkAnimation();
 
             ButtonUI* GetBtnComponent() { return mBtnComp; }
+            void SetKBDIcon(KBDIcon::KEYICON key);
 
         private:
             ButtonUI* mBtnComp;
             UIObject* ProceedBtnArrowMark;
+
+            KBDIcon* mKBDIcon;
 
             float mDefalutMarkPos_x;
 	};

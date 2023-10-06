@@ -6,6 +6,7 @@ namespace ssz
 	class PlayerCardSlot;
 	class BanPickWindow;
 	class BattleHeader;
+	class BanLine;
 
 	class BanPickScene : public Scene
 	{
@@ -13,8 +14,13 @@ namespace ssz
 		enum class eBanPickPhase
 		{
 			SceneIn,	// 씬 입장
-			Ban,		// 금지단계
-			Pick,		// 선택단계
+			BP_1,	// 금지단계 1
+			BP_2,	// 금지단계 2
+			PP_1,	// 선택단계 1
+			PP_2,	// 선택단계 2
+			PP_3,	// 선택단계 3
+			PP_4,	// 선택단계 4
+			SecenOut
 		};
 		
 		BanPickScene();
@@ -35,6 +41,7 @@ namespace ssz
 		BattleHeader* mBattleHeader;
 		PlayerCardSlot* mPlayerSlot[(UINT)eTeamColor::End][2];
 		BanPickWindow* mBanPickWindow;
+		BanLine* mBanLine;
 
 		float mAccTime;
 	};

@@ -30,4 +30,7 @@ namespace ssz
 	void Component::Binds()
 	{
 	}
+	void Component::BindsClear()
+	{
+	}
 }

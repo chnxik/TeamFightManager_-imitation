@@ -12,6 +12,7 @@ cbuffer Masking : register(b1)
     float Top;
     float Right;
     float Bottom;
+    int UseMasking;
 }
 
 cbuffer Collider : register(b2)

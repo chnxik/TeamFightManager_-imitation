@@ -23,6 +23,15 @@ float4 main(VSOut In) : SV_TARGET
     if (color.w == 0.f)
         discard;
     
+    if (0 < UseMasking)
+    {
+        if (Left >= In.Pos.x || Right <= In.Pos.x)
+            discard;
+    
+        if (Top >= In.Pos.y || Bottom <= In.Pos.y)
+            discard;
+    }
+    
     if (0.f < useGray)
     {
         float gray = ((color.x + color.y + color.z) / 3.f) * GrayRatio;
@@ -31,8 +40,8 @@ float4 main(VSOut In) : SV_TARGET
         color.z = gray;
     }
     
-    if(0.f < useAlpha)
+    if (0.f < useAlpha)
         color.w = AlphaRatio;
     
     return color;
-}
+    }

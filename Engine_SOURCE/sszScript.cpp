@@ -24,4 +24,7 @@ namespace ssz
 	void Script::Binds()
 	{
 	}
+	void Script::BindsClear()
+	{
+	}
 }

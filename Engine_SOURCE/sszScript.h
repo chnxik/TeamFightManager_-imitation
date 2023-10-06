@@ -16,6 +16,7 @@ namespace ssz
 		virtual void Render() override;
 
 		virtual void Binds() override;
+		virtual void BindsClear() override;
 
 		virtual void OnCollisionEnter(Collider2D* other) {};
 		virtual void OnCollisionStay(Collider2D* other) {};

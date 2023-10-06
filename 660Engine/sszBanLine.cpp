@@ -35,6 +35,7 @@ namespace ssz
 			// Set default Size
 			Transform* tr = GetComponent<Transform>();
 			tr->SetScale(Vector3(1450.f, 90.f, 1.f));
+			tr->SetTransType(Transform::eTransType::PosAdd);
 		}
 #pragma endregion
 #pragma region SlotUI Load

@@ -15,9 +15,13 @@ namespace ssz
 		virtual void Render() override;
 
 		virtual void Binds() override;
+		virtual void BindsClear() override;
+
+		void SetMaskArea(Vector3 objpos, Vector3 objscale);
 
 	private:
-		Vector3 LeftTop;
-		Vector3 RightBottom;
+		Vector3 mLeftTop;
+		Vector3 mRightBottom;
+		bool	mUseMasking;
 	};
 }

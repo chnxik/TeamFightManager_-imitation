@@ -102,7 +102,7 @@ namespace ssz
 		GameObject::Render();
 		
 		// Damage Efc Clear
-		mChampScript->DamageCBClear();
+		// mChampScript->DamageCBClear();
 	}
 
 	void Champ::Dead()

@@ -17,6 +17,7 @@ namespace ssz
 		, mAccTime(0.f)
 		, mBattleHeader(nullptr)
 		, mBanPickWindow(nullptr)
+		, mBanLine(nullptr)
 	{
 	}
 	BanPickScene::~BanPickScene()
@@ -48,8 +49,6 @@ namespace ssz
 			// Battle Header
 			mBattleHeader = InstantiateUI<BattleHeader>(Vector3(0.0f, 540.f, 1.04f), eLayerType::UI, L"BattleHeaderBg");
 
-			// BanLine
-			BanLine* BanLineUI = InstantiateUI<BanLine>(Vector3(0.f, 353.f, 1.03f), eLayerType::UI, L"BanLine");
 
 			// PlayerCard
 			mPlayerSlot[(UINT)eTeamColor::Red][0] = InstantiateUI<PlayerCardSlot>(Vector3(960.f, 308.f, 1.02f), eLayerType::UI, L"RedPlayerCard_1"); 
@@ -64,6 +63,9 @@ namespace ssz
 
 			mBanPickWindow = InstantiateUI<BanPickWindow>(Vector3(0.f, -960.f, 1.19f), eLayerType::UI, L"BanPickWindow");
 		
+			// BanLine
+			mBanLine = InstantiateUI<BanLine>(Vector3(0.f, 353.f, 1.03f), mBanPickWindow, L"BanLine");
+
 			// BanpickClassTap
 			// 클래스탭은 Btn 묶음으로 부모객체에서 상태를 받아 선택된 버튼과 나머지 버튼의 크기와 위치가 바뀌도록 한다.
 
@@ -145,14 +147,20 @@ namespace ssz
 
 			break;
 		}
-		case ssz::BanPickScene::eBanPickPhase::Ban:
-		{
+		case ssz::BanPickScene::eBanPickPhase::BP_1:
 			break;
-		}
-		case ssz::BanPickScene::eBanPickPhase::Pick:
-		{
+		case ssz::BanPickScene::eBanPickPhase::BP_2:
 			break;
-		}
+		case ssz::BanPickScene::eBanPickPhase::PP_1:
+			break;
+		case ssz::BanPickScene::eBanPickPhase::PP_2:
+			break;
+		case ssz::BanPickScene::eBanPickPhase::PP_3:
+			break;
+		case ssz::BanPickScene::eBanPickPhase::PP_4:
+			break;
+		case ssz::BanPickScene::eBanPickPhase::SecenOut:
+			break;
 		default:
 			break;
 		}

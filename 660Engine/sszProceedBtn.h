@@ -20,11 +20,16 @@ namespace ssz
             ButtonUI* GetBtnComponent() { return mBtnComp; }
             void SetKBDIcon(KBDIcon::KEYICON key);
 
+            void SetActionStr(std::wstring str);
+
         private:
             ButtonUI* mBtnComp;
             UIObject* ProceedBtnArrowMark;
 
+
             KBDIcon* mKBDIcon;
+            
+            UIObject* mActionStr;
 
             float mDefalutMarkPos_x;
 	};

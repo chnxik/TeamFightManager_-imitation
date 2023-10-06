@@ -57,9 +57,8 @@ namespace ssz
 		cb->Bind(eShaderStage::PS);
 	}
 
-	void Champ_Script::DamageCBClear()
+	void Champ_Script::BindsClear()
 	{
-		// AnimationCB
 		if (0.f < fDamageRatio)
 		{
 			renderer::ChampCB data = {};
@@ -69,6 +68,22 @@ namespace ssz
 			ConstantBuffer* cb = renderer::constantBuffer[(UINT)eCBType::Champ];
 			cb->SetData(&data);
 
+			cb->Bind(eShaderStage::PS);
+		}
+	}
+
+	void Champ_Script::DamageCBClear()
+	{
+		// AnimationCB
+		if (0.f < fDamageRatio)
+		{
+			renderer::ChampCB data = {};
+		
+			data.DamagedTime = 0.f;
+		
+			ConstantBuffer* cb = renderer::constantBuffer[(UINT)eCBType::Champ];
+			cb->SetData(&data);
+		
 			cb->Bind(eShaderStage::PS);
 		}
 	}

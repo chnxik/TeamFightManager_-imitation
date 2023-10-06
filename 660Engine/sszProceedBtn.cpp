@@ -11,12 +11,14 @@ namespace ssz
 		, ProceedBtnArrowMark(nullptr)
 		, mDefalutMarkPos_x(80.f)
 		, mKBDIcon(nullptr)
+		, mActionStr(nullptr)
 	{
 	}
 
 	ProceedBtn::~ProceedBtn()
 	{
 	}
+
 	void ProceedBtn::Initialize()
 	{
 		std::wstring MtKey(mUIKey + L"_BtnMt");
@@ -62,6 +64,19 @@ namespace ssz
 			ProceedBtnArrowMark = ssz::object::InstantiateUI<UIObject>(Vector3(mDefalutMarkPos_x, 0.f, BtnPosz - 0.0001f), Vector3(170.f, 120.f, 0.f), this, L"ProceedArrowMark");
 			ProceedBtnArrowMark->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"ProceedBtnArrowMarkMt");
 			ProceedBtnArrowMark->GetComponent<Transform>()->SetTransType(ssz::Transform::eTransType::PosAdd);
+
+			// 아이콘
+			SetKBDIcon(KBDIcon::KEYICON::F);
+			mKBDIcon->GetComponent<Transform>()->SetPosition(Vector3(-135.f, 25.f, 0.f));
+
+			Text* mMenuName = AddComponent<Text>();
+			mMenuName->TextInit(L"Galmuri14", Vector3(-105.f, 25.f, 0.f), 30.f, FONT_RGBA(0, 0, 0, 255), FW1_LEFT | FW1_VCENTER);
+			mMenuName->SetString(L"진행");
+			
+			mActionStr = ssz::object::InstantiateUI<UIObject>(Vector3(0.f, 0.f, BtnPosz - 0.0002f), Vector3(0.f, 0.f, 0.f), this, L"ActionsStr");
+			Text* str = mActionStr->AddComponent<Text>();
+			str->TextInit(L"Galmuri14", Vector3(-150.f, -25.f, 0.f), 22.f, FONT_RGBA(0, 0, 0, 255), FW1_LEFT | FW1_VCENTER);
+			str->SetString(L"다음 일정을 진행합니다");
 		}
 #pragma endregion
 	}
@@ -104,5 +119,10 @@ namespace ssz
 		mKBDIcon->SetIcon(key);
 
 		AddChildUI((UIObject*)mKBDIcon);
+	}
+
+	void ProceedBtn::SetActionStr(std::wstring str)
+	{
+		mActionStr->GetComponent<Text>()->SetString(str);
 	}
 }

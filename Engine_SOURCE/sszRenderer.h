@@ -33,6 +33,7 @@ namespace renderer
 		float Top;
 		float Right;
 		float Bottom;
+		int	  UseMasking;
 	};
 
 	CBUFFER(ColliderCB, CBSLOT_OVERLAPCNT)

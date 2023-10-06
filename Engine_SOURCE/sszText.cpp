@@ -52,6 +52,7 @@ namespace ssz
 		
 		mFontPos.x += width / 2.f + mOffsetPos.x;
 		mFontPos.y += height / 2.f - mOffsetPos.y;
+		mFontPos.z += mFontPos.z + mOffsetPos.z;
 	}
 
 	void Text::Render()

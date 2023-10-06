@@ -19,6 +19,7 @@ namespace ssz
 		virtual void Render();
 
 		virtual void Binds();
+		virtual void BindsClear();
 
 		GameObject* GetOwner() { return mOwner; }
 		virtual void SetOwner(GameObject* owner) { mOwner = owner; }

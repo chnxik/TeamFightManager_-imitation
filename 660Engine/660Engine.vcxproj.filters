@@ -580,5 +580,23 @@
     <Filter Include="Contents\UI\Window\Banpick">
       <UniqueIdentifier>{b9b9c929-8f39-4b49-8e5f-f0733ac67818}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Contents\Object\GameUnit\Champ\fighter">
+      <UniqueIdentifier>{23756ee2-0b90-43d4-8084-53b07aac869a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\GameUnit\Champ\monk">
+      <UniqueIdentifier>{49ca0b0f-fb9c-42d8-9636-c98f6add3378}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\GameUnit\Champ\ninja">
+      <UniqueIdentifier>{3d9b0e49-0f52-403a-8d1b-3804a8c22ec4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\GameUnit\Champ\priest">
+      <UniqueIdentifier>{894ab4cc-7570-45a3-8158-36f830ca0ec7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\GameUnit\Champ\pyromancer">
+      <UniqueIdentifier>{50ca824e-4584-4ae9-8077-d42396437383}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\GameUnit\Champ\swordman">
+      <UniqueIdentifier>{a2084581-cfd3-4af0-876b-7820aedad8e0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>

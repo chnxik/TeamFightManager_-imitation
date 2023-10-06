@@ -46,6 +46,16 @@ namespace ssz
 		mMaterial->Binds();
 		mMesh->Render();
 
+		for (Component* Comp : GetOwner()->GetComponents())
+		{
+			Comp->BindsClear();
+		}
+
+		for (Script* Script : GetOwner()->GetScripts())
+		{
+			Script->BindsClear();
+		}
+
 		mMaterial->Clear();
 	}
 	

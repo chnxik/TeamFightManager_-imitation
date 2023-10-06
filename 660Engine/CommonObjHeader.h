@@ -41,6 +41,8 @@ using namespace ssz::AI;
 #include "sszAudioSource.h"
 #include "sszText.h"
 
+#include "sszMasking.h"
+
 // Object Func
 #include "sszObject.h"
 using namespace ssz::object;

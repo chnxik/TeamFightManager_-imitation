@@ -47,7 +47,6 @@ namespace ssz
 				BgSky = Instantiate<GameObject>(Vector3(0.0f, 166.f, 1.1f), Vector3(1920.f, 1920.f, 1.f), eLayerType::BackGround);
 				BgSky->SetName(L"Bg_Sky");
 				BgSky->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"Bg_Skyday_Mt");
-				BgSky->AddComponent<Masking>()->SetMaskArea(Vector3(0.0f, -28.f, 0.f), Vector3(668.f, 512.f, 0.f));
 
 				// Bg_Ground
 				GameObject* Bg_Ground = Instantiate<GameObject>(Vector3(0.0f, -412.f, 1.015f), Vector3(1920.f, 256.f, 1.f), eLayerType::BackGround);
@@ -64,7 +63,6 @@ namespace ssz
 				{
 					obj = Instantiate<CloudObj>(Vector3(0.0f, 0.0f, 1.0145f), Vector3(381.f, 117, 1.f), eLayerType::BackGroundObj);
 					obj->SetMt(idx++);
-					obj->AddComponent<Masking>()->SetMaskArea(Vector3(200.f, 0.f, 0.f), Vector3(500.f, 1000.f, 0.f));
 				}
 			}
 #pragma endregion

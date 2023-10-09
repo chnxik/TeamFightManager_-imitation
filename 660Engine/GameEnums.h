@@ -37,16 +37,22 @@ namespace ssz
     enum class eChamp
     {
         Archer,
-        Knight
+        Knight,
+        Fighter,
+        Monk,
+        SwordMan,
+        Pyromancer,
+        Priest,
+        Ninja
     };
 
     enum class eChampType
     {
-        FIGHTER,    // 전사
-        MARKSMAN,   // 원거리 딜러
-        MAGE,       // 마법사
-        CONTROLLER, // 서포터
-        SLAYER,     // 암살자
+        eFIGHTER,    // 전사
+        eMARKSMAN,   // 원거리 딜러
+        eMAGE,       // 마법사
+        eCONTROLLER, // 서포터
+        eSLAYER,     // 암살자
         NONE,
     };
 

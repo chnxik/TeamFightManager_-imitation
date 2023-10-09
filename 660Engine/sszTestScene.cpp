@@ -6,6 +6,8 @@
 #include "sszBattleHeader.h"
 #include "sszObj_IG_Stadium.h"
 
+#include "sszAnimTesterObj.h"
+
 // #include "sszSpawnEfc.h"
 
 namespace ssz
@@ -38,6 +40,10 @@ namespace ssz
 			GameObject* StadiumArea = Instantiate<GameObject>(TGM::GetStaidumPos(), TGM::GetStadiumScale(), eLayerType::BackGroundObj);
 			StadiumArea->AddComponent<Collider2D>();
 		}
+
+		// 챔프오브제 애니메이션 테스트
+		AnimTesterObj* newobj = Instantiate<AnimTesterObj>(Vector3(0.f, 0.f, 1.f), Vector3(256.f, 256.f, 1.f), eLayerType::BackGroundObj);
+
 #pragma endregion
 	}
 
@@ -68,14 +74,14 @@ namespace ssz
 		Log::Clear();
 		TGM::SetGameTime(60.f);
 
-		// Player
-		{
-			Champ* archer = TGM::AddChampScene(eLayerType::Player, ARCHER, Vector3(-100.f, -200.f, 1.0f));
-			Champ* knight = TGM::AddChampScene(eLayerType::Enemy, KNIGHT, Vector3(100.f, -250.f, 1.0f));
-
-			archer->RegistEnemy(knight);
-			knight->RegistEnemy(archer);
-		}
+		//// Player
+		//{
+		//	Champ* archer = TGM::AddChampScene(eLayerType::Player, ARCHER, Vector3(-100.f, -200.f, 1.0f));
+		//	Champ* knight = TGM::AddChampScene(eLayerType::Enemy, KNIGHT, Vector3(100.f, -250.f, 1.0f));
+		//
+		//	archer->RegistEnemy(knight);
+		//	knight->RegistEnemy(archer);
+		//}
 
 		AddGameObject(eLayerType::Cursor, TGM::GetCursor());
 		AddGameObject(eLayerType::Camera, TGM::GetCamera());

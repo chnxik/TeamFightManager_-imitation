@@ -23,7 +23,9 @@ namespace ssz
 		SceneManager::CreateScene<BanPickScene>(L"BanPickScene");
 		SceneManager::CreateScene<IGStadiumScene>(L"IGStadiumScene");
 		
-		SceneManager::LoadScene(L"TitleScene");
+		SceneManager::CreateScene<TestScene>(L"TestScene");
+		
+		SceneManager::LoadScene(L"TestScene");
 
 	}
 	void ContentsRelease()

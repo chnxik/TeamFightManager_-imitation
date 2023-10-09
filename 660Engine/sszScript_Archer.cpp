@@ -1,6 +1,5 @@
 #include "sszScript_Archer.h"
 
-// Test
 #include "sszArcherBT.cpp"
 
 namespace ssz
@@ -32,7 +31,7 @@ namespace ssz
 		Champ* Owner = (Champ*)GetOwner();
 		
 		Owner->SetName(ARCHER); // 챔프 이름 입력
-		Owner->SetChampInfo(eChampType::MARKSMAN, 42, 0.67f, 120, 5, 100, 4); // 챔피언 정보 입력
+		Owner->SetChampInfo(eChampType::eMARKSMAN, 42, 0.67f, 120, 5, 100, 4); // 챔피언 정보 입력
 		Owner->InitChampStatus(0, 0);	// 인게임 정보 세팅
 
 		Owner->GetChampStatus()->CoolTime_Skill = 3.0f;

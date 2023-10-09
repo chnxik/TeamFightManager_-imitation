@@ -33,7 +33,7 @@ namespace ssz
 
 		Owner->SetName(KNIGHT);
 
-		Owner->SetChampInfo(eChampType::FIGHTER, 21, 0.67f, 37, 10, 200, 5);
+		Owner->SetChampInfo(eChampType::eFIGHTER, 21, 0.67f, 37, 10, 200, 5);
 		Owner->InitChampStatus(0, 0);
 
 		Owner->GetChampStatus()->CoolTime_Skill = 4.2f;

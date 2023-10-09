@@ -211,6 +211,7 @@ xcopy /R /Y "$(SolutionDir)dll\FW1FontWrapperL.dll" "$(SolutionDir)x64\Debug"</
     <ClInclude Include="framework.h" />
     <ClInclude Include="GameEnums.h" />
     <ClInclude Include="Load.h" />
+    <ClInclude Include="sszAnimTesterObj.h" />
     <ClInclude Include="sszArrangementScript.h" />
     <ClInclude Include="sszAvatarSlot.h" />
     <ClInclude Include="sszBanLine.h" />
@@ -233,6 +234,12 @@ xcopy /R /Y "$(SolutionDir)dll\FW1FontWrapperL.dll" "$(SolutionDir)x64\Debug"</
     <ClInclude Include="sszKBDIcon.h" />
     <ClInclude Include="sszLog.h" />
     <ClInclude Include="sszMainLobbyScene.h" />
+    <ClInclude Include="sszScript_Fighter.h" />
+    <ClInclude Include="sszScript_Monk.h" />
+    <ClInclude Include="sszScript_Ninja.h" />
+    <ClInclude Include="sszScript_Priest.h" />
+    <ClInclude Include="sszScript_Pyromancer.h" />
+    <ClInclude Include="sszScript_SwordMan.h" />
     <ClInclude Include="sszSelectBtn.h" />
     <ClInclude Include="sszNumb.h" />
     <ClInclude Include="sszObj_IG_Stadium.h" />
@@ -270,6 +277,7 @@ xcopy /R /Y "$(SolutionDir)dll\FW1FontWrapperL.dll" "$(SolutionDir)x64\Debug"</
   <ItemGroup>
     <ClCompile Include="660Engine.cpp" />
     <ClCompile Include="Load.cpp" />
+    <ClCompile Include="sszAnimTesterObj.cpp" />
     <ClCompile Include="sszArcherBT.cpp" />
     <ClCompile Include="sszArrangementScript.cpp" />
     <ClCompile Include="sszAvatarSlot.cpp" />
@@ -289,12 +297,23 @@ xcopy /R /Y "$(SolutionDir)dll\FW1FontWrapperL.dll" "$(SolutionDir)x64\Debug"</
     <ClCompile Include="sszCursorScript.cpp" />
     <ClCompile Include="sszDefaultBtn.cpp" />
     <ClCompile Include="sszEffect.cpp" />
+    <ClCompile Include="sszFighterBT.cpp" />
     <ClCompile Include="sszHeaderSlot.cpp" />
     <ClCompile Include="sszIGStadiumScene.cpp" />
     <ClCompile Include="sszKBDIcon.cpp" />
     <ClCompile Include="sszKnightBT.cpp" />
     <ClCompile Include="sszLog.cpp" />
     <ClCompile Include="sszMainLobbyScene.cpp" />
+    <ClCompile Include="sszMonkBT.cpp" />
+    <ClCompile Include="sszNinjaBT.cpp" />
+    <ClCompile Include="sszPriestBT.cpp" />
+    <ClCompile Include="sszPyromancerBT.cpp" />
+    <ClCompile Include="sszScript_Fighter.cpp" />
+    <ClCompile Include="sszScript_Monk.cpp" />
+    <ClCompile Include="sszScript_Ninja.cpp" />
+    <ClCompile Include="sszScript_Priest.cpp" />
+    <ClCompile Include="sszScript_Pyromancer.cpp" />
+    <ClCompile Include="sszScript_SwordMan.cpp" />
     <ClCompile Include="sszSelectBtn.cpp" />
     <ClCompile Include="sszNumb.cpp" />
     <ClCompile Include="sszObj_IG_Stadium.cpp" />
@@ -317,6 +336,7 @@ xcopy /R /Y "$(SolutionDir)dll\FW1FontWrapperL.dll" "$(SolutionDir)x64\Debug"</
     <ClCompile Include="sszSpawnEfc.cpp" />
     <ClCompile Include="sszStadiumScene.cpp" />
     <ClCompile Include="sszStatIcon.cpp" />
+    <ClCompile Include="sszSwordManBT.cpp" />
     <ClCompile Include="sszTeam.cpp" />
     <ClCompile Include="sszTeamIconSlot.cpp" />
     <ClCompile Include="sszTestEditBox.cpp" />

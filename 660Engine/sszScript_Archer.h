@@ -1,6 +1,5 @@
 #pragma once
 #include "sszChamp_Script.h"
-#include "CommonObjHeader.h"
 
 namespace ssz
 {

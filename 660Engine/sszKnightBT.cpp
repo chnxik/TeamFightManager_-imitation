@@ -44,7 +44,7 @@ namespace ssz
 		}
 
 	private:
-		bool bDamage;
+		bool bDamage = false;
 		float fAttackRatio;
 	};
 }

@@ -118,7 +118,7 @@ namespace ssz
 		// 윈도우 해상도
 		RECT rect = {};
 		GetClientRect(application.GetHwnd(), &rect);
-		float halfwidth = (float)(rect.right - rect.left) / 2,f;
+		float halfwidth = (float)(rect.right - rect.left) / 2.f;
 		float halfheight = (float)(rect.bottom - rect.top) / 2.f;
 
 		Vector3 WinPos = { halfwidth + objpos.x, halfheight - objpos.y, 0.f };

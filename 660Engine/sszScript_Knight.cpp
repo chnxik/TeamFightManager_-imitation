@@ -43,37 +43,62 @@ namespace ssz
 
 	void Script_Knight::InitChampAnim()
 	{
+		// ======================================== 공통 애니메이션 세팅 ===========================================
+
 		Champ* Owner = (Champ*)GetOwner();
 
-		Owner->AddComponent<MeshRenderer>();
-		Owner->AddComponent<Animator>();
-
 		// Load Atlas
-		std::shared_ptr<Texture> atlas = Resources::Load<Texture>(L"knight_sprite", L"..\\Resources\\useResource\\ChampSprite\\knight\\knight_sprite\\knight.png");
+		std::wstring ChampName = L"knight";							// 클래스이름
+		std::wstring AtlasKey = ChampName + L"_sprite";
+		std::wstring AtlasPath =
+			L"..\\Resources\\useResource\\ChampSprite\\" + ChampName + L"\\" + AtlasKey + L"\\" + ChampName + L".png";
 
-		// Set MeshRenderer
-		LoadMaterial(L"knight_spriteMt", L"AnimationShader", L"knight_sprite", eRenderingMode::Transparent);
-		Owner->GetComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"knight_spriteMt");
+		std::shared_ptr<Texture> atlas = Resources::Load<Texture>(AtlasKey, AtlasPath);
 
-		//SetAnimator
-		Animator* anim = Owner->GetComponent<Animator>();
+		// Set Mesh Renderer
+		std::wstring MtKey = AtlasKey + L"Mt";
+		LoadMaterial(MtKey, L"AnimationShader", AtlasKey, eRenderingMode::Transparent);
+		Owner->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", MtKey);
 
-		Vector2 FrmSize(96.f, 96.f);
+		std::wstring IdleAnikey = ChampName + L"_idle";
+		std::wstring MoveAnikey = ChampName + L"_move";
+		std::wstring AttackAnikey = ChampName + L"_attack";
+		std::wstring DeadAnikey = ChampName + L"_dead";
+		std::wstring SkillAnikey = ChampName + L"_skill";
+		std::wstring UltAnikey = ChampName + L"_ultimate";
 
-		anim->Create(L"knight_idle", L"knight_sprite", Vector2(0.f, 0.f), FrmSize, 5, Vector2(0.f, 0.f), 10.f);
-		anim->Create(L"knight_move", L"knight_sprite", Vector2(0.f, FrmSize.y * 1), FrmSize, 8, Vector2(0.f, 0.f), 10.f);
-		anim->Create(L"knight_attack", L"knight_sprite", Vector2(0.f, FrmSize.y * 2), FrmSize, 7, Vector2(0.f, 0.f), 10.f);
-		anim->Create(L"knight_dead", L"knight_sprite", Vector2(0.f, FrmSize.y * 3), FrmSize, 9, Vector2(0.f, 0.f), 10.f);
-		anim->Create(L"knight_skill", L"knight_sprite", Vector2(0.f, FrmSize.y * 4), FrmSize, 7, Vector2(0.f, 0.f), 10.f);
-		anim->Create(L"knight_Ultimate", L"knight_sprite", Vector2(0.f, FrmSize.y * 5), FrmSize, 7, Vector2(0.f, 0.f), 10.f);
+		// Animation Set
 
-		Owner->SetAnimKey(Champ::eActiveType::IDLE, L"knight_idle");
-		Owner->SetAnimKey(Champ::eActiveType::MOVE, L"knight_move");
-		Owner->SetAnimKey(Champ::eActiveType::ATTACK, L"knight_attack");
-		Owner->SetAnimKey(Champ::eActiveType::DEAD, L"knight_dead");
-		Owner->SetAnimKey(Champ::eActiveType::SKILL, L"knight_skill");
-		Owner->SetAnimKey(Champ::eActiveType::ULTIMATE, L"knight_Ultimate");
-		
+		Animator* anim = Owner->AddComponent<Animator>();
+		Transform* tr = Owner->GetComponent<Transform>();
+
+		tr->SetScale(Vector3(170.f, 170.f, 0.f));	// Set Scale
+		Vector2 FrmSize(96.f, 96.f);				// frm szie
+
+		// 프레임, 프레임속도
+		Vector2 IdleAnimInfo = { 5.f, 10.f };
+		Vector2 MoveAnimInfo = { 8.f, 10.f };
+		Vector2 AttackAnimInfo = { 7.f, 10.f };
+		Vector2 DeadAnimInfo = { 9.f, 10.f };
+		Vector2 SkillAnimInfo = { 7.f, 10.f };
+		Vector2 UltAnimInfo = { 7.f, 10.f };
+
+		anim->Create(IdleAnikey, AtlasKey, Vector2(0.f, 0.f), FrmSize, (int)IdleAnimInfo.x, Vector2(0.f, 0.f), IdleAnimInfo.y);
+		anim->Create(MoveAnikey, AtlasKey, Vector2(0.f, FrmSize.y * 1), FrmSize, (int)MoveAnimInfo.x, Vector2(0.f, 0.f), MoveAnimInfo.y);
+		anim->Create(AttackAnikey, AtlasKey, Vector2(0.f, FrmSize.y * 2), FrmSize, (int)AttackAnimInfo.x, Vector2(0.f, 0.f), AttackAnimInfo.y);
+		anim->Create(DeadAnikey, AtlasKey, Vector2(0.f, FrmSize.y * 3), FrmSize, (int)DeadAnimInfo.x, Vector2(0.f, 0.f), DeadAnimInfo.y);
+		anim->Create(SkillAnikey, AtlasKey, Vector2(0.f, FrmSize.y * 4), FrmSize, (int)SkillAnimInfo.x, Vector2(0.f, 0.f), SkillAnimInfo.y);
+		anim->Create(UltAnikey, AtlasKey, Vector2(0.f, FrmSize.y * 5), FrmSize, (int)UltAnimInfo.x, Vector2(0.f, 0.f), UltAnimInfo.y);
+
+		Owner->SetAnimKey(Champ::eActiveType::IDLE, IdleAnikey);
+		Owner->SetAnimKey(Champ::eActiveType::MOVE, MoveAnikey);
+		Owner->SetAnimKey(Champ::eActiveType::ATTACK, AttackAnikey);
+		Owner->SetAnimKey(Champ::eActiveType::DEAD, DeadAnikey);
+		Owner->SetAnimKey(Champ::eActiveType::SKILL, SkillAnikey);
+		Owner->SetAnimKey(Champ::eActiveType::ULTIMATE, UltAnikey);
+
+		// ===================================================================================
+				
 		anim->CompleteEvent(Owner->GetAnimKey(Champ::eActiveType::ATTACK)) = std::bind(&Champ_Script::AttackComplete, this);
 		anim->StartEvent(Owner->GetAnimKey(Champ::eActiveType::SKILL)) = std::bind(&Script_Knight::Skill, this);
 		anim->CompleteEvent(Owner->GetAnimKey(Champ::eActiveType::DEAD)) = std::bind(&BattleManager::RegistRespawnPool, Owner);

@@ -200,6 +200,9 @@
     <ClInclude Include="sszAnimTesterObj.h">
       <Filter>Contents\Object\Tester</Filter>
     </ClInclude>
+    <ClInclude Include="sszStatusBar.h">
+      <Filter>Contents\Object\GameUnit\Champ\Base\StatusBar</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="660Engine.cpp" />
@@ -415,6 +418,9 @@
     </ClCompile>
     <ClCompile Include="sszAnimTesterObj.cpp">
       <Filter>Contents\Object\Tester</Filter>
+    </ClCompile>
+    <ClCompile Include="sszStatusBar.cpp">
+      <Filter>Contents\Object\GameUnit\Champ\Base\StatusBar</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -660,6 +666,9 @@
     </Filter>
     <Filter Include="Contents\Object\Tester">
       <UniqueIdentifier>{8bbfc707-bc0a-4ea7-9f28-3792787346f5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\GameUnit\Champ\Base\StatusBar">
+      <UniqueIdentifier>{6c12da35-e66d-4899-b3ff-e4e708e6e217}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

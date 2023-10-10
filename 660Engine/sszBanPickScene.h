@@ -13,7 +13,8 @@ namespace ssz
 	public:
 		enum class eBanPickPhase
 		{
-			SceneIn,	// 씬 입장
+			SceneIn1,	// 씬 입장
+			SceneIn2,
 			BP_1,	// 금지단계 1
 			BP_2,	// 금지단계 2
 			PP_1,	// 선택단계 1

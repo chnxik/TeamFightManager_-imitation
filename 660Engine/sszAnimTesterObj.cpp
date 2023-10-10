@@ -14,7 +14,7 @@ namespace ssz
 	void AnimTesterObj::Initialize()
 	{
 		// Load Atlas
-		std::wstring ChampName = L"fighter";
+		std::wstring ChampName = L"priest";				// 클래스이름
 		std::wstring AtlasKey = ChampName + L"_sprite";
 		std::wstring AtlasPath =
 			L"..\\Resources\\useResource\\ChampSprite\\" + ChampName + L"\\" + AtlasKey + L"\\" + ChampName + L".png";
@@ -37,21 +37,23 @@ namespace ssz
 		// Animation Set
 
 		Animator* anim = AddComponent<Animator>();
-		
-		Vector2 FrmSize(128.f, 128.f);
+		Transform* tr = GetComponent<Transform>();
+
+		tr->SetScale(Vector3(256.f, 256.f, 0.f));
+		Vector2 FrmSize(128.f, 128.f);		// frm 사이즈
 
 		anim->Create(IdleAnikey, AtlasKey, Vector2(0.f, 0.f), FrmSize, 
-			5, Vector2(0.f, 0.f), 10.f);
+			4, Vector2(0.f, 0.f), 10.f);
 		anim->Create(MoveAnikey, AtlasKey, Vector2(0.f, FrmSize.y * 1), FrmSize, 
 			8, Vector2(0.f, 0.f), 10.f);
 		anim->Create(AttackAnikey, AtlasKey, Vector2(0.f, FrmSize.y * 2), FrmSize, 
-			7, Vector2(0.f, 0.f), 10.f);
+			10, Vector2(0.f, 0.f), 10.f);
 		anim->Create(DeadAnikey, AtlasKey, Vector2(0.f, FrmSize.y * 3), FrmSize, 
-			9, Vector2(0.f, 0.f), 10.f);
+			10, Vector2(0.f, 0.f), 10.f);
 		anim->Create(SkillAnikey, AtlasKey, Vector2(0.f, FrmSize.y * 4), FrmSize, 
-			7, Vector2(0.f, 0.f), 10.f);
+			9, Vector2(0.f, 0.f), 10.f);
 		anim->Create(UltAnikey, AtlasKey, Vector2(0.f, FrmSize.y * 5), FrmSize, 
-			7, Vector2(0.f, 0.f), 10.f);
+			10, Vector2(0.f, 0.f), 10.f);
 
 		SetAnimKey(eActiveType::IDLE, IdleAnikey);
 		SetAnimKey(eActiveType::MOVE, MoveAnikey);

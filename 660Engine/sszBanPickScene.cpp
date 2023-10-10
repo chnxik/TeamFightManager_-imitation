@@ -12,7 +12,7 @@ namespace ssz
 	using namespace object;
 
 	BanPickScene::BanPickScene()
-		: mPhase(eBanPickPhase::SceneIn)
+		: mPhase(eBanPickPhase::SceneIn1)
 		, mPlayerSlot{}
 		, mAccTime(0.f)
 		, mBattleHeader(nullptr)
@@ -81,7 +81,7 @@ namespace ssz
 
 		switch (mPhase)
 		{
-		case ssz::BanPickScene::eBanPickPhase::SceneIn:
+		case ssz::BanPickScene::eBanPickPhase::SceneIn1:
 		{
 			mAccTime += (float)Time::DeltaTime();
 
@@ -130,6 +130,19 @@ namespace ssz
 				BlueSlotTr1->SetPosition(BSlotPos1);
 				BlueSlotTr2->SetPosition(BSlotPos2);
 			}
+			
+			if (1.f < mAccTime)
+			{
+				mAccTime = 0.f;
+				mPhase = eBanPickPhase::SceneIn2;
+			}
+
+
+			break;
+		}
+		case ssz::BanPickScene::eBanPickPhase::SceneIn2:
+		{
+			mAccTime += (float)Time::DeltaTime();
 
 			// BanPick
 			Transform* WindowTr = mBanPickWindow->GetComponent<Transform>();
@@ -144,7 +157,6 @@ namespace ssz
 
 				WindowTr->SetPosition(WindowPos);
 			}
-
 			break;
 		}
 		case ssz::BanPickScene::eBanPickPhase::BP_1:
@@ -183,7 +195,7 @@ namespace ssz
 		AddGameObject(eLayerType::Cursor, TGM::GetCursor());
 		AddGameObject(eLayerType::Camera, TGM::GetCamera());
 
-		mPhase = eBanPickPhase::SceneIn;
+		mPhase = eBanPickPhase::SceneIn1;
 
 		CollisionManager::SetLayer(eLayerType::UI, eLayerType::Cursor, true);
 
@@ -197,7 +209,7 @@ namespace ssz
 	}
 	void BanPickScene::Reset()
 	{
-		mPhase = ssz::BanPickScene::eBanPickPhase::SceneIn;
+		mPhase = ssz::BanPickScene::eBanPickPhase::SceneIn1;
 		mAccTime = 0.f;
 
 		// 위치 초기화

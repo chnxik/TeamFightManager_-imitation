@@ -77,6 +77,7 @@ namespace ssz
 
 		mChampStatusBar = new StatusBar();
 		mChampStatusBar->Initialize();
+		mChampStatusBar->RegistChamp(this);
 	}
 
 	void Champ::Update()
@@ -249,7 +250,7 @@ namespace ssz
 	{
 		mPilot = pPilot;
 		mTeam = TGM::GetTeam(pPilot->GetTeamName());
-		mChampStatusBar->RegistGame(this);
+		mChampStatusBar->RegistGame(mPilot);
 	}
 
 	void Champ::ATTACK()

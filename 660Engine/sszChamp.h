@@ -97,6 +97,10 @@ namespace ssz
         tChampStatus* GetChampStatus() { return &mChampStatus; } // 경기 사용 챔피언 정보
         void InitChampStatus(UINT ATKpt, UINT DEFpt); // Player 클래스를 인자로 받는다.
 
+        int* GetChampHPptr() { return &mChampStatus.HP; }
+        float* GetChampCoolptr() { return &mChampStatus.accTime_Skill; }
+        bool* GetbUseUlt() { return &mChampStatus.bULTIMATE; }
+
         void ResetInfo();
         void RespawnInfo();
 

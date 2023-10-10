@@ -53,7 +53,7 @@ namespace ssz
 		OffsetPos.z = 0.f;
 
 		Text* tx = AddComponent<Text>();
-		tx->TextInit(L"Galmuri14", OffsetPos, FontSize, FONT_RGBA(255, 255, 255, 255), FW1_VCENTER);
+		tx->TextInit(Text::eFonts::Galmuri14, OffsetPos, FontSize, FONT_RGBA(255, 255, 255, 255), FW1_VCENTER);
 	}
 	
 	void TypeUI::Update()

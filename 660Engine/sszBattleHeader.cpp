@@ -40,7 +40,7 @@ namespace ssz
 			Text* tx = AddComponent<Text>();
 			tx->SetOffsetPos(Vector3(-20.f, -30.f, 0.f));
 			tx->SetFontSize(25);
-			tx->SetFont(L"Galmuri14");
+			tx->SetFont(Text::eFonts::Galmuri14);
 		}
 #pragma endregion
 #pragma region SlotUI Load

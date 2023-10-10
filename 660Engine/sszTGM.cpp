@@ -223,6 +223,9 @@ namespace ssz
 		if (iter != gTeamList.end())
 			return iter->second;
 
+		else if (gPlayerTeam->GetTeamName() == key)
+			return gPlayerTeam;
+
 		return nullptr;
 	}
 

@@ -8,6 +8,15 @@ namespace ssz
 	class Text : public Component
 	{
 	public:
+		enum class eFonts
+		{
+			Galmuri9,
+			Galmuri11,
+			Galmuri14,
+			Silver,
+			END
+		};
+
 		Text();
 		~Text();
 
@@ -16,9 +25,9 @@ namespace ssz
 		virtual void LateUpdate() override;
 		virtual void Render() override;
 
-		void TextInit(const std::wstring& Font,Vector3 OffsetPos, float FontSize, UINT FontColor, UINT flags);
+		void TextInit(Text::eFonts FontType,Vector3 OffsetPos, float FontSize, UINT FontColor, UINT flags);
 
-		void SetFont(const std::wstring& font) { mFont = font; }
+		void SetFont(Text::eFonts FontType) { mFont = mFonts[(UINT)FontType]; }
 
 		void SetFontSize(float Size) { mFontSize = Size; }
 		float GetFontSize() { return mFontSize; }
@@ -39,6 +48,8 @@ namespace ssz
 		std::wstring mString;
 		Vector3 mFontPos;
 		Vector3 mOffsetPos;
+
+		std::wstring mFonts[(UINT)Text::eFonts::END];
 
 		float	mFontSize;
 		UINT	mFontColor;

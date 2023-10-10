@@ -90,7 +90,7 @@ namespace ssz
 		Vector3 IconScale = BtnIconTr->GetScale();
 
 		Text* mMenuName = AddComponent<Text>();
-		mMenuName->TextInit(L"Galmuri14", Vector3(IconPos.x + IconScale.x / 2.f + 5.f, 0.f, 0.f), 20.f, FONT_RGBA(255, 255, 255, 255), FW1_LEFT | FW1_VCENTER);
+		mMenuName->TextInit(Text::eFonts::Galmuri14, Vector3(IconPos.x + IconScale.x / 2.f + 5.f, 0.f, 0.f), 20.f, FONT_RGBA(255, 255, 255, 255), FW1_LEFT | FW1_VCENTER);
 		mMenuName->SetString(MenuName);
 	}
 }

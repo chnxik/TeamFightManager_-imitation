@@ -70,12 +70,12 @@ namespace ssz
 			mKBDIcon->GetComponent<Transform>()->SetPosition(Vector3(-135.f, 25.f, 0.f));
 
 			Text* mMenuName = AddComponent<Text>();
-			mMenuName->TextInit(L"Galmuri14", Vector3(-105.f, 25.f, 0.f), 30.f, FONT_RGBA(0, 0, 0, 255), FW1_LEFT | FW1_VCENTER);
+			mMenuName->TextInit(Text::eFonts::Galmuri14, Vector3(-105.f, 25.f, 0.f), 30.f, FONT_RGBA(0, 0, 0, 255), FW1_LEFT | FW1_VCENTER);
 			mMenuName->SetString(L"진행");
 			
 			mActionStr = ssz::object::InstantiateUI<UIObject>(Vector3(0.f, 0.f, BtnPosz - 0.0002f), Vector3(0.f, 0.f, 0.f), this, L"ActionsStr");
 			Text* str = mActionStr->AddComponent<Text>();
-			str->TextInit(L"Galmuri14", Vector3(-150.f, -25.f, 0.f), 22.f, FONT_RGBA(0, 0, 0, 255), FW1_LEFT | FW1_VCENTER);
+			str->TextInit(Text::eFonts::Galmuri14, Vector3(-150.f, -25.f, 0.f), 22.f, FONT_RGBA(0, 0, 0, 255), FW1_LEFT | FW1_VCENTER);
 			str->SetString(L"다음 일정을 진행합니다");
 		}
 #pragma endregion

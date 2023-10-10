@@ -26,7 +26,7 @@ namespace ssz
 		
 		SceneManager::CreateScene<TestScene>(L"TestScene");
 		
-		SceneManager::LoadScene(L"IGStadiumScene");
+		SceneManager::LoadScene(L"TitleScene");
 
 	}
 	void ContentsRelease()

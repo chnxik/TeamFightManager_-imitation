@@ -13,6 +13,9 @@
 #include "sszObj_IG_Stadium.h"
 #include "sszPlayerCardSlot.h"
 
+#include "sszChamp_Script.h"
+#include "sszStatusBar.h"
+
 namespace ssz
 {
 	using namespace object;
@@ -89,9 +92,12 @@ namespace ssz
 		TGM::SetGameTime(60.f);
 
 		// Player
-		{
+		{	
 			Champ* archer = TGM::AddChampScene(eLayerType::Player, ARCHER, Vector3(-100.f, -200.f, 1.0f));
 			Champ* knight = TGM::AddChampScene(eLayerType::Enemy, KNIGHT, Vector3(100.f, -250.f, 1.0f));
+
+			archer->RegistPilot(TGM::GetPilot(L"Faker"));
+			knight->RegistPilot(TGM::GetPilot(L"Canyon"));
 
 			archer->RegistEnemy(knight);
 			knight->RegistEnemy(archer);

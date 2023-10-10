@@ -68,11 +68,11 @@ namespace ssz
 			Text* TeamLogo = AddComponent<Text>();
 			Text* CoachTex = AddComponent<Text>();
 
-			NewGameTitle->TextInit(L"Galmuri14", Vector3(0.f, 350.f, 0.f), 50.f, FONT_RGBA(255, 255, 255, 255), FW1_CENTER);
-			TeamName->TextInit(L"Galmuri14", Vector3(-330.f, 250.f, 0.f), 40.f, FONT_RGBA(255, 255, 255, 255), FW1_CENTER);
-			CoachName->TextInit(L"Galmuri14", Vector3(340.f, 250.f, 0.f), 40.f, FONT_RGBA(255, 255, 255, 255), FW1_CENTER);
-			TeamLogo->TextInit(L"Galmuri14", Vector3(-330.f, 30.f, 0.f), 40.f, FONT_RGBA(255, 255, 255, 255), FW1_CENTER);
-			CoachTex->TextInit(L"Galmuri14", Vector3(340.f, 30.f, 0.f), 40.f, FONT_RGBA(255, 255, 255, 255), FW1_CENTER);
+			NewGameTitle->TextInit(Text::eFonts::Galmuri14, Vector3(0.f, 350.f, 0.f), 50.f, FONT_RGBA(255, 255, 255, 255), FW1_CENTER);
+			TeamName->TextInit(Text::eFonts::Galmuri14, Vector3(-330.f, 250.f, 0.f), 40.f, FONT_RGBA(255, 255, 255, 255), FW1_CENTER);
+			CoachName->TextInit(Text::eFonts::Galmuri14, Vector3(340.f, 250.f, 0.f), 40.f, FONT_RGBA(255, 255, 255, 255), FW1_CENTER);
+			TeamLogo->TextInit(Text::eFonts::Galmuri14, Vector3(-330.f, 30.f, 0.f), 40.f, FONT_RGBA(255, 255, 255, 255), FW1_CENTER);
+			CoachTex->TextInit(Text::eFonts::Galmuri14, Vector3(340.f, 30.f, 0.f), 40.f, FONT_RGBA(255, 255, 255, 255), FW1_CENTER);
 
 			NewGameTitle->SetString(L"새 게임");
 			TeamName->SetString(L"팀 이름");
@@ -87,7 +87,7 @@ namespace ssz
 			NewGameStartBtn->SetKBDIcon(KBDIcon::F);
 
 			Text* StartBtnText = NewGameStartBtn->AddComponent<Text>();
-			StartBtnText->TextInit(L"Galmuri14", Vector3(25.f, 13.f, 0.f), 27, FONT_RGBA(255, 255, 255, 255), FW1_CENTER);
+			StartBtnText->TextInit(Text::eFonts::Galmuri14, Vector3(25.f, 13.f, 0.f), 27, FONT_RGBA(255, 255, 255, 255), FW1_CENTER);
 			StartBtnText->SetString(L"게임 시작");
 
 			NewGameUICloseBtn = InstantiateUI<DefaultBtn>(Vector3(123.f, -335.f, 1.049f), this, L"NewGameUICloseBtn");
@@ -95,7 +95,7 @@ namespace ssz
 			NewGameUICloseBtn->SetKBDIcon(KBDIcon::R);
 
 			Text* CloseBtnText = NewGameUICloseBtn->AddComponent<Text>();
-			CloseBtnText->TextInit(L"Galmuri14", Vector3(25.f, 13.f, 0.f), 27, FONT_RGBA(255, 255, 255, 255), FW1_CENTER);
+			CloseBtnText->TextInit(Text::eFonts::Galmuri14, Vector3(25.f, 13.f, 0.f), 27, FONT_RGBA(255, 255, 255, 255), FW1_CENTER);
 			CloseBtnText->SetString(L"취소");
 		
 			// 팀이름 , 코치이름 입력 버튼

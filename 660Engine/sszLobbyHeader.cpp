@@ -77,10 +77,10 @@ namespace ssz
 			mTeamIconSlot = ssz::object::InstantiateUI<TeamIconSlot>(Vector3(-880.f, 0.f, 1.002f), Vector3(90.f, 90.f, 1.f), this, L"TeamIconSlot");
 
 			mTeamName = AddComponent<Text>();
-			mTeamName->TextInit(L"Galmuri14", Vector3(-825.f, 20.f, 0.f), 35.f, FONT_RGBA(255, 255, 255, 255), FW1_LEFT | FW1_VCENTER);
+			mTeamName->TextInit(Text::eFonts::Galmuri14, Vector3(-825.f, 20.f, 0.f), 35.f, FONT_RGBA(255, 255, 255, 255), FW1_LEFT | FW1_VCENTER);
 			
 			mTeamRecord = AddComponent<Text>();
-			mTeamRecord->TextInit(L"Galmuri14", Vector3(-825.f, -20.f, 0.f), 20.f, FONT_RGBA(255, 255, 255, 255), FW1_LEFT | FW1_VCENTER);
+			mTeamRecord->TextInit(Text::eFonts::Galmuri14, Vector3(-825.f, -20.f, 0.f), 20.f, FONT_RGBA(255, 255, 255, 255), FW1_LEFT | FW1_VCENTER);
 			mTeamRecord->SetString(L"1À§ 0½Â 0ÆÐ +0");
 		}
 #pragma endregion

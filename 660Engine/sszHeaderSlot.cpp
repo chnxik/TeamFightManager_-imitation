@@ -37,7 +37,7 @@ namespace ssz
 			tr->SetTransType(ssz::Transform::eTransType::PosAdd);
 
 			Text* txt = AddComponent<Text>();
-			txt->TextInit(L"Galmuri14", Vector3((vScale.x / 2.f) - 10.f, 13.f, 0.f), 27, FONT_RGBA(255, 255, 255, 255), FW1_RIGHT);
+			txt->TextInit(Text::eFonts::Galmuri14, Vector3((vScale.x / 2.f) - 10.f, 13.f, 0.f), 27, FONT_RGBA(255, 255, 255, 255), FW1_RIGHT);
 		}
 #pragma endregion
 	}

@@ -30,7 +30,13 @@ namespace ssz
 
 	void Text::Initialize()
 	{
-		SetFont(L"Silver");
+		
+		mFonts[(UINT)Text::eFonts::Galmuri9] = L"Galmuri9";
+		mFonts[(UINT)Text::eFonts::Galmuri11] = L"Galmuri11";
+		mFonts[(UINT)Text::eFonts::Galmuri14] = L"Galmuri14";
+		mFonts[(UINT)Text::eFonts::Silver] = L"Silver";
+
+		SetFont(Text::eFonts::Silver);
 	}
 
 	void Text::Update()
@@ -63,9 +69,9 @@ namespace ssz
 		}
 	}
 
-	void Text::TextInit(const std::wstring& Font, Vector3 OffsetPos, float FontSize, UINT FontColor, UINT flags)
+	void Text::TextInit(Text::eFonts FontType, Vector3 OffsetPos, float FontSize, UINT FontColor, UINT flags)
 	{
-		mFont = Font;
+		mFont = mFonts[(UINT)FontType];
 		mOffsetPos = OffsetPos;
 		mFontSize = FontSize;
 		mFontColor = FontColor;

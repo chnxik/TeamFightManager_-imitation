@@ -41,6 +41,11 @@ cbuffer ColorFX : register(b5)
     float AlphaRatio;
 }
 
+cbuffer GuageRatio : register(b6)
+{
+    float GuageRatio;
+}
+
 Texture2D albedoTexture : register(t0);
 Texture2D atlasTexture : register(t12);
 

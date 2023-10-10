@@ -1,7 +1,9 @@
 #pragma once
 #include "sszBattleManager.h"
-#include "CommonObjHeader.h"
+#include "CommonHeader.h"
 #include "sszLog.h"
+
+#include "sszChamp.h"
 
 #include "sszChamp_Script.h"
 #include "sszSpawnEfc.h"
@@ -150,7 +152,7 @@ namespace ssz
     {
         int iDamage = Dmg;
         Transform* TargetTr = pTarget->GetComponent<Transform>();
-        wstring mtkey = L"dmg_";
+        std::wstring mtkey = L"dmg_";
 
         Vector3 vCenterPos = TargetTr->GetPosition() + Vector3(20.f, 35.f, 0.f);
         vCenterPos.z = 0.1f;

@@ -1,5 +1,5 @@
 #include "sszEffect.h"
-#include "CommonObjHeader.h"
+#include "CommonHeader.h"
 
 namespace ssz
 {
@@ -20,7 +20,7 @@ namespace ssz
 		SetLayerType(eLayerType::Effect);
 
 		// Effect Obj Init
-		wstring mtkey = L"EffectMt_" + std::to_wstring(iefcNumb);
+		std::wstring mtkey = L"EffectMt_" + std::to_wstring(iefcNumb);
 		LoadMaterial(mtkey, L"AnimationShader", eRenderingMode::Transparent);
 		AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", mtkey);
 		Animator* Anim = AddComponent<Animator>();

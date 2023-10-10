@@ -1,4 +1,4 @@
-#include "CommonObjHeader.h"
+#include "CommonHeader.h"
 #include "sszNumb.h"
 
 // atlas 350 * 96
@@ -40,7 +40,7 @@ namespace ssz
 
 	}
 
-	void Numb::PrintDamageBox(eDmgBoxType type, wstring numbstr)
+	void Numb::PrintDamageBox(eDmgBoxType type, std::wstring numbstr)
 	{
 		mMr->SetMeshRenderer(L"RectMesh", numbstr);
 

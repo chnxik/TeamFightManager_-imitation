@@ -1,6 +1,6 @@
 #pragma once
 #include "sszUIObject.h"
-#include "CommonObjHeader.h"
+#include "CommonHeader.h"
 
 namespace ssz
 {

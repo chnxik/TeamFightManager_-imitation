@@ -61,6 +61,11 @@ namespace renderer
 		float GrayRatio;
 		float AlphaRatio;
 	};
+
+	CBUFFER(GuageCB, CBSLOT_GUAGE)
+	{
+		float GuageRatio;
+	};
 	
 	extern ConstantBuffer* constantBuffer[(UINT)eCBType::END];
 

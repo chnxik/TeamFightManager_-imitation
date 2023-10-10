@@ -1,5 +1,5 @@
 #include "sszKBDIcon.h"
-#include "CommonObjHeader.h"
+#include "CommonHeader.h"
 
 namespace ssz
 {

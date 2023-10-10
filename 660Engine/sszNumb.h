@@ -16,7 +16,7 @@ namespace ssz
 
         virtual void Initialize();
 
-        void PrintDamageBox(eDmgBoxType type, wstring numbstr);
+        void PrintDamageBox(eDmgBoxType type, std::wstring numbstr);
 
         // pos는 부모class transform addPos로 설정
         // SetPosition은 DmgText에서 init할때 결정

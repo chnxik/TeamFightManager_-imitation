@@ -1,10 +1,12 @@
 #pragma once
 #include "sszProjScript.h"
-#include "CommonObjHeader.h"
+#include "CommonHeader.h"
 
 #include "sszBattleManager.h"
-#include "sszProjectile.h"
 #include "sszTGM.h"
+
+#include "sszChamp.h"
+#include "sszProjectile.h"
 
 namespace ssz
 {

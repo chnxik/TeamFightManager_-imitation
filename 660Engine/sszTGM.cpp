@@ -1,6 +1,10 @@
 #pragma once
 #include "sszTGM.h"
 
+#include "sszTeam.h"
+#include "sszPilot.h"
+#include "sszChamp.h"
+
 #include "sszCursor.h"
 #include "sszProjectile.h"
 #include "sszEffect.h"
@@ -14,15 +18,15 @@ namespace ssz
 	const RECT	TGM::mStadiumSize{ -570, 190, 570, -396 }; // Left, Top, Right, Bottme
 	float TGM::mGameTime = 0.f;
 
-	map<std::wstring, Team*> TGM::gTeamList;
-	map<std::wstring, Pilot*> TGM::gPilotList;
-	map<std::wstring, Champ*> TGM::gChampList;
+	std::map<std::wstring, Team*> TGM::gTeamList;
+	std::map<std::wstring, Pilot*> TGM::gPilotList;
+	std::map<std::wstring, Champ*> TGM::gChampList;
 
 	Cursor* TGM::mCursor = nullptr;
 	GameObject* TGM::mMainCamera = nullptr;
 
-	vector<Projectile*> TGM::vProjectilePool;
-	vector<Effect*> TGM::vEffectPool;
+	std::vector<Projectile*> TGM::vProjectilePool;
+	std::vector<Effect*> TGM::vEffectPool;
 
 	// player
 	Team* TGM::gPlayerTeam = nullptr;
@@ -124,11 +128,11 @@ namespace ssz
 	{
 		Champ* Archer = object::Instantiate<Champ>();
 		Archer->SetChampScript(Archer->AddComponent<Script_Archer>());
-		gChampList.insert(make_pair(ARCHER, Archer));
+		gChampList.insert(std::make_pair(ARCHER, Archer));
 
 		Champ* Knight = object::Instantiate<Champ>();
 		Knight->SetChampScript(Knight->AddComponent<Script_Knight>());
-		gChampList.insert(make_pair(KNIGHT, Knight));
+		gChampList.insert(std::make_pair(KNIGHT, Knight));
 
 		return true;
 	}
@@ -138,7 +142,7 @@ namespace ssz
 		if (FileManager::OpenLoadFile(L"PilotName.txt") == S_OK)
 		{
 			// 데이터 불러오기
-			wstring PilotName = {};
+			std::wstring PilotName = {};
 
 			while (FileManager::DataLoad(PilotName, L'\n') == S_OK)
 			{
@@ -165,18 +169,18 @@ namespace ssz
 			return false;
 
 		// 플레이어 팀 선수 등록
-		vector<Pilot*>::iterator PilotIter = pilotlist.begin();
+		std::vector<Pilot*>::iterator PilotIter = pilotlist.begin();
 
 		gPlayerTeam->RegistPilot((*PilotIter++));
 		gPlayerTeam->RegistPilot((*PilotIter++));
 
 		// 플레이어 제외 팀 로고 랜덤 생성
-		wstring PlayerTeamTexkey = gPlayerTeam->GetTeamIconTexKey();
-		std::vector<wstring> TeamLogoTex;
+		std::wstring PlayerTeamTexkey = gPlayerTeam->GetTeamIconTexKey();
+		std::vector<std::wstring> TeamLogoTex;
 
 		for (int i = 1; i <= 10; ++i)
 		{
-			wstring Texkey = L"TeamLogoTex_" + std::to_wstring(i);
+			std::wstring Texkey = L"TeamLogoTex_" + std::to_wstring(i);
 			
 			if (Texkey == PlayerTeamTexkey)
 				continue;
@@ -194,7 +198,7 @@ namespace ssz
 		for (int i = 0; i < 7; i++)
 		{
 			Team* NewTeam = new Team;
-			wstring TeamName = {};
+			std::wstring TeamName = {};
 			FileManager::DataLoad(TeamName, L'\n');
 
 			NewTeam->SetIconTex(TeamLogoTex[i]);
@@ -321,11 +325,11 @@ namespace ssz
 		FileManager::DataSave(gPlayerTeam->GetTeamIconTexKey(), L'\n');
 
 		// 전체 팀 정보 저장 (플레이어팀 제외)
-		map<std::wstring, Team*>::iterator TeamIter = gTeamList.begin();
+		std::map<std::wstring, Team*>::iterator TeamIter = gTeamList.begin();
 		for (; TeamIter != gTeamList.end(); TeamIter++)
 		{
 			Team* tmp = TeamIter->second;
-			wstring TeamData =
+			std::wstring TeamData =
 				tmp->GetTeamName() // 팀 이름
 				+ L',' + tmp->GetTeamIconTexKey(); // 팀 아이콘 텍스쳐
 
@@ -333,12 +337,12 @@ namespace ssz
 		}
 
 		// Pilot 정보 저장
-		map<std::wstring, Pilot*>::iterator PilotIter = gPilotList.begin();
+		std::map<std::wstring, Pilot*>::iterator PilotIter = gPilotList.begin();
 		
 		for (; PilotIter != gPilotList.end(); PilotIter++)
 		{
 			Pilot* tmp = PilotIter->second;
-			wstring PilotData =
+			std::wstring PilotData =
 				tmp->GetPilotName() // 파일럿 이름
 				+ L',' + tmp->GetTeamName() // 소속 팀 이름
 				+ L',' + std::to_wstring(tmp->GetPilotAge()) // 파일럿 나이
@@ -360,8 +364,8 @@ namespace ssz
 		if (FileManager::OpenLoadFile(L"SaveFile.sav") == S_OK)
 		{
 			// 플레이어 데이터 로드
-			wstring TeamName = {};
-			wstring TeamIconTexKey = {};
+			std::wstring TeamName = {};
+			std::wstring TeamIconTexKey = {};
 			
 			FileManager::DataLoad(TeamName, L'\n');
 			FileManager::DataLoad(TeamIconTexKey, L'\n');
@@ -373,8 +377,8 @@ namespace ssz
 			for (int i = 0; i < 7; i++)
 			{
 				Team* NewTeam = new Team;
-				wstring TeamName = {};
-				wstring TeamIconTexKey = {};
+				std::wstring TeamName = {};
+				std::wstring TeamIconTexKey = {};
 				FileManager::DataLoad(TeamName, L',');
 				FileManager::DataLoad(TeamIconTexKey, L'\n');
 
@@ -387,8 +391,8 @@ namespace ssz
 			// 전체 선수 데이터 로드
 			for (int i = 0; i < 16; i++)
 			{
-				wstring PilotName = {};
-				wstring HomeTeamName = {};
+				std::wstring PilotName = {};
+				std::wstring HomeTeamName = {};
 				int PilotATK = 0;
 				int PilotDEF = 0;
 				int PilotAge = 0;

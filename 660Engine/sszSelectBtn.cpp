@@ -1,6 +1,6 @@
 #pragma once
 #include "sszSelectBtn.h"
-#include "CommonObjHeader.h"
+#include "CommonHeader.h"
 
 #include "sszSelectBtnUI.h"
 

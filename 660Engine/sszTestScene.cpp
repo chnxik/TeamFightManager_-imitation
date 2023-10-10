@@ -1,6 +1,7 @@
 #include "sszTestScene.h"
 #include "CommonHeader.h"
 
+#include "sszTGM.h"
 #include "sszBattleManager.h"
 
 #include "sszBattleHeader.h"
@@ -9,6 +10,12 @@
 #include "sszAnimTesterObj.h"
 
 // #include "sszSpawnEfc.h"
+
+/// <summary>
+/// Log
+/// </summary>
+
+#include "sszLog.h"
 
 namespace ssz
 {

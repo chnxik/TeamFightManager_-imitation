@@ -1,5 +1,5 @@
 #include "sszPlayerCardSlot.h"
-#include "CommonObjHeader.h"
+#include "CommonHeader.h"
 
 namespace ssz
 {

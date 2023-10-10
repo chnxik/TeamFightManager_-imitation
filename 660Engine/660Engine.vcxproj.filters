@@ -23,9 +23,6 @@
     <ClInclude Include="CommonHeader.h">
       <Filter>Common</Filter>
     </ClInclude>
-    <ClInclude Include="CommonObjHeader.h">
-      <Filter>Common</Filter>
-    </ClInclude>
     <ClInclude Include="sszDefaultBtn.h">
       <Filter>Contents\UI\Button\DefaultBtn</Filter>
     </ClInclude>
@@ -202,6 +199,12 @@
     </ClInclude>
     <ClInclude Include="sszStatusBar.h">
       <Filter>Contents\Object\GameUnit\Champ\Base\StatusBar</Filter>
+    </ClInclude>
+    <ClInclude Include="sszGuageScript.h">
+      <Filter>Contents\Object\GameUnit\Champ\Base\StatusBar</Filter>
+    </ClInclude>
+    <ClInclude Include="Essential.h">
+      <Filter>Common</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -420,6 +423,9 @@
       <Filter>Contents\Object\Tester</Filter>
     </ClCompile>
     <ClCompile Include="sszStatusBar.cpp">
+      <Filter>Contents\Object\GameUnit\Champ\Base\StatusBar</Filter>
+    </ClCompile>
+    <ClCompile Include="sszGuageScript.cpp">
       <Filter>Contents\Object\GameUnit\Champ\Base\StatusBar</Filter>
     </ClCompile>
   </ItemGroup>

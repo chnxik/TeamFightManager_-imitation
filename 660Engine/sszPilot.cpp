@@ -1,5 +1,7 @@
+#pragma once
+#include "CommonHeader.h"
+
 #include "sszPilot.h"
-#include "CommonObjHeader.h"
 #include "sszTeam.h"
 
 namespace ssz
@@ -32,6 +34,11 @@ namespace ssz
 	{
 	}
 	
+	void Pilot::SetPilotName(std::wstring PilotName)
+	{
+		mPilotName = PilotName;
+	}
+
 	void Pilot::SetPilotData(UINT ATK, UINT DEF, UINT AGE)
 	{
 		iPilotATK = ATK;
@@ -41,5 +48,9 @@ namespace ssz
 	void Pilot::RegistTeam(Team* _Team)
 	{
 		mTeam = _Team;
+	}
+	std::wstring Pilot::GetTeamName()
+	{
+		return mTeam->GetTeamName();
 	}
 }

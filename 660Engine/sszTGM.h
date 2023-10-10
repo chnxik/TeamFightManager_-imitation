@@ -1,14 +1,16 @@
 #pragma once
-#include "CommonObjHeader.h"
-#include "sszTeam.h"
-#include "sszPilot.h"
-#include "sszChamp.h"
+#include "CommonHeader.h"
 
 namespace ssz
 {
 	class TeamList;
 	class PilotList;
 	class ChampList;
+
+	class Team;
+	class Pilot;
+	class Champ;
+
 	class Cursor;
 	class Projectile;
 	class Effect;
@@ -48,9 +50,9 @@ namespace ssz
 		static Pilot* GetPilot(const std::wstring& key);
 		static Champ* GetChamp(const std::wstring& key);
 
-		static map<std::wstring, Team*> GetTeamList() { return gTeamList; }		// 팀 리스트
-		static map<std::wstring, Pilot*> GetPilotList() { return gPilotList; }		// 파일럿 리스트
-		static map<std::wstring, Champ*> GetChampList() { return gChampList; }		// 챔프 리스트
+		static std::map<std::wstring, Team*> GetTeamList() { return gTeamList; }		// 팀 리스트
+		static std::map<std::wstring, Pilot*> GetPilotList() { return gPilotList; }		// 파일럿 리스트
+		static std::map<std::wstring, Champ*> GetChampList() { return gChampList; }		// 챔프 리스트
 
 		// 발사체
 		static Projectile* GetProjectile();
@@ -82,12 +84,12 @@ namespace ssz
 		static Cursor* mCursor;				// 커서
 		static GameObject* mMainCamera;		// 카메라
 
-		static map<std::wstring,Team*> gTeamList;		// 상대 팀 목록
-		static map<std::wstring,Pilot*> gPilotList;		// 전체 선수 목록
-		static map<std::wstring,Champ*> gChampList;		// 챔피언 목록
+		static std::map<std::wstring,Team*> gTeamList;		// 상대 팀 목록
+		static std::map<std::wstring,Pilot*> gPilotList;		// 전체 선수 목록
+		static std::map<std::wstring,Champ*> gChampList;		// 챔피언 목록
 
-		static vector<Projectile*>	vProjectilePool;
-		static vector<Effect*>		vEffectPool;
+		static std::vector<Projectile*>	vProjectilePool;
+		static std::vector<Effect*>		vEffectPool;
 
 	private:
 		// Player Data

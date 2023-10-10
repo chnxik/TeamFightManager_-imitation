@@ -6,9 +6,11 @@ namespace ssz
 {
     class ColObj;
     class Pilot;
+    class Team;
     class Champ_Script;
     class Shadow;
     class SpawnEfc;
+    class StatusBar;
     
     class Champ : public GameObject
     {
@@ -99,8 +101,11 @@ namespace ssz
         void RespawnInfo();
 
         // Pilot 정보
-        void RegistPilot(Pilot* pPilot) { mPilot = pPilot; }
+        void RegistPilot(Pilot* pPilot);
         const Pilot* GetPilot() { return mPilot; }
+
+        // Team 정보
+        Team* GetTeam() { return mTeam; }
         
         // 아군 챔피언 관리
         void RegistFriendly(Champ* pChamp) { mFriendly.emplace_back(pChamp); }
@@ -134,10 +139,11 @@ namespace ssz
         const std::wstring& GetAnimKey(eActiveType eType) { return vecAnimKey[(UINT)eType]; }
 
     private:
-        tChampInfo      mChampInfo;       // 챔피언 기본 정보
+        tChampInfo      mChampInfo;              // 챔피언 기본 정보
         tChampStatus    mChampStatus;            // 챔피언 경기 정보
 
-        Pilot*      mPilot;// 파일럿 포인터
+        Pilot*      mPilot; // 파일럿 포인터
+        Team*       mTeam;  // 소속된 팀의 포인터
 
         std::vector<Champ*> mEnemys;    // 적 챔피언 리스트
         std::vector<Champ*> mFriendly;  // 아군 챔피언 리스트
@@ -151,6 +157,8 @@ namespace ssz
 
 
         Champ_Script* mChampScript;
+
+        StatusBar* mChampStatusBar;
 
         std::wstring vecAnimKey[(UINT)eActiveType::END];
     };

@@ -1,5 +1,5 @@
 #include "sszBattleHeader.h"
-#include "CommonObjHeader.h"
+#include "CommonHeader.h"
 #include "sszTGM.h"
 
 namespace ssz
@@ -57,7 +57,7 @@ namespace ssz
 
 		TGM::SetGameTime(gametime);
 
-		wstring gt = L": ";
+		std::wstring gt = L": ";
 		gt += std::to_wstring((UINT)gametime);
 
 		GetComponent<Text>()->SetString(gt);

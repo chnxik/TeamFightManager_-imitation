@@ -1,5 +1,5 @@
 #pragma once
-
+#include "sszTexture.h"
 
 namespace ssz
 {

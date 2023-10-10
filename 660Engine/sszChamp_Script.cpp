@@ -1,7 +1,9 @@
+#pragma once
 #include "sszChamp_Script.h"
-#include "sszTGM.h"
 
 #include "sszBattleManager.h"
+#include "sszTGM.h"
+#include "sszChamp.h"
 
 namespace ssz
 {
@@ -88,15 +90,20 @@ namespace ssz
 		}
 	}
 	
-	std::shared_ptr<AIBB> Champ_Script::InstantiateAIBB()
+	std::shared_ptr<AI::AIBB> Champ_Script::InstantiateAIBB()
 	{
-		std::shared_ptr<AIBB> BB = std::make_shared<AIBB>();
+		std::shared_ptr<AI::AIBB> BB = std::make_shared<AI::AIBB>();
 		BB->AddData<std::wstring>(CHAMPKEY, &(GetOwner()->GetName()));
 		BB->AddData<GameObject>(GetOwner()->GetName(), GetOwner());
 		BB->AddData<GameObject>(L"Cursor", TGM::GetCursor());
 		BB->CreateData<Vector2>(MOVEPOINT);
 
 		return BB;
+	}
+
+	AI::Root_Node* Champ_Script::GetRootNode()
+	{
+		return mRoot;
 	}
 	
 	void Champ_Script::Attack()
@@ -118,8 +125,14 @@ namespace ssz
 
 	void Champ_Script::ResetAIBB()
 	{
-		std::shared_ptr<AIBB> BB = mRoot->GetAIBB();
+		std::shared_ptr<AI::AIBB> BB = mRoot->GetAIBB();
 		BB->SetRunningNode(nullptr);
 		*(BB->FindData<Vector2>(MOVEPOINT)) = Vector2(0,0);
+	}
+	
+	AI::Root_Node* Champ_Script::CreateRootNode(std::shared_ptr<AI::AIBB> pAIBB)
+	{
+		mRoot = new ssz::AI::Root_Node(pAIBB);
+		return mRoot;
 	}
 }

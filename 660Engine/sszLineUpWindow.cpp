@@ -1,6 +1,6 @@
 #pragma once
 #include "sszLineUpWindow.h"
-#include "CommonObjHeader.h"
+#include "CommonHeader.h"
 
 #include "sszLineUpTeamTitle.h"
 

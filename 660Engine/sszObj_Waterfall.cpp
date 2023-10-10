@@ -1,5 +1,5 @@
 #include "sszObj_Waterfall.h"
-#include "CommonObjHeader.h"
+#include "CommonHeader.h"
 
 namespace ssz
 {

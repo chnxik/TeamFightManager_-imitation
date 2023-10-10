@@ -1,6 +1,8 @@
 #include "sszBanPickScene.h"
 #include "CommonHeader.h"
 
+#include "sszTGM.h"
+
 #include "sszBattleHeader.h"
 #include "sszBanLine.h"
 #include "sszPlayerCardSlot.h"

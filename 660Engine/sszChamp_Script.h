@@ -1,6 +1,9 @@
 #pragma once
 #include "sszScript.h"
-#include "CommonObjHeader.h"
+
+#include "CommonHeader.h"
+#include "sszAIBB.h"
+#include "sszBT.h"
 
 namespace ssz
 {
@@ -34,18 +37,15 @@ namespace ssz
         virtual void Dead() = 0;
 
         virtual void Damaged() { fDamageRatio = 1.f; }
+        
 
     private:
-        Root_Node* mRoot;
+        AI::Root_Node* mRoot;
         float fDamageRatio;
 
     protected:
-        Root_Node* CreateRootNode(std::shared_ptr<AIBB> pAIBB)
-        {
-            mRoot = new Root_Node(pAIBB);
-            return mRoot;
-        }
-        std::shared_ptr<AIBB> InstantiateAIBB();
-        Root_Node* GetRootNode() { return mRoot; }
+        AI::Root_Node* CreateRootNode(std::shared_ptr<AI::AIBB> pAIBB);
+        std::shared_ptr<AI::AIBB> InstantiateAIBB();
+        AI::Root_Node* GetRootNode();
     };
 }

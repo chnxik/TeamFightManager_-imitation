@@ -1,5 +1,5 @@
 #include "sszTeamIconSlot.h"
-#include "CommonObjHeader.h"
+#include "CommonHeader.h"
 
 namespace ssz
 {
@@ -21,7 +21,7 @@ namespace ssz
 		
 		GetComponent<Transform>()->SetTransType(Transform::eTransType::PosAdd);
 		
-		wstring IconObjkey = GetName() + L"TexObj";
+		std::wstring IconObjkey = GetName() + L"TexObj";
 		Transform* tr = GetComponent<Transform>();
 		Vector3 pos = tr->GetPosition();
 		pos.z -= 0.0001f;

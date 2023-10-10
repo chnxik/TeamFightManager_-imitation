@@ -1,5 +1,5 @@
 #include "sszCursor.h"
-#include "CommonObjHeader.h"
+#include "CommonHeader.h"
 
 #include "sszCursorScript.h"
 

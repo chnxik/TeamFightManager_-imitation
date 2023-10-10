@@ -2,12 +2,14 @@
 #include "sszStadiumScene.h"
 #include "CommonHeader.h"
 
-#include "sszButtonUI.h"
+#include "sszTGM.h"
 
 #include "sszLineUpWindow.h"
 
+#include "sszButtonUI.h"
 #include "sszPlayerCardBtn.h"
 #include "sszDefaultBtn.h"
+
 
 namespace ssz
 {

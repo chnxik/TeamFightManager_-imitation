@@ -1,11 +1,13 @@
 #include "sszLobbyHeader.h"
-#include "CommonObjHeader.h"
+#include "CommonHeader.h"
 
-#include "sszHeaderSlot.h"
 #include "sszTGM.h"
 
+#include "sszHeaderSlot.h"
 #include "sszTeamIconSlot.h"
 
+#include "sszTeam.h"
+#include "sszPilot.h"
 
 namespace ssz
 {
@@ -88,8 +90,8 @@ namespace ssz
 	{
 		UIObject::LateUpdate();
 
-		wstring playerGold = std::to_wstring(TGM::GetPlayerGold());
-		wstring Date =
+		std::wstring playerGold = std::to_wstring(TGM::GetPlayerGold());
+		std::wstring Date =
 			std::to_wstring(TGM::GetYear()) + L"년 " +
 			std::to_wstring(TGM::GetMonth()) + L"월 " +
 			std::to_wstring(TGM::GetWeek()) + L"주차";

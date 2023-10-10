@@ -1,6 +1,7 @@
 #include "sszProjectile.h"
-#include "CommonObjHeader.h"
+#include "CommonHeader.h"
 
+#include "sszChamp.h"
 #include "sszProjScript.h"
 
 namespace ssz

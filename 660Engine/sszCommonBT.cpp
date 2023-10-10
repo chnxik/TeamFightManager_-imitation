@@ -1,12 +1,19 @@
 #pragma once
-#include "CommonObjHeader.h"
-#include "sszBattleManager.h"
-#include "sszLog.h"
+#include "CommonHeader.h"
+#include "CommonDefine.h"
+
+#include "sszBT.h"
+#include "sszAIBB.h"
+
 #include "sszTGM.h"
+#include "sszBattleManager.h"
+
+#include "sszLog.h"
+#include "sszChamp.h"
 
 namespace ssz
 {
-
+	using namespace AI;
 
 	// ================
 	// [Condition Node]
@@ -17,7 +24,7 @@ namespace ssz
 	public:
 		virtual eNodeStatus Run() override
 		{
-			wstring* ChampName = FINDBBDATA(wstring, CHAMPKEY);
+			std::wstring* ChampName = FINDBBDATA(std::wstring, CHAMPKEY);
 			Champ* Owner = FINDBBDATA(Champ, *ChampName);
 			Champ* Target = Owner->GetTarget_Enemy();
 

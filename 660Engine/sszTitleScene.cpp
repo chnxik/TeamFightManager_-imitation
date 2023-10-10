@@ -3,9 +3,9 @@
 
 #include "sszApplication.h"
 
+#include "sszTGM.h"
 
 #include "sszObj_IG_Stadium.h"
-
 #include "sszTestEditBox.h"
 
 // UI

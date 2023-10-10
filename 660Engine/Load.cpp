@@ -1,7 +1,5 @@
 #include "Load.h"
 
-#include "CommonHeader.h"
-
 // Scenes
 #include "sszTitleScene.h"
 #include "sszMainLobbyScene.h"
@@ -9,6 +7,9 @@
 #include "sszBanPickScene.h"
 #include "sszIGStadiumScene.h"
 #include "sszTestScene.h"
+
+#include "sszTGM.h"
+#include "sszBattleManager.h"
 
 namespace ssz
 {
@@ -25,7 +26,7 @@ namespace ssz
 		
 		SceneManager::CreateScene<TestScene>(L"TestScene");
 		
-		SceneManager::LoadScene(L"TitleScene");
+		SceneManager::LoadScene(L"IGStadiumScene");
 
 	}
 	void ContentsRelease()

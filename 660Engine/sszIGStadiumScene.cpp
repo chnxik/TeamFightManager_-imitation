@@ -1,7 +1,14 @@
 #include "sszIGStadiumScene.h"
 #include "CommonHeader.h"
 
+#include "sszTGM.h"
+#include "sszBattleManager.h"
+
+#include "sszLog.h"
+
 #include "sszBattleHeader.h"
+
+#include "sszChamp.h"
 
 #include "sszObj_IG_Stadium.h"
 #include "sszPlayerCardSlot.h"

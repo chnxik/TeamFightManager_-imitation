@@ -1,5 +1,6 @@
 #include "sszSpawnEfc.h"
-#include "CommonObjHeader.h"
+#include "CommonHeader.h"
+
 
 namespace ssz
 {

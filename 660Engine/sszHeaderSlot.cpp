@@ -1,5 +1,5 @@
 #include "sszHeaderSlot.h"
-#include "CommonObjHeader.h"
+#include "CommonHeader.h"
 
 namespace ssz
 {

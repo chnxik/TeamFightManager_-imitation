@@ -80,6 +80,11 @@ namespace renderer
 			, AnimationShader->GetVSCode()
 			, AnimationShader->GetInputLayoutAddressOf());
 
+		std::shared_ptr<Shader> GuageShader = ssz::Resources::Find<Shader>(L"GuageShader");
+		ssz::graphics::GetDevice()->CreateInputLayout(arrLayout, 3
+			, GuageShader->GetVSCode()
+			, GuageShader->GetInputLayoutAddressOf());
+
 #pragma endregion
 #pragma region Sampler State
 		// Sampler State
@@ -293,6 +298,9 @@ namespace renderer
 		constantBuffer[(UINT)eCBType::ColorFX] = new ConstantBuffer(eCBType::ColorFX);
 		constantBuffer[(UINT)eCBType::ColorFX]->Create(sizeof(ColorFXCB));
 
+		constantBuffer[(UINT)eCBType::Guage] = new ConstantBuffer(eCBType::Guage);
+		constantBuffer[(UINT)eCBType::Guage]->Create(sizeof(GuageCB));
+
 		// light Structured Buffer
 		lightsBuffer = new StructuredBuffer();
 		lightsBuffer->Create(sizeof(LightAttribute), 2, eSRVType::None);
@@ -327,6 +335,12 @@ namespace renderer
 		AnimationShader->Create(eShaderStage::PS, L"AnimationPS.hlsl", "main");
 		AnimationShader->SetRSState(eRSType::SolidNone);
 		ssz::Resources::Insert(L"AnimationShader", AnimationShader);
+
+		std::shared_ptr<Shader> GuageShader = std::make_shared<Shader>();
+		GuageShader->Create(eShaderStage::VS, L"GuageVS.hlsl", "main");
+		GuageShader->Create(eShaderStage::PS, L"GuagePS.hlsl", "main");
+		GuageShader->SetRSState(eRSType::SolidNone);
+		ssz::Resources::Insert(L"GuageShader", GuageShader);
 	}
 
 	void LoadMaterial()

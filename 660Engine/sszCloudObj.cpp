@@ -1,5 +1,6 @@
 #include "sszCloudObj.h"
-#include "CommonObjHeader.h"
+#include "CommonHeader.h"
+
 #include "sszApplication.h"
 
 extern ssz::Application application;
@@ -23,14 +24,14 @@ namespace ssz
 	
 	void CloudObj::Initialize()
 	{
-		wstring Texkey = L"clouds_";
-		wstring Texpath = L"..\\Resources\\useResource\\Mainlobby\\Bg\\clouds\\clouds_";
+		std::wstring Texkey = L"clouds_";
+		std::wstring Texpath = L"..\\Resources\\useResource\\Mainlobby\\Bg\\clouds\\clouds_";
 
 		for (int i = 0; i < 8; ++i)
 		{
-			wstring daynumb = std::to_wstring(i * 3 + (UINT)eDayTime::Day);
-			wstring sunsetnumb = std::to_wstring(i * 3 + (UINT)eDayTime::Sunset);
-			wstring nightnumb = std::to_wstring(i * 3 + (UINT)eDayTime::Night);
+			std::wstring daynumb = std::to_wstring(i * 3 + (UINT)eDayTime::Day);
+			std::wstring sunsetnumb = std::to_wstring(i * 3 + (UINT)eDayTime::Sunset);
+			std::wstring nightnumb = std::to_wstring(i * 3 + (UINT)eDayTime::Night);
 			
 			CloudeTexture[(UINT)eDayTime::Day][i] = Resources::Load<Texture>(Texkey + daynumb, Texpath + daynumb + L".png");
 			CloudeTexture[(UINT)eDayTime::Sunset][i] = Resources::Load<Texture>(Texkey + sunsetnumb, Texpath + sunsetnumb + L".png");
@@ -94,7 +95,7 @@ namespace ssz
 	
 	void CloudObj::SetMt(UINT idx)
 	{
-		wstring mtkey = L"cloudobj_" + std::to_wstring(idx);
+		std::wstring mtkey = L"cloudobj_" + std::to_wstring(idx);
 		object::LoadMaterial(mtkey, L"SpriteShader", eRenderingMode::Transparent);
 		AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", mtkey);
 		AddComponent<Collider2D>();

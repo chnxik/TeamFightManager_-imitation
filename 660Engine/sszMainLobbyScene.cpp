@@ -1,14 +1,15 @@
 #include "sszMainLobbyScene.h"
 #include "CommonHeader.h"
 
+#include "sszTGM.h"
+
 #include "sszLobbyHeader.h"
+#include "sszCloudObj.h"
 
 #include "sszButtonUI.h"
-
 #include "sszLobbyMenuBtn.h"
 #include "sszProceedBtn.h"
 
-#include "sszCloudObj.h"
 
 namespace ssz
 {

@@ -1,5 +1,7 @@
 #include "sszShadow.h"
-#include "CommonObjHeader.h"
+#include "CommonHeader.h"
+
+#include "sszChamp.h"
 
 namespace ssz
 {

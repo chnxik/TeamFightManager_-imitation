@@ -229,6 +229,7 @@ xcopy /R /Y "$(SolutionDir)dll\FW1FontWrapperL.dll" "$(SolutionDir)x64\Debug"</
     <ClInclude Include="sszCursorScript.h" />
     <ClInclude Include="sszDefaultBtn.h" />
     <ClInclude Include="sszEffect.h" />
+    <ClInclude Include="sszGuageScript.h" />
     <ClInclude Include="sszHeaderSlot.h" />
     <ClInclude Include="sszIGStadiumScene.h" />
     <ClInclude Include="sszKBDIcon.h" />
@@ -270,10 +271,10 @@ xcopy /R /Y "$(SolutionDir)dll\FW1FontWrapperL.dll" "$(SolutionDir)x64\Debug"</
     <ClInclude Include="sszTGM.h" />
     <ClInclude Include="sszTitleMenuBtn.h" />
     <ClInclude Include="sszTitleScene.h" />
-    <ClInclude Include="CommonObjHeader.h" />
     <ClInclude Include="sszObj_Waterfall.h" />
     <ClInclude Include="sszTypeUI.h" />
     <ClInclude Include="sszWeeklyEventBtn.h" />
+    <ClInclude Include="Essential.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="660Engine.cpp" />
@@ -299,6 +300,7 @@ xcopy /R /Y "$(SolutionDir)dll\FW1FontWrapperL.dll" "$(SolutionDir)x64\Debug"</
     <ClCompile Include="sszDefaultBtn.cpp" />
     <ClCompile Include="sszEffect.cpp" />
     <ClCompile Include="sszFighterBT.cpp" />
+    <ClCompile Include="sszGuageScript.cpp" />
     <ClCompile Include="sszHeaderSlot.cpp" />
     <ClCompile Include="sszIGStadiumScene.cpp" />
     <ClCompile Include="sszKBDIcon.cpp" />

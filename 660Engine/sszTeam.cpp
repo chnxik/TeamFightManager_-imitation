@@ -1,7 +1,7 @@
 #pragma once
-#include "sszTeam.h"
-#include "CommonObjHeader.h"
+#include "CommonHeader.h"
 
+#include "sszTeam.h"
 #include "sszPilot.h"
 
 namespace ssz

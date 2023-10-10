@@ -1,5 +1,5 @@
 #include "sszNewGameWindow.h"
-#include "CommonObjHeader.h"
+#include "CommonHeader.h"
 
 #include "sszImportantBtn.h"
 #include "sszDefaultBtn.h"
@@ -13,6 +13,9 @@
 #include "sszAvatarSlot.h"
 
 #include "sszTGM.h"
+
+#include "sszPilot.h"
+#include "sszTeam.h"
 
 namespace ssz
 {
@@ -124,14 +127,14 @@ namespace ssz
 					for (int j = 1; j <= 5; ++j)
 					{
 						int idx = (i * 5) + j;
-						wstring BtnName = L"TeamLogoBtn_" + std::to_wstring(idx);
+						std::wstring BtnName = L"TeamLogoBtn_" + std::to_wstring(idx);
 						LogoBtnPos.x = -525.f + ((j - 1) * 110.f);
 						LogoBtnPos.y = -97.f - (i * 110.f);
 
 						SelectBtn* TeamLogoSlot = InstantiateUI<SelectBtn>(LogoBtnPos, Vector3(100.f, 100.f, 1.f), this, BtnName);
 						TeamLogoSlot->InitCheckSelected(&mSelectedLogo);
 
-						wstring Texkey = L"TeamLogoTex_" + std::to_wstring(idx);
+						std::wstring Texkey = L"TeamLogoTex_" + std::to_wstring(idx);
 						TeamLogoSlot->InitItemTex(Texkey, idx, LogoBtnPos, Vector3(100.f, 100.f, 1.f), this);
 						TeamLogoSlot->GetComponent<SelectBtnUI>()->SetDelegateW(mTeamIconSlot, (DELEGATEW)&TeamIconSlot::ChangeIcon, Texkey);
 						
@@ -167,7 +170,7 @@ namespace ssz
 					for (int j = 1; j <= 5; ++j)
 					{
 						int idx = (i * 5) + j;
-						wstring BtnName = L"CoachHair_" + std::to_wstring(idx);
+						std::wstring BtnName = L"CoachHair_" + std::to_wstring(idx);
 						LogoBtnPos.x = 145.f + ((j - 1) * 110.f);
 						LogoBtnPos.y = -97.f - (i * 110.f);
 
@@ -175,7 +178,7 @@ namespace ssz
 						AvatarSlot->InitCheckSelected(&mSelectedHair);
 
 
-						wstring Texkey = L"CoachHairTex_" + std::to_wstring(idx);
+						std::wstring Texkey = L"CoachHairTex_" + std::to_wstring(idx);
 						
 						Vector2 TexScale = Resources::Find<Texture>(Texkey)->GetTextureSize();
 						TexScale *= 3.f;
@@ -213,7 +216,7 @@ namespace ssz
 	void NewGameWindow::GameStart()
 	{
 		// 플레이어 팀 등록
-		wstring TeamName = mTeamNameType->Getstr();
+		std::wstring TeamName = mTeamNameType->Getstr();
 		std::shared_ptr<Texture> TeamIcon = mSelectedLogo->GetComponent<MeshRenderer>()->GetMaterial()->GetTexture();
 		
 		Team* PlayerTeam = TGM::GetPlayerTeam();
@@ -227,10 +230,10 @@ namespace ssz
 		std::mt19937 gen(rd());
 		
 		// 파일럿 생성
-		vector<Pilot*> Pilots;
+		std::vector<Pilot*> Pilots;
 
-		map<std::wstring, Pilot*> PilotList = TGM::GetPilotList();
-		map<std::wstring, Pilot*>::iterator PilotIter = PilotList.begin();
+		std::map<std::wstring, Pilot*> PilotList = TGM::GetPilotList();
+		std::map<std::wstring, Pilot*>::iterator PilotIter = PilotList.begin();
 
 		for (; PilotIter != PilotList.end(); PilotIter++)
 		{

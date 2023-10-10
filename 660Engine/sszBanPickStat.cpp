@@ -1,5 +1,5 @@
 #include "sszBanPickStat.h"
-#include "CommonObjHeader.h"
+#include "CommonHeader.h"
 
 #include "sszStatIcon.h"
 

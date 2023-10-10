@@ -1,13 +1,21 @@
 #pragma once
 #include "sszChamp.h"
-#include "CommonObjHeader.h"
+#include "CommonHeader.h"
 
+#include "sszTGM.h"
 #include "sszBattleManager.h"
+
+#include "sszPilot.h"
+#include "sszTeam.h"
+
+#include "sszStatusBar.h"
+#include "sszColObj.h"
 
 #include "sszShadow.h"
 #include "sszSpawnEfc.h"
 
 #include "sszChamp_Script.h"
+
 #include "sszLog.h"
 
 namespace ssz
@@ -15,6 +23,7 @@ namespace ssz
 	Champ::Champ()
 		: mFriendly{}
 		, mPilot(nullptr)
+		, mTeam(nullptr)
 		, mChampInfo{} // 챔프 정보
 		, mTargetFriendly(nullptr)
 		, mTargetEnemy(nullptr)
@@ -23,6 +32,7 @@ namespace ssz
 		, mSpawnEfc(nullptr)
 		, mChampScript(nullptr)
 		, vecAnimKey{}
+		, mChampStatusBar(nullptr)
 	{
 
 	}
@@ -43,6 +53,9 @@ namespace ssz
 
 		delete mSpawnEfc;
 		mSpawnEfc = nullptr;
+
+		delete mChampStatusBar;
+		mChampStatusBar = nullptr;
 	}
 
 	void Champ::Initialize()
@@ -61,6 +74,9 @@ namespace ssz
 
 		mSpawnEfc = new SpawnEfc();
 		mSpawnEfc->Initialize();
+
+		mChampStatusBar = new StatusBar();
+		mChampStatusBar->Initialize();
 	}
 
 	void Champ::Update()
@@ -73,6 +89,7 @@ namespace ssz
 
 		GameObject::Update();
 		mShadow->Update();
+		mChampStatusBar->Update();
 	}
 
 	void Champ::LateUpdate()
@@ -84,9 +101,9 @@ namespace ssz
 
 		GameObject::LateUpdate();
 		mShadow->LateUpdate();
+		mChampStatusBar->LateUpdate();
 
-
-		wstring info = L"HP : ";
+		std::wstring info = L"HP : ";
 		info += std::to_wstring(mChampStatus.HP);
 		info += L"\nAtk : ";
 		info += std::to_wstring(mChampStatus.accTime_Attack).substr(0,3);
@@ -100,6 +117,7 @@ namespace ssz
 	{
 		mShadow->Render();
 		GameObject::Render();
+		mChampStatusBar->Render();
 		
 		// Damage Efc Clear
 		// mChampScript->DamageCBClear();
@@ -225,6 +243,13 @@ namespace ssz
 		mChampStatus.accTime_Skill = 0.f;						// 현재 스킬 쿨타임
 
 		mChampStatus.RespawnTime = 0.f;
+	}
+
+	void Champ::RegistPilot(Pilot* pPilot)
+	{
+		mPilot = pPilot;
+		mTeam = TGM::GetTeam(pPilot->GetTeamName());
+		mChampStatusBar->RegistGame(this);
 	}
 
 	void Champ::ATTACK()

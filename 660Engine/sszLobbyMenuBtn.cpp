@@ -1,5 +1,5 @@
 #include "sszLobbyMenuBtn.h"
-#include "CommonObjHeader.h"
+#include "CommonHeader.h"
 
 #include "sszButtonUI.h"
 
@@ -77,7 +77,7 @@ namespace ssz
 		Transform* tr = GetComponent<Transform>();
 		Vector3 Pos = tr->GetPosition();
 		Vector3 Scale = tr->GetScale();
-		wstring IconObjkey = GetName() + L"Icon";
+		std::wstring IconObjkey = GetName() + L"Icon";
 		mBtnIcon = ssz::object::InstantiateUI<UIObject>(Vector3(-Scale.x/2.f + 30.f, 0.f, Pos.z), Vector3(30.f, 30.f, 1.f), this, IconObjkey);
 		IconObjkey += L"_Mt";
 

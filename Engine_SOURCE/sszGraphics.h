@@ -19,6 +19,7 @@
 #define CBSLOT_ANIMATION2D			3
 #define CBSLOT_CHAMP				4
 #define CBSLOT_COLORFX				5
+#define CBSLOT_GUAGE				6
 // #define CBSLOT_PARTICLE				9
 
 
@@ -43,6 +44,7 @@ namespace ssz::graphics
 		Animator,
 		Champ,
 		ColorFX,
+		Guage,
 		Material,
 		END,
 	};

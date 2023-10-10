@@ -1,5 +1,5 @@
 #include "sszObj_IG_Stadium.h"
-#include "CommonObjHeader.h"
+#include "CommonHeader.h"
 
 #include "sszObj_Waterfall.h"
 #include "sszArrangementScript.h"

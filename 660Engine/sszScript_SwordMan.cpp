@@ -2,8 +2,18 @@
 
 #include "sszSwordManBT.cpp"
 
+#include "sszTGM.h"
+
+#include "sszChamp.h"
+
+#include "sszColObj.h"
+#include "sszProjectile.h"
+#include "sszEffect.h"
+
 namespace ssz
 {
+	using namespace AI;
+
 	Script_SwordMan::Script_SwordMan()
 	{
 	}

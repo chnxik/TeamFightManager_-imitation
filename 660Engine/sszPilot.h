@@ -16,11 +16,11 @@ namespace ssz
         virtual void LateUpdate();
         virtual void Render();
 
-        void SetPilotName(std::wstring PilotName) { mPilotName = PilotName; }
+        void SetPilotName(std::wstring PilotName);
         void SetPilotData(UINT ATK, UINT DEF, UINT AGE);
         void RegistTeam(Team* _Team);
 
-        std::wstring GetTeamName() { return mTeam->GetTeamName(); }
+        std::wstring GetTeamName();
         std::wstring GetPilotName() { return mPilotName; }
         UINT GetPilotATK() { return iPilotATK; }
         UINT GetPilotDEF() { return iPilotDEF; }

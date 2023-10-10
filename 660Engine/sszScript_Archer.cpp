@@ -2,8 +2,17 @@
 
 #include "sszArcherBT.cpp"
 
+#include "sszTGM.h"
+
+#include "sszChamp.h"
+
+#include "sszColObj.h"
+#include "sszProjectile.h"
+
 namespace ssz
 {
+	using namespace AI;
+
 	Script_Archer::Script_Archer()
 	{
 	}

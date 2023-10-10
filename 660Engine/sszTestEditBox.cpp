@@ -1,5 +1,5 @@
 #include "sszTestEditBox.h"
-#include "CommonObjHeader.h"
+#include "CommonHeader.h"
 
 extern wchar_t g_strText[_MAX_FNAME];        // 텍스트를 저장하기 위한 변수
 extern wchar_t g_strCombine[10];             // 조합 중인 문자
@@ -24,7 +24,7 @@ namespace ssz
 
 	void TestEditBox::Update()
 	{
-		wstring str = g_strText;
+		std::wstring str = g_strText;
 		str += g_strCombine;
 
 		Text* tx = GetComponent<Text>();

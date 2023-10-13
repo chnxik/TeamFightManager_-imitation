@@ -75,9 +75,7 @@ namespace ssz
 		mSpawnEfc = new SpawnEfc();
 		mSpawnEfc->Initialize();
 
-		mChampStatusBar = new StatusBar();
-		mChampStatusBar->Initialize();
-		mChampStatusBar->RegistChamp(this);
+		
 	}
 
 	void Champ::Update()
@@ -186,6 +184,10 @@ namespace ssz
 	void Champ::SetChampScript(Champ_Script* script)
 	{
 		mChampScript = script;
+
+		mChampStatusBar = new StatusBar();
+		mChampStatusBar->Initialize();
+		mChampStatusBar->RegistChamp(this);
 	}
 
 	void Champ::SetChampInfo(eChampType Type, UINT atk, float apd, UINT rng, UINT def, UINT hp, UINT spd)

@@ -3,6 +3,8 @@
 
 namespace ssz
 {
+	class League;
+
 	class TeamList;
 	class PilotList;
 	class ChampList;
@@ -41,6 +43,8 @@ namespace ssz
 		// 게임 정보
 		static void	SetGameTime(float time) { mGameTime = time; }
 		static float& GetGameTime() { return mGameTime; }
+
+		static League* GetLeagueManage() { return mLeagueManage; }
 
 		static bool ChampInitialize();
 		static bool PilotInitialize();
@@ -83,6 +87,8 @@ namespace ssz
 
 		static Cursor* mCursor;				// 커서
 		static GameObject* mMainCamera;		// 카메라
+
+		static League* mLeagueManage;		// 경기 관리
 
 		static std::map<std::wstring,Team*> gTeamList;		// 상대 팀 목록
 		static std::map<std::wstring,Pilot*> gPilotList;		// 전체 선수 목록

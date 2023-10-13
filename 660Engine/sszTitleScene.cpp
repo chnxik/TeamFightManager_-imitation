@@ -114,10 +114,16 @@ namespace ssz
 
 	void TitleScene::GameLoad()
 	{
-		TGM::LoadData();
+		if (TGM::LoadData())
+		{
+			SceneManager::LoadScene(L"MainLobbyScene"); 
+			// SceneManager::LoadScene(L"IGStadiumScene"); // 테스트용
+		}
+		else
+		{
+			// 불러올 데이터가 없습니다 알림윈도우 출력
+		}
 
-		// SceneManager::LoadScene(L"MainLobbyScene"); 
-		SceneManager::LoadScene(L"IGStadiumScene"); // 테스트용
 	}
 
 	void TitleScene::ExitProgram()

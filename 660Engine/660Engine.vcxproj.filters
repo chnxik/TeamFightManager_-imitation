@@ -206,6 +206,9 @@
     <ClInclude Include="Essential.h">
       <Filter>Common</Filter>
     </ClInclude>
+    <ClInclude Include="sszLeague.h">
+      <Filter>Contents\Manager\DataManager\League</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="660Engine.cpp" />
@@ -427,6 +430,9 @@
     </ClCompile>
     <ClCompile Include="sszGuageScript.cpp">
       <Filter>Contents\Object\GameUnit\Champ\Base\StatusBar</Filter>
+    </ClCompile>
+    <ClCompile Include="sszLeague.cpp">
+      <Filter>Contents\Manager\DataManager\League</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -675,6 +681,9 @@
     </Filter>
     <Filter Include="Contents\Object\GameUnit\Champ\Base\StatusBar">
       <UniqueIdentifier>{6c12da35-e66d-4899-b3ff-e4e708e6e217}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Manager\DataManager\League">
+      <UniqueIdentifier>{5f151921-2d53-46a3-acb2-eb508610cf2f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

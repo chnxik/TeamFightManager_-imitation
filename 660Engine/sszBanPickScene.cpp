@@ -198,6 +198,9 @@ namespace ssz
 		AddGameObject(eLayerType::Camera, TGM::GetCamera());
 
 		mPhase = eBanPickPhase::SceneIn1;
+		
+		mBattleHeader->RegistTeam();
+		mBattleHeader->SetTitleType();
 
 		CollisionManager::SetLayer(eLayerType::UI, eLayerType::Cursor, true);
 

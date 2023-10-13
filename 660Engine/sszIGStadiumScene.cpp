@@ -3,6 +3,7 @@
 
 #include "sszTGM.h"
 #include "sszBattleManager.h"
+#include "sszLeague.h"
 
 #include "sszLog.h"
 
@@ -31,7 +32,7 @@ namespace ssz
 		// 배경
 		{
 			// Battle Header
-			BattleHeader* BattleHeaderBg = InstantiateUI<BattleHeader>(Vector3(0.0f, 478.5f, 1.1f), eLayerType::UI, L"BattleHeaderBg");
+			mBattleHeader = InstantiateUI<BattleHeader>(Vector3(0.0f, 478.5f, 1.1f), eLayerType::UI, L"BattleHeaderBg");
 
 			// IG Stadium
 			IG_Stadium* Stadium = Instantiate<IG_Stadium>(Vector3(0.0f, -139.0f, 1.5f), Vector3(2293.f, 1498.f, 1.f), eLayerType::BackGround);
@@ -66,6 +67,10 @@ namespace ssz
 		}
 
 		BattleManager::Update();
+
+		// 게임종료 후 모든애니메이션 동작 정지
+		// 렌더없이 시뮬레이션으로 GroupB 경기 진행 후 데이터 입력.
+		// 
 	}
 	void IGStadiumScene::LateUpdate()
 	{
@@ -91,6 +96,9 @@ namespace ssz
 		Log::Clear();
 		TGM::SetGameTime(60.f);
 
+		mBattleHeader->RegistTeam();
+		mBattleHeader->SetTimeType();
+
 		// Player
 		{	
 			Champ* archer = TGM::AddChampScene(eLayerType::Player, ARCHER, Vector3(-100.f, -200.f, 1.0f));
@@ -111,10 +119,15 @@ namespace ssz
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::EnemyInteraction, true);
 		CollisionManager::SetLayer(eLayerType::Enemy, eLayerType::PlayerInteraction, true);
 		CollisionManager::SetLayer(eLayerType::BackGroundObj, eLayerType::Cursor, true);
+
+		Time::TimeAcceleration(1.f);
 	}
 	void IGStadiumScene::OnExit()
 	{
 		CollisionManager::Clear();
 		TGM::SceneClear();
+		TGM::GetLeagueManage()->NextRound();
+		
+		Time::DefaultAcceleration();
 	}
 }

@@ -6,6 +6,7 @@ namespace ssz
 {
 	class LobbyHeader;
 	class CloudObj;
+	class ProceedBtn;
 
 	class MainLobbyScene : public Scene
 	{
@@ -21,9 +22,12 @@ namespace ssz
 		virtual void OnEnter() override;
 		virtual void OnExit() override;
 
+		void DayTimeSetting();
+
 	private:
 		GameObject* BgSky;
 		LobbyHeader* mLobbyheader;
+		ProceedBtn* mProceedBtn;
 
 		CloudObj* mCloud[8];
 	};

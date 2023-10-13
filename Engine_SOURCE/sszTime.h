@@ -12,6 +12,9 @@ namespace ssz
 		static void Update();
 		static void Render();
 
+		static void TimeAcceleration(float ratio) { fAcceleration = ratio; }
+		static void DefaultAcceleration() { fAcceleration = 1.f; }
+
 		__forceinline static double DeltaTime() { return mDeltaTime; }
 
 	private:
@@ -20,5 +23,7 @@ namespace ssz
 		static LARGE_INTEGER mCpuFrequency;
 		static LARGE_INTEGER mPrevFrequency;
 		static LARGE_INTEGER mCurFrequency;
+
+		static float fAcceleration;
 	};
 }

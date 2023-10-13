@@ -30,8 +30,9 @@ namespace ssz
 		mTeamIcon = InstantiateUI<UIObject>(pos, Scale, GetParentUI(), IconObjkey);
 		mTeamIcon->GetComponent<Transform>()->SetTransType(Transform::eTransType::PosAdd);
 
-		ssz::object::LoadMaterial(L"TeamIconMt", L"SpriteShader", eRenderingMode::Transparent);
-		mTeamIcon->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"TeamIconMt");
+		std::wstring MtKey = GetName() + L"_Mt";
+		ssz::object::LoadMaterial(MtKey, L"SpriteShader", eRenderingMode::Transparent);
+		mTeamIcon->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", MtKey);
 	}
 	
 	void TeamIconSlot::ChangeIcon(std::wstring Texkey)

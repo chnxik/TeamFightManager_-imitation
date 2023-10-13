@@ -17,6 +17,7 @@ namespace ssz
 		, mGoldSlot(nullptr)
 		, mTeamName(nullptr)
 		, mTeamRecord(nullptr)
+		, mTeamIconSlot(nullptr)
 	{
 		
 	}

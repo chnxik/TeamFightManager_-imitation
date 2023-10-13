@@ -11,6 +11,8 @@ namespace ssz
 	LARGE_INTEGER Time::mPrevFrequency = {};
 	LARGE_INTEGER Time::mCurFrequency = {};
 
+	float Time::fAcceleration = 1.f;
+
 	void Time::Initiailize()
 	{
 		// CPU 고유 진동수 가져오기
@@ -25,9 +27,10 @@ namespace ssz
 		QueryPerformanceCounter(&mCurFrequency);
 
 		double differnceFrequency = (double)(mCurFrequency.QuadPart - mPrevFrequency.QuadPart);
+		differnceFrequency *= (double)fAcceleration;
 
 		mDeltaTime = differnceFrequency / mCpuFrequency.QuadPart;
-
+		
 		if (1.f < mDeltaTime)
 			mDeltaTime = 1.f; // DT 방어 1초
 		

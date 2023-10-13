@@ -17,13 +17,10 @@ namespace ssz
 		GuageScript();
 		virtual ~GuageScript();
 
-		virtual void Initialize() override;
 		virtual void Update() override;
 		virtual void LateUpdate() override;
-		virtual void Render() override;
 
 		virtual void Binds() override;
-		virtual void BindsClear() override;
 
 		void SetValue(int Max, int* ValueAddress);
 		void SetValue(float Max, float* ValueAddress);

@@ -2,6 +2,9 @@
 #include "CommonHeader.h"
 
 #include "sszTGM.h"
+#include "sszLeague.h"
+
+#include "sszTeam.h"
 
 #include "sszLobbyHeader.h"
 #include "sszCloudObj.h"
@@ -11,6 +14,7 @@
 #include "sszProceedBtn.h"
 
 
+
 namespace ssz
 {
 	using namespace object;
@@ -18,6 +22,7 @@ namespace ssz
 	MainLobbyScene::MainLobbyScene()
 		: BgSky(nullptr)
 		, mLobbyheader(nullptr)
+		, mProceedBtn(nullptr)
 		, mCloud{}
 	{
 	}
@@ -63,6 +68,7 @@ namespace ssz
 				for (CloudObj* obj : mCloud)
 				{
 					obj = Instantiate<CloudObj>(Vector3(0.0f, 0.0f, 1.0145f), Vector3(381.f, 117, 1.f), eLayerType::BackGroundObj);
+					mCloud[idx] = obj;
 					obj->SetMt(idx++);
 				}
 			}
@@ -102,8 +108,8 @@ namespace ssz
 					SystemMenu->InitBtnIcon(L"SystemMenuTex", L"시스템");
 				
 					// Proceed Btn
-					ProceedBtn* ProceedMenu = InstantiateUI<ProceedBtn>(Vector3(735.f, -430.f, 1.002f), eLayerType::UI, L"ProceedMenu");
-					ProceedMenu->GetBtnComponent()->SetDelegateW(this, (DELEGATEW)&Scene::ChangeScene, L"BanPickScene");
+					mProceedBtn = InstantiateUI<ProceedBtn>(Vector3(735.f, -430.f, 1.002f), eLayerType::UI, L"ProceedMenu");
+					mProceedBtn->GetBtnComponent()->SetDelegateW(this, (DELEGATEW)&Scene::ChangeScene, L"BanPickScene");
 				}
 #pragma endregion
 				
@@ -118,45 +124,6 @@ namespace ssz
 	void MainLobbyScene::Update()
 	{
 		Scene::Update();
-
-		static UINT skyBg = 0;
-
-		if (Input::GetKeyDown(eKeyCode::ENTER))
-		{
-			switch (skyBg)
-			{
-			case 0:
-				BgSky->GetComponent<MeshRenderer>()->GetMaterial()->SetTexture (Resources::Find<Texture>(L"SkysunsetBgTex"));
-				
-				for (CloudObj* obj : mCloud)
-				{
-					obj->SetDayTime(CloudObj::eDayTime::Sunset);
-				}
-				
-				skyBg++;
-				break;
-			case 1:
-				BgSky->GetComponent<MeshRenderer>()->GetMaterial()->SetTexture(Resources::Find<Texture>(L"SkynightBgTex"));
-				
-				for (CloudObj* obj : mCloud)
-				{
-					obj->SetDayTime(CloudObj::eDayTime::Night);
-				}
-				
-				skyBg++;
-				break;
-			case 2:
-				BgSky->GetComponent<MeshRenderer>()->GetMaterial()->SetTexture(Resources::Find<Texture>(L"SkydayBgTex"));
-				
-				for (CloudObj* obj : mCloud)
-				{
-					obj->SetDayTime(CloudObj::eDayTime::Day);
-				}
-				
-				skyBg = 0;
-				break;
-			}
-		}
 	}
 
 	void MainLobbyScene::LateUpdate()
@@ -170,19 +137,68 @@ namespace ssz
 	}
 	void MainLobbyScene::OnEnter()
 	{
-		// Save
-		TGM::SaveData();
-
 		AddGameObject(eLayerType::Cursor, TGM::GetCursor());
 		AddGameObject(eLayerType::Camera, TGM::GetCamera());
 
 		CollisionManager::SetLayer(eLayerType::UI, eLayerType::Cursor, true);
 
+		League* LeagueManage = TGM::GetLeagueManage();
+		
+		if (LeagueManage->GetCurRound() == League::eRound::Round1)
+			LeagueManage->CreateNewEntry();
+		
+		// TGM League에서 엔트리설정
+		std::wstring NextVS = L"VS " + LeagueManage->GetEnemyTeam()->GetTeamName();
+		mProceedBtn->SetActionStr(NextVS);
+		
 		mLobbyheader->UpdateEnterScene();
+
+		DayTimeSetting();
+
+		// Save
+		TGM::SaveData();
 	}
+
 	void MainLobbyScene::OnExit()
 	{
 		CollisionManager::Clear();
 		TGM::SceneClear();
+	}
+	
+	void MainLobbyScene::DayTimeSetting()
+	{
+		switch (rand() % 3)
+		{
+		case 0:
+		{
+			BgSky->GetComponent<MeshRenderer>()->GetMaterial()->SetTexture(Resources::Find<Texture>(L"SkysunsetBgTex"));
+			
+			for (CloudObj* obj : mCloud)
+			{
+				obj->SetDayTime(CloudObj::eDayTime::Sunset);
+			}
+			break;
+		}
+		case 1:
+		{
+			BgSky->GetComponent<MeshRenderer>()->GetMaterial()->SetTexture(Resources::Find<Texture>(L"SkynightBgTex"));
+
+			for (CloudObj* obj : mCloud)
+			{
+				obj->SetDayTime(CloudObj::eDayTime::Night);
+			}
+			break;
+		}
+		case 2:
+		{
+			BgSky->GetComponent<MeshRenderer>()->GetMaterial()->SetTexture(Resources::Find<Texture>(L"SkydayBgTex"));
+
+			for (CloudObj* obj : mCloud)
+			{
+				obj->SetDayTime(CloudObj::eDayTime::Day);
+			}
+			break;
+		}
+		}
 	}
 }

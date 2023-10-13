@@ -4,6 +4,7 @@
 #include "sszTeam.h"
 #include "sszPilot.h"
 #include "sszChamp.h"
+#include "sszLeague.h"
 
 #include "sszCursor.h"
 #include "sszProjectile.h"
@@ -17,6 +18,8 @@ namespace ssz
 {
 	const RECT	TGM::mStadiumSize{ -570, 190, 570, -396 }; // Left, Top, Right, Bottme
 	float TGM::mGameTime = 0.f;
+
+	League* TGM::mLeagueManage = nullptr;
 
 	std::map<std::wstring, Team*> TGM::gTeamList;
 	std::map<std::wstring, Pilot*> TGM::gPilotList;
@@ -68,6 +71,7 @@ namespace ssz
 		
 
 		gPlayerTeam = new Team();
+		mLeagueManage = new League();
 	}
 
 	void TGM::Release()
@@ -122,6 +126,7 @@ namespace ssz
 		}
 
 		delete gPlayerTeam;
+		delete mLeagueManage;
 	}
 
 	bool TGM::ChampInitialize()
@@ -211,6 +216,8 @@ namespace ssz
 		}
 
 		FileManager::CloseLoadFile();
+
+
 
 		return true;
 	}
@@ -422,6 +429,10 @@ namespace ssz
 
 			FileManager::CloseLoadFile();
 			return true;
+		}
+		else
+		{
+
 		}
 
 		assert(nullptr);

@@ -3,6 +3,9 @@
 
 namespace ssz
 {
+
+	class BattleHeader;
+
 	class IGStadiumScene : public Scene
 	{
 	public:
@@ -18,6 +21,6 @@ namespace ssz
 		virtual void OnExit() override;
 
 	private:
-
+		BattleHeader* mBattleHeader;
 	};
 }

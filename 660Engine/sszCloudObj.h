@@ -22,10 +22,11 @@ namespace ssz
         virtual void Update();
 
         void SetMt(UINT idx);
-        void SetDayTime(eDayTime daytime) { mDayTime = daytime; }
+        void SetDayTime(eDayTime daytime);
 
     private:
         float vPlayArea;
+
 
         bool bPlay;
         bool bReady;
@@ -35,6 +36,7 @@ namespace ssz
 
         float fSpeed;
         eDayTime mDayTime;
+        UINT mCurSize;
 
         std::shared_ptr<Texture> CloudeTexture[(UINT)eDayTime::End][8];
     };

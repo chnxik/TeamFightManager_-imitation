@@ -73,7 +73,7 @@ namespace ssz
 			{
 				bPlay = true;
 
-				int size = rand() % 8;
+				mCurSize = rand() % 8;
 				fSpeed = (rand() % 100) + 30.f;
 
 				Transform* tr = GetComponent<Transform>();
@@ -86,7 +86,7 @@ namespace ssz
 				Vector3	StartPos = { vPlayArea + Scale.x, yPos, zPos };
 
 				tr->SetPosition(StartPos);
-				GetComponent<MeshRenderer>()->GetMaterial()->SetTexture(CloudeTexture[(UINT)mDayTime][size]);
+				GetComponent<MeshRenderer>()->GetMaterial()->SetTexture(CloudeTexture[(UINT)mDayTime][mCurSize]);
 			}
 		}
 
@@ -99,5 +99,11 @@ namespace ssz
 		object::LoadMaterial(mtkey, L"SpriteShader", eRenderingMode::Transparent);
 		AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", mtkey);
 		AddComponent<Collider2D>();
+	}
+	
+	void CloudObj::SetDayTime(eDayTime daytime)
+	{
+		mDayTime = daytime;
+		GetComponent<MeshRenderer>()->GetMaterial()->SetTexture(CloudeTexture[(UINT)mDayTime][mCurSize]);
 	}
 }

@@ -56,7 +56,7 @@ namespace ssz
 		LoadMaterial(L"EnemyGuageBgMt", L"SpriteShader", L"EnemyGuageBgTex", eRenderingMode::Transparent);
 
 
-		mGuageBg = Instantiate<GameObject>(Vector3(0.f, 0.f, 0.0000001f), Scale);
+		mGuageBg = Instantiate<GameObject>(Vector3(0.f, 0.f, 0.f), Scale);
 		Transform* GuageBgTr = mGuageBg->GetComponent<Transform>();
 		GuageBgTr->SetParent(Tr);
 		GuageBgTr->SetTransType(Transform::eTransType::PosAdd);
@@ -64,7 +64,7 @@ namespace ssz
 		
 
 		// HP Guage
-		mHPBar = Instantiate<GameObject>(Vector3(0.f, 3.f, 0.f), Vector3(88.f, 8.f, 1.f));
+		mHPBar = Instantiate<GameObject>(Vector3(-1.f, 3.f, 0.f), Vector3(89.f, 8.f, 1.f));
 		Transform* HPTr = mHPBar->GetComponent<Transform>();
 		HPTr->SetParent(Tr);
 		HPTr->SetTransType(Transform::eTransType::PosAdd);
@@ -72,8 +72,8 @@ namespace ssz
 
 		Resources::Load<Texture>(L"PlayerHPGuageTex", L"..\\Resources\\useResource\\ChampSprite\\StatusBar\\player_ingame_guage_4.png");
 		Resources::Load<Texture>(L"EnemyHPGuageTex", L"..\\Resources\\useResource\\ChampSprite\\StatusBar\\player_ingame_guage_3.png");
-		LoadMaterial(L"PlayerHPGuageMt", L"SpriteShader", L"PlayerHPGuageTex", eRenderingMode::Transparent);
-		LoadMaterial(L"EnemyHPGuageMt", L"SpriteShader", L"EnemyHPGuageTex", eRenderingMode::Transparent);
+		LoadMaterial(L"PlayerHPGuageMt", L"GuageShader", L"PlayerHPGuageTex", eRenderingMode::Transparent);
+		LoadMaterial(L"EnemyHPGuageMt", L"GuageShader", L"EnemyHPGuageTex", eRenderingMode::Transparent);
 		mHPBar->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"PlayerHPGuageMt");
 
 		// CoolTime
@@ -84,7 +84,7 @@ namespace ssz
 		GuageScript* Coolg = mCoolTimeBar->AddComponent<GuageScript>();
 
 		Resources::Load<Texture>(L"CoolGuageTex", L"..\\Resources\\useResource\\ChampSprite\\StatusBar\\player_ingame_guage_2.png");
-		LoadMaterial(L"CoolGuageMt", L"SpriteShader", L"CoolGuageTex", eRenderingMode::Transparent);
+		LoadMaterial(L"CoolGuageMt", L"GuageShader", L"CoolGuageTex", eRenderingMode::Transparent);
 		mCoolTimeBar->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"CoolGuageMt");
 
 
@@ -103,13 +103,14 @@ namespace ssz
 		Vector3 PilotNamePos(-40.f, -23.f, 0.f);
 
 		mPilotName = AddComponent<Text>();
-		mPilotName->TextInit(Text::eFonts::Galmuri9, PilotNamePos, 20.f, FONT_RGBA(255, 255, 255, 255), FW1_LEFT | FW1_VCENTER);
+		mPilotName->TextInit(Text::eFonts::Silver, PilotNamePos, 30.f, FONT_RGBA(255, 255, 255, 255), FW1_LEFT | FW1_VCENTER);
 		mPilotName->SetString(L"NONE");
 	}
 
 	void StatusBar::Update()
 	{
 		GameObject::Update();
+		mGuageBg->Update();
 		mHPBar->Update();
 		mCoolTimeBar->Update();
 		mUseUltIcon->Update();
@@ -118,6 +119,7 @@ namespace ssz
 	void StatusBar::LateUpdate()
 	{
 		GameObject::LateUpdate();
+		mGuageBg->LateUpdate();
 		mHPBar->LateUpdate();
 		mCoolTimeBar->LateUpdate();
 		mUseUltIcon->LateUpdate();
@@ -125,6 +127,7 @@ namespace ssz
 
 	void StatusBar::Render()
 	{
+		mGuageBg->Render();
 		mHPBar->Render();
 		mCoolTimeBar->Render();
 		mUseUltIcon->Render();
@@ -140,6 +143,7 @@ namespace ssz
 		tr->SetParent(ChampTr);
 		tr->SetTransType(Transform::eTransType::PosAdd);
 
+		int HP = mOwnerChamp->GetChampStatus()->ChampInfo.MAXHP;
 		mHPBar->GetComponent<GuageScript>()->SetValue(mOwnerChamp->GetChampStatus()->ChampInfo.MAXHP, mOwnerChamp->GetChampHPptr());
 		mCoolTimeBar->GetComponent<GuageScript>()->SetValue(mOwnerChamp->GetChampStatus()->CoolTime_Skill, mOwnerChamp->GetChampCoolptr());
 
@@ -156,11 +160,13 @@ namespace ssz
 		{
 			mHPBar->GetComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"PlayerHPGuageMt");
 			mGuageBg->GetComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"PlayerGuageBgMt");
+			// mPilotName->SetFontColor(0, 255, 0, 255);
 		}
 		else
 		{
 			mHPBar->GetComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"EnemyHPGuageMt");
 			mGuageBg->GetComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"EnemyGuageBgMt");
+			// mPilotName->SetFontColor(255, 0, 0, 255);
 		}
 	}
 }

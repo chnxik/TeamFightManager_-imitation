@@ -26,7 +26,6 @@ namespace ssz
             ButtonUI* mBtnComp;
             UIObject* ProceedBtnArrowMark;
 
-
             KBDIcon* mKBDIcon;
             
             UIObject* mActionStr;

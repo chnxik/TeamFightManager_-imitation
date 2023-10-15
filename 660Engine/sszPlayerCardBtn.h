@@ -1,11 +1,10 @@
 #pragma once
 #include "sszUIObject.h"
+#include "sszButtonUI.h"
 #include "CommonHeader.h"
 
 namespace ssz
 {
-	class ButtonUI;
-
 	class PlayerCardBtn : public UIObject
 	{
 	public:

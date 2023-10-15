@@ -209,6 +209,9 @@
     <ClInclude Include="sszLeague.h">
       <Filter>Contents\Manager\DataManager\League</Filter>
     </ClInclude>
+    <ClInclude Include="sszLobbyAvatar.h">
+      <Filter>Contents\Object\GameUnit\Pilot\LobbyAvatar</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="660Engine.cpp" />
@@ -433,6 +436,9 @@
     </ClCompile>
     <ClCompile Include="sszLeague.cpp">
       <Filter>Contents\Manager\DataManager\League</Filter>
+    </ClCompile>
+    <ClCompile Include="sszLobbyAvatar.cpp">
+      <Filter>Contents\Object\GameUnit\Pilot\LobbyAvatar</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -684,6 +690,12 @@
     </Filter>
     <Filter Include="Contents\Manager\DataManager\League">
       <UniqueIdentifier>{5f151921-2d53-46a3-acb2-eb508610cf2f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\GameUnit\audience">
+      <UniqueIdentifier>{513a549a-8990-437b-a45b-e3fbfb4f16b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\GameUnit\Pilot\LobbyAvatar">
+      <UniqueIdentifier>{762fadf1-3619-4077-a56c-1da2472cf6b9}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

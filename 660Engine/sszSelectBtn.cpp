@@ -53,11 +53,11 @@ namespace ssz
 		Btn->InitCheckSelected(object);
 	}
 
-	void SelectBtn::InitItemTex(wstring Texkey, UINT idx, Vector3 Pos, Vector3 Scale, UIObject* parent)
+	void SelectBtn::InitItemTex(std::wstring Texkey, UINT idx, Vector3 Pos, Vector3 Scale, UIObject* parent)
 	{
 		Pos.z -= 0.00001f;
 		
-		wstring objname = GetName();
+		std::wstring objname = GetName();
 		mItemObj = InstantiateUI<UIObject>(Pos, Scale, parent, objname);
 		
 		Transform* TeamIconTr = mItemObj->GetComponent<Transform>();

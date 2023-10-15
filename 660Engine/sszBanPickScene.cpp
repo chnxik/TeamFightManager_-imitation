@@ -20,6 +20,8 @@ namespace ssz
 		, mBattleHeader(nullptr)
 		, mBanPickWindow(nullptr)
 		, mBanLine(nullptr)
+		, mBanLineCenterText(nullptr)
+		, mBanLineSideText(nullptr)
 	{
 	}
 	BanPickScene::~BanPickScene()
@@ -67,6 +69,13 @@ namespace ssz
 		
 			// BanLine
 			mBanLine = InstantiateUI<BanLine>(Vector3(0.f, 353.f, 1.03f), mBanPickWindow, L"BanLine");
+			mBanLineCenterText = mBanLine->AddComponent<Text>();
+			mBanLineSideText = mBanLine->AddComponent<Text>();
+
+			mBanLineCenterText->SetString(L"금지할 챔피언을 선택하세요");
+			mBanLineCenterText->TextInit(Text::eFonts::Galmuri14, Vector3(0.f, -7.f, 0.f), 55, FONT_RGBA(255, 255, 255, 255), FW1_CENTER | FW1_VCENTER);
+			mBanLineSideText->SetString(L"금지 단계\n(1/2)");
+			mBanLineSideText->TextInit(Text::eFonts::Galmuri11, Vector3(-550.f, -7.f, 0.f), 35, FONT_RGBA(255, 255, 255, 255), FW1_LEFT | FW1_VCENTER);
 
 			// BanpickClassTap
 			// 클래스탭은 Btn 묶음으로 부모객체에서 상태를 받아 선택된 버튼과 나머지 버튼의 크기와 위치가 바뀌도록 한다.
@@ -159,30 +168,57 @@ namespace ssz
 
 				WindowTr->SetPosition(WindowPos);
 			}
+			
+			if (1.f < mAccTime)
+			{
+				mAccTime = 0.f;
+				mPhase = eBanPickPhase::BP_1;
+			}
+
+
 			break;
 		}
 		case ssz::BanPickScene::eBanPickPhase::BP_1:
+		{
 			break;
+		}
 		case ssz::BanPickScene::eBanPickPhase::BP_2:
+		{
 			break;
+		}
 		case ssz::BanPickScene::eBanPickPhase::PP_1:
+		{
 			break;
+		}
 		case ssz::BanPickScene::eBanPickPhase::PP_2:
+		{
 			break;
+		}
 		case ssz::BanPickScene::eBanPickPhase::PP_3:
+		{
 			break;
+		}
 		case ssz::BanPickScene::eBanPickPhase::PP_4:
+		{
 			break;
-		case ssz::BanPickScene::eBanPickPhase::SecenOut:
+		}
+		case ssz::BanPickScene::eBanPickPhase::SceneOut:
+		{
+			if (Input::GetKeyDown(eKeyCode::ENTER))
+			{
+				SceneManager::LoadScene(L"IGStadiumScene");
+			}
 			break;
+		}
 		default:
 			break;
 		}
 
-		if (Input::GetKeyDown(eKeyCode::ENTER))
+		if (Input::GetKeyDown(eKeyCode::LBUTTON))
 		{
-			SceneManager::LoadScene(L"IGStadiumScene");
+			NextPhase();
 		}
+
 	}
 	void BanPickScene::LateUpdate()
 	{
@@ -211,6 +247,59 @@ namespace ssz
 		CollisionManager::Clear();
 		
 		TGM::SceneClear();
+	}
+	void BanPickScene::NextPhase()
+	{
+		switch (mPhase)
+		{
+		case ssz::BanPickScene::eBanPickPhase::SceneIn1:
+			break;
+		case ssz::BanPickScene::eBanPickPhase::SceneIn2:
+			break;
+		case ssz::BanPickScene::eBanPickPhase::BP_1:
+		{
+			mBanLineSideText->SetString(L"금지 단계\n(2/2)");
+			mBanLine->ChangeTurn(eTeamColor::Red);
+			mPhase = eBanPickPhase::BP_2;
+			break;
+		}
+		case ssz::BanPickScene::eBanPickPhase::BP_2:
+		{
+			mBanLineSideText->SetString(L"선택 단계\n(1/3)");
+			mBanLine->ChangeTurn(eTeamColor::Blue);
+			mBanLineCenterText->SetString(L"사용할 챔피언을 선택하세요");
+			mPhase = eBanPickPhase::PP_1;
+			break;
+		}
+		case ssz::BanPickScene::eBanPickPhase::PP_1:
+		{
+			mBanLineSideText->SetString(L"선택 단계\n(2/3)");
+			mBanLine->ChangeTurn(eTeamColor::Red);
+			mPhase = eBanPickPhase::PP_2;
+			break;
+		}
+		case ssz::BanPickScene::eBanPickPhase::PP_2:
+		{
+			mPhase = eBanPickPhase::PP_3;
+			break;
+		}
+		case ssz::BanPickScene::eBanPickPhase::PP_3:
+		{
+			mBanLineSideText->SetString(L"선택 단계\n(3/3)");
+			mBanLine->ChangeTurn(eTeamColor::Blue);
+			mPhase = eBanPickPhase::PP_4;
+			break;
+		}
+		case ssz::BanPickScene::eBanPickPhase::PP_4:
+		{
+			mPhase = eBanPickPhase::SceneOut;
+			break;
+		}
+		case ssz::BanPickScene::eBanPickPhase::SceneOut:
+		{
+			break;
+		}
+		}
 	}
 	void BanPickScene::Reset()
 	{

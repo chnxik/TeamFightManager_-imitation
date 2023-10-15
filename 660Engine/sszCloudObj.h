@@ -27,7 +27,6 @@ namespace ssz
     private:
         float vPlayArea;
 
-
         bool bPlay;
         bool bReady;
 

@@ -1,5 +1,6 @@
 #pragma once
 #include "sszUIObject.h"
+#include "GameEnums.h"
 
 namespace ssz
 {
@@ -11,6 +12,17 @@ namespace ssz
 
         virtual void Initialize() override;
 
+        virtual void Update() override;
+        virtual void LateUpdate() override;
+
+        void ChangeTurn(eTeamColor TeamColor);
+
     private:
+        eTeamColor mCurTeamColor;
+        UIObject* mArrowMark;
+        Text* mPhaseCenterStr;
+        Text* mPhaseSideStr;
+
+        
     };
 }

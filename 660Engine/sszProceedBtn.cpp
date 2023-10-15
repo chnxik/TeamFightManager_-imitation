@@ -113,6 +113,7 @@ namespace ssz
 
 		Tr->SetPosition(Pos);
 	}
+
 	void ProceedBtn::SetKBDIcon(KBDIcon::KEYICON key)
 	{
 		mKBDIcon = new KBDIcon(L"KeyIcon");

@@ -36,6 +36,10 @@ namespace ssz
         
         UINT iPilotAge; // 나이   : UINT
         
+        // 아바타 정보
+        std::wstring mHairTexKey;
+        std::wstring mGlassTexKey;
+
         // 처치 ( 시즌 )    // IG 종료후 
         // 도움 ( 시즌 )
         // 통산 처치 ( 전체 시즌 )

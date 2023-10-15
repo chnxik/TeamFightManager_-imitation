@@ -9,6 +9,7 @@ namespace ssz
 	class BanPickWindow;
 	class BattleHeader;
 	class BanLine;
+	class Text;
 
 	class BanPickScene : public Scene
 	{
@@ -23,7 +24,7 @@ namespace ssz
 			PP_2,	// 선택단계 2
 			PP_3,	// 선택단계 3
 			PP_4,	// 선택단계 4
-			SecenOut
+			SceneOut
 		};
 		
 		BanPickScene();
@@ -37,6 +38,8 @@ namespace ssz
 		virtual void OnEnter() override;
 		virtual void OnExit() override;
 
+		void NextPhase();
+
 		void Reset();
 
 	private:
@@ -45,6 +48,9 @@ namespace ssz
 		PlayerCardSlot* mPlayerSlot[(UINT)eTeamColor::End][2];
 		BanPickWindow* mBanPickWindow;
 		BanLine* mBanLine;
+
+		Text* mBanLineCenterText;
+		Text* mBanLineSideText;
 
 		float mAccTime;
 	};

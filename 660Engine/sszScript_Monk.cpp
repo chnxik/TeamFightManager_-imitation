@@ -69,7 +69,7 @@ namespace ssz
 		Champ* Owner = (Champ*)GetOwner();
 
 		// Load Atlas
-		std::wstring ChampName = L"knight";							// 클래스이름
+		std::wstring ChampName = L"monk";							// 클래스이름
 		Owner->SetChampName(ChampName);
 
 		std::wstring AtlasKey = ChampName + L"_sprite";
@@ -95,16 +95,16 @@ namespace ssz
 		Animator* anim = Owner->AddComponent<Animator>();
 		Transform* tr = Owner->GetComponent<Transform>();
 
-		tr->SetScale(Vector3(170.f, 170.f, 0.f));	// Set Scale
-		Vector2 FrmSize(96.f, 96.f);				// frm szie
+		tr->SetScale(Vector3(128.f, 128.f, 0.f));	// Set Scale
+		Vector2 FrmSize(64.f, 64.f);				// frm szie
 
 		// 프레임, 프레임속도
 		Vector2 IdleAnimInfo = { 5.f, 10.f };
 		Vector2 MoveAnimInfo = { 8.f, 10.f };
-		Vector2 AttackAnimInfo = { 7.f, 10.f };
-		Vector2 DeadAnimInfo = { 9.f, 10.f };
-		Vector2 SkillAnimInfo = { 7.f, 10.f };
-		Vector2 UltAnimInfo = { 7.f, 10.f };
+		Vector2 AttackAnimInfo = { 6.f, 10.f };
+		Vector2 DeadAnimInfo = { 15.f, 10.f };
+		Vector2 SkillAnimInfo = { 12.f, 10.f };
+		Vector2 UltAnimInfo = { 9.f, 10.f };
 
 		anim->Create(IdleAnikey, AtlasKey, Vector2(0.f, 0.f), FrmSize, (int)IdleAnimInfo.x, Vector2(0.f, 0.f), IdleAnimInfo.y);
 		anim->Create(MoveAnikey, AtlasKey, Vector2(0.f, FrmSize.y * 1), FrmSize, (int)MoveAnimInfo.x, Vector2(0.f, 0.f), MoveAnimInfo.y);

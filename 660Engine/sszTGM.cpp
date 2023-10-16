@@ -13,6 +13,12 @@
 // ChampScript
 #include "sszScript_Archer.h"
 #include "sszScript_Knight.h"
+#include "sszScript_Fighter.h"
+#include "sszScript_Monk.h"
+#include "sszScript_SwordMan.h"
+#include "sszScript_Pyromancer.h"
+#include "sszScript_Priest.h"
+#include "sszScript_Ninja.h"
 
 namespace ssz
 {
@@ -131,13 +137,45 @@ namespace ssz
 
 	bool TGM::ChampInitialize()
 	{
+		// Archer
 		Champ* Archer = object::Instantiate<Champ>();
 		Archer->SetChampScript(Archer->AddComponent<Script_Archer>());
 		gChampList.insert(std::make_pair(ARCHER, Archer));
 
+		// Knight
 		Champ* Knight = object::Instantiate<Champ>();
 		Knight->SetChampScript(Knight->AddComponent<Script_Knight>());
 		gChampList.insert(std::make_pair(KNIGHT, Knight));
+		
+		// Fighter
+		Champ* Fighter = object::Instantiate<Champ>();
+		Fighter->SetChampScript(Fighter->AddComponent<Script_Fighter>());
+		gChampList.insert(std::make_pair(FIGHTER, Fighter));
+
+		// Monk
+		Champ* Monk = object::Instantiate<Champ>();
+		Monk->SetChampScript(Monk->AddComponent<Script_Monk>());
+		gChampList.insert(std::make_pair(MONK, Monk));
+
+		// SwordMan
+		Champ* SwordMan = object::Instantiate<Champ>();
+		SwordMan->SetChampScript(SwordMan->AddComponent<Script_SwordMan>());
+		gChampList.insert(std::make_pair(SWORDMAN, SwordMan));
+
+		// Pyromancer
+		Champ* Pyromancer = object::Instantiate<Champ>();
+		Pyromancer->SetChampScript(Pyromancer->AddComponent<Script_Pyromancer>());
+		gChampList.insert(std::make_pair(PYROMANCER, Pyromancer));
+
+		// Priest
+		Champ* Priest = object::Instantiate<Champ>();
+		Priest->SetChampScript(Priest->AddComponent<Script_Priest>());
+		gChampList.insert(std::make_pair(PRIEST, Priest));
+
+		// Ninja
+		Champ* Ninja = object::Instantiate<Champ>();
+		Ninja->SetChampScript(Ninja->AddComponent<Script_Ninja>());
+		gChampList.insert(std::make_pair(NINJA, Ninja));
 
 		return true;
 	}

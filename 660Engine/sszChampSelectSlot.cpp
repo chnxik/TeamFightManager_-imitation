@@ -137,7 +137,7 @@ namespace ssz
 
 		std::wstring ChampName = mRegistedChamp->GetChampName();
 		Animator* ChampAnim = mChampTex->GetComponent<Animator>();
-		std::wstring Idlekey = ChampName + L"idle";
+		std::wstring Idlekey = ChampName + L"_idle";
 		ChampAnim->PlayAnimation(Idlekey, false);
 
 		mChampTex->GetComponent<Masking>()->StopMasking();
@@ -165,9 +165,10 @@ namespace ssz
 		// Champ Tex Create
 		std::wstring ChampTexKey = GetName() + L"TexObj";
 		Transform* SlotTr = GetComponent<Transform>();
-
+		
+		float mainz = GetComponent<Transform>()->GetPosition().z - 0.001f;
 		// Create ChampTex Obj
-		mChampTex = InstantiateUI<UIObject>(Vector3(0.f, 0.f, GetComponent<Transform>()->GetPosition().z), this, ChampTexKey);
+		mChampTex = InstantiateUI<UIObject>(Vector3(0.f, 0.f, mainz), this, ChampTexKey);
 		mChampTex->GetComponent<Transform>()->SetTransType(Transform::eTransType::PosAdd);
 		
 		// CreateAnimation
@@ -181,7 +182,7 @@ namespace ssz
 
 		Animator* SlotChampAnim = mChampTex->AddComponent<Animator>();
 		
-		std::wstring Idlekey = ChampName + L"idle";
+		std::wstring Idlekey = ChampName + L"_idle";
 		std::wstring OnAnikey = ChampName + L"_On";
 		std::wstring Selectkey = ChampName + L"_Select";
 
@@ -206,17 +207,47 @@ namespace ssz
 			break;
 		}
 		case ssz::eChamp::Fighter:
+		{
+			ChampScale = { 256.f, 256.f, 0.f };
+			FrmSize = { 128.f, 128.f };
+			AtkFrm = 7;
 			break;
+		}
 		case ssz::eChamp::Monk:
+		{
+			ChampScale = { 128.f, 128.f, 0.f };
+			FrmSize = { 64.f, 64.f };
+			AtkFrm = 6;
 			break;
+		}
 		case ssz::eChamp::SwordMan:
+		{
+			ChampScale = { 256.f, 256.f, 0.f };
+			FrmSize = { 128.f, 128.f };
+			AtkFrm = 5;
 			break;
+		}
 		case ssz::eChamp::Pyromancer:
+		{
+			ChampScale = { 170.f, 170.f, 0.f };
+			FrmSize = { 96.f, 96.f };
+			AtkFrm = 8;
 			break;
+		}
 		case ssz::eChamp::Priest:
+		{
+			ChampScale = { 256.f, 256.f, 0.f };
+			FrmSize = { 128.f, 128.f };
+			AtkFrm = 10;
 			break;
+		}
 		case ssz::eChamp::Ninja:
+		{
+			ChampScale = { 256.f, 256.f, 0.f };
+			FrmSize = { 128.f, 128.f };
+			AtkFrm = 5;
 			break;
+		}
 		case ssz::eChamp::NONE:
 			break;
 		}

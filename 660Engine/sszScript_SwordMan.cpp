@@ -49,9 +49,9 @@ namespace ssz
 		Owner->SetChampSkillInfo(L"적의 방어력을 깎는 공격을 가합니다.");
 		Owner->SetChampUltInfo(L"일직선으로 빠르게 이동하며 경로상에 있는 모든 적을 베어버립니다.");
 
-		Owner->GetChampStatus()->CoolTime_Skill = 3.0f;
+		Owner->GetChampStatus()->CoolTime_Skill = 3.8f;
 
-		Owner->GetComponent<Transform>()->SetScale(Vector3(128.f, 128.f, 1.f)); // 64 : 128, 96 : 170
+		Owner->GetComponent<Transform>()->SetScale(Vector3(256.f, 256.f, 1.f)); // 64 : 128, 96 : 170,, 128 : 256
 	}
 
 	void Script_SwordMan::InitChampAnim()
@@ -61,7 +61,7 @@ namespace ssz
 		Champ* Owner = (Champ*)GetOwner();
 
 		// Load Atlas
-		std::wstring ChampName = L"knight";							// 클래스이름
+		std::wstring ChampName = L"swordman";							// 클래스이름
 		Owner->SetChampName(ChampName);
 
 		std::wstring AtlasKey = ChampName + L"_sprite";
@@ -87,16 +87,16 @@ namespace ssz
 		Animator* anim = Owner->AddComponent<Animator>();
 		Transform* tr = Owner->GetComponent<Transform>();
 
-		tr->SetScale(Vector3(170.f, 170.f, 0.f));	// Set Scale
-		Vector2 FrmSize(96.f, 96.f);				// frm szie
+		tr->SetScale(Vector3(256.f, 256.f, 0.f));	// Set Scale
+		Vector2 FrmSize(128.f, 128.f);				// frm szie
 
 		// 프레임, 프레임속도
 		Vector2 IdleAnimInfo = { 5.f, 10.f };
 		Vector2 MoveAnimInfo = { 8.f, 10.f };
-		Vector2 AttackAnimInfo = { 7.f, 10.f };
-		Vector2 DeadAnimInfo = { 9.f, 10.f };
-		Vector2 SkillAnimInfo = { 7.f, 10.f };
-		Vector2 UltAnimInfo = { 7.f, 10.f };
+		Vector2 AttackAnimInfo = { 5.f, 10.f };
+		Vector2 DeadAnimInfo = { 8.f, 10.f };
+		Vector2 SkillAnimInfo = { 9.f, 10.f };
+		Vector2 UltAnimInfo = { 8.f, 10.f };
 
 		anim->Create(IdleAnikey, AtlasKey, Vector2(0.f, 0.f), FrmSize, (int)IdleAnimInfo.x, Vector2(0.f, 0.f), IdleAnimInfo.y);
 		anim->Create(MoveAnikey, AtlasKey, Vector2(0.f, FrmSize.y * 1), FrmSize, (int)MoveAnimInfo.x, Vector2(0.f, 0.f), MoveAnimInfo.y);

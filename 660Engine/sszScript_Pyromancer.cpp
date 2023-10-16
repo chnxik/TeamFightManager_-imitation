@@ -57,9 +57,9 @@ namespace ssz
 		Owner->SetUltIcon(UltIcon);
 		Owner->SetSlotTex(SlotTex);
 
-		Owner->GetChampStatus()->CoolTime_Skill = 3.0f;
+		Owner->GetChampStatus()->CoolTime_Skill = 6.5f;
 
-		Owner->GetComponent<Transform>()->SetScale(Vector3(128.f, 128.f, 1.f)); // 64 : 128, 96 : 170
+		Owner->GetComponent<Transform>()->SetScale(Vector3(170.f, 170.f, 1.f)); // 64 : 128, 96 : 170
 	}
 
 	void Script_Pyromancer::InitChampAnim()
@@ -69,7 +69,7 @@ namespace ssz
 		Champ* Owner = (Champ*)GetOwner();
 
 		// Load Atlas
-		std::wstring ChampName = L"knight";							// 클래스이름
+		std::wstring ChampName = L"pyromancer";							// 클래스이름
 		Owner->SetChampName(ChampName);
 
 		std::wstring AtlasKey = ChampName + L"_sprite";
@@ -100,11 +100,11 @@ namespace ssz
 
 		// 프레임, 프레임속도
 		Vector2 IdleAnimInfo = { 5.f, 10.f };
-		Vector2 MoveAnimInfo = { 8.f, 10.f };
-		Vector2 AttackAnimInfo = { 7.f, 10.f };
-		Vector2 DeadAnimInfo = { 9.f, 10.f };
-		Vector2 SkillAnimInfo = { 7.f, 10.f };
-		Vector2 UltAnimInfo = { 7.f, 10.f };
+		Vector2 MoveAnimInfo = { 4.f, 10.f };
+		Vector2 AttackAnimInfo = { 8.f, 10.f };
+		Vector2 DeadAnimInfo = { 8.f, 10.f };
+		Vector2 SkillAnimInfo = { 4.f, 10.f };
+		Vector2 UltAnimInfo = { 13.f, 10.f };
 
 		anim->Create(IdleAnikey, AtlasKey, Vector2(0.f, 0.f), FrmSize, (int)IdleAnimInfo.x, Vector2(0.f, 0.f), IdleAnimInfo.y);
 		anim->Create(MoveAnikey, AtlasKey, Vector2(0.f, FrmSize.y * 1), FrmSize, (int)MoveAnimInfo.x, Vector2(0.f, 0.f), MoveAnimInfo.y);

@@ -70,7 +70,7 @@ namespace ssz
 		Champ* Owner = (Champ*)GetOwner();
 
 		// Load Atlas
-		std::wstring ChampName = L"figter";							// 클래스이름
+		std::wstring ChampName = L"fighter";							// 클래스이름
 		Owner->SetChampName(ChampName);
 
 		std::wstring AtlasKey = ChampName + L"_sprite";
@@ -96,8 +96,8 @@ namespace ssz
 		Animator* anim = Owner->AddComponent<Animator>();
 		Transform* tr = Owner->GetComponent<Transform>();
 
-		tr->SetScale(Vector3(170.f, 170.f, 0.f));	// Set Scale
-		Vector2 FrmSize(96.f, 96.f);				// frm szie
+		tr->SetScale(Vector3(256.f, 256.f, 0.f));	// Set Scale
+		Vector2 FrmSize(128.f, 128.f);				// frm szie
 
 		// 프레임, 프레임속도
 		Vector2 IdleAnimInfo = { 5.f, 10.f };

@@ -64,8 +64,8 @@ namespace ssz
 #pragma endregion
 #pragma region SlotUI Load
 		{
-			BlueTeam = ssz::object::InstantiateUI<TeamIconSlot>(Vector3(-900.f, 8.f, 0.f), Vector3(95.f, 95.f, 1.f), this, L"BlueTeamIconSlot");
-			RedTeam = ssz::object::InstantiateUI<TeamIconSlot>(Vector3(900.f, 8.f, 0.f), Vector3(95.f, 95.f, 1.f), this, L"RedTeamIconSlot");
+			BlueTeam = ssz::object::InstantiateUI<TeamIconSlot>(Vector3(-900.f, 8.f, 1.039f), Vector3(95.f, 95.f, 1.f), this, L"BlueTeamIconSlot");
+			RedTeam = ssz::object::InstantiateUI<TeamIconSlot>(Vector3(900.f, 8.f, 1.039f), Vector3(95.f, 95.f, 1.f), this, L"RedTeamIconSlot");
 
 			BlueTeamName = BlueTeam->AddComponent<Text>();
 			RedTeamName = RedTeam->AddComponent<Text>();

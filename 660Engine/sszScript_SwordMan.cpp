@@ -44,6 +44,11 @@ namespace ssz
 		Owner->SetChampInfo(eChampType::eFIGHTER, 15, 0.83f, 45, 30, 130, 6); // 챔피언 정보 입력
 		Owner->InitChampStatus(0, 0);	// 인게임 정보 세팅
 
+		Owner->SetChampKrName(L"검사");
+		Owner->SetChampClassType(L"근거리");
+		Owner->SetChampSkillInfo(L"적의 방어력을 깎는 공격을 가합니다.");
+		Owner->SetChampUltInfo(L"일직선으로 빠르게 이동하며 경로상에 있는 모든 적을 베어버립니다.");
+
 		Owner->GetChampStatus()->CoolTime_Skill = 3.0f;
 
 		Owner->GetComponent<Transform>()->SetScale(Vector3(128.f, 128.f, 1.f)); // 64 : 128, 96 : 170
@@ -57,6 +62,8 @@ namespace ssz
 
 		// Load Atlas
 		std::wstring ChampName = L"knight";							// 클래스이름
+		Owner->SetChampName(ChampName);
+
 		std::wstring AtlasKey = ChampName + L"_sprite";
 		std::wstring AtlasPath =
 			L"..\\Resources\\useResource\\ChampSprite\\" + ChampName + L"\\" + AtlasKey + L"\\" + ChampName + L".png";

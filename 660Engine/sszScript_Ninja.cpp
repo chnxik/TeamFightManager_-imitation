@@ -44,6 +44,19 @@ namespace ssz
 		Owner->SetChampInfo(eChampType::eSLAYER, 25, 0.95f, 40, 10, 120, 8); // 챔피언 정보 입력
 		Owner->InitChampStatus(0, 0);	// 인게임 정보 세팅
 
+		Owner->SetChampKrName(L"닌자");
+		Owner->SetChampClassType(L"암살자");
+		Owner->SetChampSkillInfo(L"적 하나에게 순간이동으로 접근하여 출혈 효과가 있는 공격을 가합니다.");
+		Owner->SetChampUltInfo(L"지속적으로 체력이 소모되는 분신을 소환합니다.");
+
+		std::shared_ptr<Texture> SkillIcon = Resources::Load<Texture>(L"ninja_skilliconTex", L"..\\Resources\\useResource\\ChampSprite\\ninja\\skillicon\\ninja_skill.png");
+		std::shared_ptr<Texture> UltIcon = Resources::Load<Texture>(L"ninja_ulticonTex", L"..\\Resources\\useResource\\ChampSprite\\ninja\\skillicon\\ninja_ult.png");
+		std::shared_ptr<Texture> SlotTex = Resources::Load<Texture>(L"ninja_SlotTex", L"..\\Resources\\useResource\\Banpick\\ChampIcon\\ninja.png");
+
+		Owner->SetSkillIcon(SkillIcon);
+		Owner->SetUltIcon(UltIcon);
+		Owner->SetSlotTex(SlotTex);
+
 		Owner->GetChampStatus()->CoolTime_Skill = 3.0f;
 
 		Owner->GetComponent<Transform>()->SetScale(Vector3(128.f, 128.f, 1.f)); // 64 : 128, 96 : 170
@@ -57,6 +70,8 @@ namespace ssz
 
 		// Load Atlas
 		std::wstring ChampName = L"knight";							// 클래스이름
+		Owner->SetChampName(ChampName);
+
 		std::wstring AtlasKey = ChampName + L"_sprite";
 		std::wstring AtlasPath =
 			L"..\\Resources\\useResource\\ChampSprite\\" + ChampName + L"\\" + AtlasKey + L"\\" + ChampName + L".png";

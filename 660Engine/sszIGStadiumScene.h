@@ -3,7 +3,7 @@
 
 namespace ssz
 {
-
+	class PlayerCardSlot;
 	class BattleHeader;
 
 	class IGStadiumScene : public Scene
@@ -22,5 +22,7 @@ namespace ssz
 
 	private:
 		BattleHeader* mBattleHeader;
+		PlayerCardSlot* mPlayerSlot[(UINT)eTeamColor::End][2];
+
 	};
 }

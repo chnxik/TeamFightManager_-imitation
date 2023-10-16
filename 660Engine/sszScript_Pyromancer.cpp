@@ -44,6 +44,19 @@ namespace ssz
 		Owner->SetChampInfo(eChampType::eMAGE, 45, 0.5f, 100, 3, 80, 3); // 챔피언 정보 입력
 		Owner->InitChampStatus(0, 0);	// 인게임 정보 세팅
 
+		Owner->SetChampKrName(L"화염술사");
+		Owner->SetChampClassType(L"마법사");
+		Owner->SetChampSkillInfo(L"공격을 보조하는 화염 정령을 소환합니다.");
+		Owner->SetChampUltInfo(L"주변 일정 범위에 지속적으로 피해를 가하는 영역을 생성합니다.");
+
+		std::shared_ptr<Texture> SkillIcon = Resources::Load<Texture>(L"pyromancer_skilliconTex", L"..\\Resources\\useResource\\ChampSprite\\pyromancer\\skillicon\\pyromancer_skill.png");
+		std::shared_ptr<Texture> UltIcon = Resources::Load<Texture>(L"pyromancer_ulticonTex", L"..\\Resources\\useResource\\ChampSprite\\pyromancer\\skillicon\\pyromancer_ult.png");
+		std::shared_ptr<Texture> SlotTex = Resources::Load<Texture>(L"pyromancer_SlotTex", L"..\\Resources\\useResource\\Banpick\\ChampIcon\\pyromancer.png");
+
+		Owner->SetSkillIcon(SkillIcon);
+		Owner->SetUltIcon(UltIcon);
+		Owner->SetSlotTex(SlotTex);
+
 		Owner->GetChampStatus()->CoolTime_Skill = 3.0f;
 
 		Owner->GetComponent<Transform>()->SetScale(Vector3(128.f, 128.f, 1.f)); // 64 : 128, 96 : 170
@@ -57,6 +70,8 @@ namespace ssz
 
 		// Load Atlas
 		std::wstring ChampName = L"knight";							// 클래스이름
+		Owner->SetChampName(ChampName);
+
 		std::wstring AtlasKey = ChampName + L"_sprite";
 		std::wstring AtlasPath =
 			L"..\\Resources\\useResource\\ChampSprite\\" + ChampName + L"\\" + AtlasKey + L"\\" + ChampName + L".png";

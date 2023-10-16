@@ -165,5 +165,37 @@ namespace ssz
         StatusBar* mChampStatusBar;
 
         std::wstring vecAnimKey[(UINT)eActiveType::END];
+    
+    public:
+        void SetChampName(std::wstring Name) { mChampName = Name; }
+        void SetChampKrName(std::wstring Name)     { mChampKrName = Name; }
+        void SetChampClassType(std::wstring Type) { mChampClassType = Type; }
+        void SetChampSkillInfo(std::wstring str) { mChampSkillInfo = str; }
+        void SetChampUltInfo(std::wstring str) { mChampUltInfo = str;}
+
+        void SetSkillIcon(std::shared_ptr<Texture> skillicon)   { mSkillIcon = skillicon; }
+        void SetUltIcon(std::shared_ptr<Texture> ulticon) { mUltIcon = ulticon;}
+        void SetSlotTex(std::shared_ptr<Texture> SlotTex) { mSlotTex = SlotTex; }
+
+        std::wstring GetChampName() { return mChampName; }
+        std::wstring GetChampKrName() { return mChampKrName; }
+        std::wstring GetChampClassType() { return mChampClassType; }
+        std::wstring GetChampSkillInfo() { return mChampSkillInfo; }
+        std::wstring GetChampUltInfo() { return mChampUltInfo; }
+        
+        std::shared_ptr<Texture> GetSkillIcon() { return mSkillIcon; }
+        std::shared_ptr<Texture> GetUltIcon() { return mUltIcon; }
+        std::shared_ptr<Texture> GetSlotTex() { return mSlotTex; }
+
+    private:
+        std::wstring mChampName;
+        std::wstring mChampKrName;
+        std::wstring mChampClassType;
+        std::wstring mChampSkillInfo;
+        std::wstring mChampUltInfo;
+
+        std::shared_ptr<Texture> mSkillIcon;
+        std::shared_ptr<Texture> mUltIcon;
+        std::shared_ptr<Texture> mSlotTex;
     };
 }

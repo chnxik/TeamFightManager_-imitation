@@ -10,6 +10,8 @@
 #include "sszBattleHeader.h"
 
 #include "sszChamp.h"
+#include "sszTeam.h"
+#include "sszPilot.h"
 
 #include "sszObj_IG_Stadium.h"
 #include "sszPlayerCardSlot.h"
@@ -22,6 +24,8 @@ namespace ssz
 	using namespace object;
 
 	IGStadiumScene::IGStadiumScene()
+		: mBattleHeader(nullptr)
+		, mPlayerSlot{}
 	{
 	}
 	IGStadiumScene::~IGStadiumScene()
@@ -50,10 +54,15 @@ namespace ssz
 		// GameObject
 		{
 			// PlayerCard
-			InstantiateUI<PlayerCardSlot>(Vector3(843.f, 308.f, 1.02f), eLayerType::UI, L"RedPlayerCard_1")->SetRed();
-			InstantiateUI<PlayerCardSlot>(Vector3(843.f, 69.f, 1.02f), eLayerType::UI, L"RedPlayerCard_2")->SetRed();
-			InstantiateUI<PlayerCardSlot>(Vector3(-843.f, 308.f, 1.02f), eLayerType::UI, L"BluePlayerCard_1")->SetBlue();
-			InstantiateUI<PlayerCardSlot>(Vector3(-843.f, 69.f, 1.02f), eLayerType::UI, L"BluePlayerCard_2")->SetBlue();
+			mPlayerSlot[(UINT)eTeamColor::Red][0] = InstantiateUI <PlayerCardSlot>(Vector3(843.f, 308.f, 1.02f), eLayerType::UI, L"RedPlayerCard_1");
+			mPlayerSlot[(UINT)eTeamColor::Red][1] = InstantiateUI <PlayerCardSlot>(Vector3(843.f, 69.f, 1.02f), eLayerType::UI, L"RedPlayerCard_2");
+			mPlayerSlot[(UINT)eTeamColor::Blue][0] = InstantiateUI<PlayerCardSlot>(Vector3(-843.f, 308.f, 1.02f), eLayerType::UI, L"BluePlayerCard_1");
+			mPlayerSlot[(UINT)eTeamColor::Blue][1] = InstantiateUI<PlayerCardSlot>(Vector3(-843.f, 69.f, 1.02f), eLayerType::UI, L"BluePlayerCard_2");
+
+			mPlayerSlot[(UINT)eTeamColor::Red][0]->SetRed();
+			mPlayerSlot[(UINT)eTeamColor::Red][1]->SetRed();
+			mPlayerSlot[(UINT)eTeamColor::Blue][0]->SetBlue();
+			mPlayerSlot[(UINT)eTeamColor::Blue][1]->SetBlue();
 		}
 #pragma endregion
 	}
@@ -98,6 +107,21 @@ namespace ssz
 
 		mBattleHeader->RegistTeam();
 		mBattleHeader->SetTimeType();
+
+		// PlayerCard Init
+		Team* PlayerTeam = TGM::GetPlayerTeam();
+		Team* EnemyTeam = TGM::GetLeagueManage()->GetEnemyTeam();
+
+		std::vector<Pilot*> PlayerTeamPilotList = PlayerTeam->GetPilotList();
+		std::vector<Pilot*> EnemyTeamPilotList = EnemyTeam->GetPilotList();
+
+		for (int i = 0; i < 2; ++i)
+		{
+			mPlayerSlot[(UINT)eTeamColor::Blue][i]->RegistPilot(PlayerTeamPilotList[i]);
+			mPlayerSlot[(UINT)eTeamColor::Red][i]->RegistPilot(EnemyTeamPilotList[i]);
+		}
+
+		CollisionManager::SetLayer(eLayerType::UI, eLayerType::Cursor, true);
 
 		// Player
 		{	

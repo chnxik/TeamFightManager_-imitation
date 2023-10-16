@@ -18,6 +18,8 @@ namespace ssz
 		virtual void BindsClear() override;
 
 		void SetMaskArea(Vector3 objpos, Vector3 objscale);
+		void UseMasking() { mUseMasking = true; }
+		void StopMasking() { mUseMasking = false; }
 
 	private:
 		Vector3 mLeftTop;

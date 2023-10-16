@@ -41,7 +41,9 @@ float4 main(VSOut In) : SV_TARGET
     }
     
     if (0.f < useAlpha)
+    {
         color.w = AlphaRatio;
+    }
     
     return color;
     }

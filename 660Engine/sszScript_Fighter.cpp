@@ -45,7 +45,20 @@ namespace ssz
 		Owner->SetChampInfo(eChampType::eFIGHTER, 10, 1.18f, 35, 40, 190, 7); // 챔피언 정보 입력
 		Owner->InitChampStatus(0, 0);	// 인게임 정보 세팅
 
-		Owner->GetChampStatus()->CoolTime_Skill = 3.0f;
+		Owner->SetChampKrName(L"격투가");
+		Owner->SetChampClassType(L"근거리");
+		Owner->SetChampSkillInfo(L"적 하나를 발차기로 강하게 타격하여 행동 불능 상태로 만든 뒤 추격해 공격합니다.");
+		Owner->SetChampUltInfo(L"주변 일정 범위 적들을 모두 공중으로 띄워올립니다.");
+
+		std::shared_ptr<Texture> SkillIcon = Resources::Load<Texture>(L"fighter_skilliconTex", L"..\\Resources\\useResource\\ChampSprite\\fighter\\skillicon\\fighter_skill.png");
+		std::shared_ptr<Texture> UltIcon = Resources::Load<Texture>(L"fighter_ulticonTex", L"..\\Resources\\useResource\\ChampSprite\\fighter\\skillicon\\fighter_ult.png");
+		std::shared_ptr<Texture> SlotTex = Resources::Load<Texture>(L"fighter_SlotTex", L"..\\Resources\\useResource\\Banpick\\ChampIcon\\fighter.png");
+
+		Owner->SetSkillIcon(SkillIcon);
+		Owner->SetUltIcon(UltIcon);
+		Owner->SetSlotTex(SlotTex);
+
+		Owner->GetChampStatus()->CoolTime_Skill = 2.7f;
 
 		Owner->GetComponent<Transform>()->SetScale(Vector3(128.f, 128.f, 1.f)); // 64 : 128, 96 : 170
 	}
@@ -57,7 +70,9 @@ namespace ssz
 		Champ* Owner = (Champ*)GetOwner();
 
 		// Load Atlas
-		std::wstring ChampName = L"knight";							// 클래스이름
+		std::wstring ChampName = L"figter";							// 클래스이름
+		Owner->SetChampName(ChampName);
+
 		std::wstring AtlasKey = ChampName + L"_sprite";
 		std::wstring AtlasPath =
 			L"..\\Resources\\useResource\\ChampSprite\\" + ChampName + L"\\" + AtlasKey + L"\\" + ChampName + L".png";

@@ -212,6 +212,9 @@
     <ClInclude Include="sszLobbyAvatar.h">
       <Filter>Contents\Object\GameUnit\Pilot\LobbyAvatar</Filter>
     </ClInclude>
+    <ClInclude Include="sszChampSelectSlot.h">
+      <Filter>Contents\UI\Slot\ChampSelectSlot</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="660Engine.cpp" />
@@ -439,6 +442,9 @@
     </ClCompile>
     <ClCompile Include="sszLobbyAvatar.cpp">
       <Filter>Contents\Object\GameUnit\Pilot\LobbyAvatar</Filter>
+    </ClCompile>
+    <ClCompile Include="sszChampSelectSlot.cpp">
+      <Filter>Contents\UI\Slot\ChampSelectSlot</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -696,6 +702,9 @@
     </Filter>
     <Filter Include="Contents\Object\GameUnit\Pilot\LobbyAvatar">
       <UniqueIdentifier>{762fadf1-3619-4077-a56c-1da2472cf6b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\UI\Slot\ChampSelectSlot">
+      <UniqueIdentifier>{fe93daac-2eec-4fc5-bbdc-479a4bce72ac}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

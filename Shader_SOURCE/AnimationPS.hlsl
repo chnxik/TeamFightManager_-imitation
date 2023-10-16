@@ -26,6 +26,15 @@ float4 main(VSOut In) : SV_Target
         || UV.y < SpriteLeftTop.y || UV.y > SpriteLeftTop.y + SpriteSize.y)
         discard;
     
+    if (0 < UseMasking)
+    {
+        if (Left >= In.Pos.x || Right <= In.Pos.x)
+            discard;
+    
+        if (Top >= In.Pos.y || Bottom <= In.Pos.y)
+            discard;
+    }
+    
     color = atlasTexture.Sample(PointSampler, UV);
     
     if (DamagedTime == 0)

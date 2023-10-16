@@ -46,6 +46,19 @@ namespace ssz
 		Owner->SetChampInfo(eChampType::eFIGHTER, 21, 0.67f, 37, 10, 200, 5);
 		Owner->InitChampStatus(0, 0);
 
+		Owner->SetChampKrName(L"기사");
+		Owner->SetChampClassType(L"근거리");
+		Owner->SetChampSkillInfo(L"적 하나를 일정 시간동안 도발하여 해당 적의 공격 대상을 강제로 자신으로 만듭니다. 방어력이 상승합니다.");
+		Owner->SetChampUltInfo(L"일정 시간동안 아군 모두의 방어력을 크게 상승시킵니다.");
+
+		std::shared_ptr<Texture> SkillIcon = Resources::Load<Texture>(L"knight_skilliconTex", L"..\\Resources\\useResource\\ChampSprite\\knight\\skillicon\\knight_skill.png");
+		std::shared_ptr<Texture> UltIcon = Resources::Load<Texture>(L"knight_ulticonTex", L"..\\Resources\\useResource\\ChampSprite\\knight\\skillicon\\knight_ult.png");
+		std::shared_ptr<Texture> SlotTex = Resources::Load<Texture>(L"knight_SlotTex", L"..\\Resources\\useResource\\Banpick\\ChampIcon\\knight.png");
+
+		Owner->SetSkillIcon(SkillIcon);
+		Owner->SetUltIcon(UltIcon);
+		Owner->SetSlotTex(SlotTex);
+
 		Owner->GetChampStatus()->CoolTime_Skill = 4.2f;
 
 		Owner->GetComponent<Transform>()->SetScale(Vector3(170.f, 170.f, 1.f)); // 96 size
@@ -59,6 +72,8 @@ namespace ssz
 
 		// Load Atlas
 		std::wstring ChampName = L"knight";							// 클래스이름
+		Owner->SetChampName(ChampName);
+
 		std::wstring AtlasKey = ChampName + L"_sprite";
 		std::wstring AtlasPath =
 			L"..\\Resources\\useResource\\ChampSprite\\" + ChampName + L"\\" + AtlasKey + L"\\" + ChampName + L".png";

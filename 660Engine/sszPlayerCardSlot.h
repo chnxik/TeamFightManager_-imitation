@@ -5,7 +5,8 @@
 
 namespace ssz
 {
-	using namespace ssz::graphics;
+	class Pilot;
+	class Text;
 
 	class PlayerCardSlot : public UIObject
 	{
@@ -15,10 +16,22 @@ namespace ssz
 
 		virtual void Initialize() override;
 
+		void RegistPilot(Pilot* pilot);
+
 		void SetRed();
 		void SetBlue();
 
 	private:
+		Pilot* mRegistedPilot;
+
+		Text* mPilotName;
+		Text* mCharacter;
+
+		UIObject* mAtkIcon;
+		UIObject* mDefIcon;
+
 		std::shared_ptr<Texture> vecCardTex[(UINT)eTeamColor::End][(UINT)eSlotState::End];
+		bool bSelect;
+		UIObject* mAvatarFace;
 	};
 }

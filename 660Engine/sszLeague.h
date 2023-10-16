@@ -36,6 +36,7 @@ namespace ssz
 		~League();
 
 		eRound GetCurRound() { return mCurRound; }
+		Team* GetPlayerTeam() {	return mLeagueSchedule[(UINT)mCurRound][(UINT)eGroup::A].BlueTeam; }
 		Team* GetEnemyTeam() { return mLeagueSchedule[(UINT)mCurRound][(UINT)eGroup::A].RedTeam; }
 		tGame	GetGame(eRound round, eGroup group) { return mLeagueSchedule[(UINT)round][(UINT)group]; }
 

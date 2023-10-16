@@ -43,7 +43,8 @@ namespace ssz
         SwordMan,
         Pyromancer,
         Priest,
-        Ninja
+        Ninja,
+        NONE
     };
 
     enum class eChampType

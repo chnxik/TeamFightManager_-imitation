@@ -5,6 +5,7 @@
 
 namespace ssz
 {
+	class ChampSelectSlot;
 	class PlayerCardSlot;
 	class BanPickWindow;
 	class BattleHeader;
@@ -46,6 +47,7 @@ namespace ssz
 		eBanPickPhase mPhase;
 		BattleHeader* mBattleHeader;
 		PlayerCardSlot* mPlayerSlot[(UINT)eTeamColor::End][2];
+		ChampSelectSlot* mChampSlot[(UINT)eChamp::NONE];
 		BanPickWindow* mBanPickWindow;
 		BanLine* mBanLine;
 

@@ -2,10 +2,15 @@
 #include "CommonHeader.h"
 
 #include "sszTGM.h"
+#include "sszLeague.h"
+
+#include "sszTeam.h"
+#include "sszPilot.h"
 
 #include "sszBattleHeader.h"
 #include "sszBanLine.h"
 #include "sszPlayerCardSlot.h"
+#include "sszChampSelectSlot.h"
 
 #include "sszBanPickWindow.h"
 
@@ -22,6 +27,7 @@ namespace ssz
 		, mBanLine(nullptr)
 		, mBanLineCenterText(nullptr)
 		, mBanLineSideText(nullptr)
+		, mChampSlot{}
 	{
 	}
 	BanPickScene::~BanPickScene()
@@ -72,10 +78,30 @@ namespace ssz
 			mBanLineCenterText = mBanLine->AddComponent<Text>();
 			mBanLineSideText = mBanLine->AddComponent<Text>();
 
-			mBanLineCenterText->SetString(L"금지할 챔피언을 선택하세요");
 			mBanLineCenterText->TextInit(Text::eFonts::Galmuri14, Vector3(0.f, -7.f, 0.f), 55, FONT_RGBA(255, 255, 255, 255), FW1_CENTER | FW1_VCENTER);
-			mBanLineSideText->SetString(L"금지 단계\n(1/2)");
 			mBanLineSideText->TextInit(Text::eFonts::Galmuri11, Vector3(-550.f, -7.f, 0.f), 35, FONT_RGBA(255, 255, 255, 255), FW1_LEFT | FW1_VCENTER);
+			mBanLineCenterText->SetString(L"금지할 챔피언을 선택하세요");
+			mBanLineSideText->SetString(L"금지 단계\n(1/2)");
+
+			// Champ Slot
+			Vector3 SlotStartPoint(-545.f, 185.f, 1.18f);
+
+			for (int i = 0; i < (UINT)eChamp::NONE; ++i)
+			{
+				std::wstring SlotKey = L"ChampSlot_" + std::to_wstring(i);
+				ChampSelectSlot* NewSlot = InstantiateUI<ChampSelectSlot>(mBanPickWindow, SlotKey);
+
+				Transform* SlotTr = NewSlot->GetComponent<Transform>();
+				Vector3 SlotPos = SlotStartPoint;
+				SlotPos.x += (SlotTr->GetScale().x) * i + (12.f * i);
+				SlotTr->SetPosition(SlotPos);
+				
+				NewSlot->RegistWindowUI(mBanPickWindow);
+				NewSlot->RegistChamp((eChamp)i);	// 순서대로 챔프 등록
+				
+				mChampSlot[i] = NewSlot;
+			}
+
 
 			// BanpickClassTap
 			// 클래스탭은 Btn 묶음으로 부모객체에서 상태를 받아 선택된 버튼과 나머지 버튼의 크기와 위치가 바뀌도록 한다.
@@ -234,9 +260,26 @@ namespace ssz
 		AddGameObject(eLayerType::Camera, TGM::GetCamera());
 
 		mPhase = eBanPickPhase::SceneIn1;
+		mBanLine->ChangeTurn(eTeamColor::Blue);
+		mBanLineCenterText->SetString(L"금지할 챔피언을 선택하세요");
+		mBanLineSideText->SetString(L"금지 단계\n(1/2)");
 		
 		mBattleHeader->RegistTeam();
 		mBattleHeader->SetTitleType();
+		
+
+		Team* PlayerTeam = TGM::GetPlayerTeam();
+		Team* EnemyTeam = TGM::GetLeagueManage()->GetEnemyTeam();
+
+		std::vector<Pilot*> PlayerTeamPilotList = PlayerTeam->GetPilotList();
+		std::vector<Pilot*> EnemyTeamPilotList = EnemyTeam->GetPilotList();
+
+		for (int i = 0; i < 2; ++i)
+		{
+			mPlayerSlot[(UINT)eTeamColor::Blue][i]->RegistPilot(PlayerTeamPilotList[i]);
+			mPlayerSlot[(UINT)eTeamColor::Red][i]->RegistPilot(EnemyTeamPilotList[i]);
+		}
+		
 
 		CollisionManager::SetLayer(eLayerType::UI, eLayerType::Cursor, true);
 
@@ -253,7 +296,9 @@ namespace ssz
 		switch (mPhase)
 		{
 		case ssz::BanPickScene::eBanPickPhase::SceneIn1:
+		{
 			break;
+		}
 		case ssz::BanPickScene::eBanPickPhase::SceneIn2:
 			break;
 		case ssz::BanPickScene::eBanPickPhase::BP_1:

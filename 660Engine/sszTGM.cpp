@@ -256,6 +256,48 @@ namespace ssz
 		return nullptr;
 	}
 
+	Champ* TGM::GetChamp(eChamp champ)
+	{
+		std::wstring ChampKey = {};
+		
+		switch (champ)
+		{
+		case ssz::eChamp::Archer:
+			ChampKey = ARCHER;
+			break;
+		case ssz::eChamp::Knight:
+			ChampKey = KNIGHT;
+			break;
+		case ssz::eChamp::Fighter:
+			ChampKey = FIGHTER;
+			break;
+		case ssz::eChamp::Monk:
+			ChampKey = MONK;
+			break;
+		case ssz::eChamp::SwordMan:
+			ChampKey = SWORDMAN;
+			break;
+		case ssz::eChamp::Pyromancer:
+			ChampKey = PYROMANCER;
+			break;
+		case ssz::eChamp::Priest:
+			ChampKey = PRIEST;
+			break;
+		case ssz::eChamp::Ninja:
+			ChampKey = NINJA;
+			break;
+		default:
+			break;
+		}
+
+		std::map<std::wstring, Champ*>::iterator iter = gChampList.find(ChampKey);
+
+		if (iter != gChampList.end())
+			return iter->second;
+
+		return nullptr;
+	}
+
 	Projectile* TGM::GetProjectile()
 	{
 		Projectile* Proj = nullptr;
@@ -419,11 +461,11 @@ namespace ssz
 				
 				if (HomeTeam)	// 팀리스트에서 팀을 찾아온다
 				{
-					LoadPilot->RegistTeam(HomeTeam);
+					HomeTeam->RegistPilot(LoadPilot);
 				}
 				else // 없는 경우 플레이어팀.
 				{
-					LoadPilot->RegistTeam(gPlayerTeam);
+					gPlayerTeam->RegistPilot(LoadPilot);
 				}
 			}
 

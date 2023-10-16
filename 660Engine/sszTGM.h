@@ -53,6 +53,7 @@ namespace ssz
 		static Team* GetTeam(const std::wstring& key);
 		static Pilot* GetPilot(const std::wstring& key);
 		static Champ* GetChamp(const std::wstring& key);
+		static Champ* GetChamp(eChamp champ);
 
 		static std::map<std::wstring, Team*> GetTeamList() { return gTeamList; }		// 팀 리스트
 		static std::map<std::wstring, Pilot*> GetPilotList() { return gPilotList; }		// 파일럿 리스트

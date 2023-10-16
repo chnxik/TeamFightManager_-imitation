@@ -42,6 +42,19 @@ namespace ssz
 		Owner->SetName(ARCHER); // 챔프 이름 입력
 		Owner->SetChampInfo(eChampType::eMARKSMAN, 42, 0.67f, 120, 5, 100, 4); // 챔피언 정보 입력
 		Owner->InitChampStatus(0, 0);	// 인게임 정보 세팅
+		
+		Owner->SetChampKrName(L"궁수");
+		Owner->SetChampClassType(L"원거리");
+		Owner->SetChampSkillInfo(L"상대를 경직시키는 화살을 발사하며 뒤로 한 발짝 물러섭니다.");
+		Owner->SetChampUltInfo(L"무작위 적들에게 빠르게 화살을 연사합니다.");
+
+		std::shared_ptr<Texture> SkillIcon = Resources::Load<Texture>(L"archer_skilliconTex", L"..\\Resources\\useResource\\ChampSprite\\archer\\skillicon\\archer_skill.png");
+		std::shared_ptr<Texture> UltIcon = Resources::Load<Texture>(L"archer_ulticonTex", L"..\\Resources\\useResource\\ChampSprite\\archer\\skillicon\\archer_ult.png");
+		std::shared_ptr<Texture> SlotTex = Resources::Load<Texture>(L"archer_SlotTex", L"..\\Resources\\useResource\\Banpick\\ChampIcon\\archer.png");
+
+		Owner->SetSkillIcon(SkillIcon);
+		Owner->SetUltIcon(UltIcon);
+		Owner->SetSlotTex(SlotTex);
 
 		Owner->GetChampStatus()->CoolTime_Skill = 3.0f;
 
@@ -60,6 +73,8 @@ namespace ssz
 
 		// Load Atlas
 		std::wstring ChampName = L"archer";							// 클래스이름
+		Owner->SetChampName(ChampName);
+
 		std::wstring AtlasKey = ChampName + L"_sprite";
 		std::wstring AtlasPath =
 			L"..\\Resources\\useResource\\ChampSprite\\" + ChampName + L"\\" + AtlasKey + L"\\" + ChampName + L".png";

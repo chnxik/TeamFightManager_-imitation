@@ -60,13 +60,6 @@ namespace ssz
 
 	void Champ::Initialize()
 	{
-		// test¿ë ÀÓ½Ã 
-		Text* tx = AddComponent<Text>();
-
-		tx->SetOffsetPos(Vector3(40.f, 50.f, 0.f));
-		tx->SetFontSize(20.f);
-		tx->SetFontColor(255, 255, 255, 255);
-
 		// Shadow
 		mShadow = new Shadow();
 		mShadow->Initialize();
@@ -74,8 +67,6 @@ namespace ssz
 
 		mSpawnEfc = new SpawnEfc();
 		mSpawnEfc->Initialize();
-
-		
 	}
 
 	void Champ::Update()
@@ -101,15 +92,6 @@ namespace ssz
 		GameObject::LateUpdate();
 		mShadow->LateUpdate();
 		mChampStatusBar->LateUpdate();
-
-		std::wstring info = L"HP : ";
-		info += std::to_wstring(mChampStatus.HP);
-		info += L"\nAtk : ";
-		info += std::to_wstring(mChampStatus.accTime_Attack).substr(0,3);
-		info += L"\nSkill : ";
-		info += std::to_wstring(mChampStatus.accTime_Skill).substr(0,3);
-		
-		GetComponent<Text>()->SetString(info);
 	}
 
 	void Champ::Render()

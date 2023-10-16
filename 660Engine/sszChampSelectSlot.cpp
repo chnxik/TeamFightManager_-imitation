@@ -116,6 +116,8 @@ namespace ssz
 
 	void ChampSelectSlot::MouseUp()
 	{
+		OwnerWindowUI->PreviewChampInfo(mRegistedChamp);
+
 		if (bBanned == false && bSelected == false)
 		{
 			if (!mRegistedChamp)
@@ -255,7 +257,7 @@ namespace ssz
 		ChampScale *= 1.3f;
 		
 		SlotChampAnim->Create(Idlekey, Atlaskey, Vector2(0.f, 0.f), FrmSize, 1, Vector2(0.f, 0.f), 7.f);
-		SlotChampAnim->Create(OnAnikey, Atlaskey, Vector2(0.f, 0.f), FrmSize, 4, Vector2(0.f, 0.f), 7.f);
+		SlotChampAnim->Create(OnAnikey, Atlaskey, Vector2(FrmSize.x, 0.f), FrmSize, 4, Vector2(0.f, 0.f), 7.f);
 		SlotChampAnim->Create(Selectkey, Atlaskey, Vector2(0.f, FrmSize.y * 2) , FrmSize, AtkFrm, Vector2(0.f, 0.f), 7.f);
 
 		Transform* ChampTexTr = mChampTex->GetComponent<Transform>();

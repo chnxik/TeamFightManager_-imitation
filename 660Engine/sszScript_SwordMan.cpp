@@ -49,6 +49,14 @@ namespace ssz
 		Owner->SetChampSkillInfo(L"적의 방어력을 깎는 공격을 가합니다.");
 		Owner->SetChampUltInfo(L"일직선으로 빠르게 이동하며 경로상에 있는 모든 적을 베어버립니다.");
 
+		std::shared_ptr<Texture> SkillIcon = Resources::Load<Texture>(L"swordman_skilliconTex", L"..\\Resources\\useResource\\ChampSprite\\swordman\\skillicon\\swordman_skill.png");
+		std::shared_ptr<Texture> UltIcon = Resources::Load<Texture>(L"swordman_ulticonTex", L"..\\Resources\\useResource\\ChampSprite\\swordman\\skillicon\\swordman_ult.png");
+		std::shared_ptr<Texture> SlotTex = Resources::Load<Texture>(L"swordman_SlotTex", L"..\\Resources\\useResource\\Banpick\\ChampIcon\\swordman.png");
+
+		Owner->SetSkillIcon(SkillIcon);
+		Owner->SetUltIcon(UltIcon);
+		Owner->SetSlotTex(SlotTex);
+
 		Owner->GetChampStatus()->CoolTime_Skill = 3.8f;
 
 		Owner->GetComponent<Transform>()->SetScale(Vector3(256.f, 256.f, 1.f)); // 64 : 128, 96 : 170,, 128 : 256

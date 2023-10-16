@@ -14,8 +14,12 @@ namespace ssz
         virtual void Initialize() override;
 
         void SetSlot(eStatType eType);
+        void SetValue(UINT value);
+        void SetValue(float value);
 
     private:
         StatIcon* mStatIcon;
+        Text* mSlotName;
+        Text* mStatValue;
     };
 }

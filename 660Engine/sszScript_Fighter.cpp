@@ -47,8 +47,8 @@ namespace ssz
 
 		Owner->SetChampKrName(L"격투가");
 		Owner->SetChampClassType(L"근거리");
-		Owner->SetChampSkillInfo(L"적 하나를 발차기로 강하게 타격하여 행동 불능 상태로 만든 뒤 추격해 공격합니다.");
-		Owner->SetChampUltInfo(L"주변 일정 범위 적들을 모두 공중으로 띄워올립니다.");
+		Owner->SetChampSkillInfo(L"적 하나를 발차기로 강하게 타격하여\n행동 불능 상태로 만든 뒤 추격해\n공격합니다.");
+		Owner->SetChampUltInfo(L"주변 일정 범위 적들을 모두 공중으로\n 띄워올립니다.");
 
 		std::shared_ptr<Texture> SkillIcon = Resources::Load<Texture>(L"fighter_skilliconTex", L"..\\Resources\\useResource\\ChampSprite\\fighter\\skillicon\\fighter_skill.png");
 		std::shared_ptr<Texture> UltIcon = Resources::Load<Texture>(L"fighter_ulticonTex", L"..\\Resources\\useResource\\ChampSprite\\fighter\\skillicon\\fighter_ult.png");

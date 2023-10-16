@@ -45,8 +45,8 @@ namespace ssz
 		
 		Owner->SetChampKrName(L"궁수");
 		Owner->SetChampClassType(L"원거리");
-		Owner->SetChampSkillInfo(L"상대를 경직시키는 화살을 발사하며 뒤로 한 발짝 물러섭니다.");
-		Owner->SetChampUltInfo(L"무작위 적들에게 빠르게 화살을 연사합니다.");
+		Owner->SetChampSkillInfo(L"상대를 경직시키는 화살을 발사하며\n뒤로 한 발짝 물러섭니다.");
+		Owner->SetChampUltInfo(L"무작위 적들에게 빠르게 화살을\n 연사합니다.");
 
 		std::shared_ptr<Texture> SkillIcon = Resources::Load<Texture>(L"archer_skilliconTex", L"..\\Resources\\useResource\\ChampSprite\\archer\\skillicon\\archer_skill.png");
 		std::shared_ptr<Texture> UltIcon = Resources::Load<Texture>(L"archer_ulticonTex", L"..\\Resources\\useResource\\ChampSprite\\archer\\skillicon\\archer_ult.png");

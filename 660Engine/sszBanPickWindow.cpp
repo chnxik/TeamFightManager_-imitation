@@ -77,21 +77,37 @@ namespace ssz
 		
 
 		// Skill & Ult
-		mSkillIcon = InstantiateUI<UIObject>(Vector3(0.f, 50.f, mainz), Vector3(50.f, 50.f, 0.f), this, L"PreviewSkillIcon");
-		mUltIcon = InstantiateUI<UIObject>(Vector3(0.f, -50.f, mainz), Vector3(50.f, 50.f, 0.f), this, L"PreviewUltIcon");
-		mSkillCoolIcon = InstantiateUI<UIObject>(Vector3(20.f, 0.f, mainz), Vector3(50.f, 50.f, 0.f), this, L"PreviewSkillCoolIcon");
-		mUltCoolIcon = InstantiateUI<UIObject>(Vector3(20.f, 0.f, mainz), Vector3(50.f, 50.f, 0.f), this, L"PreviewUltCoolIcon");
+		mSkillIcon = InstantiateUI<UIObject>(Vector3(-88.f, -132.f, mainz), Vector3(72.f, 72.f, 0.f), this, L"PreviewSkillIcon");
+		mUltIcon = InstantiateUI<UIObject>(Vector3(-88.f, -237.f, mainz), Vector3(72.f, 72.f, 0.f), this, L"PreviewUltIcon");
+
+		mSkillIcon->AddComponent<PanelUI>();
+		mUltIcon->AddComponent<PanelUI>();
+
+		mSkillCoolIcon = InstantiateUI<UIObject>(Vector3(65.f, -20.f, mainz), Vector3(30.f, 30.f, 0.f), mSkillIcon, L"PreviewSkillCoolIcon");
+		mUltCoolIcon = InstantiateUI<UIObject>(Vector3(65.f, -20.f, mainz), Vector3(30.f, 30.f, 0.f), mUltIcon, L"PreviewUltCoolIcon");
 
 		mSkillIcon->GetComponent<Transform>()->SetTransType(Transform::eTransType::PosAdd);
 		mUltIcon->GetComponent<Transform>()->SetTransType(Transform::eTransType::PosAdd);
 		mSkillCoolIcon->GetComponent<Transform>()->SetTransType(Transform::eTransType::PosAdd);
 		mUltCoolIcon->GetComponent<Transform>()->SetTransType(Transform::eTransType::PosAdd);
+
+		LoadMaterial(L"PreviewSkillIconMt",L"SpriteShader",eRenderingMode::Transparent);
+		LoadMaterial(L"PreviewUltIconMt",L"SpriteShader",eRenderingMode::Transparent);
+		
+		Resources::Load<Texture>(L"CoolTimeIconTex", L"..\\Resources\\useResource\\Banpick\\cooltime_icon.png");
+		LoadMaterial(L"CoolTimeIconMt", L"SpriteShader", L"CoolTimeIconTex", eRenderingMode::Transparent);
+
+		mSkillIcon->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"PreviewSkillIconMt");
+		mUltIcon->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"PreviewUltIconMt");
+		
+		mSkillCoolIcon->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"CoolTimeIconMt");
+		mUltCoolIcon->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"CoolTimeIconMt");
 		
 		Text* SkillText = mSkillIcon->AddComponent<Text>();
 		Text* UltText = mUltIcon->AddComponent<Text>();
 
-		SkillText->TextInit(Text::eFonts::Galmuri14, Vector3(30.f, 0.f, mainz), 20, FONT_RGBA(255, 255, 255, 255), FW1_CENTER | FW1_VCENTER);
-		UltText->TextInit(Text::eFonts::Galmuri14, Vector3(30.f, 0.f, mainz), 20, FONT_RGBA(255, 255, 255, 255), FW1_CENTER | FW1_VCENTER);
+		SkillText->TextInit(Text::eFonts::Galmuri14, Vector3(120.f, 20.f, mainz), 27, FONT_RGBA(255, 255, 255, 255), FW1_CENTER | FW1_VCENTER);
+		UltText->TextInit(Text::eFonts::Galmuri14, Vector3(120.f, 20.f, mainz), 27, FONT_RGBA(255, 255, 255, 255), FW1_CENTER | FW1_VCENTER);
 
 		SkillText->SetString(L"±â¼ú");
 		UltText->SetString(L"±Ã±Ø±â");
@@ -101,10 +117,10 @@ namespace ssz
 		mSkillInfo = mSkillIcon->AddComponent<Text>();
 		mUltInfo = mUltIcon->AddComponent<Text>();
 
-		mSkillCool->TextInit(Text::eFonts::Galmuri14, Vector3(30.f, 0.f, mainz), 20, FONT_RGBA(255, 255, 255, 255), FW1_CENTER | FW1_VCENTER);
-		mUltCool->TextInit(Text::eFonts::Galmuri14, Vector3(30.f, 0.f, mainz), 20, FONT_RGBA(255, 255, 255, 255), FW1_CENTER | FW1_VCENTER);
-		mSkillInfo->TextInit(Text::eFonts::Galmuri14, Vector3(30.f, 0.f, mainz), 20, FONT_RGBA(255, 255, 255, 255), FW1_CENTER | FW1_VCENTER);
-		mUltInfo->TextInit(Text::eFonts::Galmuri14, Vector3(30.f, 0.f, mainz), 20, FONT_RGBA(255, 255, 255, 255), FW1_CENTER | FW1_VCENTER);
+		mSkillCool->TextInit(Text::eFonts::Galmuri14, Vector3(130.f, -25.f, mainz), 25, FONT_RGBA(255, 255, 255, 255), FW1_CENTER | FW1_VCENTER);
+		mUltCool->TextInit(Text::eFonts::Galmuri14, Vector3(130.f, -22.f, mainz), 25, FONT_RGBA(255, 255, 255, 255), FW1_CENTER | FW1_VCENTER);
+		mSkillInfo->TextInit(Text::eFonts::Galmuri14, Vector3(220.f, 26.f, mainz), 22, FONT_RGBA(255, 255, 255, 255), FW1_LEFT | FW1_TOP);
+		mUltInfo->TextInit(Text::eFonts::Galmuri14, Vector3(220.f, 26.f, mainz), 22, FONT_RGBA(255, 255, 255, 255), FW1_LEFT | FW1_TOP);
 
 		
 		PreviewChampInfo(TGM::GetChamp(eChamp::Archer));
@@ -115,14 +131,16 @@ namespace ssz
 		Champ::tChampInfo champinfo = champ->GetChampInfo();
 		
 		mChampPreview->GetComponent<MeshRenderer>()->GetMaterial()->SetTexture(champ->GetSlotTex());
+		mSkillIcon->GetComponent<MeshRenderer>()->GetMaterial()->SetTexture(champ->GetSkillIcon());
+		mUltIcon->GetComponent<MeshRenderer>()->GetMaterial()->SetTexture(champ->GetUltIcon());
 
 		mClassTypeText->SetString(champ->GetChampClassType());
 		mClassNameText->SetString(champ->GetChampKrName());
 
-		mSkillCool->SetString(L"½ºÅ³Äð");
-		mUltCool->SetString(L"±Ã±ØÄð");
-		mSkillInfo->SetString(L"½ºÅ³¼³¸í");
-		mUltInfo->SetString(L"±Ã±Ø¼³¸í");
+		mSkillCool->SetString(std::to_wstring(champ->GetChampStatus()->CoolTime_Skill).substr(0, 3) + L"ÃÊ");
+		mUltCool->SetString(L"1È¸/SET");
+		mSkillInfo->SetString(champ->GetChampSkillInfo());
+		mUltInfo->SetString(champ->GetChampUltInfo());
 
 		mBanPickStat[(UINT)eStatType::ATK]->SetValue(champinfo.ATK);
 		mBanPickStat[(UINT)eStatType::DEF]->SetValue(champinfo.DEF);

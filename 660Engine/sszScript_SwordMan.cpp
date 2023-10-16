@@ -47,7 +47,7 @@ namespace ssz
 		Owner->SetChampKrName(L"검사");
 		Owner->SetChampClassType(L"근거리");
 		Owner->SetChampSkillInfo(L"적의 방어력을 깎는 공격을 가합니다.");
-		Owner->SetChampUltInfo(L"일직선으로 빠르게 이동하며 경로상에 있는 모든 적을 베어버립니다.");
+		Owner->SetChampUltInfo(L"일직선으로 빠르게 이동하며 경로상에 있는\n모든 적을 베어버립니다.");
 
 		std::shared_ptr<Texture> SkillIcon = Resources::Load<Texture>(L"swordman_skilliconTex", L"..\\Resources\\useResource\\ChampSprite\\swordman\\skillicon\\swordman_skill.png");
 		std::shared_ptr<Texture> UltIcon = Resources::Load<Texture>(L"swordman_ulticonTex", L"..\\Resources\\useResource\\ChampSprite\\swordman\\skillicon\\swordman_ult.png");

@@ -47,7 +47,7 @@ namespace ssz
 		Owner->SetChampKrName(L"화염술사");
 		Owner->SetChampClassType(L"마법사");
 		Owner->SetChampSkillInfo(L"공격을 보조하는 화염 정령을 소환합니다.");
-		Owner->SetChampUltInfo(L"주변 일정 범위에 지속적으로 피해를 가하는 영역을 생성합니다.");
+		Owner->SetChampUltInfo(L"주변 일정 범위에 지속적으로 피해를 가하는\n 영역을 생성합니다.");
 
 		std::shared_ptr<Texture> SkillIcon = Resources::Load<Texture>(L"pyromancer_skilliconTex", L"..\\Resources\\useResource\\ChampSprite\\pyromancer\\skillicon\\pyromancer_skill.png");
 		std::shared_ptr<Texture> UltIcon = Resources::Load<Texture>(L"pyromancer_ulticonTex", L"..\\Resources\\useResource\\ChampSprite\\pyromancer\\skillicon\\pyromancer_ult.png");

@@ -46,8 +46,8 @@ namespace ssz
 
 		Owner->SetChampKrName(L"닌자");
 		Owner->SetChampClassType(L"암살자");
-		Owner->SetChampSkillInfo(L"적 하나에게 순간이동으로 접근하여 출혈 효과가 있는 공격을 가합니다.");
-		Owner->SetChampUltInfo(L"지속적으로 체력이 소모되는 분신을 소환합니다.");
+		Owner->SetChampSkillInfo(L"적 하나에게 순간이동으로 접근하여\n 출혈 효과가 있는 공격을 가합니다.");
+		Owner->SetChampUltInfo(L"지속적으로 체력이 소모되는 분신을\n 소환합니다.");
 
 		std::shared_ptr<Texture> SkillIcon = Resources::Load<Texture>(L"ninja_skilliconTex", L"..\\Resources\\useResource\\ChampSprite\\ninja\\skillicon\\ninja_skill.png");
 		std::shared_ptr<Texture> UltIcon = Resources::Load<Texture>(L"ninja_ulticonTex", L"..\\Resources\\useResource\\ChampSprite\\ninja\\skillicon\\ninja_ult.png");

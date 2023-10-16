@@ -48,8 +48,8 @@ namespace ssz
 
 		Owner->SetChampKrName(L"기사");
 		Owner->SetChampClassType(L"근거리");
-		Owner->SetChampSkillInfo(L"적 하나를 일정 시간동안 도발하여 해당 적의 공격 대상을 강제로 자신으로 만듭니다. 방어력이 상승합니다.");
-		Owner->SetChampUltInfo(L"일정 시간동안 아군 모두의 방어력을 크게 상승시킵니다.");
+		Owner->SetChampSkillInfo(L"적 하나를 일정 시간동안 도발하여 해당\n적의 공격 대상을 강제로 자신으로 만듭니다.\n 방어력이 상승합니다.");
+		Owner->SetChampUltInfo(L"일정 시간동안 아군 모두의 방어력을 크게\n 상승시킵니다.");
 
 		std::shared_ptr<Texture> SkillIcon = Resources::Load<Texture>(L"knight_skilliconTex", L"..\\Resources\\useResource\\ChampSprite\\knight\\skillicon\\knight_skill.png");
 		std::shared_ptr<Texture> UltIcon = Resources::Load<Texture>(L"knight_ulticonTex", L"..\\Resources\\useResource\\ChampSprite\\knight\\skillicon\\knight_ult.png");

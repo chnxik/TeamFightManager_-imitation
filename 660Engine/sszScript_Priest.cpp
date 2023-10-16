@@ -46,8 +46,8 @@ namespace ssz
 
 		Owner->SetChampKrName(L"성직자");
 		Owner->SetChampClassType(L"전투 보조");
-		Owner->SetChampSkillInfo(L"아군 하나에게 공격 속도 증가 효과가 있는 보호막을 부여합니다.");
-		Owner->SetChampUltInfo(L"주변 일정 범위에 지속적으로 체력을 회복시키는 영역을 생성합니다.");
+		Owner->SetChampSkillInfo(L"아군 하나에게 공격 속도 증가 효과가 있는\n보호막을 부여합니다.");
+		Owner->SetChampUltInfo(L"주변 일정 범위에 지속적으로 체력을 회복시키는\n영역을 생성합니다.");
 
 		std::shared_ptr<Texture> SkillIcon = Resources::Load<Texture>(L"priest_skilliconTex", L"..\\Resources\\useResource\\ChampSprite\\priest\\skillicon\\priest_skill.png");
 		std::shared_ptr<Texture> UltIcon = Resources::Load<Texture>(L"priest_ulticonTex", L"..\\Resources\\useResource\\ChampSprite\\priest\\skillicon\\priest_ult.png");

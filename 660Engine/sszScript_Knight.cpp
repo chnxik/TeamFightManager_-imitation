@@ -43,7 +43,7 @@ namespace ssz
 
 		Owner->SetName(KNIGHT);
 
-		Owner->SetChampInfo(eChampType::eFIGHTER, 21, 0.67f, 37, 10, 200, 5);
+		Owner->SetChampInfo(eChampType::eFIGHTER, 21, 0.67f, 37, 60, 200, 5);
 		Owner->InitChampStatus(0, 0);
 
 		Owner->SetChampKrName(L"±â»ç");
@@ -159,9 +159,18 @@ namespace ssz
 	{
 		Champ* Owner = (Champ*)GetOwner();
 		AudioSource* As = Owner->AddComponent<AudioSource>();
-		Resources::Load<AudioClip>(L"knight_attack", L"..\\Resources\\useResource\\Audio\\Sword_Woosh_1.wav");
-		Resources::Load<AudioClip>(L"knight_dead", L"..\\Resources\\useResource\\Audio\\Body_Drop.wav");
 
+		std::wstring ChampName = Owner->GetChampName();
+
+		std::wstring IdleAnikey = ChampName + L"_idle";
+		std::wstring MoveAnikey = ChampName + L"_move";
+		std::wstring AttackAnikey = ChampName + L"_attack";
+		std::wstring DeadAnikey = ChampName + L"_dead";
+		std::wstring SkillAnikey = ChampName + L"_skill";
+		std::wstring UltAnikey = ChampName + L"_ultimate";
+
+		Resources::Load<AudioClip>(AttackAnikey, L"..\\Resources\\useResource\\Audio\\Sword_Woosh_1.wav");
+		Resources::Load<AudioClip>(DeadAnikey, L"..\\Resources\\useResource\\Audio\\Body_Drop.wav");
 	}
 
 	void Script_Knight::InitBT()

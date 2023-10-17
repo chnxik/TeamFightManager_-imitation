@@ -2,6 +2,7 @@
 #include "CommonHeader.h"
 
 #include "sszPilot.h"
+#include "sszChamp.h"
 
 namespace ssz
 {
@@ -10,6 +11,7 @@ namespace ssz
 		, bSelect(false)
 		, mAvatarFace(nullptr)
 		, mRegistedPilot(nullptr)
+		, mRegistedChamp(nullptr)
 		, mPilotName(nullptr)
 		, mCharacter(nullptr)
 		, mAtkIcon(nullptr)
@@ -82,6 +84,10 @@ namespace ssz
 #pragma endregion
 #pragma region SlotUI Load
 		{
+			mAvatarFace = object::InstantiateUI<UIObject>(Vector3(0.f, 0.f, -0.001f), Vector3(100.f, 100.f, 0.f), this, L"ChampPreview");
+			mAtkIcon->GetComponent<Transform>()->SetTransType(Transform::eTransType::PosAdd);
+			mAtkIcon->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"PilotATKStatMt");
+			Text* AtkStatText = mAtkIcon->AddComponent<Text>();
 		}
 #pragma endregion
 	}
@@ -96,6 +102,11 @@ namespace ssz
 		
 		mAtkIcon->GetComponent<Text>()->SetString(std::to_wstring(PilotATK));
 		mDefIcon->GetComponent<Text>()->SetString(std::to_wstring(PilotDEF));
+	}
+
+	void PlayerCardSlot::RegistChamp(Champ* champ)
+	{
+		mRegistedChamp = champ;
 	}
 
 	void PlayerCardSlot::SelectDone()

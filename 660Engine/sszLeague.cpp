@@ -2,6 +2,10 @@
 
 #include "sszTGM.h"
 
+#include "sszChamp.h"
+#include "sszPilot.h"
+#include "sszTeam.h"
+
 namespace ssz
 {
 	League::League()
@@ -13,6 +17,20 @@ namespace ssz
 	
 	League::~League()
 	{
+	}
+
+	void League::RoundExit()
+	{
+		std::queue<Pilot*> ClearQueue;
+		
+		std::vector<Pilot*> PlayerPilots = GetPlayerTeam()->GetPilotList();
+		std::vector<Pilot*> EnemyPilots = GetEnemyTeam()->GetPilotList();
+
+		for (int i = 0; i < 2; ++i)
+		{
+			PlayerPilots[i]->ResetSetting();
+			EnemyPilots[i]->ResetSetting();
+		}
 	}
 
 	void League::NextRound()

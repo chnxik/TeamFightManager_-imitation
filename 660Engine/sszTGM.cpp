@@ -387,14 +387,11 @@ namespace ssz
 		ActiveScene->Clear(eLayerType::EnemyInteraction);
 	}
 
-	Champ* TGM::AddChampScene(eLayerType eType, const std::wstring& ChampKey, Vector3 Pos)
+	void TGM::AddChampScene(eLayerType eType, Champ* champ, Vector3 Pos)
 	{
-		Champ* champ = GetChamp(ChampKey);
 		SceneManager::GetActiveScene()->AddGameObject(eType, champ);
 		champ->ColObjSetLayer(eColObjType::RANGE);
 		champ->GetComponent<Transform>()->SetPosition(Pos);
-
-		return champ;
 	}
 	
 	bool TGM::SaveData()

@@ -68,7 +68,7 @@ namespace ssz
 		// 씬 관리
 		static void SceneClear(); // Scene Exit 호출
 
-		static Champ* AddChampScene(eLayerType eType, const std::wstring& ChampKey,Vector3 Pos);
+		static void AddChampScene(eLayerType eType, Champ* champ,Vector3 Pos);
 
 		// 플레이어 정보
 		static Team* GetPlayerTeam() { return gPlayerTeam; }

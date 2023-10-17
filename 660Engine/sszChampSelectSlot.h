@@ -64,10 +64,12 @@ namespace ssz
 		UIObject* mSelectLine;
 		UIObject* mPickedOutline;
 		UIObject* mPickedBg;
+		
+		UIObject* mPickedNumb;
+		UIObject* mBanLine;
 
 		bool bPlayerTurn;
 		bool bBanned;
 		bool bSelected;
-        
     };
 }

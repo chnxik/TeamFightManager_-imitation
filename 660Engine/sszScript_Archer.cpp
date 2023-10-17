@@ -40,7 +40,7 @@ namespace ssz
 		Champ* Owner = (Champ*)GetOwner();
 		
 		Owner->SetName(ARCHER); // 챔프 이름 입력
-		Owner->SetChampInfo(eChampType::eMARKSMAN, 42, 0.67f, 120, 5, 100, 4); // 챔피언 정보 입력
+		Owner->SetChampInfo(eChampType::eMARKSMAN, 42, 0.67f, 120, 5, 100, 3); // 챔피언 정보 입력
 		Owner->InitChampStatus(0, 0);	// 인게임 정보 세팅
 		
 		Owner->SetChampKrName(L"궁수");
@@ -165,9 +165,19 @@ namespace ssz
 	{
 		Champ* Owner = (Champ*)GetOwner();
 		AudioSource* As = Owner->AddComponent<AudioSource>();
-		Resources::Load<AudioClip>(L"archer_attack", L"..\\Resources\\useResource\\Audio\\Bow_fast.wav");
-		Resources::Load<AudioClip>(L"archer_skill", L"..\\Resources\\useResource\\Audio\\Bow_fast.wav");
-		Resources::Load<AudioClip>(L"archer_dead", L"..\\Resources\\useResource\\Audio\\Body_Drop.wav");
+
+		std::wstring ChampName = Owner->GetChampName();
+		
+		std::wstring IdleAnikey = ChampName + L"_idle";
+		std::wstring MoveAnikey = ChampName + L"_move";
+		std::wstring AttackAnikey = ChampName + L"_attack";
+		std::wstring DeadAnikey = ChampName + L"_dead";
+		std::wstring SkillAnikey = ChampName + L"_skill";
+		std::wstring UltAnikey = ChampName + L"_ultimate";
+
+		Resources::Load<AudioClip>(AttackAnikey, L"..\\Resources\\useResource\\Audio\\Bow_fast.wav");
+		Resources::Load<AudioClip>(SkillAnikey, L"..\\Resources\\useResource\\Audio\\Bow_fast.wav");
+		Resources::Load<AudioClip>(DeadAnikey, L"..\\Resources\\useResource\\Audio\\Body_Drop.wav");
 	}
 
 	void Script_Archer::InitBT()

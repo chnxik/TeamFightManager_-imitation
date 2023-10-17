@@ -79,7 +79,7 @@ namespace ssz
 			mBanLineCenterText = mBanLine->AddComponent<Text>();
 			mBanLineSideText = mBanLine->AddComponent<Text>();
 
-			mBanLineCenterText->TextInit(Text::eFonts::Galmuri14, Vector3(0.f, -7.f, 0.f), 55, FONT_RGBA(255, 255, 255, 255), FW1_CENTER | FW1_VCENTER);
+			mBanLineCenterText->TextInit(Text::eFonts::Galmuri14, Vector3(0.f, -7.f, 0.f), 40, FONT_RGBA(255, 255, 255, 255), FW1_CENTER | FW1_VCENTER);
 			mBanLineSideText->TextInit(Text::eFonts::Galmuri11, Vector3(-550.f, -7.f, 0.f), 35, FONT_RGBA(255, 255, 255, 255), FW1_LEFT | FW1_VCENTER);
 			mBanLineCenterText->SetString(L"금지할 챔피언을 선택하세요");
 			mBanLineSideText->SetString(L"금지 단계\n(1/2)");
@@ -219,7 +219,7 @@ namespace ssz
 			
 			mAccTime += (float)Time::DeltaTime();
 			
-			if (2.5f < mAccTime)
+			if (4.f < mAccTime)
 			{
 				RandomPick();
 			}
@@ -237,7 +237,7 @@ namespace ssz
 			// Ai Pick
 			mAccTime += (float)Time::DeltaTime();
 
-			if (2.5f < mAccTime)
+			if (4.f < mAccTime)
 			{
 				RandomPick();
 			}
@@ -248,7 +248,7 @@ namespace ssz
 			// Ai Pick
 			mAccTime += (float)Time::DeltaTime();
 
-			if (2.5f < mAccTime)
+			if (4.f < mAccTime)
 			{
 				RandomPick();
 			}
@@ -307,6 +307,9 @@ namespace ssz
 		{
 			mPlayerSlot[(UINT)eTeamColor::Blue][i]->RegistPilot(PlayerTeamPilotList[i]);
 			mPlayerSlot[(UINT)eTeamColor::Red][i]->RegistPilot(EnemyTeamPilotList[i]);
+
+			mPlayerSlot[(UINT)eTeamColor::Blue][i]->SetSlotNumb(i + 1);
+			mPlayerSlot[(UINT)eTeamColor::Red][i]->SetSlotNumb(i + 1);
 		}
 		
 
@@ -384,7 +387,8 @@ namespace ssz
 		{
 			mBanLineSideText->SetString(L"금지 단계\n(2/2)");
 			mBanLine->ChangeTurn(eTeamColor::Red);
-			
+			mBanLineCenterText->SetString(L"레드팀이 금지할 챔피언을 선택하는중입니다.");
+
 			for (int i = 0; i < (UINT)eChamp::NONE; ++i)
 			{
 				mChampSlot[i]->SetEnemyTurn();
@@ -397,7 +401,7 @@ namespace ssz
 		{
 			mBanLineSideText->SetString(L"선택 단계\n(1/3)");
 			mBanLine->ChangeTurn(eTeamColor::Blue);
-			mBanLineCenterText->SetString(L"사용할 챔피언을 선택하세요");
+			mBanLineCenterText->SetString(L"사용할 챔피언을 선택하세요.");
 
 			for (int i = 0; i < (UINT)eChamp::NONE; ++i)
 			{
@@ -414,6 +418,7 @@ namespace ssz
 		case ssz::BanPickScene::eBanPickPhase::PP_1:
 		{
 			mBanLineSideText->SetString(L"선택 단계\n(2/3)");
+			mBanLineCenterText->SetString(L"레드팀이 사용할 챔피언을 선택하는중입니다.");
 			mBanLine->ChangeTurn(eTeamColor::Red);
 
 			mCurSelectSlot->SelectDone();
@@ -445,6 +450,7 @@ namespace ssz
 
 			mBanLineSideText->SetString(L"선택 단계\n(3/3)");
 			mBanLine->ChangeTurn(eTeamColor::Blue);
+			mBanLineCenterText->SetString(L"사용할 챔피언을 선택하세요.");
 
 			for (int i = 0; i < (UINT)eChamp::NONE; ++i)
 			{
@@ -505,6 +511,9 @@ namespace ssz
 	{
 		mPhase = ssz::BanPickScene::eBanPickPhase::SceneIn1;
 		mAccTime = 0.f;
+
+		for (int i = 0; i < (UINT)eChamp::NONE; ++i)
+			mChampSlot[i]->StateClear();
 
 		// 위치 초기화
 		mBattleHeader->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 540.f, 1.04f));

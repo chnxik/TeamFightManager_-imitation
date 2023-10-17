@@ -24,6 +24,8 @@ namespace ssz
 
         void ResetSetting();
 
+        Champ* GetChamp() { return mRegistedChamp; }
+
         std::wstring GetTeamName();
         std::wstring GetPilotName() { return mPilotName; }
         UINT GetPilotATK() { return iPilotATK; }

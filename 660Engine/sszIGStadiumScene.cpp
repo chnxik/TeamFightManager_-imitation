@@ -28,9 +28,11 @@ namespace ssz
 		, mPlayerSlot{}
 	{
 	}
+	
 	IGStadiumScene::~IGStadiumScene()
 	{
 	}
+
 	void IGStadiumScene::Initialize()
 	{
 		// ¹è°æ
@@ -123,16 +125,52 @@ namespace ssz
 
 		CollisionManager::SetLayer(eLayerType::UI, eLayerType::Cursor, true);
 
-		// Player
+		// Spawn Champ
 		{	
-			Champ* archer = TGM::AddChampScene(eLayerType::Player, ARCHER, Vector3(-100.f, -200.f, 1.0f));
-			Champ* knight = TGM::AddChampScene(eLayerType::Enemy, KNIGHT, Vector3(100.f, -250.f, 1.0f));
+			League* LeagueManager = TGM::GetLeagueManage();
 
-			archer->RegistPilot(TGM::GetPilot(L"Faker"));
-			knight->RegistPilot(TGM::GetPilot(L"Canyon"));
+			std::vector<Pilot*> PPilotList = LeagueManager->GetPlayerTeam()->GetPilotList();
+			std::vector<Pilot*> EPilotList = LeagueManager->GetEnemyTeam()->GetPilotList();
 
-			archer->RegistEnemy(knight);
-			knight->RegistEnemy(archer);
+			Champ* RegistChamp[(UINT)eCampType::End][2];
+
+			// Champ Regist
+			for (int i = 0; i < 2; ++i)
+			{
+				RegistChamp[(UINT)eCampType::Player][i] = PPilotList[i]->GetChamp();
+				RegistChamp[(UINT)eCampType::Enemy][i] = EPilotList[i]->GetChamp();
+			}
+
+			// Champ Spawn
+			for (int i = 0; i < 2; ++i)
+			{
+				for (int j = 0; j < 2; ++j)
+				{
+					Vector3 SpawnPoint = { (float)(rand() % 50), (float)(rand() % 150), 1.0f };
+					SpawnPoint.y -= 100.f;
+					if (i == (UINT)eCampType::Player)
+						SpawnPoint.x = -SpawnPoint.x - 100.f;
+					else
+						SpawnPoint.x = SpawnPoint.x + 100.f;
+
+					TGM::AddChampScene((eLayerType)(i + 2), RegistChamp[i][j], SpawnPoint);
+				}
+			}
+
+			// Enemy Set
+			for (int i = 0; i < 2; ++i)
+			{
+				RegistChamp[(UINT)eCampType::Player][0]->RegistEnemy(RegistChamp[(UINT)eCampType::Enemy][i]);
+				RegistChamp[(UINT)eCampType::Player][1]->RegistEnemy(RegistChamp[(UINT)eCampType::Enemy][i]);
+				RegistChamp[(UINT)eCampType::Enemy][0]->RegistEnemy(RegistChamp[(UINT)eCampType::Player][i]);
+				RegistChamp[(UINT)eCampType::Enemy][1]->RegistEnemy(RegistChamp[(UINT)eCampType::Player][i]);
+			}
+
+			// Friendly Set
+			RegistChamp[(UINT)eCampType::Player][0]->RegistFriendly(RegistChamp[(UINT)eCampType::Player][1]);
+			RegistChamp[(UINT)eCampType::Player][1]->RegistFriendly(RegistChamp[(UINT)eCampType::Player][0]);
+			RegistChamp[(UINT)eCampType::Enemy][0]->RegistFriendly(RegistChamp[(UINT)eCampType::Enemy][1]);
+			RegistChamp[(UINT)eCampType::Enemy][1]->RegistFriendly(RegistChamp[(UINT)eCampType::Enemy][0]);
 		}
 
 		AddGameObject(eLayerType::Cursor, TGM::GetCursor());
@@ -148,6 +186,8 @@ namespace ssz
 	}
 	void IGStadiumScene::OnExit()
 	{
+		TGM::GetLeagueManage()->RoundExit();
+
 		CollisionManager::Clear();
 		TGM::SceneClear();
 		TGM::GetLeagueManage()->NextRound();

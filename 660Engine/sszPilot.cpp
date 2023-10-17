@@ -60,7 +60,7 @@ namespace ssz
 	
 	void Pilot::ResetSetting()
 	{
-		mRegistedChamp->RegistPilot(nullptr);
+		mRegistedChamp->ResetInfo();
 		mRegistedChamp = nullptr;
 	}
 	

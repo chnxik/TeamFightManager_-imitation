@@ -11,6 +11,8 @@ namespace ssz
 
         virtual void Initialize() override;
 
+        void SkillInit();
+
         bool IsPlay() { return bPlay; }
 
         void Play(Vector3 vPos, Vector3 Scale, const std::wstring& animkey);

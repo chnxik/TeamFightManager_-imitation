@@ -40,6 +40,8 @@ namespace ssz
 		Team* GetEnemyTeam() { return mLeagueSchedule[(UINT)mCurRound][(UINT)eGroup::A].RedTeam; }
 		tGame	GetGame(eRound round, eGroup group) { return mLeagueSchedule[(UINT)round][(UINT)group]; }
 
+		void RoundExit();
+
 		void NextRound();
 		
 		void CreateNewEntry();

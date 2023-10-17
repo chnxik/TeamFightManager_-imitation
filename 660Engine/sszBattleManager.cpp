@@ -118,8 +118,8 @@ namespace ssz
     bool BattleManager::Damage(Champ* pAttacker, Champ* pTarget, unsigned int iDamage)
     {
         Champ::tChampStatus* TargetStat = pTarget->GetChampStatus();
-        int FinalDamage = iDamage - TargetStat->ChampInfo.DEF;
-        
+        int FinalDamage = iDamage - (int)(iDamage * ((float)(TargetStat->ChampInfo.DEF) / 100.f));
+
         if (FinalDamage <= 0)
             FinalDamage = 1; // 방어력보다 공격력이 같거나 낮을 경우 최소데미지인 1로 고정한다.
 

@@ -5,6 +5,7 @@
 
 namespace ssz
 {
+	class Champ;
 	class Pilot;
 	class Text;
 
@@ -17,6 +18,7 @@ namespace ssz
 		virtual void Initialize() override;
 
 		void RegistPilot(Pilot* pilot);
+		void RegistChamp(Champ* champ);
 		Pilot* GetPilot() { return mRegistedPilot; }
 		
 		void SelectDone();
@@ -24,11 +26,17 @@ namespace ssz
 
 		eTeamColor GetTeamColor() { return mTeamColor; }
 
+		void SetSlotNumb(UINT i) { mSlotNumb = i; }
+		UINT GetSlotNumb() { return mSlotNumb; }
+
 		void SetRed();
 		void SetBlue();
 
 	private:
 		Pilot* mRegistedPilot;
+		Champ* mRegistedChamp;
+
+		UINT mSlotNumb;
 
 		Text* mPilotName;
 		Text* mCharacter;

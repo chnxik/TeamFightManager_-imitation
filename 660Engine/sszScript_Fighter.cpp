@@ -159,8 +159,18 @@ namespace ssz
 	{
 		Champ* Owner = (Champ*)GetOwner();
 		AudioSource* As = Owner->AddComponent<AudioSource>();
-		Resources::Load<AudioClip>(L"knight_attack", L"..\\Resources\\useResource\\Audio\\Sword_Woosh_1.wav");
-		Resources::Load<AudioClip>(L"knight_dead", L"..\\Resources\\useResource\\Audio\\Body_Drop.wav");
+
+		std::wstring ChampName = Owner->GetChampName();
+
+		std::wstring IdleAnikey = ChampName + L"_idle";
+		std::wstring MoveAnikey = ChampName + L"_move";
+		std::wstring AttackAnikey = ChampName + L"_attack";
+		std::wstring DeadAnikey = ChampName + L"_dead";
+		std::wstring SkillAnikey = ChampName + L"_skill";
+		std::wstring UltAnikey = ChampName + L"_ultimate";
+
+		Resources::Load<AudioClip>(AttackAnikey, L"..\\Resources\\useResource\\Audio\\Sword_Woosh_1.wav");
+		Resources::Load<AudioClip>(DeadAnikey, L"..\\Resources\\useResource\\Audio\\Body_Drop.wav");
 	}
 
 	void Script_Fighter::InitBT()
@@ -211,6 +221,7 @@ namespace ssz
 
 	void Script_Fighter::Attack()
 	{
+		Champ_Script::Attack();
 	}
 
 	void Script_Fighter::Skill()
@@ -220,15 +231,6 @@ namespace ssz
 		Transform* tr = Owner->GetComponent<Transform>();
 		Vector3 vPos = tr->GetPosition();
 		Vector3 vScale = tr->GetScale();
-
-		vPos.y -= 5.f;
-
-		TGM::GetEffectObj()->Play(vPos, vScale, Owner->GetAnimKey(Champ::eActiveType::SKILL));
-		// 스킬내용 구현
-		// 1개 적을 받아와서 타겟을 강제로 기사로 지정
-		// 현재 타겟의 타겟이 본인인지 -> 아니면 도발. 맞다면 다른 적 리스트 탐색
-		// 가능한 다른 적이 없다면 넘어간다.
-		// 일시적으로 기사 방어력 상승 버프 지속시간 필요
 
 		Owner->GetChampStatus()->accTime_Skill = 0.f;
 	}

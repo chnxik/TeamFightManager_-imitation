@@ -185,6 +185,8 @@ namespace ssz
 	class Con_IsArrive : public Condition_Node // MovePoint µµÂø ¿©ºÎ
 	{
 	public:
+		Con_IsArrive() : fUpdateTime(0.f) {}
+
 		virtual eNodeStatus Run() override
 		{
 			wstring* ChampName = FINDBBDATA(wstring, CHAMPKEY);

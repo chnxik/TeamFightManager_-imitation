@@ -22,11 +22,5 @@ namespace ssz
     private:
         ButtonUI* mBtnComp;
         UIObject* mBtnIcon;
-
-        bool useGray;
-        bool useAlpha;
-
-        float grayRatio;
-        float AlphaRatio;
     };
 }

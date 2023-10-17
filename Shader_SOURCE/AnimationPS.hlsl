@@ -37,6 +37,14 @@ float4 main(VSOut In) : SV_Target
     
     color = atlasTexture.Sample(PointSampler, UV);
     
+    if (0.f < useGray)
+    {
+        float gray = ((color.x + color.y + color.z) / 3.f) * GrayRatio;
+        color.x = gray;
+        color.y = gray;
+        color.z = gray;
+    }
+    
     if (DamagedTime == 0)
     {
         return color;

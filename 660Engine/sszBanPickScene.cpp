@@ -25,6 +25,7 @@ namespace ssz
 		, mBattleHeader(nullptr)
 		, mBanPickWindow(nullptr)
 		, mBanLine(nullptr)
+		, mCurSelectSlot(nullptr)
 		, mBanLineCenterText(nullptr)
 		, mBanLineSideText(nullptr)
 		, mChampSlot{}
@@ -171,7 +172,8 @@ namespace ssz
 			if (1.f < mAccTime)
 			{
 				mAccTime = 0.f;
-				mPhase = eBanPickPhase::SceneIn2;
+				
+				NextPhase();
 			}
 
 
@@ -198,7 +200,8 @@ namespace ssz
 			if (1.f < mAccTime)
 			{
 				mAccTime = 0.f;
-				mPhase = eBanPickPhase::BP_1;
+				
+				NextPhase();
 			}
 
 
@@ -206,45 +209,71 @@ namespace ssz
 		}
 		case ssz::BanPickScene::eBanPickPhase::BP_1:
 		{
+			// Player Ban Turn
+
 			break;
 		}
 		case ssz::BanPickScene::eBanPickPhase::BP_2:
 		{
+			// Ai Ban
+			
+			mAccTime += (float)Time::DeltaTime();
+			
+			if (2.5f < mAccTime)
+			{
+				RandomPick();
+			}
+
 			break;
 		}
 		case ssz::BanPickScene::eBanPickPhase::PP_1:
 		{
+			// Player Pick
+
 			break;
 		}
 		case ssz::BanPickScene::eBanPickPhase::PP_2:
 		{
+			// Ai Pick
+			mAccTime += (float)Time::DeltaTime();
+
+			if (2.5f < mAccTime)
+			{
+				RandomPick();
+			}
 			break;
 		}
 		case ssz::BanPickScene::eBanPickPhase::PP_3:
 		{
+			// Ai Pick
+			mAccTime += (float)Time::DeltaTime();
+
+			if (2.5f < mAccTime)
+			{
+				RandomPick();
+			}
 			break;
 		}
 		case ssz::BanPickScene::eBanPickPhase::PP_4:
 		{
+			// Player Pick
+
 			break;
 		}
 		case ssz::BanPickScene::eBanPickPhase::SceneOut:
 		{
-			if (Input::GetKeyDown(eKeyCode::ENTER))
+			mAccTime += (float)Time::DeltaTime();
+
+			if (5.0f < mAccTime)
 			{
 				SceneManager::LoadScene(L"IGStadiumScene");
 			}
+
 			break;
 		}
 		default:
 			break;
 		}
-
-		if (Input::GetKeyDown(eKeyCode::LBUTTON))
-		{
-			NextPhase();
-		}
-
 	}
 	void BanPickScene::LateUpdate()
 	{
@@ -297,14 +326,70 @@ namespace ssz
 		{
 		case ssz::BanPickScene::eBanPickPhase::SceneIn1:
 		{
+			for (int i = 0; i < (UINT)eChamp::NONE; ++i)
+				mChampSlot[i]->BanPhase();
+			
+			mCurSelectSlot = nullptr;
+			mPhase = eBanPickPhase::SceneIn2;
+
 			break;
 		}
 		case ssz::BanPickScene::eBanPickPhase::SceneIn2:
+		{
+			// haader
+			Transform* BtHdTr = mBattleHeader->GetComponent<Transform>();
+			Vector3 BtHdPos = BtHdTr->GetPosition();
+			BtHdPos.y = 478.5;
+
+			BtHdTr->SetPosition(BtHdPos);
+
+			// Player Slot
+			Transform* RedSlotTr1 = mPlayerSlot[(UINT)eTeamColor::Red][0]->GetComponent<Transform>();
+			Transform* RedSlotTr2 = mPlayerSlot[(UINT)eTeamColor::Red][1]->GetComponent<Transform>();
+			Transform* BlueSlotTr1 = mPlayerSlot[(UINT)eTeamColor::Blue][0]->GetComponent<Transform>();
+			Transform* BlueSlotTr2 = mPlayerSlot[(UINT)eTeamColor::Blue][1]->GetComponent<Transform>();
+
+			Vector3 RSlotPos1 = RedSlotTr1->GetPosition();
+			Vector3 RSlotPos2 = RedSlotTr2->GetPosition();
+			Vector3 BSlotPos1 = BlueSlotTr1->GetPosition();
+			Vector3 BSlotPos2 = BlueSlotTr2->GetPosition();
+
+			RSlotPos1.x = 843.f;
+			RSlotPos2.x = 843.f;
+			BSlotPos1.x = -843.f;
+			BSlotPos2.x = -843.f;
+			
+			RedSlotTr1->SetPosition(RSlotPos1);
+			RedSlotTr2->SetPosition(RSlotPos2);
+			BlueSlotTr1->SetPosition(BSlotPos1);
+			BlueSlotTr2->SetPosition(BSlotPos2);
+
+			// Banpick window
+			Transform* WindowTr = mBanPickWindow->GetComponent<Transform>();
+			Vector3 WindowPos = WindowTr->GetPosition();
+			WindowPos.y = 0.f;
+
+			WindowTr->SetPosition(WindowPos);
+
+			// Banpick 설정
+			for (int i = 0; i < (UINT)eChamp::NONE; ++i)
+			{
+				mChampSlot[i]->SetPlayerTurn();
+			}
+
+			mPhase = eBanPickPhase::BP_1;
 			break;
+		}
 		case ssz::BanPickScene::eBanPickPhase::BP_1:
 		{
 			mBanLineSideText->SetString(L"금지 단계\n(2/2)");
 			mBanLine->ChangeTurn(eTeamColor::Red);
+			
+			for (int i = 0; i < (UINT)eChamp::NONE; ++i)
+			{
+				mChampSlot[i]->SetEnemyTurn();
+			}
+			
 			mPhase = eBanPickPhase::BP_2;
 			break;
 		}
@@ -313,6 +398,16 @@ namespace ssz
 			mBanLineSideText->SetString(L"선택 단계\n(1/3)");
 			mBanLine->ChangeTurn(eTeamColor::Blue);
 			mBanLineCenterText->SetString(L"사용할 챔피언을 선택하세요");
+
+			for (int i = 0; i < (UINT)eChamp::NONE; ++i)
+			{
+				mChampSlot[i]->SetPlayerTurn();
+				mChampSlot[i]->SelectPhase();
+			}
+			
+			mCurSelectSlot = mPlayerSlot[(UINT)eTeamColor::Blue][0];
+			mCurSelectSlot->CurSelectedSlot();
+			
 			mPhase = eBanPickPhase::PP_1;
 			break;
 		}
@@ -320,32 +415,92 @@ namespace ssz
 		{
 			mBanLineSideText->SetString(L"선택 단계\n(2/3)");
 			mBanLine->ChangeTurn(eTeamColor::Red);
+
+			mCurSelectSlot->SelectDone();
+			mCurSelectSlot = mPlayerSlot[(UINT)eTeamColor::Red][0];
+			mCurSelectSlot->CurSelectedSlot();
+
+			for (int i = 0; i < (UINT)eChamp::NONE; ++i)
+			{
+				mChampSlot[i]->SetEnemyTurn();
+			}
+
 			mPhase = eBanPickPhase::PP_2;
 			break;
 		}
 		case ssz::BanPickScene::eBanPickPhase::PP_2:
 		{
+			mCurSelectSlot->SelectDone();
+			mCurSelectSlot = mPlayerSlot[(UINT)eTeamColor::Red][1];
+			mCurSelectSlot->CurSelectedSlot();
+
 			mPhase = eBanPickPhase::PP_3;
 			break;
 		}
 		case ssz::BanPickScene::eBanPickPhase::PP_3:
 		{
+			mCurSelectSlot->SelectDone();
+			mCurSelectSlot = mPlayerSlot[(UINT)eTeamColor::Blue][1];
+			mCurSelectSlot->CurSelectedSlot();
+
 			mBanLineSideText->SetString(L"선택 단계\n(3/3)");
 			mBanLine->ChangeTurn(eTeamColor::Blue);
+
+			for (int i = 0; i < (UINT)eChamp::NONE; ++i)
+			{
+				mChampSlot[i]->SetPlayerTurn();
+			}
+
 			mPhase = eBanPickPhase::PP_4;
 			break;
 		}
 		case ssz::BanPickScene::eBanPickPhase::PP_4:
 		{
+			mCurSelectSlot->SelectDone();
+			
+			for (int i = 0; i < (UINT)eChamp::NONE; ++i)
+			{
+				mChampSlot[i]->SetEnemyTurn();
+			}
+
+			mBanLineSideText->SetString(L"");
+			mBanLine->ChangeTurn(eTeamColor::Blue);
+			mBanLineCenterText->SetString(L"잠시 후 게임을 시작합니다.");
+
 			mPhase = eBanPickPhase::SceneOut;
 			break;
 		}
 		case ssz::BanPickScene::eBanPickPhase::SceneOut:
 		{
+
 			break;
 		}
 		}
 	}
+
+	void BanPickScene::RandomPick()
+	{
+		std::vector<ChampSelectSlot*> tmp;
+		for (int i = 0; i < (UINT)eChamp::NONE; ++i)
+		{
+			tmp.push_back(mChampSlot[i]);
+		}
+
+		std::random_device rd;
+		std::mt19937 gen(rd());
+		std::shuffle(tmp.begin(), tmp.end(), gen);
+
+		for (ChampSelectSlot* pick : tmp)
+		{
+			if (pick->IsBanned() || pick->IsSelected())
+				continue;
+
+			pick->AiPick();
+			mAccTime = 0.0f;
+			break;
+		}
+	}
+
 	void BanPickScene::Reset()
 	{
 		mPhase = ssz::BanPickScene::eBanPickPhase::SceneIn1;

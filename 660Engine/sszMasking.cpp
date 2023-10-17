@@ -22,46 +22,6 @@ namespace ssz
 	{
 	}
 
-	void Masking::Initialize()
-	{
-	}
-
-	void Masking::Update()
-	{
-		// masking area Mouse로 지정
-		if (Input::GetKey(eKeyCode::D))
-		{
-			if (Input::GetKeyDown(eKeyCode::LBUTTON))
-			{
-				Vector2 MousePos = Input::GetMousePos();
-				mLeftTop.x = MousePos.x;
-				mLeftTop.y = MousePos.y;
-			}
-
-			if (Input::GetKey(eKeyCode::LBUTTON))
-			{
-				Vector2 MousePos = Input::GetMousePos();
-				mRightBottom.x = MousePos.x;
-				mRightBottom.y = MousePos.y;
-			}
-
-			if (Input::GetKeyUp(eKeyCode::LBUTTON))
-			{
-				Vector2 MousePos = Input::GetMousePos();
-				mRightBottom.x = MousePos.x;
-				mRightBottom.y = MousePos.y;
-			}
-		}
-	}
-
-	void Masking::LateUpdate()
-	{
-	}
-
-	void Masking::Render()
-	{
-	}
-
 	void Masking::Binds()
 	{
 		// 윈도우 해상도
@@ -89,6 +49,8 @@ namespace ssz
 		// mask area world -> winpos 변환
 		// Vector3 FianlLT = viewport.Project(LeftTop, Camera::GetProjectionMatrix(), Camera::GetViewMatrix(), Matrix::Identity);
 		// Vector3 FinalRB = viewport.Project(RightBottom, Camera::GetProjectionMatrix(), Camera::GetViewMatrix(), Matrix::Identity);
+		if (!mUseMasking)
+			return;
 
 		Vector3 FianlLT = mLeftTop;
 		Vector3 FinalRB = mRightBottom;

@@ -3,6 +3,7 @@
 
 #include "sszPilot.h"
 #include "sszTeam.h"
+#include "sszChamp.h"
 
 namespace ssz
 {
@@ -11,6 +12,7 @@ namespace ssz
 		, iPilotATK(0)
 		, iPilotDEF(0)
 		, iPilotAge(0)
+		, mRegistedChamp(nullptr)
 	{
 	}
 
@@ -49,6 +51,19 @@ namespace ssz
 	{
 		mTeam = _Team;
 	}
+	
+	void Pilot::RegistChamp(Champ* _Champ)
+	{
+		mRegistedChamp = _Champ;
+		_Champ->RegistPilot(this);
+	}
+	
+	void Pilot::ResetSetting()
+	{
+		mRegistedChamp->RegistPilot(nullptr);
+		mRegistedChamp = nullptr;
+	}
+	
 	std::wstring Pilot::GetTeamName()
 	{
 		return mTeam->GetTeamName();

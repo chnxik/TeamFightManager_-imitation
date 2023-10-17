@@ -14,6 +14,7 @@ namespace ssz
 		, mCharacter(nullptr)
 		, mAtkIcon(nullptr)
 		, mDefIcon(nullptr)
+		, mTeamColor(eTeamColor::End)
 	{
 	}
 
@@ -96,14 +97,30 @@ namespace ssz
 		mAtkIcon->GetComponent<Text>()->SetString(std::to_wstring(PilotATK));
 		mDefIcon->GetComponent<Text>()->SetString(std::to_wstring(PilotDEF));
 	}
+
+	void PlayerCardSlot::SelectDone()
+	{
+		// 텍스쳐 복귀
+		GetComponent<MeshRenderer>()->GetMaterial()->SetTexture(vecCardTex[(UINT)mTeamColor][(UINT)eSlotState::Idle]);
+	}
+
+	Pilot* PlayerCardSlot::CurSelectedSlot()
+	{
+		// 텍스쳐 변경
+		GetComponent<MeshRenderer>()->GetMaterial()->SetTexture(vecCardTex[(UINT)mTeamColor][(UINT)eSlotState::Togle]);
+		
+		return mRegistedPilot;
+	}
 	
 	void PlayerCardSlot::SetRed()
 	{
 		GetComponent<MeshRenderer>()->GetMaterial()->SetTexture(vecCardTex[(UINT)eTeamColor::Red][(UINT)eSlotState::Idle]);
+		mTeamColor = eTeamColor::Red;
 	}
 	
 	void PlayerCardSlot::SetBlue()
 	{
 		GetComponent<MeshRenderer>()->GetMaterial()->SetTexture(vecCardTex[(UINT)eTeamColor::Blue][(UINT)eSlotState::Idle]);
+		mTeamColor = eTeamColor::Blue;
 	}
 }

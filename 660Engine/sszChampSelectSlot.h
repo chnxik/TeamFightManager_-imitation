@@ -11,6 +11,12 @@ namespace ssz
     class ChampSelectSlot : public UIObject
     {
     public:
+		enum class ePhase
+		{
+			BanPhase,
+			SelectPhase,
+		};
+		
 		ChampSelectSlot(const std::wstring& Key);
 		virtual ~ChampSelectSlot();
 
@@ -21,13 +27,8 @@ namespace ssz
 
 		virtual void SetState(eState state);
 		virtual void RegistRespawnPool();
-		virtual void SetActive();
-		virtual void SetPaused();
 
-		virtual void MouseLbtnDown();
-		virtual void MouseLbtnUp();
 		virtual void MouseLbtnClicked();
-		virtual void MouseOn();
 
 		virtual void MouseUp();
 		virtual void MouseAway();
@@ -36,11 +37,24 @@ namespace ssz
 		void RegistChamp(eChamp champ);
 		void RegistWindowUI(BanPickWindow* BPWin);
 
+		void AiPick();
+
 		void SlotAnimationSet(eChamp champ);
 
+		void ChampSelected();
 		void StateClear();
 
+		void BanPhase() { mPhase = ePhase::BanPhase; }
+		void SelectPhase() { mPhase = ePhase::SelectPhase; }
+
+		void SetPlayerTurn() { bPlayerTurn = true; }
+		void SetEnemyTurn() { bPlayerTurn = false; }
+
+		bool IsBanned() { return bBanned; }
+		bool IsSelected() { return bSelected; }
+
     private:
+		ePhase mPhase;
 		BanPickWindow* OwnerWindowUI;
 
 		Champ* mRegistedChamp;
@@ -51,6 +65,7 @@ namespace ssz
 		UIObject* mPickedOutline;
 		UIObject* mPickedBg;
 
+		bool bPlayerTurn;
 		bool bBanned;
 		bool bSelected;
         

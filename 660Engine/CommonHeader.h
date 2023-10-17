@@ -39,6 +39,7 @@ using namespace ssz::object;
 #include "sszAudioSource.h"
 #include "sszText.h"
 
+#include "sszGrayScript.h"
 #include "sszMasking.h"
 
 // UI Component

@@ -2,10 +2,14 @@
 
 #include "sszTGM.h"
 
+#include "sszBanPickScene.h"
+
 #include "sszChamp.h"
+#include "sszPilot.h"
 
 #include "sszButtonUI.h"
 #include "sszBanPickWindow.h"
+#include "sszPlayerCardSlot.h"
 
 #include "sszAnimator.h"
 
@@ -13,6 +17,7 @@ namespace ssz
 {
 	ChampSelectSlot::ChampSelectSlot(const std::wstring& Key)
 		: UIObject(Key)
+		, mPhase(ePhase::BanPhase)
 		, OwnerWindowUI(nullptr)
 		, mRegistedChamp(nullptr)
 		, mChampName(nullptr)
@@ -22,6 +27,7 @@ namespace ssz
 		, mPickedBg(nullptr)
 		, bBanned(false)
 		, bSelected(false)
+		, bPlayerTurn(false)
 	{
 	}
 
@@ -46,7 +52,18 @@ namespace ssz
 		mChampName = AddComponent<Text>();
 		mChampName->TextInit(Text::eFonts::Galmuri14, Vector3(0.f, -60.f, 0.f), 27, FONT_RGBA(255, 255, 255, 255), FW1_CENTER | FW1_VCENTER);
 		mChampName->SetString(L"NONE");
+
+		mPickedOutline = InstantiateUI<UIObject>(this, L"SlotOutLine");
+		Transform* OutlineTr = mPickedOutline->GetComponent<Transform>();
+
+		OutlineTr->SetTransType(Transform::eTransType::PosAdd);
+		OutlineTr->SetScale(Vector3(130.f, 172.f, 0.f));
 		
+		Resources::Load<Texture>(L"SlotOutLineTex", L"..\\Resources\\useResource\\Banpick\\champion_slot_hover_0.png");
+		LoadMaterial(L"SlotOutLineTexMt", L"SpriteShader", L"SlotOutLineTex", eRenderingMode::Transparent);
+		mPickedOutline->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"SlotOutLineTexMt");
+
+		mPickedOutline->SetPaused();
 	}
 
 	void ChampSelectSlot::Update()
@@ -77,72 +94,100 @@ namespace ssz
 	{
 	}
 
-	void ChampSelectSlot::SetActive()
-	{
-	}
-
-	void ChampSelectSlot::SetPaused()
-	{
-	}
-
-	void ChampSelectSlot::MouseLbtnDown()
-	{
-	}
-
-	void ChampSelectSlot::MouseLbtnUp()
-	{
-	}
-
 	void ChampSelectSlot::MouseLbtnClicked()
 	{
+		if (!bPlayerTurn)
+			return;
+
+		UIObject::MouseLbtnClicked();
+
 		if (bBanned == false && bSelected == false)
 		{
-			if (!mRegistedChamp)
-				return;
+			switch (mPhase)
+			{
+			case ssz::ChampSelectSlot::ePhase::BanPhase:
+			{
+				mChampTex->GetComponent<GrayScript>()->UseGrayScript();
+				
+				std::wstring ChampName = mRegistedChamp->GetChampName();
+				Animator* ChampAnim = mChampTex->GetComponent<Animator>();
 
-			std::wstring ChampName = mRegistedChamp->GetChampName();
-			std::wstring Selectkey = ChampName + L"_Select";
+				std::wstring Idlekey = ChampName + L"_idle";
+
+				ChampAnim->PlayAnimation(Idlekey, false);
+				
+				bBanned = true;
+
+				BanPickScene* CurScene = (BanPickScene*)SceneManager::GetActiveScene();
+
+				if (CurScene)
+					CurScene->NextPhase();
+
+				break;
+			}
+			case ssz::ChampSelectSlot::ePhase::SelectPhase:
+			{
+				std::wstring ChampName = mRegistedChamp->GetChampName();
+				std::wstring Selectkey = ChampName + L"_Select";
 			
-			Animator* ChampAnim = mChampTex->GetComponent<Animator>();
-			ChampAnim->PlayAnimation(Selectkey, true);
+				BanPickScene* CurScene = (BanPickScene*)SceneManager::GetActiveScene();
 
-			mChampTex->GetComponent<Masking>()->UseMasking();
+				if (CurScene)
+				{
+					PlayerCardSlot* CurPilotSlot = CurScene->GetSelectSlot();
+					CurPilotSlot->GetPilot()->RegistChamp(mRegistedChamp);
+
+					bSelected = true;
+
+					Animator* ChampAnim = mChampTex->GetComponent<Animator>();
+					ChampAnim->PlayAnimation(Selectkey, false);
+				}
+
+				break;
+			}
+			default:
+				break;
+			}
+			
 		}
-	}
-
-	void ChampSelectSlot::MouseOn()
-	{
 	}
 
 	void ChampSelectSlot::MouseUp()
 	{
 		OwnerWindowUI->PreviewChampInfo(mRegistedChamp);
 
+		mPickedOutline->SetActive();
+
 		if (bBanned == false && bSelected == false)
 		{
-			if (!mRegistedChamp)
-				return;
+			if (bPlayerTurn)
+			{
+				std::wstring ChampName = mRegistedChamp->GetChampName();
+				std::wstring OnAnikey = ChampName + L"_On";
+				std::wstring Selectkey = ChampName + L"_Select";
 
-			std::wstring ChampName = mRegistedChamp->GetChampName();
-			
-			std::wstring OnAnikey = ChampName + L"_On";
+				Animator* ChampAnim = mChampTex->GetComponent<Animator>();
 
-			Animator* ChampAnim = mChampTex->GetComponent<Animator>();
-			ChampAnim->PlayAnimation(OnAnikey, true);
+				if (ChampAnim->GetCurAnimationKey() != Selectkey)
+					ChampAnim->PlayAnimation(OnAnikey, true);
+			}
 		}
+
 	}
 
 	void ChampSelectSlot::MouseAway()
 	{
-		if (!mRegistedChamp)
-			return;
+		mPickedOutline->SetPaused();
 
 		std::wstring ChampName = mRegistedChamp->GetChampName();
 		Animator* ChampAnim = mChampTex->GetComponent<Animator>();
+		
 		std::wstring Idlekey = ChampName + L"_idle";
-		ChampAnim->PlayAnimation(Idlekey, false);
-
-		mChampTex->GetComponent<Masking>()->StopMasking();
+		std::wstring Selectkey = ChampName + L"_Select";
+		
+		if(ChampAnim->GetCurAnimationKey() != Selectkey)
+			ChampAnim->PlayAnimation(Idlekey, false);
+		
 	}
 
 	void ChampSelectSlot::RegistChamp(eChamp champ)
@@ -160,6 +205,59 @@ namespace ssz
 	void ChampSelectSlot::RegistWindowUI(BanPickWindow* BPWin)
 	{
 		OwnerWindowUI = BPWin;
+	}
+
+	void ChampSelectSlot::AiPick()
+	{
+		if (bBanned == false && bSelected == false)
+		{
+			switch (mPhase)
+			{
+			case ssz::ChampSelectSlot::ePhase::BanPhase:
+			{
+				mChampTex->GetComponent<GrayScript>()->UseGrayScript();
+
+				std::wstring ChampName = mRegistedChamp->GetChampName();
+				Animator* ChampAnim = mChampTex->GetComponent<Animator>();
+
+				std::wstring Idlekey = ChampName + L"_idle";
+
+				ChampAnim->PlayAnimation(Idlekey, false);
+
+				bBanned = true;
+
+				BanPickScene* CurScene = (BanPickScene*)SceneManager::GetActiveScene();
+
+				if (CurScene)
+					CurScene->NextPhase();
+
+				break;
+			}
+			case ssz::ChampSelectSlot::ePhase::SelectPhase:
+			{
+				std::wstring ChampName = mRegistedChamp->GetChampName();
+				std::wstring Selectkey = ChampName + L"_Select";
+
+				BanPickScene* CurScene = (BanPickScene*)SceneManager::GetActiveScene();
+
+				if (CurScene)
+				{
+					PlayerCardSlot* CurPilotSlot = CurScene->GetSelectSlot();
+					CurPilotSlot->GetPilot()->RegistChamp(mRegistedChamp);
+
+					bSelected = true;
+
+					Animator* ChampAnim = mChampTex->GetComponent<Animator>();
+					ChampAnim->PlayAnimation(Selectkey, false);
+				}
+
+				break;
+			}
+			default:
+				break;
+			}
+
+		}
 	}
 
 	void ChampSelectSlot::SlotAnimationSet(eChamp champ)
@@ -265,18 +363,43 @@ namespace ssz
 
 		Vector3 Pos = (SlotTr->GetPosition() + ChampTexTr->GetPosition());
 		Vector3 Scale = SlotTr->GetScale() * 0.9f;
+		Scale.y -= 20.f;
 
 		Masking* Mask = mChampTex->AddComponent<Masking>();
 		Mask->SetMaskArea(Pos, Scale);
 		Mask->StopMasking();	// masking ¸ØÃã
+		
+		mChampTex->AddComponent<GrayScript>();
+
+		SlotChampAnim->StartEvent(Selectkey) = std::bind(&Masking::UseMasking, mChampTex->GetComponent<Masking>());
+		SlotChampAnim->CompleteEvent(Selectkey) = std::bind(&ChampSelectSlot::ChampSelected, this);
 
 		SlotChampAnim->PlayAnimation(Idlekey, true);
 
 		mChampName->SetString(mRegistedChamp->GetChampKrName());
 	}
 
+	void ChampSelectSlot::ChampSelected()
+	{
+		std::wstring ChampName = mRegistedChamp->GetChampName();
+		Animator* ChampAnim = mChampTex->GetComponent<Animator>();
+
+		std::wstring Idlekey = ChampName + L"_idle";
+		ChampAnim->PlayAnimation(Idlekey, false);
+
+		BanPickScene* CurScene = (BanPickScene*)SceneManager::GetActiveScene();
+
+		if (CurScene)
+			CurScene->NextPhase();
+
+		// ¸¶½ºÅ· ³¡
+		Masking* Mask = mChampTex->GetComponent<Masking>();
+		Mask->StopMasking();
+	}
+
 	void ChampSelectSlot::StateClear()
 	{
+		bPlayerTurn = false;
 		bBanned = false;
 		bSelected = false;
 	}

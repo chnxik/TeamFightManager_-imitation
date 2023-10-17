@@ -40,7 +40,8 @@ namespace ssz
     {
         for (size_t i = 0; i < mChildUI.size(); ++i)
         {
-            mChildUI[i]->Update();
+            if (mChildUI[i]->IsActive())
+                mChildUI[i]->Update();
         }
 
         GameObject::Update();
@@ -52,7 +53,8 @@ namespace ssz
 
         for (size_t i = 0; i < mChildUI.size(); ++i)
         {
-            mChildUI[i]->LateUpdate();
+            if (mChildUI[i]->IsActive())
+                mChildUI[i]->LateUpdate();
         }
 
         GameObject::LateUpdate();
@@ -62,7 +64,8 @@ namespace ssz
     {
         for (size_t i = 0; i < mChildUI.size(); ++i)
         {
-            mChildUI[i]->Render();
+            if (mChildUI[i]->IsActive())
+                mChildUI[i]->Render();
         }
 
         GameObject::Render();

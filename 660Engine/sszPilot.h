@@ -4,6 +4,7 @@
 namespace ssz
 {
     class Team;
+    class Champ;
 
     class Pilot : public GameObject
     {
@@ -19,6 +20,9 @@ namespace ssz
         void SetPilotName(std::wstring PilotName);
         void SetPilotData(UINT ATK, UINT DEF, UINT AGE);
         void RegistTeam(Team* _Team);
+        void RegistChamp(Champ* _Champ);
+
+        void ResetSetting();
 
         std::wstring GetTeamName();
         std::wstring GetPilotName() { return mPilotName; }
@@ -46,5 +50,6 @@ namespace ssz
         // 통산 도움 ( 전체 시즌 )
 
         // 사용하고있는 Champ*
+        Champ* mRegistedChamp;
     };
 }

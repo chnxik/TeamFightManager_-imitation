@@ -41,6 +41,10 @@ namespace ssz
 
 		void NextPhase();
 
+		PlayerCardSlot* GetSelectSlot() { return mCurSelectSlot; }
+
+		void RandomPick();
+
 		void Reset();
 
 	private:
@@ -50,6 +54,8 @@ namespace ssz
 		ChampSelectSlot* mChampSlot[(UINT)eChamp::NONE];
 		BanPickWindow* mBanPickWindow;
 		BanLine* mBanLine;
+
+		PlayerCardSlot* mCurSelectSlot;
 
 		Text* mBanLineCenterText;
 		Text* mBanLineSideText;

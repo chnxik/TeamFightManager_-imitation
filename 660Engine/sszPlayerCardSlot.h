@@ -17,6 +17,12 @@ namespace ssz
 		virtual void Initialize() override;
 
 		void RegistPilot(Pilot* pilot);
+		Pilot* GetPilot() { return mRegistedPilot; }
+		
+		void SelectDone();
+		Pilot* CurSelectedSlot();
+
+		eTeamColor GetTeamColor() { return mTeamColor; }
 
 		void SetRed();
 		void SetBlue();
@@ -31,6 +37,9 @@ namespace ssz
 		UIObject* mDefIcon;
 
 		std::shared_ptr<Texture> vecCardTex[(UINT)eTeamColor::End][(UINT)eSlotState::End];
+		
+		eTeamColor mTeamColor;
+		
 		bool bSelect;
 		UIObject* mAvatarFace;
 	};

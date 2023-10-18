@@ -21,6 +21,10 @@ namespace ssz
 
 		void RegistPilot(Pilot* pilot);
 
+		const UINT* GetTKScoreAddress() { return &mCurGameTKScore; }
+		void AddKillScore() { mCurGameTKScore++; }
+		void ResetGameInfo() { mCurGameTKScore = 0; }
+
 		std::vector<Pilot*> GetPilotList() { return mPilotList; }
 
 	private:
@@ -28,7 +32,8 @@ namespace ssz
 		std::shared_ptr<Texture> mTeamIcon;		// 팀 아이콘
 		std::wstring mTeamIconTexKey;
 		// 팀 전적
-		
+		UINT mCurGameTKScore;
+
 		// 팀별 챔피언 정보 (챔피언 리스트에서 받아온다)
 		// 선택횟수
 		// 승리

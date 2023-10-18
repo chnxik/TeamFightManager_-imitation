@@ -46,7 +46,8 @@ namespace ssz
 	}
 	void AudioSource::Stop()
 	{
-		mAudioClip->Stop();
+		if(mAudioClip)
+			mAudioClip->Stop();
 	}
 	void AudioSource::SetLoop(bool loop)
 	{

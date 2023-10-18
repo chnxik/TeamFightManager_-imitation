@@ -26,6 +26,9 @@ namespace ssz
 		std::vector<Pilot*> PlayerPilots = GetPlayerTeam()->GetPilotList();
 		std::vector<Pilot*> EnemyPilots = GetEnemyTeam()->GetPilotList();
 
+		GetPlayerTeam()->ResetGameInfo();
+		GetEnemyTeam()->ResetGameInfo();
+
 		for (int i = 0; i < 2; ++i)
 		{
 			PlayerPilots[i]->ResetSetting();

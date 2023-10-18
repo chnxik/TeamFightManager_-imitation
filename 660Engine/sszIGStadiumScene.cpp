@@ -182,6 +182,8 @@ namespace ssz
 		CollisionManager::SetLayer(eLayerType::Enemy, eLayerType::PlayerInteraction, true);
 		CollisionManager::SetLayer(eLayerType::BackGroundObj, eLayerType::Cursor, true);
 
+		TGM::PlayBGM(L"BattleBGM");
+
 		Time::TimeAcceleration(1.f);
 	}
 	void IGStadiumScene::OnExit()

@@ -3,6 +3,8 @@
 #include "CommonHeader.h"
 #include "sszLog.h"
 
+#include "sszPilot.h"
+#include "sszTeam.h"
 #include "sszChamp.h"
 
 #include "sszChamp_Script.h"
@@ -117,6 +119,7 @@ namespace ssz
 
     bool BattleManager::Damage(Champ* pAttacker, Champ* pTarget, unsigned int iDamage)
     {
+        Champ::tChampStatus* AttackerStat = pAttacker->GetChampStatus();
         Champ::tChampStatus* TargetStat = pTarget->GetChampStatus();
         int FinalDamage = iDamage - (int)(iDamage * ((float)(TargetStat->ChampInfo.DEF) / 100.f));
 
@@ -139,9 +142,16 @@ namespace ssz
         // 통계 기록
         // IGStatus에 누적공격데미지, 피격데미지, 회복량, 킬수, 사망수, 어시수 입력
         // IGStatus에 Target의 받은 데미지 증가, Attacker의 공격 데미지 증가.
+        AttackerStat->TotalDeal += FinalDamage;
+        TargetStat->TotalDamaged += FinalDamage;
 
         if (0 >= TargetStat->HP) // Target의 최종 데미지가 0이하로 떨어질 경우
         {
+            pAttacker->GetTeam()->AddKillScore();
+
+            AttackerStat->KILLPOINT += 1;
+            TargetStat->DEATHPOINT += 1;
+
             TargetStat->HP = 0; // 0 으로 고정.
             return true;
         }

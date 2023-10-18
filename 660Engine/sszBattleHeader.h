@@ -41,6 +41,8 @@ namespace ssz
 
         Text* BlueTemaScore;
         Text* RedTeamScore;
+        const UINT* BlueTKScoreValue;
+        const UINT* RedTKScoreValue;
 
         UIObject* BlueRoundIcon;
         UIObject* RedRoundIcon;

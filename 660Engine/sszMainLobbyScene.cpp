@@ -157,6 +157,8 @@ namespace ssz
 
 		// Save
 		TGM::SaveData();
+
+		TGM::PlayBGM(L"LobbyBGM");
 	}
 
 	void MainLobbyScene::OnExit()

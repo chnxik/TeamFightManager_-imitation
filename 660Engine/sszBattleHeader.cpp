@@ -3,6 +3,7 @@
 
 #include "sszTGM.h"
 #include "sszTeam.h"
+#include "sszChamp.h"
 #include "sszLeague.h"
 
 #include "sszArrangementScript.h"
@@ -22,6 +23,8 @@ namespace ssz
 		, RedTeamName(nullptr)
 		, BlueTemaScore(nullptr)
 		, RedTeamScore(nullptr)
+		, BlueTKScoreValue(nullptr)
+		, RedTKScoreValue(nullptr)
 		, BlueRoundIcon(nullptr)
 		, RedRoundIcon(nullptr)
 	{
@@ -101,6 +104,9 @@ namespace ssz
 			gt += std::to_wstring((UINT)gametime);
 
 			GetComponent<Text>()->SetString(gt);
+
+			BlueTemaScore->SetString(std::to_wstring(*BlueTKScoreValue));
+			RedTeamScore->SetString(std::to_wstring(*RedTKScoreValue));
 		}
 
 		GameObject::Update();
@@ -117,6 +123,8 @@ namespace ssz
 		BlueTeamName->SetString(PlayerTeam->GetTeamName());
 		RedTeamName->SetString(EnemyTeam->GetTeamName());
 
+		BlueTKScoreValue = PlayerTeam->GetTKScoreAddress();
+		RedTKScoreValue = EnemyTeam->GetTKScoreAddress();
 	}
 
 	void BattleHeader::SetTimeType()

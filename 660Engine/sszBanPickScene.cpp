@@ -316,6 +316,8 @@ namespace ssz
 		CollisionManager::SetLayer(eLayerType::UI, eLayerType::Cursor, true);
 
 		Reset();
+
+		TGM::PlayBGM(L"BanpickBGM");
 	}
 	void BanPickScene::OnExit()
 	{

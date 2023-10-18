@@ -45,7 +45,14 @@ namespace ssz
 
 	void AudioClip::Stop()
 	{
-		mChannel->stop();
+		if (mChannel)
+		{
+			bool isPlaying = false;
+			mChannel->isPlaying(&isPlaying);
+
+			if(isPlaying)
+				mChannel->stop();
+		}
 	}
 
 	void AudioClip::Set3DAttributes(const Vector3 pos, const Vector3 vel)

@@ -20,6 +20,10 @@
 #include "sszScript_Priest.h"
 #include "sszScript_Ninja.h"
 
+#include "sszAudioClip.h"
+#include "sszAudioSource.h"
+#include "sszAudioSource.h"
+
 namespace ssz
 {
 	const RECT	TGM::mStadiumSize{ -570, 190, 570, -396 }; // Left, Top, Right, Bottme
@@ -55,6 +59,9 @@ namespace ssz
 		mMainCamera->SetName(L"MainCamera");
 		mMainCamera->AddComponent<Camera>();
 		mMainCamera->AddComponent<AudioListener>();
+		
+		BGMInit();
+		
 		
 		ChampInitialize(); // Champ 설정
 		PilotInitialize(); // Pilot 설정
@@ -133,6 +140,24 @@ namespace ssz
 
 		delete gPlayerTeam;
 		delete mLeagueManage;
+	}
+
+	void TGM::BGMInit()
+	{
+		AudioSource* As = mMainCamera->AddComponent<AudioSource>();
+		
+		Resources::Load<AudioClip>(L"TitleBGM", L"..\\Resources\\useResource\\Audio\\Title.wav");
+		Resources::Load<AudioClip>(L"LobbyBGM", L"..\\Resources\\useResource\\Audio\\Lobby.wav");
+		Resources::Load<AudioClip>(L"BanpickBGM", L"..\\Resources\\useResource\\Audio\\Banpick.wav");
+		Resources::Load<AudioClip>(L"BattleBGM", L"..\\Resources\\useResource\\Audio\\Battle.wav");
+	}
+
+	void TGM::PlayBGM(std::wstring BgmName)
+	{
+		AudioSource* As = mMainCamera->GetComponent<AudioSource>();
+		As->Stop();
+		As->SetClip(BgmName);
+		As->Play();
 	}
 
 	bool TGM::ChampInitialize()

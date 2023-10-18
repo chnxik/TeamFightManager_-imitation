@@ -26,6 +26,9 @@ namespace ssz
 		// 공용 오브젝트
 		static GameObject* GetCursor() { return (GameObject*)mCursor; }
 		static GameObject* GetCamera() { return (GameObject*)mMainCamera; }
+		static void BGMInit();
+		static void PlayBGM(std::wstring BgmName);
+
 		static const RECT& GetStadiumSize() { return mStadiumSize; }
 		static Vector3 GetStaidumPos()
 		{

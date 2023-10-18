@@ -103,6 +103,7 @@ namespace ssz
 
 		CollisionManager::SetLayer(eLayerType::UI, eLayerType::Cursor, true);
 
+		TGM::PlayBGM(L"TitleBGM");
 		// ¸®¼Â
 	}
 

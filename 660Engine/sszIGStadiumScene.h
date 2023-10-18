@@ -4,11 +4,19 @@
 namespace ssz
 {
 	class PlayerCardSlot;
+	class ChampDataSlot;
 	class BattleHeader;
 
 	class IGStadiumScene : public Scene
 	{
 	public:
+		enum class eGamePhase
+		{
+			SceneIn,
+			Game,
+			Finish,
+			SceneOut,
+		};
 		IGStadiumScene();
 		virtual ~IGStadiumScene();
 
@@ -21,8 +29,13 @@ namespace ssz
 		virtual void OnExit() override;
 
 	private:
+		eGamePhase mCurPhase;
 		BattleHeader* mBattleHeader;
 		PlayerCardSlot* mPlayerSlot[(UINT)eTeamColor::End][2];
+		ChampDataSlot* mChampDataSlot[(UINT)eTeamColor::End][2];
+
+		UINT iGameCnt;
+		float fAccTime;
 
 	};
 }

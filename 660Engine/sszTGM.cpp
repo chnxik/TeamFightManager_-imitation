@@ -48,6 +48,8 @@ namespace ssz
 	UINT TGM::mMonth = 9;
 	UINT TGM::mWeek = 3;
 
+	bool TGM::bGame = false;;
+
 
 	UINT TGM::mGold = 200;
 

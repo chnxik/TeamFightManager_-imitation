@@ -34,7 +34,7 @@ namespace ssz
 
 	void Script_Knight::Update()
 	{
-		GetRootNode()->Run();
+		Champ_Script::Update();
 	}
 
 	void Script_Knight::InitChampInfo()

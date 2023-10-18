@@ -47,6 +47,10 @@ namespace ssz
 		static void	SetGameTime(float time) { mGameTime = time; }
 		static float& GetGameTime() { return mGameTime; }
 
+		static void GameStart() { bGame = true; }
+		static void GameSet() { bGame = false; }
+		static bool IsGaming() { return bGame; }
+
 		static League* GetLeagueManage() { return mLeagueManage; }
 
 		static bool ChampInitialize();
@@ -111,5 +115,7 @@ namespace ssz
 		static UINT mWeek;
 
 		static UINT mGold;	// ¼ÒÁö±Ý
+
+		static bool bGame;
 	};
 }

@@ -64,6 +64,7 @@ namespace ssz::AI
 		}
 
 		virtual eNodeStatus Run();
+		virtual void Clear();
 
 	private:
 		BT* mChild;

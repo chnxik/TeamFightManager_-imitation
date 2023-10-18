@@ -24,6 +24,8 @@ namespace ssz
 
 	void Champ_Script::Update()
 	{
+		if(TGM::IsGaming())
+			mRoot->Run();
 	}
 
 	void Champ_Script::LateUpdate()
@@ -125,6 +127,7 @@ namespace ssz
 
 	void Champ_Script::ResetAIBB()
 	{
+		mRoot->Clear();
 		std::shared_ptr<AI::AIBB> BB = mRoot->GetAIBB();
 		BB->SetRunningNode(nullptr);
 		*(BB->FindData<Vector2>(MOVEPOINT)) = Vector2(0,0);

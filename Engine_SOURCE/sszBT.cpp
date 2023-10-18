@@ -40,6 +40,11 @@ namespace ssz::AI
 		return NS_INVALID;
 	}
 
+	void Root_Node::Clear()
+	{
+		mCurRunningNode = nullptr;
+	}
+
 	Decorate_Node::~Decorate_Node()
 	{
 		if (mChild)

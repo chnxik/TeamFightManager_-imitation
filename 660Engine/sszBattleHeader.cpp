@@ -94,12 +94,6 @@ namespace ssz
 		if (mHeaderTextType == eHeaderTextType::GameTime)
 		{
 			float gametime = TGM::GetGameTime() - (float)Time::DeltaTime();
-
-			if (gametime < 0.f)
-				gametime = 0.f;
-
-			TGM::SetGameTime(gametime);
-
 			std::wstring gt = L": ";
 			gt += std::to_wstring((UINT)gametime);
 

@@ -71,6 +71,9 @@ namespace ssz
 
 	void Champ::Update()
 	{
+		if (mChampStatus.CoolTime_Skill == 0.f)
+			int a = 0;
+
 		if (mChampStatus.accTime_Skill < mChampStatus.CoolTime_Skill)
 			mChampStatus.accTime_Skill += (float)Time::DeltaTime();
 
@@ -191,7 +194,6 @@ namespace ssz
 
 		mChampStatus.HP = mChampStatus.ChampInfo.MAXHP;         // 현재 체력
 		mChampStatus.accTime_Skill = 0.f;						// 공격 쿨타임
-		mChampStatus.CoolTime_Skill = 0.f;						// 스킬 쿨타임
 
 		mChampStatus.UltimateUseTime = 60.f;					// 궁극기 사용 시점
 		mChampStatus.bULTIMATE = false;							// 궁극기 사용 여부
@@ -210,6 +212,10 @@ namespace ssz
 	{
 		mPilot = nullptr;
 
+		GetComponent<Champ_Script>()->ResetAIBB();
+		
+		Play_Idle();
+
 		mFriendly.clear();
 		mEnemys.clear();
 		mTargetEnemy = nullptr;
@@ -224,7 +230,7 @@ namespace ssz
 		mTargetFriendly = nullptr;
 
 		mChampStatus.HP = mChampStatus.ChampInfo.MAXHP;         // 현재 체력
-		mChampStatus.accTime_Attack = 1.f;						// 공격 쿨타임
+		mChampStatus.accTime_Attack = 0.f;						// 공격 쿨타임
 		mChampStatus.accTime_Skill = 0.f;						// 현재 스킬 쿨타임
 
 		mChampStatus.RespawnTime = 0.f;

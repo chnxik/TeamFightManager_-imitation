@@ -33,7 +33,7 @@ namespace ssz
 
 	void Script_Ninja::Update()
 	{
-		GetRootNode()->Run();
+		Champ_Script::Update();
 	}
 
 	void Script_Ninja::InitChampInfo()

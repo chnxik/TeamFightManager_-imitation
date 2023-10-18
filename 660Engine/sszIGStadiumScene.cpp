@@ -15,6 +15,7 @@
 
 #include "sszObj_IG_Stadium.h"
 #include "sszPlayerCardSlot.h"
+#include "sszChampDataSlot.h"
 
 #include "sszChamp_Script.h"
 #include "sszStatusBar.h"
@@ -26,6 +27,10 @@ namespace ssz
 	IGStadiumScene::IGStadiumScene()
 		: mBattleHeader(nullptr)
 		, mPlayerSlot{}
+		, mChampDataSlot{}
+		, fAccTime(0.f)
+		, iGameCnt(0)
+		, mCurPhase(eGamePhase::SceneIn)
 	{
 	}
 	
@@ -65,11 +70,113 @@ namespace ssz
 			mPlayerSlot[(UINT)eTeamColor::Red][1]->SetRed();
 			mPlayerSlot[(UINT)eTeamColor::Blue][0]->SetBlue();
 			mPlayerSlot[(UINT)eTeamColor::Blue][1]->SetBlue();
+
+			// ChampDataSlot
+			mChampDataSlot[(UINT)eTeamColor::Red][0] = InstantiateUI <ChampDataSlot>(Vector3(843.f, 308.f, 1.03f), eLayerType::UI, L"RedChampData_1");
+			mChampDataSlot[(UINT)eTeamColor::Red][1] = InstantiateUI <ChampDataSlot>(Vector3(843.f, 69.f, 1.03f), eLayerType::UI, L"RedChampData_2");
+			mChampDataSlot[(UINT)eTeamColor::Blue][0] = InstantiateUI<ChampDataSlot>(Vector3(-843.f, 308.f, 1.03f), eLayerType::UI, L"BlueChampData_1");
+			mChampDataSlot[(UINT)eTeamColor::Blue][1] = InstantiateUI<ChampDataSlot>(Vector3(-843.f, 69.f, 1.03f), eLayerType::UI, L"BlueChampData_2");
+			
+			mChampDataSlot[(UINT)eTeamColor::Red][0]->RegistPlayerCardSlot(mPlayerSlot[(UINT)eTeamColor::Red][0]);
+			mChampDataSlot[(UINT)eTeamColor::Red][1]->RegistPlayerCardSlot(mPlayerSlot[(UINT)eTeamColor::Red][1]);
+			mChampDataSlot[(UINT)eTeamColor::Blue][0]->RegistPlayerCardSlot(mPlayerSlot[(UINT)eTeamColor::Blue][0]);
+			mChampDataSlot[(UINT)eTeamColor::Blue][1]->RegistPlayerCardSlot(mPlayerSlot[(UINT)eTeamColor::Blue][1]);
+
 		}
 #pragma endregion
 	}
 	void IGStadiumScene::Update()
 	{
+		switch (mCurPhase)
+		{
+		case ssz::IGStadiumScene::eGamePhase::SceneIn:
+		{
+			fAccTime += (float)DT;
+
+			// DataSlot
+			Transform* RedSlotTr1 = mChampDataSlot[(UINT)eTeamColor::Red][0]->GetComponent<Transform>();
+			Transform* RedSlotTr2 = mChampDataSlot[(UINT)eTeamColor::Red][1]->GetComponent<Transform>();
+			Transform* BlueSlotTr1 = mChampDataSlot[(UINT)eTeamColor::Blue][0]->GetComponent<Transform>();
+			Transform* BlueSlotTr2 = mChampDataSlot[(UINT)eTeamColor::Blue][1]->GetComponent<Transform>();
+
+			float Xpos = (119.f / 2.f) + (235.f / 2.f);
+
+			Vector3 RSlotPos1 = RedSlotTr1->GetPosition();
+			Vector3 RSlotPos2 = RedSlotTr2->GetPosition();
+			Vector3 BSlotPos1 = BlueSlotTr1->GetPosition();
+			Vector3 BSlotPos2 = BlueSlotTr2->GetPosition();
+
+			// RSlot
+			if (667.f < RSlotPos1.x)
+			{
+				float fForce = RSlotPos1.x - 667.f;
+				RSlotPos1.x -= fForce * 4.f * (float)Time::DeltaTime();
+				RSlotPos2.x -= fForce * 4.f * (float)Time::DeltaTime();
+
+				RedSlotTr1->SetPosition(RSlotPos1);
+				RedSlotTr2->SetPosition(RSlotPos2);
+			}
+
+			// BSlot
+			if (-667.f > BSlotPos1.x)
+			{
+				float fForce = RSlotPos1.x - 667.f;
+				BSlotPos1.x += fForce * 4.f * (float)Time::DeltaTime();
+				BSlotPos2.x += fForce * 4.f * (float)Time::DeltaTime();
+
+				BlueSlotTr1->SetPosition(BSlotPos1);
+				BlueSlotTr2->SetPosition(BSlotPos2);
+			}
+
+			if (1.f < fAccTime)
+			{
+				fAccTime = 0.f;
+				if (iGameCnt == 0)
+				{
+					RSlotPos1.x = 666.f;
+					RSlotPos2.x = 666.f;
+					BSlotPos1.x = -666.f;
+					BSlotPos2.x = -666.f;
+
+					RedSlotTr1->SetPosition(RSlotPos1);
+					RedSlotTr2->SetPosition(RSlotPos2);
+					BlueSlotTr1->SetPosition(BSlotPos1);
+					BlueSlotTr2->SetPosition(BSlotPos2);
+
+					TGM::GameStart();
+					mCurPhase = eGamePhase::Game;
+					return;
+				}
+				iGameCnt--;
+			}
+
+			break;
+		}
+		case ssz::IGStadiumScene::eGamePhase::Game:
+		{
+			float gametime = TGM::GetGameTime() - (float)DT;
+
+			if (gametime < 0.f)
+			{
+				TGM::GameSet();
+				mCurPhase = eGamePhase::Finish;
+			}
+
+			TGM::SetGameTime(gametime);
+			break;
+
+		}
+		case ssz::IGStadiumScene::eGamePhase::Finish:
+		{
+			break;
+		}
+		case ssz::IGStadiumScene::eGamePhase::SceneOut:
+		{
+
+			break;
+		}
+		}
+
 		Scene::Update();
 
 		if (Input::GetKeyDown(eKeyCode::DOWN))
@@ -107,6 +214,13 @@ namespace ssz
 		Log::Clear();
 		TGM::SetGameTime(60.f);
 
+		mCurPhase = eGamePhase::SceneIn;
+
+		mChampDataSlot[(UINT)eTeamColor::Red][0]->GetComponent<Transform>()->SetPosition(Vector3(843.f, 308.f, 1.03f));
+		mChampDataSlot[(UINT)eTeamColor::Red][1]->GetComponent<Transform>()->SetPosition(Vector3(843.f, 69.f, 1.03f));
+		mChampDataSlot[(UINT)eTeamColor::Blue][0]->GetComponent<Transform>()->SetPosition(Vector3(-843.f, 308.f, 1.03f));
+		mChampDataSlot[(UINT)eTeamColor::Blue][1]->GetComponent<Transform>()->SetPosition(Vector3(-843.f, 69.f, 1.03f));
+
 		mBattleHeader->RegistTeam();
 		mBattleHeader->SetTimeType();
 
@@ -139,6 +253,8 @@ namespace ssz
 			{
 				RegistChamp[(UINT)eCampType::Player][i] = PPilotList[i]->GetChamp();
 				RegistChamp[(UINT)eCampType::Enemy][i] = EPilotList[i]->GetChamp();
+				mChampDataSlot[(UINT)eTeamColor::Red][i]->RegistChamp(PPilotList[i]->GetChamp());
+				mChampDataSlot[(UINT)eTeamColor::Blue][i]->RegistChamp(EPilotList[i]->GetChamp());
 			}
 
 			// Champ Spawn
@@ -183,6 +299,7 @@ namespace ssz
 		CollisionManager::SetLayer(eLayerType::BackGroundObj, eLayerType::Cursor, true);
 
 		TGM::PlayBGM(L"BattleBGM");
+		iGameCnt = 5;
 
 		Time::TimeAcceleration(1.f);
 	}

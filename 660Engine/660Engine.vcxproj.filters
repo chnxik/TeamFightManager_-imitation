@@ -218,6 +218,9 @@
     <ClInclude Include="sszGrayScript.h">
       <Filter>Contents\CommonScript\Gray</Filter>
     </ClInclude>
+    <ClInclude Include="sszChampDataSlot.h">
+      <Filter>Contents\UI\Slot\ChampDataSlot</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="660Engine.cpp" />
@@ -451,6 +454,9 @@
     </ClCompile>
     <ClCompile Include="sszGrayScript.cpp">
       <Filter>Contents\CommonScript\Gray</Filter>
+    </ClCompile>
+    <ClCompile Include="sszChampDataSlot.cpp">
+      <Filter>Contents\UI\Slot\ChampDataSlot</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -714,6 +720,9 @@
     </Filter>
     <Filter Include="Contents\CommonScript\Gray">
       <UniqueIdentifier>{4fb64d62-b8ab-494b-bc34-86a3d2f25a24}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\UI\Slot\ChampDataSlot">
+      <UniqueIdentifier>{ec63c390-21cc-4460-8f23-303c7549ee03}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -34,7 +34,7 @@ namespace ssz
 
 	void Script_Fighter::Update()
 	{
-		GetRootNode()->Run();
+		Champ_Script::Update();
 	}
 
 	void Script_Fighter::InitChampInfo()

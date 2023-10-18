@@ -66,7 +66,7 @@ namespace ssz
 		}
 
 	private:
-		Vector2 vDir;
-		float fJumpRatio;
+		Vector2 vDir = {};
+		float fJumpRatio = 0.f;;
 	};
 }

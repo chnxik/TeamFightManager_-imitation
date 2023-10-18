@@ -33,7 +33,7 @@ namespace ssz
 
 	void Script_Monk::Update()
 	{
-		GetRootNode()->Run();
+		Champ_Script::Update();
 	}
 
 	void Script_Monk::InitChampInfo()

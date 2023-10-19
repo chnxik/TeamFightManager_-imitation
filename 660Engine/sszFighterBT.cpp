@@ -35,7 +35,6 @@ namespace ssz
 
 			if (0.35f < fAttackRatio && !bDamage)	// 타격지점
 			{
-				Owner->GetChampScript()->Attack();// 공격
 				bDamage = true;
 			}
 

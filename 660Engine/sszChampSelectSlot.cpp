@@ -66,6 +66,12 @@ namespace ssz
 		LoadMaterial(L"SelectLineTexMt", L"SpriteShader", L"SelectLineTex", eRenderingMode::Transparent);
 		mSelectLine->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"SelectLineTexMt");
 		mSelectLine->SetPaused();
+
+		AddComponent<AudioSource>();
+		
+		Resources::Load<AudioClip>(L"bansound", L"..\\Resources\\useResource\\Audio\\ban.wav");
+		Resources::Load<AudioClip>(L"picksound", L"..\\Resources\\useResource\\Audio\\pick.wav");
+
 	}
 
 	void ChampSelectSlot::Update()
@@ -158,6 +164,10 @@ namespace ssz
 
 				mPickedNumb->SetPaused();
 
+				AudioSource* As = GetComponent<AudioSource>();
+				As->SetClip(L"bansound");
+				As->Play();
+
 				if (CurScene)
 					CurScene->NextPhase();
 
@@ -173,6 +183,7 @@ namespace ssz
 				if (CurScene)
 				{
 					PlayerCardSlot* CurPilotSlot = CurScene->GetSelectSlot();
+					CurPilotSlot->RegistChamp(mRegistedChamp);
 					CurPilotSlot->GetPilot()->RegistChamp(mRegistedChamp);
 
 					switch (CurPilotSlot->GetSlotNumb())
@@ -226,6 +237,9 @@ namespace ssz
 					}
 					}
 					
+					AudioSource* As = GetComponent<AudioSource>();
+					As->SetClip(L"picksound");
+					As->Play();
 
 					Animator* ChampAnim = mChampTex->GetComponent<Animator>();
 					ChampAnim->PlayAnimation(Selectkey, false);
@@ -334,6 +348,10 @@ namespace ssz
 
 				mPickedNumb->SetPaused();
 
+				AudioSource* As = GetComponent<AudioSource>();
+				As->SetClip(L"bansound");
+				As->Play();
+
 				if (CurScene)
 					CurScene->NextPhase();
 
@@ -349,6 +367,7 @@ namespace ssz
 				if (CurScene)
 				{
 					PlayerCardSlot* CurPilotSlot = CurScene->GetSelectSlot();
+					CurPilotSlot->RegistChamp(mRegistedChamp);
 					CurPilotSlot->GetPilot()->RegistChamp(mRegistedChamp);
 
 					switch (CurPilotSlot->GetSlotNumb())
@@ -402,6 +421,9 @@ namespace ssz
 					}
 					}
 
+					AudioSource* As = GetComponent<AudioSource>();
+					As->SetClip(L"picksound");
+					As->Play();
 
 					Animator* ChampAnim = mChampTex->GetComponent<Animator>();
 					ChampAnim->PlayAnimation(Selectkey, false);

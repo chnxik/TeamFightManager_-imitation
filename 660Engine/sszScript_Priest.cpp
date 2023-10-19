@@ -122,8 +122,8 @@ namespace ssz
 
 		// ===================================================================================
 
-		anim->StartEvent(Owner->GetAnimKey(Champ::eActiveType::ATTACK)) = std::bind(&Script_Priest::Attack, this);
-		anim->CompleteEvent(Owner->GetAnimKey(Champ::eActiveType::ATTACK)) = std::bind(&Script_Priest::AttackComplete, this);
+		anim->StartEvent(Owner->GetAnimKey(Champ::eActiveType::ATTACK)) = std::bind(&Script_Priest::Heal, this);
+		anim->CompleteEvent(Owner->GetAnimKey(Champ::eActiveType::ATTACK)) = std::bind(&Script_Priest::HealComplete, this);
 		anim->StartEvent(Owner->GetAnimKey(Champ::eActiveType::SKILL)) = std::bind(&Script_Priest::Skill, this);
 		anim->CompleteEvent(Owner->GetAnimKey(Champ::eActiveType::DEAD)) = std::bind(&BattleManager::RegistRespawnPool, Owner);
 
@@ -185,7 +185,8 @@ namespace ssz
 
 		// [2-2] 상호작용(공격,스킬,궁극기) 판단 시퀀스
 		Sequence_Node* Seq_Active = ChampBT->AddChild<Sequence_Node>();
-		Seq_Active->AddChild<Con_SerchTarget_Enemy_Near>();	// 2-2-1 타겟 지정 여부 (거리)
+		Seq_Active->AddChild<Con_SerchTarget_Enemy_Near>();	// 2-2-1 타겟 지정 여부 (가까운 적군)
+		Seq_Active->AddChild<Con_SerchTarget_Friendly_HPMIN>();	// 2-2-1 타겟 지정 여부 (HP적은 아군)
 
 		Selector_Node* Sel_SelectActive = Seq_Active->AddChild<Selector_Node>(); // 2-2-2 Active 방식 선택
 		// Sequence_Node* Seq_Active_Ultimate = Sel_SelectActive->AddChild<Sequence_Node>(); // 2-2-2-1 궁극기
@@ -198,11 +199,11 @@ namespace ssz
 
 		Sequence_Node* Seq_Active_Attack = Sel_SelectActive->AddChild<Sequence_Node>(); // 2-2-2-3 기본공격
 		Seq_Active_Attack->AddChild<Con_CheckActive_Attack_CoolTime>();	// 2-2-2-3-1 기본공격 대기시간 판단
-		Seq_Active_Attack->AddChild<Con_CheckRagne_Attack>();	// 2-2-2-3-1 기본공격 사거리 판단
-		Seq_Active_Attack->AddChild<Act_SetDir_Target>(); // 2-2-2-3-2 타겟방향으로 방향전환
+		Seq_Active_Attack->AddChild<Con_CheckRagne_Heal>();	// 2-2-2-3-1 기본공격 사거리 판단
+		Seq_Active_Attack->AddChild<Act_SetDir_Target_Heal>(); // 2-2-2-3-2 타겟방향으로 방향전환
 
-		Sequence_Node* Seq_AttackAnim = Seq_Active_Attack->AddChild<Sequence_Node>(); // 2-2-2-3-3 공격 애니메이션
-		Seq_AttackAnim->AddChild<Act_Attack_Priest>();	// 2-2-2-3-3-1 공격 애니메이션 반복재생
+		Sequence_Node* Seq_AttackAnim = Seq_Active_Attack->AddChild<Sequence_Node>(); // 2-2-2-3-3 힐 애니메이션
+		Seq_AttackAnim->AddChild<Act_Heal_Priest>();	// 2-2-2-3-3-1 힐 애니메이션 반복재생
 		Seq_AttackAnim->AddChild<Act_PlayAnim_Idle>();		// 2-2-2-3-3-2 공격애니메이션 종료시 Idle로 초기화
 
 		// [2-3] 이동 판단 시퀀스
@@ -210,7 +211,7 @@ namespace ssz
 		Selector_Node* Sel_MovePoint = Seq_Move->AddChild<Selector_Node>(); // 2-3-1 이동지점 갱신 판단
 		Sequence_Node* Seq_Move_Complete = Sel_MovePoint->AddChild<Sequence_Node>();	// 2-3-1-1 목표지점 도착 판단
 		Seq_Move_Complete->AddChild<Con_IsArrive>();			// 2-3-1-1-1 목표지점 도착 판단 컨디션노드
-		Sel_MovePoint->AddChild<Act_SetMovePoint_Kiting>();	// 2-3-1-2 카이팅 이동 지점
+		Sel_MovePoint->AddChild<Act_SetMovePoint_Kiting_Heal>();	// 2-3-1-2 카이팅 이동 지점
 		Sel_MovePoint->AddChild<Act_SetMovePoint_Random>();	// 2-3-1-3 랜덤 이동 지점
 
 		// Seq_Move->AddChild<Act_SetDir_MovePoint>();		// 2-3-2-1 이동방향으로 방향전환
@@ -218,10 +219,9 @@ namespace ssz
 		Seq_Move->AddChild<Act_PlayAnim_Move>();		// 2-3-2-3 이동애니메이션 재생
 	}
 
-	void Script_Priest::Attack()
+	void Script_Priest::Heal()
 	{
-		// 힐로 바꿔야함
-		Champ_Script::Attack();
+		Champ_Script::Heal();
 	}
 
 	void Script_Priest::Skill()

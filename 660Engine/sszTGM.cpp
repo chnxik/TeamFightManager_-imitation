@@ -146,7 +146,7 @@ namespace ssz
 
 	void TGM::BGMInit()
 	{
-		AudioSource* As = mMainCamera->AddComponent<AudioSource>();
+		mMainCamera->AddComponent<AudioSource>();
 		
 		Resources::Load<AudioClip>(L"TitleBGM", L"..\\Resources\\useResource\\Audio\\Title.wav");
 		Resources::Load<AudioClip>(L"LobbyBGM", L"..\\Resources\\useResource\\Audio\\Lobby.wav");

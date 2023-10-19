@@ -20,7 +20,7 @@ namespace ssz
 		virtual void InitAudio();
 		virtual void InitBT();          // Ã¨ÇÁ AI ¼³Á¤
 
-		virtual void Attack();
+		virtual void Heal();
 		virtual void Skill();
 
 

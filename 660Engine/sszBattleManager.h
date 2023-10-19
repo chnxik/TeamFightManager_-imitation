@@ -10,6 +10,7 @@ namespace ssz
 	{
 	public:
 		static bool ATTACK(Champ* pAttacker, Champ* pTarget, unsigned int iDamage); // 전투 함수
+		static bool Heal(Champ* pHealer, Champ* pTarget, unsigned int iHeal); // 힐링 함수
 
 
 	public: // 리스폰
@@ -24,6 +25,9 @@ namespace ssz
 	private:
 		static bool Damage(Champ* pAttacker, Champ* pTarget, unsigned int iDamage); // 데미지 계산 함수, HP가 0으로 떨어지면 Dead를 반환
 		static void DamagePrint(unsigned int Dmg, Champ* pTarget);
+
+		static bool Healing(Champ* pHealer, Champ* pTarget, unsigned int iheal); // 데미지 계산 함수, HP가 0으로 떨어지면 Dead를 반환
+		static void HealPrint(unsigned int heal, Champ* pTarget);
 
 		static void DamageFontInit();
 

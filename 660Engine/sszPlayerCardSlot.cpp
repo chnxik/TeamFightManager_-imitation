@@ -84,7 +84,13 @@ namespace ssz
 #pragma endregion
 #pragma region SlotUI Load
 		{
-			mAvatarFace = object::InstantiateUI<UIObject>(Vector3(0.f, 0.f, -0.001f), Vector3(100.f, 100.f, 0.f), this, L"ChampPreview");
+			mAvatarFace = object::InstantiateUI<UIObject>(Vector3(0.f, 0.f, 0.f), Vector3(110, 110, 0.f), this, L"ChampPreview");
+			mAvatarFace->GetComponent<Transform>()->SetTransType(Transform::eTransType::PosAdd);
+			
+
+			LoadMaterial(mUIKey + L"FaceSlotMt", L"SpriteShader", eRenderingMode::Transparent);
+			mAvatarFace->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", mUIKey + L"FaceSlotMt");
+
 			mAtkIcon->GetComponent<Transform>()->SetTransType(Transform::eTransType::PosAdd);
 			mAtkIcon->AddComponent<MeshRenderer>()->SetMeshRenderer(L"RectMesh", L"PilotATKStatMt");
 			Text* AtkStatText = mAtkIcon->AddComponent<Text>();
@@ -102,11 +108,28 @@ namespace ssz
 		
 		mAtkIcon->GetComponent<Text>()->SetString(std::to_wstring(PilotATK));
 		mDefIcon->GetComponent<Text>()->SetString(std::to_wstring(PilotDEF));
+		
+		mAvatarFace->SetPaused();
 	}
 
 	void PlayerCardSlot::RegistChamp(Champ* champ)
 	{
+		Vector3 SlotPos = GetComponent<Transform>()->GetPosition();
+		SlotPos.x -= 72.f;
+		SlotPos.y += 25.f;
+
+		Vector3 MaskArea(70.f, 70.f, 0.f);
+
+		Masking* Avatarmask = mAvatarFace->AddComponent<Masking>();
+		Avatarmask->SetMaskArea(SlotPos, MaskArea);
+		Avatarmask->UseMasking();
+
 		mRegistedChamp = champ;
+		Vector3 pos(-72.f, 10.f, SlotPos.z - 0.001f);
+
+		mAvatarFace->GetComponent<Transform>()->SetPosition(pos);
+		mAvatarFace->GetComponent<MeshRenderer>()->GetMaterial()->SetTexture(champ->GetSlotTex());
+		mAvatarFace->SetActive();
 	}
 
 	void PlayerCardSlot::SelectDone()

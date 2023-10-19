@@ -350,6 +350,36 @@ namespace ssz
 		}
 	};
 
+	class Con_CheckRagne_Heal : public Condition_Node
+	{
+	public:
+		virtual eNodeStatus Run() override
+		{
+			wstring* ChampName = FINDBBDATA(wstring, CHAMPKEY);
+			Champ* Owner = FINDBBDATA(Champ, *ChampName);
+			Champ* Target = Owner->GetTarget_Friendly();
+
+			Collider2D* OwnerCol = Owner->GetColObjsCol(eColObjType::RANGE);
+			Collider2D* TargetCol = Target->GetComponent<Collider2D>();
+
+			// 충돌체를 활용한 판단
+			// if (CollisionManager::IsCollision(TargetCol, OwnerCol))
+			// 	return NS_SUCCESS;
+
+			// pos를 활용한 거리 계산 시
+			Champ::tChampStatus* status = Owner->GetChampStatus();
+
+			Vector2 OwnerPos = Owner->GetComponent<Transform>()->GetWorldPosition().V3toV2();
+			Vector2 TargetPos = Target->GetComponent<Transform>()->GetWorldPosition().V3toV2();
+
+			float dist = Vector2::Distance(OwnerPos, TargetPos);
+			if ((status->ChampInfo.RNG * 2.f) >= dist)	// 사거리 안이다.
+				return NS_SUCCESS;
+
+			return NS_FAILURE;
+		}
+	};
+
 	// 후퇴 판단
 	// 원거리
 	// 이외 체력,이동속도 판단
@@ -427,6 +457,170 @@ namespace ssz
 			return NS_SUCCESS;
 		}
 	};
+
+	class Act_SetMovePoint_Kiting_nearing : public Action_Node
+	{
+	private:
+		float RandomDtoR(float degree)
+		{
+			float value = (float)(rand() % 40) - 20;	// 30도 범위 넓이
+
+			value *= (float)_Pi / 180.f;
+
+			value = degree + value;
+
+			// if (value <= -180.f)
+			// 	value = 180.f + (180.f + value);
+			// else if (value >= 180)
+			// 	value = -180.f + (-180.f + value);
+
+			// value *= (float)_Pi / 180.f;
+
+			return value;
+		}
+
+	public:
+		virtual eNodeStatus Run() override
+		{
+			wstring* ChampName = FINDBBDATA(wstring, CHAMPKEY);
+			Champ* Owner = FINDBBDATA(Champ, *ChampName);
+
+			Champ* Target = Owner->GetTarget_Enemy(); // 타겟 위치
+
+			if (Target == nullptr)
+				return NS_FAILURE;
+
+			// 일반적인 카이팅 : 타겟 위치의 정 반대 방향으로 이동
+			Vector2 OwnerPos = Owner->GetComponent<Transform>()->GetWorldPosition().V3toV2();
+			Vector2 TargetPos = Target->GetComponent<Transform>()->GetWorldPosition().V3toV2();
+
+			Vector2* MovePoint = FINDBBDATA(Vector2, MOVEPOINT);
+
+			// 얻고싶은 위치
+			// 타겟위치에서 오너 근방의 사거리 거리만큼의 랜덤한 위치
+
+			Vector2 vPos = OwnerPos - TargetPos;									// Target 에서 Owner 방향
+			float fDegree = atan2(vPos.y, vPos.x); // * 180.f / (float)_Pi;		// radian 값
+			fDegree = RandomDtoR(fDegree);
+			float range = (float)Owner->GetChampInfo().RNG;
+			vPos.x = TargetPos.x + cos(fDegree) * range;
+			vPos.y = TargetPos.y + sin(fDegree) * range;
+			
+			// 새로 얻은 거리가 내범위에서 사정거리 이내거나 현재 적이 사정거리 안이면 이동하지 않는다.
+			Vector2 ConPos = OwnerPos - vPos;
+			float ConDist = Vector2::Distance(OwnerPos, vPos);
+			float TargetDist = Vector2::Distance(OwnerPos, TargetPos);
+			if (ConDist <= range || TargetDist <= range)
+			{
+				return NS_FAILURE;
+			}
+
+			*MovePoint = vPos;
+
+
+
+			RECT stadiumSize = TGM::GetStadiumSize();
+
+			// 예외처리 MovePoint가 경기장을 벗어났을 때
+			if ((*MovePoint).x <= stadiumSize.left)
+				(*MovePoint).x = stadiumSize.left + 20.f;
+			else if ((*MovePoint).x >= stadiumSize.right)
+				(*MovePoint).x = stadiumSize.right - 20.f;
+
+			if ((*MovePoint).y >= stadiumSize.top)
+				(*MovePoint).y = stadiumSize.top - 20.f;
+			else if ((*MovePoint).y <= stadiumSize.bottom)
+				(*MovePoint).y = stadiumSize.bottom + 20.f;
+
+			return NS_SUCCESS;
+		}
+	};
+
+	class Act_SetMovePoint_Kiting_Heal : public Action_Node
+	{
+	private:
+		float RandomDtoR(float degree)
+		{
+			float value = (float)(rand() % 40) - 20;	// 30도 범위 넓이
+
+			value *= (float)_Pi / 180.f;
+
+			value = degree + value;
+
+			// if (value <= -180.f)
+			// 	value = 180.f + (180.f + value);
+			// else if (value >= 180)
+			// 	value = -180.f + (-180.f + value);
+
+			// value *= (float)_Pi / 180.f;
+
+			return value;
+		}
+
+	public:
+		virtual eNodeStatus Run() override
+		{
+			wstring* ChampName = FINDBBDATA(wstring, CHAMPKEY);
+			Champ* Owner = FINDBBDATA(Champ, *ChampName);
+
+			Champ* Friendly = Owner->GetTarget_Friendly(); // 타겟 위치
+			Champ* Enemy = Owner->GetTarget_Enemy();	// 적 위치
+
+			if (Friendly == nullptr)
+				return NS_FAILURE;
+
+			// 일반적인 카이팅 : 타겟 위치의 정 반대 방향으로 이동
+			Vector2 OwnerPos = Owner->GetComponent<Transform>()->GetWorldPosition().V3toV2();
+			Vector2 TargetPos = Friendly->GetComponent<Transform>()->GetWorldPosition().V3toV2();
+
+			Vector2* MovePoint = FINDBBDATA(Vector2, MOVEPOINT);
+
+			// 얻고싶은 위치
+			// 타겟위치에서 오너 근방의 사거리 거리만큼의 랜덤한 위치
+
+			Vector2 vPos = OwnerPos - TargetPos;									// Target 에서 Owner 방향
+			float fDegree = atan2(vPos.y, vPos.x); // * 180.f / (float)_Pi;		// radian 값
+			fDegree = RandomDtoR(fDegree);
+			float range = (float)Owner->GetChampInfo().RNG;
+			vPos.x = TargetPos.x + cos(fDegree) * range;
+			vPos.y = TargetPos.y + sin(fDegree) * range;
+			
+			if (Enemy)
+			{
+				Vector2 EnemyPos = Enemy->GetComponent<Transform>()->GetWorldPosition().V3toV2();
+				
+				float EnemyDist = Vector2::Distance(OwnerPos, EnemyPos);
+				Vector2 KitingPos = OwnerPos - EnemyPos;
+				float fKitingDegree = atan2(KitingPos.y, KitingPos.x); // * 180.f / (float)_Pi;		// radian 값
+				KitingPos.x = vPos.x + cos(fDegree) * EnemyDist;
+				KitingPos.y = vPos.y + sin(fDegree) * EnemyDist;
+
+
+				if (Vector2::Distance(KitingPos, TargetPos) <= range)
+					*MovePoint = KitingPos;
+				else
+					*MovePoint = vPos;
+			}
+			else
+				*MovePoint = vPos;
+
+			RECT stadiumSize = TGM::GetStadiumSize();
+
+			// 예외처리 MovePoint가 경기장을 벗어났을 때
+			if ((*MovePoint).x <= stadiumSize.left)
+				(*MovePoint).x = stadiumSize.left + 20.f;
+			else if ((*MovePoint).x >= stadiumSize.right)
+				(*MovePoint).x = stadiumSize.right - 20.f;
+
+			if ((*MovePoint).y >= stadiumSize.top)
+				(*MovePoint).y = stadiumSize.top - 20.f;
+			else if ((*MovePoint).y <= stadiumSize.bottom)
+				(*MovePoint).y = stadiumSize.bottom + 20.f;
+
+			return NS_SUCCESS;
+		}
+	};
+
 	// 무작위 무빙
 	class Act_SetMovePoint_Random : public Action_Node
 	{
@@ -437,6 +631,8 @@ namespace ssz
 			Champ* Owner = FINDBBDATA(Champ, *ChampName);
 
 			Champ* Target = Owner->GetTarget_Enemy(); // 타겟 위치
+			if (!Target)
+				return NS_SUCCESS;
 			
 			Vector2* MovePoint = FINDBBDATA(Vector2, MOVEPOINT);
 			
@@ -518,6 +714,28 @@ namespace ssz
 			return NS_SUCCESS;
 		}
 	};
+
+	class Act_SetDir_Target_Heal : public Action_Node
+	{
+	public:
+		virtual eNodeStatus Run() override
+		{
+			wstring* ChampName = FINDBBDATA(wstring, CHAMPKEY);
+			Champ* Owner = FINDBBDATA(Champ, *ChampName);
+
+			Transform* Ownertr = Owner->GetComponent<Transform>();
+			Vector3 OwnerPos = Ownertr->GetWorldPosition();
+			Vector3 TargetPos = Owner->GetTarget_Friendly()->GetComponent<Transform>()->GetWorldPosition();
+
+			if (OwnerPos.x < TargetPos.x)
+				Ownertr->SetRight();
+			else
+				Ownertr->SetLeft();
+
+			return NS_SUCCESS;
+		}
+	};
+
 	class Act_SetDir_MovePoint : public Action_Node
 	{
 	public:

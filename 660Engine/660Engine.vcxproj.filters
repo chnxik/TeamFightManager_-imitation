@@ -673,12 +673,6 @@
     <Filter Include="Contents\Object\BackGround\BackGround\CloudObj">
       <UniqueIdentifier>{accc1ceb-0390-418e-bf3f-cc2ab5a85f4c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Contents\Object\SystemObj">
-      <UniqueIdentifier>{c19c9686-f973-4d71-a468-35c4e225f585}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Object\SystemObj\FadeObj">
-      <UniqueIdentifier>{2411857a-dd91-4a21-9890-7747c3d9411c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Contents\UI\Window\Banpick">
       <UniqueIdentifier>{b9b9c929-8f39-4b49-8e5f-f0733ac67818}</UniqueIdentifier>
     </Filter>

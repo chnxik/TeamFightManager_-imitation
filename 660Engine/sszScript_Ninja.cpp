@@ -185,7 +185,7 @@ namespace ssz
 
 		// [2-2] 상호작용(공격,스킬,궁극기) 판단 시퀀스
 		Sequence_Node* Seq_Active = ChampBT->AddChild<Sequence_Node>();
-		Seq_Active->AddChild<Con_SerchTarget_Enemy_Near>();	// 2-2-1 타겟 지정 여부 (거리)
+		Seq_Active->AddChild<Con_SerchTarget_Enemy_HPMIN>();	// 2-2-1 타겟 지정 여부 (체력)
 
 		Selector_Node* Sel_SelectActive = Seq_Active->AddChild<Selector_Node>(); // 2-2-2 Active 방식 선택
 		// Sequence_Node* Seq_Active_Ultimate = Sel_SelectActive->AddChild<Sequence_Node>(); // 2-2-2-1 궁극기

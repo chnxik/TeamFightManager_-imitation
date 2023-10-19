@@ -3,6 +3,9 @@
 #include "CommonHeader.h"
 #include "sszLog.h"
 
+#include "sszTGM.h"
+#include "sszEffect.h"
+
 #include "sszPilot.h"
 #include "sszTeam.h"
 #include "sszChamp.h"
@@ -30,16 +33,141 @@ namespace ssz
             // RegistRespawnPool(pTarget); // 오브젝트 Dead가 아닌 개념상 Dead로 실제는 Pasued 상태로 전환해 Tick이 돌지 않도록한다.
             
             // 통계 기록
-            // Attacker의 Kill 수 증가
-            // Target의 Dead수 증가
+            pAttacker->GetTeam()->AddKillScore();
+            
+            Champ::tChampStatus* AttackerStat = pAttacker->GetChampStatus();
+            Champ::tChampStatus* TargetStat = pTarget->GetChampStatus();
+
+            AttackerStat->KILLPOINT += 1;
+            TargetStat->DEATHPOINT += 1;
             
             // assist 확인
-            // Attacker Team의 OtherChamp의 타겟 확인. pTarget과 같으면 OtherChamp의 Assist 증가
-            // OtherChamp의 Target nullptr.
+            for (Champ* friendly : pAttacker->GetFriendly())
+            {
+                if (friendly->GetTarget_Enemy() == pTarget)
+                {
+                    friendly->GetChampStatus()->ASSISTPOINT += 1;
+                    friendly->SetTarget_Enemy(nullptr);
+                }
+                else if (friendly->GetTarget_Friendly() == pAttacker)
+                {
+                    friendly->GetChampStatus()->ASSISTPOINT += 1;
+                }
+            }
+
             return false;
         }
 
         return true;
+    }
+
+    bool BattleManager::Heal(Champ* pHealer, Champ* pTarget, unsigned int iHeal)
+    {
+        if (pTarget->IsPaused()) // Paused상태인지 확인, false면 Battle이 정상적으로 이루어지지 않음
+            return false;
+
+        if (Healing(pHealer, pTarget, iHeal))
+        {
+            Transform* tr = pTarget->GetComponent<Transform>();
+            Vector3 vfrontPos = tr->GetPosition();
+            Vector3 vbackPos = tr->GetPosition();
+            vfrontPos.z -= 0.00001f;
+            vbackPos.z += 0.00001f;
+            Vector3 vScale(76.f, 78.f, 0.f);
+
+            vfrontPos.y -= 20.f;
+            vbackPos.y -= 20.f;
+
+            TGM::GetEffectObj()->Play(vfrontPos, vScale, L"heal_receive_front");
+            TGM::GetEffectObj()->Play(vbackPos, vScale, L"heal_receive_back");
+        }
+
+        return true;
+    }
+
+    bool BattleManager::Healing(Champ* pHealer, Champ* pTarget, unsigned int iheal)
+    {
+        Champ::tChampStatus* HealerStat = pHealer->GetChampStatus();
+        Champ::tChampStatus* TargetStat = pTarget->GetChampStatus();
+
+        UINT healing = iheal;
+        if (TargetStat->ChampInfo.MAXHP == TargetStat->HP)
+            healing = 0; // 최대 체력 이상이면 힐량은 0 이다.
+        
+        else if (TargetStat->ChampInfo.MAXHP <= (TargetStat->HP + iheal))
+            healing = TargetStat->ChampInfo.MAXHP - TargetStat->HP; 
+
+        TargetStat->HP += healing;
+
+        // 로그용
+        std::wstring szbuffer;
+        szbuffer = pHealer->GetName() + L" 치유, 힐량 : " + std::to_wstring(healing);
+        Log::AddLog(szbuffer);
+
+        // pTarget->GetChampScript()->Damaged(); 힐은 타격 효과가 발생하지 않음.
+
+        // print Damage() 데미지 출력 함수 호출
+        // Target의 Transform에 접근해 좌표를 받고 해당 좌표에서 데미지 UI를 출력
+        HealPrint(healing, pTarget);
+
+        // 통계 기록
+        HealerStat->TotalHeal += healing;
+
+        return true;
+    }
+
+    void BattleManager::HealPrint(unsigned int heal, Champ* pTarget)
+    {
+        int iheal = heal;
+        Transform* TargetTr = pTarget->GetComponent<Transform>();
+        std::wstring mtkey = L"heal_";
+
+        Vector3 vCenterPos = TargetTr->GetPosition() + Vector3(20.f, 35.f, 0.f);
+        vCenterPos.z = 0.1f;
+
+        Numb* hundreds = nullptr;
+        Numb* tens = nullptr;
+        Numb* units = nullptr;
+
+        float hundwidth = 0.f;
+        float tenswidth = 0.f;
+        float unitswidth = 0.f;
+
+        // 위에서부터 차례대로
+        units = Instantiate<Numb>(vCenterPos, eLayerType::DmgBox);
+        units->PrintDamageBox(eDmgBoxType::DAMAGE, mtkey + std::to_wstring(iheal % 10));
+        Transform* unitstr = units->GetComponent<Transform>();
+        unitswidth = unitstr->GetScale().x / 2.f;
+
+        iheal /= 10;
+
+        if (iheal == 0)
+        {
+            return;
+        }
+
+        tens = Instantiate<Numb>(vCenterPos, eLayerType::DmgBox);
+        tens->PrintDamageBox(eDmgBoxType::DAMAGE, mtkey + std::to_wstring(iheal % 10));
+        Transform* tenstr = tens->GetComponent<Transform>();
+        tenswidth = tenstr->GetScale().x / 2.f;
+
+        iheal /= 10;
+
+        if (iheal == 0)
+        {
+            tenstr->AddPosition(-tenswidth, 0.f, 0.f);
+            unitstr->AddPosition(unitswidth, 0.f, 0.f);
+            return;
+        }
+
+        hundreds = Instantiate<Numb>(vCenterPos, eLayerType::DmgBox);
+        hundreds->PrintDamageBox(eDmgBoxType::DAMAGE, mtkey + std::to_wstring(iheal / 100));
+        Transform* hundtr = hundreds->GetComponent<Transform>();
+        hundwidth = hundtr->GetScale().x / 2.f;
+
+        hundtr->AddPosition(-(hundwidth + tenswidth), 0.f, 0.f);
+        tenstr->AddPosition(tenswidth, 0.f, 0.f);
+        unitstr->AddPosition(tenswidth, 0.f, 0.f);
     }
 
     void BattleManager::Initialize()
@@ -97,6 +225,14 @@ namespace ssz
         if (Target->IsActive())
             Target->SetState(GameObject::eState::Paused);
 
+        Transform* SpawnTr = Target->GetComponent<Transform>();
+        SpawnTr->GetPosition();
+        Vector3 SpawnPoint = SpawnTr->GetPosition();
+        SpawnPoint.x = (float)(rand() % 500);
+        SpawnPoint.y = (float)(rand() % 400) - 300.f;
+
+        SpawnTr->SetPosition(SpawnPoint);
+
         Target->GetChampStatus()->RespawnTime = 0.f;
         
         mRespawn.push_back(Target);
@@ -106,6 +242,7 @@ namespace ssz
     {
         if (Target->IsPaused())
             Target->SetState(GameObject::eState::Active);
+
         Target->GetEfc()->reset();
         Target->RespawnInfo();
         Target->GetComponent<Collider2D>()->ColliderActive();
@@ -147,10 +284,7 @@ namespace ssz
 
         if (0 >= TargetStat->HP) // Target의 최종 데미지가 0이하로 떨어질 경우
         {
-            pAttacker->GetTeam()->AddKillScore();
-
-            AttackerStat->KILLPOINT += 1;
-            TargetStat->DEATHPOINT += 1;
+            
 
             TargetStat->HP = 0; // 0 으로 고정.
             return true;

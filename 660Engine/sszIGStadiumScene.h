@@ -34,6 +34,8 @@ namespace ssz
 		PlayerCardSlot* mPlayerSlot[(UINT)eTeamColor::End][2];
 		ChampDataSlot* mChampDataSlot[(UINT)eTeamColor::End][2];
 
+		UIObject* mCntObj;
+
 		UINT iGameCnt;
 		float fAccTime;
 

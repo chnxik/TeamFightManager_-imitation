@@ -30,6 +30,8 @@ namespace ssz
 
         virtual void Attack();
         virtual void AttackComplete();
+        virtual void Heal();
+        virtual void HealComplete();
         virtual void Skill() {};
         virtual void Ultimate() {};
 

@@ -251,10 +251,15 @@ namespace ssz
 			// Champ Regist
 			for (int i = 0; i < 2; ++i)
 			{
-				RegistChamp[(UINT)eCampType::Player][i] = PPilotList[i]->GetChamp();
-				RegistChamp[(UINT)eCampType::Enemy][i] = EPilotList[i]->GetChamp();
-				mChampDataSlot[(UINT)eTeamColor::Red][i]->RegistChamp(PPilotList[i]->GetChamp());
-				mChampDataSlot[(UINT)eTeamColor::Blue][i]->RegistChamp(EPilotList[i]->GetChamp());
+				Champ* BlueTeamChamp = PPilotList[i]->GetChamp();
+				Champ* RedTeamChamp = EPilotList[i]->GetChamp();;
+
+				RegistChamp[(UINT)eCampType::Player][i] = BlueTeamChamp;
+				RegistChamp[(UINT)eCampType::Enemy][i] = RedTeamChamp;
+				mChampDataSlot[(UINT)eTeamColor::Blue][i]->RegistChamp(BlueTeamChamp);
+				mChampDataSlot[(UINT)eTeamColor::Red][i]->RegistChamp(RedTeamChamp);
+				mPlayerSlot[(UINT)eTeamColor::Blue][i]->RegistChamp(BlueTeamChamp);
+				mPlayerSlot[(UINT)eTeamColor::Red][i]->RegistChamp(RedTeamChamp);
 			}
 
 			// Champ Spawn
@@ -262,12 +267,13 @@ namespace ssz
 			{
 				for (int j = 0; j < 2; ++j)
 				{
-					Vector3 SpawnPoint = { (float)(rand() % 50), (float)(rand() % 150), 1.0f };
-					SpawnPoint.y -= 100.f;
+					Vector3 SpawnPoint = { (float)(rand() % 300), (float)(rand() % 400), 1.0f };
+					SpawnPoint.y -= 300.f;
 					if (i == (UINT)eCampType::Player)
-						SpawnPoint.x = -SpawnPoint.x - 100.f;
+						SpawnPoint.x = -SpawnPoint.x - 200.f;
 					else
-						SpawnPoint.x = SpawnPoint.x + 100.f;
+						SpawnPoint.x = SpawnPoint.x + 200.f;
+
 
 					TGM::AddChampScene((eLayerType)(i + 2), RegistChamp[i][j], SpawnPoint);
 				}

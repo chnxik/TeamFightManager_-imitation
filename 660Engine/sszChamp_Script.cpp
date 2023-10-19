@@ -125,6 +125,22 @@ namespace ssz
 		Owner->GetChampStatus()->accTime_Attack = 0.f;
 	}
 
+	void Champ_Script::Heal()
+	{
+		Champ* Owner = (Champ*)GetOwner();
+
+		if (Owner->GetTarget_Friendly() != nullptr)
+		{
+			BattleManager::Heal(Owner, Owner->GetTarget_Friendly(), Owner->GetChampInfo().ATK);
+		}
+	}
+
+	void Champ_Script::HealComplete()
+	{
+		Champ* Owner = (Champ*)GetOwner();
+		Owner->GetChampStatus()->accTime_Attack = 0.f;
+	}
+
 	void Champ_Script::ResetAIBB()
 	{
 		mRoot->Clear();

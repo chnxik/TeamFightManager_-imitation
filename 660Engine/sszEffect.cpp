@@ -46,6 +46,19 @@ namespace ssz
 			Anim->CompleteEvent(L"knight_skill") = std::bind(&Effect::Complete, this);
 		}
 
+		// ninja
+		{
+			Resources::Load<AudioClip>(L"ninja_skill_1", L"..\\Resources\\useResource\\Audio\\Explosion Tiny_06.wav");
+
+			// Effect Anim Init
+			Resources::Load<Texture>(L"ninja_skill", L"..\\Resources\\useResource\\ChampSprite\\ninja\\effect\\skill.png");
+			Anim->Create(L"ninja_skill_1", L"ninja_skill", Vector2(0.f, 0.f), Vector2(96.f, 96.f), 13, Vector2(0.f, 0.f), 12.f);
+			Anim->Create(L"ninja_skill_2", L"ninja_skill", Vector2(0.f, 96.f), Vector2(96.f, 96.f), 6, Vector2(0.f, 0.f), 12.f);
+
+			Anim->CompleteEvent(L"ninja_skill_1") = std::bind(&Effect::Complete, this);
+			Anim->CompleteEvent(L"ninja_skill_2") = std::bind(&Effect::Complete, this);
+		}
+
 		// pyromancer
 		{
 			Resources::Load<AudioClip>(L"pyromancer_skill", L"..\\Resources\\useResource\\Audio\\pyromancerSkill.wav");

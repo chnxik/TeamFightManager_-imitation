@@ -57,7 +57,7 @@ namespace ssz
 		Owner->SetUltIcon(UltIcon);
 		Owner->SetSlotTex(SlotTex);
 
-		Owner->GetChampStatus()->CoolTime_Skill = 6.5f;
+		Owner->GetChampStatus()->CoolTime_Skill = 10.5f;
 
 		Owner->GetComponent<Transform>()->SetScale(Vector3(170.f, 170.f, 1.f)); // 64 : 128, 96 : 170
 	}

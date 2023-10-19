@@ -46,7 +46,7 @@ namespace ssz
 
 		Owner->SetChampKrName(L"닌자");
 		Owner->SetChampClassType(L"암살자");
-		Owner->SetChampSkillInfo(L"적 하나에게 순간이동으로 접근하여\n 출혈 효과가 있는 공격을 가합니다.");
+		Owner->SetChampSkillInfo(L"적 하나에게 순간이동으로 접근하여\n 강력한 기습공격을 가합니다.");
 		Owner->SetChampUltInfo(L"지속적으로 체력이 소모되는 분신을\n 소환합니다.");
 
 		std::shared_ptr<Texture> SkillIcon = Resources::Load<Texture>(L"ninja_skilliconTex", L"..\\Resources\\useResource\\ChampSprite\\ninja\\skillicon\\ninja_skill.png");
@@ -168,7 +168,7 @@ namespace ssz
 		std::wstring SkillAnikey = ChampName + L"_skill";
 		std::wstring UltAnikey = ChampName + L"_ultimate";
 
-		Resources::Load<AudioClip>(AttackAnikey, L"..\\Resources\\useResource\\Audio\\Sword_Woosh_1.wav");
+		Resources::Load<AudioClip>(AttackAnikey, L"..\\Resources\\useResource\\Audio\\Dagger1.wav");
 		Resources::Load<AudioClip>(DeadAnikey, L"..\\Resources\\useResource\\Audio\\Body_Drop.wav");
 	}
 
@@ -191,12 +191,12 @@ namespace ssz
 		// Sequence_Node* Seq_Active_Ultimate = Sel_SelectActive->AddChild<Sequence_Node>(); // 2-2-2-1 궁극기
 		
 		// 스킬 미구현
-		// Sequence_Node* Seq_Active_Skill = Sel_SelectActive->AddChild<Sequence_Node>(); // 2-2-2-2 스킬
-		// Seq_Active_Skill->AddChild<Con_CheckActive_Skill_CoolTime>();	// 2-2-2-2-1 기본공격 대기시간 판단
+		Sequence_Node* Seq_Active_Skill = Sel_SelectActive->AddChild<Sequence_Node>(); // 2-2-2-2 스킬
+		Seq_Active_Skill->AddChild<Con_CheckActive_Skill_CoolTime>();	// 2-2-2-2-1 기본공격 대기시간 판단
 
-		// Sequence_Node* Seq_SkillAnim = Seq_Active_Skill->AddChild<Sequence_Node>(); // 2-2-2-2-3 공격 애니메이션
-		// Seq_SkillAnim->AddChild<Act_PlayAnim_Skill>();	// 2-2-2-2-3-1 공격 애니메이션 반복재생
-		// Seq_SkillAnim->AddChild<Act_PlayAnim_Idle>();	// 2-2-2-2-3-2 공격애니메이션 종료시 Idle로 초기화
+		Sequence_Node* Seq_SkillAnim = Seq_Active_Skill->AddChild<Sequence_Node>(); // 2-2-2-2-3 공격 애니메이션
+		Seq_SkillAnim->AddChild<Act_Skill_Ninja>();	// 2-2-2-2-3-1 공격 애니메이션 반복재생
+		Seq_SkillAnim->AddChild<Act_PlayAnim_Idle>();	// 2-2-2-2-3-2 공격애니메이션 종료시 Idle로 초기화
 
 		Sequence_Node* Seq_Active_Attack = Sel_SelectActive->AddChild<Sequence_Node>(); // 2-2-2-3 기본공격
 		Seq_Active_Attack->AddChild<Con_CheckActive_Attack_CoolTime>();	// 2-2-2-3-1 기본공격 대기시간 판단

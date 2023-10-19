@@ -82,6 +82,9 @@ namespace ssz
 			mChampDataSlot[(UINT)eTeamColor::Blue][0]->RegistPlayerCardSlot(mPlayerSlot[(UINT)eTeamColor::Blue][0]);
 			mChampDataSlot[(UINT)eTeamColor::Blue][1]->RegistPlayerCardSlot(mPlayerSlot[(UINT)eTeamColor::Blue][1]);
 
+			mCntObj = InstantiateUI<UIObject>(Vector3(0.f, 0.f, 0.5f), eLayerType::UI, L"CntObj");
+			mCntObj->AddComponent<Text>()->TextInit(Text::eFonts::Silver, Vector3(0.f, 0.f, 0.f), 100, FONT_RGBA(255, 255, 255, 255), FW1_CENTER | FW1_VCENTER);
+			mCntObj->SetPaused();
 		}
 #pragma endregion
 	}
@@ -91,6 +94,7 @@ namespace ssz
 		{
 		case ssz::IGStadiumScene::eGamePhase::SceneIn:
 		{
+			
 			fAccTime += (float)DT;
 
 			// DataSlot
@@ -143,11 +147,20 @@ namespace ssz
 					BlueSlotTr1->SetPosition(BSlotPos1);
 					BlueSlotTr2->SetPosition(BSlotPos2);
 
+					mCntObj->SetPaused();
+					iGameCnt = 3;
+					mCntObj->GetComponent<Text>()->SetString(std::to_wstring(iGameCnt));
+
 					TGM::GameStart();
 					mCurPhase = eGamePhase::Game;
 					return;
 				}
 				iGameCnt--;
+				
+				if(iGameCnt == 0)
+					mCntObj->GetComponent<Text>()->SetString(L"경기 시작");
+				else
+					mCntObj->GetComponent<Text>()->SetString(std::to_wstring(iGameCnt));
 			}
 
 			break;
@@ -156,11 +169,28 @@ namespace ssz
 		{
 			float gametime = TGM::GetGameTime() - (float)DT;
 
-			if (gametime < 0.f)
+			if (gametime <= 3.f)
 			{
-				TGM::GameSet();
-				mCurPhase = eGamePhase::Finish;
+				if (!mCntObj->IsActive())
+					mCntObj->SetActive();
+
+				fAccTime += (float)DT;
+				
+				if (1.f < fAccTime)
+				{
+					fAccTime = 0.f;
+					iGameCnt--;
+
+					mCntObj->GetComponent<Text>()->SetString(std::to_wstring(iGameCnt));
+				}
+
+				if (gametime < 0.f)
+				{
+					TGM::GameSet();
+					mCurPhase = eGamePhase::Finish;
+				}
 			}
+
 
 			TGM::SetGameTime(gametime);
 			break;
@@ -168,21 +198,23 @@ namespace ssz
 		}
 		case ssz::IGStadiumScene::eGamePhase::Finish:
 		{
+			mCntObj->GetComponent<Text>()->SetString(L"경기 종료");
+
+			if (Input::GetKeyDown(eKeyCode::DOWN))
+			{
+				SceneManager::LoadScene(L"MainLobbyScene");
+			}
 			break;
 		}
 		case ssz::IGStadiumScene::eGamePhase::SceneOut:
 		{
-
 			break;
 		}
 		}
 
 		Scene::Update();
 
-		if (Input::GetKeyDown(eKeyCode::DOWN))
-		{
-			SceneManager::LoadScene(L"MainLobbyScene");
-		}
+		
 
 		BattleManager::Update();
 
@@ -305,7 +337,10 @@ namespace ssz
 		CollisionManager::SetLayer(eLayerType::BackGroundObj, eLayerType::Cursor, true);
 
 		TGM::PlayBGM(L"BattleBGM");
-		iGameCnt = 5;
+		iGameCnt = 3;
+
+		mCntObj->SetActive();
+		mCntObj->GetComponent<Text>()->SetString(std::to_wstring(iGameCnt));
 
 		Time::TimeAcceleration(1.f);
 	}

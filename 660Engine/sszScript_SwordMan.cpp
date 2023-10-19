@@ -168,7 +168,7 @@ namespace ssz
 		std::wstring SkillAnikey = ChampName + L"_skill";
 		std::wstring UltAnikey = ChampName + L"_ultimate";
 
-		Resources::Load<AudioClip>(AttackAnikey, L"..\\Resources\\useResource\\Audio\\Sword_Woosh_1.wav");
+		Resources::Load<AudioClip>(AttackAnikey, L"..\\Resources\\useResource\\Audio\\Light Sword Swing 3.wav");
 		Resources::Load<AudioClip>(DeadAnikey, L"..\\Resources\\useResource\\Audio\\Body_Drop.wav");
 	}
 

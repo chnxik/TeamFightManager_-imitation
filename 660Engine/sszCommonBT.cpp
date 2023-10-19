@@ -632,10 +632,6 @@ namespace ssz
 			wstring* ChampName = FINDBBDATA(wstring, CHAMPKEY);
 			Champ* Owner = FINDBBDATA(Champ, *ChampName);
 
-			Champ* Target = Owner->GetTarget_Enemy(); // Å¸°Ù À§Ä¡
-			if (!Target)
-				return NS_SUCCESS;
-			
 			Vector2* MovePoint = FINDBBDATA(Vector2, MOVEPOINT);
 			
 

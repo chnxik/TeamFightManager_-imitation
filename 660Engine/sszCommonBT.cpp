@@ -200,18 +200,19 @@ namespace ssz
 
 			fUpdateTime += (float)Time::DeltaTime();
 
-			if (0.2f < fUpdateTime)	// 일정 시간마다 새로운 이동지점 갱신
+			if (0.7f < fUpdateTime)	// 일정 시간마다 새로운 이동지점 갱신
 			{
 				fUpdateTime = 0.f;
 				return NS_FAILURE;
 			}
 
 			if (Vector2::Distance(tr->GetWorldPosition().V3toV2(), (*MovePoint))
-				< 5.f)
+				< 2.f)
 			{
 				fUpdateTime = 0.f;
 				return NS_FAILURE; // 도착해서 새로운 이동지점을 확인해야함.
 			}
+
 
 			return NS_SUCCESS;	// 도착하지 않음
 		}
@@ -510,12 +511,13 @@ namespace ssz
 			Vector2 ConPos = OwnerPos - vPos;
 			float ConDist = Vector2::Distance(OwnerPos, vPos);
 			float TargetDist = Vector2::Distance(OwnerPos, TargetPos);
-			if (ConDist <= range || TargetDist <= range)
+			
+			if (ConDist <= range || range <= TargetDist)
 			{
-				return NS_FAILURE;
+				*MovePoint = OwnerPos;
 			}
-
-			*MovePoint = vPos;
+			else
+				*MovePoint = vPos;
 
 
 

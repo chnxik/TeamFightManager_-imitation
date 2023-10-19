@@ -250,7 +250,7 @@ namespace ssz
 
 			TGM::GetEffectObj()->Play(vPos, vScale, Owner->GetAnimKey(Champ::eActiveType::SKILL));
 
-			BattleManager::ATTACK(Owner, Owner->GetTarget_Enemy(), Owner->GetChampInfo().ATK * 1.2f);
+			BattleManager::ATTACK(Owner, Owner->GetTarget_Enemy(), (UINT)((float)Owner->GetChampInfo().ATK * 1.2f));
 		}
 
 		Owner->GetChampStatus()->accTime_Skill = 0.f;

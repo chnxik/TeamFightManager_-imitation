@@ -207,12 +207,13 @@ namespace ssz
 		Seq_AttackAnim->AddChild<Act_Attack_SwordMan>();	// 2-2-2-3-3-1 공격 애니메이션 반복재생
 		Seq_AttackAnim->AddChild<Act_PlayAnim_Idle>();		// 2-2-2-3-3-2 공격애니메이션 종료시 Idle로 초기화
 
-		// [2-3] 이동 판단 시퀀스
-		Sequence_Node* Seq_Move = ChampBT->AddChild<Sequence_Node>();
+		// [2 - 3] 이동 판단 시퀀스
+		Sequence_Node* Seq_Move = ChampBT->AddChild<Sequence_Node>();	// 성공이면 전부 실행
+
 		Selector_Node* Sel_MovePoint = Seq_Move->AddChild<Selector_Node>(); // 2-3-1 이동지점 갱신 판단
 		Sequence_Node* Seq_Move_Complete = Sel_MovePoint->AddChild<Sequence_Node>();	// 2-3-1-1 목표지점 도착 판단
 		Seq_Move_Complete->AddChild<Con_IsArrive>();			// 2-3-1-1-1 목표지점 도착 판단 컨디션노드
-		Sel_MovePoint->AddChild<Act_SetMovePoint_Kiting_nearing>();	// 2-3-1-2 카이팅 이동 지점
+		Sel_MovePoint->AddChild<Act_SetMovePoint_Kiting>();	// 2-3-1-2 카이팅 이동 지점
 		Sel_MovePoint->AddChild<Act_SetMovePoint_Random>();	// 2-3-1-3 랜덤 이동 지점
 
 		// Seq_Move->AddChild<Act_SetDir_MovePoint>();		// 2-3-2-1 이동방향으로 방향전환

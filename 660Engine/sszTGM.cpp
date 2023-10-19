@@ -45,7 +45,7 @@ namespace ssz
 	Team* TGM::gPlayerTeam = nullptr;
 	
 	UINT TGM::mYear = 2023;
-	UINT TGM::mMonth = 9;
+	UINT TGM::mMonth = 10;
 	UINT TGM::mWeek = 3;
 
 	bool TGM::bGame = false;;
@@ -75,7 +75,7 @@ namespace ssz
 			vProjectilePool.push_back(newproj);
 		}
 
-		for (int i = 0; i < 3; ++i)
+		for (int i = 0; i < 20; ++i)
 		{
 			Effect* neweffect = new Effect();
 			neweffect->Initialize();

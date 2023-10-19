@@ -46,7 +46,7 @@ namespace ssz
 
 		Owner->SetChampKrName(L"화염술사");
 		Owner->SetChampClassType(L"마법사");
-		Owner->SetChampSkillInfo(L"공격을 보조하는 화염 정령을 소환합니다.");
+		Owner->SetChampSkillInfo(L"1.2 배의 데미지로 적을 불태웁니다.");
 		Owner->SetChampUltInfo(L"주변 일정 범위에 지속적으로 피해를 가하는\n 영역을 생성합니다.");
 
 		std::shared_ptr<Texture> SkillIcon = Resources::Load<Texture>(L"pyromancer_skilliconTex", L"..\\Resources\\useResource\\ChampSprite\\pyromancer\\skillicon\\pyromancer_skill.png");
@@ -64,6 +64,10 @@ namespace ssz
 
 	void Script_Pyromancer::InitChampAnim()
 	{
+		// Projectile Set
+		Resources::Load<Texture>(L"pyromancer_fireball", L"..\\Resources\\useResource\\ChampSprite\\pyromancer\\effect\\fireball.png");
+		LoadMaterial(L"pyromancer_fireballMt", L"SpriteShader", L"pyromancer_fireball", eRenderingMode::Transparent);
+
 		// ======================================== 공통 애니메이션 세팅 ===========================================
 
 		Champ* Owner = (Champ*)GetOwner();
@@ -168,7 +172,7 @@ namespace ssz
 		std::wstring SkillAnikey = ChampName + L"_skill";
 		std::wstring UltAnikey = ChampName + L"_ultimate";
 
-		Resources::Load<AudioClip>(AttackAnikey, L"..\\Resources\\useResource\\Audio\\Sword_Woosh_1.wav");
+		Resources::Load<AudioClip>(AttackAnikey, L"..\\Resources\\useResource\\Audio\\fireball.wav");
 		Resources::Load<AudioClip>(DeadAnikey, L"..\\Resources\\useResource\\Audio\\Body_Drop.wav");
 	}
 
@@ -189,6 +193,7 @@ namespace ssz
 
 		Selector_Node* Sel_SelectActive = Seq_Active->AddChild<Selector_Node>(); // 2-2-2 Active 방식 선택
 		// Sequence_Node* Seq_Active_Ultimate = Sel_SelectActive->AddChild<Sequence_Node>(); // 2-2-2-1 궁극기
+		
 		Sequence_Node* Seq_Active_Skill = Sel_SelectActive->AddChild<Sequence_Node>(); // 2-2-2-2 스킬
 		Seq_Active_Skill->AddChild<Con_CheckActive_Skill_CoolTime>();	// 2-2-2-2-1 기본공격 대기시간 판단
 
@@ -220,7 +225,12 @@ namespace ssz
 
 	void Script_Pyromancer::Attack()
 	{
-		Champ_Script::Attack();
+		Champ* Owner = (Champ*)GetOwner();
+
+		if (Owner->GetTarget_Enemy() != nullptr)
+		{
+			TGM::GetProjectile()->Shoot(Owner, Owner->GetTarget_Enemy(), Vector3(20.f, 24.f, 1.f), L"pyromancer_fireballMt", Owner->GetChampInfo().ATK);
+		}
 	}
 
 	void Script_Pyromancer::Skill()
@@ -230,6 +240,18 @@ namespace ssz
 		Transform* tr = Owner->GetComponent<Transform>();
 		Vector3 vPos = tr->GetPosition();
 		Vector3 vScale = tr->GetScale();
+
+		if (Owner->GetTarget_Enemy() != nullptr)
+		{
+			Transform* tr = Owner->GetTarget_Enemy()->GetComponent<Transform>();
+			Vector3 vPos = tr->GetPosition();
+			vPos.z -= 0.00001f;
+			Vector3 vScale(128.f, 128.f, 0.f);
+
+			TGM::GetEffectObj()->Play(vPos, vScale, Owner->GetAnimKey(Champ::eActiveType::SKILL));
+
+			BattleManager::ATTACK(Owner, Owner->GetTarget_Enemy(), Owner->GetChampInfo().ATK * 1.2f);
+		}
 
 		Owner->GetChampStatus()->accTime_Skill = 0.f;
 	}

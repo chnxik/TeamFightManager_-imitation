@@ -48,9 +48,11 @@ namespace ssz
 
 		Transform* Ownertr = GetOwner()->GetComponent<Transform>();
 		
+		float Speed = 800.f;
+
 		Vector3 vPos = Ownertr->GetPosition();
-		vPos.x += vDir.x * 500.f * (float)Time::DeltaTime();
-		vPos.y += vDir.y * 500.f * (float)Time::DeltaTime();
+		vPos.x += vDir.x * Speed * (float)Time::DeltaTime();
+		vPos.y += vDir.y * Speed * (float)Time::DeltaTime();
 
 		Ownertr->SetPosition(vPos);
 		

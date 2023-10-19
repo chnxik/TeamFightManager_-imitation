@@ -46,6 +46,16 @@ namespace ssz
 			Anim->CompleteEvent(L"knight_skill") = std::bind(&Effect::Complete, this);
 		}
 
+		// pyromancer
+		{
+			Resources::Load<AudioClip>(L"pyromancer_skill", L"..\\Resources\\useResource\\Audio\\pyromancerSkill.wav");
+
+			// Effect Anim Init
+			Resources::Load<Texture>(L"pyromancer_skill_efc", L"..\\Resources\\useResource\\ChampSprite\\pyromancer\\effect\\skill.png");
+			Anim->Create(L"pyromancer_skill", L"pyromancer_skill_efc", Vector2(0.f, 0.f), Vector2(96.f, 96.f), 8, Vector2(0.f, 0.f), 10.f);
+			Anim->CompleteEvent(L"pyromancer_skill") = std::bind(&Effect::Complete, this);
+		}
+
 		// healing
 		{
 			Resources::Load<AudioClip>(L"heal_receive_front", L"..\\Resources\\useResource\\Audio\\healing.wav");

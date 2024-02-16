@@ -12,3 +12,5 @@
 #define PYROMANCER L"Champ_Pyromancer"
 #define PRIEST L"Champ_Priest"
 #define NINJA	L"Champ_Ninja"
+
+#define _Pi 3.1415926535
